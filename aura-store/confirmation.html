@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed — Aura Coffee & Kitchen</title>
+  <meta name="description" content="Thank you for your order! Your handcrafted coffee and fresh bakes are being prepared with love.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Scalloped edge styling */
+    .scallop-receipt {
+      background: #FFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .scallop-receipt::before {
+      content: '';
+      display: block;
+      height: 12px;
+      background: radial-gradient(circle, transparent, transparent 50%, #FFF 50%, #FFF 100%);
+      background-size: 18px 18px;
+    }
+  </style>
+</head>
+<body style="background: var(--bg-body); min-height: 100vh; display: flex; flex-direction: column;">
+
+  <!-- Minimal Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner" style="height: 70px;">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon">☕</div>
+          <div class="brand-text">
+            <span class="brand-name">AURA<span>.</span></span>
+            <span class="brand-sub">Coffee & Kitchen</span>
+          </div>
+        </a>
+
+        <a href="index.html" class="btn-secondary-pill" style="padding: 8px 18px; font-size: 0.85rem;">
+          ← Back to Menu
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="flex: 1; padding: 40px 24px 60px;">
+    <!-- Scalloped Ticket Receipt (Inspired by Reference 4) -->
+    <div class="scallop-receipt" style="max-width: 540px; margin: 0 auto; padding: 40px 36px;">
+      
+      <div class="ticket-header">
+        <div class="ticket-icon">☕</div>
+        <h1 class="ticket-title">THANK YOU FOR YOUR ORDER!</h1>
+        <p class="ticket-subtitle">
+          Brings a piece of happiness to your day, handcrafted with love.
+        </p>
+        <div style="display: inline-block; background: var(--bg-warm-tint); color: var(--primary); padding: 4px 14px; border-radius: var(--radius-pill); font-size: 0.82rem; font-weight: 700; margin-top: 10px;">
+          ORDER #<span id="receipt-order-id">AUR-7842</span>
+        </div>
+      </div>
+
+      <!-- Live Preparation Tracker -->
+      <div class="tracker-stepper">
+        <div class="tracker-step completed">
+          <div class="step-bubble">✓</div>
+          <span class="step-label">Received</span>
+        </div>
+        <div class="tracker-step active">
+          <div class="step-bubble">☕</div>
+          <span class="step-label">Brewing</span>
+        </div>
+        <div class="tracker-step">
+          <div class="step-bubble">3</div>
+          <span class="step-label">Quality Check</span>
+        </div>
+        <div class="tracker-step">
+          <div class="step-bubble">4</div>
+          <span class="step-label">Dispatched</span>
+        </div>
+      </div>
+
+      <!-- Itemized Coffee Table -->
+      <table class="ticket-table">
+        <thead>
+          <tr>
+            <th style="width: 15%;">QTY</th>
+            <th style="width: 60%;">ITEM &amp; CUSTOMIZATION</th>
+            <th style="width: 25%; text-align: right;">PRICE</th>
+          </tr>
+        </thead>
+        <tbody id="receipt-items-body">
+          <!-- Populated by script -->
+        </tbody>
+      </table>
+
+      <!-- Subtotal, Delivery, Total Box -->
+      <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; font-size: 0.90rem; color: var(--espresso-muted);">
+          <span>Subtotal</span>
+          <span id="receipt-subtotal">₱0.00</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.90rem; color: var(--espresso-muted);">
+          <span>Courier Delivery</span>
+          <span id="receipt-delivery">₱60.00</span>
+        </div>
+      </div>
+
+      <div class="ticket-total-box">
+        <span class="ticket-total-label">TOTAL PAID</span>
+        <span id="receipt-total" class="ticket-total-val">₱0.00</span>
+      </div>
+
+      <!-- Delivery Information Summary -->
+      <div style="background: var(--bg-body); border-radius: var(--radius-sm); padding: 18px; margin-bottom: 28px; font-size: 0.85rem; border: 1px solid var(--border-subtle);">
+        <div style="font-weight: 700; color: var(--espresso-dark); margin-bottom: 6px;">Delivery Details:</div>
+        <div id="receipt-customer-name" style="color: var(--espresso-medium);">Maria Santos</div>
+        <div id="receipt-customer-address" style="color: var(--espresso-muted); margin-top: 2px;">Unit 14B, Arya Residences, McKinley Pkwy, Fort Bonifacio, Taguig City</div>
+        <div style="margin-top: 6px; display: flex; gap: 12px; color: var(--espresso-light); font-size: 0.80rem;">
+          <span>Payment: <strong id="receipt-payment" style="color: var(--primary);">GCASH</strong></span>
+          <span>·</span>
+          <span>Status: <strong style="color: var(--accent-green);">Paid Online</strong></span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <a href="index.html" class="btn-primary-pill" style="justify-content: center; width: 100%;">
+          <span>Order More Coffee</span>
+          <span>→</span>
+        </a>
+        <a href="../case-aura.html" class="btn-secondary-pill" style="justify-content: center; width: 100%;">
+          <span>← Back to Case Study 05</span>
+        </a>
+      </div>
+
+      <div style="text-align: center; margin-top: 24px; font-size: 0.82rem; color: var(--espresso-light); font-style: italic;">
+        "Your daily caffeine fix, sorted."
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const ORDER_STORAGE_KEY = 'aura_last_order';
+      let orderData = null;
+
+      try {
+        const saved = localStorage.getItem(ORDER_STORAGE_KEY);
+        if (saved) {
+          orderData = JSON.parse(saved);
+        }
+      } catch (e) {}
+
+      // Fallback demo order if visited directly
+      if (!orderData) {
+        orderData = {
+          orderId: 'AUR-5821',
+          timestamp: new Date().toLocaleString(),
+          customer: {
+            name: 'Maria Santos',
+            phone: '0917 842 1900',
+            address: 'Unit 14B, Arya Residences, McKinley Pkwy, Taguig City'
+          },
+          courier: 'Standard Roastery Courier',
+          paymentMethod: 'GCASH',
+          items: [
+            {
+              name: 'Signature Spanish Latte',
+              qty: 2,
+              unitPrice: 185,
+              customizations: {
+                size: 'Regular (12oz)',
+                milk: 'Oat Milk',
+                sweetness: '70% (Less Sweet)'
+              }
+            },
+            {
+              name: 'Artisanal Butter Croissant',
+              qty: 1,
+              unitPrice: 120,
+              customizations: null
+            }
+          ],
+          subtotal: 490,
+          deliveryFee: 60,
+          total: 550
+        };
+      }
+
+      // Populate Receipt DOM
+      document.getElementById('receipt-order-id').textContent = orderData.orderId;
+      document.getElementById('receipt-customer-name').textContent = orderData.customer.name;
+      document.getElementById('receipt-customer-address').textContent = orderData.customer.address;
+      document.getElementById('receipt-payment').textContent = orderData.paymentMethod;
+      document.getElementById('receipt-subtotal').textContent = `₱${orderData.subtotal.toFixed(2)}`;
+      document.getElementById('receipt-delivery').textContent = orderData.deliveryFee === 0 ? 'FREE' : `₱${orderData.deliveryFee.toFixed(2)}`;
+      document.getElementById('receipt-total').textContent = `₱${orderData.total.toFixed(2)}`;
+
+      const itemsBody = document.getElementById('receipt-items-body');
+      itemsBody.innerHTML = orderData.items.map(item => {
+        const mods = item.customizations 
+          ? `<br><small style="color:var(--espresso-light); font-size:0.75rem;">${item.customizations.size} · ${item.customizations.milk} · ${item.customizations.sweetness}</small>`
+          : '<br><small style="color:var(--espresso-light); font-size:0.75rem;">Fresh Daily Bake</small>';
+
+        return `
+          <tr>
+            <td style="font-weight: 700;">${item.qty}×</td>
+            <td>
+              <strong style="color: var(--espresso-dark);">${item.name}</strong>
+              ${mods}
+            </td>
+            <td style="text-align: right; font-weight: 700;">
+              ₱${(item.unitPrice * item.qty).toFixed(2)}
+            </td>
+          </tr>
+        `;
+      }).join('');
+    });
+  </script>
+</body>
+</html>

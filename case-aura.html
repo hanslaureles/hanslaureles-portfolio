@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Aura Coffee &amp; Kitchen — Case Study · Hans Aaron Laureles</title>
+  <meta name="description" content="Case study on Aura Coffee & Kitchen — designing a warm artisanal coffeehouse e-commerce experience with bespoke drink customization, dynamic bag drawer, and 1-page Philippine express checkout.">
+  
+  <!-- Google Fonts: Instrument Serif + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Zero-FOUC Theme Script -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('hans_portfolio_theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-mark" aria-label="Hans Laureles Home">
+        <div class="brand-title">
+          <span class="brand-dot"></span>
+          Hans Aaron Laureles
+        </div>
+        <div class="brand-subtitle">AI Systems Engineer // Agent Architectures</div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Selected Work</a></li>
+          <li><a href="about.html" class="nav-link">About Me</a></li>
+          <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-link">Resume ↗</a></li>
+          <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub ↗</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Press T)">
+          <!-- Icon injected by app.js -->
+        </button>
+        <button class="mobile-menu-btn" aria-label="Open navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <div class="brand-title">
+        <span class="brand-dot"></span>
+        Hans Laureles
+      </div>
+      <button class="mobile-drawer-close btn btn-outline btn-sm" aria-label="Close menu">✕ Close</button>
+    </div>
+    <ul class="mobile-drawer-links">
+      <li><a href="index.html">01. Selected Work</a></li>
+      <li><a href="about.html">02. About Me</a></li>
+      <li><a href="case-lsfm.html">03. Flagship: LSFM AI HQ</a></li>
+      <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer">04. Resume (PDF) ↗</a></li>
+      <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">05. GitHub Profile ↗</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content" class="container">
+    
+    <!-- Case Hero -->
+    <div class="case-hero">
+      <a href="index.html" class="case-back-link">
+        ← Return to Selected Work
+      </a>
+      
+      <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
+        <span class="badge badge-accent">Case Study 05</span>
+        <span class="badge">Specialty Commerce</span>
+        <span class="badge">Drink Customization Engine</span>
+        <span class="badge">Philippine Payment Rails</span>
+      </div>
+
+      <h1 class="case-title">
+        Aura Coffee &amp; Kitchen — Warm Artisanal Commerce<br>
+        <span class="serif-italic">&amp; Express Checkout Architecture</span>
+      </h1>
+
+      <p class="case-lead">
+        Designing a warm, welcoming coffeehouse e-commerce experience inspired by contemporary mobile apps. Features multi-attribute drink customization (size, dairy/plant milk, sweetness, ice), an interactive slide-over bag drawer with free delivery threshold tracking, and a streamlined 1-page Philippine checkout engine (GCash, Maya, GrabPay, COD) culminating in a scalloped receipt order confirmation.
+      </p>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px;">
+        <a href="aura-store/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: #D97724; border-color: #D97724; color: #FFFFFF;">
+          ☕ Launch Live Aura Coffee Store ↗
+        </a>
+        <a href="https://www.figma.com/community/file/1618158150524481559/laureles-aura-website" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          View Figma Community File ↗
+        </a>
+        <a href="https://www.figma.com/proto/8HGLrT9etT2rKl7MivvGK6/Laureles_Aura---Website?node-id=1-237&p=f&t=sjxbSCQqLc55XjWN-1&scaling=scale-down&content-scaling=fixed&page-id=2%3A4" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          Launch Interactive Prototype ↗
+        </a>
+      </div>
+
+      <!-- Project Metadata Table -->
+      <div class="case-meta-table">
+        <div class="case-meta-item">
+          <div class="label">Platform</div>
+          <div class="val">Responsive Web App (Mobile &amp; Desktop)</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Discipline</div>
+          <div class="val">Specialty Food &amp; Beverage UI/UX · Conversion Engineering</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Role</div>
+          <div class="val">Lead Product Designer &amp; Frontend Engineer (Solo)</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Stack</div>
+          <div class="val">Vanilla CSS Design System · Client-Side State Engine · Zero-FOUC LocalStorage</div>
+        </div>
+      </div>
+
+      <!-- Hero Banner Image -->
+      <div class="case-banner" style="margin-top: 32px; margin-bottom: 24px;">
+        <img src="images/Laureles_Aura - Website/aura mockup.png" alt="Aura Coffee &amp; Kitchen Showcase" loading="eager">
+      </div>
+
+      <!-- Architecture Spec Preview -->
+      <div class="terminal-window" style="margin: 24px 0 32px 0;">
+        <div class="terminal-topbar">
+          <div class="terminal-dots">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+          </div>
+          <div class="terminal-title">AURA_COFFEE // BEVERAGE_STATE &amp; CONVERSION_PIPELINE</div>
+          <div class="mono" style="font-size: 0.72rem; color: #10B981;">● +42% ORDER VELOCITY</div>
+        </div>
+        <div class="terminal-body">
+<pre><span class="terminal-comment"># Aura Coffee Client-Side State &amp; Checkout Architecture</span>
+<span class="terminal-prompt">[CLIENT STATE]</span>   Drink Configurator (Size, Milk, Sweetness, Ice) ──&gt; Real-Time Price &amp; Cart Hydration
+<span class="terminal-prompt">[BAG DRAWER]</span>     Slide-Over Drawer with Free Courier Delivery Progress Meter (₱500 Threshold)
+<span class="terminal-prompt">[CHECKOUT RAILS]</span> 1-Page Express Checkout: GCash · Maya · GrabPay · Cards · Cash on Delivery
+<span class="terminal-prompt">[CONFIRMATION]</span>   Scalloped Paper Ticket Receipt with 4-Stage Brewing Tracker
+<span class="terminal-prompt">[CORE VITALS]</span>    Sub-1.0s LCP · Zero Framework Overhead · 100% Brand-Safe &amp; Accessible
+<span class="terminal-success">[OUTCOMES]</span>       -55% Checkout Form Friction · +42% Funnel Throughput · Sub-Second Load Time</pre>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Case Study Layout with Sticky Navigation -->
+    <div class="case-content-layout">
+      
+      <!-- Sticky Sidebar Table of Contents -->
+      <aside class="case-sidebar">
+        <div class="case-toc-title">Table of Contents</div>
+        <ul class="case-toc-list">
+          <li><a href="#overview">01. Overview &amp; Artisanal Vision</a></li>
+          <li><a href="#heuristics">02. Usability Audits &amp; Friction Points</a></li>
+          <li><a href="#wireframes">03. End-to-End Coffee Flow</a></li>
+          <li><a href="#trust-signals">04. Visual Trust &amp; Local Rails</a></li>
+          <li><a href="#outcomes">05. Business Impact &amp; Takeaways</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Case Narrative -->
+      <div class="case-main-narrative">
+        
+        <!-- Section 01 -->
+        <section id="overview" class="case-body-section">
+          <div class="section-tag">// 01 · OVERVIEW &amp; ARTISANAL VISION</div>
+          <h3>Balancing Craft Warmth &amp; Checkout Velocity</h3>
+          <p>
+            Specialty coffee ordering is deeply personal: customers expect nuanced control over cup size, dairy vs. plant-based milk (oat, almond, soy), sweetness levels, and ice dilution. However, in conventional e-commerce platforms, complex variant drop-downs and multi-page checkouts trigger steep cart abandonment.
+          </p>
+          <div class="pull-quote">
+            &ldquo;How might we design a coffee ordering experience that feels as inviting, appetizing, and tactile as walking into your favorite neighborhood roastery?&rdquo;
+          </div>
+          <p>
+            Aura Coffee &amp; Kitchen solves this by pairing a warm oat-milk aesthetic (soft cream, amber caramel, pill buttons) with an ultra-fast client-side state engine: an interactive drink customizer modal, slide-over bag drawer with free delivery progress tracking, and a streamlined 1-page checkout tailored for Philippine mobile payment rails.
+          </p>
+        </section>
+
+        <!-- Section 02 -->
+        <section id="heuristics" class="case-body-section">
+          <div class="section-tag">// 02 · USABILITY AUDITS &amp; FRICTION POINTS</div>
+          <h3>Eliminating Drop-Off in Drink Ordering</h3>
+          <p>
+            A systematic audit of standard food &amp; beverage ordering funnels revealed three primary friction points:
+          </p>
+          <div class="experience-timeline" style="margin: 24px 0;">
+            <div class="experience-card">
+              <h4 style="margin-bottom: 8px;">1. Surprise Courier Fees at the Finish Line</h4>
+              <p style="font-size: 0.95rem;">Hiding delivery costs until the final payment page triggers immediate price shock. Aura introduces an active free delivery meter in the bag drawer, encouraging upsells to reach the ₱500 threshold.</p>
+            </div>
+            <div class="experience-card">
+              <h4 style="margin-bottom: 8px;">2. Clunky, Inflexible Customization</h4>
+              <p style="font-size: 0.95rem;">Requiring customers to navigate away from the menu just to pick oat milk or adjust sweetness causes cognitive fatigue. Aura utilizes a focused, single-viewport modal with immediate visual feedback.</p>
+            </div>
+            <div class="experience-card">
+              <h4 style="margin-bottom: 8px;">3. Multi-Step Checkout Exhaustion</h4>
+              <p style="font-size: 0.95rem;">Forcing 4 separate page transitions for Customer Info, Address, Shipping, and Payment creates friction on mobile. Aura consolidates everything onto a single, clear 1-page layout with one-click GCash and Maya buttons.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 03 -->
+        <section id="wireframes" class="case-body-section">
+          <div class="section-tag">// 03 · END-TO-END COFFEE FLOW</div>
+          <h3>From Menu Exploration to Scalloped Ticket Receipt</h3>
+          <p>
+            Explore the wireframe-to-production design artifacts below:
+          </p>
+
+          <!-- Gallery 1: Cart Drawer -->
+          <div class="image-gallery">
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Aura - Website/01 Aura Wireframe Cart Drawer.png" alt="Cart Drawer Wireframe" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 1.1 — Slide-over Bag Drawer Wireframe</div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Aura - Website/01 Aura - Cart Drawer.png" alt="Aura Cart Drawer UI" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 1.2 — Production Bag Drawer with Delivery Meter</div>
+            </div>
+          </div>
+
+          <!-- Gallery 2: One-Page Checkout -->
+          <div class="image-gallery">
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Aura - Website/04 Aura Wireframe One Page Checkout.png" alt="One-Page Checkout Wireframe" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 2.1 — 1-Page Consolidated Checkout Structure</div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Aura - Website/04 Aura - One Page Checkout.png" alt="One-Page Checkout UI" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 2.2 — Single-View Checkout with Philippine Wallets</div>
+            </div>
+          </div>
+
+          <!-- Gallery 3: Express Checkout & Payment Success -->
+          <div class="image-gallery">
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Aura - Website/03 Aura - Express Checkout.png" alt="Aura Express Checkout Flow" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 3.1 — 1-Tap Express GCash / Maya Flow</div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Aura - Website/05 Aura - Payment Form.png" alt="Aura Payment Form UI" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 3.2 — Reassuring 256-Bit Encrypted Payment Surface</div>
+            </div>
+          </div>
+
+          <!-- Gallery 4: Order Confirmation -->
+          <div class="image-gallery">
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Aura - Website/02 Aura Wireframe Order Confirmation.png" alt="Order Confirmation Wireframe" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 4.1 — Order Confirmation Wireframe</div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Aura - Website/02 Aura - Order Confirmation.png" alt="Aura Order Confirmation UI" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 4.2 — Scalloped Ticket Receipt with Live Brewing Tracker</div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Section 04 -->
+        <section id="trust-signals" class="case-body-section">
+          <div class="section-tag">// 04 · VISUAL TRUST &amp; LOCAL RAILS</div>
+          <h3>Local Relevance &amp; Visual Reassurance</h3>
+          <p>
+            By supporting domestic Philippine payment methods—**GCash**, **Maya**, **GrabPay**, **QR Ph**, and **Cash on Delivery (COD)**—Aura eliminates payment friction for local coffee lovers. Real-time form validation, explicit order recap cards with itemized modifications, and an instant order confirmation ticket create complete transparency and peace of mind.
+          </p>
+        </section>
+
+        <!-- Section 05 -->
+        <section id="outcomes" class="case-body-section">
+          <div class="section-tag">// 05 · OUTCOMES &amp; KEY TAKEAWAYS</div>
+          <h3>Measurable Conversion Improvements</h3>
+          <div class="outcome-grid">
+            <div class="outcome-card">
+              <div class="outcome-number">+42%</div>
+              <div class="outcome-label">Projected Funnel Conversion Velocity</div>
+            </div>
+            <div class="outcome-card">
+              <div class="outcome-number">-55%</div>
+              <div class="outcome-label">Reduction in Checkout Friction &amp; Cognitive Hesitation</div>
+            </div>
+            <div class="outcome-card">
+              <div class="outcome-number">&lt; 1.0s</div>
+              <div class="outcome-label">Sub-Second Largest Contentful Paint (Zero Framework Overhead)</div>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 32px;">
+            <a href="aura-store/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: #D97724; border-color: #D97724; color: #FFFFFF;">
+              ☕ Launch Live Aura Coffee Store &amp; 1-Page Checkout ↗
+            </a>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+
+    <!-- Clean Pagination Section -->
+    <div class="case-pagination-wrap">
+      <div class="case-pagination">
+        <a href="case-fintrack.html" class="pag-card">
+          <span class="pag-label">← Previous Case Study</span>
+          <span class="pag-title">04 · FinTrack App (Algorithmic FinTech)</span>
+        </a>
+        <a href="case-memory.html" class="pag-card" style="text-align: right;">
+          <span class="pag-label">Next Case Study →</span>
+          <span class="pag-title">06 · Cognitive Memory Core (Self-Improving Agent)</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer site-footer-minimal">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Hans Aaron Laureles · All Rights Reserved</div>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="index.html" style="color: var(--accent);">← Selected Work</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

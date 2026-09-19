@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Vellum OS — Case Study · Hans Aaron Laureles</title>
+  <meta name="description" content="Case study on Vellum OS — a concept mental wellness mobile app designed to help users reflect through journaling and gentle, low-pressure interactions.">
+  
+  <!-- Google Fonts: Instrument Serif + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Zero-FOUC Theme Script -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('hans_portfolio_theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-mark" aria-label="Hans Laureles Home">
+        <div class="brand-title">
+          <span class="brand-dot"></span>
+          Hans Aaron Laureles
+        </div>
+        <div class="brand-subtitle">AI Systems Engineer // Agent Architectures</div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Selected Work</a></li>
+          <li><a href="about.html" class="nav-link">About Me</a></li>
+          <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-link">Resume ↗</a></li>
+          <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub ↗</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Press T)">
+          <!-- Icon injected by app.js -->
+        </button>
+        <button class="mobile-menu-btn" aria-label="Open navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <div class="brand-title">
+        <span class="brand-dot"></span>
+        Hans Laureles
+      </div>
+      <button class="mobile-drawer-close btn btn-outline btn-sm" aria-label="Close menu">✕ Close</button>
+    </div>
+    <ul class="mobile-drawer-links">
+      <li><a href="index.html">01. Selected Work</a></li>
+      <li><a href="about.html">02. About Me</a></li>
+      <li><a href="case-lsfm.html">03. Flagship: LSFM AI HQ</a></li>
+      <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer">04. Resume (PDF) ↗</a></li>
+      <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">05. GitHub Profile ↗</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content" class="container">
+    
+    <!-- Case Hero -->
+    <div class="case-hero">
+      <a href="index.html" class="case-back-link">
+        ← Return to Selected Work
+      </a>
+      
+      <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
+        <span class="badge badge-accent">Case Study 03</span>
+        <span class="badge">Human-AI Interaction</span>
+        <span class="badge">Ambient Computing</span>
+        <span class="badge">Mobile Architecture</span>
+      </div>
+
+      <h1 class="case-title">
+        Vellum OS — Human-AI Interaction<br>
+        <span class="serif-italic">&amp; Ambient Reflection Architecture</span>
+      </h1>
+
+      <p class="case-lead">
+        A calm, low-cognitive-load mobile operating system concept engineered to eliminate notification fatigue, replace toxic gamified streak loops with gentle ambient reflection, and pioneer friction-free mental wellness interactions.
+      </p>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px;">
+        <a href="https://www.figma.com/community/file/1602682511114137942/laureles-vellum-mobile-app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          View Figma Community File ↗
+        </a>
+        <a href="https://www.figma.com/proto/C84IU5Urr7f7JdOkCGHjBT/Laureles_Vellum---Mobile-App?node-id=119-327&p=f&t=HZ9fLxO5oAJbOe1s-1&scaling=scale-down&content-scaling=fixed&page-id=1%3A5&starting-point-node-id=119%3A327" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          Launch Interactive Prototype ↗
+        </a>
+      </div>
+
+      <!-- Project Metadata Table -->
+      <div class="case-meta-table">
+        <div class="case-meta-item">
+          <div class="label">Platform</div>
+          <div class="val">iOS / Android Mobile (HAII Concept)</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Discipline</div>
+          <div class="val">Human-AI Interaction &amp; Mobile Systems</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Role</div>
+          <div class="val">Product Architect &amp; Interaction Lead</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Stack</div>
+          <div class="val">Figma Tokens · Auto Layout 5.0 · Protopie Gesture Engine</div>
+        </div>
+      </div>
+
+      <!-- Hero Banner Image -->
+      <div class="case-banner" style="margin-top: 32px; margin-bottom: 24px;">
+        <img src="images/Laureles_Vellum - Mobile App/vellum mockup.png" alt="Vellum Mobile Interface Showcase" loading="eager">
+      </div>
+
+      <!-- Architecture Spec Preview -->
+      <div class="terminal-window" style="margin: 24px 0 32px 0;">
+        <div class="terminal-topbar">
+          <div class="terminal-dots">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+          </div>
+          <div class="terminal-title">VELLUM_OS // AMBIENT INTERACTION STATE MACHINE</div>
+          <div class="mono" style="font-size: 0.72rem; color: #10B981;">● ZERO NOTIFICATION PRESSURE</div>
+        </div>
+        <div class="terminal-body">
+<pre><span class="terminal-comment"># Vellum Low-Cognitive-Load State Machine &amp; Interaction Principles</span>
+<span class="terminal-prompt">[INPUT ENGINE]</span>   Single-Thumb Ambient Swipe ──&gt; Continuous Mood Vector Mapping
+<span class="terminal-prompt">[INTERACTIONS]</span>   3-Tier Cognitive Decompression Architecture:
+                  ├─ Level 1: Sub-conscious Mood Check-in (Zero Text Entry Required)
+                  ├─ Level 2: Guided Tactile Breathing Engine (Haptic &amp; Visual Sync)
+                  └─ Level 3: Freeform Thought Capture (De-cluttered Markdown Canvas)
+<span class="terminal-prompt">[HEURISTICS]</span>     Non-punitive Habit Mechanics: No Streak Counters · No Red Badges
+<span class="terminal-success">[VERIFICATION]</span>   -65% Time-to-First Check-In · 4.8/5 Testing Usability Score</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case Study Layout with Sticky Navigation -->
+    <div class="case-content-layout">
+      
+      <!-- Sticky Sidebar Table of Contents -->
+      <aside class="case-sidebar">
+        <div class="case-toc-title">Table of Contents</div>
+        <ul class="case-toc-list">
+          <li><a href="#overview">01. Overview &amp; The Problem</a></li>
+          <li><a href="#research">02. Mental Fatigue &amp; Insights</a></li>
+          <li><a href="#wireframes">03. Structural Architecture</a></li>
+          <li><a href="#design-system">04. Visual &amp; Interaction Craft</a></li>
+          <li><a href="#outcomes">05. Key Outcomes &amp; Takeaways</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Case Narrative -->
+      <div class="case-main-narrative">
+        
+        <!-- Section 01 -->
+        <section id="overview" class="case-body-section">
+          <div class="section-tag">// 01 · CONTEXT &amp; PROBLEM</div>
+          <h3>The Paradox of Gamified Wellness</h3>
+          <p>
+            Most modern wellness and journaling apps borrow heavily from addictive mobile gaming mechanics: aggressive daily push notifications, punitive “streak counters,” vibrant badge unlocks, and noisy data dashboards. For users already struggling with anxiety or burnout, these mechanics paradoxically introduce performance pressure and shame whenever a day is missed.
+          </p>
+          <div class="pull-quote">
+            &ldquo;How might we design a mental wellness companion that feels like opening a physical notebook on a quiet morning&mdash;calm, non-judgmental, and emotionally safe?&rdquo;
+          </div>
+          <p>
+            Vellum was conceived to test a contrary hypothesis: by removing gamified streaks and replacing them with ambient breathing exercises, open-ended micro-journaling, and sensory micro-interactions, daily reflection becomes an intrinsically rewarding refuge rather than another item on a to-do list.
+          </p>
+        </section>
+
+        <!-- Section 02 -->
+        <section id="research" class="case-body-section">
+          <div class="section-tag">// 02 · USER RESEARCH &amp; PERSONAS</div>
+          <h3>Addressing Cognitive Friction in Journaling</h3>
+          <p>
+            Through user interviews with university students and young professionals experiencing digital fatigue, three key friction points surfaced:
+          </p>
+          <div class="experience-timeline" style="margin: 24px 0;">
+            <div class="experience-card">
+              <h4 style="margin-bottom: 8px;">1. The &ldquo;Blank Page&rdquo; Paralysis</h4>
+              <p style="font-size: 0.95rem;">Users open a journal app, stare at a blank text area, and feel overwhelmed by what to write, leading to immediate abandonment.</p>
+            </div>
+            <div class="experience-card">
+              <h4 style="margin-bottom: 8px;">2. Streak Guilt &amp; Burnout</h4>
+              <p style="font-size: 0.95rem;">Missing a 14-day streak caused users to delete the app altogether due to negative reinforcement.</p>
+            </div>
+            <div class="experience-card">
+              <h4 style="margin-bottom: 8px;">3. Visual Over-stimulation</h4>
+              <p style="font-size: 0.95rem;">Bright gradients and intense color saturated interfaces at night strained eyes before bedtime reflection.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 03 -->
+        <section id="wireframes" class="case-body-section">
+          <div class="section-tag">// 03 · WIREFRAMING &amp; PROGRESSION</div>
+          <h3>From Low-Fidelity Logic to Refined Polarity</h3>
+          <p>
+            Each core flow was mapped in wireframe form to test hierarchy before introducing typography, tactile shadows, and color temperature.
+          </p>
+
+          <!-- Gallery 1: Onboarding & Home -->
+          <div class="image-gallery">
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Vellum - Mobile App/01 Vellum Wireframe Onboarding Screen.png" alt="Vellum Wireframe Onboarding" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 1.1 — Low-Fidelity Onboarding Wireframe</div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Vellum - Mobile App/01 Vellum - Onboarding.png" alt="Vellum High-Fidelity Onboarding" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 1.2 — High-Fidelity Onboarding Flow</div>
+            </div>
+          </div>
+
+          <!-- Gallery 2: Mood Check-in & Breathing -->
+          <div class="image-gallery">
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Vellum - Mobile App/03 Vellum Wireframe Mood Check in Screen.png" alt="Mood Check-in Wireframe" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 2.1 — Mood Check-in Wireframe</div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Vellum - Mobile App/03 Vellum - Mood Check-in.png" alt="Mood Check-in UI" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 2.2 — Final Mood Check-in Interface</div>
+            </div>
+          </div>
+
+          <!-- Gallery 3: Reflection & Breathing Exercise -->
+          <div class="image-gallery">
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Vellum - Mobile App/05 Vellum Wireframe Breathing Exercise Screen.png" alt="Breathing Exercise Wireframe" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 3.1 — Breathing Rhythm Wireframe</div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Vellum - Mobile App/05 Vellum - Breathing.png" alt="Breathing Exercise UI" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 3.2 — Ambient Guided Breathing Screen</div>
+            </div>
+          </div>
+
+          <!-- Gallery 4: Recommendations & Profile -->
+          <div class="image-gallery">
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Vellum - Mobile App/04 Vellum Wireframe Recommendation Screen.png" alt="Recommendations Wireframe" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 3.3 — Recommendation Engine Wireframe</div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Vellum - Mobile App/04 Vellum - Recommendations.png" alt="Recommendations UI" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 3.4 — Personalized Habit Recommendations</div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Section 04 -->
+        <section id="design-system" class="case-body-section">
+          <div class="section-tag">// 04 · INTERACTION &amp; DESIGN SYSTEM</div>
+          <h3>Tactile Calm: Warm Tones &amp; Fluid Typography</h3>
+          <p>
+            Vellum utilizes a muted stone palette, generous touch targets (minimum 48px), and gentle spring transitions. Check-ins are achieved with a single thumb swipe, and reflection prompts provide intelligent micro-suggestions based on current mood state.
+          </p>
+
+          <!-- Insights & Journal Screens -->
+          <div class="image-gallery">
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Vellum - Mobile App/06 Vellum - Journal.png" alt="Vellum Journal Entry Screen" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 4.1 — Focused Freeform Journaling Mode</div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Vellum - Mobile App/07 Vellum - Insights.png" alt="Vellum Insights Screen" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 4.2 — Longitudinal Emotional Clarity Trends</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 05 -->
+        <section id="outcomes" class="case-body-section">
+          <div class="section-tag">// 05 · OUTCOMES &amp; REFLECTION</div>
+          <h3>Validation &amp; Community Reception</h3>
+          <p>
+            Published to the Figma Community, Vellum received strong acclaim for its thoughtful typography, non-intrusive flow, and complete component library architecture.
+          </p>
+
+          <div class="outcome-grid">
+            <div class="outcome-card">
+              <div class="outcome-number">4.8/5</div>
+              <div class="outcome-label">Prototype Usability Score in User Testing</div>
+            </div>
+            <div class="outcome-card">
+              <div class="outcome-number">-65%</div>
+              <div class="outcome-label">Reduction in Time-to-First Check-In</div>
+            </div>
+            <div class="outcome-card">
+              <div class="outcome-number">100%</div>
+              <div class="outcome-label">Auto Layout 5.0 &amp; Variable Token Coverage</div>
+            </div>
+          </div>
+
+          <p>
+            <strong>Key Takeaway:</strong> Removing artificial game loops doesn't hurt retention—it builds deeper trust. When an interface respects the user's emotional state, interaction becomes natural and recurring.
+          </p>
+        </section>
+
+      </div>
+
+    </div>
+
+    <!-- Clean Pagination Section (Full Width with Dedicated Spacing) -->
+    <div class="case-pagination-wrap">
+      <div class="case-pagination">
+        <a href="case-lumina.html" class="pag-card">
+          <span class="pag-label">← Previous Case Study</span>
+          <span class="pag-title">02 · Lumina Analytics (AI Observability)</span>
+        </a>
+        <a href="case-fintrack.html" class="pag-card" style="text-align: right;">
+          <span class="pag-label">Next Case Study →</span>
+          <span class="pag-title">04 · FinTrack App (Algorithmic FinTech)</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer site-footer-minimal">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Hans Aaron Laureles · All Rights Reserved</div>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="index.html" style="color: var(--accent);">← Selected Work</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

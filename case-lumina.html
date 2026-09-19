@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lumina Analytics SaaS — Case Study · Hans Aaron Laureles</title>
+  <meta name="description" content="Case study on Lumina — a high-density productivity analytics suite and tokenized design system built with React, TypeScript, and modern component architecture.">
+  
+  <!-- Google Fonts: Instrument Serif + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Zero-FOUC Theme Script -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('hans_portfolio_theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-mark" aria-label="Hans Laureles Home">
+        <div class="brand-title">
+          <span class="brand-dot"></span>
+          Hans Aaron Laureles
+        </div>
+        <div class="brand-subtitle">AI Systems Engineer // Agent Architectures</div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Selected Work</a></li>
+          <li><a href="about.html" class="nav-link">About Me</a></li>
+          <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-link">Resume ↗</a></li>
+          <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub ↗</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Press T)">
+          <!-- Icon injected by app.js -->
+        </button>
+        <button class="mobile-menu-btn" aria-label="Open navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <div class="brand-title">
+        <span class="brand-dot"></span>
+        Hans Laureles
+      </div>
+      <button class="mobile-drawer-close btn btn-outline btn-sm" aria-label="Close menu">✕ Close</button>
+    </div>
+    <ul class="mobile-drawer-links">
+      <li><a href="index.html">01. Selected Work</a></li>
+      <li><a href="about.html">02. About Me</a></li>
+      <li><a href="case-lsfm.html">03. Flagship: LSFM AI HQ</a></li>
+      <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer">04. Resume (PDF) ↗</a></li>
+      <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">05. GitHub Profile ↗</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content" class="container">
+    
+    <!-- Case Hero -->
+    <div class="case-hero">
+      <a href="index.html" class="case-back-link">
+        ← Return to Selected Work
+      </a>
+      
+      <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
+        <span class="badge badge-accent">Case Study 02</span>
+        <span class="badge">AI Observability &amp; Telemetry</span>
+        <span class="badge">Design Systems</span>
+        <span class="badge">React &amp; TypeScript</span>
+      </div>
+
+      <h1 class="case-title">
+        Lumina Analytics — Enterprise AI Observability<br>
+        <span class="serif-italic">&amp; High-Density Telemetry Engine</span>
+      </h1>
+
+      <p class="case-lead">
+        A production multi-tenant observability and telemetry platform engineered for engineering teams to monitor model latency, track sprint velocities, manage cognitive workload, and synthesize real-time performance data under a strict 3-tier design token architecture.
+      </p>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px;">
+        <a href="https://lumina-interactive-dashboard.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: #059669; border-color: #059669; color: #FFFFFF;">
+          🚀 Launch Live Interactive App ↗
+        </a>
+        <a href="https://www.figma.com/community/file/1603729139129977787/laureles-lumina-website" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          View Figma Community File ↗
+        </a>
+        <a href="https://www.figma.com/proto/QvMHlmgMupSFMx7J7VVMZu/Laureles_Lumina---Website?node-id=137-3&p=f&t=OfdkTq7RI3KtUbpC-1&scaling=min-zoom&content-scaling=fixed&page-id=3%3A4&starting-point-node-id=137%3A3" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          View Prototype ↗
+        </a>
+      </div>
+
+      <!-- Project Metadata Table -->
+      <div class="case-meta-table">
+        <div class="case-meta-item">
+          <div class="label">Platform</div>
+          <div class="val">Desktop Web (SaaS)</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Discipline</div>
+          <div class="val">AI Observability &amp; Frontend Systems</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Role</div>
+          <div class="val">Lead Frontend Architect &amp; Design Systems</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Stack</div>
+          <div class="val">React · TypeScript · Chart.js · Atomic Design Tokens</div>
+        </div>
+      </div>
+
+      <!-- Hero Banner Image -->
+      <div class="case-banner" style="margin-top: 32px; margin-bottom: 24px;">
+        <img src="images/Laureles_Lumina - Website/lumina mockup.png" alt="Lumina Dashboard Showcase" loading="eager">
+      </div>
+
+      <!-- Architecture Runtime Telemetry Preview -->
+      <div class="terminal-window" style="margin: 24px 0 32px 0;">
+        <div class="terminal-topbar">
+          <div class="terminal-dots">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+          </div>
+          <div class="terminal-title">LUMINA_CORE // TELEMETRY PIPELINE ARCHITECTURE</div>
+          <div class="mono" style="font-size: 0.72rem; color: #10B981;">● SUB-85MS RENDER TIME</div>
+        </div>
+        <div class="terminal-body">
+<pre><span class="terminal-comment"># Lumina High-Density Metric Ingestion &amp; Rendering Pipeline</span>
+<span class="terminal-prompt">[INGESTION]</span>   Streaming Metric WebSockets ──&gt; Reactive Client State Store
+<span class="terminal-prompt">[DATA BUS]</span>    Time-Series Windowing Engine (Aggregation: 5s / 1m / 1h rollups)
+<span class="terminal-prompt">[RENDERER]</span>    Chart.js Offscreen Canvas Engine with Zero-Garbage Garbage Collection
+               ├─ Sprint Velocity &amp; Burnup Tracker (Normalized 0–100%)
+               ├─ Cognitive Workload Heatmap (Multi-variant Stress Index)
+               └─ Focus Deep-Work Telemetry (Sub-second Timer Interrupt Handlers)
+<span class="terminal-prompt">[TOKENS]</span>      Primitives ──&gt; Semantic Intent ──&gt; Dynamic Dark/Light Canvas Mappings
+<span class="terminal-success">[AUDIT]</span>       100% Lighthouse Performance · Zero FOUC · Zero Layout Shifts (CLS &lt; 0.01)</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case Study Layout with Sticky Navigation -->
+    <div class="case-content-layout">
+      
+      <!-- Sticky Sidebar Table of Contents -->
+      <aside class="case-sidebar">
+        <div class="case-toc-title">Table of Contents</div>
+        <ul class="case-toc-list">
+          <li><a href="#overview">01. Overview &amp; Challenge</a></li>
+          <li><a href="#architecture">02. Information Architecture</a></li>
+          <li><a href="#wireframes">03. High-Density Layouts</a></li>
+          <li><a href="#design-system">04. Design Tokens &amp; Components</a></li>
+          <li><a href="#live-implementation">05. Live React Execution</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Case Narrative -->
+      <div class="case-main-narrative">
+        
+        <!-- Section 01 -->
+        <section id="overview" class="case-body-section">
+          <div class="section-tag">// 01 · OVERVIEW &amp; CHALLENGE</div>
+          <h3>Taming Data Fragmentation &amp; Observability Silos</h3>
+          <p>
+            Modern engineering teams toggle between 6&ndash;10 disconnected tools (Jira, Linear, Datadog, Slack, Prometheus) to understand system and sprint throughput. This fragmented workflow introduces severe context-switching penalties and obscures operational bottlenecks.
+          </p>
+          <div class="pull-quote">
+            &ldquo;How can we present high-density data visualizations without overwhelming the user, maintaining sub-100ms perceptual responsiveness across all viewport sizes?&rdquo;
+          </div>
+          <p>
+            Lumina was built to synthesize project telemetry, sprint velocity burnups, and deep-work performance metrics into a modular, single-pane command center powered by a cohesive tokenized design system.
+          </p>
+        </section>
+
+        <!-- Section 02 -->
+        <section id="architecture" class="case-body-section">
+          <div class="section-tag">// 02 · INFORMATION ARCHITECTURE</div>
+          <h3>Three-Tier Modular Hierarchy</h3>
+          <p>
+            To prevent information overload, Lumina separates team data into three progressive disclosure levels:
+          </p>
+          <div class="experience-timeline" style="margin: 24px 0;">
+            <div class="experience-card">
+              <h4 style="margin-bottom: 8px;">1. The Glanceable Executive Strip</h4>
+              <p style="font-size: 0.95rem;">Key performance indicators (Sprint Progress, Active Burnup, Deep Work Ratio) visible in constant 120px header real estate.</p>
+            </div>
+            <div class="experience-card">
+              <h4 style="margin-bottom: 8px;">2. The Dynamic Focus Workspace</h4>
+              <p style="font-size: 0.95rem;">Kanban and task prioritization grids equipped with multi-column filtering and instant keyboard navigability.</p>
+            </div>
+            <div class="experience-card">
+              <h4 style="margin-bottom: 8px;">3. Telemetry &amp; Deep Insights</h4>
+              <p style="font-size: 0.95rem;">Granular time tracking, burn-down distributions, and team velocity trends with custom interactive charts.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 03 -->
+        <section id="wireframes" class="case-body-section">
+          <div class="section-tag">// 03 · WIREFRAMES &amp; SCREEN PROGRESSION</div>
+          <h3>From Wireframe Structure to Dense Visual Reality</h3>
+          <p>
+            Compare the initial structural wireframes against the deployed high-density interfaces:
+          </p>
+
+          <!-- Gallery 1: Dashboard -->
+          <div class="image-gallery">
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Lumina - Website/01 Lumina Wireframe Dashboard.png" alt="Lumina Dashboard Wireframe" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 1.1 — Main Dashboard Layout Wireframe</div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Lumina - Website/01 Lumina - Dashboard.png" alt="Lumina Dashboard UI" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 1.2 — High-Density Dark Theme Dashboard</div>
+            </div>
+          </div>
+
+          <!-- Gallery 2: Tasks & Focus -->
+          <div class="image-gallery">
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Lumina - Website/02 Lumina Wireframe Tasks.png" alt="Lumina Tasks Wireframe" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 2.1 — Task Matrix Wireframe</div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Lumina - Website/02 Lumina - Tasks.png" alt="Lumina Tasks UI" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 2.2 — Task Management Interface</div>
+            </div>
+          </div>
+
+          <!-- Gallery 3: Focus Timer & Insights -->
+          <div class="image-gallery">
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Lumina - Website/03 Lumina Wireframe Focus.png" alt="Lumina Focus Wireframe" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 3.1 — Focus Wireframe Flow</div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Lumina - Website/03 Lumina - Focus.png" alt="Lumina Deep Work Focus Screen" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 3.2 — Deep Work Focus Timer Mode</div>
+            </div>
+          </div>
+
+          <!-- Gallery 4: Insights & Metrics -->
+          <div class="image-gallery">
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Lumina - Website/04 Lumina Wireframe Insights.png" alt="Lumina Insights Wireframe" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 4.1 — Insights Wireframe Architecture</div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Lumina - Website/04 Lumina - Insights.png" alt="Lumina Team Insights Screen" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 4.2 — Performance Insights &amp; Analytics</div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Section 04 -->
+        <section id="design-system" class="case-body-section">
+          <div class="section-tag">// 04 · SYSTEM ARCHITECTURE &amp; TOKENS</div>
+          <h3>Atomic Token Architecture</h3>
+          <p>
+            Lumina was engineered from a 3-layer design token specification (Primitives → Semantic Tokens → Component Variables). Every spacing unit, color tint, shadow elevation, and typography style maps 1:1 between Figma variables and CSS custom properties in code.
+          </p>
+          <div class="image-gallery">
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Lumina - Website/05 Lumina Wireframe Settings.png" alt="Lumina Settings Wireframe" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 5.1 — Settings &amp; Preferences Wireframe</div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-box">
+                <img src="images/Laureles_Lumina - Website/05 Lumina - Settings.png" alt="Lumina System Settings & Preferences" loading="lazy">
+              </div>
+              <div class="gallery-caption">Fig 5.2 — Token Configuration &amp; Settings</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 05 -->
+        <section id="live-implementation" class="case-body-section">
+          <div class="section-tag">// 05 · PRODUCTION &amp; RESULTS</div>
+          <h3>Shipped as a Live Web Application</h3>
+          <p>
+            Unlike static design mockups that exist only in Figma, Lumina was fully written in React and TypeScript with modular components, interactive state management, and deployed to Netlify.
+          </p>
+
+          <div class="outcome-grid">
+            <div class="outcome-card">
+              <div class="outcome-number">&lt; 85ms</div>
+              <div class="outcome-label">Time to Interactive across All Dashboard Views</div>
+            </div>
+            <div class="outcome-card">
+              <div class="outcome-number">100%</div>
+              <div class="outcome-label">Lighthouse Accessibility &amp; Best Practices</div>
+            </div>
+            <div class="outcome-card">
+              <div class="outcome-number">Live</div>
+              <div class="outcome-label">Fully Deployed Production App on Netlify</div>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 32px;">
+            <a href="https://lumina-interactive-dashboard.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: #059669; border-color: #059669; color: #FFFFFF;">
+              🚀 Experience Live Lumina App on Netlify ↗
+            </a>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+
+    <!-- Clean Pagination Section (Full Width with Dedicated Spacing) -->
+    <div class="case-pagination-wrap">
+      <div class="case-pagination">
+        <a href="case-lsfm.html" class="pag-card">
+          <span class="pag-label">← Previous Case Study</span>
+          <span class="pag-title">01 · LSFM AI HQ (Flagship)</span>
+        </a>
+        <a href="case-vellum.html" class="pag-card" style="text-align: right;">
+          <span class="pag-label">Next Case Study →</span>
+          <span class="pag-title">03 · Vellum OS (HAII &amp; Ambient OS)</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer site-footer-minimal">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Hans Aaron Laureles · All Rights Reserved</div>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="index.html" style="color: var(--accent);">← Selected Work</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

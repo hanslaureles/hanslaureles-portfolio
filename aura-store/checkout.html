@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — Aura Coffee & Kitchen</title>
+  <meta name="description" content="Complete your coffee order. Express Philippine payment options with GCash, Maya, GrabPay, Cards, and Cash on Delivery.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner" style="height: 70px;">
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon">☕</div>
+          <div class="brand-text">
+            <span class="brand-name">AURA<span>.</span></span>
+            <span class="brand-sub">Coffee & Kitchen</span>
+          </div>
+        </a>
+
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <span style="font-size: 0.85rem; color: var(--espresso-muted); display: flex; align-items: center; gap: 6px;">
+            <span>🔒</span> Secure 256-bit Encrypted
+          </span>
+          <a href="index.html" class="btn-secondary-pill" style="padding: 8px 18px; font-size: 0.85rem;">
+            ← Back to Menu
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="checkout-wrapper">
+    <div class="container">
+      <div class="checkout-grid">
+        
+        <!-- Left: Checkout Forms -->
+        <div class="checkout-forms">
+          
+          <!-- Express Philippine Wallets (Reference 4 / PH e-commerce) -->
+          <div class="checkout-card" style="border: 1.5px solid #F5DAC1; background: #FFF9F3;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: var(--primary); letter-spacing: 0.5px;">
+                ⚡ Express Philippine Checkout
+              </span>
+              <span style="font-size: 0.78rem; color: var(--espresso-light);">Instant & Seamless</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <button type="button" class="btn-primary-pill" onclick="quickExpressPay('GCash')" style="justify-content: center; padding: 12px; font-size: 0.92rem; background: #007DFE;">
+                <span>Pay with GCash</span>
+              </button>
+              <button type="button" class="btn-primary-pill" onclick="quickExpressPay('Maya')" style="justify-content: center; padding: 12px; font-size: 0.92rem; background: #18B87B;">
+                <span>Pay with Maya</span>
+              </button>
+            </div>
+          </div>
+
+          <form id="checkout-form" onsubmit="handlePlaceOrder(event)">
+            
+            <!-- Step 1: Contact Details -->
+            <div class="checkout-card">
+              <div class="checkout-card-header" style="justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="background: var(--bg-warm-tint); color: var(--primary); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">1</span>
+                  <h3>Contact Information</h3>
+                </div>
+                <button type="button" class="demo-fill-btn" onclick="autofillDemo()">
+                  ⚡ Autofill Manila Demo
+                </button>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group full-width">
+                  <label class="form-label" for="email">Email Address</label>
+                  <input type="email" id="email" class="form-input" placeholder="maria.santos@gmail.com" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="firstName">First Name</label>
+                  <input type="text" id="firstName" class="form-input" placeholder="Maria" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="lastName">Last Name</label>
+                  <input type="text" id="lastName" class="form-input" placeholder="Santos" required />
+                </div>
+                <div class="form-group full-width">
+                  <label class="form-label" for="phone">Mobile Number (SMS updates)</label>
+                  <input type="tel" id="phone" class="form-input" placeholder="0917 123 4567" required />
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: Delivery Address -->
+            <div class="checkout-card">
+              <div class="checkout-card-header">
+                <span style="background: var(--bg-warm-tint); color: var(--primary); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">2</span>
+                <h3>Delivery Address</h3>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group full-width">
+                  <label class="form-label" for="street">Street Address & Unit / Bldg</label>
+                  <input type="text" id="street" class="form-input" placeholder="Unit 14B, Arya Residences, McKinley Pkwy" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="barangay">Barangay / District</label>
+                  <input type="text" id="barangay" class="form-input" placeholder="Fort Bonifacio" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="city">City</label>
+                  <input type="text" id="city" class="form-input" placeholder="Taguig City" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="province">Region / Province</label>
+                  <input type="text" id="province" class="form-input" value="Metro Manila" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="zip">Postal Code</label>
+                  <input type="text" id="zip" class="form-input" placeholder="1634" required />
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Courier Selection -->
+            <div class="checkout-card">
+              <div class="checkout-card-header">
+                <span style="background: var(--bg-warm-tint); color: var(--primary); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">3</span>
+                <h3>Delivery Option</h3>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <label style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border: 1.5px solid var(--primary); background: var(--primary-light); border-radius: var(--radius-md); cursor: pointer;">
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <input type="radio" name="courier" value="standard" checked onchange="updateCourierOption('standard')" />
+                    <div>
+                      <strong style="display: block; font-size: 0.95rem; color: var(--espresso-dark);">Standard Roastery Courier</strong>
+                      <span style="font-size: 0.80rem; color: var(--espresso-muted);">Delivered fresh in 30–45 mins</span>
+                    </div>
+                  </div>
+                  <span id="std-courier-fee" style="font-weight: 800; color: var(--espresso-dark);">₱60.00</span>
+                </label>
+
+                <label style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border: 1.5px solid var(--border-subtle); background: #FFF; border-radius: var(--radius-md); cursor: pointer;">
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <input type="radio" name="courier" value="express" onchange="updateCourierOption('express')" />
+                    <div>
+                      <strong style="display: block; font-size: 0.95rem; color: var(--espresso-dark);">⚡ Priority Heat-Sealed Dispatch</strong>
+                      <span style="font-size: 0.80rem; color: var(--espresso-muted);">Priority direct rider in 20 mins</span>
+                    </div>
+                  </div>
+                  <span style="font-weight: 800; color: var(--espresso-dark);">₱120.00</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 4: Payment Method -->
+            <div class="checkout-card">
+              <div class="checkout-card-header">
+                <span style="background: var(--bg-warm-tint); color: var(--primary); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">4</span>
+                <h3>Select Payment Method</h3>
+              </div>
+
+              <div class="payment-methods-grid">
+                <div class="payment-method-pill active" data-method="gcash" onclick="selectPaymentMethod('gcash', this)">
+                  <div style="font-size: 1.4rem;">📱</div>
+                  <strong>GCash</strong>
+                  <span>E-Wallet</span>
+                </div>
+
+                <div class="payment-method-pill" data-method="maya" onclick="selectPaymentMethod('maya', this)">
+                  <div style="font-size: 1.4rem;">💚</div>
+                  <strong>Maya</strong>
+                  <span>Wallet / QR</span>
+                </div>
+
+                <div class="payment-method-pill" data-method="grabpay" onclick="selectPaymentMethod('grabpay', this)">
+                  <div style="font-size: 1.4rem;">🟢</div>
+                  <strong>GrabPay</strong>
+                  <span>E-Wallet</span>
+                </div>
+
+                <div class="payment-method-pill" data-method="card" onclick="selectPaymentMethod('card', this)">
+                  <div style="font-size: 1.4rem;">💳</div>
+                  <strong>Credit / Debit</strong>
+                  <span>Visa / Mastercard</span>
+                </div>
+
+                <div class="payment-method-pill" data-method="qrph" onclick="selectPaymentMethod('qrph', this)">
+                  <div style="font-size: 1.4rem;">🔳</div>
+                  <strong>QR Ph</strong>
+                  <span>Universal QR</span>
+                </div>
+
+                <div class="payment-method-pill" data-method="cod" onclick="selectPaymentMethod('cod', this)">
+                  <div style="font-size: 1.4rem;">💵</div>
+                  <strong>Cash on Delivery</strong>
+                  <span>Pay upon arrival</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button (Mobile / inline) -->
+            <button type="submit" id="place-order-main-btn" class="btn-primary-pill" style="width: 100%; justify-content: center; padding: 18px; font-size: 1.1rem;">
+              <span>Place Order & Pay — </span>
+              <span id="submit-btn-price">₱0.00</span>
+              <span>→</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Right: Sticky Order Summary -->
+        <aside class="checkout-summary-sidebar" style="position: sticky; top: 96px;">
+          <div class="checkout-card" style="border: 1px solid #E8DFD5; box-shadow: var(--shadow-md);">
+            <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-subtle);">
+              Order Summary
+            </h3>
+
+            <!-- Itemized List -->
+            <div id="checkout-items-list" style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; max-height: 320px; overflow-y: auto;">
+              <!-- Populated by checkout.js -->
+            </div>
+
+            <!-- Price Lines -->
+            <div style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--border-subtle); padding-top: 16px;">
+              <div class="cart-summary-line">
+                <span>Items Subtotal</span>
+                <span id="sum-subtotal">₱0.00</span>
+              </div>
+              <div id="sum-discount-row" class="cart-summary-line" style="display: none; color: var(--accent-green);">
+                <span>Promo Discount (15%)</span>
+                <span id="sum-discount">-₱0.00</span>
+              </div>
+              <div class="cart-summary-line">
+                <span>Courier Delivery</span>
+                <span id="sum-delivery">₱60.00</span>
+              </div>
+              <div class="cart-summary-total" style="margin-top: 8px;">
+                <span>Total Amount</span>
+                <span id="sum-total" style="color: var(--primary);">₱0.00</span>
+              </div>
+            </div>
+
+            <!-- Guarantee Box -->
+            <div style="margin-top: 20px; padding: 14px; background: var(--bg-body); border-radius: var(--radius-sm); font-size: 0.80rem; color: var(--espresso-muted); display: flex; gap: 10px; align-items: center;">
+              <span style="font-size: 1.3rem;">☕</span>
+              <span>Freshly prepared and sealed right before handover to courier. 100% satisfaction guaranteed.</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="checkout.js"></script>
+</body>
+</html>

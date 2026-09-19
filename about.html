@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>About Me — Hans Aaron Laureles · AI Systems Engineer</title>
+  <meta name="description" content="Biography, systems track, multi-agent engineering, and technical capabilities of Hans Aaron Laureles — AI Systems Engineer & Full-Stack Builder.">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About Hans Aaron Laureles — AI Systems Engineer">
+  <meta property="og:description" content="BS Computer Science graduate, AI Systems Engineer building autonomous multi-agent swarms, local GPU inference, and high-craft interfaces.">
+  <meta property="og:image" content="images/profile-pic.jpg">
+  
+  <!-- Google Fonts: Instrument Serif + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Zero-FOUC Theme Script -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('hans_portfolio_theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-mark" aria-label="Hans Laureles Home">
+        <div class="brand-title">
+          <span class="brand-dot"></span>
+          Hans Aaron Laureles
+        </div>
+        <div class="brand-subtitle">AI Systems Engineer // Agent Architectures</div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Selected Work</a></li>
+          <li><a href="about.html" class="nav-link active">About Me</a></li>
+          <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-link">Resume ↗</a></li>
+          <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub ↗</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="sakura-nav-btn" id="sakuraNavBtn" aria-label="Ask Sakura AI Recruiter Assistant" title="Ask Sakura AI Copilot (Press / or Ctrl+K)">
+          <span>🌸</span>
+          <span>Ask Sakura</span>
+        </button>
+        <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Press T)">
+          <!-- Icon injected by app.js -->
+        </button>
+        <button class="mobile-menu-btn" aria-label="Open navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <div class="brand-title">
+        <span class="brand-dot"></span>
+        Hans Laureles
+      </div>
+      <button class="mobile-drawer-close btn btn-outline btn-sm" aria-label="Close menu">✕ Close</button>
+    </div>
+    <ul class="mobile-drawer-links">
+      <li><a href="index.html">01. Selected Work</a></li>
+      <li><a href="#" class="open-sakura-btn" style="color: #F472B6; font-weight: 600;">🌸 Ask Sakura (AI Copilot)</a></li>
+      <li><a href="about.html" class="active">02. About Me</a></li>
+      <li><a href="case-lsfm.html">03. LSFM AI HQ</a></li>
+      <li><a href="case-memory.html">04. Cognitive Memory Core</a></li>
+      <li><a href="aura-store/index.html" target="_blank" rel="noopener noreferrer">05. Aura Coffee (Live Store ↗)</a></li>
+      <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer">06. Resume (PDF) ↗</a></li>
+      <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">07. GitHub Profile ↗</a></li>
+    </ul>
+    <div style="margin-top: auto;">
+      <p class="mono" style="margin-bottom: 12px;">Get in touch:</p>
+      <button class="contact-email-btn btn btn-outline" style="width: 100%; justify-content: center;" data-email="hanslaureles92@gmail.com">
+        hanslaureles92@gmail.com
+      </button>
+    </div>
+  </div>
+
+  <main id="main-content" class="section-spacing">
+    <div class="container">
+      
+      <!-- Back Navigation -->
+      <a href="index.html" class="case-back-link">
+        ← Return to Selected Work
+      </a>
+
+      <!-- About Hero Grid -->
+      <div class="about-hero-grid">
+        
+        <div class="portrait-wrapper">
+          <div class="portrait-frame">
+            <img src="images/profile-pic.jpg" alt="Hans Aaron Laureles Portrait" loading="eager">
+          </div>
+          <div class="mono" style="margin-top: 14px; color: var(--text-muted); font-size: 0.75rem; text-align: center;">
+            HANS AARON LAURELES · MANILA, PH
+          </div>
+        </div>
+
+        <div class="about-narrative">
+          <div class="badge badge-accent" style="margin-bottom: 16px;">The Engineer Behind the Architecture</div>
+          <h2>Engineering autonomous intelligence with<br><span class="serif-italic">systems discipline &amp; human feeling.</span></h2>
+          
+          <p class="lead">
+            I'm <strong>Hans Aaron Laureles</strong>, a Computer Science graduate from De La Salle University–Dasmariñas specializing in autonomous multi-agent swarms, local GPU inference orchestration, and production full-stack systems.
+          </p>
+
+          <p>
+            My foundation was forged across distributed computing, database optimization, and algorithmic complexity. However, as generative AI evolved from novelty text generators into autonomous execution agents, I recognized where the greatest leverage lies: <strong>orchestrating multi-model pipelines, local silicon acceleration, and deterministic real-world tool use.</strong>
+          </p>
+
+          <p>
+            Unlike engineers who stop at terminal scripts, my background in frontend engineering and UI/UX design (solidified during my internship at <strong>ROC</strong>) gives me a rare dual vantage point. I architect distributed agent swarms that run reliably on local hardware—while ensuring the interfaces humans interact with are fast, responsive, and delightful.
+          </p>
+        </div>
+
+      </div>
+
+      <hr class="hairline" style="margin: 48px 0;">
+
+      <!-- Experience Timeline Section -->
+      <section class="section-spacing-sm" id="experience">
+        <div class="section-header" style="align-items: flex-end; flex-wrap: wrap; gap: 16px;">
+          <div>
+            <div class="section-tag">// 01 · TRACK RECORD</div>
+            <h3>Engineering Experience &amp; Systems</h3>
+          </div>
+
+          <!-- Dual-Mode View Switcher -->
+          <div class="view-toggle-wrap" role="tablist" aria-label="Experience View Switcher">
+            <button class="view-toggle-btn active" id="btnViewCards" role="tab" aria-selected="true" aria-controls="experience-cards-view">
+              <span>📄 Executive Cards</span>
+            </button>
+            <button class="view-toggle-btn" id="btnViewGit" role="tab" aria-selected="false" aria-controls="experience-git-view">
+              <span>🌿 $ git log --graph</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 1. Executive Cards View (Default) -->
+        <div class="experience-timeline" id="experience-cards-view" role="tabpanel">
+          
+          <!-- LSFM AI HQ -->
+          <div class="experience-card" style="border-left: 3px solid var(--accent); padding-left: 20px;">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Lead AI Systems Architect — LSFM AI HQ</div>
+                <div class="exp-company">Autonomous Multi-Agent Platform · Personal Workstation</div>
+              </div>
+              <div class="exp-period">2025 – PRESENT</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Architected an autonomous 5-agent operations platform orchestrating Discord Gateway streaming with asynchronous event dispatching and domain-isolated prompt personas.</li>
+              <li>Engineered a zero-cost hybrid inference router combining Groq Cloud (Qwen 2.5 70B) with local AMD Radeon RX 6600 XT GPU acceleration via DirectML and Vulkan.</li>
+              <li>Built programmatic tool pipelines including a headless Chromium ATS single-page resume compiler and a Google Workspace OAuth2 batch triage engine classifying 120+ unread emails into 10 hierarchical labels.</li>
+            </ul>
+          </div>
+
+          <!-- Cognitive Memory Core -->
+          <div class="experience-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Engine Architect — Cognitive Memory Core</div>
+                <div class="exp-company">Self-Improving Developer Agent Engine · Open-Source Research</div>
+              </div>
+              <div class="exp-period">2024 – 2025</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Designed and built a zero-dependency episodic memory store using BM25 heuristic recall executing in &lt;15ms before code generation.</li>
+              <li>Created automated failure reflection schemas capturing triggers, symptoms, and permanent workspace rules to eliminate AI session amnesia.</li>
+              <li>Authored full technical case study and interactive pre-flight recall simulator with zero external dependencies.</li>
+            </ul>
+          </div>
+
+          <!-- Capstone Thesis -->
+          <div class="experience-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Lead Systems Architect — Capstone: Patriot</div>
+                <div class="exp-company">DLSU–Dasmariñas · BS Computer Science</div>
+              </div>
+              <div class="exp-period">2023 – 2024</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Engineered a real-time mobile matchmaking and messaging platform with custom algorithmic interest scoring using hash maps and relevance matrices.</li>
+              <li>Architected backend cloud services with AWS Lambda, DynamoDB, Redis caching for sub-50ms query responses, and Cognito authentication.</li>
+              <li>Developed mobile interface in React Native (TypeScript), conducting usability benchmarking sessions across diverse user cohorts with 4.4+/5 satisfaction.</li>
+            </ul>
+          </div>
+
+          <!-- ROC Internship -->
+          <div class="experience-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">UI/UX &amp; Frontend Engineer Intern</div>
+                <div class="exp-company">ROC · roc.ph · General Trias, Cavite</div>
+              </div>
+              <div class="exp-period">JUN 2024 – AUG 2024</div>
+            </div>
+            <ul class="exp-bullets">
+              <li>Architected and prototyped responsive web interfaces in Figma, translating design tokens into clean, accessible HTML, Tailwind CSS, and React components.</li>
+              <li>Collaborated within agile sprint cycles, participating in Git version control workflows, pull request reviews, and client feedback iterations.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- 2. Git Log Graph View (Interactive Timeline) -->
+        <div class="git-timeline-container" id="experience-git-view" style="display: none;" role="tabpanel">
+          <div class="git-terminal-header">
+            <div class="terminal-dots">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+            </div>
+            <div class="git-terminal-title mono">$ git log --graph --oneline --decorate --stat</div>
+            <div class="git-terminal-meta mono">branch: main · 5 milestones</div>
+          </div>
+
+          <div class="git-stream">
+
+            <!-- Commit 1: LSFM AI HQ -->
+            <div class="git-commit-entry">
+              <div class="git-rail">
+                <span class="git-node-dot active"></span>
+                <span class="git-node-line"></span>
+              </div>
+              <div class="git-commit-body">
+                <div class="git-commit-top">
+                  <div class="git-sha-wrap">
+                    <span class="git-graph-symbol">*</span>
+                    <button class="git-sha-btn" data-sha="8f4a21d" aria-label="Copy SHA 8f4a21d" title="Click to copy SHA">
+                      <span class="git-sha-code">8f4a21d</span>
+                      <span class="git-copy-icon">📋</span>
+                    </button>
+                    <span class="git-badge head">HEAD -&gt; main</span>
+                    <span class="git-badge tag">v2.5.0</span>
+                  </div>
+                  <div class="git-date mono">2025 – PRESENT</div>
+                </div>
+                <div class="git-commit-title">
+                  <strong class="git-type">feat(swarm):</strong> Lead AI Systems Architect — LSFM AI HQ
+                </div>
+                <div class="git-commit-author mono">Author: Hans Aaron Laureles &lt;hanslaureles92@gmail.com&gt;</div>
+                <div class="git-commit-desc">
+                  Autonomous 5-agent operations platform orchestrating Discord Gateway streaming, local GPU failover routing, and automated tool pipelines.
+                </div>
+                <ul class="git-commit-bullets mono">
+                  <li>+ Asynchronous Discord Gateway streaming &amp; domain-isolated prompt personas</li>
+                  <li>+ Hybrid inference router: Cloud Groq failover to local AMD RX 6600 XT DirectML</li>
+                  <li>+ Headless Chromium ATS vector resume single-page compiler (&lt;850ms)</li>
+                </ul>
+                <div class="git-commit-actions">
+                  <a href="case-lsfm.html" class="git-link-pill">Explore Case Study →</a>
+                  <a href="Hans_Laureles_Resume.pdf" target="_blank" class="git-link-pill">Resume PDF ↗</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Commit 2: Cognitive Memory Core -->
+            <div class="git-commit-entry">
+              <div class="git-rail">
+                <span class="git-node-dot"></span>
+                <span class="git-node-line"></span>
+              </div>
+              <div class="git-commit-body">
+                <div class="git-commit-top">
+                  <div class="git-sha-wrap">
+                    <span class="git-graph-symbol">*</span>
+                    <button class="git-sha-btn" data-sha="c71e08a" aria-label="Copy SHA c71e08a" title="Click to copy SHA">
+                      <span class="git-sha-code">c71e08a</span>
+                      <span class="git-copy-icon">📋</span>
+                    </button>
+                    <span class="git-badge tag">v2.0.0</span>
+                  </div>
+                  <div class="git-date mono">2024 – 2025</div>
+                </div>
+                <div class="git-commit-title">
+                  <strong class="git-type">feat(memory):</strong> Engine Architect — Cognitive Memory Core
+                </div>
+                <div class="git-commit-author mono">Author: Hans Aaron Laureles &lt;hanslaureles92@gmail.com&gt;</div>
+                <div class="git-commit-desc">
+                  Zero-dependency developer agent engine eliminating AI session amnesia through episodic recall and permanent workspace rule crystallization.
+                </div>
+                <ul class="git-commit-bullets mono">
+                  <li>+ BM25 heuristic retrieval in &lt;15ms before agent execution</li>
+                  <li>+ Structured post-mortem reflection schema (trigger, symptom, root cause, permanent rule)</li>
+                  <li>+ 100% Python standard library implementation with zero external pip packages</li>
+                </ul>
+                <div class="git-commit-actions">
+                  <a href="case-memory.html" class="git-link-pill">Explore Case Study →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Commit 3: ROC.ph Internship -->
+            <div class="git-commit-entry">
+              <div class="git-rail">
+                <span class="git-node-dot"></span>
+                <span class="git-node-line"></span>
+              </div>
+              <div class="git-commit-body">
+                <div class="git-commit-top">
+                  <div class="git-sha-wrap">
+                    <span class="git-graph-symbol">*</span>
+                    <button class="git-sha-btn" data-sha="9f3a21c" aria-label="Copy SHA 9f3a21c" title="Click to copy SHA">
+                      <span class="git-sha-code">9f3a21c</span>
+                      <span class="git-copy-icon">📋</span>
+                    </button>
+                    <span class="git-badge tag">v1.5.0</span>
+                  </div>
+                  <div class="git-date mono">JUN 2024 – AUG 2024</div>
+                </div>
+                <div class="git-commit-title">
+                  <strong class="git-type">feat(roc.ph):</strong> UI/UX &amp; Frontend Engineer Intern — ROC.ph
+                </div>
+                <div class="git-commit-author mono">Author: Hans Aaron Laureles &lt;hanslaureles92@gmail.com&gt;</div>
+                <div class="git-commit-desc">
+                  Bridged design specifications and production code for 10+ client web applications in Cavite, Philippines.
+                </div>
+                <ul class="git-commit-bullets mono">
+                  <li>+ Converted Figma component hierarchies into accessible HTML, Tailwind, and React</li>
+                  <li>+ Conducted sprint Git workflows, code reviews, and revision loops (20% revision drop)</li>
+                  <li>+ 95% on-time milestone delivery record across diverse SME clients</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Commit 4: Patriot Capstone -->
+            <div class="git-commit-entry">
+              <div class="git-rail">
+                <span class="git-node-dot"></span>
+                <span class="git-node-line"></span>
+              </div>
+              <div class="git-commit-body">
+                <div class="git-commit-top">
+                  <div class="git-sha-wrap">
+                    <span class="git-graph-symbol">*</span>
+                    <button class="git-sha-btn" data-sha="5d89b12" aria-label="Copy SHA 5d89b12" title="Click to copy SHA">
+                      <span class="git-sha-code">5d89b12</span>
+                      <span class="git-copy-icon">📋</span>
+                    </button>
+                    <span class="git-badge tag">v1.0.0</span>
+                  </div>
+                  <div class="git-date mono">2023 – 2024</div>
+                </div>
+                <div class="git-commit-title">
+                  <strong class="git-type">feat(patriot):</strong> Lead Systems Architect — Capstone: Patriot (DLSU-D)
+                </div>
+                <div class="git-commit-author mono">Author: Hans Aaron Laureles &lt;hanslaureles92@gmail.com&gt;</div>
+                <div class="git-commit-desc">
+                  Cloud microservices backend and cross-platform mobile app for real-time university community matchmaking.
+                </div>
+                <ul class="git-commit-bullets mono">
+                  <li>+ Serverless infrastructure on AWS Lambda, DynamoDB, Redis caching &amp; Cognito auth</li>
+                  <li>+ Algorithmic interest correlation matrices in TypeScript</li>
+                  <li>+ React Native client benchmarked with 4.4+/5 formal user satisfaction</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Commit 5: Education / Foundation -->
+            <div class="git-commit-entry">
+              <div class="git-rail">
+                <span class="git-node-dot"></span>
+                <span class="git-node-line end"></span>
+              </div>
+              <div class="git-commit-body">
+                <div class="git-commit-top">
+                  <div class="git-sha-wrap">
+                    <span class="git-graph-symbol">*</span>
+                    <button class="git-sha-btn" data-sha="4b129aa" aria-label="Copy SHA 4b129aa" title="Click to copy SHA">
+                      <span class="git-sha-code">4b129aa</span>
+                      <span class="git-copy-icon">📋</span>
+                    </button>
+                    <span class="git-badge tag">foundation</span>
+                  </div>
+                  <div class="git-date mono">2021 – 2025</div>
+                </div>
+                <div class="git-commit-title">
+                  <strong class="git-type">feat(academic):</strong> BS Computer Science — De La Salle University–Dasmariñas
+                </div>
+                <div class="git-commit-author mono">Author: Hans Aaron Laureles &lt;hanslaureles92@gmail.com&gt;</div>
+                <div class="git-commit-desc">
+                  Completed degree in Computer Science with rigorous focus on foundational computing theory and systems engineering.
+                </div>
+                <ul class="git-commit-bullets mono">
+                  <li>+ Distributed Systems, Algorithms &amp; Complexities, Human-Computer Interaction</li>
+                  <li>+ Database Management Systems (SQL/NoSQL) &amp; Object-Oriented Software Architecture</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- AI Engineering Track & Continuous Growth -->
+      <section class="section-spacing-sm">
+        <div class="section-header">
+          <div>
+            <div class="section-tag">// 02 · CONTINUOUS LEARNING</div>
+            <h3>Applied AI Competencies &amp; Growth</h3>
+          </div>
+        </div>
+
+        <p style="margin-bottom: 24px; max-width: 800px;">
+          Actively advancing capabilities across multi-agent orchestration, consumer GPU model quantization, and deterministic tool execution.
+        </p>
+
+        <div class="experience-timeline">
+          <div class="experience-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">ChatGPT Prompt Engineering for Developers</div>
+                <div class="exp-company">DeepLearning.AI · Co-created with OpenAI</div>
+              </div>
+              <div class="badge badge-accent">ADVANCED</div>
+            </div>
+            <p style="font-size: 0.95rem;">
+              Programmatic LLM workflows, structured JSON schemas, few-shot prompting, and chain-of-thought task decomposition for agentic tool use.
+            </p>
+          </div>
+          
+          <div class="experience-card">
+            <div class="exp-header">
+              <div>
+                <div class="exp-title">Local Silicon Inference &amp; Quantization</div>
+                <div class="exp-company">Ollama · DirectML · GGUF Quantization · Vulkan</div>
+              </div>
+              <div class="badge badge-accent">PRACTICE</div>
+            </div>
+            <p style="font-size: 0.95rem;">
+              Running quantized 7B and 14B parameter models locally on consumer AMD Radeon hardware with zero cloud compute cost and sub-second token velocity.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3-Pillar Skills Triad -->
+      <section class="section-spacing-sm">
+        <div class="section-header">
+          <div>
+            <div class="section-tag">// 03 · CAPABILITIES</div>
+            <h3>Core Engineering &amp; Design Stack</h3>
+          </div>
+        </div>
+
+        <div class="skills-grid-triad">
+          
+          <!-- Pillar 1: Applied AI & Agents -->
+          <div class="skill-category">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              Applied AI &amp; Agents
+            </h4>
+            <div class="skill-pills">
+              <span class="skill-pill">Multi-Agent Swarms</span>
+              <span class="skill-pill">Local GPU Inference (DirectML)</span>
+              <span class="skill-pill">Ollama &amp; GGUF Quantization</span>
+              <span class="skill-pill">Structured JSON Outputs</span>
+              <span class="skill-pill">Tool &amp; Function Calling</span>
+              <span class="skill-pill">Hybrid Cloud/Local Routing</span>
+              <span class="skill-pill">Groq Cloud (Qwen 2.5)</span>
+              <span class="skill-pill">Prompt Optimization</span>
+              <span class="skill-pill">Persistent Agent Memory</span>
+            </div>
+          </div>
+
+          <!-- Pillar 2: Systems & Automation -->
+          <div class="skill-category">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              Systems &amp; Cloud Automation
+            </h4>
+            <div class="skill-pills">
+              <span class="skill-pill">Python (asyncio &amp; OOP)</span>
+              <span class="skill-pill">Google Workspace REST APIs</span>
+              <span class="skill-pill">Headless Chromium / Edge</span>
+              <span class="skill-pill">Discord Gateway API</span>
+              <span class="skill-pill">AWS (Lambda, DynamoDB)</span>
+              <span class="skill-pill">Redis Caching &amp; Queues</span>
+              <span class="skill-pill">Node.js &amp; Express</span>
+              <span class="skill-pill">OAuth2 Credential Flow</span>
+              <span class="skill-pill">Git &amp; CI/CD Pipelines</span>
+            </div>
+          </div>
+
+          <!-- Pillar 3: High-Craft Interface -->
+          <div class="skill-category">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              Interface Craft &amp; Design
+            </h4>
+            <div class="skill-pills">
+              <span class="skill-pill">React &amp; Next.js</span>
+              <span class="skill-pill">TypeScript &amp; ES6+</span>
+              <span class="skill-pill">Design Tokens &amp; CSS Vars</span>
+              <span class="skill-pill">Figma Prototyping</span>
+              <span class="skill-pill">Tailwind CSS</span>
+              <span class="skill-pill">WCAG AA/AAA Accessibility</span>
+              <span class="skill-pill">Information Architecture</span>
+              <span class="skill-pill">Micro-Interactions</span>
+              <span class="skill-pill">Usability Benchmarking</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- CTA Box -->
+      <section class="section-spacing-sm">
+        <div class="hero-stats-panel" style="text-align: center; padding: 48px 24px;">
+          <h3 style="margin-bottom: 12px;">Ready to engineer something remarkable?</h3>
+          <p style="max-width: 580px; margin: 0 auto 24px auto;">
+            Whether you are building autonomous agent pipelines, modernizing technical infrastructure, or need an AI engineer who designs with high craft, let's connect.
+          </p>
+          <div style="display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap;">
+            <button class="btn btn-primary contact-email-btn" data-email="hanslaureles92@gmail.com">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>hanslaureles92@gmail.com [Copy]</span>
+            </button>
+            <a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              <span>Download Resume (PDF) ↗</span>
+            </a>
+            <a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              <span>GitHub Profile ↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Hans Aaron Laureles · All Rights Reserved</div>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="https://linkedin.com/in/hanslaureles" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a href="index.html" style="color: var(--accent);">← Selected Work</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="sakura-copilot.js"></script>
+  <script>
+    // Dual-Mode Experience View Toggler & SHA Copy
+    (function () {
+      const btnCards = document.getElementById('btnViewCards');
+      const btnGit = document.getElementById('btnViewGit');
+      const cardsView = document.getElementById('experience-cards-view');
+      const gitView = document.getElementById('experience-git-view');
+
+      if (!btnCards || !btnGit || !cardsView || !gitView) return;
+
+      function setView(mode) {
+        if (mode === 'git') {
+          cardsView.style.display = 'none';
+          gitView.style.display = 'block';
+          btnGit.classList.add('active');
+          btnGit.setAttribute('aria-selected', 'true');
+          btnCards.classList.remove('active');
+          btnCards.setAttribute('aria-selected', 'false');
+          try { localStorage.setItem('hans_about_view_pref', 'git'); } catch(e) {}
+        } else {
+          gitView.style.display = 'none';
+          cardsView.style.display = 'flex';
+          btnCards.classList.add('active');
+          btnCards.setAttribute('aria-selected', 'true');
+          btnGit.classList.remove('active');
+          btnGit.setAttribute('aria-selected', 'false');
+          try { localStorage.setItem('hans_about_view_pref', 'cards'); } catch(e) {}
+        }
+      }
+
+      btnCards.addEventListener('click', () => setView('cards'));
+      btnGit.addEventListener('click', () => setView('git'));
+
+      // Check saved preference or URL hash
+      if (window.location.hash === '#git' || (function(){ try { return localStorage.getItem('hans_about_view_pref') === 'git'; } catch(e){ return false; } })()) {
+        setView('git');
+      }
+
+      // Copy SHA functionality
+      document.querySelectorAll('.git-sha-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const sha = btn.getAttribute('data-sha');
+          if (!sha) return;
+          navigator.clipboard.writeText(sha).then(() => {
+            const codeSpan = btn.querySelector('.git-sha-code');
+            const iconSpan = btn.querySelector('.git-copy-icon');
+            const origText = codeSpan.textContent;
+            codeSpan.textContent = 'COPIED!';
+            if (iconSpan) iconSpan.textContent = '✓';
+            setTimeout(() => {
+              codeSpan.textContent = origText;
+              if (iconSpan) iconSpan.textContent = '📋';
+            }, 1800);
+          }).catch(() => {});
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

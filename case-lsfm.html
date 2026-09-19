@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>LSFM AI HQ — Case Study · Hans Aaron Laureles</title>
+  <meta name="description" content="Case study on LSFM AI HQ — an autonomous 5-agent operations platform orchestrating Discord Gateway streaming, local DirectML GPU inference, and programmatic Google Workspace APIs.">
+  
+  <!-- Google Fonts: Instrument Serif + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Zero-FOUC Theme Script -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('hans_portfolio_theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-mark" aria-label="Hans Laureles Home">
+        <div class="brand-title">
+          <span class="brand-dot"></span>
+          Hans Aaron Laureles
+        </div>
+        <div class="brand-subtitle">AI Systems Engineer // Agent Architectures</div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Selected Work</a></li>
+          <li><a href="about.html" class="nav-link">About Me</a></li>
+          <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-link">Resume ↗</a></li>
+          <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub ↗</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Press T)">
+          <!-- Icon injected by app.js -->
+        </button>
+        <button class="mobile-menu-btn" aria-label="Open navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <div class="brand-title">
+        <span class="brand-dot"></span>
+        Hans Laureles
+      </div>
+      <button class="mobile-drawer-close btn btn-outline btn-sm" aria-label="Close menu">✕ Close</button>
+    </div>
+    <ul class="mobile-drawer-links">
+      <li><a href="index.html">01. Selected Work</a></li>
+      <li><a href="about.html">02. About Me</a></li>
+      <li><a href="case-lsfm.html" class="active">03. Flagship: LSFM AI HQ</a></li>
+      <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer">04. Resume (PDF) ↗</a></li>
+      <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">05. GitHub Profile ↗</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content" class="container">
+    
+    <!-- Case Hero -->
+    <div class="case-hero">
+      <a href="index.html" class="case-back-link">
+        ← Return to Selected Work
+      </a>
+      
+      <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
+        <span class="badge badge-accent">Case Study 01 · Flagship</span>
+        <span class="badge">Applied AI Systems</span>
+        <span class="badge">Multi-Agent Orchestration</span>
+      </div>
+
+      <h1 class="case-title">
+        LSFM AI HQ — Autonomous Multi-Agent<br>
+        <span class="serif-italic">&amp; Hybrid Inference Systems</span>
+      </h1>
+
+      <p class="case-lead">
+        An autonomous 5-agent operations platform orchestrating Discord Gateway streaming, hybrid local/cloud LLM routing (AMD RX 6600 XT via DirectML + Groq Cloud), headless Chromium ATS resume compilation, and automated Google Workspace triage at zero operational cost.
+      </p>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px;">
+        <a href="#topology" class="btn btn-primary">
+          Explore Swarm Topology ↓
+        </a>
+        <a href="#inference" class="btn btn-outline">
+          Inference &amp; DirectML Stack ↓
+        </a>
+        <a href="https://github.com/hanslaureles/lsfm-ai-hq" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 6px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          View Code on GitHub ↗
+        </a>
+      </div>
+
+      <!-- Project Metadata Table -->
+      <div class="case-meta-table">
+        <div class="case-meta-item">
+          <div class="label">Platform</div>
+          <div class="val">Discord Gateway · Local GPU · Google Cloud</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Discipline</div>
+          <div class="val">AI Systems &amp; Agent Architecture</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Role</div>
+          <div class="val">Lead Systems Architect (Solo)</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Stack</div>
+          <div class="val">Python · Ollama DirectML · Groq · Edge Headless · Gmail API</div>
+        </div>
+      </div>
+
+      <!-- Hero Banner Graphic Mockup -->
+      <div class="case-banner" style="margin-top: 32px; margin-bottom: 24px;">
+        <img src="images/Laureles_LSFM-HQ/LSFM HQ mockup.png" alt="LSFM AI HQ Discord Operations Interface Mockup" loading="eager">
+      </div>
+
+      <!-- Architecture Runtime Telemetry Preview -->
+      <div class="terminal-window" style="margin: 24px 0 32px 0;">
+        <div class="terminal-topbar">
+          <div class="terminal-dots">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+          </div>
+          <div class="terminal-title">LSFM_AI_HQ // ARCHITECTURE RUNTIME TELEMETRY</div>
+          <div class="mono" style="font-size: 0.72rem; color: #10B981;">● 5 ACTIVE DAEMONS</div>
+        </div>
+        <div class="terminal-body">
+<pre><span class="terminal-comment"># LSFM Hybrid Multi-Agent Operations System Overview</span>
+<span class="terminal-prompt">[GATEWAY]</span>     Discord WebSocket Stream ──&gt; Async Event Dispatcher (discord.py)
+<span class="terminal-prompt">[ROUTER]</span>      Hybrid Inference Engine:
+               ├─ Cloud: Groq API (Qwen 2.5 70B-Instruct) ──&gt; TTFT: 240ms [PRIMARY]
+               └─ Local: Ollama (qwen2.5-coder:7b) on AMD RX 6600 XT via DirectML [FAILOVER]
+<span class="terminal-prompt">[AGENTS]</span>      5 Autonomous Domain Specialists:
+               ├─ 🌸 Sakura   :: Chief of Staff &amp; Daily Sync Briefings (!briefing)
+               ├─ 🐯 Chaewon  :: Career Strategist, ATS Tailor &amp; Screening Solver (!screen)
+               ├─ 🐍 Yunjin   :: Document Architect &amp; Headless ATS PDF Compiler (!pdf)
+               ├─ 🦢 Kazuha   :: Frontend Architect &amp; Local Git/PR Sentinel (!git, !review)
+               └─ 🥔 Eunchae  :: System Guardian, QA Code Runner (!test) &amp; Gmail Triage
+<span class="terminal-prompt">[TOOLS]</span>       Headless Edge Browser (`--print-to-pdf`) + Google Workspace Gmail REST API + Git Sentinel CLI + AST Sandbox
+<span class="terminal-success">[STATUS]</span>      $0.00/month infrastructure cost · Sub-second latency · Zero data leakage</pre>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Case Study Layout with Sticky Navigation -->
+    <div class="case-content-layout">
+      
+      <!-- Sticky Sidebar Table of Contents -->
+      <aside class="case-sidebar">
+        <div class="case-toc-title">Architecture Sections</div>
+        <ul class="case-toc-list">
+          <li><a href="#problem">01. Problem &amp; The Autonomous Vision</a></li>
+          <li><a href="#topology">02. Multi-Agent Swarm Topology</a></li>
+          <li><a href="#inference">03. Hybrid Local/Cloud Inference</a></li>
+          <li><a href="#tools">04. Programmatic Tool Pipelines</a></li>
+          <li><a href="#benchmarks">05. Benchmarks &amp; Reliability</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Case Narrative -->
+      <div class="case-main-narrative">
+        
+        <!-- Section 01: Problem -->
+        <section id="problem" class="case-body-section">
+          <div class="section-tag">// 01 · CONTEXT &amp; MOTIVATION</div>
+          <h3>The Fatigue of Fragmented Developer Operations</h3>
+          <p>
+            Modern knowledge workers and software engineers spend over 40% of their day navigating cognitive friction across siloed tools: sorting through hundreds of promotional newsletters to catch critical university or banking emails, manually formatting tailored resumes for applicant tracking systems (ATS), and continuously context-switching across browser tabs.
+          </p>
+          <p>
+            While commercial AI assistants exist, they suffer from two fundamental design flaws:
+          </p>
+          <div class="experience-timeline" style="margin: 24px 0;">
+            <div class="experience-card">
+              <h4 style="margin-bottom: 8px;">1. High Recurring Subscription Overhead</h4>
+              <p style="font-size: 0.95rem;">Cloud-only multi-agent platforms incur unpredictable API token bills and subscription fatigue that scale rapidly without guarantee of uptime or privacy.</p>
+            </div>
+            <div class="experience-card">
+              <h4 style="margin-bottom: 8px;">2. Monolithic Chatbot Bottleneck</h4>
+              <p style="font-size: 0.95rem;">A single chat window forced to handle calendar, email, resume formatting, and job tracking collapses under context pollution and loses specialization.</p>
+            </div>
+          </div>
+          <div class="pull-quote">
+            “How might we architect a self-hosted, zero-cost operations headquarters where specialized AI agents coordinate autonomously over familiar interfaces, backed by local GPU acceleration?”
+          </div>
+          <p>
+            <strong>LSFM AI HQ</strong> was engineered from first principles to solve this: a distributed, multi-agent platform running on personal hardware, orchestrating dedicated domain specialists through a unified Discord interface with real-world tool execution.
+          </p>
+        </section>
+
+        <!-- Section 02: Swarm Topology -->
+        <section id="topology" class="case-body-section">
+          <div class="section-tag">// 02 · SWARM ARCHITECTURE</div>
+          <h3>Decentralized Agent Specialization &amp; Memory Isolation</h3>
+          <p>
+            Rather than relying on a single mega-prompt, the platform decomposes executive operations into five autonomous agents, each maintaining dedicated prompt personas, operational scopes, and tool bindings:
+          </p>
+
+          <div class="agent-grid" style="margin: 28px 0;">
+            <div class="agent-card">
+              <div class="agent-avatar-badge">🌸</div>
+              <div class="agent-role-title">Sakura — Chief of Staff</div>
+              <p class="agent-desc">Orchestrates daily morning briefings, manages system heartbeats, and routes cross-agent operational directives.</p>
+              <span class="agent-stack-tag">Context Routing · Briefings</span>
+            </div>
+            <div class="agent-card">
+              <div class="agent-avatar-badge">🐯</div>
+              <div class="agent-role-title">Chaewon — Career Strategist</div>
+              <p class="agent-desc">Monitors job market signals, computes ATS keyword relevancy scores, tailors resumes, and solves screening questions (!screen).</p>
+              <span class="agent-stack-tag">Semantic Matching · Screening Solver</span>
+            </div>
+            <div class="agent-card">
+              <div class="agent-avatar-badge">🐍</div>
+              <div class="agent-role-title">Yunjin — Document Architect</div>
+              <p class="agent-desc">Maintains master career markdown schemas, executes headless Chromium to compile single-page vector PDFs, and audits designs.</p>
+              <span class="agent-stack-tag">Headless Edge · PDF Engine</span>
+            </div>
+            <div class="agent-card">
+              <div class="agent-avatar-badge">🦢</div>
+              <div class="agent-role-title">Kazuha — Frontend &amp; Git Sentinel</div>
+              <p class="agent-desc">Autonomous Git branch sentinel, pre-commit diff reviews, structured PR change generation, and frontend component inspection.</p>
+              <span class="agent-stack-tag">Git Sentinel · Code Review</span>
+            </div>
+            <div class="agent-card">
+              <div class="agent-avatar-badge">🥔</div>
+              <div class="agent-role-title">Eunchae — System Guardian &amp; QA</div>
+              <p class="agent-desc">Automated AST code testing suite, hardware resource watchdog (VRAM/RAM), failure reflection flywheel, and Gmail batch triage.</p>
+              <span class="agent-stack-tag">QA Flywheel · Hardware Watchdog</span>
+            </div>
+          </div>
+
+          <div class="arch-diagram">
+            <h4 style="margin-bottom: 16px; font-size: 0.95rem;">Interaction &amp; Message Dispatch Flow</h4>
+            <div class="arch-flow-row">
+              <div class="arch-box">
+                <div class="arch-box-title">User Command</div>
+                <div class="arch-box-subtitle">Discord Channel / Mentions</div>
+              </div>
+              <span class="arch-arrow-symbol">→</span>
+              <div class="arch-box">
+                <div class="arch-box-title">Async Dispatcher</div>
+                <div class="arch-box-subtitle">Discord.py Gateway Daemon</div>
+              </div>
+              <span class="arch-arrow-symbol">→</span>
+              <div class="arch-box">
+                <div class="arch-box-title">Hybrid Router</div>
+                <div class="arch-box-subtitle">Groq Cloud / Local Ollama</div>
+              </div>
+              <span class="arch-arrow-symbol">→</span>
+              <div class="arch-box">
+                <div class="arch-box-title">Tool Execution</div>
+                <div class="arch-box-subtitle">Gmail API / Headless Edge</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 03: Hybrid Inference Router -->
+        <section id="inference" class="case-body-section">
+          <div class="section-tag">// 03 · INFERENCE RUNTIME</div>
+          <h3>Local GPU Acceleration (DirectML) &amp; Cloud Failover</h3>
+          <p>
+            A core engineering priority was achieving <strong>high throughput with zero recurring costs</strong>. The inference layer employs an intelligent hybrid routing engine:
+          </p>
+          <ul class="exp-bullets" style="margin-bottom: 24px;">
+            <li><strong>Primary Cloud Engine (Groq):</strong> Serves state-of-the-art open models (<code>Qwen 2.5 70B</code> and <code>28B</code>) delivering sub-300ms time-to-first-token (TTFT) for complex multi-step reasoning.</li>
+            <li><strong>Local Silicon Engine (DirectML / Ollama):</strong> Deploys <code>qwen2.5-coder:7b</code> directly on consumer workstation hardware—an <strong>AMD Radeon RX 6600 XT</strong> GPU accelerated through Microsoft DirectML and Vulkan runtimes.</li>
+            <li><strong>Graceful Fallback &amp; Circuit Breaking:</strong> If cloud rate limits are reached or network connectivity drops, the system seamlessly routes prompts to the local GPU without failing user operations.</li>
+          </ul>
+
+          <div class="terminal-window">
+            <div class="terminal-topbar">
+              <div class="terminal-dots">
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+              </div>
+              <div class="terminal-title">job-copilot/llm_client.py // Hybrid Router Logic</div>
+            </div>
+            <div class="terminal-body">
+<pre><span class="terminal-cmd">async def</span> <span class="terminal-prompt">generate_response</span>(prompt: str, system_instruction: str, prefer_local: bool = False):
+    <span class="terminal-comment"># 1. Check local engine readiness on AMD RX 6600 XT</span>
+    if prefer_local and await is_ollama_alive():
+        <span class="terminal-cmd">try</span>:
+            <span class="terminal-cmd">return await</span> query_ollama(prompt, system_instruction, model="qwen2.5-coder:7b")
+        <span class="terminal-cmd">except</span> Exception as err:
+            logger.warning(f"Local Ollama degraded: {err}. Falling back to Groq Cloud...")
+    
+    <span class="terminal-comment"># 2. Cloud Tier: Groq Ultra-Low Latency Inference</span>
+    <span class="terminal-cmd">try</span>:
+        <span class="terminal-cmd">return await</span> query_groq(prompt, system_instruction, model="qwen-2.5-32b-instruct")
+    <span class="terminal-cmd">except</span> RateLimitError:
+        <span class="terminal-comment"># 3. Automatic Circuit Breaker to Local Silicon</span>
+        logger.info("Cloud quota reached. Executing on local DirectML hardware...")
+        <span class="terminal-cmd">return await</span> query_ollama(prompt, system_instruction, model="qwen2.5-coder:7b")</pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 04: Programmatic Tool Pipelines -->
+        <section id="tools" class="case-body-section">
+          <div class="section-tag">// 04 · REAL-WORLD APIS &amp; TOOLS</div>
+          <h3>Deterministic Automation: Headless PDF &amp; Gmail Triage</h3>
+          <p>
+            Language models are only as useful as their ability to alter state in the real world. LSFM AI HQ integrates two critical programmatic tools:
+          </p>
+
+          <div class="experience-timeline" style="margin: 24px 0;">
+            <!-- Tool 1 -->
+            <div class="experience-card">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-title">Headless ATS Resume Compilation Engine</div>
+                  <div class="exp-company">Single-Page Strict Formatting via Microsoft Edge</div>
+                </div>
+                <div class="badge badge-accent">PDF_ENGINE</div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Parses structured markdown specifications into calibrated HTML/CSS with exact point-based typography and line heights.</li>
+                <li>Launches Microsoft Edge in headless mode (<code>--headless --disable-gpu --print-to-pdf</code>) to compile a pixel-perfect, 1-page PDF in under 900ms.</li>
+                <li>Ensures 100% vector text readability, zero image OCR dependencies, and strict compliance with automated Applicant Tracking Systems.</li>
+              </ul>
+            </div>
+
+            <!-- Tool 2 -->
+            <div class="experience-card">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-title">Google Workspace OAuth2 Batch Triage Engine</div>
+                  <div class="exp-company">10-Label Semantic Sorting &amp; Clutter Purging</div>
+                </div>
+                <div class="badge badge-accent">GMAIL_ENGINE</div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Integrates with Google Gmail API using OAuth2 user credential refreshes with secure local token storage.</li>
+                <li>Provisions 10 nested labels (<code>LSFM/Interviews</code>, <code>LSFM/University</code>, <code>LSFM/Finance</code>, <code>LSFM/Clutter</code>) and classifies unread emails using structured JSON prompts.</li>
+                <li>Features an automated <code>!clean</code> sweep that safely archives non-urgent newsletters while keeping critical university, human VIP, and banking notices highlighted.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 05: Benchmarks & Reliability -->
+        <section id="benchmarks" class="case-body-section">
+          <div class="section-tag">// 05 · METRICS &amp; TAKEAWAYS</div>
+          <h3>System Performance &amp; Architectural Takeaways</h3>
+          <p>
+            The deployed platform was tested against real operational workloads, including a mass inbox cleanse of over 120 unread emails and continuous multi-agent Discord dispatch:
+          </p>
+
+          <div class="benchmark-grid">
+            <div class="benchmark-card">
+              <div class="benchmark-val">$0.00</div>
+              <div class="benchmark-label">Monthly Cloud Spend</div>
+              <div class="benchmark-sub">100% free tier + local GPU</div>
+            </div>
+            <div class="benchmark-card">
+              <div class="benchmark-val">123</div>
+              <div class="benchmark-label">Emails Triaged</div>
+              <div class="benchmark-sub">98%+ semantic accuracy</div>
+            </div>
+            <div class="benchmark-card">
+              <div class="benchmark-val">&lt; 300ms</div>
+              <div class="benchmark-label">Cloud TTFT Latency</div>
+              <div class="benchmark-sub">Groq Qwen 2.5 streaming</div>
+            </div>
+            <div class="benchmark-card">
+              <div class="benchmark-val">840ms</div>
+              <div class="benchmark-label">Headless PDF Build</div>
+              <div class="benchmark-sub">Single-page ATS verified</div>
+            </div>
+          </div>
+
+          <div class="pull-quote">
+            “The most valuable AI systems are not the largest models, but the ones with the tightest feedback loops, lowest operational friction, and most deterministic tool execution.”
+          </div>
+
+          <h4 style="margin: 32px 0 12px 0;">Key Engineering Takeaways</h4>
+          <ol style="margin-left: 20px; line-height: 1.8; color: var(--text-secondary);">
+            <li><strong>Specialization beats generalism:</strong> Five lightweight personas with constrained tool boundaries consistently outperform a monolithic prompt trying to do everything.</li>
+            <li><strong>Local silicon is production-ready:</strong> Running quantized 7B models on consumer AMD GPUs via DirectML produces more than enough speed for real-time document drafting and tool invocation.</li>
+            <li><strong>Deterministic validation is non-negotiable:</strong> Grounding AI tool calls with rigid Pydantic/JSON schemas prevents hallucinated parameters from crashing external API integrations.</li>
+          </ol>
+        </section>
+
+      </div>
+
+    </div>
+
+    <!-- Clean Pagination Section (Full Width with Dedicated Spacing) -->
+    <div class="case-pagination-wrap" style="margin-top: 64px; margin-bottom: 32px;">
+      <div class="case-pagination" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+        <a href="case-memory.html" class="pag-card">
+          <span class="pag-label">← Previous Case Study</span>
+          <span class="pag-title">06 · Cognitive Memory Core (Self-Improving Engine)</span>
+        </a>
+        <a href="case-lumina.html" class="pag-card" style="text-align: right;">
+          <span class="pag-label">Next Case Study →</span>
+          <span class="pag-title">02 · Lumina Analytics (AI Observability)</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Hans Aaron Laureles · All Rights Reserved</div>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <a href="https://github.com/hanslaureles/lsfm-ai-hq" target="_blank" rel="noopener noreferrer">GitHub Repo ↗</a>
+          <a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">Profile ↗</a>
+          <a href="index.html" style="color: var(--accent);">← Selected Work</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

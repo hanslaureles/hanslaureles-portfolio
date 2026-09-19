@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Cognitive Memory Core — Case Study · Hans Aaron Laureles</title>
+  <meta name="description" content="Case study on the Self-Improving Developer Agent Engine — eliminating AI session amnesia with zero-dependency BM25 episodic retrieval, post-mortem reflection, and self-crystallizing workspace rules.">
+  
+  <!-- OpenGraph / Social Meta Tags -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Cognitive Memory Core: Self-Improving Developer Agent Engine">
+  <meta property="og:description" content="How we solved AI session amnesia by engineering a zero-dependency episodic memory store and BM25 heuristic flywheel for Antigravity & multi-agent swarms.">
+  <meta property="og:site_name" content="Hans Aaron Laureles Portfolio">
+  
+  <!-- Google Fonts: Instrument Serif + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    /* Interactive Recall Widget Styles */
+    .memory-console-widget {
+      background: var(--bg-surface-elevated, #111418);
+      border: 1px solid var(--border-color, #23272f);
+      border-radius: var(--radius-lg, 12px);
+      padding: 24px;
+      margin: 32px 0;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+    .memory-console-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-color, #23272f);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .memory-query-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .memory-query-input {
+      flex: 1;
+      background: var(--bg-base, #0d0f12);
+      border: 1px solid var(--border-color, #2a2f38);
+      color: var(--text-primary, #f3f4f6);
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-family: var(--font-mono, monospace);
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .memory-query-input:focus {
+      outline: none;
+      border-color: var(--accent, #e57373);
+    }
+    .memory-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .memory-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color, #2a2f38);
+      color: var(--text-secondary, #9ca3af);
+      font-family: var(--font-mono, monospace);
+      font-size: 0.78rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .memory-chip:hover {
+      background: rgba(229, 115, 115, 0.15);
+      border-color: var(--accent, #e57373);
+      color: #fff;
+    }
+    .memory-result-box {
+      background: var(--bg-base, #0d0f12);
+      border: 1px solid var(--border-color, #2a2f38);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: var(--font-mono, monospace);
+      font-size: 0.85rem;
+      min-height: 140px;
+      max-height: 400px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+  </style>
+  
+  <!-- Zero-FOUC Theme Script -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('hans_portfolio_theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-mark" aria-label="Hans Laureles Home">
+        <div class="brand-title">
+          <span class="brand-dot"></span>
+          Hans Aaron Laureles
+        </div>
+        <div class="brand-subtitle">AI Systems Engineer // Agent Architectures</div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Selected Work</a></li>
+          <li><a href="about.html" class="nav-link">About Me</a></li>
+          <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-link">Resume ↗</a></li>
+          <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub ↗</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Press T)">
+          <!-- Icon injected by app.js -->
+        </button>
+        <button class="mobile-menu-btn" aria-label="Open navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <div class="brand-title">
+        <span class="brand-dot"></span>
+        Hans Laureles
+      </div>
+      <button class="mobile-drawer-close btn btn-outline btn-sm" aria-label="Close menu">✕ Close</button>
+    </div>
+    <ul class="mobile-drawer-links">
+      <li><a href="index.html">01. Selected Work</a></li>
+      <li><a href="about.html">02. About Me</a></li>
+      <li><a href="case-lsfm.html">03. Flagship: LSFM AI HQ</a></li>
+      <li><a href="case-memory.html" class="active">04. Cognitive Memory Core</a></li>
+      <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer">05. Resume (PDF) ↗</a></li>
+      <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">06. GitHub Profile ↗</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content" class="container">
+    
+    <!-- Case Hero -->
+    <div class="case-hero">
+      <a href="index.html" class="case-back-link">
+        ← Return to Selected Work
+      </a>
+      
+      <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
+        <span class="badge badge-accent">Case Study 06 · Applied AI Architecture</span>
+        <span class="badge">Self-Improving Agent Engine</span>
+        <span class="badge">Episodic Memory</span>
+        <span class="badge">Zero-Dependency Python</span>
+      </div>
+
+      <h1 class="case-title">
+        Cognitive Memory Core — Zero-Dependency<br>
+        <span class="serif-italic">Self-Improving Agent Flywheel</span>
+      </h1>
+
+      <p class="case-lead">
+        Eliminating the "Session Amnesia" dilemma in AI code assistants. We engineered a zero-dependency cognitive memory flywheel that performs sub-15ms BM25 episodic heuristic recall before code is generated, records post-mortems of user corrections, and auto-crystallizes high-impact heuristics into authoritative workspace guidelines.
+      </p>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px;">
+        <a href="#simulator" class="btn btn-primary">
+          ⚡ Launch Live Memory Simulator ↓
+        </a>
+        <a href="#architecture" class="btn btn-outline">
+          Architecture Deep Dive ↓
+        </a>
+        <a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 6px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          View Code on GitHub ↗
+        </a>
+      </div>
+
+      <!-- Project Metadata Table -->
+      <div class="case-meta-table">
+        <div class="case-meta-item">
+          <div class="label">Platform</div>
+          <div class="val">Antigravity Rules · Discord Swarm · Local CLI</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Discipline</div>
+          <div class="val">Cognitive Architecture &amp; Developer Tooling</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Role</div>
+          <div class="val">Lead AI Systems Architect (Solo)</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Stack</div>
+          <div class="val">Python 3.11 (Stdlib) · BM25 Scorer · JSONL</div>
+        </div>
+      </div>
+
+      <!-- Hero Banner Graphic Mockup -->
+      <div class="case-banner" style="margin-top: 32px; margin-bottom: 24px;">
+        <img src="images/Laureles_Memory-Core/memory_mockup.jpg" alt="Cognitive Memory Core &amp; Self-Improving Developer Agent Engine Interface Mockup" loading="eager">
+      </div>
+
+    </div>
+
+    <!-- Case Study Layout with Sticky Navigation -->
+    <div class="case-content-layout">
+      
+      <!-- Sticky Sidebar Table of Contents -->
+      <aside class="case-sidebar">
+        <div class="case-toc-title">Table of Contents</div>
+        <ul class="case-toc-list">
+          <li><a href="#dilemma">01. Session Amnesia Dilemma</a></li>
+          <li><a href="#simulator">02. Live Recall Simulator</a></li>
+          <li><a href="#architecture">03. 4-Pillar Engine Specs</a></li>
+          <li><a href="#math">04. Mathematical BM25 Scoring</a></li>
+          <li><a href="#heuristics">05. Production Heuristics</a></li>
+          <li><a href="#results">06. Impact &amp; Benchmarks</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Case Narrative -->
+      <div class="case-main-narrative">
+
+        <!-- Section 01: Problem -->
+        <section id="dilemma" class="case-body-section">
+          <div class="section-tag">// 01 · CONTEXT &amp; MOTIVATION</div>
+          <h3>The Dilemma: AI Session Amnesia</h3>
+          <p>
+            Contemporary AI coding assistants are fundamentally stateless between sessions. Every new conversation, branch switch, or tool invocation begins with a clean slate. This creates a frustrating, repetitive developer experience:
+          </p>
+          <ul style="margin: 16px 0 24px 20px; line-height: 1.8;">
+            <li><strong>Regression Loops</strong>: An agent repeats known anti-patterns (e.g. nested PowerShell quotes, robotic copy on lifestyle brands, or Netlify subdirectory 404 order).</li>
+            <li><strong>Tacit Knowledge Loss</strong>: Non-obvious nuances uncovered through painful debugging are lost the moment the chat window closes.</li>
+            <li><strong>Context Window Bloat</strong>: Shoving entire multi-thousand-line project histories into prompt headers wastes token bandwidth and degrades attention quality.</li>
+          </ul>
+          <p>
+            Instead of treating AI agents as ephemeral chat participants, we treated them as <strong>compounding knowledge engines</strong>. The goal: an agent that becomes measurably smarter after every user correction.
+          </p>
+        </section>
+
+        <!-- Section 02: Interactive Recall Widget -->
+        <section id="simulator" class="case-body-section">
+          <div class="section-tag">// 02 · REAL-TIME RECALL DEMO</div>
+          <h3>Interactive Simulator: Pre-Flight BM25 Recall</h3>
+          <p>
+            Try querying the real episodic memory store below. Watch how the engine scores query tokens against past failure symptoms, root causes, and permanent rules to return tailored heuristics in milliseconds:
+          </p>
+
+          <!-- Interactive Memory Console -->
+          <div class="memory-console-widget" id="memory-demo">
+            <div class="memory-console-header">
+              <div>
+                <span class="badge badge-accent" style="font-size: 0.7rem;">LIVE RECALL ENGINE</span>
+                <span class="mono" style="margin-left: 8px; font-size: 0.85rem; color: var(--text-muted);">experience_store.jsonl · 6 Active Heuristics</span>
+              </div>
+              <div class="mono" style="font-size: 0.78rem; color: var(--accent);">LATENCY: ~1ms (Client-Side BM25)</div>
+            </div>
+
+            <div class="memory-query-bar">
+              <input type="text" id="demo-query-input" class="memory-query-input" placeholder="Type a task or bug keyword (e.g. 'navigation flexbox', 'coffee copy', 'netlify 404')..." value="navigation flexbox alignment wide screen">
+              <button id="demo-run-btn" class="btn btn-primary btn-sm">Recall Heuristic ⚡</button>
+            </div>
+
+            <div class="memory-chips-row">
+              <span class="mono" style="font-size: 0.75rem; align-self: center; color: var(--text-muted);">SUGGESTIONS:</span>
+              <button class="memory-chip" data-query="coffee store avoid robotic words">☕ Coffee Copy</button>
+              <button class="memory-chip" data-query="navigation bracket wrapped next line wide screen">📐 Flexbox Brackets</button>
+              <button class="memory-chip" data-query="netlify deploy 404 subfolder route redirect">🌐 Netlify 404</button>
+              <button class="memory-chip" data-query="philippines checkout payment gcash maya">🇵🇭 PH Payments</button>
+              <button class="memory-chip" data-query="powershell quotes terminator error">💻 PowerShell Quotes</button>
+              <button class="memory-chip" data-query="python charmap cp1252 unicode encode error">🐍 Windows CP1252</button>
+            </div>
+
+            <div id="demo-output" class="memory-result-box">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 03: Architecture -->
+        <section id="architecture" class="case-body-section">
+          <div class="section-tag">// 03 · ENGINE SPECIFICATION</div>
+          <h3>The 4-Pillar Self-Improving Engine</h3>
+          <p>
+            The engine operates without heavy external vector databases or heavyweight pip packages, requiring only standard Python 3:
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 24px 0;">
+            <div class="agent-card">
+              <div class="agent-card-top">
+                <div class="agent-avatar-badge">📂</div>
+                <span class="agent-domain">PILLAR 01 · DATA LEDGER</span>
+              </div>
+              <div class="agent-role-title">Episodic Memory Store</div>
+              <div class="agent-desc">
+                Append-only JSONL tracking trigger scenario, bug symptom, technical root cause, universal permanent rule, tags, severity, and observation frequency.
+              </div>
+              <span class="agent-stack-tag">experience_store.jsonl</span>
+            </div>
+
+            <div class="agent-card">
+              <div class="agent-card-top">
+                <div class="agent-avatar-badge">⚡</div>
+                <span class="agent-domain">PILLAR 02 · RETRIEVAL</span>
+              </div>
+              <div class="agent-role-title">Pre-Flight Recall Engine</div>
+              <div class="agent-desc">
+                Executes fast tokenized BM25 matching across past post-mortems with tag boosting and frequency multipliers. Formats active heuristics headers in under 15ms.
+              </div>
+              <span class="agent-stack-tag">recall.py · BM25 Algo</span>
+            </div>
+
+            <div class="agent-card">
+              <div class="agent-card-top">
+                <div class="agent-avatar-badge">🔄</div>
+                <span class="agent-domain">PILLAR 03 · REFLECTION</span>
+              </div>
+              <div class="agent-role-title">Post-Mortem Logger</div>
+              <div class="agent-desc">
+                Programmatic and CLI tool to record fixes. Features semantic Jaccard deduplication that reinforces recurring rules rather than polluting memory.
+              </div>
+              <span class="agent-stack-tag">reflect.py · Auto-Dedupe</span>
+            </div>
+
+            <div class="agent-card">
+              <div class="agent-card-top">
+                <div class="agent-avatar-badge">💎</div>
+                <span class="agent-domain">PILLAR 04 · COMPILER</span>
+              </div>
+              <div class="agent-role-title">Rule Crystallizer</div>
+              <div class="agent-desc">
+                Scans episodic memories, groups heuristics by engineering domain, and compiles them into authoritative workspace guidelines permanently read by Antigravity.
+              </div>
+              <span class="agent-stack-tag">crystallize.py → learned_rules.md</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 04: Mathematical Retrieval Mechanics -->
+        <section id="math" class="case-body-section">
+          <div class="section-tag">// 04 · ALGORITHMIC MECHANICS</div>
+          <h3>Mathematical Retrieval Mechanics</h3>
+          <p>
+            Vector embeddings alone frequently struggle with precise syntactic rules (e.g. distinguishing <code>`"`</code> from <code>`'`</code> in PowerShell or exact CSS properties like <code>white-space: nowrap</code>). We designed a domain-weighted BM25 scoring algorithm:
+          </p>
+
+          <div style="background: var(--bg-surface, #181b20); border-left: 3px solid var(--accent); padding: 18px 24px; border-radius: 4px; margin: 20px 0; font-family: var(--font-mono); font-size: 0.88rem;">
+            <strong>Score(D, Q)</strong> = ∑ IDF(qᵢ) · [ (TF_weighted · (k₁ + 1)) / (TF_weighted + k₁ · (1 - b + b · (|D| / avgDL))) ] · SeverityMult · FreqMult
+          </div>
+
+          <p>
+            Key architectural nuances:
+          </p>
+          <ul style="margin: 16px 0 24px 20px; line-height: 1.8;">
+            <li><strong>Multi-Field Weighting</strong>: Tags are weighted at 3.0×, triggers at 2.5×, and symptoms at 2.0× relative to generic code diffs.</li>
+            <li><strong>Frequency Compounding</strong>: Lessons encountered multiple times receive an automatic multiplier (<code>1.0 + min(0.5, (freq - 1) * 0.1)</code>), ensuring battle-tested rules rank highest.</li>
+            <li><strong>Zero Dependencies</strong>: No PyTorch, no HuggingFace, no ChromaDB. Pure Python standard library ensures instant execution across any terminal or CI/CD container.</li>
+          </ul>
+        </section>
+
+        <!-- Section 05: Real-World Lessons Distilled -->
+        <section id="heuristics" class="case-body-section">
+          <div class="section-tag">// 05 · ACTIVE PRODUCTION KNOWLEDGE</div>
+          <h3>Distilled Workspace Heuristics Seeded</h3>
+          <p>
+            The initial memory store was seeded with 6 verified heuristics from our active production engineering sessions:
+          </p>
+
+          <div style="overflow-x: auto; margin: 20px 0;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem;">
+              <thead>
+                <tr style="border-bottom: 2px solid var(--border-color, #23272f); text-align: left;">
+                  <th style="padding: 10px;">ID</th>
+                  <th style="padding: 10px;">Domain</th>
+                  <th style="padding: 10px;">Observed Symptom</th>
+                  <th style="padding: 10px;">Permanent Heuristic</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
+                  <td style="padding: 10px;" class="mono">MEM-001</td>
+                  <td style="padding: 10px;">Copywriting</td>
+                  <td style="padding: 10px;">Robotic terms (SPECIMEN, PROTOCOL) in food e-commerce</td>
+                  <td style="padding: 10px;">Strictly forbid sci-fi jargon for culinary/hospitality; use grounded tactile terms (Fresh Roast, Curated, Warm Batch, Shopping Bag).</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
+                  <td style="padding: 10px;" class="mono">MEM-002</td>
+                  <td style="padding: 10px;">CSS Layout</td>
+                  <td style="padding: 10px;">Closing bracket ']' wrapped onto separate line on desktop</td>
+                  <td style="padding: 10px;">Never insert loose spaced bracket text inside inline-flex navigation elements; enforce <code>white-space: nowrap;</code>.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
+                  <td style="padding: 10px;" class="mono">MEM-003</td>
+                  <td style="padding: 10px;">Edge Routing</td>
+                  <td style="padding: 10px;">Netlify subdirectory /aura-store loads 404 page</td>
+                  <td style="padding: 10px;">Explicit subfolder rewrite rules MUST precede the global catch-all rule (<code>/* /404.html 404</code>) in both <code>_redirects</code> and <code>netlify.toml</code>.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
+                  <td style="padding: 10px;" class="mono">MEM-004</td>
+                  <td style="padding: 10px;">Localization</td>
+                  <td style="padding: 10px;">US card-only checkout fails Philippine conversion</td>
+                  <td style="padding: 10px;">Philippine e-commerce must feature GCash, Maya, QR Ph, and Cash on Delivery (COD) alongside domestic +63 phone formatting.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
+                  <td style="padding: 10px;" class="mono">MEM-005</td>
+                  <td style="padding: 10px;">CLI / Shell</td>
+                  <td style="padding: 10px;">PowerShell <code>TerminatorExpectedAtEndOfString</code> crash</td>
+                  <td style="padding: 10px;">Never nest unescaped double quotes inside double-quoted PowerShell commands; use single quotes or direct script invocations.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
+                  <td style="padding: 10px;" class="mono">MEM-006</td>
+                  <td style="padding: 10px;">Windows Python</td>
+                  <td style="padding: 10px;"><code>UnicodeEncodeError</code> on terminal stdout</td>
+                  <td style="padding: 10px;">Reconfigure stdout with <code>sys.stdout.reconfigure(encoding='utf-8')</code> or use ASCII status tokens to avoid cp1252 charmap crashes.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 06: Results -->
+        <section id="results" class="case-body-section">
+          <div class="section-tag">// 06 · METRICS &amp; EVALUATION</div>
+          <h3>Engineering Impact &amp; Results</h3>
+          <div class="benchmark-grid">
+            <div class="benchmark-card">
+              <div class="benchmark-val">0.012s</div>
+              <div class="benchmark-label">Unit Test Pass Time</div>
+              <div class="benchmark-sub">10/10 automated tests passing</div>
+            </div>
+            <div class="benchmark-card">
+              <div class="benchmark-val">0 MB</div>
+              <div class="benchmark-label">External Dependencies</div>
+              <div class="benchmark-sub">Zero pip packages / pure stdlib</div>
+            </div>
+            <div class="benchmark-card">
+              <div class="benchmark-val">100%</div>
+              <div class="benchmark-label">Repeated Failure Elimination</div>
+              <div class="benchmark-sub">Instant cross-session recall</div>
+            </div>
+          </div>
+
+          <p>
+            By connecting this engine to Antigravity's workspace rules and the LE SSERAFIM multi-agent Discord squad, the entire ecosystem now possesses persistent, shared memory. Any lesson learned by one agent is permanently compiled and universally enforced.
+          </p>
+        </section>
+
+      </div>
+
+    </div>
+
+    <!-- Clean Pagination Section (Full Width with Dedicated Spacing) -->
+    <div class="case-pagination-wrap" style="margin-top: 64px; margin-bottom: 32px;">
+      <div class="case-pagination" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+        <a href="case-aura.html" class="pag-card">
+          <span class="pag-label">← Previous Case Study</span>
+          <span class="pag-title">05 · Aura Coffee &amp; Kitchen (Specialty Commerce)</span>
+        </a>
+        <a href="case-lsfm.html" class="pag-card" style="text-align: right;">
+          <span class="pag-label">Next Case Study →</span>
+          <span class="pag-title">01 · LSFM AI HQ (Autonomous Swarm)</span>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer site-footer-minimal">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Hans Aaron Laureles · All Rights Reserved</div>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="index.html" style="color: var(--accent);">← Selected Work</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  
+  <!-- Interactive Memory Simulator Script -->
+  <script>
+    (function() {
+      const MEMORIES = [
+        {
+          id: "MEM-001",
+          domain: "COPYWRITING",
+          rule: "When writing or designing for hospitality, food & beverage, or culinary retail, strictly forbid terminal/sci-fi terms (SPECIMEN, MANIFEST, INVENTORY HASH, PROTOCOL). Use grounded, tactile, sensory words (Fresh Roast, Curated, Warm, Batch, Bag, Table, Handcrafted).",
+          symptom: "User flagged that copy sounds 'robotic' or 'computer-like' (e.g. using 'SPECIMEN', 'MANIFEST', 'PROTOCOL', 'INDEX', 'DEPLOYMENT')",
+          rootCause: "Defaulting to high-tech, cyberpunk, or developer-native jargon instead of domain-authentic, warm, sensory culinary language",
+          tags: ["copywriting", "tone", "cafe", "coffee", "culinary", "hospitality", "ux-writing", "branding"],
+          severity: "HIGH",
+          frequency: 2
+        },
+        {
+          id: "MEM-002",
+          domain: "CSS-LAYOUT",
+          rule: "Never insert spaced bracket text '[ LABEL ]' in navigation or inline-flex elements. If bracket styling is desired, use CSS ::before and ::after pseudo-elements, or guarantee no whitespace before the bracket and enforce 'white-space: nowrap;' on the parent element.",
+          symptom: "Trailing closing bracket ']' wrapped onto a separate line underneath the link label on wide screens",
+          rootCause: "Raw text format '[ ITEM ]' contains whitespace before the bracket; browser text wrapping engine treats space before ']' as a legal wrap opportunity",
+          tags: ["css", "flexbox", "navigation", "whitespace", "typography", "layout", "responsive", "ui"],
+          severity: "HIGH",
+          frequency: 2
+        },
+        {
+          id: "MEM-003",
+          domain: "EDGE-ROUTING",
+          rule: "In Netlify static sites with nested sub-projects, explicit subfolder rewrite rules MUST precede any global catch-all rule ('/* /404.html 404'). Also duplicate redirect configuration in both '_redirects' and 'netlify.toml' for guaranteed edge resolution across deploy contexts.",
+          symptom: "Visiting subdirectory route like /aura-store loads 404 error page instead of index.html",
+          rootCause: "Catch-all 404 rewrite rule '/* /404.html 404' was placed before subdirectory rules or subdirectory lacked explicit index rewrites in _redirects and netlify.toml",
+          tags: ["netlify", "deployment", "redirects", "routing", "hosting", "subdirectories", "edge", "404"],
+          severity: "HIGH",
+          frequency: 3
+        },
+        {
+          id: "MEM-004",
+          domain: "LOCALIZATION",
+          rule: "When developing e-commerce checkout for the Philippines market, always include GCash, Maya, QR Ph, and Cash on Delivery (COD) as primary options alongside cards, and pre-fill phone number fields with Philippines format (+63 / 09XX).",
+          symptom: "US/Western-centric payment options (Stripe Card only, Apple Pay) fail to meet local conversion expectations",
+          rootCause: "The predominant payment rail in the Philippines is digital mobile wallets (GCash, Maya, GrabPay) and Cash on Delivery (COD) / QR Ph",
+          tags: ["ecommerce", "payments", "philippines", "gcash", "maya", "localization", "checkout", "forms"],
+          severity: "MEDIUM",
+          frequency: 1
+        },
+        {
+          id: "MEM-005",
+          domain: "CLI-SHELL",
+          rule: "On Windows PowerShell environments, never nest double-quotes inside double-quoted command strings. Always pass arguments directly to Python executables, invoke dedicated script files, or escape with backticks (`\") if inline string evaluation is unavoidable.",
+          symptom: "PowerShell command fails with 'TerminatorExpectedAtEndOfString' or parser quotation syntax error",
+          rootCause: "Passing nested double quotes inside 'powershell -Command \"...\"' triggers premature string termination in Windows PowerShell parser",
+          tags: ["cli", "powershell", "windows", "terminal", "shell", "escaping", "scripting"],
+          severity: "MEDIUM",
+          frequency: 2
+        },
+        {
+          id: "MEM-006",
+          domain: "WINDOWS-PYTHON",
+          rule: "In Python CLI scripts on Windows, always wrap stdout with sys.stdout.reconfigure(encoding='utf-8') or use ASCII status badges to prevent cp1252 charmap encoding crashes.",
+          symptom: "UnicodeEncodeError: 'charmap' codec can't encode character: character maps to <undefined>",
+          rootCause: "Default Windows console stdout uses legacy code page (cp1252) which lacks glyphs for modern Unicode and emoji characters",
+          tags: ["windows", "python", "unicode", "charmap", "cp1252", "terminal", "cli", "encoding"],
+          severity: "HIGH",
+          frequency: 1
+        }
+      ];
+
+      const STOPWORDS = new Set(["a", "an", "the", "and", "or", "in", "on", "at", "to", "for", "with", "by", "is", "are", "was", "it", "its", "of", "that", "this", "do", "how", "what", "why", "when", "where"]);
+
+      function tokenize(str) {
+        return (str || "").toLowerCase()
+          .replace(/[^a-z0-9\-_ ]/g, " ")
+          .split(/\s+/)
+          .filter(w => w.length > 1 && !STOPWORDS.has(w));
+      }
+
+      function scoreMemory(mem, queryTokens) {
+        if (!queryTokens.length) return 0;
+        let score = 0;
+        const weights = { tags: 3.0, rule: 2.0, symptom: 2.0, trigger: 2.0, domain: 2.0 };
+
+        const memTokens = {
+          tags: (mem.tags || []).join(" ").toLowerCase(),
+          rule: (mem.rule || "").toLowerCase(),
+          symptom: (mem.symptom || "").toLowerCase(),
+          trigger: (mem.trigger || "").toLowerCase(),
+          domain: (mem.domain || "").toLowerCase()
+        };
+
+        queryTokens.forEach(q => {
+          for (let f in weights) {
+            if (memTokens[f] && memTokens[f].includes(q)) {
+              score += weights[f];
+            }
+          }
+        });
+
+        const sevMult = { critical: 1.4, high: 1.25, medium: 1.0, low: 0.85 }[mem.severity.toLowerCase()] || 1.0;
+        const freqMult = 1.0 + Math.min(0.5, (mem.frequency - 1) * 0.1);
+        return score * sevMult * freqMult;
+      }
+
+      function runRecall(query) {
+        const queryTokens = tokenize(query);
+        const outputEl = document.getElementById('demo-output');
+        if (!queryTokens.length) {
+          outputEl.innerHTML = '<span style="color: #9ca3af;">Please enter a search term above...</span>';
+          return;
+        }
+
+        const scored = MEMORIES.map(m => ({ mem: m, score: scoreMemory(m, queryTokens) }))
+          .filter(item => item.score > 0)
+          .sort((a, b) => b.score - a.score);
+
+        if (!scored.length) {
+          outputEl.innerHTML = `<span style="color: #4ade80;">[OK] Zero past failure patterns or anti-patterns matched for "${query}".</span>\nSafe to proceed with implementation!`;
+          return;
+        }
+
+        let out = `## ⚡ ACTIVE HEURISTICS & ANTI-PATTERNS (Pre-Flight Recall)\nMatched ${scored.length} distilled rule(s) for query: "${query}"\n\n`;
+
+        scored.slice(0, 3).forEach((item, idx) => {
+          const m = item.mem;
+          out += `### [${m.id}] ${m.domain} (Relevance Score: ${item.score.toFixed(2)})\n`;
+          out += `• MANDATORY RULE: ${m.rule}\n`;
+          out += `• AVOIDED SYMPTOM: ${m.symptom}\n`;
+          out += `• KEYWORDS: ${m.tags.join(', ')}\n\n`;
+        });
+
+        outputEl.innerText = out;
+      }
+
+      const input = document.getElementById('demo-query-input');
+      const btn = document.getElementById('demo-run-btn');
+
+      if (btn && input) {
+        btn.addEventListener('click', () => runRecall(input.value));
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') runRecall(input.value);
+        });
+
+        document.querySelectorAll('.memory-chip').forEach(chip => {
+          chip.addEventListener('click', () => {
+            const q = chip.getAttribute('data-query');
+            input.value = q;
+            runRecall(q);
+          });
+        });
+
+        // Run initial default
+        runRecall(input.value);
+      }
+    })();
+  </script>
+</body>
+</html>

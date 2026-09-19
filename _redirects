@@ -1,0 +1,9 @@
+# Netlify Clean URLs Redirect Rules
+/about            /about.html            200
+/case-vellum      /case-vellum.html      200
+/case-lumina      /case-lumina.html      200
+/case-fintrack    /case-fintrack.html    200
+/case-lsfm        /case-lsfm.html        200
+/case-aura        /case-aura.html        200
+/aura-store       /aura-store/index.html 200
+/*                /404.html              404
