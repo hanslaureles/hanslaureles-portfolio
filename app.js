@@ -179,46 +179,67 @@
     const cards = showcaseTrack.querySelectorAll('.editorial-card');
     const totalCards = cards.length;
 
-    function getCardStep() {
-      if (cards.length > 0) {
-        return cards[0].offsetWidth + 24; // card width + gap
+    function getCardRelativeLeft(card) {
+      const cardRect = card.getBoundingClientRect();
+      const trackRect = showcaseTrack.getBoundingClientRect();
+      return cardRect.left - trackRect.left + showcaseTrack.scrollLeft;
+    }
+
+    function getClosestCardIndex() {
+      const currentScroll = showcaseTrack.scrollLeft;
+      let closestIdx = 0;
+      let minDiff = Infinity;
+      cards.forEach((card, idx) => {
+        const cardLeft = getCardRelativeLeft(card);
+        const diff = Math.abs(currentScroll - cardLeft);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIdx = idx;
+        }
+      });
+      return closestIdx;
+    }
+
+    let targetCardIdx = 0;
+
+    function scrollToCard(idx) {
+      if (idx < 0 || idx >= totalCards) return;
+      targetCardIdx = idx;
+      const targetCard = cards[idx];
+      if (targetCard) {
+        const targetScroll = Math.max(0, getCardRelativeLeft(targetCard) - 4);
+        showcaseTrack.scrollTo({ left: targetScroll, behavior: 'smooth' });
       }
-      return 360;
     }
 
     function updateCarouselState() {
-      const maxScroll = showcaseTrack.scrollWidth - showcaseTrack.clientWidth;
-      const currentScroll = showcaseTrack.scrollLeft;
+      const currentIdx = getClosestCardIndex();
+      const activeIdx = currentIdx + 1; // 1-based (1 to 6)
+      targetCardIdx = currentIdx;
 
-      // Update Arrow disabled states
-      if (showcasePrevBtn) showcasePrevBtn.disabled = currentScroll <= 6;
-      if (showcaseNextBtn) showcaseNextBtn.disabled = currentScroll >= maxScroll - 6;
-
-      // Calculate active card index (1-based)
-      let activeIdx = 1;
-      if (maxScroll > 0) {
-        if (currentScroll >= maxScroll - 16) {
-          // Reached the end of the track: show the final card
-          activeIdx = totalCards;
-        } else if (currentScroll <= 10) {
-          activeIdx = 1;
-        } else {
-          // Map scroll position smoothly across intermediate cards
-          const fraction = currentScroll / maxScroll;
-          activeIdx = Math.min(totalCards, Math.max(1, Math.round(fraction * (totalCards - 1)) + 1));
-        }
-      }
-
+      // Update counter: 01 / 06 up to 06 / 06
       if (showcaseCounter) {
         const currentStr = String(activeIdx).padStart(2, '0');
         const totalStr = String(totalCards).padStart(2, '0');
         showcaseCounter.textContent = `${currentStr} / ${totalStr}`;
       }
 
+      // Update Arrow disabled states
+      if (showcasePrevBtn) {
+        showcasePrevBtn.disabled = (currentIdx === 0);
+      }
+      if (showcaseNextBtn) {
+        showcaseNextBtn.disabled = (currentIdx >= totalCards - 1);
+      }
+
       // Update progress thumb
-      if (showcaseThumb && maxScroll > 0) {
-        const ratio = Math.min(1, Math.max(0, currentScroll / maxScroll));
-        const thumbWidthPercent = Math.max(20, (showcaseTrack.clientWidth / showcaseTrack.scrollWidth) * 100);
+      if (showcaseThumb && totalCards > 1) {
+        const maxScroll = showcaseTrack.scrollWidth - showcaseTrack.clientWidth;
+        let ratio = currentIdx / (totalCards - 1);
+        if (maxScroll > 0) {
+          ratio = Math.min(1, Math.max(0, showcaseTrack.scrollLeft / maxScroll));
+        }
+        const thumbWidthPercent = Math.max(16, (1 / totalCards) * 100);
         showcaseThumb.style.width = `${thumbWidthPercent}%`;
         showcaseThumb.style.left = `${ratio * (100 - thumbWidthPercent)}%`;
       }
@@ -226,13 +247,17 @@
 
     if (showcasePrevBtn) {
       showcasePrevBtn.addEventListener('click', () => {
-        showcaseTrack.scrollBy({ left: -getCardStep(), behavior: 'smooth' });
+        const currentIdx = getClosestCardIndex();
+        const prevIdx = Math.max(0, Math.min(targetCardIdx - 1, currentIdx - 1));
+        scrollToCard(prevIdx);
       });
     }
 
     if (showcaseNextBtn) {
       showcaseNextBtn.addEventListener('click', () => {
-        showcaseTrack.scrollBy({ left: getCardStep(), behavior: 'smooth' });
+        const currentIdx = getClosestCardIndex();
+        const nextIdx = Math.min(totalCards - 1, Math.max(targetCardIdx + 1, currentIdx + 1));
+        scrollToCard(nextIdx);
       });
     }
 

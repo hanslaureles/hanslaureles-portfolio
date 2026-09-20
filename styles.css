@@ -861,10 +861,23 @@ a {
   flex-direction: column;
 }
 
+/* Trailing spacer so Card 5 and Card 6 can scroll to the start/active position */
+.project-card-showcase::after {
+  content: '';
+  flex: 0 0 calc(66.666% + 8px);
+  min-width: calc(66.666% + 8px);
+  scroll-snap-align: none;
+  pointer-events: none;
+}
+
 @media (max-width: 1100px) {
   .project-card-showcase .editorial-card {
     flex: 0 0 calc(50% - 12px);
     max-width: calc(50% - 12px);
+  }
+  .project-card-showcase::after {
+    flex: 0 0 calc(50% + 12px);
+    min-width: calc(50% + 12px);
   }
 }
 
@@ -873,6 +886,10 @@ a {
     flex: 0 0 85vw;
     max-width: 85vw;
     min-width: 270px;
+  }
+  .project-card-showcase::after {
+    flex: 0 0 15vw;
+    min-width: 15vw;
   }
   .showcase-header {
     flex-direction: column;
