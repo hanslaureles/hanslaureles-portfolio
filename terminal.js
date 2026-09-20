@@ -583,7 +583,7 @@
       } else if (qLower.includes('email') || qLower.includes('gmail') || qLower.includes('eunchae')) {
         matchedSnippets = [
           {
-            doc: 'job-copilot/memory/specifications.md',
+            doc: 'lsfm-swarm/memory/specifications.md',
             score: '0.961',
             text: 'Eunchae Guardian Daemon: Google Workspace OAuth2 batch triage. Successfully classified 123 emails into 10 hierarchical labels with 98%+ precision.'
           }
