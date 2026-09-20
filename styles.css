@@ -423,7 +423,7 @@ a {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 16px;
-  margin-bottom: 32px;
+  margin-bottom: 0;
   padding-bottom: 20px;
   border-bottom: 1px solid var(--border-subtle);
 }
@@ -431,7 +431,7 @@ a {
 .hero-headline-wrap {
   text-align: center;
   max-width: 1060px;
-  margin: clamp(20px, 3.5vw, 40px) auto clamp(48px, 6.5vw, 84px) auto;
+  margin: clamp(36px, 4.5vw, 56px) auto clamp(36px, 4.5vw, 56px) auto;
 }
 
 .hero-headline {
@@ -2081,7 +2081,7 @@ a {
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     padding-bottom: 14px;
   }
   .hero-meta-bar .badge {
@@ -2096,7 +2096,7 @@ a {
     font-size: 0.72rem;
   }
   .hero-headline-wrap {
-    margin: 14px auto 24px auto;
+    margin: 24px auto 24px auto;
   }
   .hero-headline {
     font-size: clamp(1.75rem, 6.2vw, 2.35rem);
