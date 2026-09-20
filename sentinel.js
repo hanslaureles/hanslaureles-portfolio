@@ -15,14 +15,14 @@
 
   // Realistic Agent Telemetry Event Templates
   const TELEMETRY_EVENTS = [
-    { agent: 'EUNCHAE', emoji: '🛡️', msg: 'System vitals pulse: direct GPU memory at 41%, temp 48°C stable.' },
-    { agent: 'SAKURA', emoji: '🌸', msg: 'Recruiter Copilot standby. BM25 embeddings index primed.' },
-    { agent: 'KAZUHA', emoji: '💻', msg: 'Frontend DOM health check: CSS variable tokens and contrast nominal.' },
-    { agent: 'CHAEWON', emoji: '⭐', msg: 'Career pipeline idle. Headless Chromium resume generator ready.' },
-    { agent: 'YUNJIN', emoji: '🎨', msg: 'Asset pipeline check: 6 case study media assets verified.' },
-    { agent: 'LSFM-CORE', emoji: '🌐', msg: 'Discord Gateway stream verified. 5 daemon threads responsive.' },
-    { agent: 'EUNCHAE', emoji: '🛡️', msg: 'OAuth2 token valid. Zero unhandled exceptions in mailbox sync.' },
-    { agent: 'SAKURA', emoji: '🌸', msg: 'Natural language query parser active with 0.98 confidence threshold.' }
+    { agent: 'EUNCHAE', emoji: '🛡️', msg: 'System vitals normal: GPU memory at 41%, temperature 48°C.' },
+    { agent: 'SAKURA', emoji: '🌸', msg: 'Team Coordinator standby. Ready for recruiter questions.' },
+    { agent: 'KAZUHA', emoji: '💻', msg: 'Frontend health check: UI layout responsive and contrast verified.' },
+    { agent: 'CHAEWON', emoji: '⭐', msg: 'Career assistant ready. Single-page PDF resume prepared.' },
+    { agent: 'YUNJIN', emoji: '🎨', msg: 'Design check: 6 case studies and project images verified.' },
+    { agent: 'LSFM-CORE', emoji: '🌐', msg: 'Discord bot connection stable. All 5 agents online and responsive.' },
+    { agent: 'EUNCHAE', emoji: '🛡️', msg: 'Email check complete. All unread messages organized.' },
+    { agent: 'SAKURA', emoji: '🌸', msg: 'Knowledge base updated with latest project information.' }
   ];
 
   document.addEventListener('DOMContentLoaded', initSentinel);
@@ -235,11 +235,11 @@
   function seedInitialLogs() {
     logFeed.innerHTML = '';
     const initialSeed = [
-      { agent: 'EUNCHAE', emoji: '🛡️', msg: 'Sentinel daemon initialized. Local direct inference telemetry linked.' },
-      { agent: 'SAKURA', emoji: '🌸', msg: 'Chief of Staff copilot indexed. Ready for recruiter inquiries.' },
-      { agent: 'KAZUHA', emoji: '💻', msg: 'DOM telemetry nominal. CSS token contrast verified WCAG AAA.' },
-      { agent: 'CHAEWON', emoji: '⭐', msg: 'Career pipeline idle. Headless ATS-compliant PDF ready.' },
-      { agent: 'LSFM-CORE', emoji: '🌐', msg: 'All 5 agent streams nominal across zero-cost open tier runtime.' }
+      { agent: 'EUNCHAE', emoji: '🛡️', msg: 'Sentinel monitoring online. System health normal.' },
+      { agent: 'SAKURA', emoji: '🌸', msg: 'Team Coordinator ready. Ask Sakura is online.' },
+      { agent: 'KAZUHA', emoji: '💻', msg: 'Frontend agent online. Layout and contrast verified.' },
+      { agent: 'CHAEWON', emoji: '⭐', msg: 'Career assistant online. PDF resume generator ready.' },
+      { agent: 'LSFM-CORE', emoji: '🌐', msg: 'All 5 AI agents online and running smoothly.' }
     ];
 
     initialSeed.forEach(item => {
@@ -265,9 +265,9 @@
     if (!pingBtn) return;
     pingBtn.disabled = true;
     const originalText = pingBtn.innerHTML;
-    pingBtn.innerHTML = `<span>⏳ Pinging Squad...</span>`;
+    pingBtn.innerHTML = `<span>⏳ Pinging Team...</span>`;
 
-    appendLog('SENTINEL', '⚡', 'Initiating live probe across 5 local/cloud agent streams...', true);
+    appendLog('SENTINEL', '⚡', 'Checking status across all 5 AI agents...', true);
 
     // Visual pulse across all agent cards
     const agentItems = document.querySelectorAll('.agent-fleet-item');
@@ -280,13 +280,13 @@
 
     setTimeout(() => {
       const pingMs = Math.floor(Math.random() * 6) + 14;
-      appendLog('SENTINEL', '🟢', `Probe complete: 5/5 agents nominal. Latency: ${pingMs}ms. Zero dropped packets.`, true);
+      appendLog('SENTINEL', '🟢', `Check complete: All 5 agents online. Response time: ${pingMs}ms.`, true);
       
       if (heroPing) heroPing.textContent = `${pingMs}ms`;
       if (hudPing) hudPing.textContent = `${pingMs}ms`;
 
       pingBtn.disabled = false;
-      pingBtn.innerHTML = `<span>✓ Fleet Responding (${pingMs}ms)</span>`;
+      pingBtn.innerHTML = `<span>✓ Team Online (${pingMs}ms)</span>`;
 
       setTimeout(() => {
         pingBtn.innerHTML = originalText;
@@ -297,22 +297,22 @@
   // --- Copy Architecture Report ---
   function handleCopyReport() {
     const time = getManilaTimestamp();
-    const report = `# Hans Aaron Laureles — Multi-Agent System Telemetry Report
+    const report = `# Hans Aaron Laureles — AI Team Status Report
 Timestamp: ${time} (Manila UTC+8)
-Station: Manila, Philippines [14.5995° N, 120.9842° E]
-Availability: Open for Full-Time & Remote AI Systems Engineering Roles (2026)
+Location: Manila, Philippines
+Availability: Open for Full-Time & Remote AI & Software Engineering Roles (2026)
 
-## Fleet Status (5/5 Agents Nominal)
-- 🌸 Sakura (Chief of Staff): Recruiter Copilot & Multi-Agent Orchestration
-- ⭐ Chaewon (Career Agent): Headless Chromium PDF Resume & Keyword Matching
-- 💻 Kazuha (Frontend Agent): Design System Tokens & DOM Telemetry
-- 🎨 Yunjin (Portfolio Agent): Case Study Sync & Interactive Demo Packaging
-- 🛡️ Eunchae (Guardian Agent): Process Health Vitals & Automated Inbox Triage
+## AI Team Status (5/5 Agents Online)
+- 🌸 Sakura (Team Coordinator): Daily Morning Updates & Recruiter Assistant
+- ⭐ Chaewon (Career Assistant): Single-Page Resume Generator & Job Matching
+- 💻 Kazuha (Frontend Agent): Clean UI & Modern Web Design
+- 🎨 Yunjin (Design Reviewer): Portfolio & Case Study Synchronization
+- 🛡️ Eunchae (System Health): Uptime Monitoring & Inbox Organization
 
-## Infrastructure & Runtime
-- Inference: Hybrid Local DirectML (AMD RX 6600 XT) / Cloud Groq & Gemini
-- Operational Cost: $0.00/month (Open-tier & local GPU)
-- Portfolio URL: https://hanslaureles.com
+## Architecture & Hosting
+- AI Models: Hybrid Local GPU + Free-tier Cloud APIs
+- Hosting Cost: $0.00/month
+- Portfolio: https://hanslaureles.com
 - GitHub: https://github.com/hanslaureles
 `;
 

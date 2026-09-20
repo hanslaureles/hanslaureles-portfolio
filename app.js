@@ -194,19 +194,25 @@
       if (showcasePrevBtn) showcasePrevBtn.disabled = currentScroll <= 6;
       if (showcaseNextBtn) showcaseNextBtn.disabled = currentScroll >= maxScroll - 6;
 
-      // Calculate active card index (1-based) based on first primarily visible card
-      const trackLeft = showcaseTrack.getBoundingClientRect().left;
+      // Calculate active card index (1-based)
       let activeIdx = 1;
-      for (let i = 0; i < cards.length; i++) {
-        const rect = cards[i].getBoundingClientRect();
-        if (rect.right > trackLeft + (rect.width * 0.4)) {
-          activeIdx = i + 1;
-          break;
+      if (maxScroll > 0) {
+        if (currentScroll >= maxScroll - 16) {
+          // Reached the end of the track: show the final card
+          activeIdx = totalCards;
+        } else if (currentScroll <= 10) {
+          activeIdx = 1;
+        } else {
+          // Map scroll position smoothly across intermediate cards
+          const fraction = currentScroll / maxScroll;
+          activeIdx = Math.min(totalCards, Math.max(1, Math.round(fraction * (totalCards - 1)) + 1));
         }
       }
 
       if (showcaseCounter) {
-        showcaseCounter.textContent = `0${activeIdx} / 0${totalCards}`;
+        const currentStr = String(activeIdx).padStart(2, '0');
+        const totalStr = String(totalCards).padStart(2, '0');
+        showcaseCounter.textContent = `${currentStr} / ${totalStr}`;
       }
 
       // Update progress thumb
