@@ -3433,16 +3433,20 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .agent-fleet-identity {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
+  flex: 1;
 }
 
 .agent-fleet-emoji {
   font-size: 1.1rem;
+  flex-shrink: 0;
 }
 
 .agent-fleet-name {
@@ -3461,8 +3465,14 @@ a {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 600;
-  padding: 2px 7px;
+  padding: 3px 9px;
   border-radius: var(--radius-full);
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  line-height: 1;
 }
 
 .agent-status-badge.badge-online {
