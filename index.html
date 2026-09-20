@@ -131,32 +131,60 @@
 
         <div class="hero-headline-wrap">
           <h1 class="hero-headline">
-            Building intelligent AI agents that work for you.<br>
-            <span class="serif-italic">Software engineering with clean, modern design.</span>
+            Building intelligent AI agents that work for you.
           </h1>
         </div>
 
         <div class="hero-unified-box">
-          <p class="lead">
-            I'm Hans Aaron Laureles—a Computer Science graduate from DLSU–Dasmariñas building intelligent AI agents, full-stack web applications, and fast, modern user interfaces.
-          </p>
+          <div class="hero-box-header">
+            <div class="hero-chip">
+              <span class="hero-chip-icon">🎓</span>
+              <span>BS Computer Science · DLSU-D</span>
+            </div>
+            <div class="hero-chip hero-chip-live">
+              <span class="badge-dot"></span>
+              <span>Available for 2026 AI / Software Roles</span>
+            </div>
+          </div>
+
+          <div class="hero-box-body">
+            <p class="hero-lead-text">
+              I'm <strong>Hans Aaron Laureles</strong>—an engineer building intelligent AI agents, full-stack web applications, and fast, modern user interfaces that feel intuitive and alive.
+            </p>
+          </div>
 
           <div class="hero-actions">
             <a href="#selected-work" class="btn btn-primary">Explore Selected Work ↓</a>
-            <a href="case-lsfm.html" class="btn btn-outline">LSFM AI HQ ↗</a>
+            <a href="case-lsfm.html" class="btn btn-outline">
+              <span>LSFM AI HQ</span>
+              <span class="btn-micro-badge">5 Agents</span>
+              <span>↗</span>
+            </a>
             <a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Resume (PDF) ↗</a>
             <a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 6px;">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-              GitHub ↗
+              <span>GitHub ↗</span>
             </a>
           </div>
 
-          <div class="hero-meta-summary mono">
-            <span>Focus: AI Agents &amp; Full-Stack</span>
-            <span class="meta-sep">·</span>
-            <span>Degree: BS Computer Science</span>
-            <span class="meta-sep">·</span>
-            <span>Location: Manila, Philippines</span>
+          <div class="hero-stats-strip">
+            <div class="hero-stat-cell">
+              <div class="hero-stat-num">5</div>
+              <div class="hero-stat-label">AI Agents Online</div>
+              <div class="hero-stat-sub">Autonomous Swarm</div>
+            </div>
+            <div class="hero-stat-sep"></div>
+            <div class="hero-stat-cell">
+              <div class="hero-stat-num">6</div>
+              <div class="hero-stat-label">Shipped Case Studies</div>
+              <div class="hero-stat-sub">Production Web &amp; AI</div>
+            </div>
+            <div class="hero-stat-sep"></div>
+            <div class="hero-stat-cell">
+              <div class="hero-stat-num">$0</div>
+              <div class="hero-stat-label">Monthly Cloud Cost</div>
+              <div class="hero-stat-sub">Local GPU + Free Cloud</div>
+            </div>
           </div>
         </div>
 
@@ -238,8 +266,47 @@
                 Runs automated software tests, monitors computer memory, and organizes unread emails.
               </div>
               <span class="agent-stack-tag">System Health</span>
+          </div>
+
+          <!-- Interactive Terminal Window: AI Team Console -->
+          <div class="terminal-window" role="region" aria-label="Interactive AI Team Console">
+            <div class="terminal-topbar">
+              <div class="terminal-dots">
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+              </div>
+              <div class="terminal-title">ai-team-console // quick-commands.sh</div>
+              <div class="terminal-top-badge mono">
+                <span class="term-pulse-dot"></span>
+                <span>AI TEAM CONSOLE · ONLINE</span>
+              </div>
+            </div>
+
+            <!-- Quick Action Suggestion Chips -->
+            <div class="terminal-quick-actions">
+              <span class="term-quick-label mono">QUICK COMMANDS:</span>
+              <button class="term-chip highlight" data-cmd="status" aria-label="Check agent status">status 🟢</button>
+              <button class="term-chip highlight" data-cmd="agents" aria-label="List AI agents">agents 🤖</button>
+              <button class="term-chip highlight" data-cmd="projects" aria-label="View selected projects">projects 🚀</button>
+              <button class="term-chip" data-cmd="resume" aria-label="View resume PDF">resume (PDF) 📄 ↗</button>
+              <button class="term-chip highlight" data-cmd="sakura" aria-label="Open Ask Sakura assistant">ask sakura 🌸</button>
+              <button class="term-chip" data-cmd="github" aria-label="Open GitHub">github 🐙 ↗</button>
+              <button class="term-chip" data-cmd="contact" aria-label="Show contact information">contact ✉️</button>
+              <button class="term-chip" data-cmd="clear" aria-label="Clear console">clear ✕</button>
+            </div>
+
+            <div class="terminal-body" id="terminal-viewport">
+              <div id="terminal-output"></div>
+              <div id="terminal-input-row" class="terminal-input-row">
+                <span class="term-prompt">guest@hanslaureles:~$</span>
+                <div class="terminal-input-wrapper">
+                  <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" aria-label="Terminal command prompt" placeholder="type 'help' or click a command...">
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
 
       </div>
@@ -790,6 +857,7 @@
   </div>
 
   <script src="app.js?v=2.1.0"></script>
+  <script src="terminal.js?v=2.1.0"></script>
   <script src="sakura-copilot.js?v=2.1.0"></script>
   <script src="sentinel.js?v=2.1.0"></script>
 </body>

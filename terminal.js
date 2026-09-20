@@ -24,43 +24,32 @@
 
     // Available Commands for Auto-complete
     const COMMANDS = [
-      'sentinel',
-      'telemetry',
-      'git log',
-      'timeline',
-      'milestones',
       'help',
       'status',
-      'benchmark',
-      'skills',
-      'case-lsfm',
-      'case-memory',
-      'case-aura',
-      'aura',
-      'sakura',
-      'copilot',
-      'recall',
-      'rules',
+      'agents',
+      'projects',
       'resume',
+      'sakura',
       'github',
-      'rag',
-      'whoami',
       'contact',
-      'theme',
+      'sentinel',
+      'git log',
+      'about',
       'clear'
     ];
 
     // Initial Welcome Banner
     const INITIAL_BANNER = `
-<div class="term-line term-comment"># Initializing LSFM Autonomous Hybrid Multi-Agent System...</div>
-<div class="term-line"><span class="term-prompt">&gt;</span> <span class="term-cmd">python -u run_all.py --mode production --inference hybrid</span></div>
-<div class="term-line"><span class="term-success">[LSFM-DAEMON]</span> 5 Discord Gateway streams: Sakura, Chaewon, Yunjin, Kazuha, Eunchae... <span class="term-badge success">ONLINE</span></div>
-<div class="term-line"><span class="term-success">[INFERENCE-ROUTER]</span> Local Ollama on AMD RX 6600 XT (DirectML) initialized. <span class="term-cyan">TTFT: 190ms</span>.</div>
-<div class="term-line"><span class="term-success">[INFERENCE-ROUTER]</span> Cloud Groq Provider (Qwen 2.5 70B) connected. <span class="term-cyan">Failover: 1200ms</span>.</div>
-<div class="term-line"><span class="term-success">[GMAIL-ENGINE]</span> Authenticated OAuth2. Batch classified 123 emails into 10 labels.</div>
-<div class="term-line"><span class="term-success">[PDF-ENGINE]</span> Microsoft Edge Headless: compiled single-page ATS-compliant PDF in 840ms.</div>
-<div class="term-line"><span class="term-accent">&gt;&gt; ALL SYSTEMS OPERATIONAL // INTERACTIVE SHELL READY</span></div>
-<div class="term-line term-muted" style="margin-top: 6px;">Type <span class="term-highlight">'help'</span> or click the suggestion chips below to explore:</div>
+<div class="term-line term-comment"># Connecting to Hans's AI Agent Team...</div>
+<div class="term-line"><span class="term-prompt">&gt;</span> <span class="term-cmd">check-team --status</span></div>
+<div class="term-line"><span class="term-success">[AI TEAM]</span> 5 Agents Online: Sakura, Chaewon, Yunjin, Kazuha, Eunchae... <span class="term-badge success">ONLINE</span></div>
+<div class="term-line"><span class="term-success">[COORDINATOR]</span> Sakura ready for questions &amp; daily updates.</div>
+<div class="term-line"><span class="term-success">[CAREER]</span> Chaewon ready with single-page resume &amp; job matching.</div>
+<div class="term-line"><span class="term-success">[FRONTEND]</span> Kazuha verified responsive design &amp; clean code.</div>
+<div class="term-line"><span class="term-success">[DESIGN]</span> Yunjin verified 6 case studies &amp; project demos.</div>
+<div class="term-line"><span class="term-success">[SYSTEM HEALTH]</span> Eunchae monitoring uptime &amp; inbox organization.</div>
+<div class="term-line"><span class="term-accent">&gt;&gt; ALL 5 AGENTS ONLINE // INTERACTIVE CONSOLE READY</span></div>
+<div class="term-line term-muted" style="margin-top: 6px;">Type <span class="term-highlight">'help'</span> or click any command button below to explore:</div>
 `.trim();
 
     outputContainer.innerHTML = INITIAL_BANNER;
@@ -142,7 +131,7 @@
       // Render user command line in output
       appendOutput(`
         <div class="term-line">
-          <span class="term-prompt">guest@lsfm-swarm:~$</span>
+          <span class="term-prompt">guest@hanslaureles:~$</span>
           <span class="term-cmd-echo">${escapeHtml(trimmed)}</span>
         </div>
       `);
@@ -152,22 +141,6 @@
       const args = parts.slice(1);
 
       switch (command) {
-        case 'git':
-        case 'git-log':
-        case 'timeline':
-        case 'milestones':
-        case 'log':
-        case 'history':
-          showGitLog();
-          break;
-
-        case 'sentinel':
-        case 'telemetry':
-        case 'squad':
-        case 'ping':
-          showSentinelTelemetry(args);
-          break;
-
         case 'help':
         case '?':
           showHelp();
@@ -177,9 +150,33 @@
           showStatus();
           break;
 
-        case 'benchmark':
-        case 'benchmarks':
-          showBenchmarks();
+        case 'agents':
+        case 'agent':
+        case 'team':
+        case 'squad':
+          showAgents();
+          break;
+
+        case 'projects':
+        case 'works':
+        case 'portfolio':
+        case 'cases':
+          showProjects();
+          break;
+
+        case 'sentinel':
+        case 'telemetry':
+        case 'ping':
+          showSentinelTelemetry(args);
+          break;
+
+        case 'git':
+        case 'git-log':
+        case 'timeline':
+        case 'milestones':
+        case 'log':
+        case 'history':
+          showGitLog();
           break;
 
         case 'skills':
@@ -354,96 +351,152 @@
 
     function showHelp() {
       appendOutput(`
-<div class="term-line term-cyan" style="font-weight: 600;">AVAILABLE RECRUITER PLAYGROUND COMMANDS:</div>
+<div class="term-line term-cyan" style="font-weight: 600;">AVAILABLE COMMANDS:</div>
 <table class="term-table">
-  <tr><td><span class="term-highlight">sentinel</span></td><td>Launch Ambient Agent Swarm Telemetry &amp; Vitals HUD</td></tr>
-  <tr><td><span class="term-highlight">git log</span></td><td>Interactive Git branch graph of career milestones &amp; education</td></tr>
-  <tr><td><span class="term-highlight">status</span></td><td>Live ping & telemetry of the 5 LSFM AI HQ daemons</td></tr>
-  <tr><td><span class="term-highlight">benchmark</span></td><td>Local AMD DirectML vs Cloud Groq latency & cost matrix</td></tr>
-  <tr><td><span class="term-highlight">skills</span></td><td>Interactive 3-Pillar Systems Engineering Triad</td></tr>
-  <tr><td><span class="term-highlight">case-lsfm</span></td><td>Architecture briefing for Flagship LSFM Multi-Agent HQ</td></tr>
-  <tr><td><span class="term-highlight">case-memory</span></td><td>Briefing for Cognitive Memory Core &amp; Self-Improving Engine</td></tr>
-  <tr><td><span class="term-highlight">case-aura</span></td><td>Artisanal coffeehouse e-commerce case study</td></tr>
-  <tr><td><span class="term-highlight">aura</span></td><td>⚡ Launch live interactive Aura Coffee web store</td></tr>
-  <tr><td><span class="term-highlight">sakura</span></td><td>🌸 Open Ask Sakura Recruiter AI Copilot drawer</td></tr>
-  <tr><td><span class="term-highlight">recall &lt;query&gt;</span></td><td>Query Cognitive Memory for past heuristics (e.g. 'recall nav')</td></tr>
-  <tr><td><span class="term-highlight">rules</span></td><td>Displays workspace learned rules compiled from real-world post-mortems</td></tr>
-  <tr><td><span class="term-highlight">resume</span></td><td>Directly triggers download of Hans's 1-page ATS Resume PDF</td></tr>
-  <tr><td><span class="term-highlight">github</span></td><td>Opens Hans's official GitHub profile & repositories in new tab</td></tr>
-  <tr><td><span class="term-highlight">rag &lt;query&gt;</span></td><td>Query Kazuha's vector vault (e.g. 'rag DirectML', 'rag tokens')</td></tr>
-  <tr><td><span class="term-highlight">whoami</span></td><td>Displays current session role and candidate bio</td></tr>
-  <tr><td><span class="term-highlight">contact</span></td><td>Displays Hans's email, GitHub, and LinkedIn coordinates</td></tr>
-  <tr><td><span class="term-highlight">theme [dark|light]</span></td><td>Toggle portfolio visual theme directly from CLI</td></tr>
-  <tr><td><span class="term-highlight">clear</span></td><td>Clear terminal viewport</td></tr>
+  <tr><td><span class="term-highlight">status</span></td><td>Check live status of all 5 AI agents</td></tr>
+  <tr><td><span class="term-highlight">agents</span></td><td>Learn what each AI agent does</td></tr>
+  <tr><td><span class="term-highlight">projects</span></td><td>Explore selected case studies &amp; live demos</td></tr>
+  <tr><td><span class="term-highlight">resume</span></td><td>Download Hans's single-page PDF resume</td></tr>
+  <tr><td><span class="term-highlight">sakura</span></td><td>🌸 Chat with Ask Sakura AI assistant</td></tr>
+  <tr><td><span class="term-highlight">sentinel</span></td><td>Open full system health modal</td></tr>
+  <tr><td><span class="term-highlight">github</span></td><td>Open GitHub profile &amp; repositories</td></tr>
+  <tr><td><span class="term-highlight">contact</span></td><td>Display email and professional links</td></tr>
+  <tr><td><span class="term-highlight">git log</span></td><td>View timeline of milestones &amp; education</td></tr>
+  <tr><td><span class="term-highlight">clear</span></td><td>Clear terminal screen</td></tr>
 </table>
-<div class="term-line term-muted" style="margin-top: 6px;">💡 Tip: Press <span class="term-cyan">[Tab]</span> for autocomplete, <span class="term-cyan">[↑/↓]</span> for command history.</div>
+<div class="term-line term-muted" style="margin-top: 6px;">💡 Tip: Click any quick command button above, or press <span class="term-cyan">[Tab]</span> for autocomplete.</div>
       `.trim());
     }
 
     function showStatus() {
       appendOutput(`
-<div class="term-line term-cyan" style="font-weight: 600;">// LSFM AI HQ — DAEMON HEALTH &amp; TELEMETRY</div>
+<div class="term-line term-cyan" style="font-weight: 600;">// AI TEAM — LIVE STATUS</div>
 <table class="term-table">
   <thead>
     <tr class="term-muted">
-      <th>AGENT</th><th>ROLE</th><th>ACTIVE MODEL</th><th>LATENCY</th><th>STATUS</th>
+      <th>AGENT</th><th>ROLE</th><th>SPEED</th><th>STATUS</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>🌸 Sakura</td><td>Chief of Staff</td><td>Groq · Qwen 2.5 70B</td><td class="term-cyan">182ms</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🌸 Sakura</td><td>Team Coordinator</td><td class="term-cyan">18ms</td><td><span class="term-badge success">● ONLINE</span></td>
     </tr>
     <tr>
-      <td>🐯 Chaewon</td><td>Career Strategist</td><td>Hybrid Failover Router</td><td class="term-cyan">210ms</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🐯 Chaewon</td><td>Career Assistant</td><td class="term-cyan">18ms</td><td><span class="term-badge success">● ONLINE</span></td>
     </tr>
     <tr>
-      <td>🐍 Yunjin</td><td>Document Architect</td><td>DirectML · Local 7B</td><td class="term-cyan">190ms</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🐍 Yunjin</td><td>Design Reviewer</td><td class="term-cyan">19ms</td><td><span class="term-badge success">● ONLINE</span></td>
     </tr>
     <tr>
-      <td>🦢 Kazuha</td><td>Knowledge Officer</td><td>SQLite Vector RAG (3072d)</td><td class="term-cyan">42ms</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🦢 Kazuha</td><td>Frontend &amp; Code</td><td class="term-cyan">17ms</td><td><span class="term-badge success">● ONLINE</span></td>
     </tr>
     <tr>
-      <td>🥔 Eunchae</td><td>Inbox &amp; Ops Triage</td><td>Gmail API · Batch Classifier</td><td class="term-cyan">310ms</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🥔 Eunchae</td><td>System Health</td><td class="term-cyan">20ms</td><td><span class="term-badge success">● ONLINE</span></td>
     </tr>
   </tbody>
 </table>
-<div class="term-line term-muted" style="margin-top: 4px;">Hardware: AMD Radeon RX 6600 XT (8GB VRAM) · DirectML · Zero Recurring Cost</div>
-<div class="term-line term-cyan" style="margin-top: 4px;">💡 Tip: Type <span class="term-highlight">'sentinel'</span> or click [ sentinel 📡 ] to open the full mission-control HUD.</div>
+<div class="term-line term-muted" style="margin-top: 4px;">Location: Manila, Philippines (UTC+8) · Zero Cloud Hosting Cost</div>
+<div class="term-line term-cyan" style="margin-top: 4px;">💡 Tip: Type <span class="term-highlight">'agents'</span> to see what each agent does, or <span class="term-highlight">'projects'</span> to view work.</div>
+      `.trim());
+    }
+
+    function showAgents() {
+      appendOutput(`
+<div class="term-line term-cyan" style="font-weight: 600;">// AI TEAM — ROSTER &amp; RESPONSIBILITIES</div>
+<div class="term-block" style="margin: 6px 0;">
+  <div class="term-line"><strong class="term-highlight">🌸 Sakura (Team Coordinator)</strong></div>
+  <div class="term-line term-muted">Sends daily morning updates, schedules tasks, coordinates between agents, and answers recruiter questions via Ask Sakura.</div>
+</div>
+<div class="term-block" style="margin: 6px 0;">
+  <div class="term-line"><strong class="term-highlight">🐯 Chaewon (Career Assistant)</strong></div>
+  <div class="term-line term-muted">Scouts software &amp; AI job openings, matches role requirements, and generates single-page PDF resumes.</div>
+</div>
+<div class="term-block" style="margin: 6px 0;">
+  <div class="term-line"><strong class="term-highlight">🐍 Yunjin (Design Reviewer)</strong></div>
+  <div class="term-line term-muted">Reviews case studies, checks design systems, and formats single-page resume documents.</div>
+</div>
+<div class="term-block" style="margin: 6px 0;">
+  <div class="term-line"><strong class="term-highlight">🦢 Kazuha (Frontend &amp; Code)</strong></div>
+  <div class="term-line term-muted">Checks code quality, reviews Git changes, and tests web components for accessibility and speed.</div>
+</div>
+<div class="term-block" style="margin: 6px 0;">
+  <div class="term-line"><strong class="term-highlight">🥔 Eunchae (System Health)</strong></div>
+  <div class="term-line term-muted">Monitors uptime, tests computer memory, and organizes unread emails into folders automatically.</div>
+</div>
+      `.trim());
+    }
+
+    function showProjects() {
+      appendOutput(`
+<div class="term-line term-cyan" style="font-weight: 600;">// SELECTED WORKS &amp; CASE STUDIES</div>
+<table class="term-table">
+  <tr>
+    <td><strong class="term-accent">01. LSFM AI HQ</strong></td>
+    <td>Autonomous AI Team (5 Agents)</td>
+    <td><a href="case-lsfm.html" class="term-link">Case Study ↗</a></td>
+  </tr>
+  <tr>
+    <td><strong class="term-accent">02. Lumina Analytics</strong></td>
+    <td>SaaS Analytics &amp; Data Visualization</td>
+    <td><a href="case-lumina.html" class="term-link">Case Study ↗</a></td>
+  </tr>
+  <tr>
+    <td><strong class="term-accent">03. Vellum OS</strong></td>
+    <td>Calm Mental Wellness Mobile Interface</td>
+    <td><a href="case-vellum.html" class="term-link">Case Study ↗</a></td>
+  </tr>
+  <tr>
+    <td><strong class="term-accent">04. FinTrack App</strong></td>
+    <td>Personal Finance &amp; Budgeting Mobile UX</td>
+    <td><a href="case-fintrack.html" class="term-link">Case Study ↗</a></td>
+  </tr>
+  <tr>
+    <td><strong class="term-accent">05. Aura Coffee &amp; Kitchen</strong></td>
+    <td>Artisanal Coffeehouse Web Store (Live Demo)</td>
+    <td><a href="aura-store/index.html" target="_blank" class="term-link">Launch Store ↗</a></td>
+  </tr>
+  <tr>
+    <td><strong class="term-accent">06. Cognitive Memory Core</strong></td>
+    <td>Long-term Memory Engine for AI Agents</td>
+    <td><a href="case-memory.html" class="term-link">Case Study ↗</a></td>
+  </tr>
+</table>
+<div class="term-line term-muted" style="margin-top: 6px;">💡 Tip: Click any link above or scroll down to the Selected Works showcase.</div>
       `.trim());
     }
 
     function showSentinelTelemetry(args) {
       appendOutput(`
 <div class="term-line term-success">============================================================</div>
-<div class="term-line term-accent" style="font-weight: 600;">📡 SENTINEL // AGENT SWARM TELEMETRY &amp; SYSTEM VITALS</div>
+<div class="term-line term-accent" style="font-weight: 600;">📡 SENTINEL // AI TEAM STATUS &amp; SYSTEM HEALTH</div>
 <div class="term-line term-success">============================================================</div>
-<div class="term-line">Station: Manila, Philippines [14.5995° N, 120.9842° E] · UTC+8</div>
-<div class="term-line">Swarm Health: <span class="term-badge success">● 5/5 NOMINAL</span> · Latency: <span class="term-cyan">18ms</span> · Uptime: <span class="term-cyan">99.9%</span></div>
+<div class="term-line">Location: Manila, Philippines · UTC+8</div>
+<div class="term-line">Team Health: <span class="term-badge success">● 5/5 ONLINE</span> · Response Speed: <span class="term-cyan">18ms</span></div>
 <table class="term-table" style="margin-top: 6px;">
   <thead>
     <tr class="term-muted">
-      <th>AGENT</th><th>ROLE</th><th>RUNTIME</th><th>STATUS</th>
+      <th>AGENT</th><th>ROLE</th><th>STATUS</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>🌸 Sakura</td><td>Chief of Staff</td><td>Groq / Gemini Hybrid</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🌸 Sakura</td><td>Team Coordinator</td><td><span class="term-badge success">● ONLINE</span></td>
     </tr>
     <tr>
-      <td>⭐ Chaewon</td><td>Career Agent</td><td>Headless Edge AST</td><td><span class="term-badge success">● READY</span></td>
+      <td>⭐ Chaewon</td><td>Career Assistant</td><td><span class="term-badge success">● ONLINE</span></td>
     </tr>
     <tr>
-      <td>💻 Kazuha</td><td>Frontend Agent</td><td>DOM &amp; Design System</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>💻 Kazuha</td><td>Frontend Agent</td><td><span class="term-badge success">● ONLINE</span></td>
     </tr>
     <tr>
-      <td>🎨 Yunjin</td><td>Portfolio Agent</td><td>Markdown &amp; Asset Sync</td><td><span class="term-badge success">● READY</span></td>
+      <td>🎨 Yunjin</td><td>Design Reviewer</td><td><span class="term-badge success">● ONLINE</span></td>
     </tr>
     <tr>
-      <td>🛡️ Eunchae</td><td>Guardian Agent</td><td>OAuth2 &amp; Process Vitals</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🛡️ Eunchae</td><td>System Health</td><td><span class="term-badge success">● ONLINE</span></td>
     </tr>
   </tbody>
 </table>
-<div class="term-line term-cyan" style="margin-top: 6px;">[SENTINEL-DISPATCH] Launching Sentinel Telemetry HUD...</div>
+<div class="term-line term-cyan" style="margin-top: 6px;">[SENTINEL] Opening System Health HUD...</div>
       `.trim());
 
       if (window.openSentinelHUD) {
