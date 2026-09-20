@@ -565,6 +565,7 @@ a {
   margin-top: 26px;
   padding-top: 22px;
   border-top: 1px solid var(--border-subtle);
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .hero-stat-cell {
@@ -572,28 +573,31 @@ a {
 }
 
 .hero-stat-num {
-  font-family: var(--font-serif);
+  font-family: 'Courier New', Courier, monospace;
   font-size: clamp(1.8rem, 2.8vw, 2.4rem);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
-  line-height: 1;
-}
-
-.hero-stat-num.text-label {
-  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
+.hero-stat-num.text-label {
+  font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
 .hero-stat-label {
-  font-family: var(--font-sans);
+  font-family: 'Courier New', Courier, monospace;
   font-size: 0.84rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
   margin-top: 5px;
+  letter-spacing: -0.01em;
 }
 
 .hero-stat-sub {
-  font-family: var(--font-mono);
+  font-family: 'Courier New', Courier, monospace;
   font-size: 0.72rem;
   color: var(--text-muted);
   margin-top: 2px;
@@ -918,6 +922,170 @@ a {
   background: var(--accent);
   border-radius: var(--radius-full);
   transition: left 0.1s ease-out, width 0.1s ease-out;
+}
+
+/* Selected Works: Future Projects & Coming Soon Container */
+.showcase-future-container {
+  margin-top: 36px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.008) 100%), var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 26px 32px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-normal), transform var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-future-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.6;
+}
+
+.showcase-future-container:hover {
+  border-color: rgba(var(--accent-rgb, 100, 200, 255), 0.35);
+}
+
+.future-container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.future-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+}
+
+.future-status-pill {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border: 1px dashed var(--border);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.04em;
+}
+
+.future-container-body {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 32px;
+  align-items: center;
+  padding-top: 18px;
+}
+
+.future-title {
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.future-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.future-meta-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.future-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.future-tag {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 4px 11px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.future-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.future-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent);
+  color: #000;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.future-btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.future-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.future-btn-secondary:hover {
+  border-color: var(--text-primary);
+  background: var(--bg-subtle);
+}
+
+@media (max-width: 880px) {
+  .future-container-body {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .showcase-future-container {
+    padding: 20px 22px;
+  }
 }
 
 /* Legacy Project Visual Feature Cards Grid (kept for fallback) */
