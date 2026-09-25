@@ -15,14 +15,15 @@
 ## 📖 Overview
 
 The official web engineering portfolio of **Hans Aaron Laureles**, showcasing:
+- **✨ Manas: Ciel Divine Wisdom AI Copilot (`case-ciel.html`)**: Real-time voice copilot and supervisory intelligence featuring sub-350ms Thought Acceleration DSP (1.25x tempo, +5Hz pitch), Groq Whisper Large v3 Turbo transcription, 8-turn sliding working memory buffer, direct bidirectional Obsidian Second Brain synchronization, and proactive 4-domain telemetry sentinels.
 - **Flagship Multi-Agent Architecture**: The **LSFM AI HQ** autonomous 5-agent operations swarm running hybrid cloud/local inference on consumer AMD Radeon RX 6600 XT silicon via DirectML with automated tools (Google Workspace OAuth2, Headless Edge vector PDF engine, Git Sentinel, AST sandbox testing).
 - **🌸 "Ask Sakura" Recruiter AI Copilot (`sakura-copilot.js`)**: In-browser client-side BM25 grounded knowledge assistant with 12 curated knowledge chunks, quick suggestion chips, citation cards, and direct deep-links.
 - **📡 Ambient Agent Telemetry & Sentinel HUD (`sentinel.js`)**: Interactive hero beacon with real-time UTC+8 Manila clock, simulated sub-20ms ping jitter, 5-agent fleet roster, live event telemetry stream, simulated fleet probe, and clipboard architecture report export.
-- **🌿 `$ git log` Career & Milestone Timeline**: Dual-mode interactive timeline switcher on `about.html` (`[ 📄 Executive Cards ]` vs `[ 🌿 $ git log --graph ]`) with 1-click copyable commit SHAs, milestone tags (v1.0 to v2.5), and interactive terminal `git log` command.
-- **🎠 Kinetic Curated Showcase Carousel**: Horizontal snap scroll track with `←` / `→` arrow buttons, live active card index counter (`01 / 06` to `06 / 06`), and responsive sliding progress bar.
+- **🌿 `$ git log` Career & Milestone Timeline**: Dual-mode interactive timeline switcher on `about.html` (`[ 📄 Executive Cards ]` vs `[ 🌿 $ git log --graph ]`) with 1-click copyable commit SHAs, milestone tags (v1.0 to v3.0), and interactive terminal `git log` command.
+- **🎠 Kinetic Curated Showcase Carousel**: Horizontal snap scroll track with `←` / `→` arrow buttons, live active card index counter (`01 / 07` to `07 / 07`), and responsive sliding progress bar.
 - **☕ Aura Coffee & Kitchen Live Store (`aura-store/`)**: Fully functional artisanal coffeehouse e-commerce web app featuring multi-option drink customization, dynamic slide-over bag drawer, and seamless 1-page checkout.
 - **🔬 Cognitive Memory Core & Simulator (`case-memory.html#simulator`)**: Zero-dependency BM25 episodic recall (<15ms) developer agent engine eliminating AI session amnesia with automated post-mortem reflections and permanent workspace rule crystallization.
-- **💻 Interactive Unix Playground Terminal (`terminal.js`)**: Authentic in-browser command line supporting tab autocomplete, command history (`↑`/`↓`), quick-action execution chips, and live architecture queries (`sentinel`, `git log`, `status`, `benchmark`, `recall`, `aura`, `sakura`).
+- **💻 Interactive Unix Playground Terminal (`terminal.js`)**: Authentic in-browser command line supporting tab autocomplete, command history (`↑`/`↓`), quick-action execution chips, and live architecture queries (`ciel`, `sentinel`, `git log`, `status`, `benchmark`, `recall`, `aura`, `sakura`).
 - **🏛️ Swiss Editorial Design System**: Rigorous typographic scale (Inter, Newsreader, JetBrains Mono), CSS Custom Properties, and responsive dark/light theme switching.
 
 ---

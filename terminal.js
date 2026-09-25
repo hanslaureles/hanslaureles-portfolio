@@ -24,10 +24,16 @@
 
     // Available Commands for Auto-complete
     const COMMANDS = [
+      'ciel',
       'help',
       'status',
       'agents',
+      'vitals',
+      'swarm',
       'projects',
+      'audit',
+      'rules',
+      'brain',
       'resume',
       'sakura',
       'github',
@@ -141,6 +147,13 @@
       const args = parts.slice(1);
 
       switch (command) {
+        case 'ciel':
+        case 'manas':
+        case 'wisdom':
+        case 'hud':
+          showCiel();
+          break;
+
         case 'help':
         case '?':
           showHelp();
@@ -203,14 +216,64 @@
           break;
 
         case 'recall':
-        case 'memory':
         case 'heuristics':
           simulateRecall(args.join(' '));
+          break;
+
+        case 'memory':
+          if (args.length > 0) {
+            simulateRecall(args.join(' '));
+          } else {
+            showRules();
+          }
           break;
 
         case 'rules':
         case 'guidelines':
           showRules();
+          break;
+
+        case 'audit':
+        case 'yunjin':
+          showAuditReport();
+          break;
+
+        case 'brain':
+        case 'obsidian':
+        case 'mcp':
+          showBrain();
+          break;
+
+        case 'vitals':
+        case 'watchdog':
+        case 'hardware':
+          showVitals();
+          break;
+
+        case 'swarm':
+        case 'fleet':
+        case 'topology':
+          showSwarm();
+          break;
+
+        case 'case-fintrack':
+        case 'fintrack':
+          appendOutput(`
+            <div class="term-line term-success">[FINTRACK-DISPATCH] Personal Finance &amp; Behavioral Budgeting UX</div>
+            <div class="term-line">📊 Sub-3.2s transaction input engine eliminating budget drop-off via non-shame loss aversion.</div>
+            <div class="term-line">⚡ 94% task completion · Auto Layout 5.0 design tokens · Single-ceiling daily burn rate.</div>
+            <div class="term-line">👉 <a href="case-fintrack.html" class="term-link">Read FinTrack Case Study (case-fintrack.html) ↗</a></div>
+          `);
+          break;
+
+        case 'case-vellum':
+        case 'vellum':
+          appendOutput(`
+            <div class="term-line term-success">[VELLUM-DISPATCH] Ambient Reflection Workspace Mobile OS</div>
+            <div class="term-line">🌿 Combats notification fatigue through fluid gesture journaling and dual-scale Swiss typography.</div>
+            <div class="term-line">⚡ 60 FPS gesture responsiveness · Ambient contrast palettes · Zero cognitive friction.</div>
+            <div class="term-line">👉 <a href="case-vellum.html" class="term-link">Read Vellum Case Study (case-vellum.html) ↗</a></div>
+          `);
           break;
 
         case 'case-memory':
@@ -306,17 +369,27 @@
 <div class="term-line term-cyan">$ git log --graph --oneline --decorate --stat</div>
 
 <div class="term-git-entry">
-  <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">8f4a21d</span> <span class="term-badge success">HEAD -&gt; main</span> <span class="term-badge">tag: v2.5.0</span> <span class="term-muted">[2025 – Present]</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(swarm):</strong> Lead AI Systems Architect — LSFM AI HQ</div>
+  <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">9fb2617</span> <span class="term-badge success">HEAD -&gt; main</span> <span class="term-badge" style="border-color:#F59E0B;color:#FBBF24;">tag: v3.0.0</span> <span class="term-muted">[2026 – Present]</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent" style="color:#FBBF24;">feat(ciel):</strong> Architect &amp; Developer — Manas: Ciel Voice HUD</div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Sub-350ms Groq Whisper Turbo transcription &amp; FFmpeg audio normalization</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Thought Acceleration DSP pipeline (1.25x tempo / +5Hz pitch shift)</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• 8-turn sliding working memory buffer &amp; direct bidirectional Obsidian sync</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• 4-domain proactive telemetry sentinel daemon &amp; real-time audio HUD</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">└──</span> <a href="case-ciel.html" class="term-link">View Case Study: case-ciel.html ↗</a></div>
+</div>
+
+<div class="term-git-entry">
+  <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">8f4a21d</span> <span class="term-badge">tag: v2.5.0</span> <span class="term-muted">[2025 – 2026]</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(swarm):</strong> Creator &amp; Developer — LSFM AI HQ</div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Asynchronous Discord Gateway streaming &amp; isolated persona boundaries</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• DirectML local GPU inference failover router on AMD RX 6600 XT</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Headless Chromium single-page ATS vector PDF compiler (&lt;850ms)</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Headless Chromium single-page ATS vector PDF compiler</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">└──</span> <a href="case-lsfm.html" class="term-link">View Case Study: case-lsfm.html ↗</a></div>
 </div>
 
 <div class="term-git-entry">
   <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">c71e08a</span> <span class="term-badge">tag: v2.0.0</span> <span class="term-muted">[2024 – 2025]</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(memory):</strong> Engine Architect — Cognitive Memory Core</div>
+  <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(memory):</strong> Developer — Cognitive Memory Core</div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Zero-dependency BM25 heuristic recall core &amp; structured post-mortems</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Workspace rule crystallization permanently eliminating AI session amnesia</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">└──</span> <a href="case-memory.html" class="term-link">View Case Study: case-memory.html ↗</a></div>
@@ -326,15 +399,15 @@
   <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">9f3a21c</span> <span class="term-badge">tag: v1.5.0</span> <span class="term-muted">[Jun 2024 – Aug 2024]</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(roc.ph):</strong> UI/UX &amp; Frontend Engineer Intern — ROC.ph</div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Figma design token translation to semantic HTML, Tailwind CSS &amp; React</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• 95% on-time sprint delivery across 10+ production client deployments</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Delivered responsive client websites across diverse SME businesses</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">└──</span> <a href="about.html" class="term-link">Read Career Details: about.html ↗</a></div>
 </div>
 
 <div class="term-git-entry">
   <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">5d89b12</span> <span class="term-badge">tag: v1.0.0</span> <span class="term-muted">[2023 – 2024]</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(patriot):</strong> Lead Systems Architect — Capstone: Patriot</div>
+  <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(patriot):</strong> Lead Mobile Developer — Capstone: Patriot</div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Serverless microservices on AWS Lambda, DynamoDB, Redis &amp; Cognito</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• React Native cross-platform mobile client with 4.4+/5 usability rating</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• React Native cross-platform mobile client with student cohort evaluations</span></div>
 </div>
 
 <div class="term-git-entry">
@@ -353,9 +426,15 @@
       appendOutput(`
 <div class="term-line term-cyan" style="font-weight: 600;">AVAILABLE COMMANDS:</div>
 <table class="term-table">
+  <tr><td><span class="term-highlight" style="color: #FBBF24;">ciel</span></td><td>✦ Manas: Ciel Divine Wisdom AI Voice HUD &amp; DSP</td></tr>
   <tr><td><span class="term-highlight">status</span></td><td>Check live status of all 5 AI agents</td></tr>
   <tr><td><span class="term-highlight">agents</span></td><td>Learn what each AI agent does</td></tr>
+  <tr><td><span class="term-highlight">vitals</span></td><td>⚡ Eunchae's real-time hardware &amp; CPU/RAM HUD</td></tr>
+  <tr><td><span class="term-highlight">swarm</span></td><td>🛡️ Inspect 5-daemon orchestration matrix</td></tr>
   <tr><td><span class="term-highlight">projects</span></td><td>Explore selected case studies &amp; live demos</td></tr>
+  <tr><td><span class="term-highlight">audit</span></td><td>🎨 View Yunjin's 92/100 design audit &amp; resolution</td></tr>
+  <tr><td><span class="term-highlight">rules</span></td><td>🧠 Inspect 10 active learned rules &amp; heuristics</td></tr>
+  <tr><td><span class="term-highlight">brain</span></td><td>🤖 Inspect Obsidian AI Brain &amp; MCP bridge</td></tr>
   <tr><td><span class="term-highlight">resume</span></td><td>Download Hans's single-page PDF resume</td></tr>
   <tr><td><span class="term-highlight">sakura</span></td><td>🌸 Chat with Ask Sakura AI assistant</td></tr>
   <tr><td><span class="term-highlight">sentinel</span></td><td>Open full system health modal</td></tr>
@@ -460,8 +539,31 @@
     <td>Long-term Memory Engine for AI Agents</td>
     <td><a href="case-memory.html" class="term-link">Case Study ↗</a></td>
   </tr>
+  <tr>
+    <td><strong class="term-accent" style="color: #FBBF24;">07. Manas: Ciel</strong></td>
+    <td>Divine Wisdom Voice HUD &amp; Second Brain Copilot</td>
+    <td><a href="case-ciel.html" class="term-link">Case Study ↗</a></td>
+  </tr>
 </table>
 <div class="term-line term-muted" style="margin-top: 6px;">💡 Tip: Click any link above or scroll down to the Selected Works showcase.</div>
+      `.trim());
+    }
+
+    function showCiel() {
+      appendOutput(`
+<div class="term-line" style="color: #F59E0B; font-weight: 600;">✨ MANAS: CIEL // DIVINE WISDOM AI COPILOT &amp; VOICE HUD</div>
+<table class="term-table">
+  <tr><td><strong class="term-highlight">CORE ARCHITECTURE</strong></td><td class="term-cyan">Tensura Divine Wisdom Core · Python 3.11 aiohttp</td></tr>
+  <tr><td><strong class="term-highlight">AUDIO PIPELINE</strong></td><td>FFmpeg 16kHz Mono Normalization + Groq Whisper Large v3 Turbo (&lt;350ms)</td></tr>
+  <tr><td><strong class="term-highlight">THOUGHT ACCELERATION</strong></td><td style="color: #10B981;">1.25x Tempo · +5Hz Pitch · Edge-TTS en-GB-SoniaNeural</td></tr>
+  <tr><td><strong class="term-highlight">SECOND BRAIN</strong></td><td>Bidirectional Obsidian Vault Bridge (Rules, Career, Profile, Daily)</td></tr>
+  <tr><td><strong class="term-highlight">WORKING MEMORY</strong></td><td class="term-cyan">8-Turn Sliding Conversational Context Buffer</td></tr>
+  <tr><td><strong class="term-highlight">PROACTIVE SENTINELS</strong></td><td>4 Domains: Hardware Vitals, Career Pipeline, Rules, Git Cleanliness</td></tr>
+  <tr><td><strong class="term-highlight">SUBORDINATE FLEET</strong></td><td>Supervises 5 LSFM Agents: Sakura, Chaewon, Kazuha, Yunjin, Eunchae</td></tr>
+  <tr><td><strong class="term-highlight">LOCAL HUD ENDPOINT</strong></td><td><a href="http://localhost:8000" target="_blank" class="term-link">http://localhost:8000 ↗</a> (Port 8000 WebSockets)</td></tr>
+  <tr><td><strong class="term-highlight">CASE STUDY</strong></td><td><a href="case-ciel.html" class="term-link">portfolio-site/case-ciel.html ↗</a></td></tr>
+</table>
+<div class="term-line term-muted" style="margin-top: 6px;">💡 Tip: Type <span class="term-highlight">'projects'</span> to view all works, or explore the full case study: <a href="case-ciel.html" class="term-link">Read Manas: Ciel Case Study →</a></div>
       `.trim());
     }
 
@@ -749,17 +851,100 @@
 
     function showRules() {
       appendOutput(`
-        <div class="term-line term-cyan">// WORKSPACE LEARNED RULES (.agents/rules/learned_rules.md)</div>
-        <div class="term-line term-muted">Auto-crystallized heuristics from real-world post-mortems:</div>
+        <div class="term-line term-cyan">// WORKSPACE LEARNED RULES &amp; HEURISTICS (Obsidian: 03 - Rules &amp; Memory)</div>
+        <div class="term-line term-muted">Auto-crystallized heuristics from real-world bugs and post-mortems:</div>
         <div class="term-block" style="margin: 6px 0;">
           <div class="term-line"><span class="term-highlight">[MEM-001] COPYWRITING</span>: Forbid sci-fi jargon in hospitality; use tactile culinary words.</div>
           <div class="term-line"><span class="term-highlight">[MEM-002] CSS-LAYOUT</span>: No spaced brackets in flex nav; enforce white-space: nowrap.</div>
           <div class="term-line"><span class="term-highlight">[MEM-003] EDGE-ROUTING</span>: Explicit subfolder redirects must precede catch-all 404 in Netlify.</div>
           <div class="term-line"><span class="term-highlight">[MEM-004] LOCALIZATION</span>: PH checkout must include GCash, Maya, and COD with +63 format.</div>
-          <div class="term-line"><span class="term-highlight">[MEM-005] CLI-SHELL</span>: Avoid nested double quotes in PowerShell; use script files.</div>
-          <div class="term-line"><span class="term-highlight">[MEM-006] WINDOWS-PYTHON</span>: Reconfigure stdout to UTF-8 to prevent cp1252 crashes.</div>
+          <div class="term-line"><span class="term-highlight">[MEM-005] CLI-SHELL</span>: Avoid nested double quotes in PowerShell; use dedicated script files.</div>
+          <div class="term-line"><span class="term-highlight">[MEM-006] WINDOWS-PYTHON</span>: Reconfigure stdout to UTF-8 to prevent cp1252 charmap crashes.</div>
+          <div class="term-line"><span class="term-highlight">[MEM-007] DEPLOYMENT</span>: Deploy via Git commits/push; avoid manual file uploads to Netlify.</div>
+          <div class="term-line"><span class="term-highlight">[MEM-008] DOC-PARSING</span>: Never terminate cover letter parsing prematurely on contact lines.</div>
+          <div class="term-line"><span class="term-highlight">[MEM-009] API-RESILIENCY</span>: Implement exponential backoff (2-4s) &amp; multi-model rotation pool.</div>
+          <div class="term-line"><span class="term-highlight">[MEM-010] RESUME-WRITING</span>: Always ground bullet points in real stacks &amp; verified metrics.</div>
         </div>
         <div class="term-line">👉 <a href="case-memory.html" class="term-link">Read Cognitive Memory Case Study (case-memory.html) ↗</a></div>
+      `.trim());
+    }
+
+    function showAuditReport() {
+      appendOutput(`
+<div class="term-line term-cyan" style="font-weight: 600;">// YUNJIN DESIGN CRITIC &amp; QA AUDIT REPORT</div>
+<div class="term-line"><span class="term-success">[STATUS]</span> Portfolio Health Score: <strong class="term-highlight">92 / 100 ➔ 100% RESOLVED &amp; LIVE</strong></div>
+<table class="term-table">
+  <thead>
+    <tr class="term-muted"><th>CHECK</th><th>RESULT</th><th>VERIFICATION</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Asset Hygiene</td><td class="term-success">49 / 49 Valid</td><td>0 Broken Links / 0 404s Across Entire Site</td></tr>
+    <tr><td>HTML Semantic Spec</td><td class="term-success">9 / 9 Parsed</td><td>0 Syntax or Tag Nesting Errors</td></tr>
+    <tr><td>First-200px UX Block</td><td class="term-success">6 / 6 Implemented</td><td>Problem vs. Solution Cards Live on All Case Studies</td></tr>
+    <tr><td>Outcome Metrics Strip</td><td class="term-success">6 / 6 Live</td><td>4-Cell Quantified Monospace Benchmarks Installed</td></tr>
+    <tr><td>Selected Works Track</td><td class="term-success">Infinite Loop</td><td>Clone-Buffered Circular Navigation with '● 6 Projects' Pill</td></tr>
+    <tr><td>Brand Subtitle</td><td class="term-success">100% Unified</td><td>'Applied AI Engineer // Full-Stack Builder' on All Pages</td></tr>
+  </tbody>
+</table>
+<div class="term-line term-muted" style="margin-top: 6px;">Audit Log Source: lsfm-swarm/portfolio_audits/2026-09-23_portfolio_audit.md</div>
+<div class="term-line term-success">Verdict: Enterprise-grade editorial polish meeting top 1% recruiter criteria.</div>
+      `.trim());
+    }
+
+    function showBrain() {
+      appendOutput(`
+<div class="term-line term-cyan" style="font-weight: 600;">// OBSIDIAN SECOND BRAIN // LIVE MODEL CONTEXT PROTOCOL (MCP)</div>
+<div class="term-line"><span class="term-success">[BRIDGE]</span> Active stdio MCP server connecting Antigravity &amp; local daemons to Obsidian.</div>
+<div class="term-block" style="margin: 6px 0;">
+  <div class="term-line"><span class="term-highlight">00 - Hub</span>: Central dashboard, quick links &amp; navigation indices</div>
+  <div class="term-line"><span class="term-highlight">01 - User</span>: Candidate profile, master resume, interview defense playbook</div>
+  <div class="term-line"><span class="term-highlight">02 - Agents</span>: Roster dossiers for Sakura, Chaewon, Yunjin, Kazuha, Eunchae</div>
+  <div class="term-line"><span class="term-highlight">03 - Rules &amp; Memory</span>: 10 active heuristics [MEM-001 to MEM-010], post-mortems</div>
+  <div class="term-line"><span class="term-highlight">04 - Projects</span>: Architectural specs for LSFM, Memory Core, Aura, Lumina, FinTrack</div>
+  <div class="term-line"><span class="term-highlight">05 - Daily Logs</span>: Automated timestamped agent dispatches &amp; daily briefings</div>
+</div>
+<div class="term-line term-muted">Local REST API Endpoint: https://127.0.0.1:27124 (Zero-Cloud Local Storage)</div>
+      `.trim());
+    }
+
+    function showVitals() {
+      appendOutput(`
+<div class="term-line term-comment"># Eunchae Sentinel Watchdog // Real-Time System Vitals HUD</div>
+<div class="term-line term-cyan">&gt; sys.watchdog --telemetry --all</div>
+
+<div class="term-line"><span class="term-success">[HOST]</span> Intel Core i5-12400F (12 Logical Threads @ 2.50–4.40 GHz)</div>
+<div class="term-line"><span class="term-success">[SILICON]</span> AMD Radeon RX 6600 XT (8GB GDDR6 VRAM · DirectML / Vulkan)</div>
+<div class="term-line"><span class="term-success">[MEMORY]</span> 16.0 GB DDR4-3200 (71.2% active allocation · ~4.6 GB buffer)</div>
+<div class="term-line"><span class="term-success">[STORAGE]</span> NVMe Gen4 Primary Partition (122.5 GB free headroom)</div>
+<div class="term-line"><span class="term-success">[BRAIN]</span> Obsidian AI Brain Loopback HTTPS Bridge (Port 27124) <span class="term-badge success">CONNECTED</span></div>
+
+<div class="term-line" style="margin-top: 6px;"><span class="term-accent">REAL-TIME GAUGES:</span></div>
+<div class="term-line">  CPU Load:   <span class="term-cyan">[██░░░░░░░░░░░░░░░░░░]</span>  4.9%  <span class="term-badge success">COOL</span></div>
+<div class="term-line">  RAM Load:   <span class="term-cyan">[██████████████░░░░░░]</span> 69.6%  <span class="term-badge success">OPTIMAL</span></div>
+<div class="term-line">  NVMe Disk:  <span class="term-cyan">[██████████████░░░░░░]</span> 73.6%  <span class="term-badge success">HEALTHY</span></div>
+
+<div class="term-line term-muted" style="margin-top: 6px;">Sentinel Status: <span class="term-badge success">0 RESOURCE LEAKS</span> · Daemon background tasks executing safely.</div>
+      `.trim());
+    }
+
+    function showSwarm() {
+      appendOutput(`
+<div class="term-line term-comment"># LSFM Swarm // Active 5-Daemon Orchestration Matrix</div>
+<div class="term-line term-cyan">&gt; lsfm.swarm --status --fleet</div>
+
+<div class="term-line"><strong class="term-accent">ACTIVE ORCHESTRATION PIPELINE:</strong></div>
+<div class="term-line">  1. 🌸 <strong>Sakura</strong>   | Chief of Staff      | #command-center   | <span class="term-badge success">ORCHESTRATOR</span></div>
+<div class="term-line">     └─ Intent triage, daily briefings (!briefing), Obsidian MCP queries</div>
+<div class="term-line">  2. 🦢 <strong>Kazuha</strong>   | Frontend Architect  | #frontend-lab     | <span class="term-badge">TOKEN ENGINE</span></div>
+<div class="term-line">     └─ Zero-framework design token compliance, Git pre-commit sentinel</div>
+<div class="term-line">  3. 🎨 <strong>Yunjin</strong>   | Document Architect  | #portfolio-audits | <span class="term-badge">QA QUALITY GATE</span></div>
+<div class="term-line">     └─ Automated DOM audits, 49/49 asset checks, 100/100 threshold</div>
+<div class="term-line">  4. 🐯 <strong>Chaewon</strong>  | Career Strategist   | #job-tailoring    | <span class="term-badge">ATS RADAR</span></div>
+<div class="term-line">     └─ Semantic keyword vector matching, headless vector PDF compiler</div>
+<div class="term-line">  5. 🥔 <strong>Eunchae</strong>  | System Guardian     | #pc-vitals        | <span class="term-badge">TELEMETRY WATCHDOG</span></div>
+<div class="term-line">     └─ Real-time hardware vitals, AST code sandbox, Gmail triage</div>
+
+<div class="term-line term-muted" style="margin-top: 6px;">Inference Hierarchy: Groq Cloud (Qwen 2.5 70B, &lt;300ms) ⇄ AMD DirectML Local (RX 6600 XT, $0.00/mo)</div>
       `.trim());
     }
 

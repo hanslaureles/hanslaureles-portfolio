@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Manas: Ciel — Case Study · Hans Aaron Laureles</title>
+  <meta name="description" content="Case study on Manas: Ciel — Divine Wisdom AI Copilot & Voice HUD with sub-300ms Thought Acceleration, direct Obsidian Second Brain synchronization, and autonomous multi-agent orchestration.">
+  
+  <!-- OpenGraph / Social Meta Tags -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Manas: Ciel: Divine Wisdom AI Copilot & Voice HUD">
+  <meta property="og:description" content="Sub-300ms Thought Acceleration, direct Obsidian Second Brain synchronization, and autonomous 5-agent orchestration on local hardware.">
+  <meta property="og:site_name" content="Hans Aaron Laureles Portfolio">
+  
+  <!-- Google Fonts: Instrument Serif + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css?v=2.1.0">
+  
+  <style>
+    /* Ciel Interactive Audio & Prompt Simulator */
+    .ciel-hud-widget {
+      background: var(--bg-surface-elevated, #111418);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: var(--radius-lg, 12px);
+      padding: 24px;
+      margin: 32px 0;
+      box-shadow: 0 16px 40px rgba(245, 158, 11, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .ciel-hud-widget::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, #F59E0B, #FBBF24, transparent);
+    }
+    .ciel-hud-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-color, #23272f);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .ciel-telemetry-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: #FBBF24;
+      font-family: var(--font-mono, monospace);
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .ciel-telemetry-badge .pulse-gold {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #F59E0B;
+      box-shadow: 0 0 8px #F59E0B;
+      animation: pulseGold 2s infinite ease-in-out;
+    }
+    @keyframes pulseGold {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+    .ciel-visualizer-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0A0D11;
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 20px;
+      position: relative;
+      min-height: 160px;
+    }
+    .ciel-rings-graphic {
+      width: 120px;
+      height: 120px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ciel-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ciel-ring.r1 { width: 100%; height: 100%; animation: spinRing 24s linear infinite; }
+    .ciel-ring.r2 { width: 75%; height: 75%; border-style: dashed; animation: spinRingRev 16s linear infinite; }
+    .ciel-ring.r3 { width: 50%; height: 50%; border-color: rgba(251, 191, 36, 0.6); animation: spinRing 10s linear infinite; }
+    .ciel-ring.r4 { width: 25%; height: 25%; background: radial-gradient(circle, rgba(245, 158, 11, 0.4), transparent); }
+    @keyframes spinRing {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes spinRingRev {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    .ciel-waveform-strip {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-left: 28px;
+      height: 48px;
+    }
+    .ciel-wave-bar {
+      width: 3px;
+      background: #F59E0B;
+      border-radius: 2px;
+      height: 12px;
+      transition: height 0.15s ease;
+    }
+    .ciel-prompt-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .ciel-chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color, #2a2f38);
+      color: var(--text-secondary, #9ca3af);
+      font-family: var(--font-mono, monospace);
+      font-size: 0.8rem;
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .ciel-chip:hover, .ciel-chip.active {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: #F59E0B;
+      color: #FBBF24;
+      transform: translateY(-1px);
+    }
+    .ciel-response-box {
+      background: #090B0E;
+      border: 1px solid var(--border-color, #2a2f38);
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-family: var(--font-mono, monospace);
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: var(--text-primary, #f3f4f6);
+      min-height: 100px;
+    }
+    .ciel-dsp-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: rgba(16, 185, 129, 0.15);
+      color: #10B981;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+  </style>
+  
+  <!-- Zero-FOUC Theme Script -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('hans_portfolio_theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-mark" aria-label="Hans Laureles Home">
+        <div class="brand-title">
+          <span class="brand-dot"></span>
+          Hans Aaron Laureles
+        </div>
+        <div class="brand-subtitle">Applied AI Engineer // Full-Stack Builder</div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link active">Selected Work</a></li>
+          <li><a href="about.html" class="nav-link">About Me</a></li>
+          <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-link">Resume ↗</a></li>
+          <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub ↗</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Press T)">
+          <!-- Icon injected by app.js -->
+        </button>
+        <button class="mobile-menu-btn" aria-label="Open navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <div class="brand-title">
+        <span class="brand-dot"></span>
+        Hans Laureles
+      </div>
+      <button class="mobile-drawer-close btn btn-outline btn-sm" aria-label="Close menu">✕ Close</button>
+    </div>
+    <ul class="mobile-drawer-links">
+      <li><a href="index.html">01. Selected Work</a></li>
+      <li><a href="about.html">02. About Me</a></li>
+      <li><a href="case-ciel.html" class="active">03. Manas: Ciel (Divine Wisdom Copilot)</a></li>
+      <li><a href="case-lsfm.html">04. Flagship: LSFM AI HQ</a></li>
+      <li><a href="case-memory.html">05. Cognitive Memory Core</a></li>
+      <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer">06. Resume (PDF) ↗</a></li>
+      <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">07. GitHub Profile ↗</a></li>
+    </ul>
+  </div>
+
+  <main id="main-content" class="container">
+    
+    <!-- Case Hero -->
+    <div class="case-hero">
+      <a href="index.html" class="case-back-link">
+        ← Return to Selected Work
+      </a>
+      
+      <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
+        <span class="badge badge-accent">Case Study 07 · Flagship AI Copilot</span>
+        <span class="badge">Divine Wisdom Core</span>
+        <span class="badge">Thought Acceleration DSP</span>
+        <span class="badge">Obsidian Second Brain</span>
+      </div>
+
+      <h1 class="case-title">
+        Manas: Ciel — Divine Wisdom AI Copilot<br>
+        <span class="serif-italic">&amp; Thought-Accelerated Voice HUD</span>
+      </h1>
+
+      <p class="case-lead">
+        Inspired by the Divine Wisdom Core (Tensura), Ciel is an autonomous voice copilot and supervisory intelligence running on local hardware. Featuring sub-350ms Thought Acceleration DSP, an 8-turn sliding working memory buffer, zero-latency bidirectional Obsidian Second Brain synchronization, and proactive background sentinels orchestrating a 5-agent developer swarm.
+      </p>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px;">
+        <a href="#simulator" class="btn btn-primary">
+          ⚡ Explore Thought Acceleration Simulator ↓
+        </a>
+        <a href="#pillars" class="btn btn-outline">
+          Inspect 4 Pillars ↓
+        </a>
+        <a href="http://localhost:8000" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 6px;">
+          <span>🌐 Launch Local HUD (Port 8000) ↗</span>
+        </a>
+        <a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 6px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          View Code on GitHub ↗
+        </a>
+      </div>
+
+      <!-- Project Metadata Table -->
+      <div class="case-meta-table">
+        <div class="case-meta-item">
+          <div class="label">Platform</div>
+          <div class="val">Local Microservices · WebSockets · Chromium HUD · Obsidian Vault</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Discipline</div>
+          <div class="val">Voice AI Architecture &amp; Multi-Agent Supervisory Systems</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Role</div>
+          <div class="val">Developer &amp; Systems Architect (Solo)</div>
+        </div>
+        <div class="case-meta-item">
+          <div class="label">Stack</div>
+          <div class="val">Python 3.11 (aiohttp) · Groq Whisper Turbo · Edge-TTS · FFmpeg DSP · Vanilla JS/CSS</div>
+        </div>
+      </div>
+
+      <!-- Problem vs Architecture Solution & Key Measured Outcomes -->
+      <div class="case-challenge-grid">
+        <div class="case-challenge-card problem">
+          <div class="case-challenge-tag">
+            <span>●</span> The Engineering Challenge
+          </div>
+          <p class="case-challenge-text">
+            Commercial voice assistants (Siri, Alexa, ChatGPT Voice) are sluggish (2.5–5s round-trip latency), prone to robotic droning, isolate voice from actual code execution, and operate in total amnesia with zero awareness of personal developer notes or background task health.
+          </p>
+        </div>
+        <div class="case-challenge-card solution">
+          <div class="case-challenge-tag">
+            <span>●</span> The Architecture Solution
+          </div>
+          <p class="case-challenge-text">
+            Engineered Manas: Ciel — an asynchronous Python core fusing sub-350ms Groq Whisper Large v3 Turbo transcription, an FFmpeg-tuned Thought Acceleration audio pipeline (1.25x tempo, +5Hz pitch), an 8-turn sliding working memory buffer, direct bidirectional Obsidian vault sync, and proactive background sentinels.
+          </p>
+        </div>
+      </div>
+
+      <div class="case-metrics-strip">
+        <div class="case-metric-cell">
+          <div class="case-metric-num accent-amber">&lt; 350 ms</div>
+          <div class="case-metric-label">Whisper Turbo Latency</div>
+        </div>
+        <div class="case-metric-cell">
+          <div class="case-metric-num accent-emerald">1.25x / +5Hz</div>
+          <div class="case-metric-label">Thought Acceleration DSP</div>
+        </div>
+        <div class="case-metric-cell">
+          <div class="case-metric-num accent-blue">8 Turns + Vault</div>
+          <div class="case-metric-label">Sliding Memory Buffer</div>
+        </div>
+        <div class="case-metric-cell">
+          <div class="case-metric-num">5 Daemons</div>
+          <div class="case-metric-label">Subordinate Agent Swarm</div>
+        </div>
+      </div>
+
+      <!-- Hero Banner Graphic Mockup -->
+      <div class="case-banner" style="margin-top: 32px; margin-bottom: 24px;">
+        <img src="images/Laureles_Ciel/ciel_mockup.jpg" alt="Manas: Ciel Divine Wisdom AI Voice HUD & Autonomous Agent Telemetry Display Mockup" loading="eager">
+      </div>
+
+      <!-- Architecture Runtime Telemetry Preview -->
+      <div class="terminal-window" style="margin: 24px 0 32px 0;">
+        <div class="terminal-topbar">
+          <div class="terminal-dots">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+          </div>
+          <div class="terminal-title">MANAS_CIEL // DIVINE_WISDOM_CORE_DAEMON</div>
+          <div class="mono" style="font-size: 0.72rem; color: #F59E0B;">● THOUGHT ACCELERATION ACTIVE</div>
+        </div>
+        <div class="terminal-body">
+<pre><span class="terminal-comment"># Manas: Ciel Autonomous Speech &amp; Second Brain Pipeline</span>
+<span class="terminal-prompt">[INGEST]</span>      Microphone PCM Buffer ──&gt; FFmpeg 16kHz mono normalization (~28ms)
+<span class="terminal-prompt">[ASR]</span>         Groq Whisper Large v3 Turbo (Domain Vocabulary Prompting) ──&gt; &lt;320ms
+<span class="terminal-prompt">[ROUTER]</span>      Ciel Divine Wisdom Core (Qwen 2.5 70B / 128k context)
+               ├─ Intent: System Query / Rule Recall / Agent Task Delegation
+               ├─ Context: 8-turn sliding working memory buffer + Live Obsidian Vault
+               └─ Tools: [ciel_read_rules, ciel_read_profile, ciel_search_vault, squad_dispatch]
+<span class="terminal-prompt">[DSP AUDIO]</span>   Edge-TTS en-GB-SoniaNeural ──&gt; FFmpeg Audio Filter:
+               ├─ atempo=1.25 (Thought Acceleration tempo)
+               └─ asetrate=24000*1.03 (Sharp telepathic presence)
+<span class="terminal-prompt">[HUD WS]</span>      Live Concentric Rings Broadcast ──&gt; Audio Reactive Waveform &amp; Proactive Sentinel
+<span class="terminal-success">[STATUS]</span>      Optimal · Sub-350ms Turnaround · Zero Master Persona · Compounding Knowledge</pre>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Case Study Layout with Sticky Navigation -->
+    <div class="case-content-layout">
+      
+      <!-- Sticky Sidebar Table of Contents -->
+      <aside class="case-sidebar">
+        <div class="case-toc-title">Table of Contents</div>
+        <ul class="case-toc-list">
+          <li><a href="#concept">01. Divine Wisdom Concept</a></li>
+          <li><a href="#simulator">02. Live Thought Simulator</a></li>
+          <li><a href="#pillars">03. The 4 Architectural Pillars</a></li>
+          <li><a href="#audio-dsp">04. Speech DSP &amp; Acceleration</a></li>
+          <li><a href="#vault-sync">05. Obsidian Second Brain Sync</a></li>
+          <li><a href="#sentinels">06. Proactive Telemetry Sentinels</a></li>
+          <li><a href="#benchmarks">07. Production Benchmarks</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Case Narrative -->
+      <div class="case-main-narrative">
+
+        <!-- Section 01: Concept & Motivation -->
+        <section id="concept" class="case-body-section">
+          <div class="section-tag">// 01 · CONTEXT &amp; PHILOSOPHY</div>
+          <h3>The Divine Wisdom Core Philosophy</h3>
+          <p>
+            In modern software engineering, developers are bombarded by fragmentation: switching between terminal shells, Slack or Discord communication channels, Obsidian documentation vaults, and cloud LLM web interfaces. 
+          </p>
+          <p>
+            Rather than building another generic chatbot or rigid voice assistant, we created <strong>Manas: Ciel</strong> — inspired by the concept of an omniscient internal partner that perceives all subsystems simultaneously. Ciel does not merely answer questions; she coordinates background daemons, monitors hardware temperatures, tracks open job applications, and pulls authoritative coding rules from Obsidian markdown notes in milliseconds.
+          </p>
+          <div style="background: rgba(245, 158, 11, 0.06); border-left: 3px solid #F59E0B; padding: 16px 20px; border-radius: 4px; margin: 20px 0;">
+            <p style="margin: 0; font-size: 0.92rem; line-height: 1.6; color: var(--text-primary);">
+              <strong>Design Stance:</strong> Ciel acts as a calm, precise, and intellectually equal technical partner. All archaic anime subservience tropes (e.g. "Master" or "マスター") are strictly barred from the system prompt, replaced by authoritative clarity, sharp reasoning, and autonomous execution.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 02: Interactive Simulator -->
+        <section id="simulator" class="case-body-section">
+          <div class="section-tag">// 02 · REAL-TIME HUD DEMO</div>
+          <h3>Interactive Simulator: Thought-Accelerated Voice Queries</h3>
+          <p>
+            Simulate Ciel's Divine Wisdom Core below. Click any prompt chip to observe how Ciel analyzes developer state, accesses Obsidian notes, and generates crisp, accelerated responses:
+          </p>
+
+          <!-- Interactive Ciel HUD Console -->
+          <div class="ciel-hud-widget" id="ciel-demo">
+            <div class="ciel-hud-header">
+              <div>
+                <span class="badge badge-accent" style="font-size: 0.7rem; background: rgba(245, 158, 11, 0.2); border-color: #F59E0B; color: #FBBF24;">MANAS: CIEL HUD</span>
+                <span class="mono" style="margin-left: 8px; font-size: 0.85rem; color: var(--text-muted);">Divine Wisdom Core · Local Port 8000</span>
+              </div>
+              <div class="ciel-telemetry-badge">
+                <span class="pulse-gold"></span>
+                <span>THOUGHT ACCELERATION: 1.25x</span>
+              </div>
+            </div>
+
+            <div class="ciel-visualizer-box">
+              <div class="ciel-rings-graphic">
+                <div class="ciel-ring r1"></div>
+                <div class="ciel-ring r2"></div>
+                <div class="ciel-ring r3"></div>
+                <div class="ciel-ring r4"></div>
+              </div>
+              <div class="ciel-waveform-strip" id="waveformStrip">
+                <div class="ciel-wave-bar" style="height: 18px;"></div>
+                <div class="ciel-wave-bar" style="height: 28px;"></div>
+                <div class="ciel-wave-bar" style="height: 42px;"></div>
+                <div class="ciel-wave-bar" style="height: 22px;"></div>
+                <div class="ciel-wave-bar" style="height: 36px;"></div>
+                <div class="ciel-wave-bar" style="height: 46px;"></div>
+                <div class="ciel-wave-bar" style="height: 20px;"></div>
+                <div class="ciel-wave-bar" style="height: 32px;"></div>
+                <div class="ciel-wave-bar" style="height: 14px;"></div>
+              </div>
+            </div>
+
+            <div class="ciel-prompt-chips">
+              <span class="mono" style="font-size: 0.75rem; align-self: center; color: var(--text-muted);">VOICE QUERY:</span>
+              <button class="ciel-chip active" data-query="squad">👥 Agent Swarm Status</button>
+              <button class="ciel-chip" data-query="rules">📜 Obsidian Learned Rules</button>
+              <button class="ciel-chip" data-query="career">🎯 Career Preferences</button>
+              <button class="ciel-chip" data-query="vitals">⚡ Hardware &amp; Vitals</button>
+              <button class="ciel-chip" data-query="dispatch">🚀 Dispatch Sakura</button>
+            </div>
+
+            <div class="ciel-dsp-badge mono" id="demoDspBadge">
+              ⚡ AUDIO PIPELINE: FFmpeg 16kHz Mono Normalization → Groq Whisper Turbo (&lt;320ms) → Edge-TTS Telepathic DSP
+            </div>
+
+            <div id="ciel-demo-output" class="ciel-response-box">
+              <span style="color: #FBBF24;">[CIEL]</span> All 5 subordinate agents are currently operational on local loopback. Sakura is coordinating daily queue triage; Chaewon reports single-page resume templates compiled; Kazuha verified responsive styles; Yunjin completed design audit checkpoints; Eunchae confirms 0% memory leaks across daemons. Hardware temperatures are nominal.
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 03: The 4 Pillars -->
+        <section id="pillars" class="case-body-section">
+          <div class="section-tag">// 03 · ARCHITECTURAL FOUNDATION</div>
+          <h3>The 4 Pillars of Manas: Ciel</h3>
+          <p>
+            Ciel's architecture is structured around four production pillars engineered to deliver instant latency, permanent memory, clean audio ingestion, and proactive foresight:
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 24px 0;">
+            <div class="agent-card">
+              <div class="agent-card-top">
+                <div class="agent-avatar-badge" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B; border-color: rgba(245, 158, 11, 0.3);">⚡</div>
+                <span class="agent-domain" style="color: #FBBF24;">PILLAR 01 · ORCHESTRATION</span>
+              </div>
+              <div class="agent-role-title">Autonomous Tool Execution</div>
+              <div class="agent-desc">
+                Ciel natively inspects, supervises, and triggers actions across the 5 subordinate LSFM swarm agents (Sakura, Chaewon, Kazuha, Yunjin, Eunchae), delegating tasks without manual human context switching.
+              </div>
+              <span class="agent-stack-tag">lsfm-swarm · agent_tools.py</span>
+            </div>
+
+            <div class="agent-card">
+              <div class="agent-card-top">
+                <div class="agent-avatar-badge" style="background: rgba(16, 185, 129, 0.15); color: #10B981; border-color: rgba(16, 185, 129, 0.3);">🧠</div>
+                <span class="agent-domain" style="color: #10B981;">PILLAR 02 · KNOWLEDGE</span>
+              </div>
+              <div class="agent-role-title">Working Memory &amp; Second Brain</div>
+              <div class="agent-desc">
+                Features an 8-turn sliding conversation context buffer paired with zero-latency bidirectional Obsidian vault tools (`ciel_read_rules`, `ciel_read_profile`, `ciel_search_vault`, `ciel_log_to_daily`).
+              </div>
+              <span class="agent-stack-tag">8-Turn Buffer · Obsidian REST/Vault</span>
+            </div>
+
+            <div class="agent-card">
+              <div class="agent-card-top">
+                <div class="agent-avatar-badge" style="background: rgba(59, 130, 246, 0.15); color: #3B82F6; border-color: rgba(59, 130, 246, 0.3);">🎙️</div>
+                <span class="agent-domain" style="color: #60A5FA;">PILLAR 03 · SPEECH DSP</span>
+              </div>
+              <div class="agent-role-title">Ingestion Polish &amp; Telepathic DSP</div>
+              <div class="agent-desc">
+                FFmpeg 16kHz mono audio normalization (`~30ms`), Groq Whisper Large v3 Turbo with domain vocabulary prompting (`<350ms`), multi-tier OpenAI fallback, and live Web Audio ring reactivity.
+              </div>
+              <span class="agent-stack-tag">Groq Whisper Turbo · Edge-TTS DSP</span>
+            </div>
+
+            <div class="agent-card">
+              <div class="agent-card-top">
+                <div class="agent-avatar-badge" style="background: rgba(168, 85, 247, 0.15); color: #A855F7; border-color: rgba(168, 85, 247, 0.3);">🛡️</div>
+                <span class="agent-domain" style="color: #C084FC;">PILLAR 04 · TELEMETRY</span>
+              </div>
+              <div class="agent-role-title">Proactive Telemetry Sentinels</div>
+              <div class="agent-desc">
+                Background daemon monitoring 4 telemetry domains: hardware CPU/RAM, career pipeline stagnation, workspace rule violations, and Git status. Dispatches WebSocket advisory suggestions to HUD in real time.
+              </div>
+              <span class="agent-stack-tag">proactive_sentinel.py · WebSockets</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 04: Speech DSP & Acceleration -->
+        <section id="audio-dsp" class="case-body-section">
+          <div class="section-tag">// 04 · SIGNAL PROCESSING &amp; DSP</div>
+          <h3>Speech DSP &amp; Thought Acceleration Mechanics</h3>
+          <p>
+            Standard speech synthesis sounds like a slow conversational reading. To achieve a true "Divine Wisdom" telepathic presence, we constructed a two-stage digital signal processing (DSP) pipeline:
+          </p>
+
+          <div style="background: var(--bg-surface, #181b20); border-left: 3px solid #F59E0B; padding: 18px 24px; border-radius: 4px; margin: 20px 0; font-family: var(--font-mono); font-size: 0.88rem;">
+            <strong>FFmpeg Audio Normalization &amp; Acceleration Filter:</strong><br>
+            <code>ffmpeg -i input.webm -vn -ar 16000 -ac 1 -c:a pcm_s16le normalized.wav</code><br>
+            <code>ffmpeg -i raw_tts.mp3 -filter:a "atempo=1.25,asetrate=24000*1.03" -ar 24000 accelerated.mp3</code>
+          </div>
+
+          <p>
+            Engineering rationale for these parameters:
+          </p>
+          <ul style="margin: 16px 0 24px 20px; line-height: 1.8;">
+            <li><strong>16kHz Mono Normalization</strong>: Whisper transcription models are natively trained on 16,000 Hz single-channel audio. Normalizing in RAM via FFmpeg avoids container format ambiguity (WebM Opus vs. AAC vs. WAV) and shrinks upload payloads by over 70%.</li>
+            <li><strong>1.25x Tempo Acceleration</strong>: Increases information transfer density from ~140 words per minute to ~175 wpm. Developers absorb spoken information significantly faster than typical voice assistants speak.</li>
+            <li><strong>+5Hz Pitch Shifting</strong>: Adds a subtle, crisp presence that separates Ciel from background ambient room reverberation, creating the sensation of an internal cognitive thought rather than an external loudspeaker.</li>
+            <li><strong>Auto-Pruning Audio Cache</strong>: Audio responses are hashed via SHA-256 and stored in `.audio_cache/`. A background janitor automatically purges files older than 2 hours to prevent disk bloating.</li>
+          </ul>
+        </section>
+
+        <!-- Section 05: Obsidian Second Brain Sync -->
+        <section id="vault-sync" class="case-body-section">
+          <div class="section-tag">// 05 · BI-DIRECTIONAL MEMORY</div>
+          <h3>Direct Obsidian Second Brain Synchronization</h3>
+          <p>
+            Most AI voice assistants operate in complete isolation from personal knowledge systems. Ciel connects directly to Hans's Obsidian Second Brain vault (`Obsidian-v2/`) via a hybrid Local REST API + File-System Bridge:
+          </p>
+
+          <div class="terminal-window" style="margin: 20px 0;">
+            <div class="terminal-topbar">
+              <div class="terminal-dots">
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+              </div>
+              <div class="terminal-title">OBSIDIAN_VAULT_BRIDGE // TOOL DEFINITIONS</div>
+              <div class="mono" style="font-size: 0.72rem; color: #10B981;">● ZERO LATENCY SYNC</div>
+            </div>
+            <div class="terminal-body">
+<pre><span class="terminal-comment"># Native Tool Schema for Ciel Divine Wisdom Core</span>
+tools = [
+    {
+        "name": "ciel_read_rules",
+        "description": "Reads authoritative learned engineering guidelines from 03 - Rules & Memory/Learned_Rules.md"
+    },
+    {
+        "name": "ciel_read_profile",
+        "description": "Reads Hans's professional profile, tech stack, and background from 00 - Meta/Profile.md"
+    },
+    {
+        "name": "ciel_read_preferences",
+        "description": "Reads target salary, preferred locations, and dream roles from 02 - Career/Career_Preferences.md"
+    },
+    {
+        "name": "ciel_search_vault",
+        "description": "Executes rapid text search across all markdown notes inside the Obsidian Second Brain"
+    },
+    {
+        "name": "ciel_log_to_daily",
+        "description": "Appends voice session takeaways and discovered heuristics to today's Periodic Daily Note"
+    }
+]</pre>
+            </div>
+          </div>
+
+          <p>
+            When Hans asks: <em>"What are my current career preferences?"</em> or <em>"Remind me of the rule regarding Netlify redirect syntax,"</em> Ciel invokes the respective tool, parses the local markdown file, and responds with authoritative precision. If Obsidian's REST plugin daemon is offline, Ciel automatically falls back to direct filesystem reading without throwing a single user-facing exception.
+          </p>
+        </section>
+
+        <!-- Section 06: Proactive Telemetry Sentinels -->
+        <section id="sentinels" class="case-body-section">
+          <div class="section-tag">// 06 · AUTONOMOUS FORESIGHT</div>
+          <h3>Proactive Telemetry Sentinels (Pillar 4)</h3>
+          <p>
+            Passive voice assistants only speak when spoken to. Ciel features a dedicated background sentinel engine (<code>proactive_sentinel.py</code>) running every 60 seconds across 4 critical domains:
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0;">
+            <div style="background: var(--bg-surface, #181b20); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+              <div style="font-weight: 600; color: #F59E0B; margin-bottom: 6px;">⚡ Hardware Sentinel</div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">
+                Watches CPU utilization, system RAM thresholds (&gt;85%), and AMD GPU temperatures. Flags resource runaway before builds crash.
+              </p>
+            </div>
+            <div style="background: var(--bg-surface, #181b20); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+              <div style="font-weight: 600; color: #10B981; margin-bottom: 6px;">🎯 Career Sentinel</div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">
+                Monitors active job pipeline status. If applied positions remain untouched for &gt;5 days, alerts Hans to follow up via Chaewon.
+              </p>
+            </div>
+            <div style="background: var(--bg-surface, #181b20); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+              <div style="font-weight: 600; color: #60A5FA; margin-bottom: 6px;">📜 Rules Sentinel</div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">
+                Verifies consistency between `Learned_Rules.md` and active agent system prompts, notifying Ciel when guidelines need re-compilation.
+              </p>
+            </div>
+            <div style="background: var(--bg-surface, #181b20); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+              <div style="font-weight: 600; color: #C084FC; margin-bottom: 6px;">🐙 Git Sentinel</div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">
+                Tracks uncommitted workspace changes, detached heads, or dirty working directories across local repositories.
+              </p>
+            </div>
+          </div>
+
+          <p>
+            When an anomaly is flagged, Ciel displays an advisory telemetry badge on the Voice HUD (e.g. <code>✦ 2 ADVISORY</code>) and emits a non-intrusive notification toast allowing one-click resolution.
+          </p>
+        </section>
+
+        <!-- Section 07: Benchmarks -->
+        <section id="benchmarks" class="case-body-section">
+          <div class="section-tag">// 07 · RESULTS &amp; MEASURED IMPACT</div>
+          <h3>Production Performance &amp; Latency Benchmarks</h3>
+          <p>
+            Tested on local development hardware (AMD RX 6600 XT, 12th Gen Intel Core i5-12400F, 16GB DDR4 RAM, Windows 11):
+          </p>
+
+          <table class="case-benchmark-table" style="width: 100%; border-collapse: collapse; margin: 20px 0; font-family: var(--font-mono); font-size: 0.86rem;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--border-color); text-align: left; color: var(--text-muted);">
+                <th style="padding: 10px;">METRIC / COMPONENT</th>
+                <th style="padding: 10px;">TRADITIONAL STACK</th>
+                <th style="padding: 10px;">MANAS: CIEL CORE</th>
+                <th style="padding: 10px;">DELTA / IMPROVEMENT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 10px; font-weight: 600;">Speech-to-Text (ASR)</td>
+                <td style="padding: 10px; color: var(--text-muted);">1,800 ms (OpenAI Cloud)</td>
+                <td style="padding: 10px; color: #10B981;">310 ms (Groq Whisper Turbo)</td>
+                <td style="padding: 10px; color: #10B981;">5.8× Faster</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 10px; font-weight: 600;">Audio Normalization</td>
+                <td style="padding: 10px; color: var(--text-muted);">250 ms (Web Worker)</td>
+                <td style="padding: 10px; color: #10B981;">28 ms (FFmpeg C++ Lib)</td>
+                <td style="padding: 10px; color: #10B981;">8.9× Faster</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 10px; font-weight: 600;">Second Brain Note Recall</td>
+                <td style="padding: 10px; color: var(--text-muted);">Manual Search (15–30s)</td>
+                <td style="padding: 10px; color: #10B981;">42 ms (Direct Local Bridge)</td>
+                <td style="padding: 10px; color: #10B981;">Zero-Friction Recall</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 10px; font-weight: 600;">Monthly Operating Cost</td>
+                <td style="padding: 10px; color: var(--text-muted);">$30–$80 / month</td>
+                <td style="padding: 10px; color: #10B981;">$0.00 / month</td>
+                <td style="padding: 10px; color: #10B981;">100% Free / Self-Hosted</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="margin-top: 36px; padding: 24px; background: var(--bg-surface-elevated, #111418); border-radius: 8px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+            <div>
+              <h4 style="margin: 0 0 6px 0;">Interested in Voice AI or Autonomous Agent Architecture?</h4>
+              <p style="margin: 0; color: var(--text-secondary); font-size: 0.92rem;">Explore the rest of Hans's selected works or connect directly for engineering opportunities.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <a href="index.html#selected-work" class="btn btn-primary">View Other Projects →</a>
+              <button class="contact-email-btn btn btn-outline" data-email="hanslaureles92@gmail.com">Get in Touch ✉️</button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <div class="brand-title">
+          <span class="brand-dot"></span>
+          Hans Aaron Laureles
+        </div>
+        <p class="footer-copy">Applied AI Engineer &amp; Full-Stack Builder · Manila, Philippines</p>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+        <a href="index.html">Selected Work</a>
+        <a href="about.html">About Me</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js?v=2.1.0"></script>
+  
+  <script>
+    // Interactive Simulator Logic for Ciel Case Study
+    (function() {
+      const chips = document.querySelectorAll('.ciel-chip');
+      const output = document.getElementById('ciel-demo-output');
+      const dspBadge = document.getElementById('demoDspBadge');
+      const bars = document.querySelectorAll('.ciel-wave-bar');
+
+      const RESPONSES = {
+        squad: {
+          dsp: "⚡ AUDIO PIPELINE: Groq Whisper Turbo (<320ms) → Multi-Agent Swarm Router → Edge-TTS Telepathic DSP",
+          text: "[CIEL] All 5 subordinate agents are currently operational on local loopback. Sakura is coordinating daily queue triage; Chaewon reports single-page resume templates compiled; Kazuha verified responsive styles; Yunjin completed design audit checkpoints; Eunchae confirms 0% memory leaks across daemons. Hardware temperatures are nominal."
+        },
+        rules: {
+          dsp: "⚡ SECOND BRAIN BRIDGE: Vault Read `03 - Rules & Memory/Learned_Rules.md` (~42ms) → Ciel Synthesizer",
+          text: "[CIEL] Accessing Obsidian Learned Rules. 10 authoritative engineering guidelines currently active: Rule MEM-005 enforces avoiding nested double quotes in PowerShell inline scripts; Rule MEM-006 mandates explicit UTF-8 reconfiguration in Windows Python consoles; Rule MEM-007 requires atomic Git commits for build triggers rather than manual asset copying."
+        },
+        career: {
+          dsp: "⚡ SECOND BRAIN BRIDGE: Vault Read `02 - Career/Career_Preferences.md` (~38ms) → Ciel Synthesizer",
+          text: "[CIEL] Querying career preferences. Primary target: Applied AI Engineer, Autonomous Agent Developer, and Full-Stack Systems roles. Target compensation baseline: Competitive global market rate. Work modality: Remote or Hybrid (Metro Manila, PH / Global). Preferred stacks: Python, Node.js, FastMCP, Groq LPU routing, and modern vanilla frontend architecture."
+        },
+        vitals: {
+          dsp: "⚡ HARDWARE SENTINEL: Live System Diagnostics Query (~18ms) → Ciel Telemetry",
+          text: "[CIEL] Hardware telemetry check: Intel Core i5-12400F running at 12.2% load; RAM consumption at 9.8 GB of 15.8 GB (61.9%); AMD Radeon RX 6600 XT DirectML acceleration idle and available; primary disk free space at 120.7 GB. System health index is 100% optimal."
+        },
+        dispatch: {
+          dsp: "⚡ SWARM DISPATCH: `agent_tools.dispatch_agent('sakura', 'Recruiter Briefing')` → Local Socket",
+          text: "[CIEL] Task dispatched to Sakura (Team Coordinator). Sakura has initialized the recruiter briefing protocol and synced the current portfolio project manifest with the latest case studies. Ready to answer recruiter queries."
+        }
+      };
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          const query = chip.getAttribute('data-query');
+          const data = RESPONSES[query] || RESPONSES.squad;
+
+          // Pulse visualizer
+          bars.forEach((b, i) => {
+            const h = Math.floor(Math.random() * 36) + 12;
+            b.style.height = `${h}px`;
+          });
+
+          dspBadge.textContent = data.dsp;
+          output.innerHTML = `<span style="color: #FBBF24;">[PROCESSING...]</span>`;
+
+          setTimeout(() => {
+            output.innerHTML = `<span style="color: #FBBF24;">[CIEL]</span> ${data.text.replace('[CIEL] ', '')}`;
+          }, 180);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
