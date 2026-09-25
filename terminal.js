@@ -560,7 +560,7 @@
   <tr><td><strong class="term-highlight">WORKING MEMORY</strong></td><td class="term-cyan">8-Turn Sliding Conversational Context Buffer</td></tr>
   <tr><td><strong class="term-highlight">PROACTIVE SENTINELS</strong></td><td>4 Domains: Hardware Vitals, Career Pipeline, Rules, Git Cleanliness</td></tr>
   <tr><td><strong class="term-highlight">SUBORDINATE FLEET</strong></td><td>Supervises 5 LSFM Agents: Sakura, Chaewon, Kazuha, Yunjin, Eunchae</td></tr>
-  <tr><td><strong class="term-highlight">LOCAL HUD ENDPOINT</strong></td><td><a href="http://localhost:8000" target="_blank" class="term-link">http://localhost:8000 ↗</a> (Port 8000 WebSockets)</td></tr>
+  <tr><td><strong class="term-highlight">LIVE SIMULATOR</strong></td><td><a href="case-ciel.html#simulator" class="term-link">In-Page Thought Acceleration Demo ↗</a></td></tr>
   <tr><td><strong class="term-highlight">CASE STUDY</strong></td><td><a href="case-ciel.html" class="term-link">portfolio-site/case-ciel.html ↗</a></td></tr>
 </table>
 <div class="term-line term-muted" style="margin-top: 6px;">💡 Tip: Type <span class="term-highlight">'projects'</span> to view all works, or explore the full case study: <a href="case-ciel.html" class="term-link">Read Manas: Ciel Case Study →</a></div>
