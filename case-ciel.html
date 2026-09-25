@@ -353,18 +353,19 @@
           <div class="mono" style="font-size: 0.72rem; color: #F59E0B;">● THOUGHT ACCELERATION ACTIVE</div>
         </div>
         <div class="terminal-body">
-<pre><span class="terminal-comment"># Manas: Ciel Autonomous Speech &amp; Second Brain Pipeline</span>
+<pre><span class="terminal-comment"># Manas: Ciel Autonomous Speech &amp; Dual Cognitive Pipeline</span>
 <span class="terminal-prompt">[INGEST]</span>      Microphone PCM Buffer ──&gt; FFmpeg 16kHz mono normalization (~28ms)
 <span class="terminal-prompt">[ASR]</span>         Groq Whisper Large v3 Turbo (Domain Vocabulary Prompting) ──&gt; &lt;320ms
-<span class="terminal-prompt">[ROUTER]</span>      Ciel Divine Wisdom Core (Qwen 2.5 70B / 128k context)
-               ├─ Intent: System Query / Rule Recall / Agent Task Delegation
-               ├─ Context: 8-turn sliding working memory buffer + Live Obsidian Vault
-               └─ Tools: [ciel_read_rules, ciel_read_profile, ciel_search_vault, squad_dispatch]
+<span class="terminal-prompt">[ROUTER]</span>      Ciel Divine Wisdom Core (Dual-Mode Cognitive Intelligence)
+               ├─ Mode 1: Universal Knowledge &amp; Reasoning (Algorithms, Architecture, CS, Philosophy)
+               ├─ Mode 2: Swarm Coordination (5 Specialist Daemons) &amp; Obsidian Second Brain Sync
+               ├─ Context: 8-turn sliding working memory buffer + Live Vault Knowledge Graph
+               └─ Tools: [direct_knowledge, ciel_read_rules, ciel_read_profile, squad_dispatch]
 <span class="terminal-prompt">[DSP AUDIO]</span>   Edge-TTS en-GB-SoniaNeural ──&gt; FFmpeg Audio Filter:
                ├─ atempo=1.25 (Thought Acceleration tempo)
                └─ asetrate=24000*1.03 (Sharp telepathic presence)
 <span class="terminal-prompt">[HUD WS]</span>      Live Concentric Rings Broadcast ──&gt; Audio Reactive Waveform &amp; Proactive Sentinel
-<span class="terminal-success">[STATUS]</span>      Optimal · Sub-350ms Turnaround · Zero Master Persona · Compounding Knowledge</pre>
+<span class="terminal-success">[STATUS]</span>      Optimal · Sub-350ms Turnaround · Zero Master Persona · Universal Knowledge</pre>
         </div>
       </div>
 
@@ -398,11 +399,11 @@
             In modern software engineering, developers are bombarded by fragmentation: switching between terminal shells, Slack or Discord communication channels, Obsidian documentation vaults, and cloud LLM web interfaces. 
           </p>
           <p>
-            Rather than building another generic chatbot or rigid voice assistant, we created <strong>Manas: Ciel</strong> — inspired by the concept of an omniscient internal partner that perceives all subsystems simultaneously. Ciel does not merely answer questions; she coordinates background daemons, monitors hardware temperatures, tracks open job applications, and pulls authoritative coding rules from Obsidian markdown notes in milliseconds.
+            Rather than building another generic chatbot or rigid voice assistant, we created <strong>Manas: Ciel</strong> — inspired by the concept of an omniscient internal partner that perceives all subsystems simultaneously. Ciel operates with a <strong>Dual-Mode Cognitive Architecture</strong>: she is both an authoritative, frontier-grade conversational intelligence with universal knowledge across computer science, algorithms, and systems design, and an autonomous local coordinator who dispatches background daemons, monitors hardware vitals, and pulls learned heuristics from Obsidian markdown notes in milliseconds.
           </p>
           <div style="background: rgba(245, 158, 11, 0.06); border-left: 3px solid #F59E0B; padding: 16px 20px; border-radius: 4px; margin: 20px 0;">
             <p style="margin: 0; font-size: 0.92rem; line-height: 1.6; color: var(--text-primary);">
-              <strong>Design Stance:</strong> Ciel acts as a calm, precise, and intellectually equal technical partner. All archaic anime subservience tropes (e.g. "Master" or "マスター") are strictly barred from the system prompt, replaced by authoritative clarity, sharp reasoning, and autonomous execution.
+              <strong>Design Stance:</strong> Ciel acts as a calm, precise, and intellectually equal technical partner. All archaic anime subservience tropes (e.g. "Master" or "マスター") are strictly barred from the system prompt, replaced by authoritative clarity, sharp reasoning, and autonomous execution across both universal knowledge and local workspace operations.
             </p>
           </div>
         </section>
@@ -451,6 +452,7 @@
             <div class="ciel-prompt-chips">
               <span class="mono" style="font-size: 0.75rem; align-self: center; color: var(--text-muted);">VOICE QUERY:</span>
               <button class="ciel-chip active" data-query="squad">👥 Agent Swarm Status</button>
+              <button class="ciel-chip" data-query="raft">🧠 Universal Knowledge (Raft)</button>
               <button class="ciel-chip" data-query="rules">📜 Obsidian Learned Rules</button>
               <button class="ciel-chip" data-query="career">🎯 Career Preferences</button>
               <button class="ciel-chip" data-query="vitals">⚡ Hardware &amp; Vitals</button>
@@ -745,6 +747,10 @@ tools = [
         squad: {
           dsp: "⚡ AUDIO PIPELINE: Groq Whisper Turbo (<320ms) → Multi-Agent Swarm Router → Edge-TTS Telepathic DSP",
           text: "[CIEL] All 5 subordinate agents are currently operational on local loopback. Sakura is coordinating daily queue triage; Chaewon reports single-page resume templates compiled; Kazuha verified responsive styles; Yunjin completed design audit checkpoints; Eunchae confirms 0% memory leaks across daemons. Hardware temperatures are nominal."
+        },
+        raft: {
+          dsp: "⚡ COGNITIVE REASONING: Universal Pre-Trained Weights (~210ms) → Direct Thought Acceleration",
+          text: "[CIEL] Notice: The Raft consensus algorithm decomposes state machine replication into 3 distinct subproblems: Leader Election, Log Replication, and Safety. Nodes exist as Follower, Candidate, or Leader. When a follower detects a randomized heartbeat timeout (150–300ms), it transitions to Candidate, increments its term, and requests votes. Upon receiving a majority quorum, the node ascends to Leader and begins serving client requests with atomic log append guarantees."
         },
         rules: {
           dsp: "⚡ SECOND BRAIN BRIDGE: Vault Read `03 - Rules & Memory/Learned_Rules.md` (~42ms) → Ciel Synthesizer",
