@@ -1,0 +1,109 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/ciel",
+      "destination": "/case-ciel.html"
+    },
+    {
+      "source": "/ciel-hud",
+      "destination": "/case-ciel.html"
+    },
+    {
+      "source": "/case-ciel",
+      "destination": "/case-ciel.html"
+    },
+    {
+      "source": "/case-lsfm",
+      "destination": "/case-lsfm.html"
+    },
+    {
+      "source": "/case-memory",
+      "destination": "/case-memory.html"
+    },
+    {
+      "source": "/case-lumina",
+      "destination": "/case-lumina.html"
+    },
+    {
+      "source": "/case-vellum",
+      "destination": "/case-vellum.html"
+    },
+    {
+      "source": "/case-fintrack",
+      "destination": "/case-fintrack.html"
+    },
+    {
+      "source": "/case-aura",
+      "destination": "/case-aura.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/aura-store",
+      "destination": "/aura-store/index.html"
+    },
+    {
+      "source": "/aura-store/",
+      "destination": "/aura-store/index.html"
+    },
+    {
+      "source": "/aura-store/(.*)",
+      "destination": "/aura-store/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(css|js)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.pdf",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, must-revalidate"
+        }
+      ]
+    }
+  ]
+}

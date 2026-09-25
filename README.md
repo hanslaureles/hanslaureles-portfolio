@@ -35,20 +35,26 @@ The official web engineering portfolio of **Hans Aaron Laureles**, showcasing:
 - **Agent Copilot Engine (`sakura-copilot.js`)**: Robertson-Spärck Jones BM25 search engine with token weighting, stop-word elimination, and instant client-side resolution (<2ms).
 - **Telemetry Subsystem (`sentinel.js`)**: Event-driven modal HUD with simulated live network probes, jitter modeling, and Manila UTC+8 synchronization.
 - **Terminal Engine (`terminal.js`)**: Simulated Unix shell supporting tab autocomplete, history buffers, quick-action chips, and interactive command dispatching.
-- **Deployment & Edge Routing**: Netlify Edge with automated continuous deployment from GitHub and custom security headers via `netlify.toml`.
+- **Deployment & Edge Routing**: Vercel Global Edge Network with automated continuous deployment from GitHub (`vercel.json`), clean extensionless URLs (`cleanUrls: true`), and immutable HTTP security headers.
 
 ---
 
-## 🚀 Local Development
+## 🚀 Deployment & Local Development
 
+### Deploy to Vercel (Production)
+1. Push updates to GitHub:
+   ```bash
+   sync_portfolio.bat
+   ```
+2. Import repository in **[Vercel Dashboard](https://vercel.com/new)**:
+   - Select repository: `hanslaureles/hanslaureles-portfolio`
+   - Framework Preset: `Other` (Static HTML)
+   - Root Directory: `./`
+   - Click **Deploy**
+
+### Local Preview
 No build steps or npm installations required:
 ```bash
-# Clone the repository
-git clone https://github.com/hanslaureles/portfolio.git
-
-# Navigate to the folder
-cd portfolio
-
 # Start a local HTTP server
 python -m http.server 8080
 ```
