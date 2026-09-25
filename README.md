@@ -2,10 +2,10 @@
 
 # 🌐 Hans Aaron Laureles — Personal Portfolio
 ### AI Systems Engineer & Full-Stack Builder
-**Live Website:** [hansaaronlaureles.netlify.app](https://hansaaronlaureles.netlify.app)
+**Live Website:** [hanslaureles.vercel.app](https://hanslaureles.vercel.app/)
 
-[![Live Site](https://img.shields.io/badge/Live_Site-hansaaronlaureles.netlify.app-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://hansaaronlaureles.netlify.app)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/your-badge/deploy-status)](https://app.netlify.com)
+[![Live Site](https://img.shields.io/badge/Live_Site-hanslaureles.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://hanslaureles.vercel.app/)
+[![Vercel Deployment](https://img.shields.io/badge/Deployment-Vercel_Edge-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://hanslaureles.vercel.app/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
 </div>
@@ -17,7 +17,7 @@
 The official web engineering portfolio of **Hans Aaron Laureles**, showcasing:
 - **✨ Manas: Ciel Divine Wisdom AI Copilot (`case-ciel.html`)**: Real-time voice copilot and supervisory intelligence featuring sub-350ms Thought Acceleration DSP (1.25x tempo, +5Hz pitch), Groq Whisper Large v3 Turbo transcription, 8-turn sliding working memory buffer, direct bidirectional Obsidian Second Brain synchronization, and proactive 4-domain telemetry sentinels.
 - **Flagship Multi-Agent Architecture**: The **LSFM AI HQ** autonomous 5-agent operations swarm running hybrid cloud/local inference on consumer AMD Radeon RX 6600 XT silicon via DirectML with automated tools (Google Workspace OAuth2, Headless Edge vector PDF engine, Git Sentinel, AST sandbox testing).
-- **🌸 "Ask Sakura" Recruiter AI Copilot (`sakura-copilot.js`)**: In-browser client-side BM25 grounded knowledge assistant with 12 curated knowledge chunks, quick suggestion chips, citation cards, and direct deep-links.
+- **🌸 "Ask Sakura" Recruiter AI Copilot (`sakura-copilot.js`)**: In-browser client-side BM25 grounded knowledge assistant with 17 curated knowledge chunks, quick suggestion chips, citation cards, and direct deep-links.
 - **📡 Ambient Agent Telemetry & Sentinel HUD (`sentinel.js`)**: Interactive hero beacon with real-time UTC+8 Manila clock, simulated sub-20ms ping jitter, 5-agent fleet roster, live event telemetry stream, simulated fleet probe, and clipboard architecture report export.
 - **🌿 `$ git log` Career & Milestone Timeline**: Dual-mode interactive timeline switcher on `about.html` (`[ 📄 Executive Cards ]` vs `[ 🌿 $ git log --graph ]`) with 1-click copyable commit SHAs, milestone tags (v1.0 to v3.0), and interactive terminal `git log` command.
 - **🎠 Kinetic Curated Showcase Carousel**: Horizontal snap scroll track with `←` / `→` arrow buttons, live active card index counter (`01 / 07` to `07 / 07`), and responsive sliding progress bar.
@@ -65,7 +65,7 @@ Open `http://localhost:8080` in any browser.
 ## 👨‍💻 Author
 
 **Hans Aaron Laureles**  
-- 🌐 [Portfolio](https://hansaaronlaureles.netlify.app)  
+- 🌐 [Portfolio](https://hanslaureles.vercel.app/)  
 - 💼 [LinkedIn](https://linkedin.com/in/hanslaureles)  
 - 🐙 [GitHub](https://github.com/hanslaureles)  
 - 📧 [hanslaureles92@gmail.com](mailto:hanslaureles92@gmail.com)

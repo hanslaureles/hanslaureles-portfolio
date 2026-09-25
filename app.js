@@ -168,111 +168,165 @@
     sections.forEach(section => observer.observe(section));
   }
 
-  // --- 7. Selected Works Horizontal Showcase Carousel ---
+  // --- 7. Selected Works Horizontal Showcase Carousel (Infinite Loop) ---
   const showcaseTrack = document.getElementById('projectShowcaseTrack');
   const showcasePrevBtn = document.getElementById('showcasePrevBtn');
   const showcaseNextBtn = document.getElementById('showcaseNextBtn');
-  const showcaseCounter = document.getElementById('showcaseCounter');
   const showcaseThumb = document.getElementById('showcaseProgressThumb');
 
   if (showcaseTrack) {
-    const cards = showcaseTrack.querySelectorAll('.editorial-card');
-    const totalCards = cards.length;
+    const originalCards = Array.from(showcaseTrack.querySelectorAll('.editorial-card'));
+    const totalCards = originalCards.length;
 
-    function getCardRelativeLeft(card) {
-      const cardRect = card.getBoundingClientRect();
-      const trackRect = showcaseTrack.getBoundingClientRect();
-      return cardRect.left - trackRect.left + showcaseTrack.scrollLeft;
-    }
+    // Build infinite loop by cloning cards before and after
+    if (totalCards > 1) {
+      const prependFragment = document.createDocumentFragment();
+      const appendFragment = document.createDocumentFragment();
 
-    function getClosestCardIndex() {
-      const currentScroll = showcaseTrack.scrollLeft;
-      let closestIdx = 0;
-      let minDiff = Infinity;
-      cards.forEach((card, idx) => {
-        const cardLeft = getCardRelativeLeft(card);
-        const diff = Math.abs(currentScroll - cardLeft);
-        if (diff < minDiff) {
-          minDiff = diff;
-          closestIdx = idx;
-        }
+      originalCards.forEach((card) => {
+        const beforeClone = card.cloneNode(true);
+        beforeClone.classList.add('is-clone');
+        beforeClone.setAttribute('aria-hidden', 'true');
+        beforeClone.querySelectorAll('a, button').forEach(el => el.setAttribute('tabindex', '-1'));
+        prependFragment.appendChild(beforeClone);
+
+        const afterClone = card.cloneNode(true);
+        afterClone.classList.add('is-clone');
+        afterClone.setAttribute('aria-hidden', 'true');
+        afterClone.querySelectorAll('a, button').forEach(el => el.setAttribute('tabindex', '-1'));
+        appendFragment.appendChild(afterClone);
       });
-      return closestIdx;
+
+      showcaseTrack.insertBefore(prependFragment, originalCards[0]);
+      showcaseTrack.appendChild(appendFragment);
     }
 
-    let targetCardIdx = 0;
+    function getMetrics() {
+      const card = originalCards[0];
+      if (!card) return { step: 0, loopWidth: 0 };
+      const style = window.getComputedStyle(showcaseTrack);
+      const gap = parseFloat(style.gap) || 24;
+      const cardWidth = card.getBoundingClientRect().width;
+      const step = cardWidth + gap;
+      const loopWidth = step * totalCards;
+      return { cardWidth, gap, step, loopWidth };
+    }
 
-    function scrollToCard(idx) {
-      if (idx < 0 || idx >= totalCards) return;
-      targetCardIdx = idx;
-      const targetCard = cards[idx];
-      if (targetCard) {
-        const targetScroll = Math.max(0, getCardRelativeLeft(targetCard) - 4);
-        showcaseTrack.scrollTo({ left: targetScroll, behavior: 'smooth' });
+    function initPosition() {
+      const { loopWidth } = getMetrics();
+      if (loopWidth > 0) {
+        showcaseTrack.style.scrollBehavior = 'auto';
+        showcaseTrack.scrollLeft = loopWidth;
+        showcaseTrack.style.scrollBehavior = '';
+        updateProgressThumb();
       }
     }
 
-    function updateCarouselState() {
-      const currentIdx = getClosestCardIndex();
-      const activeIdx = currentIdx + 1; // 1-based (1 to 6)
-      targetCardIdx = currentIdx;
+    // Set initial position aligned to first real card
+    setTimeout(initPosition, 80);
+    window.addEventListener('load', initPosition, { once: true });
 
-      // Update counter: 01 / 06 up to 06 / 06
-      if (showcaseCounter) {
-        const currentStr = String(activeIdx).padStart(2, '0');
-        const totalStr = String(totalCards).padStart(2, '0');
-        showcaseCounter.textContent = `${currentStr} / ${totalStr}`;
-      }
+    let isResetting = false;
 
-      // Update Arrow disabled states
-      if (showcasePrevBtn) {
-        showcasePrevBtn.disabled = (currentIdx === 0);
-      }
-      if (showcaseNextBtn) {
-        showcaseNextBtn.disabled = (currentIdx >= totalCards - 1);
-      }
+    function checkBoundaryReset() {
+      if (isResetting) return;
+      const { loopWidth } = getMetrics();
+      if (loopWidth <= 0) return;
 
-      // Update progress thumb
-      if (showcaseThumb && totalCards > 1) {
-        const maxScroll = showcaseTrack.scrollWidth - showcaseTrack.clientWidth;
-        let ratio = currentIdx / (totalCards - 1);
-        if (maxScroll > 0) {
-          ratio = Math.min(1, Math.max(0, showcaseTrack.scrollLeft / maxScroll));
-        }
-        const thumbWidthPercent = Math.max(16, (1 / totalCards) * 100);
-        showcaseThumb.style.width = `${thumbWidthPercent}%`;
-        showcaseThumb.style.left = `${ratio * (100 - thumbWidthPercent)}%`;
+      const current = showcaseTrack.scrollLeft;
+
+      // Scrolled past real cards into after-clones zone
+      if (current >= loopWidth * 2 - 4) {
+        isResetting = true;
+        showcaseTrack.style.scrollBehavior = 'auto';
+        showcaseTrack.style.scrollSnapType = 'none';
+        showcaseTrack.scrollLeft = current - loopWidth;
+        requestAnimationFrame(() => {
+          showcaseTrack.style.scrollBehavior = '';
+          showcaseTrack.style.scrollSnapType = '';
+          isResetting = false;
+        });
       }
+      // Scrolled before real cards into before-clones zone
+      else if (current < loopWidth - 4) {
+        isResetting = true;
+        showcaseTrack.style.scrollBehavior = 'auto';
+        showcaseTrack.style.scrollSnapType = 'none';
+        showcaseTrack.scrollLeft = current + loopWidth;
+        requestAnimationFrame(() => {
+          showcaseTrack.style.scrollBehavior = '';
+          showcaseTrack.style.scrollSnapType = '';
+          isResetting = false;
+        });
+      }
+    }
+
+    function updateProgressThumb() {
+      if (!showcaseThumb || totalCards <= 1) return;
+      const { loopWidth } = getMetrics();
+      if (loopWidth <= 0) return;
+
+      const offsetInLoop = ((showcaseTrack.scrollLeft - loopWidth) % loopWidth + loopWidth) % loopWidth;
+      const ratio = Math.min(1, Math.max(0, offsetInLoop / loopWidth));
+      const thumbWidthPercent = (1 / totalCards) * 100;
+      showcaseThumb.style.width = `${thumbWidthPercent}%`;
+      showcaseThumb.style.left = `${ratio * (100 - thumbWidthPercent)}%`;
+    }
+
+    // Arrow navigation - continuous looping, never disabled
+    if (showcasePrevBtn) {
+      showcasePrevBtn.disabled = false;
+    }
+    if (showcaseNextBtn) {
+      showcaseNextBtn.disabled = false;
+    }
+
+    let navTimer = null;
+
+    function scrollByStep(direction) {
+      const { step } = getMetrics();
+      if (step <= 0) return;
+
+      clearTimeout(navTimer);
+      showcaseTrack.style.scrollBehavior = 'smooth';
+      showcaseTrack.scrollBy({ left: direction * step, behavior: 'smooth' });
+
+      navTimer = setTimeout(() => {
+        checkBoundaryReset();
+      }, 380);
     }
 
     if (showcasePrevBtn) {
-      showcasePrevBtn.addEventListener('click', () => {
-        const currentIdx = getClosestCardIndex();
-        const prevIdx = Math.max(0, Math.min(targetCardIdx - 1, currentIdx - 1));
-        scrollToCard(prevIdx);
-      });
+      showcasePrevBtn.addEventListener('click', () => scrollByStep(-1));
     }
 
     if (showcaseNextBtn) {
-      showcaseNextBtn.addEventListener('click', () => {
-        const currentIdx = getClosestCardIndex();
-        const nextIdx = Math.min(totalCards - 1, Math.max(targetCardIdx + 1, currentIdx + 1));
-        scrollToCard(nextIdx);
+      showcaseNextBtn.addEventListener('click', () => scrollByStep(1));
+    }
+
+    let scrollDebounce = null;
+    showcaseTrack.addEventListener('scroll', () => {
+      updateProgressThumb();
+      clearTimeout(scrollDebounce);
+      scrollDebounce = setTimeout(checkBoundaryReset, 180);
+    }, { passive: true });
+
+    if ('onscrollend' in window) {
+      showcaseTrack.addEventListener('scrollend', () => {
+        checkBoundaryReset();
       });
     }
 
-    showcaseTrack.addEventListener('scroll', updateCarouselState, { passive: true });
-    window.addEventListener('resize', updateCarouselState);
+    window.addEventListener('resize', () => {
+      checkBoundaryReset();
+      updateProgressThumb();
+    });
 
-    // Initial calculation
-    setTimeout(updateCarouselState, 120);
-
-    // Drag-to-scroll for mouse interaction on desktop
+    // Drag-to-scroll interaction on desktop
     let isDown = false;
     let startX, scrollLeftVal;
 
     showcaseTrack.addEventListener('mousedown', (e) => {
-      // Don't intercept clicks on links or buttons
       if (e.target.closest('a') || e.target.closest('button')) return;
       isDown = true;
       showcaseTrack.classList.add('is-dragging');
@@ -284,14 +338,16 @@
       if (!isDown) return;
       isDown = false;
       showcaseTrack.classList.remove('is-dragging');
+      checkBoundaryReset();
     });
 
     showcaseTrack.addEventListener('mousemove', (e) => {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - showcaseTrack.offsetLeft;
-      const walk = (x - startX) * 1.4;
+      const walk = (x - startX) * 1.3;
       showcaseTrack.scrollLeft = scrollLeftVal - walk;
+      updateProgressThumb();
     });
   }
 

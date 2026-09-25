@@ -204,6 +204,11 @@
       </nav>
 
       <div class="header-actions">
+        <button class="sakura-nav-btn" id="sakuraNavBtn" aria-label="Ask Sakura AI Recruiter Assistant"
+          title="Ask Sakura AI Copilot (Press / or Ctrl+K)">
+          <span>🌸</span>
+          <span>Ask Sakura</span>
+        </button>
         <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Press T)">
           <!-- Icon injected by app.js -->
         </button>
@@ -225,12 +230,13 @@
     </div>
     <ul class="mobile-drawer-links">
       <li><a href="index.html">01. Selected Work</a></li>
+      <li><a href="#" class="open-sakura-btn" style="color: #F472B6; font-weight: 600;">🌸 Ask Sakura (AI Copilot)</a></li>
       <li><a href="about.html">02. About Me</a></li>
-      <li><a href="case-ciel.html" class="active">03. Manas: Ciel (Divine Wisdom Copilot)</a></li>
-      <li><a href="case-lsfm.html">04. Flagship: LSFM AI HQ</a></li>
-      <li><a href="case-memory.html">05. Cognitive Memory Core</a></li>
-      <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer">06. Resume (PDF) ↗</a></li>
-      <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">07. GitHub Profile ↗</a></li>
+      <li><a href="case-ciel.html" class="active" style="color: #FBBF24; font-weight: 600;">✦ Flagship: Manas Ciel</a></li>
+      <li><a href="case-lsfm.html">03. LSFM AI HQ</a></li>
+      <li><a href="case-memory.html">04. Cognitive Memory Core</a></li>
+      <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer">05. Resume (PDF) ↗</a></li>
+      <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">06. GitHub Profile ↗</a></li>
     </ul>
   </div>
 
@@ -591,7 +597,7 @@ tools = [
           </div>
 
           <p>
-            When Hans asks: <em>"What are my current career preferences?"</em> or <em>"Remind me of the rule regarding Netlify redirect syntax,"</em> Ciel invokes the respective tool, parses the local markdown file, and responds with authoritative precision. If Obsidian's REST plugin daemon is offline, Ciel automatically falls back to direct filesystem reading without throwing a single user-facing exception.
+            When Hans asks: <em>"What are my current career preferences?"</em> or <em>"Remind me of the rule regarding edge redirect syntax,"</em> Ciel invokes the respective tool, parses the local markdown file, and responds with authoritative precision. If Obsidian's REST plugin daemon is offline, Ciel automatically falls back to direct filesystem reading without throwing a single user-facing exception.
           </p>
         </section>
 
@@ -725,6 +731,7 @@ tools = [
   </footer>
 
   <script src="app.js?v=2.1.0"></script>
+  <script src="sakura-copilot.js?v=2.1.0"></script>
   
   <script>
     // Interactive Simulator Logic for Ciel Case Study

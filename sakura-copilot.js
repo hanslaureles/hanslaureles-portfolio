@@ -48,7 +48,7 @@
       category: "Cognitive Architecture",
       keywords: ["memory", "cognitive", "bm25", "agent-memory", "recall", "reflect", "crystallize", "rules", "antigravity", "episodic", "retrieval", "flywheel", "amnesia"],
       summary: "Hans designed and built the Cognitive Memory Core, a self-improving developer agent engine written in 100% pure Python standard library with zero pip dependencies.",
-      evidence: "Executes BM25 heuristic retrieval in <15ms before agent execution, logs structured failure post-mortems (trigger, symptom, root cause, permanent rule), and auto-crystallizes high-frequency lessons into Antigravity workspace rules to permanently eliminate regression errors.",
+      evidence: "Executes BM25 heuristic retrieval before agent execution, logs structured failure post-mortems (trigger, symptom, root cause, permanent rule), and auto-crystallizes high-frequency lessons into Antigravity workspace rules to permanently eliminate regression errors.",
       linkUrl: "case-memory.html",
       linkText: "Read Cognitive Memory Case Study →"
     },
@@ -58,7 +58,7 @@
       category: "Professional Experience",
       keywords: ["roc", "roc.ph", "internship", "work experience", "ui/ux", "figma", "client", "wordpress", "tailwind", "design tokens", "heuristics"],
       summary: "Hans served as UI/UX & Frontend Engineer Intern at ROC (roc.ph) in General Trias, Cavite (June – August 2024), taking client products from Figma design specs to production web deployments.",
-      evidence: "Architected responsive interfaces applying Nielsen Norman Group usability heuristics; converted Figma designs into semantic HTML5, modern CSS, Tailwind, and React; participated in agile client reviews and Git workflows, cutting revision rates by 20% with a 95% on-time delivery rate across 10+ client websites.",
+      evidence: "Architected responsive interfaces applying Nielsen Norman Group usability heuristics; converted Figma designs into semantic HTML5, modern CSS, Tailwind, and React; participated in agile client reviews and Git workflows across production client websites.",
       linkUrl: "about.html",
       linkText: "Read Career Background in About Me →"
     },
@@ -67,8 +67,8 @@
       title: "Patriot Capstone — Cloud & Systems Architecture",
       category: "Cloud & Systems",
       keywords: ["patriot", "capstone", "aws", "lambda", "dynamodb", "redis", "cognito", "serverless", "cloud", "react native", "algorithms", "mobile"],
-      summary: "As Lead Systems Architect for his BS CS capstone at DLSU-D, Hans engineered 'Patriot', a real-time mobile matchmaking and community system built on serverless cloud microservices.",
-      evidence: "Built cross-platform mobile frontend in React Native (TypeScript) integrated with AWS Lambda, DynamoDB, Redis in-memory caching, and AWS Cognito auth. Designed custom algorithmic interest scoring via multidimensional matrices, scoring 4.4+/5 in formal usability benchmarking.",
+      summary: "As Lead Mobile Developer for his BS CS capstone at DLSU-D, Hans engineered 'Patriot', a real-time mobile matchmaking and community system built on serverless cloud microservices.",
+      evidence: "Built cross-platform mobile frontend in React Native (TypeScript) integrated with AWS Lambda, DynamoDB, Redis in-memory caching, and AWS Cognito auth. Designed custom algorithmic interest scoring via multidimensional matrices and conducted structured usability evaluations with student cohorts.",
       linkUrl: "about.html",
       linkText: "View Capstone Architecture in About Me →"
     },
@@ -78,7 +78,7 @@
       category: "Backend & DevOps",
       keywords: ["aws", "cloud", "backend", "api", "apis", "rest", "oauth2", "google workspace", "gmail api", "headless edge", "chromium", "redis", "docker", "automation"],
       summary: "Hans's systems stack includes AWS (Lambda, DynamoDB, Cognito, S3), Redis in-memory caching, asynchronous Python microservices (asyncio), Google Workspace REST APIs with OAuth2 token rotation, and headless Edge/Chromium automation.",
-      evidence: "Engineered headless Edge PDF pipelines that compile single-page ATS-compliant vector PDFs in <850ms, and OAuth2 batch triage sorting 120+ unread emails into 10 semantic labels.",
+      evidence: "Engineered headless Edge PDF pipelines that compile single-page ATS-compliant vector PDFs directly, and OAuth2 batch triage sorting unread emails into 10 hierarchical labels.",
       linkUrl: "about.html",
       linkText: "View 3-Pillar Technical Matrix →"
     },
@@ -110,7 +110,7 @@
       category: "Candidate Logistics",
       keywords: ["contact", "email", "location", "hire", "job", "salary", "remote", "cavite", "manila", "philippines", "availability", "resume", "pdf"],
       summary: "Hans Aaron Laureles is based in Cavite, Philippines, and is actively seeking full-time AI Systems Engineer, Applied AI, or Full-Stack Builder opportunities (Open to Remote, Hybrid, or Relocation).",
-      evidence: "Email: hanslaureles92@gmail.com | Portfolio: hansaaronlaureles.netlify.app | GitHub: github.com/hanslaureles. You can download his 1-page executive ATS vector resume directly from this site.",
+      evidence: "Email: hanslaureles92@gmail.com | Portfolio: hanslaureles.vercel.app | GitHub: github.com/hanslaureles. You can download his 1-page executive ATS vector resume directly from this site.",
       linkUrl: "Hans_Laureles_Resume.pdf",
       linkText: "📄 Download Hans's 1-Page ATS Resume (PDF) →"
     },
@@ -133,6 +133,58 @@
       evidence: "Recruiters can run 'git log' in the homepage CLI or toggle the '$ git log --graph' mode on about.html to inspect commit hashes, milestone branches (v1.0 to v2.5), and copy individual commit SHAs with 1 click.",
       linkUrl: "about.html#git",
       linkText: "🌿 View $ git log Timeline on About Page →"
+    },
+    {
+      id: "KNOW-13",
+      title: "FinTrack App — Algorithmic Financial Intelligence",
+      category: "Algorithmic UX & FinTech",
+      keywords: ["fintrack", "fintech", "finance", "budget", "budgeting", "expense", "transaction", "loss aversion", "heuristics", "money", "spending"],
+      summary: "Hans architected FinTrack to eliminate personal budget abandonment through a sub-3.2s transaction input engine, behavioral loss aversion nudges, and predictive month-end burn curves.",
+      evidence: "Engineered with modular Figma design tokens, Auto Layout 5.0, single-ceiling daily velocity monitoring, and non-shame behavioral economics feedback achieving 94% usability task completion in testing.",
+      linkUrl: "case-fintrack.html",
+      linkText: "📊 Read FinTrack Mobile Case Study →"
+    },
+    {
+      id: "KNOW-14",
+      title: "Vellum Minimal OS — Ambient Reflection Workspace",
+      category: "Interaction Systems & Mobile UX",
+      keywords: ["vellum", "minimalist", "calm", "wellness", "mood tracking", "reflection", "mobile concept", "ambient", "os", "gestures"],
+      summary: "Hans designed Vellum, an ambient mobile reflection companion engineered to combat notification fatigue and cognitive context-switching friction.",
+      evidence: "Features fluid gesture-driven journaling, dual-scale Swiss typographic hierarchy, and calm ambient color palettes built using Auto Layout 5.0 tokenized components.",
+      linkUrl: "case-vellum.html",
+      linkText: "🌿 Explore Vellum Mobile Case Study →"
+    },
+    {
+      id: "KNOW-15",
+      title: "Obsidian AI Brain & Model Context Protocol (MCP) Bridge",
+      category: "Knowledge Systems & Tooling",
+      keywords: ["obsidian", "mcp", "model context protocol", "second brain", "vault", "knowledge graph", "memory", "brain", "local rest api", "stdio"],
+      summary: "Hans established a live native Model Context Protocol (MCP) bridge connecting Antigravity and local swarm daemons directly to his Obsidian AI Brain.",
+      evidence: "Enables agents to query learned heuristics from Learned_Rules.md, fetch project dossiers, and append automated session logs over a zero-cloud local HTTPS REST API running on port 27124.",
+      linkUrl: "case-lsfm.html",
+      linkText: "🤖 Read Multi-Agent Swarm Architecture →"
+    },
+    {
+      id: "KNOW-16",
+      title: "Yunjin Automated Design Audit & QA Suite",
+      category: "Quality Assurance & Standards",
+      keywords: ["audit", "yunjin", "qa", "wcag", "accessibility", "standards", "lint", "health", "score", "assets"],
+      summary: "Hans built Yunjin, an automated portfolio design critic and QA auditor in the LSFM Swarm that verifies asset hygiene, contrast ratios, and WCAG AAA compliance.",
+      evidence: "Scanned all 9 portfolio pages with 49/49 verified image assets, 100% valid semantic HTML specs, and engineered first-200px problem/solution contrast cards across all 6 case studies.",
+      linkUrl: "case-lsfm.html",
+      linkText: "🎨 View LSFM Daemon Roster →"
+    },
+    {
+      id: "KNOW-17",
+      title: "Manas: Ciel — Divine Wisdom AI Voice Copilot & HUD",
+      category: "Voice AI & Multi-Agent Systems",
+      keywords: ["ciel", "manas", "voice", "hud", "thought acceleration", "groq", "whisper", "tensura", "divine wisdom", "elevenlabs", "obsidian", "mcp", "speech", "copilot", "audio", "dsp", "latency", "real-time"],
+      summary: "Hans architected Manas: Ciel, an autonomous voice-first cognitive copilot and local HUD operating at sub-800ms speech-to-speech roundtrips using Groq Whisper Turbo, Llama-3.3-70B, and Thought Acceleration DSP.",
+      evidence: "Features real-time speech loop with local PyAudio streaming, Thought Acceleration DSP (+5Hz pitch, 1.25x tempo), direct tool invocation into Obsidian AI Brain via MCP, dual-monitor visual state telemetry, and proactive 4-domain background sentinels.",
+      linkUrl: "case-ciel.html",
+      linkText: "🔮 Read Manas: Ciel Case Study →",
+      secondaryUrl: "case-ciel.html#simulator",
+      secondaryText: "⚡ Test Voice Simulator →"
     }
   ];
 
@@ -315,12 +367,16 @@
           <div class="sakura-prompt-chips">
             <div class="chips-label mono">// QUICK QUESTIONS:</div>
             <div class="chips-list">
+              <button class="sakura-chip" data-query="Tell me about the Manas Ciel voice AI copilot">Manas: Ciel Voice AI?</button>
               <button class="sakura-chip" data-query="Does Hans know React and Next.js?">React &amp; Next.js Experience?</button>
               <button class="sakura-chip" data-query="Tell me about the LSFM 5-agent swarm">5-Agent Autonomous Swarm?</button>
+              <button class="sakura-chip" data-query="How does FinTrack reduce budgeting friction?">FinTrack 3.2s Logging?</button>
               <button class="sakura-chip" data-query="What did Hans do at ROC.ph internship?">ROC.ph Internship Work?</button>
+              <button class="sakura-chip" data-query="Tell me about Vellum Minimal OS">Vellum Reflection OS?</button>
               <button class="sakura-chip" data-query="Local GPU inference on AMD RX 6600 XT">Local GPU Inference?</button>
               <button class="sakura-chip" data-query="What backend, AWS and cloud systems has Hans used?">AWS &amp; Cloud Systems?</button>
               <button class="sakura-chip" data-query="Tell me about the Cognitive Memory Core project">Cognitive Memory Project?</button>
+              <button class="sakura-chip" data-query="What were the results of Yunjin's audit?">Yunjin Design Audit?</button>
               <button class="sakura-chip" data-query="How does the Sentinel Telemetry system work?">Sentinel Telemetry HUD?</button>
               <button class="sakura-chip" data-query="Tell me about the git log career timeline">Git Career Timeline?</button>
             </div>
