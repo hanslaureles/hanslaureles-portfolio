@@ -34,7 +34,7 @@
           <span class="brand-dot"></span>
           Hans Aaron Laureles
         </div>
-        <div class="brand-subtitle">AI Systems Engineer // Agent Architectures</div>
+        <div class="brand-subtitle">Applied AI Engineer // Full-Stack Builder</div>
       </a>
 
       <nav aria-label="Main Navigation">
@@ -123,11 +123,86 @@
         </div>
         <div class="case-meta-item">
           <div class="label">Role</div>
-          <div class="val">Lead Systems Architect (Solo)</div>
+          <div class="val">Developer &amp; Systems Builder (Solo)</div>
         </div>
         <div class="case-meta-item">
           <div class="label">Stack</div>
-          <div class="val">Python · Ollama DirectML · Groq · Edge Headless · Gmail API</div>
+          <div class="val">Python 3.11 · Groq REST API · AMD DirectML · Headless Chromium · SQLite</div>
+        </div>
+      </div>
+
+      <!-- Problem vs Architecture Solution & Key Measured Outcomes (First 200px UX Polish) -->
+      <div class="case-challenge-grid">
+        <div class="case-challenge-card problem">
+          <div class="case-challenge-tag">
+            <span>●</span> The Engineering Challenge
+          </div>
+          <p class="case-challenge-text">
+            Commercial multi-agent systems rack up expensive cloud API bills ($50–$200/mo), create brittle single-point-of-failure network dependencies, and hide agent decision states inside terminal black boxes where users cannot intervene.
+          </p>
+        </div>
+        <div class="case-challenge-card solution">
+          <div class="case-challenge-tag">
+            <span>●</span> The Architecture Solution
+          </div>
+          <p class="case-challenge-text">
+            Engineered an asynchronous 5-daemon swarm on Discord Gateway with dual-tier hybrid routing: Groq Qwen 2.5 70B REST API for sub-300ms cloud responses, failing over to local AMD DirectML (RX 6600 XT) for 100% offline, zero-compute-cost operations.
+          </p>
+        </div>
+      </div>
+
+      <div class="case-metrics-strip">
+        <div class="case-metric-cell">
+          <div class="case-metric-num accent-emerald">$0.00 / mo</div>
+          <div class="case-metric-label">Compute Overhead</div>
+        </div>
+        <div class="case-metric-cell">
+          <div class="case-metric-num accent-blue">&lt; 300 ms</div>
+          <div class="case-metric-label">Cloud Inference Latency</div>
+        </div>
+        <div class="case-metric-cell">
+          <div class="case-metric-num">5 Daemons</div>
+          <div class="case-metric-label">Isolated Task Pipelines</div>
+        </div>
+        <div class="case-metric-cell">
+          <div class="case-metric-num">Single-Page</div>
+          <div class="case-metric-label">Vector ATS PDF Output</div>
+        </div>
+      </div>
+
+      <!-- Physical Hardware Workstation (Local Test Rig) -->
+      <div class="hardware-rig-card">
+        <div class="hardware-rig-header">
+          <div class="hardware-rig-title">
+            <span>🖥️</span> Physical Workstation Specs (Local Execution Rig)
+          </div>
+          <span class="hardware-rig-badge">● 24/7 Zero-Lag Workload</span>
+        </div>
+        <div class="hardware-rig-grid">
+          <div class="hardware-spec-item">
+            <span class="hardware-spec-label">Processor</span>
+            <span class="hardware-spec-val">AMD Ryzen 5 5600</span>
+            <span class="hardware-spec-sub">6 Cores · 12 Threads · 4.4 GHz</span>
+          </div>
+          <div class="hardware-spec-item">
+            <span class="hardware-spec-label">Graphics &amp; VRAM</span>
+            <span class="hardware-spec-val">AMD Radeon RX 6600 XT</span>
+            <span class="hardware-spec-sub">8GB GDDR6 · DirectML / Vulkan</span>
+          </div>
+          <div class="hardware-spec-item">
+            <span class="hardware-spec-label">System Memory</span>
+            <span class="hardware-spec-val">32GB DDR4 3200MHz</span>
+            <span class="hardware-spec-sub">Dual-Channel High Bandwidth</span>
+          </div>
+          <div class="hardware-spec-item">
+            <span class="hardware-spec-label">Operating Cost</span>
+            <span class="hardware-spec-val" style="color: #10B981;">$0.00 / Month</span>
+            <span class="hardware-spec-sub">100% Free Tier &amp; Local Silicon</span>
+          </div>
+        </div>
+        <div class="hardware-rig-footnote">
+          <span>⚡</span>
+          <span><strong>Resource-Conscious Architecture:</strong> All 5 agent daemons run quietly in the background without stealing CPU or GPU power while gaming, compiling, or multitasking.</span>
         </div>
       </div>
 
@@ -150,17 +225,18 @@
         <div class="terminal-body">
 <pre><span class="terminal-comment"># LSFM Hybrid Multi-Agent Operations System Overview</span>
 <span class="terminal-prompt">[GATEWAY]</span>     Discord WebSocket Stream ──&gt; Async Event Dispatcher (discord.py)
+<span class="terminal-prompt">[BRAIN]</span>       Obsidian AI Brain Bridge (Port 27124 HTTPS) ──&gt; Shared Episodic Memory &amp; MCP Rules
 <span class="terminal-prompt">[ROUTER]</span>      Hybrid Inference Engine:
                ├─ Cloud: Groq API (Qwen 2.5 70B-Instruct) ──&gt; TTFT: 240ms [PRIMARY]
                └─ Local: Ollama (qwen2.5-coder:7b) on AMD RX 6600 XT via DirectML [FAILOVER]
-<span class="terminal-prompt">[AGENTS]</span>      5 Autonomous Domain Specialists:
-               ├─ 🌸 Sakura   :: Chief of Staff &amp; Daily Sync Briefings (!briefing)
-               ├─ 🐯 Chaewon  :: Career Strategist, ATS Tailor &amp; Screening Solver (!screen)
-               ├─ 🐍 Yunjin   :: Document Architect &amp; Headless ATS PDF Compiler (!pdf)
-               ├─ 🦢 Kazuha   :: Frontend Architect &amp; Local Git/PR Sentinel (!git, !review)
-               └─ 🥔 Eunchae  :: System Guardian, QA Code Runner (!test) &amp; Gmail Triage
-<span class="terminal-prompt">[TOOLS]</span>       Headless Edge Browser (`--print-to-pdf`) + Google Workspace Gmail REST API + Git Sentinel CLI + AST Sandbox
-<span class="terminal-success">[STATUS]</span>      $0.00/month infrastructure cost · Sub-second latency · Zero data leakage</pre>
+<span class="terminal-prompt">[PIPELINE]</span>    5-Stage Autonomous Delegation Topology:
+               ├─ 1. 🌸 Sakura   :: Chief of Staff &amp; Ingestion Triage (!briefing, MCP Context)
+               ├─ 2. 🦢 Kazuha   :: Frontend Architect &amp; Token Engine (!git, !review)
+               ├─ 3. 🎨 Yunjin   :: Document Architect &amp; QA Quality Gate (!pdf, DOM Audit 100/100)
+               ├─ 4. 🐯 Chaewon  :: Career Strategist &amp; ATS Vector PDF Tailor (!screen, !tailor)
+               └─ 5. 🥔 Eunchae  :: System Guardian, Telemetry Watchdog (!vitals) &amp; Gmail Triage
+<span class="terminal-prompt">[TOOLS]</span>       Headless Edge Browser (`--print-to-pdf`) + Google Workspace Gmail REST API + Git Sentinel CLI + Obsidian Local REST API
+<span class="terminal-success">[STATUS]</span>      $0.00/month infrastructure cost · Sub-second latency · Zero data leakage · 100% Verified</pre>
         </div>
       </div>
 
@@ -212,69 +288,181 @@
           </p>
         </section>
 
-        <!-- Section 02: Swarm Topology -->
+        <!-- Section 02: Swarm Topology & Delegation Protocol -->
         <section id="topology" class="case-body-section">
-          <div class="section-tag">// 02 · SWARM ARCHITECTURE</div>
-          <h3>Decentralized Agent Specialization &amp; Memory Isolation</h3>
+          <div class="section-tag">// 02 · SWARM ARCHITECTURE &amp; DELEGATION</div>
+          <h3>Decentralized Agent Specialization &amp; Inter-Agent Delegation</h3>
           <p>
-            Rather than relying on a single mega-prompt, the platform decomposes executive operations into five autonomous agents, each maintaining dedicated prompt personas, operational scopes, and tool bindings:
+            Rather than relying on a monolithic prompt that collapses under context pollution, LSFM AI HQ decomposes operations across five autonomous domain daemons. Each agent executes within an isolated process context, maintains strict prompt boundaries, and interfaces with specialized local and cloud toolbindings:
           </p>
 
-          <div class="agent-grid" style="margin: 28px 0;">
-            <div class="agent-card">
-              <div class="agent-avatar-badge">🌸</div>
-              <div class="agent-role-title">Sakura — Chief of Staff</div>
-              <p class="agent-desc">Orchestrates daily morning briefings, manages system heartbeats, and routes cross-agent operational directives.</p>
-              <span class="agent-stack-tag">Context Routing · Briefings</span>
+          <div class="agent-row-list">
+
+            <!-- Agent 1: Sakura -->
+            <div class="agent-row-card">
+              <div class="agent-row-main">
+                <div class="agent-row-avatar">🌸</div>
+                <div class="agent-row-info">
+                  <div class="agent-row-headline">
+                    <span class="agent-row-name">Sakura</span>
+                    <span class="agent-row-role">// Chief of Staff &amp; Swarm Orchestrator</span>
+                  </div>
+                  <p class="agent-row-desc">Operator intent ingestion, Obsidian AI Brain MCP context routing, daily morning briefings, and inter-agent task handoffs.</p>
+                </div>
+              </div>
+              <div class="agent-row-tag">
+                <span class="agent-stack-tag">Orchestration · MCP Triage</span>
+              </div>
             </div>
-            <div class="agent-card">
-              <div class="agent-avatar-badge">🐯</div>
-              <div class="agent-role-title">Chaewon — Career Strategist</div>
-              <p class="agent-desc">Monitors job market signals, computes ATS keyword relevancy scores, tailors resumes, and solves screening questions (!screen).</p>
-              <span class="agent-stack-tag">Semantic Matching · Screening Solver</span>
+
+            <!-- Agent 2: Kazuha -->
+            <div class="agent-row-card">
+              <div class="agent-row-main">
+                <div class="agent-row-avatar">🦢</div>
+                <div class="agent-row-info">
+                  <div class="agent-row-headline">
+                    <span class="agent-row-name">Kazuha</span>
+                    <span class="agent-row-role">// Frontend Architect &amp; UI Sentinel</span>
+                  </div>
+                  <p class="agent-row-desc">Enforces zero-framework design token compliance, authors responsive UI components, and guards Git pre-commit integrity.</p>
+                </div>
+              </div>
+              <div class="agent-row-tag">
+                <span class="agent-stack-tag">Token Engine · Git Sentinel</span>
+              </div>
             </div>
-            <div class="agent-card">
-              <div class="agent-avatar-badge">🐍</div>
-              <div class="agent-role-title">Yunjin — Document Architect</div>
-              <p class="agent-desc">Maintains master career markdown schemas, executes headless Chromium to compile single-page vector PDFs, and audits designs.</p>
-              <span class="agent-stack-tag">Headless Edge · PDF Engine</span>
+
+            <!-- Agent 3: Yunjin -->
+            <div class="agent-row-card">
+              <div class="agent-row-main">
+                <div class="agent-row-avatar">🎨</div>
+                <div class="agent-row-info">
+                  <div class="agent-row-headline">
+                    <span class="agent-row-name">Yunjin</span>
+                    <span class="agent-row-role">// Document Architect &amp; QA Critic</span>
+                  </div>
+                  <p class="agent-row-desc">Automated DOM tree auditing, asset 404 scanning (0 broken target), and design review gating with 100/100 threshold.</p>
+                </div>
+              </div>
+              <div class="agent-row-tag">
+                <span class="agent-stack-tag">DOM Auditing · Quality Gate</span>
+              </div>
             </div>
-            <div class="agent-card">
-              <div class="agent-avatar-badge">🦢</div>
-              <div class="agent-role-title">Kazuha — Frontend &amp; Git Sentinel</div>
-              <p class="agent-desc">Autonomous Git branch sentinel, pre-commit diff reviews, structured PR change generation, and frontend component inspection.</p>
-              <span class="agent-stack-tag">Git Sentinel · Code Review</span>
+
+            <!-- Agent 4: Chaewon -->
+            <div class="agent-row-card">
+              <div class="agent-row-main">
+                <div class="agent-row-avatar">🐯</div>
+                <div class="agent-row-info">
+                  <div class="agent-row-headline">
+                    <span class="agent-row-name">Chaewon</span>
+                    <span class="agent-row-role">// Career Strategist &amp; ATS Tailor</span>
+                  </div>
+                  <p class="agent-row-desc">Semantic keyword vector matching, tailored ATS resume drafting, and sub-second headless vector PDF compilation.</p>
+                </div>
+              </div>
+              <div class="agent-row-tag">
+                <span class="agent-stack-tag">ATS Vectors · Headless PDF</span>
+              </div>
             </div>
-            <div class="agent-card">
-              <div class="agent-avatar-badge">🥔</div>
-              <div class="agent-role-title">Eunchae — System Guardian &amp; QA</div>
-              <p class="agent-desc">Automated AST code testing suite, hardware resource watchdog (VRAM/RAM), failure reflection flywheel, and Gmail batch triage.</p>
-              <span class="agent-stack-tag">QA Flywheel · Hardware Watchdog</span>
+
+            <!-- Agent 5: Eunchae -->
+            <div class="agent-row-card">
+              <div class="agent-row-main">
+                <div class="agent-row-avatar">🥔</div>
+                <div class="agent-row-info">
+                  <div class="agent-row-headline">
+                    <span class="agent-row-name">Eunchae</span>
+                    <span class="agent-row-role">// System Guardian &amp; Telemetry</span>
+                  </div>
+                  <p class="agent-row-desc">Real-time hardware vitals watchdog (CPU, RAM, AMD RX 6600 XT DirectML), AST code sandbox, and Gmail batch triage.</p>
+                </div>
+              </div>
+              <div class="agent-row-tag">
+                <span class="agent-stack-tag">Hardware Watchdog · Gmail Triage</span>
+              </div>
             </div>
+
           </div>
 
-          <div class="arch-diagram">
-            <h4 style="margin-bottom: 16px; font-size: 0.95rem;">Interaction &amp; Message Dispatch Flow</h4>
-            <div class="arch-flow-row">
-              <div class="arch-box">
-                <div class="arch-box-title">User Command</div>
-                <div class="arch-box-subtitle">Discord Channel / Mentions</div>
+          <!-- 6-Step Request Lifecycle Visual Flow -->
+          <div style="margin-top: 36px; margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+              <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-primary);">The 6-Step Request Lifecycle</h4>
+              <span class="mono" style="font-size: 0.75rem; color: var(--accent);">END-TO-END PIPELINE · ZERO DATA LOSS</span>
+            </div>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 16px;">
+              Here is how a real user request travels through the swarm from start to finish:
+            </p>
+
+            <div class="lifecycle-grid">
+              <div class="lifecycle-card">
+                <div class="lifecycle-card-header">
+                  <span class="lifecycle-step-num">STEP 01</span>
+                  <span class="lifecycle-actor">Operator Input</span>
+                </div>
+                <div class="lifecycle-card-title">Ingest</div>
+                <p class="lifecycle-card-desc">User sends a natural message or command through Discord, Web Copilot, or the Terminal.</p>
               </div>
-              <span class="arch-arrow-symbol">→</span>
-              <div class="arch-box">
-                <div class="arch-box-title">Async Dispatcher</div>
-                <div class="arch-box-subtitle">Discord.py Gateway Daemon</div>
+
+              <div class="lifecycle-card">
+                <div class="lifecycle-card-header">
+                  <span class="lifecycle-step-num">STEP 02</span>
+                  <span class="lifecycle-actor">🌸 Sakura</span>
+                </div>
+                <div class="lifecycle-card-title">Triage &amp; Context</div>
+                <p class="lifecycle-card-desc">Sakura checks the goal, fetches past project rules from Obsidian, and decides which bot handles it.</p>
               </div>
-              <span class="arch-arrow-symbol">→</span>
-              <div class="arch-box">
-                <div class="arch-box-title">Hybrid Router</div>
-                <div class="arch-box-subtitle">Groq Cloud / Local Ollama</div>
+
+              <div class="lifecycle-card">
+                <div class="lifecycle-card-header">
+                  <span class="lifecycle-step-num">STEP 03</span>
+                  <span class="lifecycle-actor">Hybrid Router</span>
+                </div>
+                <div class="lifecycle-card-title">Smart Model Routing</div>
+                <p class="lifecycle-card-desc">Routes to Groq Cloud for sub-300ms speed, or to local AMD GPU for private, offline work.</p>
               </div>
-              <span class="arch-arrow-symbol">→</span>
-              <div class="arch-box">
-                <div class="arch-box-title">Tool Execution</div>
-                <div class="arch-box-subtitle">Gmail API / Headless Edge</div>
+
+              <div class="lifecycle-card">
+                <div class="lifecycle-card-header">
+                  <span class="lifecycle-step-num">STEP 04</span>
+                  <span class="lifecycle-actor">Specialist Bot</span>
+                </div>
+                <div class="lifecycle-card-title">Deterministic Tool Work</div>
+                <p class="lifecycle-card-desc">The assigned bot executes real tools: compiles ATS PDFs, triages Gmail, or checks frontend tokens.</p>
               </div>
+
+              <div class="lifecycle-card">
+                <div class="lifecycle-card-header">
+                  <span class="lifecycle-step-num">STEP 05</span>
+                  <span class="lifecycle-actor">🎨 Yunjin</span>
+                </div>
+                <div class="lifecycle-card-title">Verify &amp; Quality Check</div>
+                <p class="lifecycle-card-desc">Validates data schemas, checks formatting, and confirms 0 broken links before finalizing.</p>
+              </div>
+
+              <div class="lifecycle-card">
+                <div class="lifecycle-card-header">
+                  <span class="lifecycle-step-num">STEP 06</span>
+                  <span class="lifecycle-actor">System Sync</span>
+                </div>
+                <div class="lifecycle-card-title">Dispatch &amp; Memory Sync</div>
+                <p class="lifecycle-card-desc">Returns the polished result to the user and writes any learned heuristics back to Obsidian.</p>
+              </div>
+            </div>
+
+            <!-- Unified Memory Substrate Highlight Card -->
+            <div style="background: var(--bg); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 1.5rem;">🧠</span>
+                <div>
+                  <div style="font-weight: 600; font-size: 0.88rem; color: var(--text-primary);">Unified Memory: Obsidian Local REST API &amp; MCP Bridge</div>
+                  <div style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 2px;">
+                    Cross-agent memory, user preferences, and daily logs sync automatically over local port 27124.
+                  </div>
+                </div>
+              </div>
+              <span class="badge badge-accent" style="white-space: nowrap;">Zero Session Amnesia</span>
             </div>
           </div>
         </section>
@@ -291,6 +479,46 @@
             <li><strong>Local Silicon Engine (DirectML / Ollama):</strong> Deploys <code>qwen2.5-coder:7b</code> directly on consumer workstation hardware—an <strong>AMD Radeon RX 6600 XT</strong> GPU accelerated through Microsoft DirectML and Vulkan runtimes.</li>
             <li><strong>Graceful Fallback &amp; Circuit Breaking:</strong> If cloud rate limits are reached or network connectivity drops, the system seamlessly routes prompts to the local GPU without failing user operations.</li>
           </ul>
+
+          <!-- Specialized Multi-Model Cloud Routing Table -->
+          <div class="routing-table-container">
+            <table class="routing-table">
+              <thead>
+                <tr>
+                  <th>Engine / Model</th>
+                  <th>Primary Role</th>
+                  <th>Inference Speed</th>
+                  <th>Why We Use It</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="routing-model-cell">Groq 120B / 70B Cloud</td>
+                  <td>Complex Reasoning &amp; Code Architecture</td>
+                  <td><span class="routing-speed-badge">&lt; 300ms TTFT</span></td>
+                  <td>Handles deep logic and multi-step agent planning without paying expensive cloud bills.</td>
+                </tr>
+                <tr>
+                  <td class="routing-model-cell">Groq 27B / 20B Cloud</td>
+                  <td>Instant Daily Chat &amp; Briefings</td>
+                  <td><span class="routing-speed-badge">&lt; 150ms TTFT</span></td>
+                  <td>Delivers lightning-fast conversational replies for routine Discord interactions.</td>
+                </tr>
+                <tr>
+                  <td class="routing-model-cell">Gemini 2.5 / 3.6 Flash</td>
+                  <td>Visual UI Auditing &amp; Multimodal QA</td>
+                  <td><span class="routing-speed-badge">Fast Cloud API</span></td>
+                  <td>Inspects screenshots, design layouts, and DOM trees for visual flaws.</td>
+                </tr>
+                <tr>
+                  <td class="routing-model-cell">AMD RX 6600 XT (DirectML)</td>
+                  <td>Offline Standby &amp; Private Tasks</td>
+                  <td><span class="routing-speed-badge">~35 tok/s (Local)</span></td>
+                  <td>100% free, private fallback whenever cloud APIs are unreachable or offline.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <div class="terminal-window">
             <div class="terminal-topbar">
@@ -341,7 +569,7 @@
               </div>
               <ul class="exp-bullets">
                 <li>Parses structured markdown specifications into calibrated HTML/CSS with exact point-based typography and line heights.</li>
-                <li>Launches Microsoft Edge in headless mode (<code>--headless --disable-gpu --print-to-pdf</code>) to compile a pixel-perfect, 1-page PDF in under 900ms.</li>
+                <li>Launches Microsoft Edge in headless mode (<code>--headless --disable-gpu --print-to-pdf</code>) to compile a pixel-perfect, 1-page PDF directly to vector format.</li>
                 <li>Ensures 100% vector text readability, zero image OCR dependencies, and strict compliance with automated Applicant Tracking Systems.</li>
               </ul>
             </div>
@@ -360,6 +588,90 @@
                 <li>Provisions 10 nested labels (<code>LSFM/Interviews</code>, <code>LSFM/University</code>, <code>LSFM/Finance</code>, <code>LSFM/Clutter</code>) and classifies unread emails using structured JSON prompts.</li>
                 <li>Features an automated <code>!clean</code> sweep that safely archives non-urgent newsletters while keeping critical university, human VIP, and banking notices highlighted.</li>
               </ul>
+            </div>
+          </div>
+
+          <!-- Enterprise Safety & Guardrails Panel -->
+          <div style="margin-top: 36px; margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+              <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-primary);">Enterprise Safety &amp; Guardrails</h4>
+              <span class="mono" style="font-size: 0.75rem; color: var(--accent);">RELIABLE AUTOMATION · HUMAN IN THE LOOP</span>
+            </div>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 16px;">
+              Autonomous agents are only helpful if you can trust them. LSFM HQ enforces three strict boundaries:
+            </p>
+
+            <div class="guardrails-grid">
+              <div class="guardrail-card">
+                <div class="guardrail-icon-wrap">🛡️</div>
+                <div class="guardrail-title">Human Approval First</div>
+                <p class="guardrail-desc">Destructive operations—like permanently deleting emails, overwriting code files, or mass archiving—require explicit confirmation before executing.</p>
+              </div>
+
+              <div class="guardrail-card">
+                <div class="guardrail-icon-wrap">🔒</div>
+                <div class="guardrail-title">Zero Data Exfiltration</div>
+                <p class="guardrail-desc">API keys, credentials, and private files remain strictly on your local PC. Private tasks stay entirely on the local AMD GPU and never touch external servers.</p>
+              </div>
+
+              <div class="guardrail-card">
+                <div class="guardrail-icon-wrap">🔄</div>
+                <div class="guardrail-title">Crash &amp; Lock Protection</div>
+                <p class="guardrail-desc">Windows mutex locking prevents duplicate instances from clashing. If an individual daemon hits an API limit, it automatically recovers without bringing down the swarm.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5 Multi-Surface Interfaces Matrix -->
+          <div style="margin-top: 36px; margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+              <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-primary);">5 Multi-Surface Interfaces</h4>
+              <span class="mono" style="font-size: 0.75rem; color: var(--accent);">ONE SWARM · MULTIPLE TOUCHPOINTS</span>
+            </div>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 16px;">
+              LSFM HQ is not locked into a single chat window. It works seamlessly across 5 daily touchpoints:
+            </p>
+
+            <div class="interfaces-matrix-grid">
+              <div class="interface-card">
+                <div class="interface-header">
+                  <span class="interface-icon">💬</span>
+                  <span class="interface-title">Discord Gateway</span>
+                </div>
+                <p class="interface-desc">Natural desktop and mobile chat operations with interactive buttons, embeds, and status updates.</p>
+              </div>
+
+              <div class="interface-card">
+                <div class="interface-header">
+                  <span class="interface-icon">🌸</span>
+                  <span class="interface-title">Web Copilot (Sakura)</span>
+                </div>
+                <p class="interface-desc">Live interactive assistant embedded right in the portfolio to answer questions and demonstrate capabilities.</p>
+              </div>
+
+              <div class="interface-card">
+                <div class="interface-header">
+                  <span class="interface-icon">💻</span>
+                  <span class="interface-title">Terminal CLI</span>
+                </div>
+                <p class="interface-desc">Direct command-line interface for fast developer checks, system diagnostics, and instant status pings.</p>
+              </div>
+
+              <div class="interface-card">
+                <div class="interface-header">
+                  <span class="interface-icon">🧠</span>
+                  <span class="interface-title">Obsidian Brain</span>
+                </div>
+                <p class="interface-desc">Bidirectional markdown knowledge base connected via secure local API to preserve long-term notes and learnings.</p>
+              </div>
+
+              <div class="interface-card">
+                <div class="interface-header">
+                  <span class="interface-icon">⚡</span>
+                  <span class="interface-title">1-Click Desktop Scripts</span>
+                </div>
+                <p class="interface-desc">Fast Windows scripts to launch, restart, or sync all 5 agent daemons in the background with zero setup.</p>
+              </div>
             </div>
           </div>
         </section>
@@ -414,9 +726,9 @@
     <!-- Clean Pagination Section (Full Width with Dedicated Spacing) -->
     <div class="case-pagination-wrap" style="margin-top: 64px; margin-bottom: 32px;">
       <div class="case-pagination" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-        <a href="case-memory.html" class="pag-card">
+        <a href="case-ciel.html" class="pag-card">
           <span class="pag-label">← Previous Case Study</span>
-          <span class="pag-title">06 · Cognitive Memory Core (Self-Improving Engine)</span>
+          <span class="pag-title">07 · Manas: Ciel (Divine Wisdom Copilot)</span>
         </a>
         <a href="case-lumina.html" class="pag-card" style="text-align: right;">
           <span class="pag-label">Next Case Study →</span>
