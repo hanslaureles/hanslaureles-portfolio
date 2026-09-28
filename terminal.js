@@ -557,6 +557,7 @@
   <tr><td><strong class="term-highlight">AUDIO PIPELINE</strong></td><td>FFmpeg 16kHz Mono Normalization + Groq Whisper Large v3 Turbo (&lt;350ms)</td></tr>
   <tr><td><strong class="term-highlight">THOUGHT ACCELERATION</strong></td><td style="color: #10B981;">1.25x Tempo · +5Hz Pitch · Edge-TTS en-GB-SoniaNeural</td></tr>
   <tr><td><strong class="term-highlight">SECOND BRAIN</strong></td><td>Bidirectional Obsidian Vault Bridge (Rules, Career, Profile, Daily)</td></tr>
+  <tr><td><strong class="term-highlight">SENSORY RADAR</strong></td><td class="term-cyan">Live Meteorology (wttr.in) + Real-Time Web Intelligence (DDGS)</td></tr>
   <tr><td><strong class="term-highlight">WORKING MEMORY</strong></td><td class="term-cyan">8-Turn Sliding Conversational Context Buffer</td></tr>
   <tr><td><strong class="term-highlight">PROACTIVE SENTINELS</strong></td><td>4 Domains: Hardware Vitals, Career Pipeline, Rules, Git Cleanliness</td></tr>
   <tr><td><strong class="term-highlight">SUBORDINATE FLEET</strong></td><td>Supervises 5 LSFM Agents: Sakura, Chaewon, Kazuha, Yunjin, Eunchae</td></tr>

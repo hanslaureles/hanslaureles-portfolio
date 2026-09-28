@@ -452,6 +452,8 @@
             <div class="ciel-prompt-chips">
               <span class="mono" style="font-size: 0.75rem; align-self: center; color: var(--text-muted);">VOICE QUERY:</span>
               <button class="ciel-chip active" data-query="squad">👥 Agent Swarm Status</button>
+              <button class="ciel-chip" data-query="weather">🌤️ Live Weather (wttr.in)</button>
+              <button class="ciel-chip" data-query="search">🌐 Web Intelligence (DDGS)</button>
               <button class="ciel-chip" data-query="raft">🧠 Universal Knowledge (Raft)</button>
               <button class="ciel-chip" data-query="rules">📜 Obsidian Learned Rules</button>
               <button class="ciel-chip" data-query="career">🎯 Career Preferences</button>
@@ -497,9 +499,9 @@
               </div>
               <div class="agent-role-title">Working Memory &amp; Second Brain</div>
               <div class="agent-desc">
-                Features an 8-turn sliding conversation context buffer paired with zero-latency bidirectional Obsidian vault tools (`ciel_read_rules`, `ciel_read_profile`, `ciel_search_vault`, `ciel_log_to_daily`).
+                Features an 8-turn sliding working memory buffer paired with live weather sensors (`wttr.in`), real-time web search (`ddgs`), and bidirectional Obsidian vault tools (`ciel_read_rules`, `ciel_read_profile`, `ciel_search_vault`, `ciel_log_to_daily`).
               </div>
-              <span class="agent-stack-tag">8-Turn Buffer · Obsidian REST/Vault</span>
+              <span class="agent-stack-tag">8-Turn Buffer · wttr.in · DDGS · Obsidian</span>
             </div>
 
             <div class="agent-card">
@@ -767,6 +769,14 @@ tools = [
         dispatch: {
           dsp: "⚡ SWARM DISPATCH: `agent_tools.dispatch_agent('sakura', 'Recruiter Briefing')` → Local Socket",
           text: "[CIEL] Task dispatched to Sakura (Team Coordinator). Sakura has initialized the recruiter briefing protocol and synced the current portfolio project manifest with the latest case studies. Ready to answer recruiter queries."
+        },
+        weather: {
+          dsp: "⚡ ATMOSPHERIC SENSOR: Live Meteorological Radar (wttr.in) → Ciel Telemetry",
+          text: "[CIEL] Atmospheric telemetry acquired: Cavite / Manila local atmosphere. Temperature: 29°C (Feels like 33°C), Humidity: 76%, Precipitation: Light scattered cloud cover, Wind: 14 km/h ENE. Barometric pressure is stable."
+        },
+        search: {
+          dsp: "⚡ GLOBAL WEB INTELLIGENCE: DuckDuckGo Search (DDGS) → Real-Time Grounded Citation",
+          text: "[CIEL] Live web intelligence query resolved in 240ms. Sourcing current technical and global events via DDGS with grounded citations, real-time data distillation, and zero hallucination."
         }
       };
 
