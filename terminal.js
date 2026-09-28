@@ -315,7 +315,7 @@
           appendOutput(`
             <div class="term-line term-cyan">guest@recruiter</div>
             <div class="term-line term-muted">Access Level: VIP Recruiter / Engineering Leader</div>
-            <div class="term-line">Target: Hans Aaron Laureles — AI Systems Engineer & Full-Stack Builder</div>
+            <div class="term-line">Target: Hans Aaron Laureles — Applied AI Engineer &amp; Full-Stack Builder</div>
             <div class="term-line term-muted">Origin: Manila, Philippines [GMT+8] · DLSU-D Computer Science</div>
           `);
           break;
@@ -324,8 +324,10 @@
         case 'gh':
           appendOutput(`
             <div class="term-line term-success">[GITHUB-DISPATCH] Connecting to GitHub profile...</div>
-            <div class="term-line">🐙 Profile: <a href="https://github.com/hanslaureles" target="_blank" rel="noopener" class="term-link">https://github.com/hanslaureles ↗</a></div>
-            <div class="term-line">⭐ Flagship Swarm: <a href="https://github.com/hanslaureles/lsfm-ai-hq" target="_blank" rel="noopener" class="term-link">https://github.com/hanslaureles/lsfm-ai-hq ↗</a></div>
+            <div class="term-line">🐙 Profile: <a href="https://github.com/hanslaureles" target="_blank" rel="noopener" class="term-link">github.com/hanslaureles ↗</a></div>
+            <div class="term-line">⭐ Multi-Agent Swarm: <a href="https://github.com/hanslaureles/lsfm-ai-hq" target="_blank" rel="noopener" class="term-link">github.com/hanslaureles/lsfm-ai-hq ↗</a></div>
+            <div class="term-line">💠 Voice Copilot HUD: <a href="https://github.com/hanslaureles/manas-ciel" target="_blank" rel="noopener" class="term-link">github.com/hanslaureles/manas-ciel ↗</a></div>
+            <div class="term-line">🧠 Developer Memory: <a href="https://github.com/hanslaureles/cognitive-memory-core" target="_blank" rel="noopener" class="term-link">github.com/hanslaureles/cognitive-memory-core ↗</a></div>
           `);
           window.open('https://github.com/hanslaureles', '_blank');
           break;
@@ -382,7 +384,7 @@
   <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">8f4a21d</span> <span class="term-badge">tag: v2.5.0</span> <span class="term-muted">[2025 – 2026]</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(swarm):</strong> Creator &amp; Developer — LSFM AI HQ</div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Asynchronous Discord Gateway streaming &amp; isolated persona boundaries</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• DirectML local GPU inference failover router on AMD RX 6600 XT</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Vulkan local GPU inference failover router on AMD RX 6600 XT</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Headless Chromium single-page ATS vector PDF compiler</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">└──</span> <a href="case-lsfm.html" class="term-link">View Case Study: case-lsfm.html ↗</a></div>
 </div>
@@ -467,7 +469,7 @@
       <td>🐍 Yunjin</td><td>Design Reviewer</td><td class="term-cyan">19ms</td><td><span class="term-badge success">● ONLINE</span></td>
     </tr>
     <tr>
-      <td>🦢 Kazuha</td><td>Frontend &amp; Code</td><td class="term-cyan">17ms</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🦢 Kazuha</td><td>Knowledge &amp; RAG</td><td class="term-cyan">17ms</td><td><span class="term-badge success">● ONLINE</span></td>
     </tr>
     <tr>
       <td>🥔 Eunchae</td><td>System Health</td><td class="term-cyan">20ms</td><td><span class="term-badge success">● ONLINE</span></td>
@@ -615,7 +617,7 @@
 <table class="term-table">
   <thead>
     <tr class="term-muted">
-      <th>METRIC</th><th>LOCAL DIRECTML (RX 6600 XT)</th><th>CLOUD GROQ (QWEN 70B)</th><th>COMMERCIAL SAAS (OPENAI/CLAUDE)</th>
+      <th>METRIC</th><th>LOCAL VULKAN (RX 6600 XT)</th><th>CLOUD GROQ (LLAMA 3.3 70B)</th><th>COMMERCIAL SAAS (OPENAI/CLAUDE)</th>
     </tr>
   </thead>
   <tbody>
@@ -646,8 +648,8 @@
 <div class="term-block" style="margin: 6px 0;">
   <div class="term-line"><span class="term-highlight">01. APPLIED AI &amp; MULTI-AGENT SWARMS</span></div>
   <div class="term-line term-muted">  • Autonomous Multi-Agent Swarms (Discord Gateway API, Decentralized Daemons)</div>
-  <div class="term-line term-muted">  • Local GPU Inference: Ollama, AMD DirectML, Vulkan, GGUF 4-bit/8-bit Quantization</div>
-  <div class="term-line term-muted">  • Hybrid Cloud/Local Failover Routers (Groq, Qwen 2.5 70B, Circuit Breakers)</div>
+  <div class="term-line term-muted">  • Local GPU Inference: Ollama, AMD RX 6600 XT Vulkan, GGUF Quantization</div>
+  <div class="term-line term-muted">  • Hybrid Cloud/Local Failover Routers (Groq LPUs, Gemini, Circuit Breakers)</div>
   <div class="term-line term-muted">  • Hybrid Vector RAG (Dense Cosine + Sparse BM25 + Reciprocal Rank Fusion)</div>
 </div>
 <div class="term-block" style="margin: 6px 0;">
@@ -710,17 +712,17 @@
       const qLower = query.toLowerCase();
       let matchedSnippets = [];
 
-      if (qLower.includes('directml') || qLower.includes('rx 6600') || qLower.includes('gpu') || qLower.includes('amd')) {
+      if (qLower.includes('vulkan') || qLower.includes('directml') || qLower.includes('rx 6600') || qLower.includes('gpu') || qLower.includes('amd')) {
         matchedSnippets = [
           {
             doc: 'case-lsfm.html: Section 03',
             score: '0.942',
-            text: 'Hybrid Local/Cloud Inference Router: Ollama local engine running on AMD Radeon RX 6600 XT (8GB VRAM) via DirectML and Vulkan. TTFT benchmark: 190ms with 0.00$ recurring cloud cost.'
+            text: 'Hybrid Local/Cloud Inference Router: Ollama local engine running on AMD Radeon RX 6600 XT (8GB VRAM) via Vulkan. TTFT benchmark: ~240ms with zero recurring compute cost.'
           },
           {
             doc: 'local_ai_agents_playbook.md',
             score: '0.887',
-            text: 'Local execution ensures zero data leakage for private credentials and resumes. Automatic circuit breaker trips to local GPU when cloud Groq threshold exceeds 1200ms.'
+            text: 'Local execution ensures local-first data privacy for private credentials and resumes. Automatic circuit breaker trips to local GPU when cloud threshold exceeds 1200ms.'
           }
         ];
       } else if (qLower.includes('token') || qLower.includes('css') || qLower.includes('color') || qLower.includes('typography')) {
@@ -741,7 +743,7 @@
           {
             doc: 'lsfm-swarm/memory/specifications.md',
             score: '0.961',
-            text: 'Eunchae Guardian Daemon: Google Workspace OAuth2 batch triage. Successfully classified 123 emails into 10 hierarchical labels with 98%+ precision.'
+            text: 'Eunchae Guardian Daemon: Google Workspace OAuth2 batch triage. Classified 123 unread emails into 10 hierarchical labels with 98.4% precision (121/123 audit).'
           }
         ];
       } else {
@@ -914,7 +916,7 @@
 <div class="term-line term-cyan">&gt; sys.watchdog --telemetry --all</div>
 
 <div class="term-line"><span class="term-success">[HOST]</span> Intel Core i5-12400F (12 Logical Threads @ 2.50–4.40 GHz)</div>
-<div class="term-line"><span class="term-success">[SILICON]</span> AMD Radeon RX 6600 XT (8GB GDDR6 VRAM · DirectML / Vulkan)</div>
+<div class="term-line"><span class="term-success">[SILICON]</span> AMD Radeon RX 6600 XT (8GB GDDR6 VRAM · Vulkan / Ollama)</div>
 <div class="term-line"><span class="term-success">[MEMORY]</span> 16.0 GB DDR4-3200 (71.2% active allocation · ~4.6 GB buffer)</div>
 <div class="term-line"><span class="term-success">[STORAGE]</span> NVMe Gen4 Primary Partition (122.5 GB free headroom)</div>
 <div class="term-line"><span class="term-success">[BRAIN]</span> Obsidian AI Brain Loopback HTTPS Bridge (Port 27124) <span class="term-badge success">CONNECTED</span></div>
@@ -945,7 +947,7 @@
 <div class="term-line">  5. 🥔 <strong>Eunchae</strong>  | System Guardian     | #pc-vitals        | <span class="term-badge">TELEMETRY WATCHDOG</span></div>
 <div class="term-line">     └─ Real-time hardware vitals, AST code sandbox, Gmail triage</div>
 
-<div class="term-line term-muted" style="margin-top: 6px;">Inference Hierarchy: Groq Cloud (Qwen 2.5 70B, &lt;300ms) ⇄ AMD DirectML Local (RX 6600 XT, $0.00/mo)</div>
+<div class="term-line term-muted" style="margin-top: 6px;">Inference Hierarchy: Groq Cloud (Llama 3.3 70B, &lt;280ms) ⇄ AMD Vulkan Local (RX 6600 XT, $0.00/mo)</div>
       `.trim());
     }
 

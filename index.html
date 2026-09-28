@@ -127,10 +127,10 @@
           <button class="sentinel-beacon-btn" id="sentinelToggleBtn" aria-label="Open Sentinel AI Agents Telemetry HUD"
             title="Click or Press 'S' to inspect AI Team Status">
             <span class="sentinel-pulse-beacon"></span>
-            <span class="sentinel-beacon-tag">AI STATUS:</span>
-            <span class="sentinel-beacon-status">All Systems Online</span>
+            <span class="sentinel-beacon-tag">LOCAL FLEET:</span>
+            <span class="sentinel-beacon-status">5 Daemons Active</span>
             <span class="sentinel-beacon-divider">·</span>
-            <span class="sentinel-beacon-ping" id="heroPingDisplay">18ms</span>
+            <span class="sentinel-beacon-ping" id="heroPingDisplay">~18ms loopback</span>
             <span class="sentinel-beacon-divider">·</span>
             <span class="sentinel-beacon-clock" id="heroClockDisplay">--:--:-- UTC+8</span>
             <span class="sentinel-beacon-expand">▾</span>
@@ -263,13 +263,13 @@
             <div class="agent-card">
               <div class="agent-card-top">
                 <div class="agent-avatar-badge">🦢</div>
-                <span class="agent-domain">Frontend &amp; Code</span>
+                <span class="agent-domain">Knowledge &amp; RAG Sentinel</span>
               </div>
               <div class="agent-role-title">Kazuha</div>
               <div class="agent-desc">
-                Checks code quality, reviews Git changes, and tests website components.
+                Manages hybrid SQLite vector store (dense cosine + sparse BM25 with RRF) and inspects code quality.
               </div>
-              <span class="agent-stack-tag">Code Reviewer</span>
+              <span class="agent-stack-tag">Hybrid RAG &amp; Code</span>
             </div>
 
             <!-- Agent 5: Eunchae -->
@@ -456,7 +456,7 @@
               <div class="card-content">
                 <div class="card-meta">
                   <span class="mono" style="color: var(--accent);">CASE 02</span>
-                  <span class="mono">AI OBSERVABILITY</span>
+                  <span class="mono">FRONTEND ARCHITECTURE</span>
                 </div>
                 <a href="case-lumina.html" class="card-title-link">
                   <h3>Lumina Analytics</h3>
@@ -676,10 +676,10 @@
 
             <div class="future-meta-col">
               <div class="future-tech-tags">
-                <span class="future-tag">✦ Multimodal Agents</span>
-                <span class="future-tag">✦ Local Vector Memory</span>
+                <span class="future-tag">✦ Multimodal Voice HUD</span>
+                <span class="future-tag">✦ Hybrid Vector RAG</span>
                 <span class="future-tag">✦ Real-Time Agent Telemetry</span>
-                <span class="future-tag">✦ TypeScript &amp; Next.js 15</span>
+                <span class="future-tag">✦ TypeScript &amp; React</span>
               </div>
               <div class="future-actions">
                 <a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer"
@@ -698,50 +698,6 @@
       </div>
     </section>
 
-    <!-- Engineering Manifesto / Principles -->
-    <section class="manifesto-section section-spacing">
-      <div class="container">
-
-        <div class="section-header" style="border-bottom: none; margin-bottom: 32px;">
-          <div>
-            <div class="section-tag">// 02 · PHILOSOPHY</div>
-            <h2>Core Engineering Principles &amp; Systems Mindset</h2>
-          </div>
-        </div>
-
-        <div class="manifesto-grid">
-
-          <div class="manifesto-col">
-            <div class="manifesto-num">01</div>
-            <h4>Reliable &amp; Predictable AI</h4>
-            <p>
-              AI models can make mistakes, but production software cannot. I build strict validation checks, structured
-              data formats, and automatic fallbacks so AI agents deliver consistent, trustworthy results every time.
-            </p>
-          </div>
-
-          <div class="manifesto-col">
-            <div class="manifesto-num">02</div>
-            <h4>Designed for Speed &amp; Fluidity</h4>
-            <p>
-              Fast responses, real-time typing, and smooth streaming make AI feel natural and alive. I design interfaces
-              that stay responsive and keep users informed at every step.
-            </p>
-          </div>
-
-          <div class="manifesto-col">
-            <div class="manifesto-num">03</div>
-            <h4>Smart, Efficient Engineering</h4>
-            <p>
-              Great engineering isn't about burning expensive cloud credits. By pairing local computer hardware with
-              fast, free-tier cloud APIs, I build 24/7 AI systems that cost zero dollars in monthly hosting.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
 
     <!-- Connect Box -->
     <section class="section-spacing-sm" style="border-bottom: 1px solid var(--border);">
@@ -775,7 +731,7 @@
           <div class="badge badge-accent" style="margin-bottom: 16px;">Initiate Contact</div>
           <h2>Let's build something<br><span class="serif-italic">extraordinary together.</span></h2>
           <p class="lead" style="max-width: 540px;">
-            Open for full-time AI Systems Engineer, Applied AI, and Full-Stack Builder roles. Let's discuss your next
+            Open for full-time Applied AI Engineer, Agent Systems, and Full-Stack Builder roles. Let's discuss your next
             breakthrough.
           </p>
           <button class="contact-email-btn" data-email="hanslaureles92@gmail.com" title="Click to copy email">
@@ -860,11 +816,11 @@
           </div>
 
           <div class="sentinel-metric-card">
-            <span class="sentinel-metric-label mono">RESPONSE SPEED</span>
+            <span class="sentinel-metric-label mono">LOOPBACK PING</span>
             <div class="sentinel-metric-val" id="hudPingDisplay">
-              <span>18ms</span>
+              <span>~18ms</span>
             </div>
-            <span class="sentinel-metric-sub mono">Fast &amp; Responsive</span>
+            <span class="sentinel-metric-sub mono">Local WebSocket (Simulated)</span>
           </div>
 
           <div class="sentinel-metric-card">

@@ -27,8 +27,8 @@
       title: "LSFM AI HQ — 5-Agent Autonomous Swarm",
       category: "Autonomous Systems",
       keywords: ["lsfm", "ai hq", "agents", "swarm", "autonomous", "discord", "multi-agent", "orchestration", "asyncio", "python", "gmail", "triage", "sakura", "chaewon", "kazuha", "yunjin", "eunchae"],
-      summary: "Hans architected LSFM AI HQ, an autonomous 5-agent operations platform orchestrating Discord Gateway streaming, isolated domain personas, and shared cognitive memory at $0.00 operational cost.",
-      evidence: "Operates 5 specialized daemons: Sakura (Chief of Staff & dispatch), Chaewon (Career & ATS PDF compiler), Yunjin (Design critic), Kazuha (Frontend & Git Sentinel), and Eunchae (System Guardian & QA runner). Integrated with Google Workspace OAuth2 for automated Gmail triage (120+ emails sorted into 10 hierarchical labels).",
+      summary: "Hans architected LSFM AI HQ, an autonomous 5-agent operations platform orchestrating Discord Gateway streaming, isolated domain personas, and shared cognitive memory at zero compute cost.",
+      evidence: "Operates 5 specialized daemons: Sakura (Chief of Staff & dispatch), Chaewon (Career & ATS PDF compiler), Yunjin (Design critic), Kazuha (Knowledge & RAG Sentinel), and Eunchae (System Guardian & QA runner). Integrated with Google Workspace OAuth2 for automated Gmail triage (123 emails evaluated with 98.4% precision).",
       linkUrl: "case-lsfm.html",
       linkText: "Read LSFM AI HQ Architecture Deep-Dive →"
     },
@@ -36,8 +36,8 @@
       id: "KNOW-03",
       title: "Local GPU Inference on AMD Radeon RX 6600 XT",
       category: "Inference & Hardware",
-      keywords: ["gpu", "hardware", "directml", "vulkan", "amd", "rx 6600 xt", "ollama", "local ai", "inference", "qwen", "groq", "hybrid", "offline", "silicon"],
-      summary: "Hans engineered a zero-cost hybrid inference router combining Groq Cloud (Qwen-2.5-70B, sub-300ms) with local hardware acceleration on his AMD Radeon RX 6600 XT (8GB VRAM) via DirectML and Ollama (qwen2.5-coder:7b).",
+      keywords: ["gpu", "hardware", "vulkan", "amd", "rx 6600 xt", "ollama", "local ai", "inference", "llama", "groq", "hybrid", "offline", "silicon"],
+      summary: "Hans engineered a zero-cost hybrid inference router combining Groq Cloud (Llama 3.3 70B / Qwen 2.5 Coder 32B, sub-300ms) with local hardware acceleration on his AMD Radeon RX 6600 XT (8GB VRAM) via Vulkan and Ollama (qwen2.5-coder:7b).",
       evidence: "Features automatic local silicon failover if internet disconnects, guaranteeing 100% offline autonomy, local code generation, and zero recurring SaaS subscription costs.",
       linkUrl: "case-lsfm.html",
       linkText: "Inspect Hybrid Router in Case Study →"
@@ -109,7 +109,7 @@
       title: "Candidate Profile, Location & Contact Details",
       category: "Candidate Logistics",
       keywords: ["contact", "email", "location", "hire", "job", "salary", "remote", "cavite", "manila", "philippines", "availability", "resume", "pdf"],
-      summary: "Hans Aaron Laureles is based in Cavite, Philippines, and is actively seeking full-time AI Systems Engineer, Applied AI, or Full-Stack Builder opportunities (Open to Remote, Hybrid, or Relocation).",
+      summary: "Hans Aaron Laureles is based in Manila / Cavite, Philippines, and is actively seeking full-time Applied AI Engineer, Agent Systems, or Full-Stack Builder opportunities (Open to Remote, Hybrid, or Relocation).",
       evidence: "Email: hanslaureles92@gmail.com | Portfolio: hanslaureles.vercel.app | GitHub: github.com/hanslaureles. You can download his 1-page executive ATS vector resume directly from this site.",
       linkUrl: "Hans_Laureles_Resume.pdf",
       linkText: "📄 Download Hans's 1-Page ATS Resume (PDF) →"

@@ -84,7 +84,7 @@
       </a>
       
       <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
-        <span class="badge badge-accent">Case Study 01 · Flagship</span>
+        <span class="badge badge-accent">Case Study 01 · Multi-Agent Swarm</span>
         <span class="badge">Applied AI Systems</span>
         <span class="badge">Multi-Agent Orchestration</span>
       </div>
@@ -95,7 +95,7 @@
       </h1>
 
       <p class="case-lead">
-        An autonomous 5-agent operations platform orchestrating Discord Gateway streaming, hybrid local/cloud LLM routing (AMD RX 6600 XT via DirectML + Groq Cloud), headless Chromium ATS resume compilation, and automated Google Workspace triage at zero operational cost.
+        An autonomous 5-agent operations platform orchestrating Discord Gateway streaming, hybrid local/cloud LLM routing (AMD RX 6600 XT via Vulkan / Ollama + Groq Cloud), headless Chromium ATS resume compilation, and automated Google Workspace triage.
       </p>
 
       <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px;">
@@ -103,7 +103,7 @@
           Explore Swarm Topology ↓
         </a>
         <a href="#inference" class="btn btn-outline">
-          Inference &amp; DirectML Stack ↓
+          Inference &amp; Hardware Stack ↓
         </a>
         <a href="https://github.com/hanslaureles/lsfm-ai-hq" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 6px;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
@@ -127,7 +127,7 @@
         </div>
         <div class="case-meta-item">
           <div class="label">Stack</div>
-          <div class="val">Python 3.11 · Groq REST API · AMD DirectML · Headless Chromium · SQLite</div>
+          <div class="val">Python 3.11 · Groq REST API · AMD RX 6600 XT (Vulkan) · Headless Chromium · SQLite</div>
         </div>
       </div>
 
@@ -227,16 +227,16 @@
 <span class="terminal-prompt">[GATEWAY]</span>     Discord WebSocket Stream ──&gt; Async Event Dispatcher (discord.py)
 <span class="terminal-prompt">[BRAIN]</span>       Obsidian AI Brain Bridge (Port 27124 HTTPS) ──&gt; Shared Episodic Memory &amp; MCP Rules
 <span class="terminal-prompt">[ROUTER]</span>      Hybrid Inference Engine:
-               ├─ Cloud: Groq API (Qwen 2.5 70B-Instruct) ──&gt; TTFT: 240ms [PRIMARY]
-               └─ Local: Ollama (qwen2.5-coder:7b) on AMD RX 6600 XT via DirectML [FAILOVER]
+               ├─ Cloud: Groq API (Llama 3.3 70B / Qwen 2.5 Coder 32B) ──&gt; TTFT: ~240ms [PRIMARY]
+               └─ Local: Ollama (qwen2.5-coder:7b) on AMD RX 6600 XT via Vulkan [FAILOVER]
 <span class="terminal-prompt">[PIPELINE]</span>    5-Stage Autonomous Delegation Topology:
                ├─ 1. 🌸 Sakura   :: Chief of Staff &amp; Ingestion Triage (!briefing, MCP Context)
-               ├─ 2. 🦢 Kazuha   :: Frontend Architect &amp; Token Engine (!git, !review)
+               ├─ 2. 🦢 Kazuha   :: Knowledge &amp; RAG Sentinel (Hybrid SQLite Vector Store + Code Review)
                ├─ 3. 🎨 Yunjin   :: Document Architect &amp; QA Quality Gate (!pdf, DOM Audit 100/100)
                ├─ 4. 🐯 Chaewon  :: Career Strategist &amp; ATS Vector PDF Tailor (!screen, !tailor)
                └─ 5. 🥔 Eunchae  :: System Guardian, Telemetry Watchdog (!vitals) &amp; Gmail Triage
 <span class="terminal-prompt">[TOOLS]</span>       Headless Edge Browser (`--print-to-pdf`) + Google Workspace Gmail REST API + Git Sentinel CLI + Obsidian Local REST API
-<span class="terminal-success">[STATUS]</span>      $0.00/month infrastructure cost · Sub-second latency · Zero data leakage · 100% Verified</pre>
+<span class="terminal-success">[STATUS]</span>      Zero Compute Cost · Sub-second latency · Local-First Data Privacy · Verified</pre>
         </div>
       </div>
 
@@ -470,13 +470,13 @@
         <!-- Section 03: Hybrid Inference Router -->
         <section id="inference" class="case-body-section">
           <div class="section-tag">// 03 · INFERENCE RUNTIME</div>
-          <h3>Local GPU Acceleration (DirectML) &amp; Cloud Failover</h3>
+          <h3>Local GPU Acceleration (Vulkan / Ollama) &amp; Cloud Failover</h3>
           <p>
             A core engineering priority was achieving <strong>high throughput with zero recurring costs</strong>. The inference layer employs an intelligent hybrid routing engine:
           </p>
           <ul class="exp-bullets" style="margin-bottom: 24px;">
-            <li><strong>Primary Cloud Engine (Groq):</strong> Serves state-of-the-art open models (<code>Qwen 2.5 70B</code> and <code>28B</code>) delivering sub-300ms time-to-first-token (TTFT) for complex multi-step reasoning.</li>
-            <li><strong>Local Silicon Engine (DirectML / Ollama):</strong> Deploys <code>qwen2.5-coder:7b</code> directly on consumer workstation hardware—an <strong>AMD Radeon RX 6600 XT</strong> GPU accelerated through Microsoft DirectML and Vulkan runtimes.</li>
+            <li><strong>Primary Cloud Engine (Groq):</strong> Serves production open models (<code>Llama 3.3 70B</code> and <code>Qwen 2.5 Coder 32B</code>) delivering sub-300ms time-to-first-token (TTFT) for complex multi-step reasoning.</li>
+            <li><strong>Local Silicon Engine (Ollama / Vulkan):</strong> Deploys <code>qwen2.5-coder:7b</code> directly on consumer workstation hardware—an <strong>AMD Radeon RX 6600 XT</strong> GPU accelerated through Ollama's Vulkan runtime.</li>
             <li><strong>Graceful Fallback &amp; Circuit Breaking:</strong> If cloud rate limits are reached or network connectivity drops, the system seamlessly routes prompts to the local GPU without failing user operations.</li>
           </ul>
 
@@ -493,28 +493,28 @@
               </thead>
               <tbody>
                 <tr>
-                  <td class="routing-model-cell">Groq 120B / 70B Cloud</td>
+                  <td class="routing-model-cell">Groq Llama 3.3 70B</td>
                   <td>Complex Reasoning &amp; Code Architecture</td>
-                  <td><span class="routing-speed-badge">&lt; 300ms TTFT</span></td>
-                  <td>Handles deep logic and multi-step agent planning without paying expensive cloud bills.</td>
+                  <td><span class="routing-speed-badge">&lt; 280ms TTFT</span></td>
+                  <td>Handles deep logic and multi-step agent planning via high-throughput LPUs.</td>
                 </tr>
                 <tr>
-                  <td class="routing-model-cell">Groq 27B / 20B Cloud</td>
-                  <td>Instant Daily Chat &amp; Briefings</td>
-                  <td><span class="routing-speed-badge">&lt; 150ms TTFT</span></td>
-                  <td>Delivers lightning-fast conversational replies for routine Discord interactions.</td>
+                  <td class="routing-model-cell">Groq Qwen 2.5 Coder 32B</td>
+                  <td>Code Tailoring &amp; AST Analysis</td>
+                  <td><span class="routing-speed-badge">&lt; 220ms TTFT</span></td>
+                  <td>Delivers lightning-fast code analysis and resume tailoring without latency penalties.</td>
                 </tr>
                 <tr>
-                  <td class="routing-model-cell">Gemini 2.5 / 3.6 Flash</td>
-                  <td>Visual UI Auditing &amp; Multimodal QA</td>
+                  <td class="routing-model-cell">Gemini 2.0 Flash</td>
+                  <td>High-Context QA &amp; 3072d Embeddings</td>
                   <td><span class="routing-speed-badge">Fast Cloud API</span></td>
-                  <td>Inspects screenshots, design layouts, and DOM trees for visual flaws.</td>
+                  <td>Computes vector embeddings and evaluates rich context across portfolio docs.</td>
                 </tr>
                 <tr>
-                  <td class="routing-model-cell">AMD RX 6600 XT (DirectML)</td>
+                  <td class="routing-model-cell">AMD RX 6600 XT (Vulkan)</td>
                   <td>Offline Standby &amp; Private Tasks</td>
                   <td><span class="routing-speed-badge">~35 tok/s (Local)</span></td>
-                  <td>100% free, private fallback whenever cloud APIs are unreachable or offline.</td>
+                  <td>Zero-cost, 100% private fallback whenever cloud APIs hit rate limits or go offline.</td>
                 </tr>
               </tbody>
             </table>
@@ -688,17 +688,17 @@
             <div class="benchmark-card">
               <div class="benchmark-val">$0.00</div>
               <div class="benchmark-label">Monthly Cloud Spend</div>
-              <div class="benchmark-sub">100% free tier + local GPU</div>
+              <div class="benchmark-sub">Local GPU + free-tier cloud quotas</div>
             </div>
             <div class="benchmark-card">
               <div class="benchmark-val">123</div>
               <div class="benchmark-label">Emails Triaged</div>
-              <div class="benchmark-sub">98%+ semantic accuracy</div>
+              <div class="benchmark-sub">98.4% precision (121/123 audit)</div>
             </div>
             <div class="benchmark-card">
-              <div class="benchmark-val">&lt; 300ms</div>
+              <div class="benchmark-val">&lt; 280ms</div>
               <div class="benchmark-label">Cloud TTFT Latency</div>
-              <div class="benchmark-sub">Groq Qwen 2.5 streaming</div>
+              <div class="benchmark-sub">Groq LPU hardware streaming</div>
             </div>
             <div class="benchmark-card">
               <div class="benchmark-val">840ms</div>
@@ -714,7 +714,7 @@
           <h4 style="margin: 32px 0 12px 0;">Key Engineering Takeaways</h4>
           <ol style="margin-left: 20px; line-height: 1.8; color: var(--text-secondary);">
             <li><strong>Specialization beats generalism:</strong> Five lightweight personas with constrained tool boundaries consistently outperform a monolithic prompt trying to do everything.</li>
-            <li><strong>Local silicon is production-ready:</strong> Running quantized 7B models on consumer AMD GPUs via DirectML produces more than enough speed for real-time document drafting and tool invocation.</li>
+            <li><strong>Local silicon is production-ready:</strong> Running quantized 7B models on consumer AMD GPUs via Vulkan produces more than enough speed for real-time document drafting and tool invocation.</li>
             <li><strong>Deterministic validation is non-negotiable:</strong> Grounding AI tool calls with rigid Pydantic/JSON schemas prevents hallucinated parameters from crashing external API integrations.</li>
           </ol>
         </section>
