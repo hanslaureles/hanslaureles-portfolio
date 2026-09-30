@@ -33,7 +33,7 @@
     href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=2.1.0">
+  <link rel="stylesheet" href="styles.css?v=2.2.1">
 
   <!-- Zero-FOUC Theme Script -->
   <script>
@@ -225,8 +225,8 @@
         <div class="hardware-rig-grid">
           <div class="hardware-spec-item">
             <span class="hardware-spec-label">Processor</span>
-            <span class="hardware-spec-val">AMD Ryzen 5 5600</span>
-            <span class="hardware-spec-sub">6 Cores · 12 Threads · 4.4 GHz</span>
+            <span class="hardware-spec-val">Intel Core i5-12400F</span>
+            <span class="hardware-spec-sub">6 Cores · 12 Threads · 4.4 GHz boost</span>
           </div>
           <div class="hardware-spec-item">
             <span class="hardware-spec-label">Graphics &amp; VRAM</span>
@@ -235,8 +235,8 @@
           </div>
           <div class="hardware-spec-item">
             <span class="hardware-spec-label">System Memory</span>
-            <span class="hardware-spec-val">32GB DDR4 3200MHz</span>
-            <span class="hardware-spec-sub">Dual-Channel High Bandwidth</span>
+            <span class="hardware-spec-val">16GB DDR4 3200MHz</span>
+            <span class="hardware-spec-sub">Dual-Channel (2 × 8GB)</span>
           </div>
           <div class="hardware-spec-item">
             <span class="hardware-spec-label">Operating Cost</span>
@@ -274,18 +274,17 @@
         </div>
         <div class="terminal-body">
           <pre><span class="terminal-comment"># LSFM Multi-Agent Operations System Overview</span>
-<span class="terminal-prompt">[GATEWAY]</span>     Discord WebSocket Stream ──&gt; Async Event Dispatcher (discord.py)
-<span class="terminal-prompt">[BRAIN]</span>       Obsidian AI Brain Bridge (Port 27124 HTTPS) ──&gt; Shared Episodic Memory &amp; MCP Rules
+<span class="terminal-prompt">[GATEWAY]</span>     Discord WebSocket Stream ──&gt; Async Event Dispatcher (discord.py, one asyncio loop)
 <span class="terminal-prompt">[ROUTER]</span>      query_llm() · mode = local | cloud | auto  (!mode):
                ├─ Cloud: Groq (qwen3.8-27b) ──&gt; on error: Gemini (gemini-3.6-flash)
                └─ Local: Ollama (qwen2.5-coder:7b) on AMD RX 6600 XT · tried first in auto mode
 <span class="terminal-prompt">[PIPELINE]</span>    5-Stage Autonomous Delegation Topology:
                ├─ 1. 🌸 Sakura   :: Chief of Staff, Briefings &amp; Gmail Triage (!briefing, !inbox, !clean)
-               ├─ 2. 🦢 Kazuha   :: Knowledge &amp; RAG Sentinel (Hybrid SQLite Vector Store + Code Review)
-               ├─ 3. 🎨 Yunjin   :: Document Architect &amp; Portfolio Critic (!audit, asset &amp; DOM scan)
-               ├─ 4. 🐯 Chaewon  :: Career Strategist &amp; ATS Vector PDF Tailor (!screen, !tailor)
-               └─ 5. 🥔 Eunchae  :: System Guardian &amp; Vitals Watchdog (!vitals, !test)
-<span class="terminal-prompt">[TOOLS]</span>       Headless Edge Browser (`--print-to-pdf`) + Google Workspace Gmail REST API + Git Sentinel CLI + Obsidian Local REST API
+               ├─ 2. 🦢 Kazuha   :: Knowledge &amp; RAG (SQLite vector store, !ask / !search, !inspect)
+               ├─ 3. 🎨 Yunjin   :: Document Architect &amp; Portfolio Critic (!audit, !critique)
+               ├─ 4. 🐯 Chaewon  :: Career Strategist &amp; ATS Vector PDF Tailor (!apply, !pdf, !scout)
+               └─ 5. 🥔 Eunchae  :: System Guardian &amp; Vitals Watchdog (!vitals, !health)
+<span class="terminal-prompt">[TOOLS]</span>       Headless Edge (`--print-to-pdf`) + Gmail REST API (OAuth2) + Gemini embeddings over SQLite
 <span class="terminal-success">[STATUS]</span>      Local daemons · Credentials stay on the workstation · Cloud mode sends prompts to Groq / Gemini</pre>
         </div>
       </div>
@@ -303,7 +302,7 @@
           <li><a href="#topology">02. Multi-Agent System Architecture</a></li>
           <li><a href="#inference">03. Hybrid Local/Cloud Inference</a></li>
           <li><a href="#tools">04. Programmatic Tool Pipelines</a></li>
-          <li><a href="#benchmarks">05. Benchmarks &amp; Reliability</a></li>
+          <li><a href="#benchmarks">05. Guarantees &amp; Retrospective</a></li>
         </ul>
       </aside>
 
@@ -315,7 +314,7 @@
           <div class="section-tag">// 01 · CONTEXT &amp; MOTIVATION</div>
           <h3>The Fatigue of Fragmented Developer Operations</h3>
           <p>
-            Modern knowledge workers and software engineers spend over 40% of their day navigating cognitive friction
+            Knowledge workers and software engineers lose a large share of their day to cognitive friction
             across siloed tools: sorting through hundreds of promotional newsletters to catch critical university or
             banking emails, manually formatting tailored resumes for applicant tracking systems (ATS), and continuously
             context-switching across browser tabs.
@@ -368,12 +367,12 @@
                     <span class="agent-row-name">Sakura</span>
                     <span class="agent-row-role">// Chief of Staff &amp; System Orchestrator</span>
                   </div>
-                  <p class="agent-row-desc">Operator intent ingestion, Obsidian AI Brain MCP context routing, daily
-                    morning briefings, Gmail inbox triage, and inter-agent task handoffs.</p>
+                  <p class="agent-row-desc">Operator command ingestion, daily morning briefings, Gmail inbox triage,
+                    brain-mode switching, and the inter-agent <code>!apply</code> job-application pipeline.</p>
                 </div>
               </div>
               <div class="agent-row-tag">
-                <span class="agent-stack-tag">Orchestration · MCP Triage</span>
+                <span class="agent-stack-tag">Orchestration · Gmail Triage</span>
               </div>
             </div>
 
@@ -387,11 +386,11 @@
                     <span class="agent-row-role">// Frontend Architect &amp; UI Sentinel</span>
                   </div>
                   <p class="agent-row-desc">Enforces zero-framework design token compliance, authors responsive UI
-                    components, and guards Git pre-commit integrity.</p>
+                    components, inspects code files, and answers codebase questions from the SQLite RAG index.</p>
                 </div>
               </div>
               <div class="agent-row-tag">
-                <span class="agent-stack-tag">Token Engine · Git Sentinel</span>
+                <span class="agent-stack-tag">Token Engine · RAG Q&amp;A</span>
               </div>
             </div>
 
@@ -422,8 +421,8 @@
                     <span class="agent-row-name">Chaewon</span>
                     <span class="agent-row-role">// Career Strategist &amp; ATS Tailor</span>
                   </div>
-                  <p class="agent-row-desc">Semantic keyword vector matching, tailored ATS resume drafting, and
-                    headless vector PDF compilation.</p>
+                  <p class="agent-row-desc">Job scouting across LinkedIn, Indeed and JobStreet, ATS fit analysis,
+                    tailored resume drafting, and headless vector PDF compilation.</p>
                 </div>
               </div>
               <div class="agent-row-tag">
@@ -441,11 +440,11 @@
                     <span class="agent-row-role">// System Guardian &amp; Telemetry</span>
                   </div>
                   <p class="agent-row-desc">Hardware vitals watchdog (CPU, RAM and disk via psutil on a 5-minute
-                    cycle), a 15-minute Obsidian heartbeat, and Python syntax &amp; AST checks on demand.</p>
+                    cycle) with on-demand health reports and check-ins.</p>
                 </div>
               </div>
               <div class="agent-row-tag">
-                <span class="agent-stack-tag">Hardware Watchdog · QA Checks</span>
+                <span class="agent-stack-tag">Hardware Watchdog · Health Reports</span>
               </div>
             </div>
 
@@ -469,8 +468,8 @@
                   <span class="lifecycle-actor">Operator Input</span>
                 </div>
                 <div class="lifecycle-card-title">Ingest</div>
-                <p class="lifecycle-card-desc">User sends a natural message or command through Discord, Web Copilot, or
-                  the Terminal.</p>
+                <p class="lifecycle-card-desc">The operator posts a command or a job link in Discord, for example
+                  <code>!apply &lt;url&gt;</code>.</p>
               </div>
 
               <div class="lifecycle-card">
@@ -479,8 +478,8 @@
                   <span class="lifecycle-actor">🌸 Sakura</span>
                 </div>
                 <div class="lifecycle-card-title">Triage &amp; Context</div>
-                <p class="lifecycle-card-desc">Sakura checks the goal, fetches past project rules from Obsidian, and
-                  decides which bot handles it.</p>
+                <p class="lifecycle-card-desc">Sakura scrapes the posting, extracts the role and company, and hands
+                  each part of the work to the right specialist.</p>
               </div>
 
               <div class="lifecycle-card">
@@ -506,21 +505,21 @@
               <div class="lifecycle-card">
                 <div class="lifecycle-card-header">
                   <span class="lifecycle-step-num">STEP 05</span>
-                  <span class="lifecycle-actor">🎨 Yunjin</span>
+                  <span class="lifecycle-actor">🌸 Sakura</span>
                 </div>
-                <div class="lifecycle-card-title">Verify &amp; Quality Check</div>
-                <p class="lifecycle-card-desc">Validates data schemas, checks formatting, and confirms 0 broken links
-                  before finalizing.</p>
+                <div class="lifecycle-card-title">Assemble the Proposal</div>
+                <p class="lifecycle-card-desc">Combines the tailored resume, curated case studies, and tech pitch into
+                  one master proposal.</p>
               </div>
 
               <div class="lifecycle-card">
                 <div class="lifecycle-card-header">
                   <span class="lifecycle-step-num">STEP 06</span>
-                  <span class="lifecycle-actor">System Sync</span>
+                  <span class="lifecycle-actor">Operator</span>
                 </div>
-                <div class="lifecycle-card-title">Dispatch &amp; Memory Sync</div>
-                <p class="lifecycle-card-desc">Returns the polished result to the user and writes any learned heuristics
-                  back to Obsidian.</p>
+                <div class="lifecycle-card-title">Human Approval</div>
+                <p class="lifecycle-card-desc">The proposal is posted to an approvals channel; nothing is submitted
+                  anywhere until the operator reviews it.</p>
               </div>
             </div>
 
@@ -528,16 +527,18 @@
             <div
               style="background: var(--bg); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
               <div style="display: flex; align-items: center; gap: 12px;">
-                <span style="font-size: 1.5rem;">🧠</span>
+                <span style="font-size: 1.5rem;">🧪</span>
                 <div>
-                  <div style="font-weight: 600; font-size: 0.88rem; color: var(--text-primary);">Unified Memory:
-                    Obsidian Local REST API &amp; MCP Bridge</div>
+                  <div style="font-weight: 600; font-size: 0.88rem; color: var(--text-primary);">In my private build
+                    (not yet in the public repo)</div>
                   <div style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 2px;">
-                    Cross-agent memory, user preferences, and daily logs sync automatically over local port 27124.
+                    An Obsidian vault bridge over its Local REST API for shared memory and daily logs, per-agent model
+                    assignments, 429-aware model rotation, a QA gate step in <code>!apply</code>, and extra scheduled
+                    jobs. Everything else on this page is in the public code.
                   </div>
                 </div>
               </div>
-              <span class="badge badge-accent" style="white-space: nowrap;">Zero Session Amnesia</span>
+              <span class="badge badge-accent" style="white-space: nowrap;">Private Build</span>
             </div>
           </div>
         </section>
@@ -578,27 +579,15 @@
               <tbody>
                 <tr>
                   <td class="routing-model-cell">qwen/qwen3.8-27b</td>
-                  <td>Sakura, Kazuha · default cloud model</td>
+                  <td>All agents · default cloud model</td>
                   <td><span class="routing-speed-badge">Groq</span></td>
-                  <td>Orchestration, briefings, and frontend/code work on Groq's low-latency LPUs.</td>
-                </tr>
-                <tr>
-                  <td class="routing-model-cell">openai/gpt-oss-120b</td>
-                  <td>Chaewon</td>
-                  <td><span class="routing-speed-badge">Groq</span></td>
-                  <td>The largest model in the pool, reserved for persuasive resume and career writing.</td>
-                </tr>
-                <tr>
-                  <td class="routing-model-cell">openai/gpt-oss-20b</td>
-                  <td>Eunchae</td>
-                  <td><span class="routing-speed-badge">Groq</span></td>
-                  <td>A smaller, high-throughput model for frequent QA and vitals summaries.</td>
+                  <td>Orchestration, writing, and code work on Groq's low-latency LPUs.</td>
                 </tr>
                 <tr>
                   <td class="routing-model-cell">gemini-3.6-flash</td>
-                  <td>Yunjin · fallback for all agents</td>
+                  <td>All agents · cloud fallback</td>
                   <td><span class="routing-speed-badge">Google</span></td>
-                  <td>Long-context design critiques, and the cross-provider fallback when Groq fails.</td>
+                  <td>A second provider, so a Groq outage or rate limit doesn't fail the request.</td>
                 </tr>
                 <tr>
                   <td class="routing-model-cell">gemini-embedding-001</td>
@@ -615,10 +604,9 @@
               </tbody>
             </table>
           </div>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -12px; margin-bottom: 24px;">Per-agent
-            assignments come from <code>DEFAULT_CONFIG</code> in <code>llm_client.py</code> and can be overridden in
-            <code>memory/brain_mode.json</code>. On an HTTP 429, the client honors a short <code>Retry-After</code>
-            (up to 4 s, once), then rotates through the other Groq models before crossing to Gemini.</p>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -12px; margin-bottom: 24px;">Model names
+            come from <code>DEFAULT_CONFIG</code> in <code>llm_client.py</code>, and the mode and models can be
+            overridden in <code>memory/brain_mode.json</code>.</p>
 
           <div class="terminal-window">
             <div class="terminal-topbar">
@@ -742,10 +730,9 @@
 
               <div class="guardrail-card">
                 <div class="guardrail-icon-wrap">🔄</div>
-                <div class="guardrail-title">One Session per Bot</div>
-                <p class="guardrail-desc">On launch, a process guard terminates stale bot processes so each Discord
-                  token holds exactly one gateway session (no duplicate replies), and each bot reconnects independently
-                  with backoff if its connection drops.</p>
+                <div class="guardrail-title">Independent Reconnects</div>
+                <p class="guardrail-desc"><code>run_all.py</code> starts each bot as its own asyncio task with a
+                  reconnect loop and backoff, so one bot's gateway error never takes the other four down.</p>
               </div>
             </div>
           </div>
@@ -759,7 +746,7 @@
                 TOUCHPOINTS</span>
             </div>
             <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 16px;">
-              LSFM HQ is not locked into a single chat window. It works seamlessly across 5 daily touchpoints:
+              LSFM HQ is not locked into a single chat window. Its work shows up across five touchpoints:
             </p>
 
             <div class="interfaces-matrix-grid">
@@ -784,28 +771,28 @@
               <div class="interface-card">
                 <div class="interface-header">
                   <span class="interface-icon">💻</span>
-                  <span class="interface-title">Terminal CLI</span>
+                  <span class="interface-title">Setup Scripts</span>
                 </div>
-                <p class="interface-desc">Direct command-line interface for fast developer checks, system diagnostics,
-                  and instant status pings.</p>
+                <p class="interface-desc">Python scripts in <code>scripts/</code> for Gmail OAuth setup, Discord
+                  channel provisioning, and one-time mass inbox sorting.</p>
               </div>
 
               <div class="interface-card">
                 <div class="interface-header">
-                  <span class="interface-icon">🧠</span>
-                  <span class="interface-title">Obsidian Brain</span>
+                  <span class="interface-icon">📥</span>
+                  <span class="interface-title">Gmail Labels</span>
                 </div>
-                <p class="interface-desc">Bidirectional markdown knowledge base connected via secure local API to
-                  preserve long-term notes and learnings.</p>
+                <p class="interface-desc">Triage results land directly in the inbox as ten <code>LSFM/</code> labels,
+                  visible on any Gmail client.</p>
               </div>
 
               <div class="interface-card">
                 <div class="interface-header">
                   <span class="interface-icon">⚡</span>
-                  <span class="interface-title">1-Click Desktop Scripts</span>
+                  <span class="interface-title">Single Launcher</span>
                 </div>
-                <p class="interface-desc">Fast Windows scripts to launch, restart, or sync all 5 agent daemons in the
-                  background with zero setup.</p>
+                <p class="interface-desc"><code>python run_all.py</code> starts all five bots in one process, each
+                  with its own reconnect loop.</p>
               </div>
             </div>
           </div>
@@ -813,12 +800,11 @@
 
         <!-- Section 05: Benchmarks & Reliability -->
         <section id="benchmarks" class="case-body-section">
-          <div class="section-tag">// 05 · EVALS, METRICS &amp; RETROSPECTIVE</div>
-          <h3>System Performance &amp; Evaluation Methodology</h3>
+          <div class="section-tag">// 05 · OPERATING CHARACTERISTICS &amp; RETROSPECTIVE</div>
+          <h3>What the System Guarantees &amp; What Broke</h3>
           <p>
-            Rather than relying on self-reported estimates, the deployed platform was evaluated against empirical
-            operational workloads: an audited dataset of 123 unread emails across 10 hierarchical categories, continuous
-            Discord gateway streaming, and automated headless document compilation.
+            The figures below are properties you can confirm by reading the public code, not performance claims.
+            Latency and accuracy benchmarks are the next milestone (see the footnote).
           </p>
 
           <div class="benchmark-grid">
@@ -828,89 +814,42 @@
               <div class="benchmark-sub">Free-tier Groq &amp; Gemini quotas</div>
             </div>
             <div class="benchmark-card">
-              <div class="benchmark-val">98.4%</div>
-              <div class="benchmark-label">Email Triage Precision</div>
-              <div class="benchmark-sub">121/123 verified (hand-labeled audit)</div>
+              <div class="benchmark-val">10 Labels</div>
+              <div class="benchmark-label">Automated Gmail Classification</div>
+              <div class="benchmark-sub">Rules first, LLM for edge cases</div>
             </div>
             <div class="benchmark-card">
-              <div class="benchmark-val">8 Models</div>
-              <div class="benchmark-label">Cross-Provider Fallback Chain</div>
-              <div class="benchmark-sub">3 Groq + 5 Gemini models per request</div>
+              <div class="benchmark-val">0 Deletes</div>
+              <div class="benchmark-label">Non-Destructive Inbox Sweeps</div>
+              <div class="benchmark-sub">Label + archive only</div>
             </div>
             <div class="benchmark-card">
-              <div class="benchmark-val">840ms</div>
-              <div class="benchmark-label">Headless PDF Build</div>
-              <div class="benchmark-sub">Single-page ATS vector verified</div>
+              <div class="benchmark-val">1 Page</div>
+              <div class="benchmark-label">ATS Vector Resume</div>
+              <div class="benchmark-sub">Headless Edge, a few seconds per build</div>
             </div>
           </div>
           <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -12px; margin-bottom: 24px;">*Zero cloud
             compute spend: agents run on a personal workstation and call free API tiers. Excludes hardware depreciation
-            and electricity. Latency is not listed because the client does not stream responses yet, so
-            time-to-first-token isn't measured; a benchmark harness is on the roadmap.</p>
+            and electricity. Latency and triage accuracy aren't listed: the client doesn't stream responses yet (so
+            time-to-first-token isn't measured), and a labeled email evaluation set is still to be built. Both are on
+            the roadmap.</p>
 
-          <!-- Email Evaluation Dataset Breakdown -->
-          <h4 style="margin: 32px 0 12px 0;">Email Triage Evaluation (Golden Dataset Audit)</h4>
+          <!-- Email Triage Mechanism -->
+          <h4 style="margin: 32px 0 12px 0;">Email Triage: How Classification Works</h4>
           <p>
-            To evaluate the accuracy of Sakura's Gmail triage engine, I hand-labeled a golden test set of
-            <strong>123 real incoming emails</strong> across 10 classification categories.
+            Sakura's Gmail engine performs automated classification across <strong>10 custom Gmail labels</strong>
+            with non-destructive bulk-archiving. Each unread message passes through two tiers:
           </p>
-          <div class="routing-table-container">
-            <table class="routing-table">
-              <thead>
-                <tr>
-                  <th>Category</th>
-                  <th>Total Sampled</th>
-                  <th>Correct</th>
-                  <th>Precision</th>
-                  <th>Failure Notes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>01_VIP_Priority</code></td>
-                  <td>14</td>
-                  <td>14</td>
-                  <td><span class="routing-speed-badge">100%</span></td>
-                  <td>Zero false negatives on critical human contacts.</td>
-                </tr>
-                <tr>
-                  <td><code>02_Job_Applications</code></td>
-                  <td>28</td>
-                  <td>28</td>
-                  <td><span class="routing-speed-badge">100%</span></td>
-                  <td>Perfect recall on recruiter outreach and interview scheduling.</td>
-                </tr>
-                <tr>
-                  <td><code>03_DevOps_GitHub</code></td>
-                  <td>31</td>
-                  <td>30</td>
-                  <td><span class="routing-speed-badge">96.8%</span></td>
-                  <td>1 edge case: Dependabot PR summary containing invoice receipt routed to Billing.</td>
-                </tr>
-                <tr>
-                  <td><code>04_Financial_Receipts</code></td>
-                  <td>18</td>
-                  <td>18</td>
-                  <td><span class="routing-speed-badge">100%</span></td>
-                  <td>Accurately isolated stripe receipts and banking alerts.</td>
-                </tr>
-                <tr>
-                  <td><code>05_Calendar_Deadlines</code></td>
-                  <td>12</td>
-                  <td>11</td>
-                  <td><span class="routing-speed-badge">91.7%</span></td>
-                  <td>1 edge case: Calendar reschedule notice with inline task notes routed to Tasks.</td>
-                </tr>
-                <tr>
-                  <td><code>06_Newsletters_Tech</code></td>
-                  <td>20</td>
-                  <td>20</td>
-                  <td><span class="routing-speed-badge">100%</span></td>
-                  <td>Automated batch archiving executed flawlessly.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <ul class="exp-bullets" style="margin-bottom: 24px;">
+            <li><strong>Tier 1 · Deterministic rules:</strong> known senders, domains, and keywords map straight to a
+              label with no model call, so common mail is fast and fully predictable.</li>
+            <li><strong>Tier 2 · LLM classifier:</strong> anything the rules don't recognize is classified by the LLM
+              into a strict JSON category, parsed defensively, and mapped to one of the <code>LSFM/</code> labels.</li>
+            <li><strong>Bulk sweeps:</strong> <code>!clean</code> and <code>!cleanse</code> archive promotions and
+              newsletters by changing labels only. Nothing is trashed or deleted, so every sweep can be undone from All
+              Mail.</li>
+          </ul>
 
           <!-- What Broke & What I Would Change -->
           <h4 style="margin: 36px 0 12px 0;">Retrospective: What Broke &amp; What I Would Change</h4>
@@ -927,11 +866,10 @@
               style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 18px; border-radius: 8px;">
               <h5 style="color: #10b981; margin-bottom: 8px; font-size: 0.95rem;">✓ The Engineering Fix</h5>
               <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
-                Made the client rate-limit aware: on a 429 it honors a short <code>Retry-After</code> (up to 4 s,
-                once), then rotates to the next Groq model and finally crosses to Gemini instead of failing the
-                request. <strong>What I'd change next:</strong> the retry still blocks a worker thread with
-                <code>time.sleep</code>, and there's no shared limiter across the five agents. V2 moves to an async
-                token bucket with jittered backoff.
+                Added a second provider: any Groq failure, including a 429, now falls through to Gemini instead of
+                failing the request. <strong>What I'd change next:</strong> there's still no retry with backoff and no
+                shared rate limiter across the five agents, and the HTTP calls are blocking (run in worker threads).
+                V2 moves to an async client with a token bucket and jittered exponential backoff.
               </p>
             </div>
           </div>
@@ -944,7 +882,7 @@
             </h5>
             <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); margin: 0;">
               This system was designed and developed through an iterative AI-assisted engineering workflow. I authored
-              the multi-agent topology, designed the structured JSON output contracts, wrote the evaluation test harness, and verified
+              the multi-agent topology, designed the structured JSON output contracts, wrote the test suite, and verified
               every generated prompt and system invariant, while leveraging AI agent pairing (Google Antigravity) for
               rapid boilerplate scaffolding, API client generation, and documentation review.
             </p>
@@ -991,8 +929,8 @@
     </div>
   </footer>
 
-  <script src="app.js?v=2.1.0"></script>
-  <script src="sakura-copilot.js?v=2.1.0"></script>
+  <script src="app.js?v=2.2.1"></script>
+  <script src="sakura-copilot.js?v=2.2.1"></script>
 </body>
 
 </html>

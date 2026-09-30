@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=2.1.0">
+  <link rel="stylesheet" href="styles.css?v=2.2.1">
   
   <style>
     /* Interactive Recall Widget Styles */
@@ -260,7 +260,7 @@
           <div class="case-metric-label">Crystallized Guidelines</div>
         </div>
         <div class="case-metric-cell">
-          <div class="case-metric-num">10 Unit Tests</div>
+          <div class="case-metric-num">12 Unit Tests</div>
           <div class="case-metric-label">Passing in 0.015s</div>
         </div>
       </div>
@@ -288,7 +288,7 @@
         <div class="terminal-body">
 <pre><span class="terminal-comment"># Self-Improving Agent Memory Pipeline &amp; Reflection Flywheel</span>
 <span class="terminal-prompt">[INPUT]</span>       Developer Intent / Prompt Stream ──&gt; pre-flight trigger detection
-<span class="terminal-prompt">[PRE-FLIGHT]</span>  BM25 Relevance Scorer (experience_store.jsonl) ──&gt; Latency: ~1.2ms [TOP-3 MATCHES]
+<span class="terminal-prompt">[PRE-FLIGHT]</span>  BM25 Relevance Scorer (experience_store.jsonl) ──&gt; Latency: ~0.8ms p50 [TOP-3 MATCHES]
 <span class="terminal-prompt">[INJECTION]</span>   Dynamic Active Heuristics Header:
                ├─ [MEM-005] PowerShell: Avoid nested double quotes in inline execution
                ├─ [MEM-006] Windows Python: UTF-8 stdout reconfiguration against CP1252
@@ -409,7 +409,7 @@
               </div>
               <div class="agent-role-title">Pre-Flight Recall Engine</div>
               <div class="agent-desc">
-                Executes fast tokenized BM25 matching across past post-mortems with tag boosting and frequency multipliers. Formats active heuristics headers in under 15ms.
+                Executes fast tokenized BM25 matching across past post-mortems with tag boosting and frequency multipliers. Returns the top matches in about a millisecond (0.8 ms p50 on the current 10-entry store).
               </div>
               <span class="agent-stack-tag">recall.py · BM25 Algo</span>
             </div>
@@ -533,7 +533,7 @@
                   <td style="padding: 10px;" class="mono">MEM-009</td>
                   <td style="padding: 10px;">API Resiliency</td>
                   <td style="padding: 10px;">HTTP 429 Too Many Requests rate limits crashing async Discord loops</td>
-                  <td style="padding: 10px;">Implement exponential backoff retry (2–4s sleep) and multi-model rotation across Groq Cloud and local Ollama Vulkan fallback.</td>
+                  <td style="padding: 10px;">Always implement exponential backoff retry (sleep 2–4s) and a multi-model rotation pool on both Groq and Gemini.</td>
                 </tr>
                 <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
                   <td style="padding: 10px;" class="mono">MEM-010</td>
@@ -552,9 +552,9 @@
           <h3>Engineering Impact, Retrieval Evals &amp; Retrospective</h3>
           <div class="benchmark-grid">
             <div class="benchmark-card">
-              <div class="benchmark-val">0.012s</div>
+              <div class="benchmark-val">0.015s</div>
               <div class="benchmark-label">Unit Test Pass Time</div>
-              <div class="benchmark-sub">10/10 automated tests passing</div>
+              <div class="benchmark-sub">12/12 automated tests passing</div>
             </div>
             <div class="benchmark-card">
               <div class="benchmark-val">0 MB</div>
@@ -562,9 +562,9 @@
               <div class="benchmark-sub">Zero pip packages / pure stdlib</div>
             </div>
             <div class="benchmark-card">
-              <div class="benchmark-val">100%</div>
-              <div class="benchmark-label">Regression Suite Recall</div>
-              <div class="benchmark-sub">10/10 seeded anti-patterns matched</div>
+              <div class="benchmark-val">5/5</div>
+              <div class="benchmark-label">Top-1 Recall on Test Queries</div>
+              <div class="benchmark-sub">MEM-001 to MEM-005 each ranked first</div>
             </div>
           </div>
 
@@ -573,7 +573,7 @@
             Many AI agent memory solutions reach prematurely for heavy vector databases (ChromaDB, Pinecone, FAISS) and deep learning frameworks (PyTorch, transformers). In a local developer tooling environment with &lt;500 active guidelines, dense vector embeddings introduce substantial drawbacks: ~350MB+ memory footprint, 800ms+ cold-start latency, and semantic drift where technical identifiers (e.g. <code>sys.stdout</code> vs <code>sys.stdin</code>) get conflated.
           </p>
           <p>
-            By choosing standard library <strong>Okapi BM25 with token weighting and tag boosting</strong>, retrieval executes in <strong>&lt;1.5ms</strong>, consumes zero persistent RAM, and achieves 100% exact-match recall on critical error codes, syntax flags, and tool parameters.
+            By choosing standard library <strong>field-weighted BM25 with tag boosting</strong>, retrieval runs in <strong>0.8 ms at p50</strong> (1.5 ms worst case across 2,000 calls on the current store), holds nothing in memory between calls, and ranks the correct rule first for every seeded test query, including exact error codes like <code>TerminatorExpectedAtEndOfString</code>.
           </p>
 
           <!-- What Broke & What I Would Change -->
@@ -822,7 +822,7 @@
       }
     })();
   </script>
-  <script src="app.js?v=2.1.0"></script>
-  <script src="sakura-copilot.js?v=2.1.0"></script>
+  <script src="app.js?v=2.2.1"></script>
+  <script src="sakura-copilot.js?v=2.2.1"></script>
 </body>
 </html>

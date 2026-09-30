@@ -15,15 +15,14 @@
   let replayTimers = [];
   let lastFocusedElement = null;
 
-  // Each event describes what an agent really does on its real schedule (see the tasks.loop in each bot).
+  // Each event describes a real schedule (tasks.loop) or command in the public lsfm-ai-hq repo.
   const REPLAY_EVENTS = [
     { agent: 'EUNCHAE', emoji: '🛡️', msg: 'Watchdog cycle: CPU, RAM and disk sampled via psutil (every 5 min).' },
-    { agent: 'EUNCHAE', emoji: '🛡️', msg: 'Obsidian heartbeat: vault checked over the local REST API (every 15 min).' },
-    { agent: 'SAKURA', emoji: '🌸', msg: 'Daily briefing posts to #daily-briefing once a day after 08:00.' },
-    { agent: 'SAKURA', emoji: '🌸', msg: 'Evening rollup posts after 20:00 and is saved to the Obsidian daily log.' },
-    { agent: 'KAZUHA', emoji: '💻', msg: 'Applied-AI research digest runs Mon / Wed / Fri after 09:30.' },
+    { agent: 'SAKURA', emoji: '🌸', msg: 'Daily briefing posts once a day after 08:00.' },
     { agent: 'YUNJIN', emoji: '🎨', msg: 'Portfolio audit (every 6 h): page structure and image assets scanned.' },
-    { agent: 'CHAEWON', emoji: '⭐', msg: 'Weekly rebuild: the single-page ATS resume is recompiled Sundays after 22:00.' }
+    { agent: 'SAKURA', emoji: '🌸', msg: 'On !inbox: unread mail is classified into 10 LSFM/ Gmail labels.' },
+    { agent: 'KAZUHA', emoji: '💻', msg: 'On !ask: answers are grounded in the SQLite + Gemini-embedding knowledge base.' },
+    { agent: 'CHAEWON', emoji: '⭐', msg: 'On !pdf: the single-page ATS resume is compiled with headless Edge.' }
   ];
 
   // Scripted replay of the real !apply pipeline in bot_sakura.py, in its actual order.
@@ -32,8 +31,7 @@
     { agent: 'CHAEWON', emoji: '⭐', msg: 'Analyzing ATS fit and tailoring the resume and cover letter.' },
     { agent: 'YUNJIN', emoji: '🎨', msg: 'Curating the flagship case studies that best match the role.' },
     { agent: 'KAZUHA', emoji: '💻', msg: 'Drafting the frontend tech pitch and CS positioning.' },
-    { agent: 'EUNCHAE', emoji: '🛡️', msg: 'Running the QA gatekeeper audit on all deliverables.' },
-    { agent: 'SAKURA', emoji: '🌸', msg: 'Master proposal compiled and posted for human approval.' }
+    { agent: 'SAKURA', emoji: '🌸', msg: 'Master proposal compiled and posted to the approvals channel for review.' }
   ];
 
   document.addEventListener('DOMContentLoaded', initSentinel);
@@ -298,9 +296,9 @@ Availability: Open for Full-Time & Remote AI & Software Engineering Roles (2026)
 ## Multi-Agent System Overview (5 Agents)
 - 🌸 Sakura (Coordinator Agent): Daily Briefings, Gmail Triage & Job-Application Pipeline
 - ⭐ Chaewon (Career Agent): Single-Page Resume Generator & Job Matching
-- 💻 Kazuha (Frontend Agent): UI Review, Git Sentinel & Research Digests
+- 💻 Kazuha (Frontend Agent): UI Components, Code Inspection & RAG Q&A
 - 🎨 Yunjin (Design Reviewer Agent): Portfolio Audits & Case Study Critique
-- 🛡️ Eunchae (System Guardian Agent): Hardware Vitals & QA Checks
+- 🛡️ Eunchae (System Guardian Agent): Hardware Vitals & Health Reports
 
 ## Architecture & Hosting
 - AI Models: Groq + Gemini cloud APIs, with an optional local Ollama mode

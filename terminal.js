@@ -46,15 +46,15 @@
 
     // Initial Welcome Banner
     const INITIAL_BANNER = `
-<div class="term-line term-comment"># Connecting to Hans's Multi-Agent System...</div>
-<div class="term-line"><span class="term-prompt">&gt;</span> <span class="term-cmd">check-agents --status</span></div>
-<div class="term-line"><span class="term-success">[MULTI-AGENT]</span> 5 Agents Online: Sakura, Chaewon, Yunjin, Kazuha, Eunchae... <span class="term-badge success">ONLINE</span></div>
-<div class="term-line"><span class="term-success">[COORDINATOR]</span> Sakura ready for questions &amp; daily updates.</div>
-<div class="term-line"><span class="term-success">[CAREER]</span> Chaewon ready with single-page resume &amp; job matching.</div>
-<div class="term-line"><span class="term-success">[FRONTEND]</span> Kazuha verified responsive design &amp; clean code.</div>
-<div class="term-line"><span class="term-success">[DESIGN]</span> Yunjin verified 6 case studies &amp; project demos.</div>
-<div class="term-line"><span class="term-success">[SYSTEM GUARDIAN]</span> Eunchae monitoring uptime &amp; inbox organization.</div>
-<div class="term-line"><span class="term-accent">&gt;&gt; ALL 5 AGENTS ONLINE // INTERACTIVE CONSOLE READY</span></div>
+<div class="term-line term-comment"># Hans's Multi-Agent System // interactive portfolio console (runs in your browser)</div>
+<div class="term-line"><span class="term-prompt">&gt;</span> <span class="term-cmd">list-agents</span></div>
+<div class="term-line"><span class="term-success">[MULTI-AGENT]</span> 5 agents: Sakura, Chaewon, Yunjin, Kazuha, Eunchae <span class="term-badge">RUN LOCALLY</span></div>
+<div class="term-line"><span class="term-success">[COORDINATOR]</span> Sakura: daily briefings, Gmail triage &amp; the !apply pipeline.</div>
+<div class="term-line"><span class="term-success">[CAREER]</span> Chaewon: job scouting, ATS tailoring &amp; single-page resume PDFs.</div>
+<div class="term-line"><span class="term-success">[FRONTEND]</span> Kazuha: UI components, code inspection &amp; RAG Q&amp;A.</div>
+<div class="term-line"><span class="term-success">[DESIGN]</span> Yunjin: portfolio asset audits &amp; design critiques.</div>
+<div class="term-line"><span class="term-success">[SYSTEM GUARDIAN]</span> Eunchae: hardware vitals &amp; health reports.</div>
+<div class="term-line"><span class="term-accent">&gt;&gt; INTERACTIVE CONSOLE READY // not connected to the live swarm</span></div>
 <div class="term-line term-muted" style="margin-top: 6px;">Type <span class="term-highlight">'help'</span> or click any command button below to explore:</div>
 `.trim();
 
@@ -373,9 +373,9 @@
 <div class="term-git-entry">
   <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">9fb2617</span> <span class="term-badge success">HEAD -&gt; main</span> <span class="term-badge" style="border-color:#F59E0B;color:#FBBF24;">tag: v3.0.0</span> <span class="term-muted">[2026 – Present]</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent" style="color:#FBBF24;">feat(ciel):</strong> Architect &amp; Developer — Manas: Ciel Voice HUD</div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Sub-350ms Groq Whisper Turbo transcription &amp; FFmpeg audio normalization</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Thought Acceleration DSP pipeline (1.25x tempo / +5Hz pitch shift)</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• 8-turn sliding working memory buffer &amp; direct bidirectional Obsidian sync</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Groq Whisper Large v3 Turbo transcription &amp; FFmpeg audio normalization</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Thought Acceleration voice filter (high-pass, presence EQ, light echo) over Edge-TTS</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• 8-turn sliding working memory buffer &amp; bidirectional Obsidian access</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• 4-domain proactive telemetry sentinel daemon &amp; real-time audio HUD</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">└──</span> <a href="case-ciel.html" class="term-link">View Case Study: case-ciel.html ↗</a></div>
 </div>
@@ -384,8 +384,8 @@
   <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">8f4a21d</span> <span class="term-badge">tag: v2.5.0</span> <span class="term-muted">[2025 – 2026]</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(swarm):</strong> Creator &amp; Developer — LSFM AI HQ</div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Asynchronous Discord Gateway streaming &amp; isolated persona boundaries</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Vulkan local GPU inference failover router on AMD RX 6600 XT</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Headless Chromium single-page ATS vector PDF compiler</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Multi-provider LLM router (Groq → Gemini) with optional local Ollama on AMD RX 6600 XT</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Headless Edge single-page ATS vector PDF compiler</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">└──</span> <a href="case-lsfm.html" class="term-link">View Case Study: case-lsfm.html ↗</a></div>
 </div>
 
@@ -431,7 +431,7 @@
   <tr><td><span class="term-highlight" style="color: #FBBF24;">ciel</span></td><td>✦ Manas: Ciel Divine Wisdom AI Voice HUD &amp; DSP</td></tr>
   <tr><td><span class="term-highlight">status</span></td><td>Check live status of all 5 AI agents</td></tr>
   <tr><td><span class="term-highlight">agents</span></td><td>Learn what each of the 5 AI agents does</td></tr>
-  <tr><td><span class="term-highlight">vitals</span></td><td>⚡ Eunchae's real-time hardware &amp; CPU/RAM HUD</td></tr>
+  <tr><td><span class="term-highlight">vitals</span></td><td>⚡ Eunchae's hardware &amp; CPU/RAM watchdog (sample snapshot)</td></tr>
   <tr><td><span class="term-highlight">matrix</span></td><td>🛡️ Inspect 5-agent system orchestration matrix</td></tr>
   <tr><td><span class="term-highlight">projects</span></td><td>Explore selected case studies &amp; live demos</td></tr>
   <tr><td><span class="term-highlight">audit</span></td><td>🎨 View Yunjin's 92/100 design audit &amp; resolution</td></tr>
@@ -556,8 +556,8 @@
 <div class="term-line" style="color: #F59E0B; font-weight: 600;">✨ MANAS: CIEL // DIVINE WISDOM AI COPILOT &amp; VOICE HUD</div>
 <table class="term-table">
   <tr><td><strong class="term-highlight">CORE ARCHITECTURE</strong></td><td class="term-cyan">Tensura Divine Wisdom Core · Python 3.11 aiohttp</td></tr>
-  <tr><td><strong class="term-highlight">AUDIO PIPELINE</strong></td><td>FFmpeg 16kHz Mono Normalization + Groq Whisper Large v3 Turbo (&lt;350ms)</td></tr>
-  <tr><td><strong class="term-highlight">THOUGHT ACCELERATION</strong></td><td style="color: #10B981;">1.25x Tempo · +5Hz Pitch · Edge-TTS en-GB-SoniaNeural</td></tr>
+  <tr><td><strong class="term-highlight">AUDIO PIPELINE</strong></td><td>FFmpeg 16kHz Mono Normalization + Groq Whisper Large v3 Turbo (OpenAI Whisper fallback)</td></tr>
+  <tr><td><strong class="term-highlight">THOUGHT ACCELERATION</strong></td><td style="color: #10B981;">High-pass · Presence EQ · Light Echo · Edge-TTS (ja-JP-NanamiNeural + en-US-AvaNeural)</td></tr>
   <tr><td><strong class="term-highlight">SECOND BRAIN</strong></td><td>Bidirectional Obsidian Vault Bridge (Rules, Career, Profile, Daily)</td></tr>
   <tr><td><strong class="term-highlight">SENSORY RADAR</strong></td><td class="term-cyan">Live Meteorology (wttr.in) + Real-Time Web Intelligence (DDGS)</td></tr>
   <tr><td><strong class="term-highlight">WORKING MEMORY</strong></td><td class="term-cyan">8-Turn Sliding Conversational Context Buffer</td></tr>
@@ -573,31 +573,31 @@
     function showSentinelTelemetry(args) {
       appendOutput(`
 <div class="term-line term-success">============================================================</div>
-<div class="term-line term-accent" style="font-weight: 600;">📡 SENTINEL // AGENT SYSTEM STATUS &amp; VITALS</div>
+<div class="term-line term-accent" style="font-weight: 600;">📡 SENTINEL // AGENT SYSTEM OVERVIEW (SIMULATED REPLAY)</div>
 <div class="term-line term-success">============================================================</div>
 <div class="term-line">Location: Manila, Philippines · UTC+8</div>
-<div class="term-line">Agent System: <span class="term-badge success">● 5/5 ONLINE</span> · Loopback Latency: <span class="term-cyan">~18ms (simulated loopback)</span></div>
+<div class="term-line">Agent System: <span class="term-badge">5 AGENTS · LOCAL HOST</span> · Data: <span class="term-cyan">scripted replay, no live connection to the swarm</span></div>
 <table class="term-table" style="margin-top: 6px;">
   <thead>
     <tr class="term-muted">
-      <th>AGENT</th><th>ROLE</th><th>STATUS</th>
+      <th>AGENT</th><th>ROLE</th><th>RUNS ON</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>🌸 Sakura</td><td>Team Coordinator</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🌸 Sakura</td><td>Team Coordinator</td><td><span class="term-badge">● LOCAL</span></td>
     </tr>
     <tr>
-      <td>⭐ Chaewon</td><td>Career Assistant</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>⭐ Chaewon</td><td>Career Assistant</td><td><span class="term-badge">● LOCAL</span></td>
     </tr>
     <tr>
-      <td>💻 Kazuha</td><td>Frontend Agent</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>💻 Kazuha</td><td>Frontend Agent</td><td><span class="term-badge">● LOCAL</span></td>
     </tr>
     <tr>
-      <td>🎨 Yunjin</td><td>Design Reviewer</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🎨 Yunjin</td><td>Design Reviewer</td><td><span class="term-badge">● LOCAL</span></td>
     </tr>
     <tr>
-      <td>🛡️ Eunchae</td><td>System Health</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🛡️ Eunchae</td><td>System Health</td><td><span class="term-badge">● LOCAL</span></td>
     </tr>
   </tbody>
 </table>
@@ -613,32 +613,32 @@
 
     function showBenchmarks() {
       appendOutput(`
-<div class="term-line term-cyan" style="font-weight: 600;">// HARDWARE INFERENCE &amp; EFFICIENCY BENCHMARKS</div>
+<div class="term-line term-cyan" style="font-weight: 600;">// INFERENCE MODES: TRADE-OFFS (no timing claims until they're benchmarked)</div>
 <table class="term-table">
   <thead>
     <tr class="term-muted">
-      <th>METRIC</th><th>LOCAL VULKAN (RX 6600 XT)</th><th>CLOUD GROQ (LLAMA 3.3 70B)</th><th>COMMERCIAL SAAS (OPENAI/CLAUDE)</th>
+      <th>PROPERTY</th><th>LOCAL MODE (OLLAMA · RX 6600 XT)</th><th>CLOUD MODE (GROQ → GEMINI)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Time-to-First-Token</td><td class="term-success">190ms (Local Silicon)</td><td class="term-success">280ms (Cloud LPUs)</td><td class="term-muted">850ms - 1,400ms</td>
+      <td>Model</td><td>qwen2.5-coder:7b</td><td>qwen3.8-27b, falling back to gemini-3.6-flash</td>
     </tr>
     <tr>
-      <td>Monthly Operating Cost</td><td class="term-success">$0.00 / month</td><td class="term-success">$0.00 (Free Tier)</td><td class="term-accent">$250 - $800 / month</td>
+      <td>Monthly Operating Cost</td><td class="term-success">$0.00 (own hardware)</td><td class="term-success">$0.00 (free tiers)</td>
     </tr>
     <tr>
-      <td>Offline Resilience</td><td class="term-success">100% Air-Gapped Capable</td><td class="term-muted">Network Dependent</td><td class="term-accent">Single Point of Failure</td>
+      <td>Works Offline</td><td class="term-success">Yes (inference)</td><td class="term-muted">No</td>
     </tr>
     <tr>
-      <td>Data Privacy &amp; PII</td><td class="term-success">Zero Outbound Telemetry</td><td class="term-muted">Zero Retention Policy</td><td class="term-accent">Vendor Data Policy Risk</td>
+      <td>Where Prompts Go</td><td class="term-success">Stay on the workstation</td><td class="term-muted">Sent to Groq / Google</td>
     </tr>
     <tr>
-      <td>PDF Build Throughput</td><td class="term-success">840ms (Headless Edge)</td><td>N/A</td><td class="term-muted">3,500ms (Third-party API)</td>
+      <td>Latency</td><td class="term-muted">Not yet benchmarked</td><td class="term-muted">Not yet benchmarked</td>
     </tr>
   </tbody>
 </table>
-<div class="term-line term-success" style="margin-top: 6px;">Architectural Verdict: Hybrid tiering provides maximum enterprise reliability at zero recurring overhead.</div>
+<div class="term-line term-success" style="margin-top: 6px;">Trade-off: local mode buys privacy and offline use; cloud mode buys output quality. The operator picks per task with !mode.</div>
       `.trim());
     }
 
@@ -648,8 +648,8 @@
 <div class="term-block" style="margin: 6px 0;">
   <div class="term-line"><span class="term-highlight">01. APPLIED AI &amp; MULTI-AGENT SWARMS</span></div>
   <div class="term-line term-muted">  • Autonomous Multi-Agent Swarms (Discord Gateway API, Decentralized Daemons)</div>
-  <div class="term-line term-muted">  • Local GPU Inference: Ollama, AMD RX 6600 XT Vulkan, GGUF Quantization</div>
-  <div class="term-line term-muted">  • Hybrid Cloud/Local Failover Routers (Groq LPUs, Gemini, Circuit Breakers)</div>
+  <div class="term-line term-muted">  • Local GPU Inference: Ollama on AMD RX 6600 XT, GGUF Quantization</div>
+  <div class="term-line term-muted">  • Multi-Provider LLM Routing (Groq LPUs, Gemini fallback, local Ollama mode)</div>
   <div class="term-line term-muted">  • Hybrid Vector RAG (Dense Cosine + Sparse BM25 + Reciprocal Rank Fusion)</div>
 </div>
 <div class="term-block" style="margin: 6px 0;">
@@ -671,11 +671,11 @@
     function showCaseStudy() {
       appendOutput(`
 <div class="term-line term-cyan" style="font-weight: 600;">// CASE STUDY 01: LSFM AI HQ — AUTONOMOUS MULTI-AGENT SYSTEM</div>
-<div class="term-line">A production multi-agent operations platform orchestrating career surveillance, email batch classification, and vector knowledge memory across 5 isolated daemons.</div>
+<div class="term-line">A production multi-agent operations platform orchestrating career surveillance, email batch classification, and vector knowledge memory across 5 specialized agents.</div>
 <div class="term-line" style="margin: 8px 0;">
-  <div class="term-muted">• Architecture: 5 specialized agents running concurrent asyncio loops on Discord Gateway</div>
-  <div class="term-muted">• Hybrid Silicon: AMD Radeon RX 6600 XT via DirectML + Groq Cloud LPU acceleration</div>
-  <div class="term-muted">• Automation: 123 unread emails batch-triaged, headless ATS resume compiler in 840ms</div>
+  <div class="term-muted">• Architecture: 5 Discord bots sharing one asyncio event loop, blocking work in worker threads</div>
+  <div class="term-muted">• Inference: Groq Cloud with Gemini fallback, optional local Ollama on AMD Radeon RX 6600 XT</div>
+  <div class="term-muted">• Automation: two-tier Gmail classification into 10 labels, headless Edge ATS resume compiler</div>
   <div class="term-muted">• Storage: Local zero-server SQLite Vector Vault with RRF hybrid retrieval</div>
 </div>
 <div class="term-line">
@@ -704,7 +704,7 @@
       if (!query) {
         appendOutput(`
 <div class="term-line term-accent">Usage: rag &lt;search_query&gt;</div>
-<div class="term-line term-muted">Example: <span class="term-highlight">rag DirectML</span> or <span class="term-highlight">rag design tokens</span></div>
+<div class="term-line term-muted">Example: <span class="term-highlight">rag gpu</span> or <span class="term-highlight">rag design tokens</span></div>
         `.trim());
         return;
       }
@@ -717,7 +717,7 @@
           {
             doc: 'case-lsfm.html: Section 03',
             score: '0.942',
-            text: 'Hybrid Local/Cloud Inference Router: Ollama local engine running on AMD Radeon RX 6600 XT (8GB VRAM) via Vulkan. TTFT benchmark: ~240ms with zero recurring compute cost.'
+            text: 'LLM Router: three modes (local / cloud / auto). Local mode runs Ollama qwen2.5-coder:7b on an AMD Radeon RX 6600 XT (8GB VRAM); cloud mode uses Groq qwen3.8-27b with Gemini fallback. Zero recurring compute cost; latency not yet benchmarked.'
           },
           {
             doc: 'local_ai_agents_playbook.md',
@@ -741,9 +741,9 @@
       } else if (qLower.includes('email') || qLower.includes('gmail') || qLower.includes('eunchae')) {
         matchedSnippets = [
           {
-            doc: 'lsfm-swarm/memory/specifications.md',
+            doc: 'lsfm-ai-hq/gmail_engine.py',
             score: '0.961',
-            text: 'Eunchae Guardian Daemon: Google Workspace OAuth2 batch triage. Classified 123 unread emails into 10 hierarchical labels with 98.4% precision (121/123 audit).'
+            text: 'Sakura Gmail Engine: Google OAuth2 triage. Two-tier classification (deterministic sender/domain rules, then an LLM JSON classifier) across 10 custom Gmail labels, with non-destructive bulk-archiving (label changes only, never deletes).'
           }
         ];
       } else {
@@ -875,22 +875,18 @@
     function showAuditReport() {
       appendOutput(`
 <div class="term-line term-cyan" style="font-weight: 600;">// YUNJIN DESIGN CRITIC &amp; QA AUDIT REPORT</div>
-<div class="term-line"><span class="term-success">[STATUS]</span> Portfolio Health Score: <strong class="term-highlight">92 / 100 ➔ 100% RESOLVED &amp; LIVE</strong></div>
+<div class="term-line"><span class="term-success">[STATUS]</span> Portfolio Health Score: <strong class="term-highlight">92 / 100</strong> <span class="term-muted">(Yunjin audit, 2026-09-23)</span></div>
 <table class="term-table">
   <thead>
-    <tr class="term-muted"><th>CHECK</th><th>RESULT</th><th>VERIFICATION</th></tr>
+    <tr class="term-muted"><th>CHECK</th><th>RESULT</th><th>DETAIL</th></tr>
   </thead>
   <tbody>
-    <tr><td>Asset Hygiene</td><td class="term-success">49 / 49 Valid</td><td>0 Broken Links / 0 404s Across Entire Site</td></tr>
-    <tr><td>HTML Semantic Spec</td><td class="term-success">9 / 9 Parsed</td><td>0 Syntax or Tag Nesting Errors</td></tr>
-    <tr><td>First-200px UX Block</td><td class="term-success">6 / 6 Implemented</td><td>Problem vs. Solution Cards Live on All Case Studies</td></tr>
-    <tr><td>Outcome Metrics Strip</td><td class="term-success">6 / 6 Live</td><td>4-Cell Quantified Monospace Benchmarks Installed</td></tr>
-    <tr><td>Selected Works Track</td><td class="term-success">Infinite Loop</td><td>Clone-Buffered Circular Navigation with '● 6 Projects' Pill</td></tr>
-    <tr><td>Brand Subtitle</td><td class="term-success">100% Unified</td><td>'Applied AI Engineer // Full-Stack Builder' on All Pages</td></tr>
+    <tr><td>Asset Hygiene</td><td class="term-success">49 / 49 Valid</td><td>0 broken links at audit time</td></tr>
+    <tr><td>Top Recommendation</td><td class="term-accent">Optimize images</td><td>Convert to WebP/AVIF with lazy-loading to protect LCP</td></tr>
+    <tr><td>Follow-Up</td><td class="term-success">Shipped 2026-10-01</td><td>Responsive AVIF/WebP + lazy-loading: 58.7 MB of PNGs → 7–143 KB per page</td></tr>
   </tbody>
 </table>
-<div class="term-line term-muted" style="margin-top: 6px;">Audit Log Source: lsfm-swarm/portfolio_audits/2026-09-23_portfolio_audit.md</div>
-<div class="term-line term-success">Verdict: Enterprise-grade editorial polish meeting top 1% recruiter criteria.</div>
+<div class="term-line term-muted" style="margin-top: 6px;">Audit Log Source: LE-SSERAFIM-AI-HQ/portfolio_audits/2026-09-23_portfolio_audit.md</div>
       `.trim());
     }
 
@@ -912,42 +908,41 @@
 
     function showVitals() {
       appendOutput(`
-<div class="term-line term-comment"># Eunchae Sentinel Watchdog // Real-Time System Vitals HUD</div>
+<div class="term-line term-comment"># Eunchae Watchdog // Sample Snapshot (static demo values, not a live reading)</div>
 <div class="term-line term-cyan">&gt; sys.watchdog --telemetry --all</div>
 
 <div class="term-line"><span class="term-success">[HOST]</span> Intel Core i5-12400F (12 Logical Threads @ 2.50–4.40 GHz)</div>
-<div class="term-line"><span class="term-success">[SILICON]</span> AMD Radeon RX 6600 XT (8GB GDDR6 VRAM · Vulkan / Ollama)</div>
-<div class="term-line"><span class="term-success">[MEMORY]</span> 16.0 GB DDR4-3200 (71.2% active allocation · ~4.6 GB buffer)</div>
-<div class="term-line"><span class="term-success">[STORAGE]</span> NVMe Gen4 Primary Partition (122.5 GB free headroom)</div>
-<div class="term-line"><span class="term-success">[BRAIN]</span> Obsidian AI Brain Loopback HTTPS Bridge (Port 27124) <span class="term-badge success">CONNECTED</span></div>
+<div class="term-line"><span class="term-success">[SILICON]</span> AMD Radeon RX 6600 XT (8GB GDDR6 VRAM · Ollama local mode)</div>
+<div class="term-line"><span class="term-success">[MEMORY]</span> 16 GB DDR4-3200 (2 × 8 GB, dual-channel)</div>
+<div class="term-line"><span class="term-success">[STORAGE]</span> NVMe Gen4 Primary Partition</div>
 
-<div class="term-line" style="margin-top: 6px;"><span class="term-accent">REAL-TIME GAUGES:</span></div>
+<div class="term-line" style="margin-top: 6px;"><span class="term-accent">SAMPLE GAUGES:</span></div>
 <div class="term-line">  CPU Load:   <span class="term-cyan">[██░░░░░░░░░░░░░░░░░░]</span>  4.9%  <span class="term-badge success">COOL</span></div>
 <div class="term-line">  RAM Load:   <span class="term-cyan">[██████████████░░░░░░]</span> 69.6%  <span class="term-badge success">OPTIMAL</span></div>
 <div class="term-line">  NVMe Disk:  <span class="term-cyan">[██████████████░░░░░░]</span> 73.6%  <span class="term-badge success">HEALTHY</span></div>
 
-<div class="term-line term-muted" style="margin-top: 6px;">Sentinel Status: <span class="term-badge success">0 RESOURCE LEAKS</span> · Daemon background tasks executing safely.</div>
+<div class="term-line term-muted" style="margin-top: 6px;">Gauge values are illustrative. The real watchdog samples CPU, RAM and disk via psutil every 5 minutes on the workstation.</div>
       `.trim());
     }
 
     function showSwarm() {
       appendOutput(`
-<div class="term-line term-comment"># LSFM AI HQ // Active 5-Agent Orchestration Matrix</div>
-<div class="term-line term-cyan">&gt; lsfm.agents --status --matrix</div>
+<div class="term-line term-comment"># LSFM AI HQ // 5-Agent Roster</div>
+<div class="term-line term-cyan">&gt; lsfm.agents --roster</div>
 
-<div class="term-line"><strong class="term-accent">ACTIVE AGENT PIPELINE:</strong></div>
+<div class="term-line"><strong class="term-accent">AGENT ROSTER:</strong></div>
 <div class="term-line">  1. 🌸 <strong>Sakura</strong>   | Chief of Staff      | #command-center   | <span class="term-badge success">ORCHESTRATOR</span></div>
-<div class="term-line">     └─ Intent triage, daily briefings (!briefing), Obsidian MCP queries</div>
+<div class="term-line">     └─ Daily briefings (!briefing), Gmail triage (!inbox, !clean), !apply pipeline</div>
 <div class="term-line">  2. 🦢 <strong>Kazuha</strong>   | Frontend Architect  | #frontend-lab     | <span class="term-badge">TOKEN ENGINE</span></div>
-<div class="term-line">     └─ Zero-framework design token compliance, Git pre-commit sentinel</div>
-<div class="term-line">  3. 🎨 <strong>Yunjin</strong>   | Document Architect  | #portfolio-audits | <span class="term-badge">QA QUALITY GATE</span></div>
-<div class="term-line">     └─ Automated DOM audits, 49/49 asset checks, 100/100 threshold</div>
+<div class="term-line">     └─ Design token compliance, UI components, code inspection, RAG Q&amp;A (!ask)</div>
+<div class="term-line">  3. 🎨 <strong>Yunjin</strong>   | Document Architect  | #portfolio-audits | <span class="term-badge">DESIGN CRITIC</span></div>
+<div class="term-line">     └─ Automated DOM &amp; asset audits (!audit), design critiques (!critique)</div>
 <div class="term-line">  4. 🐯 <strong>Chaewon</strong>  | Career Strategist   | #job-tailoring    | <span class="term-badge">ATS RADAR</span></div>
-<div class="term-line">     └─ Semantic keyword vector matching, headless vector PDF compiler</div>
-<div class="term-line">  5. 🥔 <strong>Eunchae</strong>  | System Guardian     | #pc-vitals        | <span class="term-badge">TELEMETRY WATCHDOG</span></div>
-<div class="term-line">     └─ Real-time hardware vitals, AST code sandbox, Gmail triage</div>
+<div class="term-line">     └─ Job scouting (!scout), ATS tailoring (!apply), headless vector PDF (!pdf)</div>
+<div class="term-line">  5. 🥔 <strong>Eunchae</strong>  | System Guardian     | #pc-vitals        | <span class="term-badge">VITALS WATCHDOG</span></div>
+<div class="term-line">     └─ Hardware vitals via psutil (5-min cycle), health reports (!health)</div>
 
-<div class="term-line term-muted" style="margin-top: 6px;">Inference Hierarchy: Groq Cloud (Llama 3.3 70B, &lt;280ms) ⇄ AMD Vulkan Local (RX 6600 XT, $0.00/mo)</div>
+<div class="term-line term-muted" style="margin-top: 6px;">Inference: Groq Cloud (qwen3.8-27b) → Gemini fallback · optional local Ollama (RX 6600 XT) · $0.00/mo</div>
       `.trim());
     }
 

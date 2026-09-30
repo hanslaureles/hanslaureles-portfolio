@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=2.1.0">
+  <link rel="stylesheet" href="styles.css?v=2.2.1">
   
   <!-- Zero-FOUC Theme Script -->
   <script>
@@ -197,7 +197,7 @@
               <div class="exp-period">2026 – PRESENT</div>
             </div>
             <ul class="exp-bullets">
-              <li>Architected a real-time conversational voice assistant achieving sub-350ms Thought Acceleration latency via chunked streaming and custom acoustic DSP (+5Hz pitch, 1.25x tempo).</li>
+              <li>Architected a real-time conversational voice assistant with Groq Whisper speech-to-text (OpenAI Whisper fallback), bilingual Edge-TTS replies, and a custom FFmpeg "Thought Acceleration" voice filter.</li>
               <li>Engineered live sensory perception layer integrating real-time meteorology radar (wttr.in) and global web intelligence (DuckDuckGo Search) with 8-turn sliding working memory buffer.</li>
               <li>Built an authentic procedural SVG mandala Web HUD with dual-concentric reactive rings, real-time Web Audio API waveform visualizer, and bidirectional Obsidian Second Brain synchronization.</li>
             </ul>
@@ -214,8 +214,8 @@
             </div>
             <ul class="exp-bullets">
               <li>Architected an asynchronous operations platform orchestrating 5 specialized agent daemons over Discord Gateway for automated notifications, email triage, and developer workflow support.</li>
-              <li>Engineered hybrid inference routing combining Groq Cloud (Llama 3.3 70B / Qwen 2.5 Coder 32B) for low latency with local AMD GPU acceleration (qwen2.5-coder:7b via Vulkan / Ollama) for offline fallback at zero cloud compute cost.</li>
-              <li>Built programmatic tool pipelines including a headless Chromium ATS single-page resume compiler and a Google Workspace OAuth2 batch triage script categorizing inbox emails into 10 hierarchical labels.</li>
+              <li>Engineered LLM routing with three operator-selectable modes: Groq Cloud (qwen3.8-27b) with Gemini fallback, local Ollama (qwen2.5-coder:7b) on an AMD RX 6600 XT for private work, and auto (local first, then cloud), at zero cloud compute cost.</li>
+              <li>Built programmatic tool pipelines including a headless Edge ATS single-page resume compiler and a two-tier Gmail classifier (rules, then LLM) sorting inbox mail into 10 custom labels with non-destructive bulk-archiving.</li>
             </ul>
           </div>
 
@@ -291,10 +291,10 @@
                 </div>
                 <div class="git-commit-author mono">Author: Hans Aaron Laureles &lt;hanslaureles92@gmail.com&gt;</div>
                 <div class="git-commit-desc">
-                  Low-latency voice intelligence achieving sub-350ms Thought Acceleration DSP, live meteorology sensors, real-time web intelligence, and dual-concentric reactive SVG mandala HUD.
+                  Voice intelligence with Groq Whisper speech-to-text, a custom Thought Acceleration voice filter, live meteorology sensors, real-time web intelligence, and a dual-concentric reactive SVG mandala HUD.
                 </div>
                 <ul class="git-commit-bullets mono">
-                  <li>+ Sub-350ms Thought Acceleration DSP (1.25x tempo, +5Hz pitch, Edge-TTS streaming)</li>
+                  <li>+ Thought Acceleration voice filter (FFmpeg high-pass, presence EQ, light echo) over Edge-TTS voices</li>
                   <li>+ Live sensory perception: wttr.in meteorological radar &amp; DuckDuckGo Search (DDGS)</li>
                   <li>+ Procedural SVG mandala Web HUD with Web Audio API reactive frequency bins</li>
                 </ul>
@@ -328,11 +328,11 @@
                 </div>
                 <div class="git-commit-author mono">Author: Hans Aaron Laureles &lt;hanslaureles92@gmail.com&gt;</div>
                 <div class="git-commit-desc">
-                  Autonomous 5-agent operations platform orchestrating Discord Gateway streaming, local GPU failover routing, and automated tool pipelines.
+                  Autonomous 5-agent operations platform orchestrating Discord Gateway streaming, multi-provider LLM routing, and automated tool pipelines.
                 </div>
                 <ul class="git-commit-bullets mono">
                   <li>+ Asynchronous Discord Gateway streaming &amp; domain-isolated prompt personas</li>
-                  <li>+ Hybrid inference router: Cloud Groq failover to local AMD RX 6600 XT Vulkan</li>
+                  <li>+ LLM router: Groq Cloud → Gemini fallback, optional local Ollama on AMD RX 6600 XT</li>
                   <li>+ Headless Chromium ATS vector resume single-page compiler</li>
                 </ul>
                 <div class="git-commit-actions">
@@ -511,12 +511,12 @@
             <div class="exp-header">
               <div>
                 <div class="exp-title">Local Silicon Inference &amp; Quantization</div>
-                <div class="exp-company">Ollama · GGUF Quantization · Vulkan Acceleration</div>
+                <div class="exp-company">Ollama · GGUF Quantization · AMD Radeon RX 6600 XT</div>
               </div>
               <div class="badge badge-accent">PRACTICE</div>
             </div>
             <p style="font-size: 0.95rem;">
-              Running quantized 7B and 14B parameter models locally on consumer AMD Radeon hardware with zero cloud compute cost and sub-second token velocity.
+              Running quantized 7B and 14B parameter models locally on consumer AMD Radeon hardware with zero cloud compute cost.
             </p>
           </div>
         </div>
@@ -544,12 +544,12 @@
               <span class="skill-pill">Hybrid Vector RAG (Dense + BM25)</span>
               <span class="skill-pill">Model Context Protocol (MCP)</span>
               <span class="skill-pill">LLM Evaluations &amp; Evals</span>
-              <span class="skill-pill">Local GPU Inference (Vulkan)</span>
+              <span class="skill-pill">Local GPU Inference (Ollama)</span>
               <span class="skill-pill">Ollama &amp; GGUF Quantization</span>
               <span class="skill-pill">Structured JSON Schemas</span>
               <span class="skill-pill">Tool &amp; Function Calling</span>
               <span class="skill-pill">Hybrid Cloud/Local Routing</span>
-              <span class="skill-pill">Groq Cloud (Llama 3.3 / Qwen 2.5)</span>
+              <span class="skill-pill">Groq &amp; Gemini APIs</span>
               <span class="skill-pill">Dense &amp; Sparse Embeddings</span>
               <span class="skill-pill">Persistent Episodic Memory</span>
             </div>
@@ -648,8 +648,8 @@
     </div>
   </footer>
 
-  <script src="app.js?v=2.1.0"></script>
-  <script src="sakura-copilot.js?v=2.1.0"></script>
+  <script src="app.js?v=2.2.1"></script>
+  <script src="sakura-copilot.js?v=2.2.1"></script>
   <script>
     // Dual-Mode Experience View Toggler & SHA Copy
     (function () {
