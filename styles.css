@@ -178,6 +178,12 @@ a {
 }
 
 /* --- 3. Layout & Containers --- */
+/* Responsive <picture> wrappers (tools/optimize_images.py) must not add a layout box:
+   the inner <img> keeps behaving as a direct child of .card-media, .case-banner, etc. */
+picture {
+  display: contents;
+}
+
 .container {
   width: 100%;
   max-width: var(--container-max);

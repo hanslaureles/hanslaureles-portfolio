@@ -111,7 +111,8 @@
 
   document.querySelectorAll('.gallery-item img, .full-width-image img').forEach(img => {
     img.addEventListener('click', () => {
-      openLightbox(img.src, img.alt);
+      // Responsive <picture> images: open the largest variant, not the small fallback src.
+      openLightbox(img.dataset.full || img.currentSrc || img.src, img.alt);
     });
   });
 

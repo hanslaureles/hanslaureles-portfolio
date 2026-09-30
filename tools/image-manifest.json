@@ -1,0 +1,2006 @@
+{
+  "images/Laureles_Aura - Website/01 Aura - Cart Drawer.png": {
+    "alpha": false,
+    "height": 1100,
+    "source_bytes": 451674,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 6379,
+          "height": 400,
+          "path": "images/aura-website/01-aura-cart-drawer-480.67f0a15b.avif",
+          "ssim": 0.9921,
+          "width": 480
+        },
+        {
+          "bytes": 23315,
+          "height": 802,
+          "path": "images/aura-website/01-aura-cart-drawer-960.8f688fa1.avif",
+          "ssim": 0.9908,
+          "width": 960
+        },
+        {
+          "bytes": 26495,
+          "height": 1100,
+          "path": "images/aura-website/01-aura-cart-drawer-1318.5bd358ed.avif",
+          "ssim": 0.9951,
+          "width": 1318
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 8684,
+          "height": 400,
+          "path": "images/aura-website/01-aura-cart-drawer-480.9c6cddb1.webp",
+          "ssim": 0.9776,
+          "width": 480
+        },
+        {
+          "bytes": 32106,
+          "height": 802,
+          "path": "images/aura-website/01-aura-cart-drawer-960.287576e5.webp",
+          "ssim": 0.9924,
+          "width": 960
+        },
+        {
+          "bytes": 61472,
+          "height": 1100,
+          "path": "images/aura-website/01-aura-cart-drawer-1318.68bf4093.webp",
+          "ssim": 0.9942,
+          "width": 1318
+        }
+      ]
+    },
+    "width": 1318
+  },
+  "images/Laureles_Aura - Website/01 Aura Wireframe Cart Drawer.png": {
+    "alpha": false,
+    "height": 1100,
+    "source_bytes": 152678,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 5051,
+          "height": 400,
+          "path": "images/aura-website/01-aura-wireframe-cart-drawer-480.2c9fa7aa.avif",
+          "ssim": 0.9931,
+          "width": 480
+        },
+        {
+          "bytes": 20217,
+          "height": 802,
+          "path": "images/aura-website/01-aura-wireframe-cart-drawer-960.065f86c1.avif",
+          "ssim": 0.9928,
+          "width": 960
+        },
+        {
+          "bytes": 39024,
+          "height": 1100,
+          "path": "images/aura-website/01-aura-wireframe-cart-drawer-1318.2704147e.avif",
+          "ssim": 0.9918,
+          "width": 1318
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 7142,
+          "height": 400,
+          "path": "images/aura-website/01-aura-wireframe-cart-drawer-480.f9845918.webp",
+          "ssim": 0.9802,
+          "width": 480
+        },
+        {
+          "bytes": 27184,
+          "height": 802,
+          "path": "images/aura-website/01-aura-wireframe-cart-drawer-960.64e4321c.webp",
+          "ssim": 0.9929,
+          "width": 960
+        },
+        {
+          "bytes": 52388,
+          "height": 1100,
+          "path": "images/aura-website/01-aura-wireframe-cart-drawer-1318.d327c234.webp",
+          "ssim": 0.9954,
+          "width": 1318
+        }
+      ]
+    },
+    "width": 1318
+  },
+  "images/Laureles_Aura - Website/02 Aura - Order Confirmation.png": {
+    "alpha": false,
+    "height": 1427,
+    "source_bytes": 209820,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 8395,
+          "height": 536,
+          "path": "images/aura-website/02-aura-order-confirmation-480.fa99acff.avif",
+          "ssim": 0.9942,
+          "width": 480
+        },
+        {
+          "bytes": 25277,
+          "height": 1070,
+          "path": "images/aura-website/02-aura-order-confirmation-960.7ba0d3ed.avif",
+          "ssim": 0.9955,
+          "width": 960
+        },
+        {
+          "bytes": 36714,
+          "height": 1428,
+          "path": "images/aura-website/02-aura-order-confirmation-1280.2269c865.avif",
+          "ssim": 0.9964,
+          "width": 1280
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 11822,
+          "height": 536,
+          "path": "images/aura-website/02-aura-order-confirmation-480.8ae63bcd.webp",
+          "ssim": 0.991,
+          "width": 480
+        },
+        {
+          "bytes": 33688,
+          "height": 1070,
+          "path": "images/aura-website/02-aura-order-confirmation-960.62d32689.webp",
+          "ssim": 0.9935,
+          "width": 960
+        },
+        {
+          "bytes": 49920,
+          "height": 1428,
+          "path": "images/aura-website/02-aura-order-confirmation-1280.4d8233aa.webp",
+          "ssim": 0.9955,
+          "width": 1280
+        }
+      ]
+    },
+    "width": 1280
+  },
+  "images/Laureles_Aura - Website/02 Aura Wireframe Order Confirmation.png": {
+    "alpha": false,
+    "height": 1352,
+    "source_bytes": 82104,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 5458,
+          "height": 508,
+          "path": "images/aura-website/02-aura-wireframe-order-confirmation-480.6b7038cd.avif",
+          "ssim": 0.9935,
+          "width": 480
+        },
+        {
+          "bytes": 15895,
+          "height": 1014,
+          "path": "images/aura-website/02-aura-wireframe-order-confirmation-960.c95db36f.avif",
+          "ssim": 0.9954,
+          "width": 960
+        },
+        {
+          "bytes": 20004,
+          "height": 1352,
+          "path": "images/aura-website/02-aura-wireframe-order-confirmation-1280.3441fe38.avif",
+          "ssim": 0.9979,
+          "width": 1280
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 7838,
+          "height": 508,
+          "path": "images/aura-website/02-aura-wireframe-order-confirmation-480.f4216a56.webp",
+          "ssim": 0.9933,
+          "width": 480
+        },
+        {
+          "bytes": 22188,
+          "height": 1014,
+          "path": "images/aura-website/02-aura-wireframe-order-confirmation-960.2a55aaee.webp",
+          "ssim": 0.9957,
+          "width": 960
+        },
+        {
+          "bytes": 32722,
+          "height": 1352,
+          "path": "images/aura-website/02-aura-wireframe-order-confirmation-1280.d63d5d50.webp",
+          "ssim": 0.997,
+          "width": 1280
+        }
+      ]
+    },
+    "width": 1280
+  },
+  "images/Laureles_Aura - Website/03 Aura - Express Checkout.png": {
+    "alpha": false,
+    "height": 1442,
+    "source_bytes": 89892,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 5354,
+          "height": 540,
+          "path": "images/aura-website/03-aura-express-checkout-480.223850a9.avif",
+          "ssim": 0.9933,
+          "width": 480
+        },
+        {
+          "bytes": 15346,
+          "height": 1082,
+          "path": "images/aura-website/03-aura-express-checkout-960.8a89d6ac.avif",
+          "ssim": 0.9955,
+          "width": 960
+        },
+        {
+          "bytes": 22016,
+          "height": 1442,
+          "path": "images/aura-website/03-aura-express-checkout-1280.b4f5bded.avif",
+          "ssim": 0.9972,
+          "width": 1280
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 7826,
+          "height": 540,
+          "path": "images/aura-website/03-aura-express-checkout-480.a52ee0ca.webp",
+          "ssim": 0.9917,
+          "width": 480
+        },
+        {
+          "bytes": 20560,
+          "height": 1082,
+          "path": "images/aura-website/03-aura-express-checkout-960.f206c73e.webp",
+          "ssim": 0.9951,
+          "width": 960
+        },
+        {
+          "bytes": 28976,
+          "height": 1442,
+          "path": "images/aura-website/03-aura-express-checkout-1280.1333454e.webp",
+          "ssim": 0.9975,
+          "width": 1280
+        }
+      ]
+    },
+    "width": 1280
+  },
+  "images/Laureles_Aura - Website/04 Aura - One Page Checkout.png": {
+    "alpha": false,
+    "height": 1606,
+    "source_bytes": 212162,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 9150,
+          "height": 596,
+          "path": "images/aura-website/04-aura-one-page-checkout-480.83428481.avif",
+          "ssim": 0.9858,
+          "width": 480
+        },
+        {
+          "bytes": 27420,
+          "height": 1192,
+          "path": "images/aura-website/04-aura-one-page-checkout-960.dd739905.avif",
+          "ssim": 0.9932,
+          "width": 960
+        },
+        {
+          "bytes": 31747,
+          "height": 1606,
+          "path": "images/aura-website/04-aura-one-page-checkout-1294.d75191d9.avif",
+          "ssim": 0.997,
+          "width": 1294
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 13842,
+          "height": 596,
+          "path": "images/aura-website/04-aura-one-page-checkout-480.36d8105f.webp",
+          "ssim": 0.9843,
+          "width": 480
+        },
+        {
+          "bytes": 39508,
+          "height": 1192,
+          "path": "images/aura-website/04-aura-one-page-checkout-960.d5f60b07.webp",
+          "ssim": 0.991,
+          "width": 960
+        },
+        {
+          "bytes": 58832,
+          "height": 1606,
+          "path": "images/aura-website/04-aura-one-page-checkout-1294.7a910059.webp",
+          "ssim": 0.9942,
+          "width": 1294
+        }
+      ]
+    },
+    "width": 1294
+  },
+  "images/Laureles_Aura - Website/04 Aura Wireframe One Page Checkout.png": {
+    "alpha": false,
+    "height": 1364,
+    "source_bytes": 82943,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 7650,
+          "height": 512,
+          "path": "images/aura-website/04-aura-wireframe-one-page-checkout-480.b8885c5c.avif",
+          "ssim": 0.9948,
+          "width": 480
+        },
+        {
+          "bytes": 21037,
+          "height": 1024,
+          "path": "images/aura-website/04-aura-wireframe-one-page-checkout-960.bf5ddc89.avif",
+          "ssim": 0.9981,
+          "width": 960
+        },
+        {
+          "bytes": 24336,
+          "height": 1364,
+          "path": "images/aura-website/04-aura-wireframe-one-page-checkout-1280.b4372ee6.avif",
+          "ssim": 0.9995,
+          "width": 1280
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 11570,
+          "height": 512,
+          "path": "images/aura-website/04-aura-wireframe-one-page-checkout-480.be4c3868.webp",
+          "ssim": 0.9938,
+          "width": 480
+        },
+        {
+          "bytes": 29064,
+          "height": 1024,
+          "path": "images/aura-website/04-aura-wireframe-one-page-checkout-960.b247da25.webp",
+          "ssim": 0.9967,
+          "width": 960
+        },
+        {
+          "bytes": 39854,
+          "height": 1364,
+          "path": "images/aura-website/04-aura-wireframe-one-page-checkout-1280.0a395ddd.webp",
+          "ssim": 0.9981,
+          "width": 1280
+        }
+      ]
+    },
+    "width": 1280
+  },
+  "images/Laureles_Aura - Website/05 Aura - Payment Form.png": {
+    "alpha": false,
+    "height": 1253,
+    "source_bytes": 127258,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 5763,
+          "height": 470,
+          "path": "images/aura-website/05-aura-payment-form-480.2ca6ddc5.avif",
+          "ssim": 0.9882,
+          "width": 480
+        },
+        {
+          "bytes": 16378,
+          "height": 940,
+          "path": "images/aura-website/05-aura-payment-form-960.a0f78e60.avif",
+          "ssim": 0.9962,
+          "width": 960
+        },
+        {
+          "bytes": 22660,
+          "height": 1254,
+          "path": "images/aura-website/05-aura-payment-form-1280.a9ed6329.avif",
+          "ssim": 0.9973,
+          "width": 1280
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 8992,
+          "height": 470,
+          "path": "images/aura-website/05-aura-payment-form-480.69a45b13.webp",
+          "ssim": 0.9883,
+          "width": 480
+        },
+        {
+          "bytes": 25014,
+          "height": 940,
+          "path": "images/aura-website/05-aura-payment-form-960.8f2e58ff.webp",
+          "ssim": 0.9939,
+          "width": 960
+        },
+        {
+          "bytes": 36140,
+          "height": 1254,
+          "path": "images/aura-website/05-aura-payment-form-1280.8b2f0830.webp",
+          "ssim": 0.9949,
+          "width": 1280
+        }
+      ]
+    },
+    "width": 1280
+  },
+  "images/Laureles_Aura - Website/aura mockup.png": {
+    "alpha": false,
+    "height": 3000,
+    "og": {
+      "bytes": 68573,
+      "height": 900,
+      "path": "images/og/aura-website-aura-mockup.d7fe7f88.jpg",
+      "width": 1200
+    },
+    "source_bytes": 11661606,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 3549,
+          "height": 360,
+          "path": "images/aura-website/aura-mockup-480.b04fa192.avif",
+          "ssim": 0.9659,
+          "width": 480
+        },
+        {
+          "bytes": 9124,
+          "height": 720,
+          "path": "images/aura-website/aura-mockup-960.7caa718c.avif",
+          "ssim": 0.9446,
+          "width": 960
+        },
+        {
+          "bytes": 22987,
+          "height": 1200,
+          "path": "images/aura-website/aura-mockup-1600.bfcd01ac.avif",
+          "ssim": 0.9278,
+          "width": 1600
+        },
+        {
+          "bytes": 52923,
+          "height": 1800,
+          "path": "images/aura-website/aura-mockup-2400.bc932fc0.avif",
+          "ssim": 0.9264,
+          "width": 2400
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 7544,
+          "height": 360,
+          "path": "images/aura-website/aura-mockup-480.453377f5.webp",
+          "ssim": 0.9674,
+          "width": 480
+        },
+        {
+          "bytes": 25744,
+          "height": 720,
+          "path": "images/aura-website/aura-mockup-960.72d8492e.webp",
+          "ssim": 0.9499,
+          "width": 960
+        },
+        {
+          "bytes": 69104,
+          "height": 1200,
+          "path": "images/aura-website/aura-mockup-1600.fe3cbac8.webp",
+          "ssim": 0.9426,
+          "width": 1600
+        },
+        {
+          "bytes": 158446,
+          "height": 1800,
+          "path": "images/aura-website/aura-mockup-2400.97ad1a67.webp",
+          "ssim": 0.9415,
+          "width": 2400
+        }
+      ]
+    },
+    "width": 4000
+  },
+  "images/Laureles_Ciel/ciel_mockup.png": {
+    "alpha": false,
+    "height": 3072,
+    "og": {
+      "bytes": 102419,
+      "height": 900,
+      "path": "images/og/ciel-ciel-mockup.76ad2967.jpg",
+      "width": 1200
+    },
+    "source_bytes": 20217265,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 10292,
+          "height": 360,
+          "path": "images/ciel/ciel-mockup-480.eecfa9ee.avif",
+          "ssim": 0.9689,
+          "width": 480
+        },
+        {
+          "bytes": 23605,
+          "height": 720,
+          "path": "images/ciel/ciel-mockup-960.980d44a3.avif",
+          "ssim": 0.9736,
+          "width": 960
+        },
+        {
+          "bytes": 43897,
+          "height": 1200,
+          "path": "images/ciel/ciel-mockup-1600.c5fa93f8.avif",
+          "ssim": 0.9774,
+          "width": 1600
+        },
+        {
+          "bytes": 71107,
+          "height": 1800,
+          "path": "images/ciel/ciel-mockup-2400.1bdc3468.avif",
+          "ssim": 0.9781,
+          "width": 2400
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 17638,
+          "height": 360,
+          "path": "images/ciel/ciel-mockup-480.259bebad.webp",
+          "ssim": 0.9655,
+          "width": 480
+        },
+        {
+          "bytes": 43012,
+          "height": 720,
+          "path": "images/ciel/ciel-mockup-960.2f7b7f9e.webp",
+          "ssim": 0.9689,
+          "width": 960
+        },
+        {
+          "bytes": 82518,
+          "height": 1200,
+          "path": "images/ciel/ciel-mockup-1600.9b316812.webp",
+          "ssim": 0.9695,
+          "width": 1600
+        },
+        {
+          "bytes": 137040,
+          "height": 1800,
+          "path": "images/ciel/ciel-mockup-2400.cd51387e.webp",
+          "ssim": 0.9679,
+          "width": 2400
+        }
+      ]
+    },
+    "width": 4096
+  },
+  "images/Laureles_FinTrack - Mobile App/01 FinTrack - Dashboard.png": {
+    "alpha": false,
+    "height": 1062,
+    "source_bytes": 121808,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 24880,
+          "height": 1062,
+          "path": "images/fintrack-mobile-app/01-fintrack-dashboard-430.15604dc8.avif",
+          "ssim": 0.9917,
+          "width": 430
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 54652,
+          "height": 1062,
+          "path": "images/fintrack-mobile-app/01-fintrack-dashboard-430.d8f5e968.webp",
+          "ssim": 0.9915,
+          "width": 430
+        }
+      ]
+    },
+    "width": 430
+  },
+  "images/Laureles_FinTrack - Mobile App/01 FinTrack Wireframe Dashboard.png": {
+    "alpha": false,
+    "height": 924,
+    "source_bytes": 32453,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 3791,
+          "height": 924,
+          "path": "images/fintrack-mobile-app/01-fintrack-wireframe-dashboard-390.18e7ebd0.avif",
+          "ssim": 0.9986,
+          "width": 390
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 6328,
+          "height": 924,
+          "path": "images/fintrack-mobile-app/01-fintrack-wireframe-dashboard-390.14bb9855.webp",
+          "ssim": 0.9959,
+          "width": 390
+        }
+      ]
+    },
+    "width": 390
+  },
+  "images/Laureles_FinTrack - Mobile App/02 FinTrack - Add Expense.png": {
+    "alpha": false,
+    "height": 1122,
+    "source_bytes": 101584,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 22180,
+          "height": 1122,
+          "path": "images/fintrack-mobile-app/02-fintrack-add-expense-430.78c02dd4.avif",
+          "ssim": 0.9953,
+          "width": 430
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 50630,
+          "height": 1122,
+          "path": "images/fintrack-mobile-app/02-fintrack-add-expense-430.7eeaa048.webp",
+          "ssim": 0.9937,
+          "width": 430
+        }
+      ]
+    },
+    "width": 430
+  },
+  "images/Laureles_FinTrack - Mobile App/02 FinTrack Wireframe Add Expense.png": {
+    "alpha": false,
+    "height": 884,
+    "source_bytes": 32530,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 7092,
+          "height": 884,
+          "path": "images/fintrack-mobile-app/02-fintrack-wireframe-add-expense-390.52386247.avif",
+          "ssim": 0.9976,
+          "width": 390
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 11040,
+          "height": 884,
+          "path": "images/fintrack-mobile-app/02-fintrack-wireframe-add-expense-390.e8c64af7.webp",
+          "ssim": 0.9951,
+          "width": 390
+        }
+      ]
+    },
+    "width": 390
+  },
+  "images/Laureles_FinTrack - Mobile App/03 FinTrack - Transactions.png": {
+    "alpha": false,
+    "height": 919,
+    "source_bytes": 147293,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 30398,
+          "height": 920,
+          "path": "images/fintrack-mobile-app/03-fintrack-transactions-466.d6b708d0.avif",
+          "ssim": 0.9651,
+          "width": 466
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 45028,
+          "height": 920,
+          "path": "images/fintrack-mobile-app/03-fintrack-transactions-466.99585687.webp",
+          "ssim": 0.9787,
+          "width": 466
+        }
+      ]
+    },
+    "width": 466
+  },
+  "images/Laureles_FinTrack - Mobile App/03 FinTrack Wireframe Transactions.png": {
+    "alpha": false,
+    "height": 924,
+    "source_bytes": 72066,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 14234,
+          "height": 924,
+          "path": "images/fintrack-mobile-app/03-fintrack-wireframe-transactions-430.178d9148.avif",
+          "ssim": 0.9962,
+          "width": 430
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 34690,
+          "height": 924,
+          "path": "images/fintrack-mobile-app/03-fintrack-wireframe-transactions-430.266a35ad.webp",
+          "ssim": 0.994,
+          "width": 430
+        }
+      ]
+    },
+    "width": 430
+  },
+  "images/Laureles_FinTrack - Mobile App/04 FinTrack - Analytics.png": {
+    "alpha": false,
+    "height": 1186,
+    "source_bytes": 44108,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 11587,
+          "height": 1186,
+          "path": "images/fintrack-mobile-app/04-fintrack-analytics-390.337179fb.avif",
+          "ssim": 0.9977,
+          "width": 390
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 19438,
+          "height": 1186,
+          "path": "images/fintrack-mobile-app/04-fintrack-analytics-390.27c9ff6c.webp",
+          "ssim": 0.9906,
+          "width": 390
+        }
+      ]
+    },
+    "width": 390
+  },
+  "images/Laureles_FinTrack - Mobile App/05 FinTrack - Savings Goals.png": {
+    "alpha": false,
+    "height": 968,
+    "source_bytes": 61838,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 12357,
+          "height": 968,
+          "path": "images/fintrack-mobile-app/05-fintrack-savings-goals-390.0b356990.avif",
+          "ssim": 0.9923,
+          "width": 390
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 19496,
+          "height": 968,
+          "path": "images/fintrack-mobile-app/05-fintrack-savings-goals-390.1c7cb827.webp",
+          "ssim": 0.9867,
+          "width": 390
+        }
+      ]
+    },
+    "width": 390
+  },
+  "images/Laureles_FinTrack - Mobile App/fintrack mockup.png": {
+    "alpha": false,
+    "height": 1053,
+    "og": {
+      "bytes": 65903,
+      "height": 892,
+      "path": "images/og/fintrack-mobile-app-fintrack-mockup.48bd6584.jpg",
+      "width": 1200
+    },
+    "source_bytes": 1527076,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 5745,
+          "height": 356,
+          "path": "images/fintrack-mobile-app/fintrack-mockup-480.d086d51f.avif",
+          "ssim": 0.9833,
+          "width": 480
+        },
+        {
+          "bytes": 13101,
+          "height": 714,
+          "path": "images/fintrack-mobile-app/fintrack-mockup-960.215104eb.avif",
+          "ssim": 0.9787,
+          "width": 960
+        },
+        {
+          "bytes": 20395,
+          "height": 1054,
+          "path": "images/fintrack-mobile-app/fintrack-mockup-1417.cef3f6c0.avif",
+          "ssim": 0.9667,
+          "width": 1417
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 10652,
+          "height": 356,
+          "path": "images/fintrack-mobile-app/fintrack-mockup-480.b79afc12.webp",
+          "ssim": 0.9838,
+          "width": 480
+        },
+        {
+          "bytes": 25014,
+          "height": 714,
+          "path": "images/fintrack-mobile-app/fintrack-mockup-960.e23087e7.webp",
+          "ssim": 0.9772,
+          "width": 960
+        },
+        {
+          "bytes": 41824,
+          "height": 1054,
+          "path": "images/fintrack-mobile-app/fintrack-mockup-1417.86873f6d.webp",
+          "ssim": 0.9663,
+          "width": 1417
+        }
+      ]
+    },
+    "width": 1417
+  },
+  "images/Laureles_LSFM-HQ/LSFM HQ mockup.png": {
+    "alpha": false,
+    "height": 3000,
+    "og": {
+      "bytes": 80187,
+      "height": 900,
+      "path": "images/og/lsfm-hq-lsfm-hq-mockup.50a40e3c.jpg",
+      "width": 1200
+    },
+    "source_bytes": 12786649,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 4676,
+          "height": 360,
+          "path": "images/lsfm-hq/lsfm-hq-mockup-480.c86b4aba.avif",
+          "ssim": 0.9641,
+          "width": 480
+        },
+        {
+          "bytes": 13670,
+          "height": 720,
+          "path": "images/lsfm-hq/lsfm-hq-mockup-960.9ba78915.avif",
+          "ssim": 0.9439,
+          "width": 960
+        },
+        {
+          "bytes": 34600,
+          "height": 1200,
+          "path": "images/lsfm-hq/lsfm-hq-mockup-1600.02722453.avif",
+          "ssim": 0.9287,
+          "width": 1600
+        },
+        {
+          "bytes": 75406,
+          "height": 1800,
+          "path": "images/lsfm-hq/lsfm-hq-mockup-2400.1dc6a8f5.avif",
+          "ssim": 0.9244,
+          "width": 2400
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 9404,
+          "height": 360,
+          "path": "images/lsfm-hq/lsfm-hq-mockup-480.8e5bec8b.webp",
+          "ssim": 0.9627,
+          "width": 480
+        },
+        {
+          "bytes": 31076,
+          "height": 720,
+          "path": "images/lsfm-hq/lsfm-hq-mockup-960.08acbeb1.webp",
+          "ssim": 0.9497,
+          "width": 960
+        },
+        {
+          "bytes": 85816,
+          "height": 1200,
+          "path": "images/lsfm-hq/lsfm-hq-mockup-1600.a9a3b45c.webp",
+          "ssim": 0.9427,
+          "width": 1600
+        },
+        {
+          "bytes": 189442,
+          "height": 1800,
+          "path": "images/lsfm-hq/lsfm-hq-mockup-2400.9e520f6c.webp",
+          "ssim": 0.9406,
+          "width": 2400
+        }
+      ]
+    },
+    "width": 4000
+  },
+  "images/Laureles_Lumina - Website/01 Lumina - Dashboard.png": {
+    "alpha": false,
+    "height": 1056,
+    "source_bytes": 164003,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 5477,
+          "height": 344,
+          "path": "images/lumina-website/01-lumina-dashboard-480.20739617.avif",
+          "ssim": 0.9882,
+          "width": 480
+        },
+        {
+          "bytes": 21822,
+          "height": 688,
+          "path": "images/lumina-website/01-lumina-dashboard-960.43443081.avif",
+          "ssim": 0.9938,
+          "width": 960
+        },
+        {
+          "bytes": 39214,
+          "height": 1056,
+          "path": "images/lumina-website/01-lumina-dashboard-1472.2693d194.avif",
+          "ssim": 0.9958,
+          "width": 1472
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 8930,
+          "height": 344,
+          "path": "images/lumina-website/01-lumina-dashboard-480.3336b8d3.webp",
+          "ssim": 0.983,
+          "width": 480
+        },
+        {
+          "bytes": 29544,
+          "height": 688,
+          "path": "images/lumina-website/01-lumina-dashboard-960.070eacf4.webp",
+          "ssim": 0.9912,
+          "width": 960
+        },
+        {
+          "bytes": 64012,
+          "height": 1056,
+          "path": "images/lumina-website/01-lumina-dashboard-1472.214f2f66.webp",
+          "ssim": 0.9913,
+          "width": 1472
+        }
+      ]
+    },
+    "width": 1472
+  },
+  "images/Laureles_Lumina - Website/01 Lumina Wireframe Dashboard.png": {
+    "alpha": false,
+    "height": 1024,
+    "source_bytes": 42375,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 3547,
+          "height": 342,
+          "path": "images/lumina-website/01-lumina-wireframe-dashboard-480.3d8fce35.avif",
+          "ssim": 0.9899,
+          "width": 480
+        },
+        {
+          "bytes": 8766,
+          "height": 682,
+          "path": "images/lumina-website/01-lumina-wireframe-dashboard-960.ac979a6b.avif",
+          "ssim": 0.9963,
+          "width": 960
+        },
+        {
+          "bytes": 10487,
+          "height": 1024,
+          "path": "images/lumina-website/01-lumina-wireframe-dashboard-1440.63ee8100.avif",
+          "ssim": 0.9996,
+          "width": 1440
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 5208,
+          "height": 342,
+          "path": "images/lumina-website/01-lumina-wireframe-dashboard-480.0963dcb4.webp",
+          "ssim": 0.9892,
+          "width": 480
+        },
+        {
+          "bytes": 12462,
+          "height": 682,
+          "path": "images/lumina-website/01-lumina-wireframe-dashboard-960.8ce9da3a.webp",
+          "ssim": 0.9963,
+          "width": 960
+        },
+        {
+          "bytes": 20770,
+          "height": 1024,
+          "path": "images/lumina-website/01-lumina-wireframe-dashboard-1440.f92499e4.webp",
+          "ssim": 0.9987,
+          "width": 1440
+        }
+      ]
+    },
+    "width": 1440
+  },
+  "images/Laureles_Lumina - Website/02 Lumina - Tasks.png": {
+    "alpha": false,
+    "height": 1056,
+    "source_bytes": 146832,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 4617,
+          "height": 344,
+          "path": "images/lumina-website/02-lumina-tasks-480.a561f196.avif",
+          "ssim": 0.9904,
+          "width": 480
+        },
+        {
+          "bytes": 19953,
+          "height": 688,
+          "path": "images/lumina-website/02-lumina-tasks-960.656266c0.avif",
+          "ssim": 0.9953,
+          "width": 960
+        },
+        {
+          "bytes": 36820,
+          "height": 1056,
+          "path": "images/lumina-website/02-lumina-tasks-1472.1db992ca.avif",
+          "ssim": 0.9971,
+          "width": 1472
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 7188,
+          "height": 344,
+          "path": "images/lumina-website/02-lumina-tasks-480.112ec196.webp",
+          "ssim": 0.9886,
+          "width": 480
+        },
+        {
+          "bytes": 26318,
+          "height": 688,
+          "path": "images/lumina-website/02-lumina-tasks-960.b05ae79b.webp",
+          "ssim": 0.9935,
+          "width": 960
+        },
+        {
+          "bytes": 59174,
+          "height": 1056,
+          "path": "images/lumina-website/02-lumina-tasks-1472.07f6d3c9.webp",
+          "ssim": 0.9941,
+          "width": 1472
+        }
+      ]
+    },
+    "width": 1472
+  },
+  "images/Laureles_Lumina - Website/02 Lumina Wireframe Tasks.png": {
+    "alpha": false,
+    "height": 1024,
+    "source_bytes": 38576,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 2839,
+          "height": 342,
+          "path": "images/lumina-website/02-lumina-wireframe-tasks-480.f9812aaf.avif",
+          "ssim": 0.9891,
+          "width": 480
+        },
+        {
+          "bytes": 8699,
+          "height": 682,
+          "path": "images/lumina-website/02-lumina-wireframe-tasks-960.7d396f63.avif",
+          "ssim": 0.9954,
+          "width": 960
+        },
+        {
+          "bytes": 9649,
+          "height": 1024,
+          "path": "images/lumina-website/02-lumina-wireframe-tasks-1440.47399e02.avif",
+          "ssim": 0.9996,
+          "width": 1440
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 4302,
+          "height": 342,
+          "path": "images/lumina-website/02-lumina-wireframe-tasks-480.4d4e692d.webp",
+          "ssim": 0.9892,
+          "width": 480
+        },
+        {
+          "bytes": 10868,
+          "height": 682,
+          "path": "images/lumina-website/02-lumina-wireframe-tasks-960.2f7c561b.webp",
+          "ssim": 0.9964,
+          "width": 960
+        },
+        {
+          "bytes": 17326,
+          "height": 1024,
+          "path": "images/lumina-website/02-lumina-wireframe-tasks-1440.26c99904.webp",
+          "ssim": 0.9929,
+          "width": 1440
+        }
+      ]
+    },
+    "width": 1440
+  },
+  "images/Laureles_Lumina - Website/03 Lumina - Focus.png": {
+    "alpha": false,
+    "height": 1056,
+    "source_bytes": 146790,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 5094,
+          "height": 344,
+          "path": "images/lumina-website/03-lumina-focus-480.ddb02577.avif",
+          "ssim": 0.9903,
+          "width": 480
+        },
+        {
+          "bytes": 20357,
+          "height": 688,
+          "path": "images/lumina-website/03-lumina-focus-960.ffc73775.avif",
+          "ssim": 0.9941,
+          "width": 960
+        },
+        {
+          "bytes": 36553,
+          "height": 1056,
+          "path": "images/lumina-website/03-lumina-focus-1472.51bd458f.avif",
+          "ssim": 0.9969,
+          "width": 1472
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 8244,
+          "height": 344,
+          "path": "images/lumina-website/03-lumina-focus-480.e290bb2c.webp",
+          "ssim": 0.9832,
+          "width": 480
+        },
+        {
+          "bytes": 27764,
+          "height": 688,
+          "path": "images/lumina-website/03-lumina-focus-960.3485e0a6.webp",
+          "ssim": 0.9931,
+          "width": 960
+        },
+        {
+          "bytes": 59382,
+          "height": 1056,
+          "path": "images/lumina-website/03-lumina-focus-1472.303dfd49.webp",
+          "ssim": 0.9934,
+          "width": 1472
+        }
+      ]
+    },
+    "width": 1472
+  },
+  "images/Laureles_Lumina - Website/03 Lumina Wireframe Focus.png": {
+    "alpha": false,
+    "height": 1024,
+    "source_bytes": 38156,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 3296,
+          "height": 342,
+          "path": "images/lumina-website/03-lumina-wireframe-focus-480.b6aebd64.avif",
+          "ssim": 0.9916,
+          "width": 480
+        },
+        {
+          "bytes": 7617,
+          "height": 682,
+          "path": "images/lumina-website/03-lumina-wireframe-focus-960.991b5f9e.avif",
+          "ssim": 0.9971,
+          "width": 960
+        },
+        {
+          "bytes": 8956,
+          "height": 1024,
+          "path": "images/lumina-website/03-lumina-wireframe-focus-1440.c6b5c609.avif",
+          "ssim": 0.9998,
+          "width": 1440
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 4808,
+          "height": 342,
+          "path": "images/lumina-website/03-lumina-wireframe-focus-480.1ee04a98.webp",
+          "ssim": 0.9912,
+          "width": 480
+        },
+        {
+          "bytes": 11140,
+          "height": 682,
+          "path": "images/lumina-website/03-lumina-wireframe-focus-960.2adeaadb.webp",
+          "ssim": 0.9974,
+          "width": 960
+        },
+        {
+          "bytes": 17718,
+          "height": 1024,
+          "path": "images/lumina-website/03-lumina-wireframe-focus-1440.5bb1a73e.webp",
+          "ssim": 0.9991,
+          "width": 1440
+        }
+      ]
+    },
+    "width": 1440
+  },
+  "images/Laureles_Lumina - Website/04 Lumina - Insights.png": {
+    "alpha": false,
+    "height": 1056,
+    "source_bytes": 147276,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 5246,
+          "height": 344,
+          "path": "images/lumina-website/04-lumina-insights-480.f3bffc17.avif",
+          "ssim": 0.988,
+          "width": 480
+        },
+        {
+          "bytes": 20323,
+          "height": 688,
+          "path": "images/lumina-website/04-lumina-insights-960.8ee168fa.avif",
+          "ssim": 0.9938,
+          "width": 960
+        },
+        {
+          "bytes": 36630,
+          "height": 1056,
+          "path": "images/lumina-website/04-lumina-insights-1472.bda93a07.avif",
+          "ssim": 0.9963,
+          "width": 1472
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 8858,
+          "height": 344,
+          "path": "images/lumina-website/04-lumina-insights-480.69adcab7.webp",
+          "ssim": 0.9749,
+          "width": 480
+        },
+        {
+          "bytes": 28008,
+          "height": 688,
+          "path": "images/lumina-website/04-lumina-insights-960.87b6c124.webp",
+          "ssim": 0.9854,
+          "width": 960
+        },
+        {
+          "bytes": 60552,
+          "height": 1056,
+          "path": "images/lumina-website/04-lumina-insights-1472.cf914dd8.webp",
+          "ssim": 0.9883,
+          "width": 1472
+        }
+      ]
+    },
+    "width": 1472
+  },
+  "images/Laureles_Lumina - Website/04 Lumina Wireframe Insights.png": {
+    "alpha": false,
+    "height": 1024,
+    "source_bytes": 37157,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 3451,
+          "height": 342,
+          "path": "images/lumina-website/04-lumina-wireframe-insights-480.4963e5c7.avif",
+          "ssim": 0.9893,
+          "width": 480
+        },
+        {
+          "bytes": 7905,
+          "height": 682,
+          "path": "images/lumina-website/04-lumina-wireframe-insights-960.75e26062.avif",
+          "ssim": 0.9963,
+          "width": 960
+        },
+        {
+          "bytes": 9231,
+          "height": 1024,
+          "path": "images/lumina-website/04-lumina-wireframe-insights-1440.2d1eb470.avif",
+          "ssim": 0.9995,
+          "width": 1440
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 5450,
+          "height": 342,
+          "path": "images/lumina-website/04-lumina-wireframe-insights-480.64634773.webp",
+          "ssim": 0.9903,
+          "width": 480
+        },
+        {
+          "bytes": 11666,
+          "height": 682,
+          "path": "images/lumina-website/04-lumina-wireframe-insights-960.93f15e05.webp",
+          "ssim": 0.996,
+          "width": 960
+        },
+        {
+          "bytes": 18296,
+          "height": 1024,
+          "path": "images/lumina-website/04-lumina-wireframe-insights-1440.3724a99a.webp",
+          "ssim": 0.9987,
+          "width": 1440
+        }
+      ]
+    },
+    "width": 1440
+  },
+  "images/Laureles_Lumina - Website/05 Lumina - Settings.png": {
+    "alpha": false,
+    "height": 1056,
+    "source_bytes": 167510,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 5177,
+          "height": 344,
+          "path": "images/lumina-website/05-lumina-settings-480.db6a85b8.avif",
+          "ssim": 0.9909,
+          "width": 480
+        },
+        {
+          "bytes": 22165,
+          "height": 688,
+          "path": "images/lumina-website/05-lumina-settings-960.af4a8b03.avif",
+          "ssim": 0.9952,
+          "width": 960
+        },
+        {
+          "bytes": 39782,
+          "height": 1056,
+          "path": "images/lumina-website/05-lumina-settings-1472.3311c8a3.avif",
+          "ssim": 0.9975,
+          "width": 1472
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 7896,
+          "height": 344,
+          "path": "images/lumina-website/05-lumina-settings-480.a6221871.webp",
+          "ssim": 0.987,
+          "width": 480
+        },
+        {
+          "bytes": 29264,
+          "height": 688,
+          "path": "images/lumina-website/05-lumina-settings-960.34dfdd48.webp",
+          "ssim": 0.9937,
+          "width": 960
+        },
+        {
+          "bytes": 64560,
+          "height": 1056,
+          "path": "images/lumina-website/05-lumina-settings-1472.3c3898db.webp",
+          "ssim": 0.9939,
+          "width": 1472
+        }
+      ]
+    },
+    "width": 1472
+  },
+  "images/Laureles_Lumina - Website/05 Lumina Wireframe Settings.png": {
+    "alpha": false,
+    "height": 1024,
+    "source_bytes": 51887,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 3545,
+          "height": 342,
+          "path": "images/lumina-website/05-lumina-wireframe-settings-480.94173348.avif",
+          "ssim": 0.992,
+          "width": 480
+        },
+        {
+          "bytes": 9955,
+          "height": 682,
+          "path": "images/lumina-website/05-lumina-wireframe-settings-960.4a10e9ec.avif",
+          "ssim": 0.997,
+          "width": 960
+        },
+        {
+          "bytes": 12535,
+          "height": 1024,
+          "path": "images/lumina-website/05-lumina-wireframe-settings-1440.1d05164b.avif",
+          "ssim": 0.9997,
+          "width": 1440
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 5178,
+          "height": 342,
+          "path": "images/lumina-website/05-lumina-wireframe-settings-480.0be1d949.webp",
+          "ssim": 0.991,
+          "width": 480
+        },
+        {
+          "bytes": 14246,
+          "height": 682,
+          "path": "images/lumina-website/05-lumina-wireframe-settings-960.8866a62e.webp",
+          "ssim": 0.9968,
+          "width": 960
+        },
+        {
+          "bytes": 23252,
+          "height": 1024,
+          "path": "images/lumina-website/05-lumina-wireframe-settings-1440.936be479.webp",
+          "ssim": 0.9991,
+          "width": 1440
+        }
+      ]
+    },
+    "width": 1440
+  },
+  "images/Laureles_Lumina - Website/lumina mockup.png": {
+    "alpha": false,
+    "height": 2250,
+    "og": {
+      "bytes": 64051,
+      "height": 900,
+      "path": "images/og/lumina-website-lumina-mockup.7cc30dea.jpg",
+      "width": 1200
+    },
+    "source_bytes": 1714356,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 6397,
+          "height": 360,
+          "path": "images/lumina-website/lumina-mockup-480.dcd86236.avif",
+          "ssim": 0.9808,
+          "width": 480
+        },
+        {
+          "bytes": 14267,
+          "height": 720,
+          "path": "images/lumina-website/lumina-mockup-960.27d9d3b6.avif",
+          "ssim": 0.9798,
+          "width": 960
+        },
+        {
+          "bytes": 23664,
+          "height": 1200,
+          "path": "images/lumina-website/lumina-mockup-1600.20ec6b1b.avif",
+          "ssim": 0.974,
+          "width": 1600
+        },
+        {
+          "bytes": 37528,
+          "height": 1800,
+          "path": "images/lumina-website/lumina-mockup-2400.61aeb255.avif",
+          "ssim": 0.969,
+          "width": 2400
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 11282,
+          "height": 360,
+          "path": "images/lumina-website/lumina-mockup-480.d6881fd9.webp",
+          "ssim": 0.9828,
+          "width": 480
+        },
+        {
+          "bytes": 26460,
+          "height": 720,
+          "path": "images/lumina-website/lumina-mockup-960.adc91708.webp",
+          "ssim": 0.9777,
+          "width": 960
+        },
+        {
+          "bytes": 48304,
+          "height": 1200,
+          "path": "images/lumina-website/lumina-mockup-1600.79019dd8.webp",
+          "ssim": 0.9713,
+          "width": 1600
+        },
+        {
+          "bytes": 83126,
+          "height": 1800,
+          "path": "images/lumina-website/lumina-mockup-2400.e03110d9.webp",
+          "ssim": 0.9668,
+          "width": 2400
+        }
+      ]
+    },
+    "width": 3000
+  },
+  "images/Laureles_Memory-Core/memory_mockup.jpg": {
+    "alpha": false,
+    "height": 768,
+    "og": {
+      "bytes": 174383,
+      "height": 670,
+      "path": "images/og/memory-core-memory-mockup.8a710b82.jpg",
+      "width": 1200
+    },
+    "source_bytes": 741612,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 19957,
+          "height": 268,
+          "path": "images/memory-core/memory-mockup-480.fe2cc1ea.avif",
+          "ssim": 0.9793,
+          "width": 480
+        },
+        {
+          "bytes": 58664,
+          "height": 536,
+          "path": "images/memory-core/memory-mockup-960.2fc2c74f.avif",
+          "ssim": 0.9856,
+          "width": 960
+        },
+        {
+          "bytes": 86616,
+          "height": 768,
+          "path": "images/memory-core/memory-mockup-1376.c97be728.avif",
+          "ssim": 0.9835,
+          "width": 1376
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 26208,
+          "height": 268,
+          "path": "images/memory-core/memory-mockup-480.4ead0a78.webp",
+          "ssim": 0.979,
+          "width": 480
+        },
+        {
+          "bytes": 75712,
+          "height": 536,
+          "path": "images/memory-core/memory-mockup-960.18d7e109.webp",
+          "ssim": 0.9816,
+          "width": 960
+        },
+        {
+          "bytes": 121530,
+          "height": 768,
+          "path": "images/memory-core/memory-mockup-1376.858de97b.webp",
+          "ssim": 0.9828,
+          "width": 1376
+        }
+      ]
+    },
+    "width": 1376
+  },
+  "images/Laureles_Vellum - Mobile App/01 Vellum - Onboarding.png": {
+    "alpha": false,
+    "height": 844,
+    "source_bytes": 22077,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 5301,
+          "height": 844,
+          "path": "images/vellum-mobile-app/01-vellum-onboarding-390.8f99e9f7.avif",
+          "ssim": 0.9968,
+          "width": 390
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 8218,
+          "height": 844,
+          "path": "images/vellum-mobile-app/01-vellum-onboarding-390.a8788826.webp",
+          "ssim": 0.9718,
+          "width": 390
+        }
+      ]
+    },
+    "width": 390
+  },
+  "images/Laureles_Vellum - Mobile App/01 Vellum Wireframe Onboarding Screen.png": {
+    "alpha": false,
+    "height": 844,
+    "source_bytes": 9010,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 2572,
+          "height": 844,
+          "path": "images/vellum-mobile-app/01-vellum-wireframe-onboarding-screen-390.e625d44e.avif",
+          "ssim": 0.9993,
+          "width": 390
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 3330,
+          "height": 844,
+          "path": "images/vellum-mobile-app/01-vellum-wireframe-onboarding-screen-390.369567de.webp",
+          "ssim": 0.9995,
+          "width": 390
+        }
+      ]
+    },
+    "width": 390
+  },
+  "images/Laureles_Vellum - Mobile App/03 Vellum - Mood Check-in.png": {
+    "alpha": false,
+    "height": 844,
+    "source_bytes": 54660,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 12022,
+          "height": 844,
+          "path": "images/vellum-mobile-app/03-vellum-mood-check-in-390.3d30c196.avif",
+          "ssim": 0.9935,
+          "width": 390
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 17274,
+          "height": 844,
+          "path": "images/vellum-mobile-app/03-vellum-mood-check-in-390.f15fbe16.webp",
+          "ssim": 0.9821,
+          "width": 390
+        }
+      ]
+    },
+    "width": 390
+  },
+  "images/Laureles_Vellum - Mobile App/03 Vellum Wireframe Mood Check in Screen.png": {
+    "alpha": false,
+    "height": 844,
+    "source_bytes": 13561,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 4765,
+          "height": 844,
+          "path": "images/vellum-mobile-app/03-vellum-wireframe-mood-check-in-screen-390.48c44d56.avif",
+          "ssim": 0.9978,
+          "width": 390
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 7524,
+          "height": 844,
+          "path": "images/vellum-mobile-app/03-vellum-wireframe-mood-check-in-screen-390.48a1b7c6.webp",
+          "ssim": 0.9954,
+          "width": 390
+        }
+      ]
+    },
+    "width": 390
+  },
+  "images/Laureles_Vellum - Mobile App/04 Vellum - Recommendations.png": {
+    "alpha": false,
+    "height": 844,
+    "source_bytes": 45583,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 11847,
+          "height": 844,
+          "path": "images/vellum-mobile-app/04-vellum-recommendations-390.7a22d081.avif",
+          "ssim": 0.992,
+          "width": 390
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 19412,
+          "height": 844,
+          "path": "images/vellum-mobile-app/04-vellum-recommendations-390.e9000c21.webp",
+          "ssim": 0.9816,
+          "width": 390
+        }
+      ]
+    },
+    "width": 390
+  },
+  "images/Laureles_Vellum - Mobile App/04 Vellum Wireframe Recommendation Screen.png": {
+    "alpha": false,
+    "height": 844,
+    "source_bytes": 12777,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 3905,
+          "height": 844,
+          "path": "images/vellum-mobile-app/04-vellum-wireframe-recommendation-screen-390.d5914807.avif",
+          "ssim": 0.9996,
+          "width": 390
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 6416,
+          "height": 844,
+          "path": "images/vellum-mobile-app/04-vellum-wireframe-recommendation-screen-390.1707da51.webp",
+          "ssim": 0.9948,
+          "width": 390
+        }
+      ]
+    },
+    "width": 390
+  },
+  "images/Laureles_Vellum - Mobile App/05 Vellum - Breathing.png": {
+    "alpha": false,
+    "height": 844,
+    "source_bytes": 38070,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 10264,
+          "height": 844,
+          "path": "images/vellum-mobile-app/05-vellum-breathing-390.b38e8487.avif",
+          "ssim": 0.9949,
+          "width": 390
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 15226,
+          "height": 844,
+          "path": "images/vellum-mobile-app/05-vellum-breathing-390.141d3a53.webp",
+          "ssim": 0.9632,
+          "width": 390
+        }
+      ]
+    },
+    "width": 390
+  },
+  "images/Laureles_Vellum - Mobile App/05 Vellum Wireframe Breathing Exercise Screen.png": {
+    "alpha": false,
+    "height": 844,
+    "source_bytes": 12757,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 3911,
+          "height": 844,
+          "path": "images/vellum-mobile-app/05-vellum-wireframe-breathing-exercise-screen-390.f20adfd4.avif",
+          "ssim": 0.9995,
+          "width": 390
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 6672,
+          "height": 844,
+          "path": "images/vellum-mobile-app/05-vellum-wireframe-breathing-exercise-screen-390.b6c219ba.webp",
+          "ssim": 0.9989,
+          "width": 390
+        }
+      ]
+    },
+    "width": 390
+  },
+  "images/Laureles_Vellum - Mobile App/06 Vellum - Journal.png": {
+    "alpha": false,
+    "height": 844,
+    "source_bytes": 29508,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 6377,
+          "height": 844,
+          "path": "images/vellum-mobile-app/06-vellum-journal-390.3d79d999.avif",
+          "ssim": 0.9964,
+          "width": 390
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 10022,
+          "height": 844,
+          "path": "images/vellum-mobile-app/06-vellum-journal-390.1c851c19.webp",
+          "ssim": 0.988,
+          "width": 390
+        }
+      ]
+    },
+    "width": 390
+  },
+  "images/Laureles_Vellum - Mobile App/07 Vellum - Insights.png": {
+    "alpha": false,
+    "height": 844,
+    "source_bytes": 46229,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 10519,
+          "height": 844,
+          "path": "images/vellum-mobile-app/07-vellum-insights-390.c47f54fa.avif",
+          "ssim": 0.9951,
+          "width": 390
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 16526,
+          "height": 844,
+          "path": "images/vellum-mobile-app/07-vellum-insights-390.61f8bed7.webp",
+          "ssim": 0.9892,
+          "width": 390
+        }
+      ]
+    },
+    "width": 390
+  },
+  "images/Laureles_Vellum - Mobile App/vellum mockup.png": {
+    "alpha": false,
+    "height": 2250,
+    "og": {
+      "bytes": 56884,
+      "height": 900,
+      "path": "images/og/vellum-mobile-app-vellum-mockup.3632e9ed.jpg",
+      "width": 1200
+    },
+    "source_bytes": 1244672,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 5532,
+          "height": 360,
+          "path": "images/vellum-mobile-app/vellum-mockup-480.aefaa558.avif",
+          "ssim": 0.9902,
+          "width": 480
+        },
+        {
+          "bytes": 11511,
+          "height": 720,
+          "path": "images/vellum-mobile-app/vellum-mockup-960.456cab43.avif",
+          "ssim": 0.9892,
+          "width": 960
+        },
+        {
+          "bytes": 18447,
+          "height": 1200,
+          "path": "images/vellum-mobile-app/vellum-mockup-1600.3b5c1af6.avif",
+          "ssim": 0.9862,
+          "width": 1600
+        },
+        {
+          "bytes": 35517,
+          "height": 1800,
+          "path": "images/vellum-mobile-app/vellum-mockup-2400.6d15def8.avif",
+          "ssim": 0.9842,
+          "width": 2400
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 9406,
+          "height": 360,
+          "path": "images/vellum-mobile-app/vellum-mockup-480.8cf0be0d.webp",
+          "ssim": 0.986,
+          "width": 480
+        },
+        {
+          "bytes": 22614,
+          "height": 720,
+          "path": "images/vellum-mobile-app/vellum-mockup-960.98fdf7b9.webp",
+          "ssim": 0.9872,
+          "width": 960
+        },
+        {
+          "bytes": 40982,
+          "height": 1200,
+          "path": "images/vellum-mobile-app/vellum-mockup-1600.e232ef54.webp",
+          "ssim": 0.9863,
+          "width": 1600
+        },
+        {
+          "bytes": 74246,
+          "height": 1800,
+          "path": "images/vellum-mobile-app/vellum-mockup-2400.92eb367c.webp",
+          "ssim": 0.9852,
+          "width": 2400
+        }
+      ]
+    },
+    "width": 3000
+  },
+  "images/profile-pic.jpg": {
+    "alpha": false,
+    "height": 4000,
+    "og": {
+      "bytes": 103975,
+      "height": 1200,
+      "path": "images/og/profile-pic.3bff5884.jpg",
+      "width": 1200
+    },
+    "source_bytes": 2598461,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 7406,
+          "height": 480,
+          "path": "images/profile-pic-480.43163c35.avif",
+          "ssim": 0.9713,
+          "width": 480
+        },
+        {
+          "bytes": 21434,
+          "height": 960,
+          "path": "images/profile-pic-960.60057a6a.avif",
+          "ssim": 0.9562,
+          "width": 960
+        },
+        {
+          "bytes": 71427,
+          "height": 1600,
+          "path": "images/profile-pic-1600.cec07c1a.avif",
+          "ssim": 0.9563,
+          "width": 1600
+        },
+        {
+          "bytes": 176627,
+          "height": 2400,
+          "path": "images/profile-pic-2400.8d516c5b.avif",
+          "ssim": 0.963,
+          "width": 2400
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 11030,
+          "height": 480,
+          "path": "images/profile-pic-480.6dfd3635.webp",
+          "ssim": 0.9688,
+          "width": 480
+        },
+        {
+          "bytes": 39742,
+          "height": 960,
+          "path": "images/profile-pic-960.7db1c34c.webp",
+          "ssim": 0.9558,
+          "width": 960
+        },
+        {
+          "bytes": 134062,
+          "height": 1600,
+          "path": "images/profile-pic-1600.77f11b99.webp",
+          "ssim": 0.9593,
+          "width": 1600
+        },
+        {
+          "bytes": 307376,
+          "height": 2400,
+          "path": "images/profile-pic-2400.9d7014ed.webp",
+          "ssim": 0.9655,
+          "width": 2400
+        }
+      ]
+    },
+    "width": 4000
+  }
+}
