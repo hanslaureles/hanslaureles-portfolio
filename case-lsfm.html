@@ -7,7 +7,7 @@
 
   <title>LSFM AI HQ — Case Study · Hans Aaron Laureles</title>
   <meta name="description"
-    content="Case study on LSFM AI HQ — an autonomous 5-agent operations platform orchestrating Discord Gateway streaming, local GPU inference via Vulkan on AMD RX 6600 XT, and programmatic Google Workspace APIs.">
+    content="Case study on LSFM AI HQ — an autonomous 5-agent operations platform orchestrating Discord Gateway streaming, multi-provider LLM routing (Groq + Gemini, with an optional local Ollama mode on an AMD RX 6600 XT), and programmatic Google Workspace APIs.">
 
   <link rel="canonical" href="https://hanslaureles.vercel.app/case-lsfm.html">
 
@@ -16,14 +16,14 @@
   <meta property="og:url" content="https://hanslaureles.vercel.app/case-lsfm.html">
   <meta property="og:title" content="LSFM AI HQ — Multi-Agent System Case Study">
   <meta property="og:description"
-    content="Autonomous 5-agent operations platform orchestrating Discord Gateway streaming, hybrid local/cloud inference (AMD RX 6600 XT via Vulkan + Groq Cloud), and automated tool pipelines.">
+    content="Autonomous 5-agent operations platform orchestrating Discord Gateway streaming, multi-provider LLM routing (Groq + Gemini, optional local Ollama), and automated tool pipelines.">
   <meta property="og:image" content="https://hanslaureles.vercel.app/images/Laureles_LSFM-HQ/LSFM%20HQ%20mockup.png">
 
   <!-- Twitter Meta -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="LSFM AI HQ — Multi-Agent System Case Study">
   <meta name="twitter:description"
-    content="Autonomous 5-agent operations platform orchestrating Discord Gateway streaming, hybrid local/cloud inference (AMD RX 6600 XT via Vulkan + Groq Cloud), and automated tool pipelines.">
+    content="Autonomous 5-agent operations platform orchestrating Discord Gateway streaming, multi-provider LLM routing (Groq + Gemini, optional local Ollama), and automated tool pipelines.">
   <meta name="twitter:image" content="https://hanslaureles.vercel.app/images/Laureles_LSFM-HQ/LSFM%20HQ%20mockup.png">
 
   <!-- Google Fonts: Instrument Serif + Plus Jakarta Sans + JetBrains Mono -->
@@ -126,9 +126,9 @@
       </h1>
 
       <p class="case-lead">
-        An autonomous 5-agent operations platform orchestrating Discord Gateway streaming, hybrid local/cloud LLM
-        routing (AMD RX 6600 XT via Vulkan / Ollama + Groq Cloud), headless Chromium ATS resume compilation, and
-        automated Google Workspace triage.
+        An autonomous 5-agent operations platform orchestrating Discord Gateway streaming, multi-provider LLM
+        routing (Groq Cloud with Gemini fallback, plus an optional local Ollama mode on an AMD RX 6600 XT), headless
+        Edge/Chrome ATS resume compilation, and automated Gmail triage.
       </p>
 
       <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px;">
@@ -154,7 +154,7 @@
       <div class="case-meta-table">
         <div class="case-meta-item">
           <div class="label">Platform</div>
-          <div class="val">Discord Gateway · Local GPU · Google Cloud</div>
+          <div class="val">Discord Gateway · Groq + Gemini APIs · Local Workstation</div>
         </div>
         <div class="case-meta-item">
           <div class="label">Discipline</div>
@@ -166,7 +166,7 @@
         </div>
         <div class="case-meta-item">
           <div class="label">Stack</div>
-          <div class="val">Python 3.11 · Groq REST API · AMD RX 6600 XT (Vulkan) · Headless Chromium · SQLite</div>
+          <div class="val">Python 3.11 · Groq + Gemini REST · Ollama (optional) · Headless Edge/Chrome · SQLite</div>
         </div>
       </div>
 
@@ -187,9 +187,10 @@
             <span>●</span> The Architecture Solution
           </div>
           <p class="case-challenge-text">
-            Engineered an asynchronous 5-agent system on Discord Gateway with dual-tier hybrid routing: Groq Qwen 2.5
-            70B REST API for sub-300ms cloud responses, failing over to local AMD Vulkan (RX 6600 XT via Ollama) for
-            100% offline, zero-compute-cost operations.
+            Engineered an asynchronous 5-agent system on Discord Gateway with operator-selectable routing: Groq Cloud
+            (<code>qwen3.8-27b</code>) as the primary engine with Gemini Flash as a cross-provider fallback, and a
+            local Ollama mode (<code>qwen2.5-coder:7b</code> on an RX 6600 XT) for private work, switchable live with
+            <code>!mode</code>.
           </p>
         </div>
       </div>
@@ -200,12 +201,12 @@
           <div class="case-metric-label">Compute Overhead</div>
         </div>
         <div class="case-metric-cell">
-          <div class="case-metric-num accent-blue">&lt; 300 ms</div>
-          <div class="case-metric-label">Cloud Inference Latency</div>
+          <div class="case-metric-num accent-blue">3 Modes</div>
+          <div class="case-metric-label">Local · Cloud · Auto Routing</div>
         </div>
         <div class="case-metric-cell">
-          <div class="case-metric-num">5 Daemons</div>
-          <div class="case-metric-label">Isolated Task Pipelines</div>
+          <div class="case-metric-num">5 Agents</div>
+          <div class="case-metric-label">Discord Bots, One Event Loop</div>
         </div>
         <div class="case-metric-cell">
           <div class="case-metric-num">Single-Page</div>
@@ -219,7 +220,7 @@
           <div class="hardware-rig-title">
             <span>🖥️</span> Physical Workstation Specs (Local Execution Rig)
           </div>
-          <span class="hardware-rig-badge">● 24/7 Zero-Lag Workload</span>
+          <span class="hardware-rig-badge">● Local Daemon Host</span>
         </div>
         <div class="hardware-rig-grid">
           <div class="hardware-spec-item">
@@ -230,7 +231,7 @@
           <div class="hardware-spec-item">
             <span class="hardware-spec-label">Graphics &amp; VRAM</span>
             <span class="hardware-spec-val">AMD Radeon RX 6600 XT</span>
-            <span class="hardware-spec-sub">8GB GDDR6 · Vulkan Compute</span>
+            <span class="hardware-spec-sub">8GB GDDR6 · Optional local inference</span>
           </div>
           <div class="hardware-spec-item">
             <span class="hardware-spec-label">System Memory</span>
@@ -240,13 +241,14 @@
           <div class="hardware-spec-item">
             <span class="hardware-spec-label">Operating Cost</span>
             <span class="hardware-spec-val" style="color: #10B981;">$0.00 / Month</span>
-            <span class="hardware-spec-sub">100% Free Tier &amp; Local Silicon</span>
+            <span class="hardware-spec-sub">Free-tier APIs &amp; local hardware</span>
           </div>
         </div>
         <div class="hardware-rig-footnote">
           <span>⚡</span>
-          <span><strong>Resource-Conscious Architecture:</strong> All 5 agent daemons run quietly in the background
-            without stealing CPU or GPU power while gaming, compiling, or multitasking.</span>
+          <span><strong>Resource-Conscious Architecture:</strong> In cloud mode, inference runs on Groq and Gemini, so
+            the five agents leave the GPU idle for gaming or rendering. Local mode moves inference onto the RX 6600 XT
+            when keeping prompts on the machine matters more than speed.</span>
         </div>
       </div>
 
@@ -265,23 +267,23 @@
             <span class="terminal-dot green"></span>
           </div>
           <div class="terminal-title">LSFM_AI_HQ // ARCHITECTURE RUNTIME TELEMETRY</div>
-          <div class="mono" style="font-size: 0.72rem; color: #10B981;">● 5 ACTIVE DAEMONS</div>
+          <div class="mono" style="font-size: 0.72rem; color: #10B981;">● ARCHITECTURE OVERVIEW</div>
         </div>
         <div class="terminal-body">
-          <pre><span class="terminal-comment"># LSFM Hybrid Multi-Agent Operations System Overview</span>
+          <pre><span class="terminal-comment"># LSFM Multi-Agent Operations System Overview</span>
 <span class="terminal-prompt">[GATEWAY]</span>     Discord WebSocket Stream ──&gt; Async Event Dispatcher (discord.py)
 <span class="terminal-prompt">[BRAIN]</span>       Obsidian AI Brain Bridge (Port 27124 HTTPS) ──&gt; Shared Episodic Memory &amp; MCP Rules
-<span class="terminal-prompt">[ROUTER]</span>      Hybrid Inference Engine:
-               ├─ Cloud: Groq API (Llama 3.3 70B / Qwen 2.5 Coder 32B) ──&gt; TTFT: ~240ms [PRIMARY]
-               └─ Local: Ollama (qwen2.5-coder:7b) on AMD RX 6600 XT via Vulkan [FAILOVER]
+<span class="terminal-prompt">[ROUTER]</span>      query_llm() · mode = local | cloud | auto  (!mode):
+               ├─ Cloud: Groq (qwen3.8-27b) ──&gt; on error: Gemini (gemini-3.6-flash)
+               └─ Local: Ollama (qwen2.5-coder:7b) on AMD RX 6600 XT · tried first in auto mode
 <span class="terminal-prompt">[PIPELINE]</span>    5-Stage Autonomous Delegation Topology:
-               ├─ 1. 🌸 Sakura   :: Chief of Staff &amp; Ingestion Triage (!briefing, MCP Context)
+               ├─ 1. 🌸 Sakura   :: Chief of Staff, Briefings &amp; Gmail Triage (!briefing, !inbox, !clean)
                ├─ 2. 🦢 Kazuha   :: Knowledge &amp; RAG Sentinel (Hybrid SQLite Vector Store + Code Review)
-               ├─ 3. 🎨 Yunjin   :: Document Architect &amp; QA Quality Gate (!pdf, DOM Audit 100/100)
+               ├─ 3. 🎨 Yunjin   :: Document Architect &amp; Portfolio Critic (!audit, asset &amp; DOM scan)
                ├─ 4. 🐯 Chaewon  :: Career Strategist &amp; ATS Vector PDF Tailor (!screen, !tailor)
-               └─ 5. 🥔 Eunchae  :: System Guardian, Telemetry Watchdog (!vitals) &amp; Gmail Triage
+               └─ 5. 🥔 Eunchae  :: System Guardian &amp; Vitals Watchdog (!vitals, !test)
 <span class="terminal-prompt">[TOOLS]</span>       Headless Edge Browser (`--print-to-pdf`) + Google Workspace Gmail REST API + Git Sentinel CLI + Obsidian Local REST API
-<span class="terminal-success">[STATUS]</span>      Zero Compute Cost · Sub-second latency · Local-First Data Privacy · Verified</pre>
+<span class="terminal-success">[STATUS]</span>      Local daemons · Credentials stay on the workstation · Cloud mode sends prompts to Groq / Gemini</pre>
         </div>
       </div>
 
@@ -347,8 +349,9 @@
           <h3>Decentralized Agent Specialization &amp; Inter-Agent Delegation</h3>
           <p>
             Rather than relying on a monolithic prompt that collapses under context pollution, LSFM AI HQ decomposes
-            operations across five autonomous domain agents. Each agent executes within an isolated process context,
-            maintains strict prompt boundaries, and interfaces with specialized local and cloud toolbindings:
+            operations across five autonomous domain agents. Each agent runs as its own Discord client with its own
+            prompt boundary and tool bindings; <code>run_all.py</code> hosts all five on a single asyncio event loop
+            and pushes blocking tool work (LLM calls, Gmail, PDF builds) onto worker threads:
           </p>
 
           <div class="agent-row-list">
@@ -363,7 +366,7 @@
                     <span class="agent-row-role">// Chief of Staff &amp; System Orchestrator</span>
                   </div>
                   <p class="agent-row-desc">Operator intent ingestion, Obsidian AI Brain MCP context routing, daily
-                    morning briefings, and inter-agent task handoffs.</p>
+                    morning briefings, Gmail inbox triage, and inter-agent task handoffs.</p>
                 </div>
               </div>
               <div class="agent-row-tag">
@@ -398,12 +401,12 @@
                     <span class="agent-row-name">Yunjin</span>
                     <span class="agent-row-role">// Document Architect &amp; QA Critic</span>
                   </div>
-                  <p class="agent-row-desc">Automated DOM tree auditing, asset 404 scanning (0 broken target), and
-                    design review gating with 100/100 threshold.</p>
+                  <p class="agent-row-desc">Automated DOM tree auditing, broken-asset scanning across every portfolio
+                    page, and LLM-written design critiques with a portfolio health score.</p>
                 </div>
               </div>
               <div class="agent-row-tag">
-                <span class="agent-stack-tag">DOM Auditing · Quality Gate</span>
+                <span class="agent-stack-tag">DOM Auditing · Design Critique</span>
               </div>
             </div>
 
@@ -417,7 +420,7 @@
                     <span class="agent-row-role">// Career Strategist &amp; ATS Tailor</span>
                   </div>
                   <p class="agent-row-desc">Semantic keyword vector matching, tailored ATS resume drafting, and
-                    sub-second headless vector PDF compilation.</p>
+                    headless vector PDF compilation.</p>
                 </div>
               </div>
               <div class="agent-row-tag">
@@ -434,12 +437,12 @@
                     <span class="agent-row-name">Eunchae</span>
                     <span class="agent-row-role">// System Guardian &amp; Telemetry</span>
                   </div>
-                  <p class="agent-row-desc">Real-time hardware vitals watchdog (CPU, RAM, AMD RX 6600 XT Vulkan), AST
-                    code sandbox, and Gmail batch triage.</p>
+                  <p class="agent-row-desc">Hardware vitals watchdog (CPU, RAM and disk via psutil on a 5-minute
+                    cycle), a 15-minute Obsidian heartbeat, and Python syntax &amp; AST checks on demand.</p>
                 </div>
               </div>
               <div class="agent-row-tag">
-                <span class="agent-stack-tag">Hardware Watchdog · Gmail Triage</span>
+                <span class="agent-stack-tag">Hardware Watchdog · QA Checks</span>
               </div>
             </div>
 
@@ -450,8 +453,7 @@
             <div
               style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
               <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-primary);">The 6-Step Request Lifecycle</h4>
-              <span class="mono" style="font-size: 0.75rem; color: var(--accent);">END-TO-END PIPELINE · ZERO DATA
-                LOSS</span>
+              <span class="mono" style="font-size: 0.75rem; color: var(--accent);">END-TO-END PIPELINE</span>
             </div>
             <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 16px;">
               Here is how a real user request travels through the multi-agent system from start to finish:
@@ -484,8 +486,8 @@
                   <span class="lifecycle-actor">Hybrid Router</span>
                 </div>
                 <div class="lifecycle-card-title">Smart Model Routing</div>
-                <p class="lifecycle-card-desc">Routes to Groq Cloud for sub-300ms speed, or to local AMD GPU for
-                  private, offline work.</p>
+                <p class="lifecycle-card-desc">Routes to Groq Cloud (falling back to Gemini on errors), or to the
+                  local AMD GPU when the operator selects local mode for private work.</p>
               </div>
 
               <div class="lifecycle-card">
@@ -540,21 +542,23 @@
         <!-- Section 03: Hybrid Inference Router -->
         <section id="inference" class="case-body-section">
           <div class="section-tag">// 03 · INFERENCE RUNTIME</div>
-          <h3>Local GPU Acceleration (Vulkan / Ollama) &amp; Cloud Failover</h3>
+          <h3>Multi-Provider Routing: Groq, Gemini &amp; an Optional Local GPU</h3>
           <p>
-            A core engineering priority was achieving <strong>high throughput with zero recurring costs</strong>. The
-            inference layer employs an intelligent hybrid routing engine:
+            A core engineering priority was <strong>high-quality output on free-tier quotas</strong> without locking
+            the system to one provider. Every agent calls a single dispatcher, <code>query_llm()</code>, whose
+            behavior the operator switches live from Discord with <code>!mode local | cloud | auto</code>:
           </p>
           <ul class="exp-bullets" style="margin-bottom: 24px;">
-            <li><strong>Primary Cloud Engine (Groq):</strong> Serves production open models (<code>Llama 3.3 70B</code>
-              and <code>Qwen 2.5 Coder 32B</code>) delivering sub-300ms time-to-first-token (TTFT) for complex
-              multi-step reasoning.</li>
-            <li><strong>Local Silicon Engine (Ollama / Vulkan):</strong> Deploys <code>qwen2.5-coder:7b</code> directly
-              on consumer workstation hardware—an <strong>AMD Radeon RX 6600 XT</strong> GPU accelerated through
-              Ollama's Vulkan runtime.</li>
-            <li><strong>Graceful Fallback &amp; Circuit Breaking:</strong> If cloud rate limits are reached or network
-              connectivity drops, the system seamlessly routes prompts to the local GPU without failing user operations.
-            </li>
+            <li><strong>Cloud mode (Groq → Gemini):</strong> Requests go to Groq (<code>qwen/qwen3.8-27b</code> by
+              default). If Groq errors or is rate-limited, the same prompt is retried on Google Gemini
+              (<code>gemini-3.6-flash</code>) before the call fails.</li>
+            <li><strong>Local mode (Ollama):</strong> Runs <code>qwen2.5-coder:7b</code> on the workstation's
+              <strong>AMD Radeon RX 6600 XT</strong>, keeping prompts on the machine. Local mode fails fast if Ollama
+              isn't running rather than silently sending prompts to the cloud.</li>
+            <li><strong>Auto mode (local first):</strong> Probes Ollama with a 1.2 s health check; if it's up, the local
+              model answers, and any local error falls through to the Groq → Gemini cloud chain.</li>
+            <li><strong>What it does not do (yet):</strong> There is no automatic cloud-to-local failover. When both
+              cloud providers are exhausted in cloud mode, the request fails with the collected provider errors.</li>
           </ul>
 
           <!-- Specialized Multi-Model Cloud Routing Table -->
@@ -563,39 +567,55 @@
               <thead>
                 <tr>
                   <th>Engine / Model</th>
-                  <th>Primary Role</th>
-                  <th>Inference Speed</th>
+                  <th>Assigned To</th>
+                  <th>Provider</th>
                   <th>Why We Use It</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class="routing-model-cell">Groq Llama 3.3 70B</td>
-                  <td>Complex Reasoning &amp; Code Architecture</td>
-                  <td><span class="routing-speed-badge">&lt; 280ms TTFT</span></td>
-                  <td>Handles deep logic and multi-step agent planning via high-throughput LPUs.</td>
+                  <td class="routing-model-cell">qwen/qwen3.8-27b</td>
+                  <td>Sakura, Kazuha · default cloud model</td>
+                  <td><span class="routing-speed-badge">Groq</span></td>
+                  <td>Orchestration, briefings, and frontend/code work on Groq's low-latency LPUs.</td>
                 </tr>
                 <tr>
-                  <td class="routing-model-cell">Groq Qwen 2.5 Coder 32B</td>
-                  <td>Code Tailoring &amp; AST Analysis</td>
-                  <td><span class="routing-speed-badge">&lt; 220ms TTFT</span></td>
-                  <td>Delivers lightning-fast code analysis and resume tailoring without latency penalties.</td>
+                  <td class="routing-model-cell">openai/gpt-oss-120b</td>
+                  <td>Chaewon</td>
+                  <td><span class="routing-speed-badge">Groq</span></td>
+                  <td>The largest model in the pool, reserved for persuasive resume and career writing.</td>
                 </tr>
                 <tr>
-                  <td class="routing-model-cell">Gemini 2.0 Flash</td>
-                  <td>High-Context QA &amp; 3072d Embeddings</td>
-                  <td><span class="routing-speed-badge">Fast Cloud API</span></td>
-                  <td>Computes vector embeddings and evaluates rich context across portfolio docs.</td>
+                  <td class="routing-model-cell">openai/gpt-oss-20b</td>
+                  <td>Eunchae</td>
+                  <td><span class="routing-speed-badge">Groq</span></td>
+                  <td>A smaller, high-throughput model for frequent QA and vitals summaries.</td>
                 </tr>
                 <tr>
-                  <td class="routing-model-cell">AMD RX 6600 XT (Vulkan)</td>
-                  <td>Offline Standby &amp; Private Tasks</td>
-                  <td><span class="routing-speed-badge">~35 tok/s (Local)</span></td>
-                  <td>Zero-cost, 100% private fallback whenever cloud APIs hit rate limits or go offline.</td>
+                  <td class="routing-model-cell">gemini-3.6-flash</td>
+                  <td>Yunjin · fallback for all agents</td>
+                  <td><span class="routing-speed-badge">Google</span></td>
+                  <td>Long-context design critiques, and the cross-provider fallback when Groq fails.</td>
+                </tr>
+                <tr>
+                  <td class="routing-model-cell">gemini-embedding-001</td>
+                  <td>Kazuha's RAG index</td>
+                  <td><span class="routing-speed-badge">Google</span></td>
+                  <td>3072-dimension embeddings for the SQLite knowledge-base vector store.</td>
+                </tr>
+                <tr>
+                  <td class="routing-model-cell">qwen2.5-coder:7b</td>
+                  <td>All agents in local / auto mode</td>
+                  <td><span class="routing-speed-badge">Ollama · RX 6600 XT</span></td>
+                  <td>Keeps prompts on the workstation when privacy matters more than output quality.</td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -12px; margin-bottom: 24px;">Per-agent
+            assignments come from <code>DEFAULT_CONFIG</code> in <code>llm_client.py</code> and can be overridden in
+            <code>memory/brain_mode.json</code>. On an HTTP 429, the client honors a short <code>Retry-After</code>
+            (up to 4 s, once), then rotates through the other Groq models before crossing to Gemini.</p>
 
           <div class="terminal-window">
             <div class="terminal-topbar">
@@ -604,24 +624,36 @@
                 <span class="terminal-dot yellow"></span>
                 <span class="terminal-dot green"></span>
               </div>
-              <div class="terminal-title">lsfm-swarm/llm_client.py // Hybrid Router Logic</div>
+              <div class="terminal-title">llm_client.py // query_llm() (condensed)</div>
             </div>
             <div class="terminal-body">
-              <pre><span class="terminal-cmd">async def</span> <span class="terminal-prompt">generate_response</span>(prompt: str, system_instruction: str, prefer_local: bool = False):
-    <span class="terminal-comment"># 1. Check local engine readiness on AMD RX 6600 XT</span>
-    if prefer_local and await is_ollama_alive():
-        <span class="terminal-cmd">try</span>:
-            <span class="terminal-cmd">return await</span> query_ollama(prompt, system_instruction, model="qwen2.5-coder:7b")
-        <span class="terminal-cmd">except</span> Exception as err:
-            logger.warning(f"Local Ollama degraded: {err}. Falling back to Groq Cloud...")
-    
-    <span class="terminal-comment"># 2. Cloud Tier: Groq Ultra-Low Latency Inference</span>
+              <pre><span class="terminal-cmd">def</span> <span class="terminal-prompt">query_llm</span>(prompt: str, system_instruction: str = "", temperature: float = 0.4) -&gt; str:
+    mode = get_brain_mode()                <span class="terminal-comment"># "local" | "cloud" | "auto", set via !mode</span>
+    errors = []
+
+    <span class="terminal-cmd">if</span> mode == "local":
+        <span class="terminal-cmd">if not</span> check_ollama_status()[0]:
+            <span class="terminal-cmd">raise</span> RuntimeError("Brain mode is 'local', but Ollama is not running")
+        <span class="terminal-cmd">return</span> call_local_ollama(prompt, system_instruction)   <span class="terminal-comment"># qwen2.5-coder:7b</span>
+
+    <span class="terminal-cmd">if</span> mode == "auto":
+        ollama_up, models = check_ollama_status()          <span class="terminal-comment"># 1.2 s probe of :11434</span>
+        <span class="terminal-cmd">if</span> ollama_up <span class="terminal-cmd">and</span> models:
+            <span class="terminal-cmd">try</span>:
+                <span class="terminal-cmd">return</span> call_local_ollama(prompt, system_instruction)
+            <span class="terminal-cmd">except</span> Exception <span class="terminal-cmd">as</span> e:
+                errors.append(f"Local Ollama: {e}")        <span class="terminal-comment"># fall through to cloud</span>
+
+    <span class="terminal-comment"># Cloud chain: Groq first, Gemini as the cross-provider fallback</span>
     <span class="terminal-cmd">try</span>:
-        <span class="terminal-cmd">return await</span> query_groq(prompt, system_instruction, model="qwen-2.5-32b-instruct")
-    <span class="terminal-cmd">except</span> RateLimitError:
-        <span class="terminal-comment"># 3. Automatic Circuit Breaker to Local Silicon</span>
-        logger.info("Cloud quota reached. Executing on local Vulkan hardware...")
-        <span class="terminal-cmd">return await</span> query_ollama(prompt, system_instruction, model="qwen2.5-coder:7b")</pre>
+        <span class="terminal-cmd">return</span> call_groq(prompt, system_instruction, temperature=temperature)
+    <span class="terminal-cmd">except</span> Exception <span class="terminal-cmd">as</span> e:
+        errors.append(f"Groq Cloud: {e}")
+    <span class="terminal-cmd">try</span>:
+        <span class="terminal-cmd">return</span> call_gemini(prompt, system_instruction, temperature=temperature)
+    <span class="terminal-cmd">except</span> Exception <span class="terminal-cmd">as</span> e:
+        errors.append(f"Gemini: {e}")
+    <span class="terminal-cmd">raise</span> RuntimeError(f"All LLM providers failed: {'; '.join(errors)}")</pre>
             </div>
           </div>
         </section>
@@ -686,30 +718,31 @@
                 LOOP</span>
             </div>
             <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 16px;">
-              Autonomous agents are only helpful if you can trust them. LSFM HQ enforces three strict boundaries:
+              Autonomous agents are only helpful if you can trust them. LSFM HQ enforces three boundaries:
             </p>
 
             <div class="guardrails-grid">
               <div class="guardrail-card">
                 <div class="guardrail-icon-wrap">🛡️</div>
-                <div class="guardrail-title">Human Approval First</div>
-                <p class="guardrail-desc">Destructive operations—like permanently deleting emails, overwriting code
-                  files, or mass archiving—require explicit confirmation before executing.</p>
+                <div class="guardrail-title">No Delete Path</div>
+                <p class="guardrail-desc">The Gmail engine can only add labels and archive; there is no Gmail trash
+                  or delete call anywhere in the codebase. Bulk sweeps (<code>!clean</code>, <code>!cleanse</code>) run
+                  only when the operator types the command.</p>
               </div>
 
               <div class="guardrail-card">
                 <div class="guardrail-icon-wrap">🔒</div>
-                <div class="guardrail-title">Zero Data Exfiltration</div>
-                <p class="guardrail-desc">API keys, credentials, and private files remain strictly on your local PC.
-                  Private tasks stay entirely on the local AMD GPU and never touch external servers.</p>
+                <div class="guardrail-title">Credentials Stay Local</div>
+                <p class="guardrail-desc">API keys and OAuth tokens live in git-ignored local files. Cloud mode sends
+                  prompts to Groq and Google; switching to local mode keeps inference on the workstation's GPU.</p>
               </div>
 
               <div class="guardrail-card">
                 <div class="guardrail-icon-wrap">🔄</div>
-                <div class="guardrail-title">Crash &amp; Lock Protection</div>
-                <p class="guardrail-desc">Windows mutex locking prevents duplicate instances from clashing. If an
-                  individual agent process hits an API limit, it automatically recovers without bringing down the
-                  system.</p>
+                <div class="guardrail-title">One Session per Bot</div>
+                <p class="guardrail-desc">On launch, a process guard terminates stale bot processes so each Discord
+                  token holds exactly one gateway session (no duplicate replies), and each bot reconnects independently
+                  with backoff if its connection drops.</p>
               </div>
             </div>
           </div>
@@ -741,8 +774,8 @@
                   <span class="interface-icon">🌸</span>
                   <span class="interface-title">Web Copilot (Sakura)</span>
                 </div>
-                <p class="interface-desc">Live interactive assistant embedded right in the portfolio to answer questions
-                  and demonstrate capabilities.</p>
+                <p class="interface-desc">An in-browser BM25 copilot on this portfolio, modeled on Sakura's persona. It
+                  runs entirely client-side and is not connected to the live swarm.</p>
               </div>
 
               <div class="interface-card">
@@ -789,7 +822,7 @@
             <div class="benchmark-card">
               <div class="benchmark-val">$0.00*</div>
               <div class="benchmark-label">Monthly Cloud Compute</div>
-              <div class="benchmark-sub">Local GPU + free-tier cloud quotas</div>
+              <div class="benchmark-sub">Free-tier Groq &amp; Gemini quotas</div>
             </div>
             <div class="benchmark-card">
               <div class="benchmark-val">98.4%</div>
@@ -797,9 +830,9 @@
               <div class="benchmark-sub">121/123 verified (hand-labeled audit)</div>
             </div>
             <div class="benchmark-card">
-              <div class="benchmark-val">~240ms</div>
-              <div class="benchmark-label">Cloud TTFT Latency (p50)</div>
-              <div class="benchmark-sub">Groq LPU streaming (Llama 3.3 70B)</div>
+              <div class="benchmark-val">8 Models</div>
+              <div class="benchmark-label">Cross-Provider Fallback Chain</div>
+              <div class="benchmark-sub">3 Groq + 5 Gemini models per request</div>
             </div>
             <div class="benchmark-card">
               <div class="benchmark-val">840ms</div>
@@ -808,13 +841,14 @@
             </div>
           </div>
           <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -12px; margin-bottom: 24px;">*Zero cloud
-            software compute cost using personal workstation GPU and free API tiers. Excludes hardware depreciation and
-            electricity.</p>
+            compute spend: agents run on a personal workstation and call free API tiers. Excludes hardware depreciation
+            and electricity. Latency is not listed because the client does not stream responses yet, so
+            time-to-first-token isn't measured; a benchmark harness is on the roadmap.</p>
 
           <!-- Email Evaluation Dataset Breakdown -->
           <h4 style="margin: 32px 0 12px 0;">Email Triage Evaluation (Golden Dataset Audit)</h4>
           <p>
-            To evaluate the Eunchae Guardian Daemon's categorization accuracy, I hand-labeled a golden test set of
+            To evaluate the accuracy of Sakura's Gmail triage engine, I hand-labeled a golden test set of
             <strong>123 real incoming emails</strong> across 10 classification categories.
           </p>
           <div class="routing-table-container">
@@ -890,8 +924,11 @@
               style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 18px; border-radius: 8px;">
               <h5 style="color: #10b981; margin-bottom: 8px; font-size: 0.95rem;">✓ The Engineering Fix</h5>
               <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
-                Engineered an asynchronous token bucket queue with exponential jitter (2–4s backoff) and automated
-                failover routing to the local AMD RX 6600 XT Ollama daemon whenever cloud queues stall.
+                Made the client rate-limit aware: on a 429 it honors a short <code>Retry-After</code> (up to 4 s,
+                once), then rotates to the next Groq model and finally crosses to Gemini instead of failing the
+                request. <strong>What I'd change next:</strong> the retry still blocks a worker thread with
+                <code>time.sleep</code>, and there's no shared limiter across the five agents. V2 moves to an async
+                token bucket with jittered backoff.
               </p>
             </div>
           </div>
@@ -904,7 +941,7 @@
             </h5>
             <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); margin: 0;">
               This system was designed and developed through an iterative AI-assisted engineering workflow. I authored
-              the multi-agent topology, designed the Pydantic schemas, wrote the evaluation test harness, and verified
+              the multi-agent topology, designed the structured JSON output contracts, wrote the evaluation test harness, and verified
               every generated prompt and system invariant, while leveraging AI agent pairing (Google Antigravity) for
               rapid boilerplate scaffolding, API client generation, and documentation review.
             </p>
