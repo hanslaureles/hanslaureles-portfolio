@@ -34,7 +34,7 @@
     href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=2.1.1">
+  <link rel="stylesheet" href="styles.css?v=2.2.0">
 
   <!-- Zero-FOUC Theme Script -->
   <script>
@@ -136,13 +136,13 @@
             <span class="badge-dot"></span>
             <span>Available for Applied AI &amp; Full-Stack Roles · 2026</span>
           </div>
-          <button class="sentinel-beacon-btn" id="sentinelToggleBtn" aria-label="Open Sentinel AI Agents Telemetry HUD"
-            title="Click or Press 'S' to inspect AI Agents Status">
-            <span class="sentinel-pulse-beacon"></span>
+          <button class="sentinel-beacon-btn" id="sentinelToggleBtn"
+            aria-label="Open the agent system overview (simulated replay, not a live connection)"
+            title="Click or Press 'S' to open the agent system overview">
+            <span class="sentinel-pulse-beacon is-simulated" aria-hidden="true"></span>
+            <span class="sentinel-sim-badge">Simulated / Replay</span>
             <span class="sentinel-beacon-tag">LOCAL AGENTS:</span>
-            <span class="sentinel-beacon-status">5 Agents Active</span>
-            <span class="sentinel-beacon-divider">·</span>
-            <span class="sentinel-beacon-ping" id="heroPingDisplay">~18ms loopback</span>
+            <span class="sentinel-beacon-status">5-Agent Swarm</span>
             <span class="sentinel-beacon-divider">·</span>
             <span class="sentinel-beacon-clock" id="heroClockDisplay">--:--:-- UTC+8</span>
             <span class="sentinel-beacon-expand">▾</span>
@@ -238,8 +238,8 @@
               <h3 style="font-size: 1.15rem; margin: 0;">5 Specialized Agents (LSFM System)</h3>
             </div>
             <div class="telemetry-live-indicator">
-              <span class="pulse-dot"></span>
-              <span>5 LOCAL AGENTS ONLINE</span>
+              <span class="pulse-dot" aria-hidden="true"></span>
+              <span>5 AGENTS · RUN LOCALLY</span>
             </div>
           </div>
 
@@ -757,8 +757,8 @@
         <div>© 2026 Hans Aaron Laureles · All Rights Reserved</div>
         <div class="footer-sentinel-bar" id="footerSentinelBar" role="button" tabindex="0"
           title="Click to open Sentinel HUD">
-          <span class="sentinel-pulse-beacon-sm"></span>
-          <span class="mono">SENTINEL // ALL AGENTS ONLINE · UTC+8 MANILA · ZERO CLOUD HOSTING COST</span>
+          <span class="sentinel-pulse-beacon-sm is-simulated" aria-hidden="true"></span>
+          <span class="mono">SENTINEL // 5-AGENT SWARM · DEMO REPLAY · UTC+8 MANILA</span>
         </div>
         <div>Modern Web Engineering, AI Agents &amp; Clean Design</div>
       </div>
@@ -768,7 +768,7 @@
 
   <!-- Sentinel Telemetry & Agent System Vitals Modal -->
   <div id="sentinelModal" class="sentinel-modal" role="dialog" aria-modal="true" aria-labelledby="sentinelModalTitle"
-    aria-hidden="true">
+    aria-describedby="sentinelSimNote" aria-hidden="true">
     <div class="sentinel-backdrop" id="sentinelBackdrop"></div>
     <div class="sentinel-hud-container">
       <div class="sentinel-hud">
@@ -776,11 +776,16 @@
         <!-- Header -->
         <div class="sentinel-hud-header">
           <div class="sentinel-hud-title-group">
-            <div class="sentinel-status-pill">
-              <span class="sentinel-pulse-beacon"></span>
-              <span class="mono">SYSTEM SENTINEL // ACTIVE</span>
+            <div class="sentinel-status-pill is-simulated">
+              <span class="sentinel-pulse-beacon is-simulated" aria-hidden="true"></span>
+              <span class="mono">SYSTEM SENTINEL // DEMO REPLAY</span>
             </div>
-            <h2 id="sentinelModalTitle" class="sentinel-title">Agent System Status &amp; Vitals</h2>
+            <h2 id="sentinelModalTitle" class="sentinel-title">Agent System Overview</h2>
+            <p class="sentinel-sim-note" id="sentinelSimNote">
+              <span class="sentinel-sim-badge">Simulated / Replay</span>
+              This panel replays scripted events. The agents run on my local workstation, and this site has no live
+              connection to them.
+            </p>
           </div>
           <button class="sentinel-close-btn" id="sentinelCloseBtn" aria-label="Close Sentinel HUD">
             <span class="mono">[ ESC / ✕ ]</span>
@@ -792,17 +797,17 @@
           <div class="sentinel-metric-card">
             <span class="sentinel-metric-label mono">AGENT SYSTEM</span>
             <div class="sentinel-metric-val highlight-green">
-              <span>5/5 ONLINE</span>
+              <span>5 AGENTS</span>
             </div>
-            <span class="sentinel-metric-sub mono">5 Specialized Agents</span>
+            <span class="sentinel-metric-sub mono">Discord bots · local host</span>
           </div>
 
           <div class="sentinel-metric-card">
-            <span class="sentinel-metric-label mono">LOOPBACK PING</span>
-            <div class="sentinel-metric-val" id="hudPingDisplay">
-              <span>~18ms</span>
+            <span class="sentinel-metric-label mono">DATA SOURCE</span>
+            <div class="sentinel-metric-val">
+              <span>REPLAY</span>
             </div>
-            <span class="sentinel-metric-sub mono">Local WebSocket (Simulated)</span>
+            <span class="sentinel-metric-sub mono">Scripted · not a live feed</span>
           </div>
 
           <div class="sentinel-metric-card">
@@ -829,7 +834,7 @@
           <div class="sentinel-roster-column">
             <div class="sentinel-subheading mono">
               <span>AGENT ROSTER</span>
-              <span class="sentinel-subheading-tag">5 AGENTS ONLINE</span>
+              <span class="sentinel-subheading-tag">RUNS ON A LOCAL WORKSTATION</span>
             </div>
 
             <div class="agent-fleet-list" id="agentFleetList">
@@ -844,7 +849,7 @@
                       </div>
                     </div>
                   </div>
-                  <span class="agent-status-badge badge-online">● ONLINE</span>
+                  <span class="agent-status-badge badge-ready">● LOCAL</span>
                 </div>
                 <div class="agent-fleet-meta">
                   <span class="mono">Daily Coordinator · Fast &amp; Responsive</span>
@@ -862,7 +867,7 @@
                       <div class="agent-fleet-domain mono">Career Assistant · Single-Page Resume Generator</div>
                     </div>
                   </div>
-                  <span class="agent-status-badge badge-online">● ONLINE</span>
+                  <span class="agent-status-badge badge-ready">● LOCAL</span>
                 </div>
                 <div class="agent-fleet-meta">
                   <span class="mono">PDF Resume Engine · ATS-Friendly</span>
@@ -881,11 +886,11 @@
                       <div class="agent-fleet-domain mono">Frontend Agent · Clean UI &amp; Modern Web Design</div>
                     </div>
                   </div>
-                  <span class="agent-status-badge badge-online">● ONLINE</span>
+                  <span class="agent-status-badge badge-ready">● LOCAL</span>
                 </div>
                 <div class="agent-fleet-meta">
                   <span class="mono">Fast &amp; Responsive Interfaces</span>
-                  <span class="mono text-muted">Active On-Page</span>
+                  <span class="mono text-muted">Git Sentinel &amp; Code Review</span>
                 </div>
               </div>
 
@@ -899,7 +904,7 @@
                       <div class="agent-fleet-domain mono">Design Reviewer · Portfolio &amp; Case Studies</div>
                     </div>
                   </div>
-                  <span class="agent-status-badge badge-online">● ONLINE</span>
+                  <span class="agent-status-badge badge-ready">● LOCAL</span>
                 </div>
                 <div class="agent-fleet-meta">
                   <span class="mono">Design Review &amp; Documentation</span>
@@ -914,14 +919,14 @@
                     <span class="agent-fleet-emoji">🛡️</span>
                     <div>
                       <div class="agent-fleet-name">Eunchae</div>
-                      <div class="agent-fleet-domain mono">System Health · Uptime Monitoring &amp; Inbox Organizer</div>
+                      <div class="agent-fleet-domain mono">System Health · Hardware Vitals &amp; QA Checks</div>
                     </div>
                   </div>
-                  <span class="agent-status-badge badge-online">● ONLINE</span>
+                  <span class="agent-status-badge badge-ready">● LOCAL</span>
                 </div>
                 <div class="agent-fleet-meta">
                   <span class="mono">Automated Health Checks</span>
-                  <span class="mono text-muted">Online</span>
+                  <span class="mono text-muted">5-min vitals cycle</span>
                 </div>
               </div>
             </div>
@@ -930,8 +935,8 @@
           <!-- Column 2: Live Telemetry Event Stream & Diagnostics -->
           <div class="sentinel-stream-column">
             <div class="sentinel-subheading mono">
-              <span>LIVE TELEMETRY EVENT STREAM</span>
-              <span class="sentinel-pulse-dot"></span>
+              <span>SAMPLE EVENT STREAM</span>
+              <span class="sentinel-sim-badge">Simulated / Replay</span>
             </div>
 
             <div class="sentinel-terminal-feed" id="sentinelLogFeed" role="log" aria-live="polite">
@@ -940,8 +945,8 @@
 
             <!-- Diagnostics & Quick Actions -->
             <div class="sentinel-actions-row">
-              <button class="btn btn-sm btn-primary" id="sentinelPingSquadBtn">
-                <span>⚡ Ping Agents (Simulate)</span>
+              <button class="btn btn-sm btn-primary" id="sentinelReplayBtn">
+                <span>▶ Replay a Mission</span>
               </button>
               <button class="btn btn-sm btn-outline" id="sentinelCopyReportBtn">
                 <span>📋 Copy Summary Report</span>
@@ -968,7 +973,7 @@
   <script src="app.js?v=2.1.0"></script>
   <script src="terminal.js?v=2.1.0"></script>
   <script src="sakura-copilot.js?v=2.1.0"></script>
-  <script src="sentinel.js?v=2.1.0"></script>
+  <script src="sentinel.js?v=2.2.0"></script>
 </body>
 
 </html>

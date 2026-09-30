@@ -1,28 +1,39 @@
 /**
- * SENTINEL — AMBIENT AGENT TELEMETRY & SYSTEM VITALS ENGINE
- * Real-time telemetry, agent fleet monitoring, and interactive HUD for Hans Aaron Laureles's portfolio.
+ * SENTINEL — AGENT SYSTEM OVERVIEW (SIMULATED REPLAY)
+ * The portfolio has no live connection to the LSFM swarm, which runs on a local workstation.
+ * Everything in this panel is a scripted replay, and each event mirrors a real schedule or
+ * pipeline step in LE-SSERAFIM-AI-HQ (bot_*.py). No numbers are generated or faked.
  */
 
 (function () {
   'use strict';
 
   // DOM Elements
-  let modal, backdrop, closeBtn, openBtn, heroPing, heroClock, hudPing, hudClock, logFeed, pingBtn, copyBtn;
+  let modal, backdrop, closeBtn, openBtn, heroClock, hudClock, logFeed, replayBtn, copyBtn;
   let eventInterval = null;
   let clockInterval = null;
-  let pingInterval = null;
+  let replayTimers = [];
   let lastFocusedElement = null;
 
-  // Realistic Agent Telemetry Event Templates
-  const TELEMETRY_EVENTS = [
-    { agent: 'EUNCHAE', emoji: '🛡️', msg: 'System vitals normal: GPU memory at 41%, temperature 48°C.' },
-    { agent: 'SAKURA', emoji: '🌸', msg: 'Coordination Agent standby. Ready for recruiter questions.' },
-    { agent: 'KAZUHA', emoji: '💻', msg: 'Frontend health check: UI layout responsive and contrast verified.' },
-    { agent: 'CHAEWON', emoji: '⭐', msg: 'Career assistant ready. Single-page PDF resume prepared.' },
-    { agent: 'YUNJIN', emoji: '🎨', msg: 'Design check: 6 case studies and project images verified.' },
-    { agent: 'LSFM-CORE', emoji: '🌐', msg: 'Discord bot connection stable. All 5 agents online and responsive.' },
-    { agent: 'EUNCHAE', emoji: '🛡️', msg: 'Email check complete. All unread messages organized.' },
-    { agent: 'SAKURA', emoji: '🌸', msg: 'Knowledge base updated with latest project information.' }
+  // Each event describes what an agent really does on its real schedule (see the tasks.loop in each bot).
+  const REPLAY_EVENTS = [
+    { agent: 'EUNCHAE', emoji: '🛡️', msg: 'Watchdog cycle: CPU, RAM and disk sampled via psutil (every 5 min).' },
+    { agent: 'EUNCHAE', emoji: '🛡️', msg: 'Obsidian heartbeat: vault checked over the local REST API (every 15 min).' },
+    { agent: 'SAKURA', emoji: '🌸', msg: 'Daily briefing posts to #daily-briefing once a day after 08:00.' },
+    { agent: 'SAKURA', emoji: '🌸', msg: 'Evening rollup posts after 20:00 and is saved to the Obsidian daily log.' },
+    { agent: 'KAZUHA', emoji: '💻', msg: 'Applied-AI research digest runs Mon / Wed / Fri after 09:30.' },
+    { agent: 'YUNJIN', emoji: '🎨', msg: 'Portfolio audit (every 6 h): page structure and image assets scanned.' },
+    { agent: 'CHAEWON', emoji: '⭐', msg: 'Weekly rebuild: the single-page ATS resume is recompiled Sundays after 22:00.' }
+  ];
+
+  // Scripted replay of the real !apply pipeline in bot_sakura.py, in its actual order.
+  const MISSION_REPLAY = [
+    { agent: 'SAKURA', emoji: '🌸', msg: '!apply <job url> received: scraping the posting, extracting role and company.' },
+    { agent: 'CHAEWON', emoji: '⭐', msg: 'Analyzing ATS fit and tailoring the resume and cover letter.' },
+    { agent: 'YUNJIN', emoji: '🎨', msg: 'Curating the flagship case studies that best match the role.' },
+    { agent: 'KAZUHA', emoji: '💻', msg: 'Drafting the frontend tech pitch and CS positioning.' },
+    { agent: 'EUNCHAE', emoji: '🛡️', msg: 'Running the QA gatekeeper audit on all deliverables.' },
+    { agent: 'SAKURA', emoji: '🌸', msg: 'Master proposal compiled and posted for human approval.' }
   ];
 
   document.addEventListener('DOMContentLoaded', initSentinel);
@@ -32,20 +43,15 @@
     backdrop = document.getElementById('sentinelBackdrop');
     closeBtn = document.getElementById('sentinelCloseBtn');
     openBtn = document.getElementById('sentinelToggleBtn');
-    heroPing = document.getElementById('heroPingDisplay');
     heroClock = document.getElementById('heroClockDisplay');
-    hudPing = document.getElementById('hudPingDisplay');
     hudClock = document.getElementById('hudClockDisplay');
     logFeed = document.getElementById('sentinelLogFeed');
-    pingBtn = document.getElementById('sentinelPingSquadBtn');
+    replayBtn = document.getElementById('sentinelReplayBtn');
     copyBtn = document.getElementById('sentinelCopyReportBtn');
 
-    // Initialize Clock & Ping Tickers
+    // Clock is real (Manila local time); there is deliberately no latency/ping readout.
     updateClock();
     clockInterval = setInterval(updateClock, 1000);
-
-    updatePing();
-    pingInterval = setInterval(updatePing, 3500);
 
     // Seed Initial Logs
     if (logFeed) {
@@ -77,8 +83,8 @@
       backdrop.addEventListener('click', closeModal);
     }
 
-    if (pingBtn) {
-      pingBtn.addEventListener('click', handlePingSquad);
+    if (replayBtn) {
+      replayBtn.addEventListener('click', handleReplayMission);
     }
 
     if (copyBtn) {
@@ -156,14 +162,6 @@
     }
   }
 
-  // --- Ping Micro-Jitter (15ms - 23ms) ---
-  function updatePing() {
-    const jitter = Math.floor(Math.random() * 9) + 15; // 15 to 23 ms
-    const pingStr = `${jitter}ms`;
-    if (heroPing) heroPing.textContent = pingStr;
-    if (hudPing) hudPing.textContent = pingStr;
-  }
-
   // --- Modal Open / Close ---
   function isModalOpen() {
     return modal && modal.classList.contains('is-open');
@@ -214,12 +212,19 @@
     const row = document.createElement('div');
     row.className = `sentinel-log-row ${isHighlight ? 'log-highlight' : ''}`;
     
-    const time = getManilaTimestamp();
-    row.innerHTML = `
-      <span class="log-time mono">[${time}]</span>
-      <span class="log-agent mono">${emoji} ${agent}:</span>
-      <span class="log-msg">${msg}</span>
-    `;
+    // Built with textContent so messages like "!apply <job url>" render literally, never as markup.
+    const parts = [
+      ['log-time mono', `[${getManilaTimestamp()}]`],
+      ['log-agent mono', `${emoji} ${agent}:`],
+      ['log-msg', msg]
+    ];
+    parts.forEach(([cls, text], i) => {
+      const span = document.createElement('span');
+      span.className = cls;
+      span.textContent = text;
+      row.appendChild(span);
+      if (i < parts.length - 1) row.appendChild(document.createTextNode(' '));
+    });
 
     logFeed.appendChild(row);
 
@@ -234,64 +239,52 @@
 
   function seedInitialLogs() {
     logFeed.innerHTML = '';
-    const initialSeed = [
-      { agent: 'EUNCHAE', emoji: '🛡️', msg: 'Sentinel monitoring online. System health normal.' },
-      { agent: 'SAKURA', emoji: '🌸', msg: 'Coordination Agent ready. Ask Sakura is online.' },
-      { agent: 'KAZUHA', emoji: '💻', msg: 'Frontend agent online. Layout and contrast verified.' },
-      { agent: 'CHAEWON', emoji: '⭐', msg: 'Career assistant online. PDF resume generator ready.' },
-      { agent: 'LSFM-CORE', emoji: '🌐', msg: 'All 5 AI agents online and running smoothly.' }
-    ];
-
-    initialSeed.forEach(item => {
-      appendLog(item.agent, item.emoji, item.msg);
-    });
+    appendLog('REPLAY', '▶', 'Scripted replay. Each event mirrors a real agent schedule; this is not a live feed.', true);
+    REPLAY_EVENTS.slice(0, 3).forEach(ev => appendLog(ev.agent, ev.emoji, ev.msg));
   }
 
   function startEventStream() {
     if (eventInterval) clearInterval(eventInterval);
 
-    // Emit event every 6 to 9 seconds
+    // Cycle through the schedule events in order (deterministic, no random data).
+    let nextIndex = 3;
     eventInterval = setInterval(() => {
-      if (!document.hidden) {
-        const randomIndex = Math.floor(Math.random() * TELEMETRY_EVENTS.length);
-        const ev = TELEMETRY_EVENTS[randomIndex];
+      if (!document.hidden && isModalOpen() && !(replayBtn && replayBtn.disabled)) {
+        const ev = REPLAY_EVENTS[nextIndex % REPLAY_EVENTS.length];
+        nextIndex++;
         appendLog(ev.agent, ev.emoji, ev.msg);
       }
     }, 7000);
   }
 
-  // --- Interactive "Ping Squad" Simulation ---
-  function handlePingSquad() {
-    if (!pingBtn) return;
-    pingBtn.disabled = true;
-    const originalText = pingBtn.innerHTML;
-    pingBtn.innerHTML = `<span>⏳ Pinging Agents...</span>`;
+  // --- Scripted "Replay a Mission" walkthrough of the real !apply pipeline ---
+  function handleReplayMission() {
+    if (!replayBtn || replayBtn.disabled) return;
+    replayBtn.disabled = true;
+    const originalText = replayBtn.innerHTML;
+    replayBtn.innerHTML = `<span>▶ Replaying...</span>`;
+    replayTimers.forEach(clearTimeout);
+    replayTimers = [];
 
-    appendLog('SENTINEL', '⚡', 'Checking status across all 5 AI agents...', true);
+    appendLog('REPLAY', '▶', 'Mission replay: the !apply job-application pipeline, step by step.', true);
 
-    // Visual pulse across all agent cards
     const agentItems = document.querySelectorAll('.agent-fleet-item');
-    agentItems.forEach((item, idx) => {
-      setTimeout(() => {
-        item.classList.add('pulse-highlight');
-        setTimeout(() => item.classList.remove('pulse-highlight'), 600);
-      }, idx * 80);
+    MISSION_REPLAY.forEach((step, idx) => {
+      replayTimers.push(setTimeout(() => {
+        appendLog(step.agent, step.emoji, step.msg);
+        const card = Array.from(agentItems).find(el => el.dataset.agent === step.agent.toLowerCase());
+        if (card) {
+          card.classList.add('pulse-highlight');
+          setTimeout(() => card.classList.remove('pulse-highlight'), 600);
+        }
+      }, (idx + 1) * 650));
     });
 
-    setTimeout(() => {
-      const pingMs = Math.floor(Math.random() * 6) + 14;
-      appendLog('SENTINEL', '🟢', `Check complete: All 5 agents online. Response time: ${pingMs}ms.`, true);
-      
-      if (heroPing) heroPing.textContent = `${pingMs}ms`;
-      if (hudPing) hudPing.textContent = `${pingMs}ms`;
-
-      pingBtn.disabled = false;
-      pingBtn.innerHTML = `<span>✓ 5 Agents Online (${pingMs}ms)</span>`;
-
-      setTimeout(() => {
-        pingBtn.innerHTML = originalText;
-      }, 2500);
-    }, 700);
+    replayTimers.push(setTimeout(() => {
+      appendLog('REPLAY', '■', 'Replay complete. In production, each step is an LLM call or tool run on the workstation.', true);
+      replayBtn.disabled = false;
+      replayBtn.innerHTML = originalText;
+    }, (MISSION_REPLAY.length + 1) * 650));
   }
 
   // --- Copy Architecture Report ---
@@ -302,16 +295,16 @@ Timestamp: ${time} (Manila UTC+8)
 Location: Manila, Philippines
 Availability: Open for Full-Time & Remote AI & Software Engineering Roles (2026)
 
-## Multi-Agent System Status (5/5 Agents Online)
-- 🌸 Sakura (Coordinator Agent): Daily Morning Updates & Recruiter Assistant
+## Multi-Agent System Overview (5 Agents)
+- 🌸 Sakura (Coordinator Agent): Daily Briefings, Gmail Triage & Job-Application Pipeline
 - ⭐ Chaewon (Career Agent): Single-Page Resume Generator & Job Matching
-- 💻 Kazuha (Frontend Agent): Clean UI & Modern Web Design
-- 🎨 Yunjin (Design Reviewer Agent): Portfolio & Case Study Synchronization
-- 🛡️ Eunchae (System Guardian Agent): Uptime Monitoring & Inbox Organization
+- 💻 Kazuha (Frontend Agent): UI Review, Git Sentinel & Research Digests
+- 🎨 Yunjin (Design Reviewer Agent): Portfolio Audits & Case Study Critique
+- 🛡️ Eunchae (System Guardian Agent): Hardware Vitals & QA Checks
 
 ## Architecture & Hosting
-- AI Models: Hybrid Local GPU + Free-tier Cloud APIs
-- Hosting Cost: $0.00/month
+- AI Models: Groq + Gemini cloud APIs, with an optional local Ollama mode
+- Agents: Discord bots running on a local workstation (no cloud hosting)
 - Portfolio: https://hanslaureles.vercel.app/
 - GitHub: https://github.com/hanslaureles
 `;

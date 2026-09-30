@@ -31,6 +31,10 @@
   --accent-hover: #A61E1E;
   --accent-subtle: rgba(201, 42, 42, 0.08);
 
+  --sim: #7A4300;              /* Simulated/replay amber — WCAG AAA (7.98:1 on #FFFFFF, 7.33:1 on #F7F5F0) */
+  --sim-subtle: rgba(122, 67, 0, 0.08);
+  --sim-border: rgba(122, 67, 0, 0.35);
+
   --shadow-sm: 0 1px 3px rgba(18, 18, 20, 0.04);
   --shadow-md: 0 4px 20px rgba(18, 18, 20, 0.06);
   --shadow-lg: 0 12px 32px rgba(18, 18, 20, 0.09);
@@ -70,6 +74,10 @@
   --accent: #FF5C38;           /* Warm Vermilion */
   --accent-hover: #FF7557;
   --accent-subtle: rgba(255, 92, 56, 0.12);
+
+  --sim: #F5B544;              /* Simulated/replay amber — 9.68:1 on #171920 */
+  --sim-subtle: rgba(245, 181, 68, 0.1);
+  --sim-border: rgba(245, 181, 68, 0.35);
 
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
@@ -4012,6 +4020,55 @@ a {
   margin-left: 2px;
 }
 
+/* Simulated / replay disclosure — the panel is a scripted demo, not a live feed.
+   Brackets come from pseudo-elements + nowrap so they can never orphan onto a new line (MEM-002). */
+.sentinel-sim-badge {
+  display: inline-block;
+  white-space: nowrap;
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--sim);
+  background: var(--sim-subtle);
+  border: 1px solid var(--sim-border);
+  border-radius: var(--radius-sm);
+  padding: 3px 6px;
+}
+
+.sentinel-sim-badge::before { content: "["; margin-right: 1px; }
+.sentinel-sim-badge::after { content: "]"; margin-left: 1px; }
+
+/* Simulated beacons: amber and static, so nothing implies a live heartbeat. */
+.sentinel-pulse-beacon.is-simulated,
+.sentinel-pulse-beacon-sm.is-simulated {
+  background-color: var(--sim);
+  box-shadow: none;
+  animation: none;
+}
+
+.sentinel-status-pill.is-simulated {
+  color: var(--sim);
+  background: var(--sim-subtle);
+  border-color: var(--sim-border);
+}
+
+.sentinel-sim-note {
+  margin: 8px 0 0 0;
+  max-width: 62ch;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.sentinel-sim-note .sentinel-sim-badge {
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+
 /* Footer Sentinel Bar */
 .footer-sentinel-bar {
   display: inline-flex;
@@ -4131,6 +4188,8 @@ a {
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all var(--transition-fast);
+  white-space: nowrap;   /* MEM-002: keep "[ ESC / ✕ ]" on one line so brackets never orphan */
+  flex-shrink: 0;
 }
 
 .sentinel-close-btn:hover {
