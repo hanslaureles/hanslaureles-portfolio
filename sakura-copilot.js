@@ -15,7 +15,7 @@
       title: "React, Next.js & Frontend Interface Craft",
       category: "Frontend Engineering",
       keywords: ["react", "nextjs", "next.js", "frontend", "ui", "ux", "typescript", "javascript", "tailwind", "css", "html", "design systems", "wcag", "swiss"],
-      summary: "Hans is a high-craft frontend engineer and systems architect specializing in React, Next.js, TypeScript, and design token architectures. He bridges computer science rigor with executive Swiss editorial typography and WCAG AAA accessibility.",
+      summary: "Hans is a high-craft frontend engineer and systems architect specializing in React, Next.js, TypeScript, and design token architectures. He bridges computer science rigor with executive Swiss editorial typography and WCAG 2.1 AA accessibility.",
       evidence: "Engineered production client interfaces at ROC (roc.ph) with React and Tailwind; architected Lumina Analytics (high-density B2B dashboard with Chart.js); built Aura Coffee (/aura-store) with vanilla CSS tokens; and developed Patriot Capstone in React Native.",
       linkUrl: "case-lumina.html",
       linkText: "Explore Lumina Analytics Case Study →",

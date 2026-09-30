@@ -16,7 +16,7 @@
   // Realistic Agent Telemetry Event Templates
   const TELEMETRY_EVENTS = [
     { agent: 'EUNCHAE', emoji: '🛡️', msg: 'System vitals normal: GPU memory at 41%, temperature 48°C.' },
-    { agent: 'SAKURA', emoji: '🌸', msg: 'Team Coordinator standby. Ready for recruiter questions.' },
+    { agent: 'SAKURA', emoji: '🌸', msg: 'Coordination Agent standby. Ready for recruiter questions.' },
     { agent: 'KAZUHA', emoji: '💻', msg: 'Frontend health check: UI layout responsive and contrast verified.' },
     { agent: 'CHAEWON', emoji: '⭐', msg: 'Career assistant ready. Single-page PDF resume prepared.' },
     { agent: 'YUNJIN', emoji: '🎨', msg: 'Design check: 6 case studies and project images verified.' },
@@ -236,7 +236,7 @@
     logFeed.innerHTML = '';
     const initialSeed = [
       { agent: 'EUNCHAE', emoji: '🛡️', msg: 'Sentinel monitoring online. System health normal.' },
-      { agent: 'SAKURA', emoji: '🌸', msg: 'Team Coordinator ready. Ask Sakura is online.' },
+      { agent: 'SAKURA', emoji: '🌸', msg: 'Coordination Agent ready. Ask Sakura is online.' },
       { agent: 'KAZUHA', emoji: '💻', msg: 'Frontend agent online. Layout and contrast verified.' },
       { agent: 'CHAEWON', emoji: '⭐', msg: 'Career assistant online. PDF resume generator ready.' },
       { agent: 'LSFM-CORE', emoji: '🌐', msg: 'All 5 AI agents online and running smoothly.' }
@@ -265,7 +265,7 @@
     if (!pingBtn) return;
     pingBtn.disabled = true;
     const originalText = pingBtn.innerHTML;
-    pingBtn.innerHTML = `<span>⏳ Pinging Team...</span>`;
+    pingBtn.innerHTML = `<span>⏳ Pinging Agents...</span>`;
 
     appendLog('SENTINEL', '⚡', 'Checking status across all 5 AI agents...', true);
 
@@ -286,7 +286,7 @@
       if (hudPing) hudPing.textContent = `${pingMs}ms`;
 
       pingBtn.disabled = false;
-      pingBtn.innerHTML = `<span>✓ Team Online (${pingMs}ms)</span>`;
+      pingBtn.innerHTML = `<span>✓ 5 Agents Online (${pingMs}ms)</span>`;
 
       setTimeout(() => {
         pingBtn.innerHTML = originalText;
@@ -297,22 +297,22 @@
   // --- Copy Architecture Report ---
   function handleCopyReport() {
     const time = getManilaTimestamp();
-    const report = `# Hans Aaron Laureles — AI Team Status Report
+    const report = `# Hans Aaron Laureles — Multi-Agent System Status Report
 Timestamp: ${time} (Manila UTC+8)
 Location: Manila, Philippines
 Availability: Open for Full-Time & Remote AI & Software Engineering Roles (2026)
 
-## AI Team Status (5/5 Agents Online)
-- 🌸 Sakura (Team Coordinator): Daily Morning Updates & Recruiter Assistant
-- ⭐ Chaewon (Career Assistant): Single-Page Resume Generator & Job Matching
+## Multi-Agent System Status (5/5 Agents Online)
+- 🌸 Sakura (Coordinator Agent): Daily Morning Updates & Recruiter Assistant
+- ⭐ Chaewon (Career Agent): Single-Page Resume Generator & Job Matching
 - 💻 Kazuha (Frontend Agent): Clean UI & Modern Web Design
-- 🎨 Yunjin (Design Reviewer): Portfolio & Case Study Synchronization
-- 🛡️ Eunchae (System Health): Uptime Monitoring & Inbox Organization
+- 🎨 Yunjin (Design Reviewer Agent): Portfolio & Case Study Synchronization
+- 🛡️ Eunchae (System Guardian Agent): Uptime Monitoring & Inbox Organization
 
 ## Architecture & Hosting
 - AI Models: Hybrid Local GPU + Free-tier Cloud APIs
 - Hosting Cost: $0.00/month
-- Portfolio: https://hanslaureles.com
+- Portfolio: https://hanslaureles.vercel.app/
 - GitHub: https://github.com/hanslaureles
 `;
 

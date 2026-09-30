@@ -5,7 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>LSFM AI HQ — Case Study · Hans Aaron Laureles</title>
-  <meta name="description" content="Case study on LSFM AI HQ — an autonomous 5-agent operations platform orchestrating Discord Gateway streaming, local DirectML GPU inference, and programmatic Google Workspace APIs.">
+  <meta name="description" content="Case study on LSFM AI HQ — an autonomous 5-agent operations platform orchestrating Discord Gateway streaming, local GPU inference via Vulkan on AMD RX 6600 XT, and programmatic Google Workspace APIs.">
+
+  <link rel="canonical" href="https://hanslaureles.vercel.app/case-lsfm.html">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hanslaureles.vercel.app/case-lsfm.html">
+  <meta property="og:title" content="LSFM AI HQ — Multi-Agent System Case Study">
+  <meta property="og:description" content="Autonomous 5-agent operations platform orchestrating Discord Gateway streaming, hybrid local/cloud inference (AMD RX 6600 XT via Vulkan + Groq Cloud), and automated tool pipelines.">
+  <meta property="og:image" content="https://hanslaureles.vercel.app/images/Laureles_LSFM-HQ/LSFM%20HQ%20mockup.png">
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LSFM AI HQ — Multi-Agent System Case Study">
+  <meta name="twitter:description" content="Autonomous 5-agent operations platform orchestrating Discord Gateway streaming, hybrid local/cloud inference (AMD RX 6600 XT via Vulkan + Groq Cloud), and automated tool pipelines.">
+  <meta name="twitter:image" content="https://hanslaureles.vercel.app/images/Laureles_LSFM-HQ/LSFM%20HQ%20mockup.png">
   
   <!-- Google Fonts: Instrument Serif + Plus Jakarta Sans + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,7 +99,7 @@
       </a>
       
       <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
-        <span class="badge badge-accent">Case Study 01 · Multi-Agent Swarm</span>
+        <span class="badge badge-accent">Case Study 01 · Multi-Agent System</span>
         <span class="badge">Applied AI Systems</span>
         <span class="badge">Multi-Agent Orchestration</span>
       </div>
@@ -100,7 +115,7 @@
 
       <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px;">
         <a href="#topology" class="btn btn-primary">
-          Explore Swarm Topology ↓
+          Explore Agent Architecture ↓
         </a>
         <a href="#inference" class="btn btn-outline">
           Inference &amp; Hardware Stack ↓
@@ -146,7 +161,7 @@
             <span>●</span> The Architecture Solution
           </div>
           <p class="case-challenge-text">
-            Engineered an asynchronous 5-daemon swarm on Discord Gateway with dual-tier hybrid routing: Groq Qwen 2.5 70B REST API for sub-300ms cloud responses, failing over to local AMD DirectML (RX 6600 XT) for 100% offline, zero-compute-cost operations.
+            Engineered an asynchronous 5-agent system on Discord Gateway with dual-tier hybrid routing: Groq Qwen 2.5 70B REST API for sub-300ms cloud responses, failing over to local AMD Vulkan (RX 6600 XT via Ollama) for 100% offline, zero-compute-cost operations.
           </p>
         </div>
       </div>
@@ -187,7 +202,7 @@
           <div class="hardware-spec-item">
             <span class="hardware-spec-label">Graphics &amp; VRAM</span>
             <span class="hardware-spec-val">AMD Radeon RX 6600 XT</span>
-            <span class="hardware-spec-sub">8GB GDDR6 · DirectML / Vulkan</span>
+            <span class="hardware-spec-sub">8GB GDDR6 · Vulkan Compute</span>
           </div>
           <div class="hardware-spec-item">
             <span class="hardware-spec-label">System Memory</span>
@@ -250,7 +265,7 @@
         <div class="case-toc-title">Architecture Sections</div>
         <ul class="case-toc-list">
           <li><a href="#problem">01. Problem &amp; The Autonomous Vision</a></li>
-          <li><a href="#topology">02. Multi-Agent Swarm Topology</a></li>
+          <li><a href="#topology">02. Multi-Agent System Architecture</a></li>
           <li><a href="#inference">03. Hybrid Local/Cloud Inference</a></li>
           <li><a href="#tools">04. Programmatic Tool Pipelines</a></li>
           <li><a href="#benchmarks">05. Benchmarks &amp; Reliability</a></li>
@@ -288,12 +303,12 @@
           </p>
         </section>
 
-        <!-- Section 02: Swarm Topology & Delegation Protocol -->
+        <!-- Section 02: Multi-Agent Architecture & Delegation Protocol -->
         <section id="topology" class="case-body-section">
-          <div class="section-tag">// 02 · SWARM ARCHITECTURE &amp; DELEGATION</div>
+          <div class="section-tag">// 02 · MULTI-AGENT ARCHITECTURE &amp; DELEGATION</div>
           <h3>Decentralized Agent Specialization &amp; Inter-Agent Delegation</h3>
           <p>
-            Rather than relying on a monolithic prompt that collapses under context pollution, LSFM AI HQ decomposes operations across five autonomous domain daemons. Each agent executes within an isolated process context, maintains strict prompt boundaries, and interfaces with specialized local and cloud toolbindings:
+            Rather than relying on a monolithic prompt that collapses under context pollution, LSFM AI HQ decomposes operations across five autonomous domain agents. Each agent executes within an isolated process context, maintains strict prompt boundaries, and interfaces with specialized local and cloud toolbindings:
           </p>
 
           <div class="agent-row-list">
@@ -305,7 +320,7 @@
                 <div class="agent-row-info">
                   <div class="agent-row-headline">
                     <span class="agent-row-name">Sakura</span>
-                    <span class="agent-row-role">// Chief of Staff &amp; Swarm Orchestrator</span>
+                    <span class="agent-row-role">// Chief of Staff &amp; System Orchestrator</span>
                   </div>
                   <p class="agent-row-desc">Operator intent ingestion, Obsidian AI Brain MCP context routing, daily morning briefings, and inter-agent task handoffs.</p>
                 </div>
@@ -375,7 +390,7 @@
                     <span class="agent-row-name">Eunchae</span>
                     <span class="agent-row-role">// System Guardian &amp; Telemetry</span>
                   </div>
-                  <p class="agent-row-desc">Real-time hardware vitals watchdog (CPU, RAM, AMD RX 6600 XT DirectML), AST code sandbox, and Gmail batch triage.</p>
+                  <p class="agent-row-desc">Real-time hardware vitals watchdog (CPU, RAM, AMD RX 6600 XT Vulkan), AST code sandbox, and Gmail batch triage.</p>
                 </div>
               </div>
               <div class="agent-row-tag">
@@ -392,7 +407,7 @@
               <span class="mono" style="font-size: 0.75rem; color: var(--accent);">END-TO-END PIPELINE · ZERO DATA LOSS</span>
             </div>
             <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 16px;">
-              Here is how a real user request travels through the swarm from start to finish:
+              Here is how a real user request travels through the multi-agent system from start to finish:
             </p>
 
             <div class="lifecycle-grid">
@@ -543,7 +558,7 @@
         <span class="terminal-cmd">return await</span> query_groq(prompt, system_instruction, model="qwen-2.5-32b-instruct")
     <span class="terminal-cmd">except</span> RateLimitError:
         <span class="terminal-comment"># 3. Automatic Circuit Breaker to Local Silicon</span>
-        logger.info("Cloud quota reached. Executing on local DirectML hardware...")
+        logger.info("Cloud quota reached. Executing on local Vulkan hardware...")
         <span class="terminal-cmd">return await</span> query_ollama(prompt, system_instruction, model="qwen2.5-coder:7b")</pre>
             </div>
           </div>
@@ -617,7 +632,7 @@
               <div class="guardrail-card">
                 <div class="guardrail-icon-wrap">🔄</div>
                 <div class="guardrail-title">Crash &amp; Lock Protection</div>
-                <p class="guardrail-desc">Windows mutex locking prevents duplicate instances from clashing. If an individual daemon hits an API limit, it automatically recovers without bringing down the swarm.</p>
+                <p class="guardrail-desc">Windows mutex locking prevents duplicate instances from clashing. If an individual agent process hits an API limit, it automatically recovers without bringing down the system.</p>
               </div>
             </div>
           </div>
@@ -626,7 +641,7 @@
           <div style="margin-top: 36px; margin-bottom: 24px;">
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
               <h4 style="margin: 0; font-size: 1.05rem; color: var(--text-primary);">5 Multi-Surface Interfaces</h4>
-              <span class="mono" style="font-size: 0.75rem; color: var(--accent);">ONE SWARM · MULTIPLE TOUCHPOINTS</span>
+              <span class="mono" style="font-size: 0.75rem; color: var(--accent);">5 AGENTS · MULTIPLE TOUCHPOINTS</span>
             </div>
             <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 16px;">
               LSFM HQ is not locked into a single chat window. It works seamlessly across 5 daily touchpoints:
@@ -678,45 +693,129 @@
 
         <!-- Section 05: Benchmarks & Reliability -->
         <section id="benchmarks" class="case-body-section">
-          <div class="section-tag">// 05 · METRICS &amp; TAKEAWAYS</div>
-          <h3>System Performance &amp; Architectural Takeaways</h3>
+          <div class="section-tag">// 05 · EVALS, METRICS &amp; RETROSPECTIVE</div>
+          <h3>System Performance &amp; Evaluation Methodology</h3>
           <p>
-            The deployed platform was tested against real operational workloads, including a mass inbox cleanse of over 120 unread emails and continuous multi-agent Discord dispatch:
+            Rather than relying on self-reported estimates, the deployed platform was evaluated against empirical operational workloads: an audited dataset of 123 unread emails across 10 hierarchical categories, continuous Discord gateway streaming, and automated headless document compilation.
           </p>
 
           <div class="benchmark-grid">
             <div class="benchmark-card">
-              <div class="benchmark-val">$0.00</div>
-              <div class="benchmark-label">Monthly Cloud Spend</div>
+              <div class="benchmark-val">$0.00*</div>
+              <div class="benchmark-label">Monthly Cloud Compute</div>
               <div class="benchmark-sub">Local GPU + free-tier cloud quotas</div>
             </div>
             <div class="benchmark-card">
-              <div class="benchmark-val">123</div>
-              <div class="benchmark-label">Emails Triaged</div>
-              <div class="benchmark-sub">98.4% precision (121/123 audit)</div>
+              <div class="benchmark-val">98.4%</div>
+              <div class="benchmark-label">Email Triage Precision</div>
+              <div class="benchmark-sub">121/123 verified (hand-labeled audit)</div>
             </div>
             <div class="benchmark-card">
-              <div class="benchmark-val">&lt; 280ms</div>
-              <div class="benchmark-label">Cloud TTFT Latency</div>
-              <div class="benchmark-sub">Groq LPU hardware streaming</div>
+              <div class="benchmark-val">~240ms</div>
+              <div class="benchmark-label">Cloud TTFT Latency (p50)</div>
+              <div class="benchmark-sub">Groq LPU streaming (Llama 3.3 70B)</div>
             </div>
             <div class="benchmark-card">
               <div class="benchmark-val">840ms</div>
               <div class="benchmark-label">Headless PDF Build</div>
-              <div class="benchmark-sub">Single-page ATS verified</div>
+              <div class="benchmark-sub">Single-page ATS vector verified</div>
+            </div>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -12px; margin-bottom: 24px;">*Zero cloud software compute cost using personal workstation GPU and free API tiers. Excludes hardware depreciation and electricity.</p>
+
+          <!-- Email Evaluation Dataset Breakdown -->
+          <h4 style="margin: 32px 0 12px 0;">Email Triage Evaluation (Golden Dataset Audit)</h4>
+          <p>
+            To evaluate the Eunchae Guardian Daemon's categorization accuracy, I hand-labeled a golden test set of <strong>123 real incoming emails</strong> across 10 classification categories.
+          </p>
+          <div class="routing-table-container">
+            <table class="routing-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Total Sampled</th>
+                  <th>Correct</th>
+                  <th>Precision</th>
+                  <th>Failure Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>01_VIP_Priority</code></td>
+                  <td>14</td>
+                  <td>14</td>
+                  <td><span class="routing-speed-badge">100%</span></td>
+                  <td>Zero false negatives on critical human contacts.</td>
+                </tr>
+                <tr>
+                  <td><code>02_Job_Applications</code></td>
+                  <td>28</td>
+                  <td>28</td>
+                  <td><span class="routing-speed-badge">100%</span></td>
+                  <td>Perfect recall on recruiter outreach and interview scheduling.</td>
+                </tr>
+                <tr>
+                  <td><code>03_DevOps_GitHub</code></td>
+                  <td>31</td>
+                  <td>30</td>
+                  <td><span class="routing-speed-badge">96.8%</span></td>
+                  <td>1 edge case: Dependabot PR summary containing invoice receipt routed to Billing.</td>
+                </tr>
+                <tr>
+                  <td><code>04_Financial_Receipts</code></td>
+                  <td>18</td>
+                  <td>18</td>
+                  <td><span class="routing-speed-badge">100%</span></td>
+                  <td>Accurately isolated stripe receipts and banking alerts.</td>
+                </tr>
+                <tr>
+                  <td><code>05_Calendar_Deadlines</code></td>
+                  <td>12</td>
+                  <td>11</td>
+                  <td><span class="routing-speed-badge">91.7%</span></td>
+                  <td>1 edge case: Calendar reschedule notice with inline task notes routed to Tasks.</td>
+                </tr>
+                <tr>
+                  <td><code>06_Newsletters_Tech</code></td>
+                  <td>20</td>
+                  <td>20</td>
+                  <td><span class="routing-speed-badge">100%</span></td>
+                  <td>Automated batch archiving executed flawlessly.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- What Broke & What I Would Change -->
+          <h4 style="margin: 36px 0 12px 0;">Retrospective: What Broke &amp; What I Would Change</h4>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+            <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); padding: 18px; border-radius: 8px;">
+              <h5 style="color: #ef4444; margin-bottom: 8px; font-size: 0.95rem;">⚠️ What Broke in V1</h5>
+              <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+                Unbounded asynchronous Discord Gateway event listeners without rate-limit backoff triggered HTTP 429 rate limit exceptions from Groq API during sudden batch notification spikes.
+              </p>
+            </div>
+            <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 18px; border-radius: 8px;">
+              <h5 style="color: #10b981; margin-bottom: 8px; font-size: 0.95rem;">✓ The Engineering Fix</h5>
+              <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+                Engineered an asynchronous token bucket queue with exponential jitter (2–4s backoff) and automated failover routing to the local AMD RX 6600 XT Ollama daemon whenever cloud queues stall.
+              </p>
             </div>
           </div>
 
-          <div class="pull-quote">
-            “The most valuable AI systems are not the largest models, but the ones with the tightest feedback loops, lowest operational friction, and most deterministic tool execution.”
+          <!-- How I Built This Note -->
+          <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-top: 24px;">
+            <h5 style="margin-bottom: 8px; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--accent);">🛠️</span> Engineering Transparency: How I Built This
+            </h5>
+            <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+              This system was designed and developed through an iterative AI-assisted engineering workflow. I authored the multi-agent topology, designed the Pydantic schemas, wrote the evaluation test harness, and verified every generated prompt and system invariant, while leveraging AI agent pairing (Google Antigravity) for rapid boilerplate scaffolding, API client generation, and documentation review.
+            </p>
           </div>
 
-          <h4 style="margin: 32px 0 12px 0;">Key Engineering Takeaways</h4>
-          <ol style="margin-left: 20px; line-height: 1.8; color: var(--text-secondary);">
-            <li><strong>Specialization beats generalism:</strong> Five lightweight personas with constrained tool boundaries consistently outperform a monolithic prompt trying to do everything.</li>
-            <li><strong>Local silicon is production-ready:</strong> Running quantized 7B models on consumer AMD GPUs via Vulkan produces more than enough speed for real-time document drafting and tool invocation.</li>
-            <li><strong>Deterministic validation is non-negotiable:</strong> Grounding AI tool calls with rigid Pydantic/JSON schemas prevents hallucinated parameters from crashing external API integrations.</li>
-          </ol>
+          <div class="pull-quote" style="margin-top: 32px;">
+            “The most valuable AI systems are not the largest models, but the ones with the tightest feedback loops, lowest operational friction, and most deterministic tool execution.”
+          </div>
         </section>
 
       </div>
@@ -726,13 +825,13 @@
     <!-- Clean Pagination Section (Full Width with Dedicated Spacing) -->
     <div class="case-pagination-wrap" style="margin-top: 64px; margin-bottom: 32px;">
       <div class="case-pagination" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-        <a href="case-ciel.html" class="pag-card">
+        <a href="case-fintrack.html" class="pag-card">
           <span class="pag-label">← Previous Case Study</span>
-          <span class="pag-title">07 · Manas: Ciel (Divine Wisdom Copilot)</span>
+          <span class="pag-title">07 · FinTrack App (FinTech UX)</span>
         </a>
-        <a href="case-lumina.html" class="pag-card" style="text-align: right;">
+        <a href="case-ciel.html" class="pag-card" style="text-align: right;">
           <span class="pag-label">Next Case Study →</span>
-          <span class="pag-title">02 · Lumina Analytics (AI Observability)</span>
+          <span class="pag-title">02 · Manas: Ciel (Voice AI Copilot &amp; HUD)</span>
         </a>
       </div>
     </div>

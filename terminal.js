@@ -46,14 +46,14 @@
 
     // Initial Welcome Banner
     const INITIAL_BANNER = `
-<div class="term-line term-comment"># Connecting to Hans's AI Agent Team...</div>
-<div class="term-line"><span class="term-prompt">&gt;</span> <span class="term-cmd">check-team --status</span></div>
-<div class="term-line"><span class="term-success">[AI TEAM]</span> 5 Agents Online: Sakura, Chaewon, Yunjin, Kazuha, Eunchae... <span class="term-badge success">ONLINE</span></div>
+<div class="term-line term-comment"># Connecting to Hans's Multi-Agent System...</div>
+<div class="term-line"><span class="term-prompt">&gt;</span> <span class="term-cmd">check-agents --status</span></div>
+<div class="term-line"><span class="term-success">[MULTI-AGENT]</span> 5 Agents Online: Sakura, Chaewon, Yunjin, Kazuha, Eunchae... <span class="term-badge success">ONLINE</span></div>
 <div class="term-line"><span class="term-success">[COORDINATOR]</span> Sakura ready for questions &amp; daily updates.</div>
 <div class="term-line"><span class="term-success">[CAREER]</span> Chaewon ready with single-page resume &amp; job matching.</div>
 <div class="term-line"><span class="term-success">[FRONTEND]</span> Kazuha verified responsive design &amp; clean code.</div>
 <div class="term-line"><span class="term-success">[DESIGN]</span> Yunjin verified 6 case studies &amp; project demos.</div>
-<div class="term-line"><span class="term-success">[SYSTEM HEALTH]</span> Eunchae monitoring uptime &amp; inbox organization.</div>
+<div class="term-line"><span class="term-success">[SYSTEM GUARDIAN]</span> Eunchae monitoring uptime &amp; inbox organization.</div>
 <div class="term-line"><span class="term-accent">&gt;&gt; ALL 5 AGENTS ONLINE // INTERACTIVE CONSOLE READY</span></div>
 <div class="term-line term-muted" style="margin-top: 6px;">Type <span class="term-highlight">'help'</span> or click any command button below to explore:</div>
 `.trim();
@@ -269,8 +269,8 @@
         case 'case-vellum':
         case 'vellum':
           appendOutput(`
-            <div class="term-line term-success">[VELLUM-DISPATCH] Ambient Reflection Workspace Mobile OS</div>
-            <div class="term-line">🌿 Combats notification fatigue through fluid gesture journaling and dual-scale Swiss typography.</div>
+            <div class="term-line term-success">[VELLUM-DISPATCH] Mindful Reflection Workspace Mobile Concept</div>
+            <div class="term-line">🌿 Combats notification fatigue through fluid gesture journaling and dual-scale typography in Figma.</div>
             <div class="term-line">⚡ 60 FPS gesture responsiveness · Ambient contrast palettes · Zero cognitive friction.</div>
             <div class="term-line">👉 <a href="case-vellum.html" class="term-link">Read Vellum Case Study (case-vellum.html) ↗</a></div>
           `);
@@ -430,9 +430,9 @@
 <table class="term-table">
   <tr><td><span class="term-highlight" style="color: #FBBF24;">ciel</span></td><td>✦ Manas: Ciel Divine Wisdom AI Voice HUD &amp; DSP</td></tr>
   <tr><td><span class="term-highlight">status</span></td><td>Check live status of all 5 AI agents</td></tr>
-  <tr><td><span class="term-highlight">agents</span></td><td>Learn what each AI agent does</td></tr>
+  <tr><td><span class="term-highlight">agents</span></td><td>Learn what each of the 5 AI agents does</td></tr>
   <tr><td><span class="term-highlight">vitals</span></td><td>⚡ Eunchae's real-time hardware &amp; CPU/RAM HUD</td></tr>
-  <tr><td><span class="term-highlight">swarm</span></td><td>🛡️ Inspect 5-daemon orchestration matrix</td></tr>
+  <tr><td><span class="term-highlight">matrix</span></td><td>🛡️ Inspect 5-agent system orchestration matrix</td></tr>
   <tr><td><span class="term-highlight">projects</span></td><td>Explore selected case studies &amp; live demos</td></tr>
   <tr><td><span class="term-highlight">audit</span></td><td>🎨 View Yunjin's 92/100 design audit &amp; resolution</td></tr>
   <tr><td><span class="term-highlight">rules</span></td><td>🧠 Inspect 10 active learned rules &amp; heuristics</td></tr>
@@ -451,7 +451,7 @@
 
     function showStatus() {
       appendOutput(`
-<div class="term-line term-cyan" style="font-weight: 600;">// AI TEAM — LIVE STATUS</div>
+<div class="term-line term-cyan" style="font-weight: 600;">// 5-AGENT SYSTEM — LIVE STATUS</div>
 <table class="term-table">
   <thead>
     <tr class="term-muted">
@@ -483,7 +483,7 @@
 
     function showAgents() {
       appendOutput(`
-<div class="term-line term-cyan" style="font-weight: 600;">// AI TEAM — ROSTER &amp; RESPONSIBILITIES</div>
+<div class="term-line term-cyan" style="font-weight: 600;">// 5-AGENT SYSTEM — ROSTER &amp; RESPONSIBILITIES</div>
 <div class="term-block" style="margin: 6px 0;">
   <div class="term-line"><strong class="term-highlight">🌸 Sakura (Team Coordinator)</strong></div>
   <div class="term-line term-muted">Sends daily morning updates, schedules tasks, coordinates between agents, and answers recruiter questions via Ask Sakura.</div>
@@ -513,38 +513,38 @@
 <table class="term-table">
   <tr>
     <td><strong class="term-accent">01. LSFM AI HQ</strong></td>
-    <td>Autonomous AI Team (5 Agents)</td>
+    <td>Autonomous Multi-Agent System (5 Specialized Agents)</td>
     <td><a href="case-lsfm.html" class="term-link">Case Study ↗</a></td>
   </tr>
   <tr>
-    <td><strong class="term-accent">02. Lumina Analytics</strong></td>
-    <td>SaaS Analytics &amp; Data Visualization</td>
-    <td><a href="case-lumina.html" class="term-link">Case Study ↗</a></td>
+    <td><strong class="term-accent" style="color: #FBBF24;">02. Manas: Ciel</strong></td>
+    <td>Voice AI Copilot, Thought Acceleration &amp; Web HUD</td>
+    <td><a href="case-ciel.html" class="term-link">Case Study ↗</a></td>
   </tr>
   <tr>
-    <td><strong class="term-accent">03. Vellum OS</strong></td>
-    <td>Calm Mental Wellness Mobile Interface</td>
-    <td><a href="case-vellum.html" class="term-link">Case Study ↗</a></td>
-  </tr>
-  <tr>
-    <td><strong class="term-accent">04. FinTrack App</strong></td>
-    <td>Personal Finance &amp; Budgeting Mobile UX</td>
-    <td><a href="case-fintrack.html" class="term-link">Case Study ↗</a></td>
-  </tr>
-  <tr>
-    <td><strong class="term-accent">05. Aura Coffee &amp; Kitchen</strong></td>
-    <td>Artisanal Coffeehouse Web Store (Live Demo)</td>
-    <td><a href="aura-store/index.html" target="_blank" class="term-link">Launch Store ↗</a></td>
-  </tr>
-  <tr>
-    <td><strong class="term-accent">06. Cognitive Memory Core</strong></td>
-    <td>Long-term Memory Engine for AI Agents</td>
+    <td><strong class="term-accent">03. Cognitive Memory Core</strong></td>
+    <td>Stdlib Python BM25 Episodic Retrieval Engine</td>
     <td><a href="case-memory.html" class="term-link">Case Study ↗</a></td>
   </tr>
   <tr>
-    <td><strong class="term-accent" style="color: #FBBF24;">07. Manas: Ciel</strong></td>
-    <td>Divine Wisdom Voice HUD &amp; Second Brain Copilot</td>
-    <td><a href="case-ciel.html" class="term-link">Case Study ↗</a></td>
+    <td><strong class="term-accent">04. Aura Coffee &amp; Kitchen</strong></td>
+    <td>Artisanal Specialty Commerce (Live Demo)</td>
+    <td><a href="aura-store/index.html" target="_blank" class="term-link">Launch Store ↗</a></td>
+  </tr>
+  <tr>
+    <td><strong class="term-accent">05. Lumina Analytics</strong></td>
+    <td>B2B SaaS Dashboard &amp; Design System</td>
+    <td><a href="case-lumina.html" class="term-link">Case Study ↗</a></td>
+  </tr>
+  <tr>
+    <td><strong class="term-accent">06. Vellum (Mobile Concept)</strong></td>
+    <td>Mindful Mental Wellness Mobile Concept</td>
+    <td><a href="case-vellum.html" class="term-link">Case Study ↗</a></td>
+  </tr>
+  <tr>
+    <td><strong class="term-accent">07. FinTrack App</strong></td>
+    <td>Personal Finance &amp; Budgeting UX Concept</td>
+    <td><a href="case-fintrack.html" class="term-link">Case Study ↗</a></td>
   </tr>
 </table>
 <div class="term-line term-muted" style="margin-top: 6px;">💡 Tip: Click any link above or scroll down to the Selected Works showcase.</div>
@@ -562,7 +562,7 @@
   <tr><td><strong class="term-highlight">SENSORY RADAR</strong></td><td class="term-cyan">Live Meteorology (wttr.in) + Real-Time Web Intelligence (DDGS)</td></tr>
   <tr><td><strong class="term-highlight">WORKING MEMORY</strong></td><td class="term-cyan">8-Turn Sliding Conversational Context Buffer</td></tr>
   <tr><td><strong class="term-highlight">PROACTIVE SENTINELS</strong></td><td>4 Domains: Hardware Vitals, Career Pipeline, Rules, Git Cleanliness</td></tr>
-  <tr><td><strong class="term-highlight">SUBORDINATE FLEET</strong></td><td>Supervises 5 LSFM Agents: Sakura, Chaewon, Kazuha, Yunjin, Eunchae</td></tr>
+  <tr><td><strong class="term-highlight">SUPERVISED AGENTS</strong></td><td>Supervises 5 LSFM Agents: Sakura, Chaewon, Kazuha, Yunjin, Eunchae</td></tr>
   <tr><td><strong class="term-highlight">LIVE SIMULATOR</strong></td><td><a href="case-ciel.html#simulator" class="term-link">In-Page Thought Acceleration Demo ↗</a></td></tr>
   <tr><td><strong class="term-highlight">CASE STUDY</strong></td><td><a href="case-ciel.html" class="term-link">portfolio-site/case-ciel.html ↗</a></td></tr>
 </table>
@@ -573,10 +573,10 @@
     function showSentinelTelemetry(args) {
       appendOutput(`
 <div class="term-line term-success">============================================================</div>
-<div class="term-line term-accent" style="font-weight: 600;">📡 SENTINEL // AI TEAM STATUS &amp; SYSTEM HEALTH</div>
+<div class="term-line term-accent" style="font-weight: 600;">📡 SENTINEL // AGENT SYSTEM STATUS &amp; VITALS</div>
 <div class="term-line term-success">============================================================</div>
 <div class="term-line">Location: Manila, Philippines · UTC+8</div>
-<div class="term-line">Team Health: <span class="term-badge success">● 5/5 ONLINE</span> · Response Speed: <span class="term-cyan">18ms</span></div>
+<div class="term-line">Agent System: <span class="term-badge success">● 5/5 ONLINE</span> · Loopback Latency: <span class="term-cyan">~18ms (simulated loopback)</span></div>
 <table class="term-table" style="margin-top: 6px;">
   <thead>
     <tr class="term-muted">
@@ -932,10 +932,10 @@
 
     function showSwarm() {
       appendOutput(`
-<div class="term-line term-comment"># LSFM Swarm // Active 5-Daemon Orchestration Matrix</div>
-<div class="term-line term-cyan">&gt; lsfm.swarm --status --fleet</div>
+<div class="term-line term-comment"># LSFM AI HQ // Active 5-Agent Orchestration Matrix</div>
+<div class="term-line term-cyan">&gt; lsfm.agents --status --matrix</div>
 
-<div class="term-line"><strong class="term-accent">ACTIVE ORCHESTRATION PIPELINE:</strong></div>
+<div class="term-line"><strong class="term-accent">ACTIVE AGENT PIPELINE:</strong></div>
 <div class="term-line">  1. 🌸 <strong>Sakura</strong>   | Chief of Staff      | #command-center   | <span class="term-badge success">ORCHESTRATOR</span></div>
 <div class="term-line">     └─ Intent triage, daily briefings (!briefing), Obsidian MCP queries</div>
 <div class="term-line">  2. 🦢 <strong>Kazuha</strong>   | Frontend Architect  | #frontend-lab     | <span class="term-badge">TOKEN ENGINE</span></div>

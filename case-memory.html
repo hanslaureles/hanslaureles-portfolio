@@ -7,11 +7,20 @@
   <title>Cognitive Memory Core — Case Study · Hans Aaron Laureles</title>
   <meta name="description" content="Case study on the Self-Improving Developer Agent Engine — eliminating AI session amnesia with zero-dependency BM25 episodic retrieval, post-mortem reflection, and self-crystallizing workspace rules.">
   
+  <link rel="canonical" href="https://hanslaureles.vercel.app/case-memory.html">
+
   <!-- OpenGraph / Social Meta Tags -->
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Cognitive Memory Core: Self-Improving Developer Agent Engine">
-  <meta property="og:description" content="How we solved AI session amnesia by engineering a zero-dependency episodic memory store and BM25 heuristic flywheel for Antigravity & multi-agent swarms.">
-  <meta property="og:site_name" content="Hans Aaron Laureles Portfolio">
+  <meta property="og:url" content="https://hanslaureles.vercel.app/case-memory.html">
+  <meta property="og:title" content="Cognitive Memory Core — Episodic Memory Retrieval Engine Case Study">
+  <meta property="og:description" content="Pure Python standard library episodic memory retrieval engine with BM25 keyword relevance scoring, structured post-mortems, and zero external pip dependencies.">
+  <meta property="og:image" content="https://hanslaureles.vercel.app/images/Laureles_Memory-Core/memory_mockup.jpg">
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cognitive Memory Core — Episodic Memory Retrieval Engine Case Study">
+  <meta name="twitter:description" content="Pure Python standard library episodic memory retrieval engine with BM25 keyword relevance scoring, structured post-mortems, and zero external pip dependencies.">
+  <meta name="twitter:image" content="https://hanslaureles.vercel.app/images/Laureles_Memory-Core/memory_mockup.jpg">
   
   <!-- Google Fonts: Instrument Serif + Plus Jakarta Sans + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -200,7 +209,7 @@
       <div class="case-meta-table">
         <div class="case-meta-item">
           <div class="label">Platform</div>
-          <div class="val">Antigravity Rules · Discord Swarm · Local CLI</div>
+          <div class="val">Antigravity Rules · Discord Multi-Agent System · Local CLI</div>
         </div>
         <div class="case-meta-item">
           <div class="label">Discipline</div>
@@ -532,10 +541,10 @@
           </div>
         </section>
 
-        <!-- Section 06: Results -->
+        <!-- Section 06: Results & Retrospective -->
         <section id="results" class="case-body-section">
-          <div class="section-tag">// 06 · METRICS &amp; EVALUATION</div>
-          <h3>Engineering Impact &amp; Results</h3>
+          <div class="section-tag">// 06 · EVALS, METRICS &amp; RETROSPECTIVE</div>
+          <h3>Engineering Impact, Retrieval Evals &amp; Retrospective</h3>
           <div class="benchmark-grid">
             <div class="benchmark-card">
               <div class="benchmark-val">0.012s</div>
@@ -554,9 +563,30 @@
             </div>
           </div>
 
+          <h4 style="margin: 28px 0 12px 0;">Architectural Decision: Why BM25 over Dense Vector Embeddings?</h4>
           <p>
-            By connecting this engine to Antigravity's workspace rules and the LE SSERAFIM multi-agent Discord squad, the entire ecosystem now possesses persistent, shared memory. Any lesson learned by one agent is permanently compiled and universally enforced.
+            Many AI agent memory solutions reach prematurely for heavy vector databases (ChromaDB, Pinecone, FAISS) and deep learning frameworks (PyTorch, transformers). In a local developer tooling environment with &lt;500 active guidelines, dense vector embeddings introduce substantial drawbacks: ~350MB+ memory footprint, 800ms+ cold-start latency, and semantic drift where technical identifiers (e.g. <code>sys.stdout</code> vs <code>sys.stdin</code>) get conflated.
           </p>
+          <p>
+            By choosing standard library <strong>Okapi BM25 with token weighting and tag boosting</strong>, retrieval executes in <strong>&lt;1.5ms</strong>, consumes zero persistent RAM, and achieves 100% exact-match recall on critical error codes, syntax flags, and tool parameters.
+          </p>
+
+          <!-- What Broke & What I Would Change -->
+          <h4 style="margin: 32px 0 12px 0;">Retrospective: What Broke &amp; What I Would Change</h4>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+            <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); padding: 18px; border-radius: 8px;">
+              <h5 style="color: #ef4444; margin-bottom: 8px; font-size: 0.95rem;">⚠️ What Broke in V1</h5>
+              <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+                Naive substring matching resulted in false-positive triggers on generic coding words like <code>error</code>, <code>file</code>, and <code>test</code>, injecting unrelated rules into the prompt context.
+              </p>
+            </div>
+            <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 18px; border-radius: 8px;">
+              <h5 style="color: #10b981; margin-bottom: 8px; font-size: 0.95rem;">✓ The Engineering Fix</h5>
+              <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+                Implemented tokenization with an English coding stopword filter, added 3.0× weighting to exact domain tags, and introduced severity multipliers (1.4× for critical bugs) to isolate true matches.
+              </p>
+            </div>
+          </div>
         </section>
 
       </div>
@@ -566,13 +596,13 @@
     <!-- Clean Pagination Section (Full Width with Dedicated Spacing) -->
     <div class="case-pagination-wrap" style="margin-top: 64px; margin-bottom: 32px;">
       <div class="case-pagination" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-        <a href="case-aura.html" class="pag-card">
+        <a href="case-ciel.html" class="pag-card">
           <span class="pag-label">← Previous Case Study</span>
-          <span class="pag-title">05 · Aura Coffee &amp; Kitchen (Specialty Commerce)</span>
+          <span class="pag-title">02 · Manas: Ciel (Voice AI Copilot &amp; HUD)</span>
         </a>
-        <a href="case-ciel.html" class="pag-card" style="text-align: right;">
+        <a href="case-aura.html" class="pag-card" style="text-align: right;">
           <span class="pag-label">Next Case Study →</span>
-          <span class="pag-title">07 · Manas: Ciel (Divine Wisdom Copilot)</span>
+          <span class="pag-title">04 · Aura Coffee &amp; Kitchen (Specialty Commerce)</span>
         </a>
       </div>
     </div>
@@ -682,9 +712,9 @@
           id: "MEM-009",
           domain: "API-RESILIENCY",
           rule: "Always implement exponential backoff retry (sleep 2-4s) and multi-model rotation pool across both Groq and local Ollama.",
-          symptom: "HTTP 429 Too Many Requests rate-limit exceptions crashing async Discord swarm event loops during concurrent burst prompts",
+          symptom: "HTTP 429 Too Many Requests rate-limit exceptions crashing async Discord agent event loops during concurrent burst prompts",
           rootCause: "Burst multi-agent invocations exceeded free-tier cloud API rate limits without a graceful retry or fallback tier",
-          tags: ["api", "groq", "ratelimit", "backoff", "resilience", "retry", "concurrency", "llm", "swarm"],
+          tags: ["api", "groq", "ratelimit", "backoff", "resilience", "retry", "concurrency", "llm", "agents"],
           severity: "CRITICAL",
           frequency: 4
         },
