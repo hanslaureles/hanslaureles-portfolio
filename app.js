@@ -10,15 +10,25 @@
   const THEME_KEY = 'hans_portfolio_theme';
   const themeToggleButtons = document.querySelectorAll('.theme-toggle-btn');
   
+  // Storage access throws in Safari private mode or when site data is blocked;
+  // an uncaught throw here would take down every feature in this IIFE.
+  function readStoredTheme() {
+    try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; }
+  }
+
+  function storeTheme(theme) {
+    try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+  }
+
   function getPreferredTheme() {
-    const saved = localStorage.getItem(THEME_KEY);
+    const saved = readStoredTheme();
     if (saved) return saved;
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem(THEME_KEY, theme);
+    storeTheme(theme);
     updateThemeIcons(theme);
   }
 

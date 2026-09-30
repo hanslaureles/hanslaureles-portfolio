@@ -32,7 +32,8 @@
   <!-- Zero-FOUC Theme Script -->
   <script>
     (function() {
-      const savedTheme = localStorage.getItem('hans_portfolio_theme');
+      let savedTheme = null;
+      try { savedTheme = localStorage.getItem('hans_portfolio_theme'); } catch (e) {}
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const theme = savedTheme || (prefersDark ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', theme);

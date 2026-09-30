@@ -968,7 +968,7 @@
       const mode = (arg || '').toLowerCase();
       if (mode === 'dark' || mode === 'light') {
         document.documentElement.setAttribute('data-theme', mode);
-        localStorage.setItem('hans_portfolio_theme', mode);
+        try { localStorage.setItem('hans_portfolio_theme', mode); } catch (e) {}
         // Sync icon buttons
         const themeToggleButtons = document.querySelectorAll('.theme-toggle-btn');
         themeToggleButtons.forEach(btn => {
