@@ -82,6 +82,28 @@
 
   window.portfolioOverlay = { open: openOverlay, close: closeOverlay };
 
+  // Focus trap for the top-most overlay. `inert` keeps focus off the page behind,
+  // but Tab can still leave the document (to the browser UI) from the last control;
+  // this cycles Tab / Shift+Tab within the overlay instead.
+  const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !overlayStack.length) return;
+    const top = overlayStack[overlayStack.length - 1].el;
+    const items = [...top.querySelectorAll(FOCUSABLE)].filter(el => el.getClientRects().length && getComputedStyle(el).visibility !== 'hidden');
+    if (!items.length) { e.preventDefault(); return; }
+    const first = items[0];
+    const last = items[items.length - 1];
+    const inside = top.contains(document.activeElement);
+    if (e.shiftKey && (document.activeElement === first || !inside)) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && (document.activeElement === last || !inside)) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+
   // --- 2. Mobile Drawer Navigation ---
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const mobileDrawer = document.querySelector('.mobile-drawer');
@@ -448,7 +470,7 @@
   // A region that scrolls but holds nothing focusable can't be scrolled from the
   // keyboard. Demo output boxes grow after interaction, so they are always
   // focusable; terminals and wide tables only when they actually overflow.
-  const ALWAYS_SCROLLABLE = '.memory-result-box, .ciel-response-box';
+  const ALWAYS_SCROLLABLE = '.memory-result-box, .ciel-response-box, .sentinel-terminal-feed';
   const MAYBE_SCROLLABLE = '.terminal-body, .routing-table-container, [style*="overflow-x: auto"], [style*="overflow: auto"]';
 
   document.querySelectorAll(ALWAYS_SCROLLABLE).forEach(el => {

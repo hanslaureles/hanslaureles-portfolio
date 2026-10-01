@@ -337,7 +337,7 @@
               <div class="sakura-sub">Ask anything about Hans's work &amp; experience</div>
             </div>
           </div>
-          <button class="sakura-close-btn" id="sakuraCloseBtn" aria-label="Close Drawer (ESC)">✕ <span class="mono" style="font-size: 0.75rem; opacity: 0.6;">ESC</span></button>
+          <button class="sakura-close-btn" id="sakuraCloseBtn" aria-label="Close Drawer (ESC)">✕ <span class="mono" style="font-size: 0.75rem; color: var(--text-muted);">ESC</span></button>
         </div>
 
         <!-- Status Banner -->
@@ -555,7 +555,7 @@
 
       let html = `
         <div class="sakura-search-meta">
-          <span class="mono" style="color: #F472B6; font-weight: 600;">🌸 SAKURA BRIEFING</span>
+          <span class="mono" style="color: var(--tone-pink); font-weight: 600;">🌸 SAKURA BRIEFING</span>
           <span class="mono" style="color: var(--text-muted);">${results.length} relevant topic${results.length > 1 ? 's' : ''} found</span>
         </div>
 
