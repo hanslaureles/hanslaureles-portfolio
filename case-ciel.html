@@ -696,7 +696,7 @@ tools = [
               <tr style="border-bottom: 1px solid var(--border-color);">
                 <td style="padding: 10px; font-weight: 600;">Tools &amp; Agents</td>
                 <td style="padding: 10px; color: var(--text-secondary);">wttr.in · DDGS · Obsidian REST · 5 LSFM agents</td>
-                <td style="padding: 10px; color: var(--text-secondary);">Runs the planned tools, then each delegated agent task in turn.</td>
+                <td style="padding: 10px; color: var(--text-secondary);">Runs the planned tools in worker threads with per-call timeouts; delegated agents run concurrently.</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border-color);">
                 <td style="padding: 10px; font-weight: 600;">Synthesis</td>
@@ -721,9 +721,9 @@ tools = [
               </p>
             </div>
             <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 18px; border-radius: 8px;">
-              <h4 style="color: #10b981; margin-bottom: 8px; font-size: 0.95rem;">→ The Planned Fix</h4>
+              <h4 style="color: #10b981; margin-bottom: 8px; font-size: 0.95rem;">→ The Fix (Shipped)</h4>
               <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
-                <strong>Still open, and next on the roadmap:</strong> weather (6 s timeout) and web search still run synchronously inside the mission, which blocks the server's event loop. The fix is to move every tool call onto <code>asyncio.to_thread</code> with a per-tool timeout, run independent tools concurrently, and fall back to the last good reading when a sensor is slow.
+                <strong>Fixed in the private build:</strong> every blocking call in a mission (weather, web search, both LLM calls, psutil, Obsidian, git, Gmail, the PDF build, FFmpeg) now runs in a worker thread via <code>asyncio.to_thread</code> with a per-call timeout, so the server's event loop keeps serving other clients while a mission waits. Independent agents run concurrently with <code>asyncio.gather</code>. A call that times out ends as an honest <code>failed</code> ("timed out after N s"), never an empty success. At most two missions run at once; a few more queue, and anything beyond that is refused with a 503 instead of flooding the thread pool. Regression tests prove the loop keeps ticking while a tool blocks.
               </p>
             </div>
           </div>
