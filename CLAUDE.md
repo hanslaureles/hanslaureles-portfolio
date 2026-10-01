@@ -22,8 +22,9 @@ Production developer portfolio and kinetic AI agent showcase for **Hans Aaron La
 - Static site; no compilation or bundling required.
 
 ## Test Commands
-- Automated browser smoke tests: `npx playwright test` (if configured)
-- Link and asset check: verify all relative hrefs in case studies.
+- Same checks as CI: `node --check` on every `*.js` and `aura-store/*.js`; `python tools/check_headings.py` (one h1, no skipped levels); `python tools/check_assets.py` (no duplicate script/stylesheet includes, every local include has `?v=`).
+- Bump `?v=` on every page when shared JS/CSS changes.
+- Playwright smoke tests are planned (Phase 3B-2) and not configured yet.
 
 ## Important Constraints
 - High-density typography and kinetic animations must remain 60fps on mobile and desktop.
