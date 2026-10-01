@@ -18,7 +18,7 @@ RETRACTED = [
     (r"Groq[^.\n<]{0,40}(→|->|&gt;)\s*Gemini|falling back to Gemini on errors|with Gemini (3\.6 Flash )?(as )?(a )?fallback",
      "Groq-first routing for every agent (Yunjin runs Gemini first)"),
     (r"\b14B\s+(param|model)|7B and 14B", "no 14B model runs locally"),
-    (r"0\.015s|12 Unit Tests", "stale test count / runtime"),
+    (r"0\.015s|\b\d+ (Unit )?Tests\b", "hardcoded test count (goes stale; point at CI instead)"),
     (r"ZERO LATENCY|100% vector|2\.5–5s", "absolute or uncited performance claim"),
     (r"~?350\s?MB\+|800\s?ms\+", "unmeasured vector-DB figures"),
     (r"State: nominal|100% nominal|5/5 Agents Nominal", "status nobody checked"),
