@@ -1,0 +1,26 @@
+name: Live site probe
+
+# Checks the deployed site daily: routes and rewrites, the /about.html redirect,
+# security headers, and that production serves the same ?v= as main (a push
+# that never deployed fails here). Also runnable on demand from the Actions tab.
+on:
+  schedule:
+    - cron: "17 2 * * *"   # 02:17 UTC = 10:17 Manila
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Probe https://hanslaureles.vercel.app
+        run: python tools/probe_live.py https://hanslaureles.vercel.app
