@@ -5,11 +5,11 @@
   "rewrites": [
     {
       "source": "/ciel",
-      "destination": "/case-ciel.html"
+      "destination": "/case-ciel"
     },
     {
       "source": "/ciel-hud",
-      "destination": "/case-ciel.html"
+      "destination": "/case-ciel"
     },
     {
       "source": "/aura-store",
