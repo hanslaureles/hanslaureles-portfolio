@@ -38,3 +38,7 @@ jobs:
       # One h1 per page, no skipped levels (handoff invariant 14).
       - name: Heading outline
         run: python tools/check_headings.py
+
+      # No script/stylesheet included twice; every local include has ?v=.
+      - name: Asset includes
+        run: python tools/check_assets.py
