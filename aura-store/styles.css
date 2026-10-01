@@ -1730,6 +1730,31 @@ a {
   .floating-badge {
     display: none;
   }
+  /* Header fits 375 px: the fixed 220 px search pill plus the cart pill pushed
+     the page to 519 px wide. The pill now shrinks instead. */
+  .header-inner {
+    gap: 12px;
+  }
+  .header-actions {
+    gap: 8px;
+    min-width: 0;
+  }
+  .search-bar-pill {
+    width: auto;
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 8px 12px;
+  }
+  .cart-pill-btn {
+    padding: 10px 14px;
+  }
+}
+
+/* Phones: drop the brand sub-line so the search field has room for its placeholder. */
+@media (max-width: 420px) {
+  .brand-sub {
+    display: none;
+  }
 }
 
 /* Reduced Motion: honor the OS setting; near-zero durations keep
