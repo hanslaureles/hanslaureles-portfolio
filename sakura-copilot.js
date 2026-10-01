@@ -439,7 +439,9 @@
     function openDrawer(initialQuery = '') {
       drawer.classList.add('active');
       backdrop.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      // app.js owns scroll lock, inert background and focus return for all overlays.
+      if (window.portfolioOverlay) window.portfolioOverlay.open(drawer);
+      else document.body.style.overflow = 'hidden';
 
       setTimeout(() => {
         inputField.focus();
@@ -453,7 +455,8 @@
     function closeDrawer() {
       drawer.classList.remove('active');
       backdrop.classList.remove('active');
-      document.body.style.overflow = '';
+      if (window.portfolioOverlay) window.portfolioOverlay.close(drawer); // returns focus to the opener
+      else document.body.style.overflow = '';
     }
 
     floatingBtn.addEventListener('click', () => openDrawer());

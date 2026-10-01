@@ -173,7 +173,9 @@
     lastFocusedElement = document.activeElement;
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+    // app.js owns scroll lock, inert background and focus return for all overlays.
+    if (window.portfolioOverlay) window.portfolioOverlay.open(modal);
+    else document.body.style.overflow = 'hidden';
 
     // Focus close button for accessibility
     setTimeout(() => {
@@ -185,10 +187,12 @@
     if (!modal) return;
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
 
-    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
-      lastFocusedElement.focus();
+    if (window.portfolioOverlay) {
+      window.portfolioOverlay.close(modal); // also returns focus to the opener
+    } else {
+      document.body.style.overflow = '';
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') lastFocusedElement.focus();
     }
   }
 

@@ -53,42 +53,81 @@
     });
   });
 
+  // --- Overlays: one owner for scroll lock, inert background and focus return ---
+  // The drawer, lightbox, Sentinel and Sakura all register here, so closing one
+  // never unlocks the page (or un-inerts it) while another is still open.
+  const overlayStack = []; // [{ el, returnTo }]
+
+  function syncOverlays() {
+    const top = overlayStack.length ? overlayStack[overlayStack.length - 1].el : null;
+    document.body.style.overflow = top ? 'hidden' : '';
+    for (const child of document.body.children) {
+      child.inert = Boolean(top) && !child.contains(top);
+    }
+  }
+
+  function openOverlay(el) {
+    if (overlayStack.some(o => o.el === el)) return;
+    overlayStack.push({ el, returnTo: document.activeElement });
+    syncOverlays();
+  }
+
+  function closeOverlay(el) {
+    const i = overlayStack.findIndex(o => o.el === el);
+    if (i < 0) return;
+    const [{ returnTo }] = overlayStack.splice(i, 1);
+    syncOverlays();
+    if (returnTo && typeof returnTo.focus === 'function' && document.contains(returnTo)) returnTo.focus();
+  }
+
+  window.portfolioOverlay = { open: openOverlay, close: closeOverlay };
+
   // --- 2. Mobile Drawer Navigation ---
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const mobileDrawer = document.querySelector('.mobile-drawer');
   const mobileDrawerClose = document.querySelector('.mobile-drawer-close');
 
+  function isDrawerOpen() {
+    return Boolean(mobileDrawer && mobileDrawer.classList.contains('open'));
+  }
+
+  function openDrawer() {
+    mobileDrawer.classList.add('open');
+    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    openOverlay(mobileDrawer);
+    const first = mobileDrawerClose || mobileDrawer.querySelector('a, button');
+    if (first) first.focus();
+  }
+
+  function closeDrawer() {
+    if (!isDrawerOpen()) return;
+    mobileDrawer.classList.remove('open');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    closeOverlay(mobileDrawer); // returns focus to the menu button
+  }
+
   if (mobileMenuBtn && mobileDrawer) {
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileDrawer.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-
-    if (mobileDrawerClose) {
-      mobileDrawerClose.addEventListener('click', () => {
-        mobileDrawer.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    }
-
-    mobileDrawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileDrawer.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
+    if (!mobileDrawer.id) mobileDrawer.id = 'mobileDrawer';
+    mobileMenuBtn.setAttribute('aria-controls', mobileDrawer.id);
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    mobileMenuBtn.addEventListener('click', openDrawer);
+    if (mobileDrawerClose) mobileDrawerClose.addEventListener('click', closeDrawer);
+    mobileDrawer.querySelectorAll('a').forEach(link => link.addEventListener('click', closeDrawer));
   }
 
   // --- 3. Image Lightbox Modal ---
   const lightbox = document.createElement('div');
   lightbox.className = 'lightbox-modal';
+  lightbox.setAttribute('role', 'dialog');
+  lightbox.setAttribute('aria-modal', 'true');
+  lightbox.setAttribute('aria-label', 'Enlarged image');
   lightbox.innerHTML = `
     <div class="lightbox-img-wrapper">
-      <button class="lightbox-close-btn" aria-label="Close Lightbox">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      <button class="lightbox-close-btn" aria-label="Close enlarged image">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         <span>ESC</span>
       </button>
-      <img src="" alt="Enlarged Case Study Graphic">
+      <img src="" alt="">
     </div>
   `;
   document.body.appendChild(lightbox);
@@ -96,21 +135,36 @@
   const lightboxImg = lightbox.querySelector('img');
   const lightboxClose = lightbox.querySelector('.lightbox-close-btn');
 
+  function isLightboxOpen() {
+    return lightbox.classList.contains('active');
+  }
+
   function openLightbox(src, alt) {
     lightboxImg.src = src;
-    lightboxImg.alt = alt || 'Case Study Diagram';
+    lightboxImg.alt = alt || 'Case study image';
     lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    openOverlay(lightbox);
+    lightboxClose.focus();
   }
 
   function closeLightbox() {
+    if (!isLightboxOpen()) return;
     lightbox.classList.remove('active');
     lightboxImg.src = '';
-    document.body.style.overflow = '';
+    closeOverlay(lightbox); // returns focus to the image's trigger button
   }
 
+  // Each enlargeable image sits inside a real <button>, so keyboard and screen
+  // reader users can open it (a clickable <img> is neither focusable nor announced).
   document.querySelectorAll('.gallery-item img, .full-width-image img').forEach(img => {
-    img.addEventListener('click', () => {
+    const target = img.closest('picture') || img;
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'lightbox-trigger';
+    trigger.setAttribute('aria-label', `Enlarge image: ${img.alt || 'case study image'}`);
+    target.parentNode.insertBefore(trigger, target);
+    trigger.appendChild(target);
+    trigger.addEventListener('click', () => {
       // Responsive <picture> images: open the largest variant, not the small fallback src.
       openLightbox(img.dataset.full || img.currentSrc || img.src, img.alt);
     });
@@ -152,13 +206,10 @@
   }
 
   window.addEventListener('keydown', (e) => {
-    // ESC to close Lightbox or Drawer
+    // ESC closes the top-most of the lightbox / drawer.
     if (e.key === 'Escape') {
-      closeLightbox();
-      if (mobileDrawer) {
-        mobileDrawer.classList.remove('open');
-        document.body.style.overflow = '';
-      }
+      if (isLightboxOpen()) closeLightbox();
+      else if (isDrawerOpen()) closeDrawer();
     }
     // Alt+T toggles theme. A modifier is required (WCAG 2.1.4) so typing or
     // speech input never flips the theme; e.code keeps it working on macOS,
@@ -376,5 +427,37 @@
       updateProgressThumb();
     });
   }
+
+  // --- 8. Keyboard-reachable scroll regions (WCAG 2.1.1) ---
+  // A region that scrolls but holds nothing focusable can't be scrolled from the
+  // keyboard. Demo output boxes grow after interaction, so they are always
+  // focusable; terminals and wide tables only when they actually overflow.
+  const ALWAYS_SCROLLABLE = '.memory-result-box, .ciel-response-box';
+  const MAYBE_SCROLLABLE = '.terminal-body, .routing-table-container, [style*="overflow-x: auto"], [style*="overflow: auto"]';
+
+  document.querySelectorAll(ALWAYS_SCROLLABLE).forEach(el => {
+    if (!el.hasAttribute('tabindex')) el.tabIndex = 0;
+  });
+
+  function markScrollRegions() {
+    document.querySelectorAll(MAYBE_SCROLLABLE).forEach(el => {
+      const scrolls = el.scrollWidth > el.clientWidth + 1 || el.scrollHeight > el.clientHeight + 1;
+      if (scrolls) {
+        if (!el.hasAttribute('tabindex')) { el.tabIndex = 0; el.dataset.scrollFocus = '1'; }
+      } else if (el.dataset.scrollFocus) {
+        el.removeAttribute('tabindex');
+        delete el.dataset.scrollFocus;
+      }
+    });
+  }
+
+  let scrollRegionFrame = 0;
+  const scheduleScrollRegions = () => {
+    cancelAnimationFrame(scrollRegionFrame);
+    scrollRegionFrame = requestAnimationFrame(markScrollRegions);
+  };
+  if (document.readyState === 'complete') markScrollRegions();
+  else window.addEventListener('load', markScrollRegions, { once: true });
+  window.addEventListener('resize', scheduleScrollRegions);
 
 })();

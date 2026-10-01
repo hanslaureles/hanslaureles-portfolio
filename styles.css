@@ -20,14 +20,22 @@
 
   --text-primary: #121214;
   --text-secondary: #52504B;
-  --text-muted: #82807A;
+  --text-muted: #6A6964;       /* 5.05:1 on --bg (was #82807A, 3.6:1: failed WCAG AA) */
   --text-inverse: #F7F5F0;
+  /* Accent text tones: darker on light backgrounds for WCAG AA (>= 4.6:1). */
+  --tone-emerald: #0A7753;
+  --tone-sky: #066F9E;
+  --tone-red: #D21212;
+  --tone-pink: #CA1071;
+  --tone-amber: #896302;
+  --tone-blue: #0764D6;
+  --tone-purple: #9025FA;
 
   --border: #E0DDD4;
   --border-subtle: #EBE8DF;
   --border-strong: #121214;
 
-  --accent: #C92A2A;           /* Editorial Crimson — WCAG AAA (7.2:1 against #F7F5F0) */
+  --accent: #C32929;           /* Editorial Crimson — WCAG AA: 5.25:1 on #F7F5F0, 4.66:1 on badge tint #F3E5E0 */
   --accent-hover: #A61E1E;
   --accent-subtle: rgba(201, 42, 42, 0.08);
 
@@ -64,7 +72,14 @@
 
   --text-primary: #F2EFE9;
   --text-secondary: #A09E96;
-  --text-muted: #6B6963;
+  --tone-emerald: #10B981;
+  --tone-sky: #38BDF8;
+  --tone-red: #EF4444;
+  --tone-pink: #F472B6;
+  --tone-amber: #FBBF24;
+  --tone-blue: #60A5FA;
+  --tone-purple: #C084FC;
+  --text-muted: #8A8881;       /* 5.4:1 on --bg (was #6B6963, 3.2-3.5:1: failed WCAG AA) */
   --text-inverse: #0E0F12;
 
   --border: #282A33;
@@ -531,7 +546,7 @@ picture {
 }
 
 .hero-chip-live {
-  color: #10B981;
+  color: var(--tone-emerald);
   border-color: rgba(16, 185, 129, 0.25);
   background: rgba(16, 185, 129, 0.06);
   font-weight: 500;
@@ -1621,11 +1636,11 @@ picture {
 }
 
 .case-challenge-card.problem .case-challenge-tag {
-  color: #EF4444;
+  color: var(--tone-red);
 }
 
 .case-challenge-card.solution .case-challenge-tag {
-  color: #10B981;
+  color: var(--tone-emerald);
 }
 
 .case-challenge-text {
@@ -1661,11 +1676,11 @@ picture {
 }
 
 .case-metric-num.accent-emerald {
-  color: #10B981;
+  color: var(--tone-emerald);
 }
 
 .case-metric-num.accent-blue {
-  color: #38BDF8;
+  color: var(--tone-sky);
 }
 
 .case-metric-label {
@@ -2086,12 +2101,17 @@ picture {
   padding: 24px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--transition-normal);
+  /* Hidden, not just transparent, when closed: an invisible dialog must not stay
+     in the accessibility tree or leave its close button as a Tab stop. */
+  visibility: hidden;
+  transition: opacity var(--transition-normal), visibility 0s linear 0.3s;
 }
 
 .lightbox-modal.active {
   opacity: 1;
   pointer-events: auto;
+  visibility: visible;
+  transition: opacity var(--transition-normal), visibility 0s linear 0s;
 }
 
 .lightbox-img-wrapper {
@@ -2792,7 +2812,7 @@ picture {
 
 .term-quick-label {
   font-size: 0.65rem;
-  color: #64748B;
+  color: #708198;
   font-weight: 600;
   letter-spacing: 0.05em;
 }
@@ -2890,7 +2910,7 @@ picture {
 }
 
 .term-comment {
-  color: #64748B;
+  color: #708198;
   font-style: italic;
 }
 
@@ -3140,7 +3160,7 @@ picture {
   font-size: 0.68rem;
   padding: 2px 6px;
   background: rgba(244, 114, 182, 0.15);
-  color: #F472B6;
+  color: var(--tone-pink);
   border-radius: var(--radius-sm);
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -3211,12 +3231,17 @@ picture {
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Closed = hidden, not just off-screen: otherwise the drawer stays in the
+     accessibility tree and its input and buttons stay in the Tab order. */
+  visibility: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.35s;
   overflow: hidden;
 }
 
 .sakura-drawer.active {
   transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0s;
 }
 
 /* Drawer Header */
@@ -4025,7 +4050,7 @@ picture {
 }
 
 .sentinel-beacon-status {
-  color: #10B981;
+  color: var(--tone-emerald);
   font-weight: 700;
 }
 
@@ -4640,7 +4665,7 @@ picture {
   padding: 4px 10px;
   border-radius: 999px;
   background: rgba(16, 185, 129, 0.1);
-  color: #10B981;
+  color: var(--tone-emerald);
   border: 1px solid rgba(16, 185, 129, 0.25);
   font-weight: 600;
 }
@@ -4891,7 +4916,7 @@ picture {
   padding: 2px 8px;
   border-radius: 999px;
   background: rgba(56, 189, 248, 0.1);
-  color: #38BDF8;
+  color: var(--tone-sky);
   border: 1px solid rgba(56, 189, 248, 0.25);
   white-space: nowrap;
 }
@@ -5011,4 +5036,67 @@ picture {
     transition-duration: 0.01ms !important;
     transition-delay: 0s !important;
   }
+}
+
+
+/* ==========================================================================
+   Accessibility & interaction (Phase 3B-3)
+   ========================================================================== */
+
+/* Always-dark widgets keep the dark-theme text tokens in light theme too,
+   so text inside them stays readable (WCAG AA). */
+.terminal-window, .terminal-quick-actions, .ciel-hud-widget, .memory-console-widget {
+  --text-primary: #F2EFE9;
+  --text-secondary: #A09E96;
+  --text-muted: #8A8881;
+  --accent: #FF5C38;
+  --text-inverse: #0E0F12;     /* .btn-primary text on its --text-primary fill */
+  color: var(--text-primary);  /* inherited text was computed from the light tokens */
+  --tone-emerald: #10B981;
+  --tone-sky: #38BDF8;
+  --tone-red: #EF4444;
+  --tone-pink: #F472B6;
+  --tone-amber: #FBBF24;
+  --tone-blue: #60A5FA;
+  --tone-purple: #C084FC;
+}
+
+/* Visible keyboard focus everywhere (WCAG 2.4.7). Comes last so it also beats
+   the outline:none on the terminal and Sakura text inputs. Mouse clicks don't
+   show it; keyboard focus always does. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Balanced line breaks: no "Multi-" / "Agent" orphans on multi-line headings. */
+h1, h2 {
+  text-wrap: balance;
+}
+
+/* Enlargeable images are wrapped in a real button by app.js. */
+.lightbox-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: zoom-in;
+}
+.lightbox-trigger img {
+  display: block;
+}
+
+/* Touch targets of at least 24 x 24 px (WCAG 2.5.8). */
+.site-footer a:not(.btn),
+.case-back-link,
+.mobile-drawer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
+.lightbox-close-btn {
+  min-height: 32px;
 }

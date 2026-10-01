@@ -240,7 +240,7 @@
           </div>
           <div class="hardware-spec-item">
             <span class="hardware-spec-label">Hosting</span>
-            <span class="hardware-spec-val" style="color: #10B981;">Own Workstation</span>
+            <span class="hardware-spec-val" style="color: var(--tone-emerald);">Own Workstation</span>
             <span class="hardware-spec-sub">No paid servers; cloud calls go to Groq &amp; Gemini APIs</span>
           </div>
         </div>
@@ -872,7 +872,7 @@
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
             <div
               style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); padding: 18px; border-radius: 8px;">
-              <h4 style="color: #ef4444; margin-bottom: 8px; font-size: 0.95rem;">⚠️ What Broke in V1</h4>
+              <h4 style="color: var(--tone-red); margin-bottom: 8px; font-size: 0.95rem;">⚠️ What Broke in V1</h4>
               <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
                 Unbounded asynchronous Discord Gateway event listeners without rate-limit backoff triggered HTTP 429
                 rate limit exceptions from Groq API during sudden batch notification spikes.
@@ -880,7 +880,7 @@
             </div>
             <div
               style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 18px; border-radius: 8px;">
-              <h4 style="color: #10b981; margin-bottom: 8px; font-size: 0.95rem;">✓ The Engineering Fix</h4>
+              <h4 style="color: var(--tone-emerald); margin-bottom: 8px; font-size: 0.95rem;">✓ The Engineering Fix</h4>
               <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
                 Added a second provider: any Groq failure, including a 429, now falls through to Gemini instead of
                 failing the request. <strong>What I'd change next:</strong> there's still no retry with backoff and no

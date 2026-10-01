@@ -21,8 +21,10 @@
   --bg-lavender: #F2EEFA;
 
   /* Primary Brand Tones */
-  --primary: #D97724;
-  --primary-hover: #C06419;
+  /* Toffee caramel: 5.27:1 for white text on it and 4.66:1 as text on cream
+     (was #D97724, 3.17:1 / 2.8:1: failed WCAG AA). */
+  --primary: #A2591B;
+  --primary-hover: #8A4B16;
   --primary-light: #FFF2E5;
   --primary-glow: rgba(217, 119, 36, 0.28);
 
@@ -30,13 +32,13 @@
   --espresso-dark: #1F150E;
   --espresso-medium: #3A2B20;
   --espresso-muted: #6B5B50;
-  --espresso-light: #9C8C80;
+  --espresso-light: #7B6B60;   /* 4.66:1 on cream (was #9C8C80, 3.1:1) */
   --border-subtle: #EFE7DE;
   --border-focus: #D97724;
 
   /* Semantic Accents */
   --accent-gold: #F59E0B;
-  --accent-green: #10B981;
+  --accent-green: #0A7753;   /* 4.7:1 on cream (was #10B981, 2.45:1) */
   --accent-coral: #EF4444;
 
   /* Typography */
@@ -295,6 +297,7 @@ a {
   outline: none;
   font-size: 0.88rem;
   width: 100%;
+  min-height: 24px; /* WCAG 2.5.8 target size */
 }
 
 .search-bar-pill input::placeholder {

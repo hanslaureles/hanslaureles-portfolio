@@ -448,7 +448,7 @@
             Vector embeddings alone frequently struggle with precise syntactic rules (e.g. distinguishing <code>`"`</code> from <code>`'`</code> in PowerShell or exact CSS properties like <code>white-space: nowrap</code>). We designed a domain-weighted BM25 scoring algorithm:
           </p>
 
-          <div style="background: var(--bg-surface, #181b20); border-left: 3px solid var(--accent); padding: 18px 24px; border-radius: 4px; margin: 20px 0; font-family: var(--font-mono); font-size: 0.88rem;">
+          <div style="background: var(--surface); border-left: 3px solid var(--accent); padding: 18px 24px; border-radius: 4px; margin: 20px 0; font-family: var(--font-mono); font-size: 0.88rem;">
             <strong>Score(D, Q)</strong> = ∑ IDF(qᵢ) · [ (TF_weighted · (k₁ + 1)) / (TF_weighted + k₁ · (1 - b + b · (|D| / avgDL))) ] · SeverityMult · FreqMult
           </div>
 
@@ -586,13 +586,13 @@
           <h3 style="margin: 32px 0 12px 0;">Retrospective: What Broke &amp; What I Would Change</h3>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
             <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); padding: 18px; border-radius: 8px;">
-              <h4 style="color: #ef4444; margin-bottom: 8px; font-size: 0.95rem;">⚠️ What Broke in V1</h4>
+              <h4 style="color: var(--tone-red); margin-bottom: 8px; font-size: 0.95rem;">⚠️ What Broke in V1</h4>
               <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
                 Naive substring matching resulted in false-positive triggers on generic coding words like <code>error</code>, <code>file</code>, and <code>test</code>, injecting unrelated rules into the prompt context.
               </p>
             </div>
             <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 18px; border-radius: 8px;">
-              <h4 style="color: #10b981; margin-bottom: 8px; font-size: 0.95rem;">✓ The Engineering Fix</h4>
+              <h4 style="color: var(--tone-emerald); margin-bottom: 8px; font-size: 0.95rem;">✓ The Engineering Fix</h4>
               <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
                 Implemented tokenization with an English coding stopword filter, added 3.0× weighting to exact domain tags, and introduced severity multipliers (1.4× for critical bugs) to isolate true matches.
               </p>

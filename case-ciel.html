@@ -240,9 +240,9 @@
     </div>
     <ul class="mobile-drawer-links">
       <li><a href="index.html">01. Selected Work</a></li>
-      <li><a href="#" class="open-sakura-btn" style="color: #F472B6; font-weight: 600;">🌸 Ask Sakura (AI Copilot)</a></li>
+      <li><a href="#" class="open-sakura-btn" style="color: var(--tone-pink); font-weight: 600;">🌸 Ask Sakura (AI Copilot)</a></li>
       <li><a href="about.html">02. About Me</a></li>
-      <li><a href="case-ciel.html" class="active" style="color: #FBBF24; font-weight: 600;">✦ Flagship: Manas Ciel</a></li>
+      <li><a href="case-ciel.html" class="active" style="color: var(--tone-amber); font-weight: 600;">✦ Flagship: Manas Ciel</a></li>
       <li><a href="case-lsfm.html">03. LSFM AI HQ</a></li>
       <li><a href="case-memory.html">04. Cognitive Memory Core</a></li>
       <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer">05. Resume (PDF) ↗</a></li>
@@ -497,7 +497,7 @@
             <div class="agent-card">
               <div class="agent-card-top">
                 <div class="agent-avatar-badge" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B; border-color: rgba(245, 158, 11, 0.3);">⚡</div>
-                <span class="agent-domain" style="color: #FBBF24;">PILLAR 01 · ORCHESTRATION</span>
+                <span class="agent-domain" style="color: var(--tone-amber);">PILLAR 01 · ORCHESTRATION</span>
               </div>
               <div class="agent-role-title">Autonomous Tool Execution</div>
               <div class="agent-desc">
@@ -509,7 +509,7 @@
             <div class="agent-card">
               <div class="agent-card-top">
                 <div class="agent-avatar-badge" style="background: rgba(16, 185, 129, 0.15); color: #10B981; border-color: rgba(16, 185, 129, 0.3);">🧠</div>
-                <span class="agent-domain" style="color: #10B981;">PILLAR 02 · KNOWLEDGE</span>
+                <span class="agent-domain" style="color: var(--tone-emerald);">PILLAR 02 · KNOWLEDGE</span>
               </div>
               <div class="agent-role-title">Working Memory &amp; Second Brain</div>
               <div class="agent-desc">
@@ -521,7 +521,7 @@
             <div class="agent-card">
               <div class="agent-card-top">
                 <div class="agent-avatar-badge" style="background: rgba(59, 130, 246, 0.15); color: #3B82F6; border-color: rgba(59, 130, 246, 0.3);">🎙️</div>
-                <span class="agent-domain" style="color: #60A5FA;">PILLAR 03 · SPEECH DSP</span>
+                <span class="agent-domain" style="color: var(--tone-blue);">PILLAR 03 · SPEECH DSP</span>
               </div>
               <div class="agent-role-title">Ingestion Polish &amp; Telepathic DSP</div>
               <div class="agent-desc">
@@ -533,7 +533,7 @@
             <div class="agent-card">
               <div class="agent-card-top">
                 <div class="agent-avatar-badge" style="background: rgba(168, 85, 247, 0.15); color: #A855F7; border-color: rgba(168, 85, 247, 0.3);">🛡️</div>
-                <span class="agent-domain" style="color: #C084FC;">PILLAR 04 · TELEMETRY</span>
+                <span class="agent-domain" style="color: var(--tone-purple);">PILLAR 04 · TELEMETRY</span>
               </div>
               <div class="agent-role-title">Proactive Telemetry Sentinels</div>
               <div class="agent-desc">
@@ -552,7 +552,7 @@
             Standard speech synthesis sounds like a flat conversational reading. To give Ciel a "Divine Wisdom" telepathic presence, the pipeline has two FFmpeg stages, one on the way in and one on the way out:
           </p>
 
-          <div style="background: var(--bg-surface, #181b20); border-left: 3px solid #F59E0B; padding: 18px 24px; border-radius: 4px; margin: 20px 0; font-family: var(--font-mono); font-size: 0.88rem;">
+          <div style="background: var(--surface); border-left: 3px solid #F59E0B; padding: 18px 24px; border-radius: 4px; margin: 20px 0; font-family: var(--font-mono); font-size: 0.88rem;">
             <strong>Inbound (speech-to-text prep), piped in memory:</strong><br>
             <code>ffmpeg -i pipe:0 -ar 16000 -ac 1 -af "volume=1.8,highpass=f=80,lowpass=f=7500" -f wav pipe:1</code><br>
             <strong>Outbound (Thought Acceleration filter over the JA + EN Edge-TTS clips):</strong><br>
@@ -630,26 +630,26 @@ tools = [
           </p>
 
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0;">
-            <div style="background: var(--bg-surface, #181b20); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
-              <div style="font-weight: 600; color: #F59E0B; margin-bottom: 6px;">⚡ Hardware Sentinel</div>
+            <div style="background: var(--surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+              <div style="font-weight: 600; color: var(--tone-amber); margin-bottom: 6px;">⚡ Hardware Sentinel</div>
               <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">
                 Reads psutil vitals and warns when CPU load passes 85%, RAM passes 88%, or drive C: drops under 20 GB free. Each warning offers a one-click hand-off to Eunchae.
               </p>
             </div>
-            <div style="background: var(--bg-surface, #181b20); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
-              <div style="font-weight: 600; color: #10B981; margin-bottom: 6px;">🗓️ Daily Log Sentinel</div>
+            <div style="background: var(--surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+              <div style="font-weight: 600; color: var(--tone-emerald); margin-bottom: 6px;">🗓️ Daily Log Sentinel</div>
               <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">
                 Opens today's Obsidian daily log. If it's missing, Ciel suggests Sakura's briefing; otherwise it routes the first unchecked priority to the matching agent by keyword.
               </p>
             </div>
-            <div style="background: var(--bg-surface, #181b20); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
-              <div style="font-weight: 600; color: #60A5FA; margin-bottom: 6px;">📄 Portfolio Sentinel</div>
+            <div style="background: var(--surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+              <div style="font-weight: 600; color: var(--tone-blue); margin-bottom: 6px;">📄 Portfolio Sentinel</div>
               <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">
                 Scans the portfolio's <code>index.html</code> for leftover TODO or FIXME markers and offers a Yunjin audit.
               </p>
             </div>
-            <div style="background: var(--bg-surface, #181b20); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
-              <div style="font-weight: 600; color: #C084FC; margin-bottom: 6px;">🐙 Git Sentinel</div>
+            <div style="background: var(--surface); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+              <div style="font-weight: 600; color: var(--tone-purple); margin-bottom: 6px;">🐙 Git Sentinel</div>
               <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">
                 Runs <code>git status --porcelain</code> on the workspace and, at 3 or more uncommitted changes, offers a Kazuha review of the diff.
               </p>
@@ -726,13 +726,13 @@ tools = [
           <h3 style="margin: 36px 0 12px 0;">Retrospective: What Broke &amp; What I Would Change</h3>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
             <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); padding: 18px; border-radius: 8px;">
-              <h4 style="color: #ef4444; margin-bottom: 8px; font-size: 0.95rem;">⚠️ What Broke in V1</h4>
+              <h4 style="color: var(--tone-red); margin-bottom: 8px; font-size: 0.95rem;">⚠️ What Broke in V1</h4>
               <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
                 Synchronous weather queries to <code>wttr.in</code> and live web search during voice generation caused the audio stream to block and stutter when the user had high internet latency.
               </p>
             </div>
             <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 18px; border-radius: 8px;">
-              <h4 style="color: #10b981; margin-bottom: 8px; font-size: 0.95rem;">→ The Fix (Shipped)</h4>
+              <h4 style="color: var(--tone-emerald); margin-bottom: 8px; font-size: 0.95rem;">→ The Fix (Shipped)</h4>
               <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
                 <strong>Fixed, and the code is public in lsfm-ai-hq:</strong> every blocking call in a mission now runs in a worker thread via <code>asyncio.to_thread</code>: named mission tools (weather, web search, both LLM calls, psutil, Obsidian, git, Gmail, the PDF build) have per-call timeouts, while FFmpeg runs off the event loop without a timeout. The server's event loop keeps serving other clients while a mission waits. Independent agents run concurrently with <code>asyncio.gather</code>. A call that times out ends as an honest <code>failed</code> ("timed out after N s"), never an empty success. At most two missions run at once; a few more queue, and anything beyond that is refused with a 503 instead of flooding the thread pool. Regression tests prove the loop keeps ticking while a tool blocks.
               </p>
