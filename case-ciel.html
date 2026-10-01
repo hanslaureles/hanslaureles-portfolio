@@ -706,7 +706,7 @@ tools = [
               <tr style="border-bottom: 1px solid var(--border-color);">
                 <td style="padding: 10px; font-weight: 600;">Voice</td>
                 <td style="padding: 10px; color: var(--text-secondary);">Edge-TTS + FFmpeg filter</td>
-                <td style="padding: 10px; color: var(--text-secondary);">Japanese clip, a 350 ms pause, then the English clip, through the Thought Acceleration filter. The full MP3 is rendered before playback (no streaming yet).</td>
+                <td style="padding: 10px; color: var(--text-secondary);">Japanese clip, a 350 ms pause, then the English clip, filtered off the event loop in worker threads (no timeout). Full MP3 is rendered before playback (no streaming yet).</td>
               </tr>
             </tbody>
           </table>
@@ -723,7 +723,7 @@ tools = [
             <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 18px; border-radius: 8px;">
               <h4 style="color: #10b981; margin-bottom: 8px; font-size: 0.95rem;">→ The Fix (Shipped)</h4>
               <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
-                <strong>Fixed in the private build:</strong> every blocking call in a mission (weather, web search, both LLM calls, psutil, Obsidian, git, Gmail, the PDF build, FFmpeg) now runs in a worker thread via <code>asyncio.to_thread</code>, with per-call timeouts across external tools and operations so the server's event loop keeps serving other clients while a mission waits. Independent agents run concurrently with <code>asyncio.gather</code>. A call that times out ends as an honest <code>failed</code> ("timed out after N s"), never an empty success. At most two missions run at once; a few more queue, and anything beyond that is refused with a 503 instead of flooding the thread pool. Regression tests prove the loop keeps ticking while a tool blocks.
+                <strong>Fixed in the private build:</strong> every blocking call in a mission now runs in a worker thread via <code>asyncio.to_thread</code>: named mission tools (weather, web search, both LLM calls, psutil, Obsidian, git, Gmail, the PDF build) have per-call timeouts, while FFmpeg runs off the event loop without a timeout. The server's event loop keeps serving other clients while a mission waits. Independent agents run concurrently with <code>asyncio.gather</code>. A call that times out ends as an honest <code>failed</code> ("timed out after N s"), never an empty success. At most two missions run at once; a few more queue, and anything beyond that is refused with a 503 instead of flooding the thread pool. Regression tests prove the loop keeps ticking while a tool blocks.
               </p>
             </div>
           </div>
