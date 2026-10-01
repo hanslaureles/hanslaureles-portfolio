@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: JavaScript syntax
+        run: |
+          for f in *.js aura-store/*.js; do
+            echo "node --check $f"
+            node --check "$f"
+          done
+
+      - name: Deploy configs parse
+        run: |
+          python -c "import json; json.load(open('vercel.json', encoding='utf-8'))"
+          python -c "import tomllib; [tomllib.load(open(p, 'rb')) for p in ('netlify.toml', 'aura-store/netlify.toml')]"
+
+      # One h1 per page, no skipped levels (handoff invariant 14).
+      - name: Heading outline
+        run: python tools/check_headings.py
