@@ -33,7 +33,7 @@
     href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=2.2.4">
+  <link rel="stylesheet" href="styles.css?v=2.2.5">
 
   <!-- Zero-FOUC Theme Script -->
   <script>
@@ -527,18 +527,20 @@
             <div
               style="background: var(--bg); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
               <div style="display: flex; align-items: center; gap: 12px;">
-                <span style="font-size: 1.5rem;">🧪</span>
+                <span style="font-size: 1.5rem;">🔐</span>
                 <div>
-                  <div style="font-weight: 600; font-size: 0.88rem; color: var(--text-primary);">In my private build
-                    (not yet in the public repo)</div>
+                  <div style="font-weight: 600; font-size: 0.88rem; color: var(--text-primary);">Public code, private
+                    data</div>
                   <div style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 2px;">
-                    An Obsidian vault bridge over its Local REST API for shared memory and daily logs, per-agent model
-                    assignments, 429-aware model rotation, a QA gate step in <code>!apply</code>, and extra scheduled
-                    jobs. Everything else on this page is in the public code.
+                    <strong>In the public repo:</strong> the Obsidian vault client (Local REST API with a filesystem
+                    fallback), per-agent model assignments, 429-aware model rotation, the QA gate in
+                    <code>!apply</code>, the scheduled jobs, Ciel's orchestrator and server, and the test suite with CI.
+                    <strong>Kept private:</strong> my vault notes and daily logs, my job-application tracker and resume
+                    (the repo ships templates), bot credentials, standalone helper scripts, and the Ciel HUD front end.
                   </div>
                 </div>
               </div>
-              <span class="badge badge-accent" style="white-space: nowrap;">Private Build</span>
+              <span class="badge badge-accent" style="white-space: nowrap;">Data Stays Private</span>
             </div>
           </div>
         </section>
@@ -929,8 +931,8 @@
     </div>
   </footer>
 
-  <script src="app.js?v=2.2.4"></script>
-  <script src="sakura-copilot.js?v=2.2.4"></script>
+  <script src="app.js?v=2.2.5"></script>
+  <script src="sakura-copilot.js?v=2.2.5"></script>
 </body>
 
 </html>

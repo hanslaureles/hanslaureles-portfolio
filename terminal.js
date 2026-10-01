@@ -452,7 +452,7 @@
     function showStatus() {
       appendOutput(`
 <div class="term-line term-cyan" style="font-weight: 600;">// 5-AGENT SYSTEM — ENGINES &amp; TRIGGERS <span class="term-badge" style="white-space: nowrap;">[SIMULATED / REPLAY]</span></div>
-<div class="term-line term-muted">Public repository defaults shown (no live connection). Workstation build routes Chaewon to gpt-oss-120b and Yunjin to Gemini.</div>
+<div class="term-line term-muted">Default models and schedules from the public lsfm-ai-hq repo (no live connection).</div>
 <table class="term-table">
   <thead>
     <tr class="term-muted">
@@ -461,19 +461,19 @@
   </thead>
   <tbody>
     <tr>
-      <td>🌸 Sakura</td><td>Team Coordinator</td><td>Groq (qwen3.8-27b)</td><td>Daily 08:00 briefing · !apply, !inbox, !ask</td>
+      <td>🌸 Sakura</td><td>Team Coordinator</td><td>Groq (qwen3.8-27b)</td><td>Briefing after 08:00 · rollup after 20:00 · !apply, !inbox, !triage</td>
     </tr>
     <tr>
-      <td>🐯 Chaewon</td><td>Career Assistant</td><td>Groq (qwen3.8-27b) · headless Edge PDF</td><td>On demand · !scout, !apply, !pdf</td>
+      <td>🐯 Chaewon</td><td>Career Assistant</td><td>Groq (gpt-oss-120b) · headless Edge PDF</td><td>Sunday resume rebuild after 22:00 · !scout, !tailor, !pdf</td>
     </tr>
     <tr>
-      <td>🐍 Yunjin</td><td>Design Reviewer</td><td>Groq (qwen3.8-27b)</td><td>Weekly portfolio audit · !audit, !critique</td>
+      <td>🐍 Yunjin</td><td>Design Reviewer</td><td>Gemini (gemini-3.6-flash)</td><td>Weekly portfolio audit · !audit, !critique</td>
     </tr>
     <tr>
-      <td>🦢 Kazuha</td><td>Code &amp; RAG</td><td>Hybrid RAG: Gemini embeddings + BM25</td><td>On demand · !ask, !search, !reindex</td>
+      <td>🦢 Kazuha</td><td>Code &amp; RAG</td><td>Groq (qwen3.8-27b) · RAG: Gemini embeddings + BM25</td><td>Research scout Mon/Wed/Fri after 09:30 · !ask, !search, !git</td>
     </tr>
     <tr>
-      <td>🥔 Eunchae</td><td>System Health</td><td>psutil watchdog</td><td>Every 5 min · daily vitals card after 08:00</td>
+      <td>🥔 Eunchae</td><td>System Health</td><td>Groq (gpt-oss-20b) · psutil watchdog</td><td>Every 5 min · vitals card after 08:00 · Obsidian heartbeat every 15 min</td>
     </tr>
   </tbody>
 </table>
@@ -615,7 +615,7 @@
 
     function showBenchmarks() {
       appendOutput(`
-<div class="term-line term-cyan" style="font-weight: 600;">// INFERENCE MODES: TRADE-OFFS (no timing claims until they're benchmarked)</div>
+<div class="term-line term-cyan" style="font-weight: 600;">// INFERENCE MODES: TRADE-OFFS</div>
 <table class="term-table">
   <thead>
     <tr class="term-muted">
@@ -636,10 +636,11 @@
       <td>Where Prompts Go</td><td class="term-success">Stay on the workstation</td><td class="term-muted">Sent to Groq / Google</td>
     </tr>
     <tr>
-      <td>Latency</td><td class="term-muted">Not yet benchmarked</td><td class="term-muted">Not yet benchmarked</td>
+      <td>Speed (p50)</td><td>28 tokens/s · 7.7 s cold load</td><td>303 ms to first token · 459 tokens/s (network round trip)</td>
     </tr>
   </tbody>
 </table>
+<div class="term-line term-muted" style="margin-top: 4px;">Measured 2026-10-01, N=10, same streamed prompt at temperature 0, on an i5-12400F with the RX 6600 XT (model fully in VRAM). Groq times include this machine's internet path. Source: lsfm-ai-hq bench/results/2026-10-01.md.</div>
 <div class="term-line term-success" style="margin-top: 6px;">Trade-off: local mode buys privacy and offline use; cloud mode buys output quality. The operator picks per task with !mode.</div>
       `.trim());
     }
@@ -719,12 +720,12 @@
           {
             doc: 'case-lsfm.html: Section 03',
             score: '0.942',
-            text: 'LLM Router: three modes (local / cloud / auto). Local mode runs Ollama qwen2.5-coder:7b on an AMD Radeon RX 6600 XT (8GB VRAM); cloud mode uses Groq qwen3.8-27b with Gemini fallback. Zero recurring compute cost; latency not yet benchmarked.'
+            text: 'LLM Router: three modes (local / cloud / auto). Local mode runs Ollama qwen2.5-coder:7b on an AMD Radeon RX 6600 XT (8GB VRAM); cloud mode uses Groq qwen3.8-27b with Gemini fallback. Zero recurring compute cost. Measured 2026-10-01 (N=10): local decodes about 28 tokens/s; Groq returns the first token in about 303 ms over the network.'
           },
           {
-            doc: 'local_ai_agents_playbook.md',
+            doc: 'lsfm-ai-hq/llm_client.py',
             score: '0.887',
-            text: 'Local execution ensures local-first data privacy for private credentials and resumes. Automatic circuit breaker trips to local GPU when cloud threshold exceeds 1200ms.'
+            text: 'Local mode keeps prompts, credentials and resumes on the workstation. There is no automatic cloud-to-local failover: auto mode tries Ollama first and falls through to the agent\'s cloud chain (Groq and Gemini) on a local error.'
           }
         ];
       } else if (qLower.includes('token') || qLower.includes('css') || qLower.includes('color') || qLower.includes('typography')) {
@@ -894,8 +895,8 @@
 
     function showBrain() {
       appendOutput(`
-<div class="term-line term-cyan" style="font-weight: 600;">// OBSIDIAN SECOND BRAIN // LIVE MODEL CONTEXT PROTOCOL (MCP)</div>
-<div class="term-line"><span class="term-success">[BRIDGE]</span> Active stdio MCP server connecting Antigravity &amp; local daemons to Obsidian.</div>
+<div class="term-line term-cyan" style="font-weight: 600;">// OBSIDIAN SECOND BRAIN // VAULT STRUCTURE</div>
+<div class="term-line"><span class="term-success">[BRIDGE]</span> Antigravity reaches the vault through an MCP server. The LSFM agents and Ciel use obsidian_client.py (public in lsfm-ai-hq) over Obsidian's Local REST API, with a filesystem fallback. The vault's notes stay private.</div>
 <div class="term-block" style="margin: 6px 0;">
   <div class="term-line"><span class="term-highlight">00 - Hub</span>: Central dashboard, quick links &amp; navigation indices</div>
   <div class="term-line"><span class="term-highlight">01 - User</span>: Candidate profile, master resume, interview defense playbook</div>

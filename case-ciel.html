@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=2.2.4">
+  <link rel="stylesheet" href="styles.css?v=2.2.5">
   
   <style>
     /* Ciel Interactive Audio & Prompt Simulator */
@@ -666,15 +666,18 @@ tools = [
           <div class="section-tag">// 07 · PIPELINE STAGES &amp; RETROSPECTIVE</div>
           <h2>Pipeline Stages &amp; Architectural Retrospective</h2>
           <p>
-            Every voice turn runs through these stages on my workstation (Intel Core i5-12400F, 16GB DDR4, AMD Radeon RX 6600 XT, Windows 11). Ciel records <code>elapsed_ms</code> for each transcription and mission, but I haven't yet published p50/p95 figures from a recorded set of turns. That benchmark is next.
+            Every voice turn runs through these stages on my workstation (Intel Core i5-12400F, 16GB DDR4, AMD Radeon RX 6600 XT, Windows 11). The p50 column comes from <code>bench/bench_ciel.py</code> in the public repo: N = 10 runs per stage on 2026-10-01. Network stages are round trips from this machine at that time, not compute times. A full mission for a general-knowledge prompt (routing, synthesis and bilingual speech) took <strong>4.43 s p50</strong> (max 5.71 s).
           </p>
 
-          <table class="case-benchmark-table" style="width: 100%; border-collapse: collapse; margin: 20px 0; font-family: var(--font-mono); font-size: 0.86rem;">
+          <!-- Scrolls sideways on narrow screens, like the table in case-memory.html -->
+          <div style="overflow-x: auto; margin: 20px 0;">
+          <table class="case-benchmark-table" style="width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 0.86rem;">
             <thead>
               <tr style="border-bottom: 2px solid var(--border-color); text-align: left; color: var(--text-muted);">
                 <th style="padding: 10px;">PIPELINE STAGE</th>
                 <th style="padding: 10px;">ENGINE</th>
                 <th style="padding: 10px;">WHAT HAPPENS</th>
+                <th style="padding: 10px; white-space: nowrap;">P50 (N=10)</th>
               </tr>
             </thead>
             <tbody>
@@ -682,34 +685,41 @@ tools = [
                 <td style="padding: 10px; font-weight: 600;">Audio Normalization</td>
                 <td style="padding: 10px; color: var(--text-secondary);">FFmpeg</td>
                 <td style="padding: 10px; color: var(--text-secondary);">Resample to 16kHz mono WAV with loudness leveling and voice-band filtering.</td>
+                <td style="padding: 10px; color: var(--text-secondary);">32 ms</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border-color);">
                 <td style="padding: 10px; font-weight: 600;">Speech-to-Text</td>
                 <td style="padding: 10px; color: var(--text-secondary);">Groq Whisper Large v3 Turbo → OpenAI whisper-1</td>
                 <td style="padding: 10px; color: var(--text-secondary);">Domain-vocabulary prompt; the OpenAI tier runs only if Groq fails.</td>
+                <td style="padding: 10px; color: var(--text-secondary);">0.50 s · network</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border-color);">
                 <td style="padding: 10px; font-weight: 600;">Intent Routing</td>
                 <td style="padding: 10px; color: var(--text-secondary);">Keyword pre-router + Groq qwen3.8-27b</td>
                 <td style="padding: 10px; color: var(--text-secondary);">Fast paths for weather, search, and memory reset; the LLM returns a JSON plan for everything else.</td>
+                <td style="padding: 10px; color: var(--text-secondary);">0.58 s · network</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border-color);">
                 <td style="padding: 10px; font-weight: 600;">Tools &amp; Agents</td>
                 <td style="padding: 10px; color: var(--text-secondary);">wttr.in · DDGS · Obsidian REST · 5 LSFM agents</td>
                 <td style="padding: 10px; color: var(--text-secondary);">Runs the planned tools in worker threads with per-call timeouts; delegated agents run concurrently.</td>
+                <td style="padding: 10px; color: var(--text-secondary);">Per tool: vitals 0.50 s, web search 4.6 s · network</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border-color);">
                 <td style="padding: 10px; font-weight: 600;">Synthesis</td>
                 <td style="padding: 10px; color: var(--text-secondary);">Groq qwen3.8-27b</td>
                 <td style="padding: 10px; color: var(--text-secondary);">Writes the full report plus short Japanese and English lines to speak.</td>
+                <td style="padding: 10px; color: var(--text-secondary);">0.96 s · network</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border-color);">
                 <td style="padding: 10px; font-weight: 600;">Voice</td>
                 <td style="padding: 10px; color: var(--text-secondary);">Edge-TTS + FFmpeg filter</td>
                 <td style="padding: 10px; color: var(--text-secondary);">Japanese clip, a 350 ms pause, then the English clip, filtered off the event loop in worker threads (no timeout). Full MP3 is rendered before playback (no streaming yet).</td>
+                <td style="padding: 10px; color: var(--text-secondary);">2.80 s · network (filter alone 81 ms)</td>
               </tr>
             </tbody>
           </table>
+          </div>
 
           <!-- What Broke & What I Would Change -->
           <h3 style="margin: 36px 0 12px 0;">Retrospective: What Broke &amp; What I Would Change</h3>
@@ -723,7 +733,7 @@ tools = [
             <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 18px; border-radius: 8px;">
               <h4 style="color: #10b981; margin-bottom: 8px; font-size: 0.95rem;">→ The Fix (Shipped)</h4>
               <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
-                <strong>Fixed in the private build:</strong> every blocking call in a mission now runs in a worker thread via <code>asyncio.to_thread</code>: named mission tools (weather, web search, both LLM calls, psutil, Obsidian, git, Gmail, the PDF build) have per-call timeouts, while FFmpeg runs off the event loop without a timeout. The server's event loop keeps serving other clients while a mission waits. Independent agents run concurrently with <code>asyncio.gather</code>. A call that times out ends as an honest <code>failed</code> ("timed out after N s"), never an empty success. At most two missions run at once; a few more queue, and anything beyond that is refused with a 503 instead of flooding the thread pool. Regression tests prove the loop keeps ticking while a tool blocks.
+                <strong>Fixed, and the code is public in lsfm-ai-hq:</strong> every blocking call in a mission now runs in a worker thread via <code>asyncio.to_thread</code>: named mission tools (weather, web search, both LLM calls, psutil, Obsidian, git, Gmail, the PDF build) have per-call timeouts, while FFmpeg runs off the event loop without a timeout. The server's event loop keeps serving other clients while a mission waits. Independent agents run concurrently with <code>asyncio.gather</code>. A call that times out ends as an honest <code>failed</code> ("timed out after N s"), never an empty success. At most two missions run at once; a few more queue, and anything beyond that is refused with a 503 instead of flooding the thread pool. Regression tests prove the loop keeps ticking while a tool blocks.
               </p>
             </div>
           </div>
@@ -770,8 +780,8 @@ tools = [
     </div>
   </footer>
 
-  <script src="app.js?v=2.2.4"></script>
-  <script src="sakura-copilot.js?v=2.2.4"></script>
+  <script src="app.js?v=2.2.5"></script>
+  <script src="sakura-copilot.js?v=2.2.5"></script>
   
   <script>
     // Interactive Simulator Logic for Ciel Case Study
