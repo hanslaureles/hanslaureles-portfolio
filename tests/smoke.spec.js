@@ -175,3 +175,39 @@ for (const scheme of ["light", "dark"]) {
     });
   });
 }
+// Aura demo store (its own store.js, not app.js): customizer modal and cart drawer.
+test.describe("Aura store overlays", () => {
+  test("customizer: keyboard open, focus inside and trapped, Escape returns focus", async ({ page }) => {
+    await page.goto("aura-store/index.html", { waitUntil: "networkidle" });
+    await expect(page.getByRole("dialog")).toHaveCount(0); // nothing exposed while closed
+    const trigger = page.locator(".card-add-pill").first();
+    await trigger.focus();
+    await page.keyboard.press("Enter");
+    const dialog = page.locator("#customizer-modal");
+    await expect(dialog).toBeVisible();
+    await expect(dialog.locator(":focus")).toHaveCount(1);
+    await expectFocusTrapped(page, dialog);
+    await page.waitForTimeout(SETTLE_MS);
+    expect(await axeBlocking(page, "#customizer-modal")).toEqual([]);
+    await page.keyboard.press("Escape");
+    await expect(dialog).toBeHidden();
+    await expect(trigger).toBeFocused();
+  });
+
+  test("cart drawer: hidden while closed, keyboard open, trapped, Escape returns focus", async ({ page }) => {
+    await page.goto("aura-store/index.html", { waitUntil: "networkidle" });
+    const drawer = page.locator("#cart-drawer");
+    await expect(drawer).toBeHidden();
+    const trigger = page.locator("#cart-trigger");
+    await trigger.focus();
+    await page.keyboard.press("Enter");
+    await expect(page.getByRole("dialog", { name: "Shopping Bag" })).toBeVisible();
+    await expect(drawer.locator(":focus")).toHaveCount(1);
+    await expectFocusTrapped(page, drawer);
+    await page.waitForTimeout(SETTLE_MS);
+    expect(await axeBlocking(page, "#cart-drawer")).toEqual([]);
+    await page.keyboard.press("Escape");
+    await expect(drawer).toBeHidden();
+    await expect(trigger).toBeFocused();
+  });
+});
