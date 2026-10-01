@@ -276,15 +276,23 @@
       showcaseTrack.appendChild(appendFragment);
     }
 
-    function getMetrics() {
+    // Measured once and cached: the scroll handler used to call getComputedStyle and
+    // getBoundingClientRect on every scroll event, forcing a layout each frame.
+    // A ResizeObserver drops the cache when the track or a card changes size.
+    let cachedMetrics = null;
+
+    function measureMetrics() {
       const card = originalCards[0];
       if (!card) return { step: 0, loopWidth: 0 };
-      const style = window.getComputedStyle(showcaseTrack);
-      const gap = parseFloat(style.gap) || 24;
+      const gap = parseFloat(window.getComputedStyle(showcaseTrack).gap) || 24;
       const cardWidth = card.getBoundingClientRect().width;
       const step = cardWidth + gap;
-      const loopWidth = step * totalCards;
-      return { cardWidth, gap, step, loopWidth };
+      return { cardWidth, gap, step, loopWidth: step * totalCards };
+    }
+
+    function getMetrics() {
+      if (!cachedMetrics || cachedMetrics.loopWidth <= 0) cachedMetrics = measureMetrics();
+      return cachedMetrics;
     }
 
     function initPosition() {
@@ -394,10 +402,18 @@
       });
     }
 
-    window.addEventListener('resize', () => {
+    const onResize = () => {
+      cachedMetrics = null;
       checkBoundaryReset();
       updateProgressThumb();
-    });
+    };
+    if ('ResizeObserver' in window) {
+      const ro = new ResizeObserver(onResize);
+      ro.observe(showcaseTrack);
+      if (originalCards[0]) ro.observe(originalCards[0]);
+    } else {
+      window.addEventListener('resize', onResize);
+    }
 
     // Drag-to-scroll interaction on desktop
     let isDown = false;
