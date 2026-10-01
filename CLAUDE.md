@@ -24,7 +24,9 @@ Production developer portfolio and kinetic AI agent showcase for **Hans Aaron La
 ## Test Commands
 - Same checks as CI: `node --check` on every `*.js` and `aura-store/*.js`; `python tools/check_headings.py` (one h1, no skipped levels); `python tools/check_assets.py` (no duplicate script/stylesheet includes, every local include has `?v=`); `python tools/check_claims.py` (retracted claims stay out; add a pattern whenever a claim is withdrawn).
 - Bump `?v=` on every page when shared JS/CSS changes.
-- Playwright smoke tests are planned (Phase 3B-2) and not configured yet.
+- Playwright smoke tests (CI job `smoke`): `cd tests && npm ci && npx playwright install chromium && npx playwright test`. Every page: no console errors or failed requests, no serious/critical axe violations, no sideways scroll at 375 px, all local links resolve; plus theme toggle, keyboard lightbox and mobile menu. Lives in `tests/` with its own package.json so the site root stays plain static files (`.vercelignore` excludes it).
+- Live probe: `python tools/probe_live.py` (also daily in `.github/workflows/live-probe.yml`): routes, /about.html redirect, security headers, and that production serves the repo's `?v=`.
+- Accessibility rules: text colours come from tokens (`--text-*`, `--tone-*` darken on light backgrounds); always-dark widgets re-declare the dark tokens; overlays go through `window.portfolioOverlay` (scroll lock, inert background, focus return).
 
 ## Important Constraints
 - High-density typography and kinetic animations must remain 60fps on mobile and desktop.
