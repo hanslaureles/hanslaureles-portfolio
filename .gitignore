@@ -5,6 +5,11 @@ desktop.ini
 *.log
 .tempmediaStorage/
 
+# Playwright smoke tests (tests/)
+node_modules/
+tests/test-results/
+tests/playwright-report/
+
 # Python cache
 __pycache__/
 *.pyc
