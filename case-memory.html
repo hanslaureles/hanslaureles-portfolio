@@ -353,7 +353,7 @@
                 <span class="badge badge-accent" style="font-size: 0.7rem;">LIVE RECALL ENGINE</span>
                 <span class="mono" style="margin-left: 8px; font-size: 0.85rem; color: var(--text-muted);">experience_store.jsonl · 10 Active Heuristics</span>
               </div>
-              <div class="mono" style="font-size: 0.78rem; color: var(--accent);">LATENCY: ~1ms (Client-Side BM25)</div>
+              <div class="mono" style="font-size: 0.78rem; color: var(--accent);">CLIENT-SIDE BM25 · RUNS IN YOUR BROWSER</div>
             </div>
 
             <div class="memory-query-bar">
@@ -552,9 +552,9 @@
           <h2>Engineering Impact, Retrieval Evals &amp; Retrospective</h2>
           <div class="benchmark-grid">
             <div class="benchmark-card">
-              <div class="benchmark-val">0.015s</div>
-              <div class="benchmark-label">Unit Test Pass Time</div>
-              <div class="benchmark-sub">12/12 automated tests passing</div>
+              <div class="benchmark-val">16</div>
+              <div class="benchmark-label">Automated Tests</div>
+              <div class="benchmark-sub">Run by GitHub Actions on every push</div>
             </div>
             <div class="benchmark-card">
               <div class="benchmark-val">0 MB</div>
@@ -567,13 +567,19 @@
               <div class="benchmark-sub">MEM-001 to MEM-005 each ranked first</div>
             </div>
           </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -12px; margin-bottom: 24px;">Sources:
+            <code>test_memory.py</code> and <code>test_reflect_safety.py</code> in the
+            <a href="https://github.com/hanslaureles/cognitive-memory-core" target="_blank" rel="noopener">cognitive-memory-core</a>
+            repo. The top-1 result uses the five seeded queries in <code>test_memory.py</code>, written alongside the
+            rules they retrieve, so it shows the ranking works, not how it generalizes; a held-out evaluation set is
+            next on the roadmap.</p>
 
           <h3 style="margin: 28px 0 12px 0;">Architectural Decision: Why BM25 over Dense Vector Embeddings?</h3>
           <p>
             Many AI agent memory solutions reach prematurely for heavy vector databases (ChromaDB, Pinecone, FAISS) and deep learning frameworks (PyTorch, transformers). For a local store of a few hundred guidelines, dense embeddings add a model download, an embedding step on every write, and a dependency stack to maintain, and they can blur exact technical identifiers (e.g. <code>sys.stdout</code> vs <code>sys.stdin</code>) that a keyword match keeps apart.
           </p>
           <p>
-            By choosing standard library <strong>field-weighted BM25 with tag boosting</strong>, retrieval runs in <strong>0.8 ms at p50</strong> (1.5 ms worst case across 2,000 calls on the current store), holds nothing in memory between calls, and ranks the correct rule first for every seeded test query, including exact error codes like <code>TerminatorExpectedAtEndOfString</code>.
+            By choosing standard library <strong>field-weighted BM25 with tag boosting</strong>, retrieval runs in <strong>0.8 ms at p50</strong> (about 1.5 ms worst case across 2,000 calls on the current 10-entry store; measured with <code>bench_recall.py</code> on an Intel Core i5-12400F, Windows 11, Python 3.11, 2026-10-01), holds nothing in memory between calls, and ranks the correct rule first for every seeded test query, including exact error codes like <code>TerminatorExpectedAtEndOfString</code>.
           </p>
 
           <!-- What Broke & What I Would Change -->
