@@ -170,7 +170,7 @@
       category: "Quality Assurance & Standards",
       keywords: ["audit", "yunjin", "qa", "wcag", "accessibility", "standards", "lint", "health", "score", "assets"],
       summary: "Hans built Yunjin, an automated portfolio design critic and QA auditor in the LSFM swarm that checks asset hygiene and writes structured design critiques.",
-      evidence: "Scans every portfolio page for broken image assets on a 6-hour schedule, and on !audit / !critique writes LLM design critiques with a portfolio health score.",
+      evidence: "Scans every portfolio page for broken image assets once a week, and on !audit / !critique writes LLM design critiques with a portfolio health score.",
       linkUrl: "case-lsfm.html",
       linkText: "🎨 View LSFM Daemon Roster →"
     },

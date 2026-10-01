@@ -19,7 +19,7 @@
   const REPLAY_EVENTS = [
     { agent: 'EUNCHAE', emoji: '🛡️', msg: 'Watchdog cycle: CPU, RAM and disk sampled via psutil (every 5 min).' },
     { agent: 'SAKURA', emoji: '🌸', msg: 'Daily briefing posts once a day after 08:00.' },
-    { agent: 'YUNJIN', emoji: '🎨', msg: 'Portfolio audit (every 6 h): page structure and image assets scanned.' },
+    { agent: 'YUNJIN', emoji: '🎨', msg: 'Weekly portfolio audit: page structure and image assets scanned.' },
     { agent: 'SAKURA', emoji: '🌸', msg: 'On !inbox: unread mail is classified into 10 LSFM/ Gmail labels.' },
     { agent: 'KAZUHA', emoji: '💻', msg: 'On !ask: answers are grounded in the SQLite + Gemini-embedding knowledge base.' },
     { agent: 'CHAEWON', emoji: '⭐', msg: 'On !pdf: the single-page ATS resume is compiled with headless Edge.' }

@@ -429,7 +429,7 @@
 <div class="term-line term-cyan" style="font-weight: 600;">AVAILABLE COMMANDS:</div>
 <table class="term-table">
   <tr><td><span class="term-highlight" style="color: #FBBF24;">ciel</span></td><td>✦ Manas: Ciel Divine Wisdom AI Voice HUD &amp; DSP</td></tr>
-  <tr><td><span class="term-highlight">status</span></td><td>Check live status of all 5 AI agents</td></tr>
+  <tr><td><span class="term-highlight">status</span></td><td>Show each agent's engine and schedule</td></tr>
   <tr><td><span class="term-highlight">agents</span></td><td>Learn what each of the 5 AI agents does</td></tr>
   <tr><td><span class="term-highlight">vitals</span></td><td>⚡ Eunchae's hardware &amp; CPU/RAM watchdog (sample snapshot)</td></tr>
   <tr><td><span class="term-highlight">matrix</span></td><td>🛡️ Inspect 5-agent system orchestration matrix</td></tr>
@@ -451,32 +451,34 @@
 
     function showStatus() {
       appendOutput(`
-<div class="term-line term-cyan" style="font-weight: 600;">// 5-AGENT SYSTEM — LIVE STATUS</div>
+<div class="term-line term-cyan" style="font-weight: 600;">// 5-AGENT SYSTEM — ENGINES &amp; TRIGGERS <span class="term-badge" style="white-space: nowrap;">[SIMULATED / REPLAY]</span></div>
+<div class="term-line term-muted">Static data from the public lsfm-ai-hq code. This page has no live connection to the agents.</div>
 <table class="term-table">
   <thead>
     <tr class="term-muted">
-      <th>AGENT</th><th>ROLE</th><th>SPEED</th><th>STATUS</th>
+      <th>AGENT</th><th>ROLE</th><th>PRIMARY ENGINE</th><th>TRIGGER / SCHEDULE</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>🌸 Sakura</td><td>Team Coordinator</td><td class="term-cyan">18ms</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🌸 Sakura</td><td>Team Coordinator</td><td>Groq (qwen3.8-27b)</td><td>Daily 08:00 briefing · !apply, !inbox, !ask</td>
     </tr>
     <tr>
-      <td>🐯 Chaewon</td><td>Career Assistant</td><td class="term-cyan">18ms</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🐯 Chaewon</td><td>Career Assistant</td><td>Groq (qwen3.8-27b) · headless Edge PDF</td><td>On demand · !scout, !apply, !pdf</td>
     </tr>
     <tr>
-      <td>🐍 Yunjin</td><td>Design Reviewer</td><td class="term-cyan">19ms</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🐍 Yunjin</td><td>Design Reviewer</td><td>Groq (qwen3.8-27b)</td><td>Weekly portfolio audit · !audit, !critique</td>
     </tr>
     <tr>
-      <td>🦢 Kazuha</td><td>Knowledge &amp; RAG</td><td class="term-cyan">17ms</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🦢 Kazuha</td><td>Code &amp; RAG</td><td>Hybrid RAG: Gemini embeddings + BM25</td><td>On demand · !ask, !search, !reindex</td>
     </tr>
     <tr>
-      <td>🥔 Eunchae</td><td>System Health</td><td class="term-cyan">20ms</td><td><span class="term-badge success">● ONLINE</span></td>
+      <td>🥔 Eunchae</td><td>System Health</td><td>psutil watchdog</td><td>Every 5 min · daily vitals card after 08:00</td>
     </tr>
   </tbody>
 </table>
-<div class="term-line term-muted" style="margin-top: 4px;">Location: Manila, Philippines (UTC+8) · Zero Cloud Hosting Cost</div>
+<div class="term-line term-muted" style="margin-top: 4px;">All agents share one LLM layer: Groq first, Gemini (gemini-3.6-flash) if Groq fails, optional local Ollama (qwen2.5-coder:7b).</div>
+<div class="term-line term-muted">Host: Intel Core i5-12400F · 16 GB DDR4 · AMD Radeon RX 6600 XT (8 GB) · Manila, Philippines (UTC+8)</div>
 <div class="term-line term-cyan" style="margin-top: 4px;">💡 Tip: Type <span class="term-highlight">'agents'</span> to see what each agent does, or <span class="term-highlight">'projects'</span> to view work.</div>
       `.trim());
     }
@@ -561,7 +563,7 @@
   <tr><td><strong class="term-highlight">SECOND BRAIN</strong></td><td>Bidirectional Obsidian Vault Bridge (Rules, Career, Profile, Daily)</td></tr>
   <tr><td><strong class="term-highlight">SENSORY RADAR</strong></td><td class="term-cyan">Live Meteorology (wttr.in) + Real-Time Web Intelligence (DDGS)</td></tr>
   <tr><td><strong class="term-highlight">WORKING MEMORY</strong></td><td class="term-cyan">8-Turn Sliding Conversational Context Buffer</td></tr>
-  <tr><td><strong class="term-highlight">PROACTIVE SENTINELS</strong></td><td>4 Domains: Hardware Vitals, Career Pipeline, Rules, Git Cleanliness</td></tr>
+  <tr><td><strong class="term-highlight">PROACTIVE SENTINELS</strong></td><td>4 Checks: Hardware Vitals, Git Status, Obsidian Daily Log, Portfolio Markers</td></tr>
   <tr><td><strong class="term-highlight">SUPERVISED AGENTS</strong></td><td>Supervises 5 LSFM Agents: Sakura, Chaewon, Kazuha, Yunjin, Eunchae</td></tr>
   <tr><td><strong class="term-highlight">LIVE SIMULATOR</strong></td><td><a href="case-ciel.html#simulator" class="term-link">In-Page Thought Acceleration Demo ↗</a></td></tr>
   <tr><td><strong class="term-highlight">CASE STUDY</strong></td><td><a href="case-ciel.html" class="term-link">portfolio-site/case-ciel.html ↗</a></td></tr>
@@ -848,7 +850,7 @@
           </div>
         `;
       });
-      html += `<div class="term-line term-success">✓ Retrieved from local experience_store.jsonl in 11ms</div>`;
+      html += `<div class="term-line term-success">✓ Keyword-matched in your browser against a sample of experience_store.jsonl (the Python BM25 engine measures 0.8 ms median recall)</div>`;
       appendOutput(html.trim());
     }
 
