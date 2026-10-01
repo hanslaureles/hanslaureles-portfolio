@@ -145,6 +145,11 @@ h4 {
   font-size: clamp(1.25rem, 2.5vw, 1.75rem);
 }
 
+/* Type-scale utilities: keep a heading's visual size when its level is set
+   by the document outline (one h1, no skipped levels) rather than by looks. */
+.type-h2 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
+.type-h3 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+
 p {
   color: var(--text-secondary);
   font-size: 1.05rem;
@@ -1398,7 +1403,7 @@ picture {
   filter: grayscale(0%) contrast(100%);
 }
 
-.about-narrative h2 {
+.about-narrative h1 {
   margin-bottom: 24px;
 }
 
@@ -1493,7 +1498,7 @@ picture {
   padding: 28px;
 }
 
-.skill-category h4 {
+.skill-category h3 {
   font-size: 1.3rem;
   margin-bottom: 18px;
   padding-bottom: 10px;
@@ -1762,10 +1767,26 @@ picture {
   scroll-margin-top: 100px;
 }
 
-.case-body-section h3 {
+/* Case-study outline: h1 title > h2 section > h3 subsection > h4 callout.
+   Sizes match the previous h3/h4/h5 rendering. */
+.case-body-section h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
   margin-bottom: 20px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border-subtle);
+}
+
+.case-body-section h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.case-body-section h4 {
+  font-family: inherit;
+  font-size: 0.83em;
+  font-weight: 700;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
 }
 
 .case-body-section p {
@@ -2005,7 +2026,7 @@ picture {
   transform: translateY(-1px);
 }
 
-.footer-links-group h4 {
+.footer-links-group h3 {
   font-size: 1.1rem;
   font-family: var(--font-sans);
   font-weight: 700;
@@ -4968,5 +4989,26 @@ picture {
   }
   .principles-banner {
     padding: 18px 20px;
+  }
+}
+
+/* --- Reduced Motion ---
+   Honors the OS "reduce motion" setting (WCAG 2.3.3). Pulses, fades and
+   slides finish instantly; near-zero durations (not 0) keep transitionend /
+   animationend events firing for the JS that waits on them. */
+@media (prefers-reduced-motion: reduce) {
+  html,
+  * {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
   }
 }

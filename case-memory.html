@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=2.2.2">
+  <link rel="stylesheet" href="styles.css?v=2.2.3">
   
   <style>
     /* Interactive Recall Widget Styles */
@@ -140,7 +140,7 @@
       </nav>
 
       <div class="header-actions">
-        <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Press T)">
+        <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Alt+T)" aria-keyshortcuts="Alt+T">
           <!-- Icon injected by app.js -->
         </button>
         <button class="mobile-menu-btn" aria-label="Open navigation menu">
@@ -324,7 +324,7 @@
         <!-- Section 01: Problem -->
         <section id="dilemma" class="case-body-section">
           <div class="section-tag">// 01 · CONTEXT &amp; MOTIVATION</div>
-          <h3>The Dilemma: AI Session Amnesia</h3>
+          <h2>The Dilemma: AI Session Amnesia</h2>
           <p>
             Contemporary AI coding assistants are fundamentally stateless between sessions. Every new conversation, branch switch, or tool invocation begins with a clean slate. This creates a frustrating, repetitive developer experience:
           </p>
@@ -341,7 +341,7 @@
         <!-- Section 02: Interactive Recall Widget -->
         <section id="simulator" class="case-body-section">
           <div class="section-tag">// 02 · REAL-TIME RECALL DEMO</div>
-          <h3>Interactive Simulator: Pre-Flight BM25 Recall</h3>
+          <h2>Interactive Simulator: Pre-Flight BM25 Recall</h2>
           <p>
             Try querying the real episodic memory store below. Watch how the engine scores query tokens against past failure symptoms, root causes, and permanent rules to return tailored heuristics in milliseconds:
           </p>
@@ -384,7 +384,7 @@
         <!-- Section 03: Architecture -->
         <section id="architecture" class="case-body-section">
           <div class="section-tag">// 03 · ENGINE SPECIFICATION</div>
-          <h3>The 4-Pillar Self-Improving Engine</h3>
+          <h2>The 4-Pillar Self-Improving Engine</h2>
           <p>
             The engine operates without heavy external vector databases or heavyweight pip packages, requiring only standard Python 3:
           </p>
@@ -443,7 +443,7 @@
         <!-- Section 04: Mathematical Retrieval Mechanics -->
         <section id="math" class="case-body-section">
           <div class="section-tag">// 04 · ALGORITHMIC MECHANICS</div>
-          <h3>Mathematical Retrieval Mechanics</h3>
+          <h2>Mathematical Retrieval Mechanics</h2>
           <p>
             Vector embeddings alone frequently struggle with precise syntactic rules (e.g. distinguishing <code>`"`</code> from <code>`'`</code> in PowerShell or exact CSS properties like <code>white-space: nowrap</code>). We designed a domain-weighted BM25 scoring algorithm:
           </p>
@@ -465,7 +465,7 @@
         <!-- Section 05: Real-World Lessons Distilled -->
         <section id="heuristics" class="case-body-section">
           <div class="section-tag">// 05 · ACTIVE PRODUCTION KNOWLEDGE</div>
-          <h3>Distilled Workspace Heuristics Seeded</h3>
+          <h2>Distilled Workspace Heuristics Seeded</h2>
           <p>
             The episodic memory store maintains 10 verified heuristics continuously distilled from our active production engineering sessions:
           </p>
@@ -549,7 +549,7 @@
         <!-- Section 06: Results & Retrospective -->
         <section id="results" class="case-body-section">
           <div class="section-tag">// 06 · EVALS, METRICS &amp; RETROSPECTIVE</div>
-          <h3>Engineering Impact, Retrieval Evals &amp; Retrospective</h3>
+          <h2>Engineering Impact, Retrieval Evals &amp; Retrospective</h2>
           <div class="benchmark-grid">
             <div class="benchmark-card">
               <div class="benchmark-val">0.015s</div>
@@ -568,7 +568,7 @@
             </div>
           </div>
 
-          <h4 style="margin: 28px 0 12px 0;">Architectural Decision: Why BM25 over Dense Vector Embeddings?</h4>
+          <h3 style="margin: 28px 0 12px 0;">Architectural Decision: Why BM25 over Dense Vector Embeddings?</h3>
           <p>
             Many AI agent memory solutions reach prematurely for heavy vector databases (ChromaDB, Pinecone, FAISS) and deep learning frameworks (PyTorch, transformers). In a local developer tooling environment with &lt;500 active guidelines, dense vector embeddings introduce substantial drawbacks: ~350MB+ memory footprint, 800ms+ cold-start latency, and semantic drift where technical identifiers (e.g. <code>sys.stdout</code> vs <code>sys.stdin</code>) get conflated.
           </p>
@@ -577,16 +577,16 @@
           </p>
 
           <!-- What Broke & What I Would Change -->
-          <h4 style="margin: 32px 0 12px 0;">Retrospective: What Broke &amp; What I Would Change</h4>
+          <h3 style="margin: 32px 0 12px 0;">Retrospective: What Broke &amp; What I Would Change</h3>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
             <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); padding: 18px; border-radius: 8px;">
-              <h5 style="color: #ef4444; margin-bottom: 8px; font-size: 0.95rem;">⚠️ What Broke in V1</h5>
+              <h4 style="color: #ef4444; margin-bottom: 8px; font-size: 0.95rem;">⚠️ What Broke in V1</h4>
               <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
                 Naive substring matching resulted in false-positive triggers on generic coding words like <code>error</code>, <code>file</code>, and <code>test</code>, injecting unrelated rules into the prompt context.
               </p>
             </div>
             <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 18px; border-radius: 8px;">
-              <h5 style="color: #10b981; margin-bottom: 8px; font-size: 0.95rem;">✓ The Engineering Fix</h5>
+              <h4 style="color: #10b981; margin-bottom: 8px; font-size: 0.95rem;">✓ The Engineering Fix</h4>
               <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
                 Implemented tokenization with an English coding stopword filter, added 3.0× weighting to exact domain tags, and introduced severity multipliers (1.4× for critical bugs) to isolate true matches.
               </p>
@@ -822,7 +822,7 @@
       }
     })();
   </script>
-  <script src="app.js?v=2.2.2"></script>
-  <script src="sakura-copilot.js?v=2.2.2"></script>
+  <script src="app.js?v=2.2.3"></script>
+  <script src="sakura-copilot.js?v=2.2.3"></script>
 </body>
 </html>

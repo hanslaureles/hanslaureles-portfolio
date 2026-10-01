@@ -34,7 +34,7 @@
     href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=2.2.2">
+  <link rel="stylesheet" href="styles.css?v=2.2.3">
 
   <!-- Zero-FOUC Theme Script -->
   <script>
@@ -74,11 +74,11 @@
 
       <div class="header-actions">
         <button class="sakura-nav-btn" id="sakuraNavBtn" aria-label="Ask Sakura AI Recruiter Assistant"
-          title="Ask Sakura AI Copilot (Press / or Ctrl+K)">
+          title="Ask Sakura AI Copilot (Ctrl+K)" aria-keyshortcuts="Control+K Meta+K">
           <span>🌸</span>
           <span>Ask Sakura</span>
         </button>
-        <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Press T)">
+        <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Alt+T)" aria-keyshortcuts="Alt+T">
           <!-- Icon injected by app.js -->
         </button>
         <button class="mobile-menu-btn" aria-label="Open navigation menu">
@@ -138,7 +138,7 @@
           </div>
           <button class="sentinel-beacon-btn" id="sentinelToggleBtn"
             aria-label="Open the agent system overview (simulated replay, not a live connection)"
-            title="Click or Press 'S' to open the agent system overview">
+            title="Open the agent system overview (Alt+S)" aria-keyshortcuts="Alt+S">
             <span class="sentinel-pulse-beacon is-simulated" aria-hidden="true"></span>
             <span class="sentinel-sim-badge">Simulated / Replay</span>
             <span class="sentinel-beacon-tag">LOCAL AGENTS:</span>
@@ -235,7 +235,7 @@
           <div class="telemetry-header">
             <div class="telemetry-header-title">
               <span class="mono" style="color: var(--accent); font-weight: 600;">// APPLIED AI SHOWCASE</span>
-              <h3 style="font-size: 1.15rem; margin: 0;">5 Specialized Agents (LSFM System)</h3>
+              <h2 style="font-size: 1.15rem; margin: 0;">5 Specialized Agents (LSFM System)</h2>
             </div>
             <div class="telemetry-live-indicator">
               <span class="pulse-dot" aria-hidden="true"></span>
@@ -349,7 +349,7 @@
             </div>
 
             <div class="terminal-body" id="terminal-viewport">
-              <div id="terminal-output"></div>
+              <div id="terminal-output" role="log" aria-live="polite" aria-label="Terminal output"></div>
               <div id="terminal-input-row" class="terminal-input-row">
                 <span class="term-prompt">guest@hanslaureles:~$</span>
                 <div class="terminal-input-wrapper">
@@ -750,7 +750,7 @@
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
           <div class="footer-links-group">
-            <h4>Navigation</h4>
+            <h3>Navigation</h3>
             <ul class="footer-nav-list">
               <li><a href="index.html">Selected Work</a></li>
               <li><a href="case-ciel.html">Manas: Ciel Case Study</a></li>
@@ -764,7 +764,7 @@
             </ul>
           </div>
           <div class="footer-links-group">
-            <h4>Connect</h4>
+            <h3>Connect</h3>
             <ul class="footer-nav-list">
               <li><a href="https://linkedin.com/in/hanslaureles" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
               <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
@@ -991,10 +991,10 @@
     </div>
   </div>
 
-  <script src="app.js?v=2.2.2"></script>
-  <script src="terminal.js?v=2.2.2"></script>
-  <script src="sakura-copilot.js?v=2.2.2"></script>
-  <script src="sentinel.js?v=2.2.2"></script>
+  <script src="app.js?v=2.2.3"></script>
+  <script src="terminal.js?v=2.2.3"></script>
+  <script src="sakura-copilot.js?v=2.2.3"></script>
+  <script src="sentinel.js?v=2.2.3"></script>
 </body>
 
 </html>

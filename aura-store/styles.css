@@ -1728,3 +1728,22 @@ a {
     display: none;
   }
 }
+
+/* Reduced Motion: honor the OS setting; near-zero durations keep
+   transitionend events firing for the cart drawer and modals. */
+@media (prefers-reduced-motion: reduce) {
+  html,
+  * {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+}

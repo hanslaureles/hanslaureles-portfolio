@@ -150,8 +150,11 @@
         document.body.style.overflow = '';
       }
     }
-    // 'T' to toggle theme (when not in input/textarea)
-    if ((e.key === 't' || e.key === 'T') && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+    // Alt+T toggles theme. A modifier is required (WCAG 2.1.4) so typing or
+    // speech input never flips the theme; e.code keeps it working on macOS,
+    // where Option+T produces a different e.key.
+    if (e.code === 'KeyT' && e.altKey && !e.ctrlKey && !e.metaKey && !e.repeat) {
+      e.preventDefault();
       const current = document.documentElement.getAttribute('data-theme') || 'light';
       applyTheme(current === 'dark' ? 'light' : 'dark');
     }
@@ -299,8 +302,10 @@
       if (step <= 0) return;
 
       clearTimeout(navTimer);
-      showcaseTrack.style.scrollBehavior = 'smooth';
-      showcaseTrack.scrollBy({ left: direction * step, behavior: 'smooth' });
+      // Honor the OS "reduce motion" setting: jump instead of gliding.
+      const scrollMode = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+      showcaseTrack.style.scrollBehavior = scrollMode;
+      showcaseTrack.scrollBy({ left: direction * step, behavior: scrollMode });
 
       navTimer = setTimeout(() => {
         checkBoundaryReset();

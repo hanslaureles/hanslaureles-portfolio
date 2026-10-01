@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=2.2.2">
+  <link rel="stylesheet" href="styles.css?v=2.2.3">
   
   <style>
     /* Ciel Interactive Audio & Prompt Simulator */
@@ -215,11 +215,11 @@
 
       <div class="header-actions">
         <button class="sakura-nav-btn" id="sakuraNavBtn" aria-label="Ask Sakura AI Recruiter Assistant"
-          title="Ask Sakura AI Copilot (Press / or Ctrl+K)">
+          title="Ask Sakura AI Copilot (Ctrl+K)" aria-keyshortcuts="Control+K Meta+K">
           <span>🌸</span>
           <span>Ask Sakura</span>
         </button>
-        <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Press T)">
+        <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Alt+T)" aria-keyshortcuts="Alt+T">
           <!-- Icon injected by app.js -->
         </button>
         <button class="mobile-menu-btn" aria-label="Open navigation menu">
@@ -408,7 +408,7 @@
         <!-- Section 01: Concept & Motivation -->
         <section id="concept" class="case-body-section">
           <div class="section-tag">// 01 · CONTEXT &amp; PHILOSOPHY</div>
-          <h3>The Divine Wisdom Core Philosophy</h3>
+          <h2>The Divine Wisdom Core Philosophy</h2>
           <p>
             In modern software engineering, developers are bombarded by fragmentation: switching between terminal shells, Slack or Discord communication channels, Obsidian documentation vaults, and cloud LLM web interfaces. 
           </p>
@@ -425,7 +425,7 @@
         <!-- Section 02: Interactive Simulator -->
         <section id="simulator" class="case-body-section">
           <div class="section-tag">// 02 · REAL-TIME HUD DEMO</div>
-          <h3>Interactive Simulator: Thought-Accelerated Voice Queries</h3>
+          <h2>Interactive Simulator: Thought-Accelerated Voice Queries</h2>
           <p>
             A scripted simulation of Ciel's Divine Wisdom Core. Click any prompt chip to see the kind of response Ciel gives. Replies are pre-written examples, not live output:
           </p>
@@ -488,7 +488,7 @@
         <!-- Section 03: The 4 Pillars -->
         <section id="pillars" class="case-body-section">
           <div class="section-tag">// 03 · ARCHITECTURAL FOUNDATION</div>
-          <h3>The 4 Pillars of Manas: Ciel</h3>
+          <h2>The 4 Pillars of Manas: Ciel</h2>
           <p>
             Ciel's architecture is structured around four production pillars engineered to deliver instant latency, permanent memory, clean audio ingestion, and proactive foresight:
           </p>
@@ -547,7 +547,7 @@
         <!-- Section 04: Speech DSP & Acceleration -->
         <section id="audio-dsp" class="case-body-section">
           <div class="section-tag">// 04 · SIGNAL PROCESSING &amp; DSP</div>
-          <h3>Speech DSP &amp; Thought Acceleration Mechanics</h3>
+          <h2>Speech DSP &amp; Thought Acceleration Mechanics</h2>
           <p>
             Standard speech synthesis sounds like a flat conversational reading. To give Ciel a "Divine Wisdom" telepathic presence, the pipeline has two FFmpeg stages, one on the way in and one on the way out:
           </p>
@@ -574,7 +574,7 @@
         <!-- Section 05: Obsidian Second Brain Sync -->
         <section id="vault-sync" class="case-body-section">
           <div class="section-tag">// 05 · BI-DIRECTIONAL MEMORY</div>
-          <h3>Direct Obsidian Second Brain Synchronization</h3>
+          <h2>Direct Obsidian Second Brain Synchronization</h2>
           <p>
             Most AI voice assistants operate in complete isolation from personal knowledge systems. Ciel connects directly to Hans's Obsidian Second Brain vault (`Obsidian-v2/`) via a hybrid Local REST API + File-System Bridge:
           </p>
@@ -624,7 +624,7 @@ tools = [
         <!-- Section 06: Proactive Telemetry Sentinels -->
         <section id="sentinels" class="case-body-section">
           <div class="section-tag">// 06 · AUTONOMOUS FORESIGHT</div>
-          <h3>Proactive Telemetry Sentinels (Pillar 4)</h3>
+          <h2>Proactive Telemetry Sentinels (Pillar 4)</h2>
           <p>
             Passive voice assistants only speak when spoken to. Ciel features a dedicated background sentinel engine (<code>proactive_sentinel.py</code>) that runs every 45 seconds while the HUD is connected, ranks what it finds (warning &gt; action &gt; info), and surfaces the top 3 across 4 checks:
           </p>
@@ -664,7 +664,7 @@ tools = [
         <!-- Section 07: Benchmarks & Retrospective -->
         <section id="benchmarks" class="case-body-section">
           <div class="section-tag">// 07 · PIPELINE STAGES &amp; RETROSPECTIVE</div>
-          <h3>Pipeline Stages &amp; Architectural Retrospective</h3>
+          <h2>Pipeline Stages &amp; Architectural Retrospective</h2>
           <p>
             Every voice turn runs through these stages on my workstation (Intel Core i5-12400F, 16GB DDR4, AMD Radeon RX 6600 XT, Windows 11). Ciel records <code>elapsed_ms</code> for each transcription and mission, but I haven't yet published p50/p95 figures from a recorded set of turns. That benchmark is next.
           </p>
@@ -712,16 +712,16 @@ tools = [
           </table>
 
           <!-- What Broke & What I Would Change -->
-          <h4 style="margin: 36px 0 12px 0;">Retrospective: What Broke &amp; What I Would Change</h4>
+          <h3 style="margin: 36px 0 12px 0;">Retrospective: What Broke &amp; What I Would Change</h3>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
             <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); padding: 18px; border-radius: 8px;">
-              <h5 style="color: #ef4444; margin-bottom: 8px; font-size: 0.95rem;">⚠️ What Broke in V1</h5>
+              <h4 style="color: #ef4444; margin-bottom: 8px; font-size: 0.95rem;">⚠️ What Broke in V1</h4>
               <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
                 Synchronous weather queries to <code>wttr.in</code> and live web search during voice generation caused the audio stream to block and stutter when the user had high internet latency.
               </p>
             </div>
             <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 18px; border-radius: 8px;">
-              <h5 style="color: #10b981; margin-bottom: 8px; font-size: 0.95rem;">→ The Planned Fix</h5>
+              <h4 style="color: #10b981; margin-bottom: 8px; font-size: 0.95rem;">→ The Planned Fix</h4>
               <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
                 <strong>Still open, and next on the roadmap:</strong> weather (6 s timeout) and web search still run synchronously inside the mission, which blocks the server's event loop. The fix is to move every tool call onto <code>asyncio.to_thread</code> with a per-tool timeout, run independent tools concurrently, and fall back to the last good reading when a sensor is slow.
               </p>
@@ -729,9 +729,9 @@ tools = [
           </div>
 
           <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); padding: 20px; border-radius: 8px; margin-top: 24px;">
-            <h5 style="margin-bottom: 8px; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+            <h4 style="margin-bottom: 8px; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
               <span style="color: var(--accent);">🛠️</span> Production Architecture Note
-            </h5>
+            </h4>
             <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); margin: 0;">
               While <code>edge-tts</code> provides exceptional low-latency speech synthesis for local developer environments at zero cost, enterprise production deployment would swap it for self-hosted Kokoro/Vits pipelines or dedicated WebRTC audio streaming to satisfy enterprise uptime SLAs.
             </p>
@@ -770,8 +770,8 @@ tools = [
     </div>
   </footer>
 
-  <script src="app.js?v=2.2.2"></script>
-  <script src="sakura-copilot.js?v=2.2.2"></script>
+  <script src="app.js?v=2.2.3"></script>
+  <script src="sakura-copilot.js?v=2.2.3"></script>
   
   <script>
     // Interactive Simulator Logic for Ciel Case Study

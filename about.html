@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=2.2.2">
+  <link rel="stylesheet" href="styles.css?v=2.2.3">
   
   <!-- Zero-FOUC Theme Script -->
   <script>
@@ -63,11 +63,11 @@
       </nav>
 
       <div class="header-actions">
-        <button class="sakura-nav-btn" id="sakuraNavBtn" aria-label="Ask Sakura AI Recruiter Assistant" title="Ask Sakura AI Copilot (Press / or Ctrl+K)">
+        <button class="sakura-nav-btn" id="sakuraNavBtn" aria-label="Ask Sakura AI Recruiter Assistant" title="Ask Sakura AI Copilot (Ctrl+K)" aria-keyshortcuts="Control+K Meta+K">
           <span>🌸</span>
           <span>Ask Sakura</span>
         </button>
-        <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Press T)">
+        <button class="theme-toggle-btn" aria-label="Toggle light and dark theme" title="Toggle theme (Alt+T)" aria-keyshortcuts="Alt+T">
           <!-- Icon injected by app.js -->
         </button>
         <button class="mobile-menu-btn" aria-label="Open navigation menu">
@@ -130,7 +130,7 @@
 
         <div class="about-narrative">
           <div class="badge badge-accent" style="margin-bottom: 16px;">The Engineer Behind the Architecture</div>
-          <h2>Engineering autonomous intelligence with<br><span class="serif-italic">systems discipline &amp; human feeling.</span></h2>
+          <h1 class="type-h2">Engineering autonomous intelligence with<br><span class="serif-italic">systems discipline &amp; human feeling.</span></h1>
           
           <p class="lead">
             I'm <strong>Hans Aaron Laureles</strong>, a Computer Science graduate from De La Salle University–Dasmariñas specializing in autonomous multi-agent swarms, local GPU inference orchestration, and production full-stack systems.
@@ -154,7 +154,7 @@
         <div class="section-header" style="align-items: flex-end; flex-wrap: wrap; gap: 16px;">
           <div>
             <div class="section-tag">// 01 · TRACK RECORD</div>
-            <h3>Engineering Experience &amp; Systems</h3>
+            <h2 class="type-h3">Engineering Experience &amp; Systems</h2>
           </div>
 
           <!-- Dual-Mode View Switcher -->
@@ -485,7 +485,7 @@
         <div class="section-header">
           <div>
             <div class="section-tag">// 02 · CONTINUOUS LEARNING</div>
-            <h3>Applied AI Competencies &amp; Growth</h3>
+            <h2 class="type-h3">Applied AI Competencies &amp; Growth</h2>
           </div>
         </div>
 
@@ -527,7 +527,7 @@
         <div class="section-header">
           <div>
             <div class="section-tag">// 03 · CAPABILITIES</div>
-            <h3>Core Engineering &amp; Design Stack</h3>
+            <h2 class="type-h3">Core Engineering &amp; Design Stack</h2>
           </div>
         </div>
 
@@ -535,10 +535,10 @@
           
           <!-- Pillar 1: Applied AI & Agents -->
           <div class="skill-category">
-            <h4>
+            <h3>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
               Applied AI &amp; Agents
-            </h4>
+            </h3>
             <div class="skill-pills">
               <span class="skill-pill">Multi-Agent Swarms</span>
               <span class="skill-pill">Hybrid Vector RAG (Dense + BM25)</span>
@@ -557,10 +557,10 @@
 
           <!-- Pillar 2: Systems & Automation -->
           <div class="skill-category">
-            <h4>
+            <h3>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
               Systems &amp; Cloud Automation
-            </h4>
+            </h3>
             <div class="skill-pills">
               <span class="skill-pill">Python (asyncio &amp; OOP)</span>
               <span class="skill-pill">Google Workspace REST APIs</span>
@@ -576,10 +576,10 @@
 
           <!-- Pillar 3: High-Craft Interface -->
           <div class="skill-category">
-            <h4>
+            <h3>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
               Interface Craft &amp; Design
-            </h4>
+            </h3>
             <div class="skill-pills">
               <span class="skill-pill">React &amp; Next.js</span>
               <span class="skill-pill">TypeScript &amp; ES6+</span>
@@ -599,7 +599,7 @@
       <!-- CTA Box -->
       <section class="section-spacing-sm">
         <div class="hero-stats-panel" style="text-align: center; padding: 48px 24px;">
-          <h3 style="margin-bottom: 12px;">Ready to engineer something remarkable?</h3>
+          <h2 class="type-h3" style="margin-bottom: 12px;">Ready to engineer something remarkable?</h2>
           <p style="max-width: 580px; margin: 0 auto 24px auto;">
             Whether you are building autonomous agent pipelines, modernizing technical infrastructure, or need an AI engineer who designs with high craft, let's connect.
           </p>
@@ -648,8 +648,8 @@
     </div>
   </footer>
 
-  <script src="app.js?v=2.2.2"></script>
-  <script src="sakura-copilot.js?v=2.2.2"></script>
+  <script src="app.js?v=2.2.3"></script>
+  <script src="sakura-copilot.js?v=2.2.3"></script>
   <script>
     // Dual-Mode Experience View Toggler & SHA Copy
     (function () {

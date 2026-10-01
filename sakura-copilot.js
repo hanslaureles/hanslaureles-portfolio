@@ -120,9 +120,9 @@
       category: "Telemetry & Observability",
       keywords: ["sentinel", "telemetry", "mission control", "hud", "ping", "vitals", "clock", "manila", "status", "fleet", "heartbeat", "ambient"],
       summary: "The Sentinel panel on this site is a clearly labeled simulated replay of Hans's 5-agent swarm. The real agents run on his local workstation, and the site has no live connection to them.",
-      evidence: "Click the hero beacon (or press 'S' / type 'sentinel' in the terminal) to open it: a real Manila UTC+8 clock, events that mirror the agents' actual schedules, a 'Replay a Mission' walkthrough of the real !apply pipeline, and a copyable architecture summary.",
+      evidence: "Click the hero beacon (or press Alt+S / type 'sentinel' in the terminal) to open it: a real Manila UTC+8 clock, events that mirror the agents' actual schedules, a 'Replay a Mission' walkthrough of the real !apply pipeline, and a copyable architecture summary.",
       linkUrl: "index.html#sentinel",
-      linkText: "⚡ Inspect Sentinel Telemetry HUD (Press 'S') →"
+      linkText: "⚡ Inspect Sentinel Telemetry HUD (Alt+S) →"
     },
     {
       id: "KNOW-12",
@@ -383,7 +383,7 @@
           </div>
 
           <!-- Output Results Feed -->
-          <div class="sakura-output" id="sakuraOutput">
+          <div class="sakura-output" id="sakuraOutput" aria-live="polite" aria-label="Sakura's answers">
             <div class="sakura-welcome-state">
               <div class="sakura-greeting-title">Ask me anything about Hans.</div>
               <p>
@@ -465,12 +465,13 @@
     closeBtn.addEventListener('click', closeDrawer);
     backdrop.addEventListener('click', closeDrawer);
 
-    // Global Keyboard Shortcuts (ESC to close, Ctrl+K or / to open)
+    // Global Keyboard Shortcuts (ESC to close, Ctrl+K / Cmd+K to open).
+    // The bare "/" shortcut was dropped: single-character shortcuts fail WCAG 2.1.4.
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && drawer.classList.contains('active')) {
         closeDrawer();
       }
-      if ((e.key === '/' || (e.ctrlKey && e.key.toLowerCase() === 'k')) && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+      if ((e.ctrlKey || e.metaKey) && !e.altKey && e.code === 'KeyK') {
         e.preventDefault();
         openDrawer();
       }

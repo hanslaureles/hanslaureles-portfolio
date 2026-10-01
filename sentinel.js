@@ -103,20 +103,13 @@
       });
     }
 
-    // Keyboard Shortcuts: 'S' or 's' opens, 'Escape' closes
+    // Keyboard Shortcuts: Alt+S toggles, Escape closes. A modifier is
+    // required (WCAG 2.1.4); e.code keeps it working with macOS Option.
     document.addEventListener('keydown', (e) => {
-      // Don't trigger if user is typing in an input, textarea, or contenteditable
-      const activeEl = document.activeElement;
-      const isInput = activeEl && (
-        activeEl.tagName === 'INPUT' ||
-        activeEl.tagName === 'TEXTAREA' ||
-        activeEl.isContentEditable ||
-        activeEl.classList.contains('terminal-input')
-      );
-
       if (e.key === 'Escape' && isModalOpen()) {
         closeModal();
-      } else if ((e.key === 's' || e.key === 'S') && !isInput && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      } else if (e.code === 'KeyS' && e.altKey && !e.ctrlKey && !e.metaKey && !e.repeat) {
+        e.preventDefault();
         // Toggle modal
         if (isModalOpen()) {
           closeModal();
