@@ -42,3 +42,7 @@ jobs:
       # No script/stylesheet included twice; every local include has ?v=.
       - name: Asset includes
         run: python tools/check_assets.py
+
+      # Retracted claims (unbacked cost, stale counts, Groq-first routing...) stay out.
+      - name: Retracted claims
+        run: python tools/check_claims.py

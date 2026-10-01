@@ -22,7 +22,7 @@ Production developer portfolio and kinetic AI agent showcase for **Hans Aaron La
 - Static site; no compilation or bundling required.
 
 ## Test Commands
-- Same checks as CI: `node --check` on every `*.js` and `aura-store/*.js`; `python tools/check_headings.py` (one h1, no skipped levels); `python tools/check_assets.py` (no duplicate script/stylesheet includes, every local include has `?v=`).
+- Same checks as CI: `node --check` on every `*.js` and `aura-store/*.js`; `python tools/check_headings.py` (one h1, no skipped levels); `python tools/check_assets.py` (no duplicate script/stylesheet includes, every local include has `?v=`); `python tools/check_claims.py` (retracted claims stay out; add a pattern whenever a claim is withdrawn).
 - Bump `?v=` on every page when shared JS/CSS changes.
 - Playwright smoke tests are planned (Phase 3B-2) and not configured yet.
 
