@@ -314,7 +314,7 @@
             <span>●</span> The Engineering Challenge
           </div>
           <p class="case-challenge-text">
-            Commercial voice assistants (Siri, Alexa, ChatGPT Voice) are sluggish (2.5–5s round-trip latency), prone to robotic droning, isolate voice from actual code execution, and operate in total amnesia with zero awareness of personal developer notes or background task health.
+            Commercial voice assistants (Siri, Alexa, ChatGPT Voice) are built for general consumers: they are prone to robotic droning, isolate voice from actual code execution, and operate in total amnesia with zero awareness of personal developer notes or background task health.
           </p>
         </div>
         <div class="case-challenge-card solution">
@@ -587,7 +587,7 @@
                 <span class="terminal-dot green"></span>
               </div>
               <div class="terminal-title">OBSIDIAN_VAULT_BRIDGE // TOOL DEFINITIONS</div>
-              <div class="mono" style="font-size: 0.72rem; color: #10B981;">● ZERO LATENCY SYNC</div>
+              <div class="mono" style="font-size: 0.72rem; color: #10B981;">● LOCAL REST + DISK FALLBACK</div>
             </div>
             <div class="terminal-body">
 <pre><span class="terminal-comment"># Native Tool Schema for Ciel Divine Wisdom Core</span>
@@ -744,7 +744,7 @@ tools = [
               <span style="color: var(--accent);">🛠️</span> Production Architecture Note
             </h4>
             <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); margin: 0;">
-              While <code>edge-tts</code> provides exceptional low-latency speech synthesis for local developer environments at zero cost, enterprise production deployment would swap it for self-hosted Kokoro/Vits pipelines or dedicated WebRTC audio streaming to satisfy enterprise uptime SLAs.
+              While <code>edge-tts</code> needs no API key and returned an English clip in 0.42 s p50 in the 2026-10-01 bench (a network round trip to Microsoft's service), enterprise production deployment would swap it for self-hosted Kokoro/Vits pipelines or dedicated WebRTC audio streaming to satisfy enterprise uptime SLAs.
             </p>
           </div>
         </section>
