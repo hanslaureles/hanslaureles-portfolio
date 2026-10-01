@@ -452,7 +452,7 @@
     function showStatus() {
       appendOutput(`
 <div class="term-line term-cyan" style="font-weight: 600;">// 5-AGENT SYSTEM — ENGINES &amp; TRIGGERS <span class="term-badge" style="white-space: nowrap;">[SIMULATED / REPLAY]</span></div>
-<div class="term-line term-muted">Static data from the public lsfm-ai-hq code. This page has no live connection to the agents.</div>
+<div class="term-line term-muted">Public repository defaults shown (no live connection). Workstation build routes Chaewon to gpt-oss-120b and Yunjin to Gemini.</div>
 <table class="term-table">
   <thead>
     <tr class="term-muted">
