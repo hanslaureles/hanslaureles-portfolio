@@ -69,7 +69,9 @@ def main():
     status, headers, _ = fetch("/about.html")
     location = headers.get("location", "")
     print(f"{status}  /about.html -> {location}")
-    if status not in (301, 308) or not location.rstrip("/").endswith("/about"):
+    # Exactly 308: Vercel's cleanUrls answers .html requests with a permanent,
+    # method-preserving redirect. A 301 would mean the config changed.
+    if status != 308 or not location.rstrip("/").endswith("/about"):
         problems.append(f"/about.html: HTTP {status} -> {location!r} (expected 308 -> /about)")
 
     _, headers, _ = fetch("/")
