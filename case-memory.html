@@ -722,7 +722,7 @@
           domain: "API-RESILIENCY",
           rule: "Always implement exponential backoff retry (sleep 2-4s) and multi-model rotation pool across both Groq and local Ollama.",
           symptom: "HTTP 429 Too Many Requests rate-limit exceptions crashing async Discord agent event loops during concurrent burst prompts",
-          rootCause: "Burst multi-agent invocations exceeded free-tier cloud API rate limits without a graceful retry or fallback tier",
+          rootCause: "Burst multi-agent invocations exceeded cloud API rate limits without a graceful retry or fallback tier",
           tags: ["api", "groq", "ratelimit", "backoff", "resilience", "retry", "concurrency", "llm", "agents"],
           severity: "CRITICAL",
           frequency: 4

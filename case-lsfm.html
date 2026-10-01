@@ -335,7 +335,7 @@
             </div>
           </div>
           <div class="pull-quote">
-            “How might we architect a self-hosted, low-cost operations headquarters where specialized AI agents
+            “How might we architect a self-hosted operations headquarters where specialized AI agents
             coordinate autonomously over familiar interfaces, backed by local GPU acceleration?”
           </div>
           <p>
@@ -550,7 +550,7 @@
           <div class="section-tag">// 03 · INFERENCE RUNTIME</div>
           <h2>Multi-Provider Routing: Groq, Gemini &amp; an Optional Local GPU</h2>
           <p>
-            A core engineering priority was <strong>high-quality output on free-tier quotas</strong> without locking
+            A core engineering priority was <strong>high-quality output within provider rate limits</strong> without locking
             the system to one provider. Every agent calls a single dispatcher, <code>query_llm()</code>, whose
             behavior the operator switches live from Discord with <code>!mode local | cloud | auto</code>:
           </p>

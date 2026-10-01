@@ -14,7 +14,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 RETRACTED = [
-    (r"\$0\.00|\$0/mo|zero[- ]cost|zero (cloud|recurring)", "unbacked cost claim (no dated billing record)"),
+    (r"\$0\.00|\$0/mo|zero[- ]cost|zero (cloud|recurring|unexpected)|low[- ]cost|free[- ]tier",
+     "unbacked cost claim (no dated billing record)"),
     (r"Groq[^.\n<]{0,40}(→|->|&gt;)\s*Gemini|falling back to Gemini on errors|with Gemini (3\.6 Flash )?(as )?(a )?fallback",
      "Groq-first routing for every agent (Yunjin runs Gemini first)"),
     (r"\b14B\s+(param|model)|7B and 14B", "no 14B model runs locally"),
