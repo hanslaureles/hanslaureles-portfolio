@@ -12,6 +12,23 @@ const PAGES = [
   "aura-store/index.html", "aura-store/checkout.html", "aura-store/confirmation.html",
 ];
 
+async function axeBlocking(page, include) {
+  let builder = new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]);
+  if (include) builder = builder.include(include);
+  const results = await builder.analyze();
+  return results.violations
+    .filter((v) => ["serious", "critical"].includes(v.impact))
+    .map((v) => `${v.id} (${v.impact}): ${v.nodes.length} node(s), e.g. ${v.nodes[0].target.join(" ")}`);
+}
+
+// Tab and Shift+Tab, several times each, must never move focus out of the dialog.
+async function expectFocusTrapped(page, dialog) {
+  for (const key of ["Tab", "Tab", "Tab", "Shift+Tab", "Shift+Tab", "Shift+Tab"]) {
+    await page.keyboard.press(key);
+    await expect(dialog.locator(":focus"), `focus escaped after ${key}`).toHaveCount(1);
+  }
+}
+
 function trackErrors(page) {
   const errors = [];
   page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
@@ -33,11 +50,7 @@ for (const path of PAGES) {
 
     test("has no serious or critical axe violations", async ({ page }) => {
       await page.goto(path, { waitUntil: "networkidle" });
-      const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
-      const blocking = results.violations
-        .filter((v) => ["serious", "critical"].includes(v.impact))
-        .map((v) => `${v.id} (${v.impact}): ${v.nodes.length} node(s), e.g. ${v.nodes[0].target.join(" ")}`);
-      expect(blocking).toEqual([]);
+      expect(await axeBlocking(page)).toEqual([]);
     });
 
     test("does not scroll sideways at 375 px", async ({ page }) => {
@@ -98,6 +111,7 @@ test("lightbox opens from the keyboard, closes with Escape, and returns focus", 
   const dialog = page.getByRole("dialog");
   await expect(dialog).toBeVisible();
   await expect(dialog.locator(":focus")).toHaveCount(1); // focus moved into the dialog
+  await expectFocusTrapped(page, dialog);
   await page.keyboard.press("Escape");
   await expect(dialog).toBeHidden();
   await expect(trigger).toBeFocused();
@@ -111,7 +125,53 @@ test("mobile menu exposes its state and closes with Escape", async ({ page }) =>
   await button.click();
   await expect(button).toHaveAttribute("aria-expanded", "true");
   await expect(page.locator("main")).toHaveAttribute("inert", "");
+  await expectFocusTrapped(page, page.locator(".mobile-drawer"));
   await page.keyboard.press("Escape");
   await expect(button).toHaveAttribute("aria-expanded", "false");
   await expect(button).toBeFocused();
 });
+
+// Overlays are closed when the page-level axe scan runs, so each one is opened
+// (with dynamic content rendered) and scanned on its own, in both themes.
+const SETTLE_MS = 500; // let open transitions finish so axe sees final colours
+
+for (const scheme of ["light", "dark"]) {
+  test.describe(`open overlays pass axe (${scheme})`, () => {
+    test.use({ colorScheme: scheme });
+
+    test("Sakura drawer with an answer", async ({ page }) => {
+      await page.goto("index.html", { waitUntil: "networkidle" });
+      await page.locator(".sakura-floating-trigger").click();
+      await expect(page.locator("#sakuraDrawer")).toBeVisible();
+      await page.locator("#sakuraSearchInput").fill("multi-agent experience");
+      await page.keyboard.press("Enter");
+      await expect(page.locator("#sakuraOutput")).not.toBeEmpty();
+      await page.waitForTimeout(SETTLE_MS);
+      expect(await axeBlocking(page, "#sakuraDrawer")).toEqual([]);
+    });
+
+    test("Sentinel modal after a mission replay", async ({ page }) => {
+      await page.goto("index.html", { waitUntil: "networkidle" });
+      await page.locator("#sentinelToggleBtn").click();
+      await page.locator("#sentinelReplayBtn").click();
+      await expect(page.locator("#sentinelLogFeed .log-highlight").nth(1)).toBeVisible({ timeout: 10_000 });
+      await page.waitForTimeout(SETTLE_MS);
+      expect(await axeBlocking(page, "#sentinelModal")).toEqual([]);
+    });
+
+    test("mobile drawer", async ({ page }) => {
+      await page.setViewportSize({ width: 375, height: 812 });
+      await page.goto("index.html", { waitUntil: "networkidle" });
+      await page.locator(".mobile-menu-btn").click();
+      await page.waitForTimeout(SETTLE_MS);
+      expect(await axeBlocking(page, ".mobile-drawer")).toEqual([]);
+    });
+
+    test("lightbox", async ({ page }) => {
+      await page.goto("case-aura.html", { waitUntil: "networkidle" });
+      await page.locator(".lightbox-trigger").first().click();
+      await page.waitForTimeout(SETTLE_MS);
+      expect(await axeBlocking(page, ".lightbox-modal")).toEqual([]);
+    });
+  });
+}
