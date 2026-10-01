@@ -27,7 +27,7 @@
       title: "LSFM AI HQ — 5-Agent Autonomous Swarm",
       category: "Autonomous Systems",
       keywords: ["lsfm", "ai hq", "agents", "swarm", "autonomous", "discord", "multi-agent", "orchestration", "asyncio", "python", "gmail", "triage", "sakura", "chaewon", "kazuha", "yunjin", "eunchae"],
-      summary: "Hans architected LSFM AI HQ, an autonomous 5-agent operations platform: five Discord bots with distinct personas on one asyncio event loop, routing LLM work through per-agent Groq and Gemini models with the other provider as a fallback, at zero cloud compute cost.",
+      summary: "Hans architected LSFM AI HQ, an autonomous 5-agent operations platform: five Discord bots with distinct personas on one asyncio event loop, routing LLM work through per-agent Groq and Gemini models with the other provider as a fallback, self-hosted on his own workstation.",
       evidence: "Operates 5 specialized agents: Sakura (Chief of Staff, briefings & Gmail triage), Chaewon (Career & ATS PDF compiler), Yunjin (Design critic), Kazuha (Knowledge & RAG over SQLite), and Eunchae (System Guardian & hardware vitals). Gmail triage uses Google OAuth2 and two-tier classification across 10 custom Gmail labels with non-destructive bulk-archiving.",
       linkUrl: "case-lsfm.html",
       linkText: "Read LSFM AI HQ Architecture Deep-Dive →"
@@ -37,7 +37,7 @@
       title: "Local GPU Inference on AMD Radeon RX 6600 XT",
       category: "Inference & Hardware",
       keywords: ["gpu", "hardware", "amd", "rx 6600 xt", "ollama", "local ai", "inference", "qwen", "gemini", "groq", "hybrid", "offline", "silicon", "router", "fallback"],
-      summary: "Hans built a zero-cost LLM router with three operator-selectable modes: cloud (Groq qwen3.8-27b with Gemini 3.6 Flash as fallback), local (Ollama qwen2.5-coder:7b on his AMD Radeon RX 6600 XT, 8GB VRAM), and auto (local first, then cloud).",
+      summary: "Hans built an LLM router with three operator-selectable modes: cloud (per-agent models on Groq and Gemini, each falling back to the other provider), local (Ollama qwen2.5-coder:7b on his AMD Radeon RX 6600 XT, 8GB VRAM), and auto (local first, then cloud).",
       evidence: "Switchable live from Discord with !mode. Local mode keeps prompts on the workstation and fails fast if Ollama isn't running; auto mode probes Ollama and falls through to the cloud chain (Groq then Gemini; Gemini then Groq for Yunjin) on any local error. There is no automatic cloud-to-local failover.",
       linkUrl: "case-lsfm.html",
       linkText: "Inspect Hybrid Router in Case Study →"

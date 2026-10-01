@@ -197,8 +197,8 @@
 
       <div class="case-metrics-strip">
         <div class="case-metric-cell">
-          <div class="case-metric-num accent-emerald">$0.00 / mo</div>
-          <div class="case-metric-label">Cloud API Spend (free tiers)</div>
+          <div class="case-metric-num accent-emerald">Self-Hosted</div>
+          <div class="case-metric-label">On a personal workstation</div>
         </div>
         <div class="case-metric-cell">
           <div class="case-metric-num accent-blue">3 Modes</div>
@@ -239,9 +239,9 @@
             <span class="hardware-spec-sub">Dual-Channel (2 × 8GB)</span>
           </div>
           <div class="hardware-spec-item">
-            <span class="hardware-spec-label">Cloud API Spend</span>
-            <span class="hardware-spec-val" style="color: #10B981;">$0.00 / Month</span>
-            <span class="hardware-spec-sub">Free-tier APIs; excludes electricity &amp; hardware</span>
+            <span class="hardware-spec-label">Hosting</span>
+            <span class="hardware-spec-val" style="color: #10B981;">Own Workstation</span>
+            <span class="hardware-spec-sub">No paid servers; cloud calls go to Groq &amp; Gemini APIs</span>
           </div>
         </div>
         <div class="hardware-rig-footnote">
@@ -335,7 +335,7 @@
             </div>
           </div>
           <div class="pull-quote">
-            “How might we architect a self-hosted, zero-cost operations headquarters where specialized AI agents
+            “How might we architect a self-hosted, low-cost operations headquarters where specialized AI agents
             coordinate autonomously over familiar interfaces, backed by local GPU acceleration?”
           </div>
           <p>
@@ -488,7 +488,7 @@
                   <span class="lifecycle-actor">Hybrid Router</span>
                 </div>
                 <div class="lifecycle-card-title">Smart Model Routing</div>
-                <p class="lifecycle-card-desc">Routes to Groq Cloud (falling back to Gemini on errors), or to the
+                <p class="lifecycle-card-desc">Routes to each agent's cloud model on Groq or Gemini (falling back to the other provider on errors), or to the
                   local AMD GPU when the operator selects local mode for private work.</p>
               </div>
 
@@ -689,7 +689,7 @@
                   and line heights.</li>
                 <li>Launches Microsoft Edge in headless mode (<code>--headless --disable-gpu --print-to-pdf</code>) to
                   compile a pixel-perfect, 1-page PDF directly to vector format.</li>
-                <li>Ensures 100% vector text readability, zero image OCR dependencies, and strict compliance with
+                <li>Renders the resume as real, selectable PDF text rather than an image, so no OCR is needed and it stays parseable by
                   automated Applicant Tracking Systems.</li>
               </ul>
             </div>
@@ -825,9 +825,9 @@
 
           <div class="benchmark-grid">
             <div class="benchmark-card">
-              <div class="benchmark-val">$0.00*</div>
-              <div class="benchmark-label">Monthly Cloud Compute</div>
-              <div class="benchmark-sub">Free-tier Groq &amp; Gemini quotas</div>
+              <div class="benchmark-val">0 Servers*</div>
+              <div class="benchmark-label">Paid Hosting</div>
+              <div class="benchmark-sub">Bots run on a personal workstation</div>
             </div>
             <div class="benchmark-card">
               <div class="benchmark-val">10 Labels</div>
@@ -845,9 +845,9 @@
               <div class="benchmark-sub">Headless Edge, a few seconds per build</div>
             </div>
           </div>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -12px; margin-bottom: 24px;">*Zero cloud
-            compute spend: agents run on a personal workstation and call free API tiers. Excludes hardware depreciation
-            and electricity. Latency and triage accuracy aren't listed: the client doesn't stream responses yet (so
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -12px; margin-bottom: 24px;">*No paid
+            servers: the agents run on a personal workstation, and cloud LLM calls go to the Groq and Gemini APIs. API
+            spend isn't stated here because there is no dated billing record to cite yet. Latency and triage accuracy aren't listed: the client doesn't stream responses yet (so
             time-to-first-token isn't measured), and a labeled email evaluation set is still to be built. Both are on
             the roadmap.</p>
 

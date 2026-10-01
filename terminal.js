@@ -619,15 +619,15 @@
 <table class="term-table">
   <thead>
     <tr class="term-muted">
-      <th>PROPERTY</th><th>LOCAL MODE (OLLAMA · RX 6600 XT)</th><th>CLOUD MODE (GROQ → GEMINI)</th>
+      <th>PROPERTY</th><th>LOCAL MODE (OLLAMA · RX 6600 XT)</th><th>CLOUD MODE (GROQ ⇄ GEMINI)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Model</td><td>qwen2.5-coder:7b</td><td>qwen3.8-27b, falling back to gemini-3.6-flash</td>
+      <td>Model</td><td>qwen2.5-coder:7b</td><td>per agent: qwen3.8-27b, gpt-oss-120b, gpt-oss-20b (Groq) or gemini-3.6-flash (Yunjin), each falling back to the other provider</td>
     </tr>
     <tr>
-      <td>Monthly Operating Cost</td><td class="term-success">$0.00 (own hardware)</td><td class="term-success">$0.00 (free tiers)</td>
+      <td>Runs On</td><td class="term-success">Own hardware</td><td>Groq / Gemini APIs</td>
     </tr>
     <tr>
       <td>Works Offline</td><td class="term-success">Yes (inference)</td><td class="term-muted">No</td>
@@ -691,7 +691,7 @@
       appendOutput(`
 <div class="term-line term-success">[PDF-ENGINE] Fetching canonical single-page ATS resume...</div>
 <div class="term-line">Initiating download: <span class="term-cyan">Hans_Laureles_Resume.pdf</span> (236 KB)</div>
-<div class="term-line term-muted">Compiled with Headless Edge ATS Engine · 100% Vector Output</div>
+<div class="term-line term-muted">Compiled with Headless Edge ATS Engine · Selectable-Text PDF</div>
       `.trim());
 
       const downloadLink = document.createElement('a');
@@ -720,7 +720,7 @@
           {
             doc: 'case-lsfm.html: Section 03',
             score: '0.942',
-            text: 'LLM Router: three modes (local / cloud / auto). Local mode runs Ollama qwen2.5-coder:7b on an AMD Radeon RX 6600 XT (8GB VRAM); cloud mode uses per-agent models (Groq qwen3.8-27b by default, Gemini for Yunjin), each falling back to the other provider. Zero recurring compute cost. Measured 2026-10-01 (N=10): local decodes about 28 tokens/s; Groq returns the first token in about 303 ms over the network.'
+            text: 'LLM Router: three modes (local / cloud / auto). Local mode runs Ollama qwen2.5-coder:7b on an AMD Radeon RX 6600 XT (8GB VRAM); cloud mode uses per-agent models (Groq qwen3.8-27b by default, Gemini for Yunjin), each falling back to the other provider. Measured 2026-10-01 (N=10): local decodes about 28 tokens/s; Groq returns the first token in about 303 ms over the network.'
           },
           {
             doc: 'lsfm-ai-hq/llm_client.py',
@@ -945,7 +945,7 @@
 <div class="term-line">  5. 🥔 <strong>Eunchae</strong>  | System Guardian     | #pc-vitals        | <span class="term-badge">VITALS WATCHDOG</span></div>
 <div class="term-line">     └─ Hardware vitals via psutil (5-min cycle), health reports (!health)</div>
 
-<div class="term-line term-muted" style="margin-top: 6px;">Inference: Groq ⇄ Gemini, per-agent models with cross-provider fallback · optional local Ollama (RX 6600 XT) · $0.00/mo</div>
+<div class="term-line term-muted" style="margin-top: 6px;">Inference: Groq ⇄ Gemini, per-agent models with cross-provider fallback · optional local Ollama (RX 6600 XT) · self-hosted</div>
       `.trim());
     }
 
