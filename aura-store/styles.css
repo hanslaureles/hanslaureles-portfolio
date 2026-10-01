@@ -1167,11 +1167,16 @@ a {
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
-  transition: transform var(--transition-normal);
+  /* Closed = hidden, not just off-screen: otherwise its buttons stay in the Tab
+     order and screen readers still find the bag. Visibility flips after the slide. */
+  visibility: hidden;
+  transition: transform var(--transition-normal), visibility 0s linear 0.35s;
 }
 
 .cart-drawer.active {
   transform: translateX(0);
+  visibility: visible;
+  transition: transform var(--transition-normal), visibility 0s linear 0s;
 }
 
 .cart-drawer-header {

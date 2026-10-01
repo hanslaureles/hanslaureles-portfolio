@@ -219,6 +219,59 @@
     });
   }
 
+  // --- Dialog focus handling (customizer modal, cart drawer) ---
+  // Opening moves focus inside, Tab / Shift+Tab stay inside, closing returns focus
+  // to whatever opened it (WCAG 2.4.3). One dialog is open at a time here.
+  const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  let openDialogEl = null;
+  let dialogReturnFocus = null;
+
+  function dialogFocusables(el) {
+    return [...el.querySelectorAll(FOCUSABLE)].filter(n => n.getClientRects().length && getComputedStyle(n).visibility !== 'hidden');
+  }
+
+  // The dialog's controls inherit visibility through their own transitions, so in
+  // the first frame they are still visibility:hidden and focus() silently fails.
+  // Retry each frame (~0.6 s at most) until one is focusable.
+  function focusFirstWhenVisible(el, framesLeft = 36) {
+    if (openDialogEl !== el) return;
+    const first = dialogFocusables(el)[0];
+    if (first) first.focus();
+    else if (framesLeft > 0) requestAnimationFrame(() => focusFirstWhenVisible(el, framesLeft - 1));
+  }
+
+  function showDialog(el) {
+    dialogReturnFocus = document.activeElement;
+    openDialogEl = el;
+    document.body.style.overflow = 'hidden';
+    focusFirstWhenVisible(el);
+  }
+
+  function hideDialog(el) {
+    if (openDialogEl !== el) return;
+    openDialogEl = null;
+    document.body.style.overflow = '';
+    if (dialogReturnFocus && typeof dialogReturnFocus.focus === 'function' && document.contains(dialogReturnFocus)) {
+      dialogReturnFocus.focus();
+    }
+  }
+
+  function trapDialogFocus(e) {
+    if (e.key !== 'Tab' || !openDialogEl) return;
+    const items = dialogFocusables(openDialogEl);
+    if (!items.length) { e.preventDefault(); return; }
+    const first = items[0];
+    const last = items[items.length - 1];
+    const inside = openDialogEl.contains(document.activeElement);
+    if (e.shiftKey && (document.activeElement === first || !inside)) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && (document.activeElement === last || !inside)) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
   // --- 5. Customizer Modal Logic ---
   function openCustomizer(product) {
     activeProduct = product;
@@ -240,12 +293,12 @@
     updateModalPrice();
 
     modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    showDialog(modalOverlay);
   }
 
   function closeCustomizer() {
     modalOverlay.classList.remove('active');
-    document.body.style.overflow = '';
+    hideDialog(modalOverlay);
   }
 
   function syncOptionPills() {
@@ -416,13 +469,13 @@
   function openCartDrawer() {
     cartDrawer.classList.add('active');
     cartBackdrop.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    showDialog(cartDrawer);
   }
 
   function closeCartDrawer() {
     cartDrawer.classList.remove('active');
     cartBackdrop.classList.remove('active');
-    document.body.style.overflow = '';
+    hideDialog(cartDrawer);
   }
 
   // --- 7. Event Listeners Initializer ---
@@ -554,12 +607,13 @@
       }
     });
 
-    // Close on Escape Key
+    // Close on Escape Key; keep Tab inside an open dialog
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeCustomizer();
         closeCartDrawer();
       }
+      trapDialogFocus(e);
     });
   }
 
