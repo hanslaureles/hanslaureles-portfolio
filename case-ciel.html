@@ -435,7 +435,7 @@
             <div class="ciel-hud-header">
               <div>
                 <span class="badge badge-accent" style="font-size: 0.7rem; background: rgba(245, 158, 11, 0.2); border-color: #F59E0B; color: #FBBF24;">MANAS: CIEL HUD</span>
-                <span class="mono" style="margin-left: 8px; font-size: 0.85rem; color: var(--text-muted);">Divine Wisdom Core · Local Port 8000</span>
+                <span class="mono" style="margin-left: 8px; font-size: 0.85rem; color: var(--text-muted);">Scripted demo · pre-written replies</span>
               </div>
               <div class="ciel-telemetry-badge">
                 <span class="pulse-gold"></span>
@@ -666,7 +666,8 @@ tools = [
           <div class="section-tag">// 07 · PIPELINE STAGES &amp; RETROSPECTIVE</div>
           <h2>Pipeline Stages &amp; Architectural Retrospective</h2>
           <p>
-            Every voice turn runs through these stages on my workstation (Intel Core i5-12400F, 16GB DDR4, AMD Radeon RX 6600 XT, Windows 11). The p50 column comes from <code>bench/bench_ciel.py</code> in the public repo: N = 10 runs per stage on 2026-10-01. Network stages are round trips from this machine at that time, not compute times. A full mission for a general-knowledge prompt (routing, synthesis and bilingual speech) took <strong>4.43 s p50</strong> (max 5.71 s).
+            Every voice turn runs through these stages on my workstation (Intel Core i5-12400F, 16GB DDR4, AMD Radeon RX 6600 XT, Windows 11). The p50 column comes from <code>bench/bench_ciel.py</code> in the public repo: N = 10 runs per stage on 2026-10-01 (full results, including p95 and max:
+            <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/main/bench/results/2026-10-01.md" target="_blank" rel="noopener"><code>bench/results/2026-10-01.md</code></a>). Network stages are round trips from this machine at that time, not compute times. A full mission for a general-knowledge prompt (routing, synthesis and bilingual speech) took <strong>4.43 s p50</strong> (max 5.71 s).
           </p>
 
           <!-- Scrolls sideways on narrow screens, like the table in case-memory.html -->
@@ -810,7 +811,7 @@ tools = [
         },
         vitals: {
           dsp: "⚡ HARDWARE SENTINEL: psutil System Diagnostics → Ciel Telemetry",
-          text: "[CIEL] Hardware telemetry check: Intel Core i5-12400F running at 12.2% load; RAM consumption at 9.8 GB of 15.8 GB (61.9%); primary disk free space at 120.7 GB. State: nominal."
+          text: "[CIEL] Hardware telemetry check: Intel Core i5-12400F running at 12.2% load; RAM consumption at 9.8 GB of 15.8 GB (61.9%); primary disk free space at 120.7 GB."
         },
         dispatch: {
           dsp: "⚡ AGENT DISPATCH: JSON plan → agents_needed: ['sakura'] → in-process delegation",
@@ -843,7 +844,8 @@ tools = [
           output.innerHTML = `<span style="color: #FBBF24;">[PROCESSING...]</span>`;
 
           setTimeout(() => {
-            output.innerHTML = `<span style="color: #FBBF24;">[CIEL]</span> ${data.text.replace('[CIEL] ', '')}`;
+            // Every reply is a fixed example; the tag keeps sample numbers from reading as live telemetry.
+            output.innerHTML = `<span style="color: #FBBF24;">[CIEL · SAMPLE REPLY]</span> ${data.text.replace('[CIEL] ', '')}`;
           }, 180);
         });
       });
