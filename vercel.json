@@ -12,38 +12,6 @@
       "destination": "/case-ciel.html"
     },
     {
-      "source": "/case-ciel",
-      "destination": "/case-ciel.html"
-    },
-    {
-      "source": "/case-lsfm",
-      "destination": "/case-lsfm.html"
-    },
-    {
-      "source": "/case-memory",
-      "destination": "/case-memory.html"
-    },
-    {
-      "source": "/case-lumina",
-      "destination": "/case-lumina.html"
-    },
-    {
-      "source": "/case-vellum",
-      "destination": "/case-vellum.html"
-    },
-    {
-      "source": "/case-fintrack",
-      "destination": "/case-fintrack.html"
-    },
-    {
-      "source": "/case-aura",
-      "destination": "/case-aura.html"
-    },
-    {
-      "source": "/about",
-      "destination": "/about.html"
-    },
-    {
       "source": "/aura-store",
       "destination": "/aura-store/index.html"
     },
@@ -69,12 +37,12 @@
           "value": "DENY"
         },
         {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()"
         }
       ]
     },
