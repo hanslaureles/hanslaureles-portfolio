@@ -4,6 +4,7 @@
 ### AI Systems Engineer & Full-Stack Builder
 **Live Website:** [hanslaureles.vercel.app](https://hanslaureles.vercel.app/)
 
+[![CI](https://github.com/hanslaureles/hanslaureles-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/hanslaureles/hanslaureles-portfolio/actions/workflows/ci.yml)
 [![Live Site](https://img.shields.io/badge/Live_Site-hanslaureles.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://hanslaureles.vercel.app/)
 [![Vercel Deployment](https://img.shields.io/badge/Deployment-Vercel_Edge-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://hanslaureles.vercel.app/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
