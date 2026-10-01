@@ -127,7 +127,7 @@
 
       <p class="case-lead">
         An autonomous 5-agent operations platform orchestrating Discord Gateway streaming, multi-provider LLM
-        routing (Groq Cloud with Gemini fallback, plus an optional local Ollama mode on an AMD RX 6600 XT), headless
+        routing (per-agent Groq and Gemini models, each falling back to the other provider, plus an optional local Ollama mode on an AMD RX 6600 XT), headless
         Edge/Chrome ATS resume compilation, and automated Gmail triage.
       </p>
 
@@ -187,8 +187,8 @@
             <span>●</span> The Architecture Solution
           </div>
           <p class="case-challenge-text">
-            Engineered an asynchronous 5-agent system on Discord Gateway with operator-selectable routing: Groq Cloud
-            (<code>qwen3.8-27b</code>) as the primary engine with Gemini Flash as a cross-provider fallback, and a
+            Engineered an asynchronous 5-agent system on Discord Gateway with operator-selectable routing: per-agent
+            cloud models on Groq and Gemini, each with the other provider as a cross-provider fallback, and a
             local Ollama mode (<code>qwen2.5-coder:7b</code> on an RX 6600 XT) for private work, switchable live with
             <code>!mode</code>.
           </p>
@@ -276,7 +276,7 @@
           <pre><span class="terminal-comment"># LSFM Multi-Agent Operations System Overview</span>
 <span class="terminal-prompt">[GATEWAY]</span>     Discord WebSocket Stream ──&gt; Async Event Dispatcher (discord.py, one asyncio loop)
 <span class="terminal-prompt">[ROUTER]</span>      query_llm() · mode = local | cloud | auto  (!mode):
-               ├─ Cloud: Groq (qwen3.8-27b) ──&gt; on error: Gemini (gemini-3.6-flash)
+               ├─ Cloud: Groq ──&gt; on error: Gemini   (Yunjin: Gemini ──&gt; on error: Groq)
                └─ Local: Ollama (qwen2.5-coder:7b) on AMD RX 6600 XT · tried first in auto mode
 <span class="terminal-prompt">[PIPELINE]</span>    5-Stage Autonomous Delegation Topology:
                ├─ 1. 🌸 Sakura   :: Chief of Staff, Briefings &amp; Gmail Triage (!briefing, !inbox, !clean)
@@ -555,14 +555,15 @@
             behavior the operator switches live from Discord with <code>!mode local | cloud | auto</code>:
           </p>
           <ul class="exp-bullets" style="margin-bottom: 24px;">
-            <li><strong>Cloud mode (Groq → Gemini):</strong> Requests go to Groq (<code>qwen/qwen3.8-27b</code> by
-              default). If Groq errors or is rate-limited, the same prompt is retried on Google Gemini
-              (<code>gemini-3.6-flash</code>) before the call fails.</li>
+            <li><strong>Cloud mode (per-agent model, cross-provider fallback):</strong> Each agent has its own cloud
+              model (table below). Sakura, Chaewon, Kazuha and Eunchae go to Groq first; if Groq errors or is
+              rate-limited, the same prompt is retried on Google Gemini (<code>gemini-3.6-flash</code>). Yunjin runs
+              the other way round: Gemini first, then Groq (<code>qwen/qwen3.8-27b</code>) before the call fails.</li>
             <li><strong>Local mode (Ollama):</strong> Runs <code>qwen2.5-coder:7b</code> on the workstation's
               <strong>AMD Radeon RX 6600 XT</strong>, keeping prompts on the machine. Local mode fails fast if Ollama
               isn't running rather than silently sending prompts to the cloud.</li>
             <li><strong>Auto mode (local first):</strong> Probes Ollama with a 1.2 s health check; if it's up, the local
-              model answers, and any local error falls through to the Groq → Gemini cloud chain.</li>
+              model answers, and any local error falls through to the cloud chain above.</li>
             <li><strong>What it does not do (yet):</strong> There is no automatic cloud-to-local failover. When both
               cloud providers are exhausted in cloud mode, the request fails with the collected provider errors.</li>
           </ul>
@@ -581,15 +582,27 @@
               <tbody>
                 <tr>
                   <td class="routing-model-cell">qwen/qwen3.8-27b</td>
-                  <td>All agents · default cloud model</td>
+                  <td>Sakura, Kazuha · default cloud model · Yunjin's fallback</td>
                   <td><span class="routing-speed-badge">Groq</span></td>
-                  <td>Orchestration, writing, and code work on Groq's low-latency LPUs.</td>
+                  <td>Orchestration and code work on Groq's low-latency LPUs.</td>
+                </tr>
+                <tr>
+                  <td class="routing-model-cell">openai/gpt-oss-120b</td>
+                  <td>Chaewon</td>
+                  <td><span class="routing-speed-badge">Groq</span></td>
+                  <td>The larger model for resume and cover-letter writing.</td>
+                </tr>
+                <tr>
+                  <td class="routing-model-cell">openai/gpt-oss-20b</td>
+                  <td>Eunchae</td>
+                  <td><span class="routing-speed-badge">Groq</span></td>
+                  <td>A small, fast model for frequent QA and health reports.</td>
                 </tr>
                 <tr>
                   <td class="routing-model-cell">gemini-3.6-flash</td>
-                  <td>All agents · cloud fallback</td>
+                  <td>Yunjin · cloud fallback for the other four</td>
                   <td><span class="routing-speed-badge">Google</span></td>
-                  <td>A second provider, so a Groq outage or rate limit doesn't fail the request.</td>
+                  <td>Yunjin's design critiques, and a second provider so a Groq outage or rate limit doesn't fail the request.</td>
                 </tr>
                 <tr>
                   <td class="routing-model-cell">gemini-embedding-001</td>
@@ -638,6 +651,7 @@
                 errors.append(f"Local Ollama: {e}")        <span class="terminal-comment"># fall through to cloud</span>
 
     <span class="terminal-comment"># Cloud chain: Groq first, Gemini as the cross-provider fallback</span>
+    <span class="terminal-comment"># (agents whose model is Gemini, i.e. Yunjin, run the reverse: Gemini, then Groq)</span>
     <span class="terminal-cmd">try</span>:
         <span class="terminal-cmd">return</span> call_groq(prompt, system_instruction, temperature=temperature)
     <span class="terminal-cmd">except</span> Exception <span class="terminal-cmd">as</span> e:

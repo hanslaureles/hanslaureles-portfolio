@@ -384,7 +384,7 @@
   <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">8f4a21d</span> <span class="term-badge">tag: v2.5.0</span> <span class="term-muted">[2025 – 2026]</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(swarm):</strong> Creator &amp; Developer — LSFM AI HQ</div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Asynchronous Discord Gateway streaming &amp; isolated persona boundaries</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Multi-provider LLM router (Groq → Gemini) with optional local Ollama on AMD RX 6600 XT</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Multi-provider LLM router (Groq ⇄ Gemini, cross-provider fallback) with optional local Ollama on AMD RX 6600 XT</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Headless Edge single-page ATS vector PDF compiler</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">└──</span> <a href="case-lsfm.html" class="term-link">View Case Study: case-lsfm.html ↗</a></div>
 </div>
@@ -652,7 +652,7 @@
   <div class="term-line"><span class="term-highlight">01. APPLIED AI &amp; MULTI-AGENT SWARMS</span></div>
   <div class="term-line term-muted">  • Autonomous Multi-Agent Swarms (Discord Gateway API, Decentralized Daemons)</div>
   <div class="term-line term-muted">  • Local GPU Inference: Ollama on AMD RX 6600 XT, GGUF Quantization</div>
-  <div class="term-line term-muted">  • Multi-Provider LLM Routing (Groq LPUs, Gemini fallback, local Ollama mode)</div>
+  <div class="term-line term-muted">  • Multi-Provider LLM Routing (Groq LPUs + Gemini, each the other's fallback, local Ollama mode)</div>
   <div class="term-line term-muted">  • Hybrid Vector RAG (Dense Cosine + Sparse BM25 + Reciprocal Rank Fusion)</div>
 </div>
 <div class="term-block" style="margin: 6px 0;">
@@ -677,7 +677,7 @@
 <div class="term-line">A production multi-agent operations platform orchestrating career surveillance, email batch classification, and vector knowledge memory across 5 specialized agents.</div>
 <div class="term-line" style="margin: 8px 0;">
   <div class="term-muted">• Architecture: 5 Discord bots sharing one asyncio event loop, blocking work in worker threads</div>
-  <div class="term-muted">• Inference: Groq Cloud with Gemini fallback, optional local Ollama on AMD Radeon RX 6600 XT</div>
+  <div class="term-muted">• Inference: per-agent Groq and Gemini models with cross-provider fallback, optional local Ollama on AMD Radeon RX 6600 XT</div>
   <div class="term-muted">• Automation: two-tier Gmail classification into 10 labels, headless Edge ATS resume compiler</div>
   <div class="term-muted">• Storage: Local zero-server SQLite Vector Vault with RRF hybrid retrieval</div>
 </div>
@@ -720,7 +720,7 @@
           {
             doc: 'case-lsfm.html: Section 03',
             score: '0.942',
-            text: 'LLM Router: three modes (local / cloud / auto). Local mode runs Ollama qwen2.5-coder:7b on an AMD Radeon RX 6600 XT (8GB VRAM); cloud mode uses Groq qwen3.8-27b with Gemini fallback. Zero recurring compute cost. Measured 2026-10-01 (N=10): local decodes about 28 tokens/s; Groq returns the first token in about 303 ms over the network.'
+            text: 'LLM Router: three modes (local / cloud / auto). Local mode runs Ollama qwen2.5-coder:7b on an AMD Radeon RX 6600 XT (8GB VRAM); cloud mode uses per-agent models (Groq qwen3.8-27b by default, Gemini for Yunjin), each falling back to the other provider. Zero recurring compute cost. Measured 2026-10-01 (N=10): local decodes about 28 tokens/s; Groq returns the first token in about 303 ms over the network.'
           },
           {
             doc: 'lsfm-ai-hq/llm_client.py',
@@ -945,7 +945,7 @@
 <div class="term-line">  5. 🥔 <strong>Eunchae</strong>  | System Guardian     | #pc-vitals        | <span class="term-badge">VITALS WATCHDOG</span></div>
 <div class="term-line">     └─ Hardware vitals via psutil (5-min cycle), health reports (!health)</div>
 
-<div class="term-line term-muted" style="margin-top: 6px;">Inference: Groq Cloud (qwen3.8-27b) → Gemini fallback · optional local Ollama (RX 6600 XT) · $0.00/mo</div>
+<div class="term-line term-muted" style="margin-top: 6px;">Inference: Groq ⇄ Gemini, per-agent models with cross-provider fallback · optional local Ollama (RX 6600 XT) · $0.00/mo</div>
       `.trim());
     }
 
