@@ -141,6 +141,16 @@
   });
 
   // --- 5. Keyboard Shortcuts ---
+  // Alt-letter shortcuts stand down while the user is typing: in a text field
+  // macOS Option+T types "†", AltGr layouts (Polish, German, ...) type accented
+  // letters, and IME composition must not be interrupted.
+  function altShortcutBlocked(e) {
+    if (e.isComposing || e.keyCode === 229) return true;
+    if (e.getModifierState && e.getModifierState('AltGraph')) return true;
+    const el = e.target instanceof Element ? e.target : null;
+    return Boolean(el && (el.isContentEditable || el.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])')));
+  }
+
   window.addEventListener('keydown', (e) => {
     // ESC to close Lightbox or Drawer
     if (e.key === 'Escape') {
@@ -153,7 +163,7 @@
     // Alt+T toggles theme. A modifier is required (WCAG 2.1.4) so typing or
     // speech input never flips the theme; e.code keeps it working on macOS,
     // where Option+T produces a different e.key.
-    if (e.code === 'KeyT' && e.altKey && !e.ctrlKey && !e.metaKey && !e.repeat) {
+    if (e.code === 'KeyT' && e.altKey && !e.ctrlKey && !e.metaKey && !e.repeat && !altShortcutBlocked(e)) {
       e.preventDefault();
       const current = document.documentElement.getAttribute('data-theme') || 'light';
       applyTheme(current === 'dark' ? 'light' : 'dark');

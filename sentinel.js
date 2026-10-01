@@ -105,10 +105,19 @@
 
     // Keyboard Shortcuts: Alt+S toggles, Escape closes. A modifier is
     // required (WCAG 2.1.4); e.code keeps it working with macOS Option.
+    // It stands down while typing: macOS Option+S types "ß" and AltGr layouts
+    // (Polish, German, ...) type accented letters in text fields.
+    function altShortcutBlocked(e) {
+      if (e.isComposing || e.keyCode === 229) return true;
+      if (e.getModifierState && e.getModifierState('AltGraph')) return true;
+      const el = e.target instanceof Element ? e.target : null;
+      return Boolean(el && (el.isContentEditable || el.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])')));
+    }
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && isModalOpen()) {
         closeModal();
-      } else if (e.code === 'KeyS' && e.altKey && !e.ctrlKey && !e.metaKey && !e.repeat) {
+      } else if (e.code === 'KeyS' && e.altKey && !e.ctrlKey && !e.metaKey && !e.repeat && !altShortcutBlocked(e)) {
         e.preventDefault();
         // Toggle modal
         if (isModalOpen()) {
