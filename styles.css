@@ -5100,3 +5100,22 @@ h1, h2 {
 .lightbox-close-btn {
   min-height: 32px;
 }
+/* D2: one measured result on the first screen, as a link to its source. */
+.hero-chip-proof {
+  color: inherit;
+  text-decoration: none;
+}
+.hero-chip-proof:hover {
+  border-color: var(--accent);
+}
+
+/* D2: on phones the bio reads left-aligned (centred multi-line text is slow to
+   scan) and the chips start from the left edge with it. */
+@media (max-width: 640px) {
+  .hero-lead-text {
+    text-align: left;
+  }
+  .hero-box-header {
+    justify-content: flex-start;
+  }
+}
