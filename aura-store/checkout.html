@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2.2.4">
 </head>
 <body>
 
@@ -38,6 +38,7 @@
 
   <main class="checkout-wrapper">
     <div class="container">
+      <h1 class="sr-only">Checkout</h1>
       <div class="checkout-grid">
         
         <!-- Left: Checkout Forms -->
@@ -68,7 +69,7 @@
               <div class="checkout-card-header" style="justify-content: space-between;">
                 <div style="display: flex; align-items: center; gap: 10px;">
                   <span style="background: var(--bg-warm-tint); color: var(--primary); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">1</span>
-                  <h3>Contact Information</h3>
+                  <h2>Contact Information</h2>
                 </div>
                 <button type="button" class="demo-fill-btn" onclick="autofillDemo()">
                   ⚡ Autofill Manila Demo
@@ -99,7 +100,7 @@
             <div class="checkout-card">
               <div class="checkout-card-header">
                 <span style="background: var(--bg-warm-tint); color: var(--primary); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">2</span>
-                <h3>Delivery Address</h3>
+                <h2>Delivery Address</h2>
               </div>
 
               <div class="form-grid">
@@ -130,7 +131,7 @@
             <div class="checkout-card">
               <div class="checkout-card-header">
                 <span style="background: var(--bg-warm-tint); color: var(--primary); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">3</span>
-                <h3>Delivery Option</h3>
+                <h2>Delivery Option</h2>
               </div>
 
               <div style="display: flex; flex-direction: column; gap: 10px;">
@@ -162,7 +163,7 @@
             <div class="checkout-card">
               <div class="checkout-card-header">
                 <span style="background: var(--bg-warm-tint); color: var(--primary); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem;">4</span>
-                <h3>Select Payment Method</h3>
+                <h2>Select Payment Method</h2>
               </div>
 
               <div class="payment-methods-grid">
@@ -216,9 +217,9 @@
         <!-- Right: Sticky Order Summary -->
         <aside class="checkout-summary-sidebar" style="position: sticky; top: 96px;">
           <div class="checkout-card" style="border: 1px solid #E8DFD5; box-shadow: var(--shadow-md);">
-            <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-subtle);">
+            <h2 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border-subtle);">
               Order Summary
-            </h3>
+            </h2>
 
             <!-- Itemized List -->
             <div id="checkout-items-list" style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; max-height: 320px; overflow-y: auto;">
@@ -257,6 +258,6 @@
     </div>
   </main>
 
-  <script src="checkout.js"></script>
+  <script src="checkout.js?v=2.2.4"></script>
 </body>
 </html>
