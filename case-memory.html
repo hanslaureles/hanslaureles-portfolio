@@ -570,7 +570,7 @@
 
           <h3 style="margin: 28px 0 12px 0;">Architectural Decision: Why BM25 over Dense Vector Embeddings?</h3>
           <p>
-            Many AI agent memory solutions reach prematurely for heavy vector databases (ChromaDB, Pinecone, FAISS) and deep learning frameworks (PyTorch, transformers). In a local developer tooling environment with &lt;500 active guidelines, dense vector embeddings introduce substantial drawbacks: ~350MB+ memory footprint, 800ms+ cold-start latency, and semantic drift where technical identifiers (e.g. <code>sys.stdout</code> vs <code>sys.stdin</code>) get conflated.
+            Many AI agent memory solutions reach prematurely for heavy vector databases (ChromaDB, Pinecone, FAISS) and deep learning frameworks (PyTorch, transformers). For a local store of a few hundred guidelines, dense embeddings add a model download, an embedding step on every write, and a dependency stack to maintain, and they can blur exact technical identifiers (e.g. <code>sys.stdout</code> vs <code>sys.stdin</code>) that a keyword match keeps apart.
           </p>
           <p>
             By choosing standard library <strong>field-weighted BM25 with tag boosting</strong>, retrieval runs in <strong>0.8 ms at p50</strong> (1.5 ms worst case across 2,000 calls on the current store), holds nothing in memory between calls, and ranks the correct rule first for every seeded test query, including exact error codes like <code>TerminatorExpectedAtEndOfString</code>.
