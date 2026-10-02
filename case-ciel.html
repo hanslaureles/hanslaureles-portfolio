@@ -715,12 +715,46 @@ tools = [
               <tr style="border-bottom: 1px solid var(--border-color);">
                 <td style="padding: 10px; font-weight: 600;">Voice</td>
                 <td style="padding: 10px; color: var(--text-secondary);">Edge-TTS + FFmpeg filter</td>
-                <td style="padding: 10px; color: var(--text-secondary);">Japanese clip, a 350 ms pause, then the English clip, filtered off the event loop in worker threads (no timeout). Full MP3 is rendered before playback (no streaming yet).</td>
+                <td style="padding: 10px; color: var(--text-secondary);">Japanese clip, a 350 ms pause, then the English clip, filtered off the event loop in worker threads (no timeout). In this 2026-10-01 run the full MP3 was rendered before playback; streaming is below.</td>
                 <td style="padding: 10px; color: var(--text-secondary);">2.80 s · network (filter alone 81 ms)</td>
               </tr>
             </tbody>
           </table>
           </div>
+
+          <h3 style="margin: 36px 0 12px 0;">Streaming Speech: Time to First Audio</h3>
+          <p>
+            The table above shows the cost: no sound until the whole reply had been voiced. Ciel now streams the synthesis reply and voices each spoken sentence as soon as the LLM finishes writing it (up to three Edge-TTS requests at once). The HUD plays the clips in order while the rest is still being generated. Time to first audio runs from the start of the mission until the first playable audio URL is broadcast to the HUD; the HUD's fetch of a local file comes on top.
+          </p>
+          <div style="overflow-x: auto; margin: 20px 0;">
+          <table class="case-benchmark-table" style="width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 0.86rem;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--border-color); text-align: left; color: var(--text-muted);">
+                <th style="padding: 10px;">FULL MISSION, N=10 EACH</th>
+                <th style="padding: 10px; white-space: nowrap;">BEFORE (WHOLE REPLY)</th>
+                <th style="padding: 10px; white-space: nowrap;">AFTER (PER SENTENCE)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 10px; font-weight: 600;">Time to first audio, p50 / p95</td>
+                <td style="padding: 10px; color: var(--text-secondary);">4.60 s / 5.99 s</td>
+                <td style="padding: 10px; color: var(--text-secondary);">1.41 s / 2.00 s</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 10px; font-weight: 600;">Mission complete, p50 / p95</td>
+                <td style="padding: 10px; color: var(--text-secondary);">4.60 s / 5.99 s</td>
+                <td style="padding: 10px; color: var(--text-secondary);">4.29 s / 7.20 s</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted);">
+            Measured 2026-10-02 with <code>bench/bench_ciel.py --stages e2e_mission --runs 10</code>: the same general-knowledge prompt, Groq paced 45 s between runs, on an Intel Core i5-12400F, Windows 11, Python 3.11.9, ffmpeg 9.0.2, edge-tts 7.2.8. Network round trips from this machine, not compute times; with 10 runs, p95 is the max. <strong>Private workstation build</strong> (LE-SSERAFIM-AI-HQ <code>3315b69</code> before, <code>3eedda9</code> after); the streaming code and these results are not yet in the public lsfm-ai-hq repo.
+          </p>
+          <p>
+            The trade-off is in the second row. The first sentence is heard about 3.2 s sooner at p50, but the joined MP3 kept for replay waits for the slowest clip. In one of the ten runs a single Edge-TTS clip took 6.2 s, which set the 7.20 s worst case. Clips play strictly in order, so a slow clip also holds back the sentences after it; the pauses this causes between sentences are not measured yet.
+          </p>
 
           <!-- What Broke & What I Would Change -->
           <h3 style="margin: 36px 0 12px 0;">Retrospective: What Broke &amp; What I Would Change</h3>
