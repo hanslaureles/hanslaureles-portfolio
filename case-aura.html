@@ -102,17 +102,17 @@
       <div class="u-d-flex u-gap-8px u-mb-16px u-wrap-wrap">
         <span class="badge badge-accent">Case Study 04</span>
         <span class="badge">Specialty Commerce</span>
-        <span class="badge">Drink Customization Engine</span>
-        <span class="badge">Philippine Payment Rails</span>
+        <span class="badge">Drink Customizer</span>
+        <span class="badge">6 Payment Options</span>
       </div>
 
       <h1 class="case-title">
-        Aura Coffee &amp; Kitchen — Warm Artisanal Commerce<br>
-        <span class="serif-italic">&amp; Express Checkout Architecture</span>
+        Aura Coffee &amp; Kitchen —<br>
+        <span class="serif-italic">A Warm, One-Page Coffee Ordering Experience</span>
       </h1>
 
       <p class="case-lead">
-        Designing a warm, welcoming coffeehouse e-commerce experience inspired by contemporary mobile apps. Features multi-attribute drink customization (size, dairy/plant milk, sweetness, ice), an interactive slide-over bag drawer with free delivery threshold tracking, and a streamlined 1-page Philippine checkout engine (GCash, Maya, GrabPay, COD) culminating in a scalloped receipt order confirmation.
+        A warm, welcoming coffee-shop store inspired by the mobile apps people already love. Customize your drink (size, dairy or plant milk, sweetness, ice), watch your free-delivery progress in the Shopping Bag, and check out on one page with 6 payment options (GCash, Maya, GrabPay, card, QR Ph and cash on delivery). Every order ends with a scalloped paper-style ticket.
       </p>
 
       <div class="u-d-flex u-gap-12px u-wrap-wrap u-mb-36px">
@@ -135,7 +135,7 @@
         </div>
         <div class="case-meta-item">
           <div class="label">Discipline</div>
-          <div class="val">Specialty Food &amp; Beverage UI/UX · Conversion Engineering</div>
+          <div class="val">Specialty Food &amp; Beverage UI/UX · Checkout Design</div>
         </div>
         <div class="case-meta-item">
           <div class="label">Role</div>
@@ -143,7 +143,7 @@
         </div>
         <div class="case-meta-item">
           <div class="label">Stack</div>
-          <div class="val">Vanilla CSS Design System · Client-Side State Engine · Zero-FOUC LocalStorage</div>
+          <div class="val">Vanilla HTML, CSS &amp; JS · Shopping Bag Saved in the Browser (localStorage)</div>
         </div>
       </div>
 
@@ -162,7 +162,7 @@
             <span>●</span> The Architecture Solution
           </div>
           <p class="case-challenge-text">
-            Engineered a zero-dependency, client-side storefront in vanilla HTML/CSS/ES6+. Features an interactive beverage customization modal, client-side cart persistence via LocalStorage, and native Philippine payment rails (GCash, Maya, QR Ph, COD).
+            Built a dependency-free storefront in vanilla HTML, CSS and JavaScript: a drink customizer, a Shopping Bag that stays saved in your browser, and 6 payment options (GCash, Maya, GrabPay, card, QR Ph and cash on delivery).
           </p>
         </div>
       </div>
@@ -177,12 +177,12 @@
           <div class="case-metric-label">Bag, Delivery &amp; Payment on One Screen</div>
         </div>
         <div class="case-metric-cell">
-          <div class="case-metric-num">4 Rails</div>
-          <div class="case-metric-label">GCash, Maya, QR Ph &amp; COD</div>
+          <div class="case-metric-num">6 Options</div>
+          <div class="case-metric-label">Payment Options: GCash, Maya, GrabPay, Card, QR Ph &amp; COD</div>
         </div>
         <div class="case-metric-cell">
           <div class="case-metric-num">100% Client-Side</div>
-          <div class="case-metric-label">Cart &amp; Orders Kept in localStorage</div>
+          <div class="case-metric-label">Bag &amp; Orders Saved in Your Browser</div>
         </div>
       </div>
 
@@ -195,25 +195,60 @@
         </picture>
       </div>
 
-      <!-- Architecture Spec Preview -->
-      <div class="terminal-window u-m-24px-0-32px-0">
-        <div class="terminal-topbar">
-          <div class="terminal-dots">
-            <span class="terminal-dot red"></span>
-            <span class="terminal-dot yellow"></span>
-            <span class="terminal-dot green"></span>
+      <!-- How an order flows (replaces the old terminal-style spec panel; MEM-001) -->
+      <div class="u-m-24px-0-32px-0">
+        <p class="u-fs-0p92rem u-c-text-secondary u-mb-16px">
+          <strong class="u-c-text-primary">How an order flows</strong> — from the menu to a warm order ticket, all playable in the live demo:
+        </p>
+        <div class="lifecycle-grid">
+          <div class="lifecycle-card">
+            <div class="lifecycle-card-header">
+              <span class="lifecycle-step-num">Step 1</span>
+              <span class="lifecycle-actor">Menu</span>
+            </div>
+            <div class="lifecycle-card-title">Pick a Drink</div>
+            <p class="lifecycle-card-desc">Browse hot classics, iced brews, frappés and fresh bakes, or search by name.</p>
           </div>
-          <div class="terminal-title">AURA_COFFEE // BEVERAGE_STATE &amp; CONVERSION_PIPELINE</div>
-          <div class="mono u-fs-0p72rem u-c-emerald-500">● LIVE DEMO</div>
-        </div>
-        <div class="terminal-body">
-<pre><span class="terminal-comment"># Aura Coffee Client-Side State &amp; Checkout Architecture</span>
-<span class="terminal-prompt">[CLIENT STATE]</span>   Drink Configurator (Size, Milk, Sweetness, Ice) ──&gt; Real-Time Price &amp; Cart Hydration
-<span class="terminal-prompt">[BAG DRAWER]</span>     Slide-Over Drawer with Free Courier Delivery Progress Meter (₱500 Threshold)
-<span class="terminal-prompt">[CHECKOUT RAILS]</span> 1-Page Express Checkout: GCash · Maya · GrabPay · Cards · Cash on Delivery
-<span class="terminal-prompt">[CONFIRMATION]</span>   Scalloped Paper Ticket Receipt with 4-Stage Brewing Tracker
-<span class="terminal-prompt">[FOOTPRINT]</span>      Zero Framework Overhead · Keyboard-Accessible Customizer &amp; Bag
-<span class="terminal-success">[SHIPPED]</span>        Live at /aura-store · Playwright &amp; axe Checks on Every Push</pre>
+          <div class="lifecycle-card">
+            <div class="lifecycle-card-header">
+              <span class="lifecycle-step-num">Step 2</span>
+              <span class="lifecycle-actor">Customizer</span>
+            </div>
+            <div class="lifecycle-card-title">Make It Yours</div>
+            <p class="lifecycle-card-desc">Choose size, milk (whole, oat, almond or soy), sweetness and ice. The price updates as you go.</p>
+          </div>
+          <div class="lifecycle-card">
+            <div class="lifecycle-card-header">
+              <span class="lifecycle-step-num">Step 3</span>
+              <span class="lifecycle-actor">Shopping Bag</span>
+            </div>
+            <div class="lifecycle-card-title">Fill Your Bag</div>
+            <p class="lifecycle-card-desc">The bag drawer slides in with a meter showing how much more you need for free delivery (₱500).</p>
+          </div>
+          <div class="lifecycle-card">
+            <div class="lifecycle-card-header">
+              <span class="lifecycle-step-num">Step 4</span>
+              <span class="lifecycle-actor">Checkout</span>
+            </div>
+            <div class="lifecycle-card-title">One Page, Not Four</div>
+            <p class="lifecycle-card-desc">Contact details, delivery address and delivery option all sit on a single page.</p>
+          </div>
+          <div class="lifecycle-card">
+            <div class="lifecycle-card-header">
+              <span class="lifecycle-step-num">Step 5</span>
+              <span class="lifecycle-actor">Payment</span>
+            </div>
+            <div class="lifecycle-card-title">Pay Your Way</div>
+            <p class="lifecycle-card-desc">6 payment options: GCash, Maya, GrabPay, card, QR Ph or cash on delivery. The demo charges nothing.</p>
+          </div>
+          <div class="lifecycle-card">
+            <div class="lifecycle-card-header">
+              <span class="lifecycle-step-num">Step 6</span>
+              <span class="lifecycle-actor">Order Ticket</span>
+            </div>
+            <div class="lifecycle-card-title">Watch It Brew</div>
+            <p class="lifecycle-card-desc">A scalloped paper-style ticket recaps your order and follows it from received to on its way.</p>
+          </div>
         </div>
       </div>
 
@@ -226,10 +261,10 @@
       <aside class="case-sidebar">
         <div class="case-toc-title">Table of Contents</div>
         <ul class="case-toc-list">
-          <li><a href="#overview">01. Overview &amp; Artisanal Vision</a></li>
+          <li><a href="#overview">01. Overview &amp; Vision</a></li>
           <li><a href="#heuristics">02. Usability Audits &amp; Friction Points</a></li>
           <li><a href="#wireframes">03. End-to-End Coffee Flow</a></li>
-          <li><a href="#trust-signals">04. Visual Trust &amp; Local Rails</a></li>
+          <li><a href="#trust-signals">04. Local Payments &amp; Reassurance</a></li>
           <li><a href="#outcomes">05. Business Impact &amp; Takeaways</a></li>
         </ul>
       </aside>
@@ -239,7 +274,7 @@
         
         <!-- Section 01 -->
         <section id="overview" class="case-body-section">
-          <div class="section-tag">// 01 · OVERVIEW &amp; ARTISANAL VISION</div>
+          <div class="section-tag">// 01 · OVERVIEW &amp; VISION</div>
           <h2>Balancing Craft Warmth &amp; Checkout Velocity</h2>
           <p>
             Specialty coffee ordering is deeply personal: customers expect nuanced control over cup size, dairy vs. plant-based milk (oat, almond, soy), sweetness levels, and ice dilution. However, in conventional e-commerce platforms, complex variant drop-downs and multi-page checkouts trigger steep cart abandonment.
@@ -248,7 +283,7 @@
             &ldquo;How might we design a coffee ordering experience that feels as inviting, appetizing, and tactile as walking into your favorite neighborhood roastery?&rdquo;
           </div>
           <p>
-            Aura Coffee &amp; Kitchen solves this by pairing a warm oat-milk aesthetic (soft cream, amber caramel, pill buttons) with an ultra-fast client-side state engine: an interactive drink customizer modal, slide-over bag drawer with free delivery progress tracking, and a streamlined 1-page checkout tailored for Philippine mobile payment rails.
+            Aura Coffee &amp; Kitchen solves this by pairing a warm oat-milk aesthetic (soft cream, amber caramel, pill buttons) with a fast, simple ordering flow: a drink customizer, a slide-over bag drawer that tracks free delivery, and a one-page checkout built around the ways Filipinos actually pay.
           </p>
         </section>
 
@@ -290,7 +325,7 @@
                 <picture>
                   <source type="image/avif" srcset="images/aura-website/01-aura-wireframe-cart-drawer-480.2c9fa7aa.avif 480w, images/aura-website/01-aura-wireframe-cart-drawer-960.065f86c1.avif 960w, images/aura-website/01-aura-wireframe-cart-drawer-1318.2704147e.avif 1318w" sizes="(max-width: 900px) calc(100vw - 32px), 480px">
                   <source type="image/webp" srcset="images/aura-website/01-aura-wireframe-cart-drawer-480.f9845918.webp 480w, images/aura-website/01-aura-wireframe-cart-drawer-960.64e4321c.webp 960w, images/aura-website/01-aura-wireframe-cart-drawer-1318.d327c234.webp 1318w" sizes="(max-width: 900px) calc(100vw - 32px), 480px">
-                  <img src="images/aura-website/01-aura-wireframe-cart-drawer-960.64e4321c.webp" alt="Cart Drawer Wireframe" width="960" height="802" loading="lazy" decoding="async" data-full="images/aura-website/01-aura-wireframe-cart-drawer-1318.d327c234.webp">
+                  <img src="images/aura-website/01-aura-wireframe-cart-drawer-960.64e4321c.webp" alt="Bag drawer wireframe" width="960" height="802" loading="lazy" decoding="async" data-full="images/aura-website/01-aura-wireframe-cart-drawer-1318.d327c234.webp">
                 </picture>
               </div>
               <div class="gallery-caption">Fig 1.1 — Slide-over Bag Drawer Wireframe</div>
@@ -300,7 +335,7 @@
                 <picture>
                   <source type="image/avif" srcset="images/aura-website/01-aura-cart-drawer-480.67f0a15b.avif 480w, images/aura-website/01-aura-cart-drawer-960.8f688fa1.avif 960w, images/aura-website/01-aura-cart-drawer-1318.5bd358ed.avif 1318w" sizes="(max-width: 900px) calc(100vw - 32px), 480px">
                   <source type="image/webp" srcset="images/aura-website/01-aura-cart-drawer-480.9c6cddb1.webp 480w, images/aura-website/01-aura-cart-drawer-960.287576e5.webp 960w, images/aura-website/01-aura-cart-drawer-1318.68bf4093.webp 1318w" sizes="(max-width: 900px) calc(100vw - 32px), 480px">
-                  <img src="images/aura-website/01-aura-cart-drawer-960.287576e5.webp" alt="Aura Cart Drawer UI" width="960" height="802" loading="lazy" decoding="async" data-full="images/aura-website/01-aura-cart-drawer-1318.68bf4093.webp">
+                  <img src="images/aura-website/01-aura-cart-drawer-960.287576e5.webp" alt="Aura bag drawer with free-delivery meter" width="960" height="802" loading="lazy" decoding="async" data-full="images/aura-website/01-aura-cart-drawer-1318.68bf4093.webp">
                 </picture>
               </div>
               <div class="gallery-caption">Fig 1.2 — Production Bag Drawer with Delivery Meter</div>
@@ -383,10 +418,10 @@
 
         <!-- Section 04 -->
         <section id="trust-signals" class="case-body-section">
-          <div class="section-tag">// 04 · VISUAL TRUST &amp; LOCAL RAILS</div>
+          <div class="section-tag">// 04 · LOCAL PAYMENTS &amp; REASSURANCE</div>
           <h2>Local Relevance &amp; Visual Reassurance</h2>
           <p>
-            By supporting domestic Philippine payment methods—**GCash**, **Maya**, **GrabPay**, **QR Ph**, and **Cash on Delivery (COD)**—Aura eliminates payment friction for local coffee lovers. Real-time form validation, explicit order recap cards with itemized modifications, and an instant order confirmation ticket create complete transparency and peace of mind.
+            With 6 payment options (<strong>GCash</strong>, <strong>Maya</strong>, <strong>GrabPay</strong>, <strong>card</strong>, <strong>QR Ph</strong> and <strong>cash on delivery</strong>), local coffee lovers can pay the way they already do. Real-time form validation, explicit order recap cards with itemized modifications, and an instant order confirmation ticket create complete transparency and peace of mind.
           </p>
         </section>
 
@@ -401,7 +436,7 @@
             </div>
             <div class="outcome-card">
               <div class="outcome-number">1 Page</div>
-              <div class="outcome-label">Express Checkout: Bag, Delivery &amp; Payment on One Screen</div>
+              <div class="outcome-label">Checkout: Bag, Delivery &amp; Payment on One Screen</div>
             </div>
             <div class="outcome-card">
               <div class="outcome-number">Live</div>

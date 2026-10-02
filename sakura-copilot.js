@@ -87,7 +87,7 @@
       title: "Aura Coffee & Kitchen — Interactive E-Commerce",
       category: "Live Interactive Project",
       keywords: ["aura", "coffee", "store", "ecommerce", "e-commerce", "shop", "checkout", "gcash", "maya", "philippines", "payment rails", "customizer"],
-      summary: "Hans designed and engineered Aura Coffee & Kitchen, an artisanal specialty coffeehouse web store featuring dynamic drink customization, slide-over bag drawer, and localized Philippine mobile payment rails.",
+      summary: "Hans designed and engineered Aura Coffee & Kitchen, an artisanal specialty coffeehouse web store with drink customization, a slide-over bag drawer, and a one-page checkout with 6 payment options (GCash, Maya, GrabPay, card, QR Ph, and cash on delivery).",
       evidence: "Fully interactive production build live directly on this site at /aura-store! Features drink temperature/milk customizers, delivery threshold trackers, and 1-page checkout simulating GCash, Maya, and QR Ph.",
       linkUrl: "aura-store/index.html",
       linkText: "⚡ Launch Interactive Store Demo (/aura-store) →",
