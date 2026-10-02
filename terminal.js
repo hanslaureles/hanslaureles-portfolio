@@ -375,8 +375,8 @@
   <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">9fb2617</span> <span class="term-badge success">HEAD -&gt; main</span> <span class="term-badge" style="border-color:#F59E0B;color:#FBBF24;">tag: v3.0.0</span> <span class="term-muted">[2026 – Present]</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent" style="color:#FBBF24;">feat(ciel):</strong> Architect &amp; Developer — Manas: Ciel Voice HUD</div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Groq Whisper Large v3 Turbo transcription &amp; FFmpeg audio normalization</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Thought Acceleration voice filter (high-pass, presence EQ, light echo) over Edge-TTS</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• 8-turn sliding working memory buffer &amp; bidirectional Obsidian access</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Custom voice filter (high-pass, presence EQ, light echo) over Edge-TTS</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Remembers the last 8 exchanges &amp; reads/writes my Obsidian notes</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• 4-domain proactive telemetry sentinel daemon &amp; real-time audio HUD</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">└──</span> <a href="case-ciel.html" class="term-link">View Case Study: case-ciel.html ↗</a></div>
 </div>
@@ -429,7 +429,7 @@
       appendOutput(`
 <div class="term-line term-cyan" style="font-weight: 600;">AVAILABLE COMMANDS:</div>
 <table class="term-table">
-  <tr><td><span class="term-highlight" style="color: #FBBF24;">ciel</span></td><td>✦ Manas: Ciel Divine Wisdom AI Voice HUD &amp; DSP</td></tr>
+  <tr><td><span class="term-highlight" style="color: #FBBF24;">ciel</span></td><td>✦ Manas: Ciel bilingual voice assistant</td></tr>
   <tr><td><span class="term-highlight">status</span></td><td>Show each agent's engine and schedule</td></tr>
   <tr><td><span class="term-highlight">agents</span></td><td>Learn what each of the 5 AI agents does</td></tr>
   <tr><td><span class="term-highlight">vitals</span></td><td>⚡ Eunchae's CPU/RAM/disk watchdog and the workstation hardware</td></tr>
@@ -521,7 +521,7 @@
   </tr>
   <tr>
     <td><strong class="term-accent" style="color: #FBBF24;">02. Manas: Ciel</strong></td>
-    <td>Voice AI Copilot, Thought Acceleration &amp; Web HUD</td>
+    <td>Bilingual voice assistant &amp; web dashboard</td>
     <td><a href="case-ciel.html" class="term-link">Case Study ↗</a></td>
   </tr>
   <tr>
@@ -556,17 +556,17 @@
 
     function showCiel() {
       appendOutput(`
-<div class="term-line" style="color: #F59E0B; font-weight: 600;">✨ MANAS: CIEL // DIVINE WISDOM AI COPILOT &amp; VOICE HUD</div>
+<div class="term-line" style="color: #F59E0B; font-weight: 600;">✨ MANAS: CIEL // BILINGUAL VOICE ASSISTANT</div>
 <table class="term-table">
-  <tr><td><strong class="term-highlight">CORE ARCHITECTURE</strong></td><td class="term-cyan">Tensura Divine Wisdom Core · Python 3.11 aiohttp</td></tr>
+  <tr><td><strong class="term-highlight">CORE ARCHITECTURE</strong></td><td class="term-cyan">Async Python 3.11 server (aiohttp) · two-mode planner</td></tr>
   <tr><td><strong class="term-highlight">AUDIO PIPELINE</strong></td><td>FFmpeg 16kHz Mono Normalization + Groq Whisper Large v3 Turbo (OpenAI Whisper fallback)</td></tr>
-  <tr><td><strong class="term-highlight">THOUGHT ACCELERATION</strong></td><td style="color: #10B981;">High-pass · Presence EQ · Light Echo · Edge-TTS (ja-JP-NanamiNeural + en-US-AvaNeural)</td></tr>
-  <tr><td><strong class="term-highlight">SECOND BRAIN</strong></td><td>Bidirectional Obsidian Vault Bridge (Rules, Career, Profile, Daily)</td></tr>
-  <tr><td><strong class="term-highlight">SENSORY RADAR</strong></td><td class="term-cyan">Live Meteorology (wttr.in) + Real-Time Web Intelligence (DDGS)</td></tr>
-  <tr><td><strong class="term-highlight">WORKING MEMORY</strong></td><td class="term-cyan">8-Turn Sliding Conversational Context Buffer</td></tr>
+  <tr><td><strong class="term-highlight">VOICE FILTER</strong></td><td style="color: #10B981;">High-pass · Presence EQ · Light Echo · Edge-TTS (ja-JP-NanamiNeural + en-US-AvaNeural)</td></tr>
+  <tr><td><strong class="term-highlight">OBSIDIAN NOTES</strong></td><td>Reads &amp; writes my vault (Rules, Profile, Preferences, Daily log)</td></tr>
+  <tr><td><strong class="term-highlight">LIVE DATA</strong></td><td class="term-cyan">Weather (wttr.in) + Web Search (DDGS)</td></tr>
+  <tr><td><strong class="term-highlight">MEMORY</strong></td><td class="term-cyan">Remembers the last 8 exchanges</td></tr>
   <tr><td><strong class="term-highlight">PROACTIVE SENTINELS</strong></td><td>4 Checks: Hardware Vitals, Git Status, Obsidian Daily Log, Portfolio Markers</td></tr>
-  <tr><td><strong class="term-highlight">SUPERVISED AGENTS</strong></td><td>Supervises 5 LSFM Agents: Sakura, Chaewon, Kazuha, Yunjin, Eunchae</td></tr>
-  <tr><td><strong class="term-highlight">LIVE SIMULATOR</strong></td><td><a href="case-ciel.html#simulator" class="term-link">In-Page Thought Acceleration Demo ↗</a></td></tr>
+  <tr><td><strong class="term-highlight">AGENTS</strong></td><td>Hands tasks to the 5 LSFM agents: Sakura, Chaewon, Kazuha, Yunjin, Eunchae</td></tr>
+  <tr><td><strong class="term-highlight">LIVE SIMULATOR</strong></td><td><a href="case-ciel.html#simulator" class="term-link">In-Page Voice Demo ↗</a></td></tr>
   <tr><td><strong class="term-highlight">CASE STUDY</strong></td><td><a href="case-ciel.html" class="term-link">portfolio-site/case-ciel.html ↗</a></td></tr>
 </table>
 <div class="term-line term-muted" style="margin-top: 6px;">💡 Tip: Type <span class="term-highlight">'projects'</span> to view all works, or explore the full case study: <a href="case-ciel.html" class="term-link">Read Manas: Ciel Case Study →</a></div>
@@ -896,7 +896,7 @@
 
     function showBrain() {
       appendOutput(`
-<div class="term-line term-cyan" style="font-weight: 600;">// OBSIDIAN SECOND BRAIN // VAULT STRUCTURE</div>
+<div class="term-line term-cyan" style="font-weight: 600;">// OBSIDIAN NOTES // VAULT STRUCTURE</div>
 <div class="term-line"><span class="term-success">[BRIDGE]</span> Antigravity reaches the vault through an MCP server. The LSFM agents and Ciel use obsidian_client.py (public in lsfm-ai-hq) over Obsidian's Local REST API, with a filesystem fallback. The vault's notes stay private.</div>
 <div class="term-block" style="margin: 6px 0;">
   <div class="term-line"><span class="term-highlight">00 - Hub</span>: Central dashboard, quick links &amp; navigation indices</div>
