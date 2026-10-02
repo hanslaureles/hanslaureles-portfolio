@@ -851,6 +851,56 @@
             time-to-first-token isn't measured), and a labeled email evaluation set is still to be built. Both are on
             the roadmap.</p>
 
+          <h3 style="margin: 32px 0 12px 0;">Failure Modes &amp; Where the Code Handles Them</h3>
+          <p>
+            Each row links to the exact lines in the public repo, pinned to commit
+            <code>14a319f</code> so the links don't drift, and names the test that exercises it.
+          </p>
+          <div class="case-table-wrap">
+            <table class="case-table">
+              <thead>
+                <tr><th scope="col">When this fails</th><th scope="col">What the system does</th><th scope="col">Code &amp; test</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Discord gateway drops a bot</td>
+                  <td>Restarts that bot alone with jittered backoff (3 s, growing 1.5&times; to 15 s; reset after a session over 60 s). A bad token or missing intents stops it instead of retrying forever.</td>
+                  <td><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/14a319fb9fa1b65794382c3e7a566d3b9b2fbf0e/run_all.py#L55-L83" target="_blank" rel="noopener noreferrer"><code>run_all.py</code> L55&ndash;83</a><br><code>GatewayRetryTest</code></td>
+                </tr>
+                <tr>
+                  <td>Groq answers 429</td>
+                  <td>Honours <code>Retry-After</code> (including decimals like 1.5 s) once if it is 4 s or less; otherwise moves to the next Groq model.</td>
+                  <td><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/14a319fb9fa1b65794382c3e7a566d3b9b2fbf0e/llm_client.py#L212-L227" target="_blank" rel="noopener noreferrer"><code>llm_client.py</code> L212&ndash;227</a><br><code>GroqRetryAfterTest</code></td>
+                </tr>
+                <tr>
+                  <td>A whole cloud provider is down</td>
+                  <td>Groq agents fall back to Gemini when a Gemini key is configured, and Yunjin (Gemini first) falls back to Groq. If both fail, the error names each provider instead of returning empty text.</td>
+                  <td><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/14a319fb9fa1b65794382c3e7a566d3b9b2fbf0e/llm_client.py#L376-L402" target="_blank" rel="noopener noreferrer"><code>llm_client.py</code> L376&ndash;402</a></td>
+                </tr>
+                <tr>
+                  <td>Obsidian's REST API is offline or slow</td>
+                  <td>Writes go straight to the vault folder on disk. A lock plus append mode keeps two agents logging at once from overwriting each other.</td>
+                  <td><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/14a319fb9fa1b65794382c3e7a566d3b9b2fbf0e/obsidian_client.py#L171-L205" target="_blank" rel="noopener noreferrer"><code>obsidian_client.py</code> L171&ndash;205</a><br><code>ObsidianHttpStubTest</code>, <code>DiskAppendTest</code></td>
+                </tr>
+                <tr>
+                  <td>An LLM-chosen note path tries to leave the vault</td>
+                  <td>Rejects <code>../</code> and drive paths before anything touches the disk or the REST API.</td>
+                  <td><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/14a319fb9fa1b65794382c3e7a566d3b9b2fbf0e/obsidian_client.py#L98-L111" target="_blank" rel="noopener noreferrer"><code>obsidian_client.py</code> L98&ndash;111</a><br><code>VaultPathGuardTest</code></td>
+                </tr>
+                <tr>
+                  <td>A reply is longer than Discord allows</td>
+                  <td>Splits it into numbered embeds and clips titles and citation fields to Discord's limits, so a long answer never fails to send.</td>
+                  <td><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/14a319fb9fa1b65794382c3e7a566d3b9b2fbf0e/discord_utils.py#L122-L185" target="_blank" rel="noopener noreferrer"><code>discord_utils.py</code> L122&ndash;185</a><br><code>EmbedLimitsTest</code>, <code>ChunkPropertyTest</code></td>
+                </tr>
+                <tr>
+                  <td>Eunchae's QA review returns no usable score</td>
+                  <td>The application package fails QA as "unscored" instead of passing with a default score.</td>
+                  <td><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/14a319fb9fa1b65794382c3e7a566d3b9b2fbf0e/eunchae_engine.py#L319-L337" target="_blank" rel="noopener noreferrer"><code>eunchae_engine.py</code> L319&ndash;337</a><br><code>TestEunchaeQAHonestFailures</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
           <!-- Email Triage Mechanism -->
           <h3 style="margin: 32px 0 12px 0;">Email Triage: How Classification Works</h3>
           <p>

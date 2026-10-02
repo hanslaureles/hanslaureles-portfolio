@@ -1887,6 +1887,44 @@ picture {
   display: block;
 }
 
+/* Case-study data tables: scroll sideways inside their wrapper on narrow screens */
+.case-table-wrap {
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+.case-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.case-table th,
+.case-table td {
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+.case-table thead th {
+  border-bottom-width: 2px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.case-table td {
+  color: var(--text-secondary);
+}
+
+.case-table td:first-child {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
 /* Outcome Metrics Grid */
 .outcome-grid {
   display: grid;
