@@ -665,6 +665,34 @@ tools = [
         <section id="benchmarks" class="case-body-section">
           <div class="section-tag">// 07 · PIPELINE STAGES &amp; RETROSPECTIVE</div>
           <h2>Pipeline Stages &amp; Architectural Retrospective</h2>
+
+          <figure class="lifecycle-figure">
+            <svg class="lifecycle-svg" viewBox="0 0 360 512" role="img" aria-labelledby="lcTitle lcDesc">
+              <title id="lcTitle">Lifecycle of one Ciel voice request</title>
+              <desc id="lcDesc">Eight stages, top to bottom: the HUD sends speech or text; it is transcribed; the server admits the mission; the router plans it; tools and agents run in worker threads; the synthesis LLM streams its reply; each finished sentence is voiced and sent to the HUD while the rest is written; the mission completes with the report and a joined MP3, or ends as ciel_error.</desc>
+              <defs>
+                <marker id="lcArrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M0,0 L10,5 L0,10 z" class="lc-arrowhead"/>
+                </marker>
+              </defs>
+              <g class="lc-step"><rect x="20" y="4" width="320" height="46" rx="8"/><text x="36" y="23" class="lc-title">1 · HUD</text><text x="36" y="40" class="lc-sub">Push-to-talk WebM upload, or a typed prompt</text></g>
+              <line x1="180" y1="50" x2="180" y2="66" class="lc-link" marker-end="url(#lcArrow)"/>
+              <g class="lc-step"><rect x="20" y="70" width="320" height="46" rx="8"/><text x="36" y="89" class="lc-title">2 · Transcribe</text><text x="36" y="106" class="lc-sub">FFmpeg 16 kHz mono → Groq Whisper (OpenAI fallback)</text></g>
+              <line x1="180" y1="116" x2="180" y2="132" class="lc-link" marker-end="url(#lcArrow)"/>
+              <g class="lc-step"><rect x="20" y="136" width="320" height="46" rx="8"/><text x="36" y="155" class="lc-title">3 · Admit</text><text x="36" y="172" class="lc-sub">2 missions run, 8 wait, the rest get a 503</text></g>
+              <line x1="180" y1="182" x2="180" y2="198" class="lc-link" marker-end="url(#lcArrow)"/>
+              <g class="lc-step"><rect x="20" y="202" width="320" height="46" rx="8"/><text x="36" y="221" class="lc-title">4 · Route</text><text x="36" y="238" class="lc-sub">Keyword fast paths, else a Groq JSON plan</text></g>
+              <line x1="180" y1="248" x2="180" y2="264" class="lc-link" marker-end="url(#lcArrow)"/>
+              <g class="lc-step"><rect x="20" y="268" width="320" height="46" rx="8"/><text x="36" y="287" class="lc-title">5 · Tools &amp; agents</text><text x="36" y="304" class="lc-sub">Threads with timeouts; PDF &amp; Gmail get their own pool</text></g>
+              <line x1="180" y1="314" x2="180" y2="330" class="lc-link" marker-end="url(#lcArrow)"/>
+              <g class="lc-step"><rect x="20" y="334" width="320" height="46" rx="8"/><text x="36" y="353" class="lc-title">6 · Synthesize (streaming)</text><text x="36" y="370" class="lc-sub">Groq writes the JA line, the EN line, then the report</text></g>
+              <line x1="180" y1="380" x2="180" y2="396" class="lc-link" marker-end="url(#lcArrow)"/>
+              <g class="lc-step lc-accent"><rect x="20" y="400" width="320" height="46" rx="8"/><text x="36" y="419" class="lc-title">7 · Speak while writing</text><text x="36" y="436" class="lc-sub">Each finished sentence → Edge-TTS + filter → HUD</text></g>
+              <line x1="180" y1="446" x2="180" y2="462" class="lc-link" marker-end="url(#lcArrow)"/>
+              <g class="lc-step"><rect x="20" y="466" width="320" height="42" rx="8"/><text x="36" y="485" class="lc-title">8 · Complete</text><text x="36" y="501" class="lc-sub">Report + joined MP3 for replay, or ciel_error</text></g>
+            </svg>
+            <figcaption>One voice request, end to end. Stage timings are in the tables below, with their run counts and dates.</figcaption>
+          </figure>
           <p>
             Every voice turn runs through these stages on my workstation (Intel Core i5-12400F, 16GB DDR4, AMD Radeon RX 6600 XT, Windows 11). The p50 column comes from <code>bench/bench_ciel.py</code> in the public repo: N = 10 runs per stage on 2026-10-01 (full results, including p95 and max:
             <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/main/bench/results/2026-10-01.md" target="_blank" rel="noopener"><code>bench/results/2026-10-01.md</code></a>). Network stages are round trips from this machine at that time, not compute times. A full mission for a general-knowledge prompt (routing, synthesis and bilingual speech) took <strong>4.43 s p50</strong> (max 5.71 s).

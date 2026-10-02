@@ -1925,6 +1925,58 @@ picture {
   font-weight: 600;
 }
 
+/* Request-lifecycle diagram (inline SVG on case-ciel); colours follow the theme tokens */
+.lifecycle-figure {
+  margin: 24px auto 32px;
+  max-width: 520px;
+}
+
+.lifecycle-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.lifecycle-svg .lc-step rect {
+  fill: var(--bg-subtle);
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.lifecycle-svg .lc-accent rect {
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+.lifecycle-svg .lc-title {
+  fill: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.lifecycle-svg .lc-sub {
+  fill: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 11px;
+}
+
+.lifecycle-svg .lc-link {
+  stroke: var(--text-muted);
+  stroke-width: 1.25;
+}
+
+.lifecycle-svg .lc-arrowhead {
+  fill: var(--text-muted);
+}
+
+.lifecycle-figure figcaption {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
 /* Outcome Metrics Grid */
 .outcome-grid {
   display: grid;
