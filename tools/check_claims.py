@@ -29,6 +29,8 @@ RETRACTED = [
     (r"\+42%|-55%|94% (task|usability|completion)|4\.8/5|-65%|sub-3\.2 ?s|3\.2 ?s (logging|input|average)|"
      r"12 ?s benchmark|85 ?ms|60 FPS|100% Lighthouse|400 ms FCP|1\.0 ?s LCP",
      "unsourced design case-study outcome (3E-9; restore only with N, date and method)"),
+    (r"WCAG AAA|zero[- ]latency|engagement by over|sub-second FCP|Full WCAG",
+     "uncited compliance or performance claim (3E round 1; CI checks WCAG 2.1 AA only)"),
 ]
 
 

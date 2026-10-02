@@ -666,7 +666,7 @@
   <div class="term-line"><span class="term-highlight">03. EXECUTIVE INTERFACE CRAFT &amp; FRONTEND</span></div>
   <div class="term-line term-muted">  • Modern Web: Vanilla JS/ES6+, React, Next.js, TypeScript, HTML5 Semantic Living Specs</div>
   <div class="term-line term-muted">  • Design Systems: CSS Custom Properties, Design Tokens, Swiss Typography Hierarchy</div>
-  <div class="term-line term-muted">  • High-Dwell Telemetry Boards, Terminal UIs, WCAG AAA Accessibility, Sub-Second FCP</div>
+  <div class="term-line term-muted">  • High-Dwell Telemetry Boards, Terminal UIs, WCAG 2.1 AA (axe-checked in CI)</div>
 </div>
       `.trim());
     }
@@ -738,7 +738,7 @@
           {
             doc: 'master_resume.md: Skills',
             score: '0.891',
-            text: 'Executive Interface Craft: Design Tokens, CSS Custom Properties, Swiss Editorial Typography, WCAG AAA Accessibility benchmarks.'
+            text: 'Executive Interface Craft: Design Tokens, CSS Custom Properties, Swiss Editorial Typography, WCAG 2.1 AA accessibility checks.'
           }
         ];
       } else if (qLower.includes('email') || qLower.includes('gmail') || qLower.includes('eunchae')) {
