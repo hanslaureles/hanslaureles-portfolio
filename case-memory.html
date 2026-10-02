@@ -220,7 +220,7 @@
         ← Return to Selected Work
       </a>
       
-      <div style="display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;">
+      <div class="u-d-flex u-gap-8px u-mb-16px u-wrap-wrap">
         <span class="badge badge-accent">Case Study 06 · Applied AI Architecture</span>
         <span class="badge">Self-Improving Agent Engine</span>
         <span class="badge">Episodic Memory</span>
@@ -244,14 +244,14 @@
         <div><dt>Code</dt><dd><a href="https://github.com/hanslaureles/cognitive-memory-core/tree/main/eval" target="_blank" rel="noopener noreferrer">cognitive-memory-core/eval</a>, rerun with <code>python eval/run_eval.py</code></dd></div>
       </dl>
 
-      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px;">
+      <div class="u-d-flex u-gap-12px u-wrap-wrap u-mb-36px">
         <a href="#simulator" class="btn btn-primary">
           ⚡ Launch Live Memory Simulator ↓
         </a>
         <a href="#architecture" class="btn btn-outline">
           Architecture Deep Dive ↓
         </a>
-        <a href="https://github.com/hanslaureles/cognitive-memory-core" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 6px;">
+        <a href="https://github.com/hanslaureles/cognitive-memory-core" target="_blank" rel="noopener noreferrer" class="btn btn-outline u-d-inline-flex u-items-center u-gap-6px">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
           View Code on GitHub ↗
         </a>
@@ -317,7 +317,7 @@
       </div>
 
       <!-- Hero Banner Graphic Mockup -->
-      <div class="case-banner" style="margin-top: 32px; margin-bottom: 24px;">
+      <div class="case-banner u-mt-32px u-mb-24px">
         <picture>
           <source type="image/avif" srcset="images/memory-core/memory-mockup-480.fe2cc1ea.avif 480w, images/memory-core/memory-mockup-960.2fc2c74f.avif 960w, images/memory-core/memory-mockup-1376.c97be728.avif 1376w" sizes="(max-width: 1280px) calc(100vw - 32px), 1240px">
           <source type="image/webp" srcset="images/memory-core/memory-mockup-480.4ead0a78.webp 480w, images/memory-core/memory-mockup-960.18d7e109.webp 960w, images/memory-core/memory-mockup-1376.858de97b.webp 1376w" sizes="(max-width: 1280px) calc(100vw - 32px), 1240px">
@@ -326,7 +326,7 @@
       </div>
 
       <!-- Architecture Runtime Telemetry Preview -->
-      <div class="terminal-window" style="margin: 24px 0 32px 0;">
+      <div class="terminal-window u-m-24px-0-32px-0">
         <div class="terminal-topbar">
           <div class="terminal-dots">
             <span class="terminal-dot red"></span>
@@ -334,7 +334,7 @@
             <span class="terminal-dot green"></span>
           </div>
           <div class="terminal-title">COGNITIVE_MEMORY_CORE // BM25 HEURISTIC FLYWHEEL</div>
-          <div class="mono" style="font-size: 0.72rem; color: #10B981;">● 10 CRYSTALLIZED RULES</div>
+          <div class="mono u-fs-0p72rem u-c-emerald-500">● 10 CRYSTALLIZED RULES</div>
         </div>
         <div class="terminal-body">
 <pre><span class="terminal-comment"># Self-Improving Agent Memory Pipeline &amp; Reflection Flywheel</span>
@@ -379,7 +379,7 @@
           <p>
             Contemporary AI coding assistants are fundamentally stateless between sessions. Every new conversation, branch switch, or tool invocation begins with a clean slate. This creates a frustrating, repetitive developer experience:
           </p>
-          <ul style="margin: 16px 0 24px 20px; line-height: 1.8;">
+          <ul class="u-m-16px-0-24px-20px u-lh-1p8">
             <li><strong>Regression Loops</strong>: An agent repeats known anti-patterns (e.g. nested PowerShell quotes, robotic copy on lifestyle brands, or Netlify subdirectory 404 order).</li>
             <li><strong>Tacit Knowledge Loss</strong>: Non-obvious nuances uncovered through painful debugging are lost the moment the chat window closes.</li>
             <li><strong>Context Window Bloat</strong>: Shoving entire multi-thousand-line project histories into prompt headers wastes token bandwidth and degrades attention quality.</li>
@@ -401,10 +401,10 @@
           <div class="memory-console-widget" id="memory-demo">
             <div class="memory-console-header">
               <div>
-                <span class="badge badge-accent" style="font-size: 0.7rem;">LIVE RECALL ENGINE</span>
-                <span class="mono" style="margin-left: 8px; font-size: 0.85rem; color: var(--text-muted);">experience_store.jsonl · 10 Active Heuristics</span>
+                <span class="badge badge-accent u-fs-0p7rem">LIVE RECALL ENGINE</span>
+                <span class="mono u-ml-8px u-fs-0p85rem u-c-text-muted">experience_store.jsonl · 10 Active Heuristics</span>
               </div>
-              <div class="mono" style="font-size: 0.78rem; color: var(--accent);">CLIENT-SIDE BM25 · RUNS IN YOUR BROWSER</div>
+              <div class="mono u-fs-0p78rem u-c-accent">CLIENT-SIDE BM25 · RUNS IN YOUR BROWSER</div>
             </div>
 
             <div class="memory-query-bar">
@@ -413,7 +413,7 @@
             </div>
 
             <div class="memory-chips-row">
-              <span class="mono" style="font-size: 0.75rem; align-self: center; color: var(--text-muted);">SUGGESTIONS:</span>
+              <span class="mono u-fs-0p75rem u-self-center u-c-text-muted">SUGGESTIONS:</span>
               <button class="memory-chip" data-query="coffee store avoid robotic words">☕ Coffee Copy</button>
               <button class="memory-chip" data-query="navigation bracket wrapped next line wide screen">📐 Flexbox Brackets</button>
               <button class="memory-chip" data-query="netlify deploy 404 subfolder route redirect">🌐 Netlify 404</button>
@@ -440,7 +440,7 @@
             The engine operates without heavy external vector databases or heavyweight pip packages, requiring only standard Python 3:
           </p>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 24px 0;">
+          <div class="u-d-grid u-cols-autofit-280 u-gap-16px u-m-24px-0">
             <div class="agent-card">
               <div class="agent-card-top">
                 <div class="agent-avatar-badge">📂</div>
@@ -499,14 +499,14 @@
             Vector embeddings alone frequently struggle with precise syntactic rules (e.g. distinguishing <code>`"`</code> from <code>`'`</code> in PowerShell or exact CSS properties like <code>white-space: nowrap</code>). We designed a domain-weighted BM25 scoring algorithm:
           </p>
 
-          <div style="background: var(--surface); border-left: 3px solid var(--accent); padding: 18px 24px; border-radius: 4px; margin: 20px 0; font-family: var(--font-mono); font-size: 0.88rem;">
+          <div class="u-bg-surface u-bd-l-3px-solid-accent u-p-18px-24px u-rounded-4px u-m-20px-0 u-ff-font-mono u-fs-0p88rem">
             <strong>Score(D, Q)</strong> = ∑ IDF(qᵢ) · [ (TF_weighted · (k₁ + 1)) / (TF_weighted + k₁ · (1 - b + b · (|D| / avgDL))) ] · SeverityMult · FreqMult
           </div>
 
           <p>
             Key architectural nuances:
           </p>
-          <ul style="margin: 16px 0 24px 20px; line-height: 1.8;">
+          <ul class="u-m-16px-0-24px-20px u-lh-1p8">
             <li><strong>Multi-Field Weighting</strong>: Tags are weighted at 3.0×, triggers at 2.5×, and symptoms at 2.0× relative to generic code diffs.</li>
             <li><strong>Frequency Compounding</strong>: Lessons encountered multiple times receive an automatic multiplier (<code>1.0 + min(0.5, (freq - 1) * 0.1)</code>), ensuring battle-tested rules rank highest.</li>
             <li><strong>Zero Dependencies</strong>: No PyTorch, no HuggingFace, no ChromaDB. Pure Python standard library ensures instant execution across any terminal or CI/CD container.</li>
@@ -521,76 +521,76 @@
             The episodic memory store maintains 10 verified heuristics continuously distilled from our active production engineering sessions:
           </p>
 
-          <div style="overflow-x: auto; margin: 20px 0;">
-            <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem;">
+          <div class="u-ox-auto u-m-20px-0">
+            <table class="u-w-100 u-collapse-collapse u-fs-0p88rem">
               <thead>
-                <tr style="border-bottom: 2px solid var(--border-color, #23272f); text-align: left;">
-                  <th style="padding: 10px;">ID</th>
-                  <th style="padding: 10px;">Domain</th>
-                  <th style="padding: 10px;">Observed Symptom</th>
-                  <th style="padding: 10px;">Permanent Heuristic</th>
+                <tr class="u-bd-b-2px-solid-border-color-fallback u-ta-left">
+                  <th class="u-p-10px">ID</th>
+                  <th class="u-p-10px">Domain</th>
+                  <th class="u-p-10px">Observed Symptom</th>
+                  <th class="u-p-10px">Permanent Heuristic</th>
                 </tr>
               </thead>
               <tbody>
-                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
-                  <td style="padding: 10px;" class="mono">MEM-001</td>
-                  <td style="padding: 10px;">Copywriting</td>
-                  <td style="padding: 10px;">Robotic terms (SPECIMEN, PROTOCOL) in food e-commerce</td>
-                  <td style="padding: 10px;">Strictly forbid sci-fi jargon for culinary/hospitality; use grounded tactile terms (Fresh Roast, Curated, Warm Batch, Shopping Bag).</td>
+                <tr class="u-bd-b-1px-solid-border-color-fallback">
+                  <td class="mono u-p-10px">MEM-001</td>
+                  <td class="u-p-10px">Copywriting</td>
+                  <td class="u-p-10px">Robotic terms (SPECIMEN, PROTOCOL) in food e-commerce</td>
+                  <td class="u-p-10px">Strictly forbid sci-fi jargon for culinary/hospitality; use grounded tactile terms (Fresh Roast, Curated, Warm Batch, Shopping Bag).</td>
                 </tr>
-                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
-                  <td style="padding: 10px;" class="mono">MEM-002</td>
-                  <td style="padding: 10px;">CSS Layout</td>
-                  <td style="padding: 10px;">Closing bracket ']' wrapped onto separate line on desktop</td>
-                  <td style="padding: 10px;">Never insert loose spaced bracket text inside inline-flex navigation elements; enforce <code>white-space: nowrap;</code>.</td>
+                <tr class="u-bd-b-1px-solid-border-color-fallback">
+                  <td class="mono u-p-10px">MEM-002</td>
+                  <td class="u-p-10px">CSS Layout</td>
+                  <td class="u-p-10px">Closing bracket ']' wrapped onto separate line on desktop</td>
+                  <td class="u-p-10px">Never insert loose spaced bracket text inside inline-flex navigation elements; enforce <code>white-space: nowrap;</code>.</td>
                 </tr>
-                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
-                  <td style="padding: 10px;" class="mono">MEM-003</td>
-                  <td style="padding: 10px;">Edge Routing</td>
-                  <td style="padding: 10px;">Netlify subdirectory /aura-store loads 404 page</td>
-                  <td style="padding: 10px;">Explicit subfolder rewrite rules MUST precede the global catch-all rule (<code>/* /404.html 404</code>) in both <code>_redirects</code> and <code>netlify.toml</code>.</td>
+                <tr class="u-bd-b-1px-solid-border-color-fallback">
+                  <td class="mono u-p-10px">MEM-003</td>
+                  <td class="u-p-10px">Edge Routing</td>
+                  <td class="u-p-10px">Netlify subdirectory /aura-store loads 404 page</td>
+                  <td class="u-p-10px">Explicit subfolder rewrite rules MUST precede the global catch-all rule (<code>/* /404.html 404</code>) in both <code>_redirects</code> and <code>netlify.toml</code>.</td>
                 </tr>
-                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
-                  <td style="padding: 10px;" class="mono">MEM-004</td>
-                  <td style="padding: 10px;">Localization</td>
-                  <td style="padding: 10px;">US card-only checkout fails Philippine conversion</td>
-                  <td style="padding: 10px;">Philippine e-commerce must feature GCash, Maya, QR Ph, and Cash on Delivery (COD) alongside domestic +63 phone formatting.</td>
+                <tr class="u-bd-b-1px-solid-border-color-fallback">
+                  <td class="mono u-p-10px">MEM-004</td>
+                  <td class="u-p-10px">Localization</td>
+                  <td class="u-p-10px">US card-only checkout fails Philippine conversion</td>
+                  <td class="u-p-10px">Philippine e-commerce must feature GCash, Maya, QR Ph, and Cash on Delivery (COD) alongside domestic +63 phone formatting.</td>
                 </tr>
-                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
-                  <td style="padding: 10px;" class="mono">MEM-005</td>
-                  <td style="padding: 10px;">CLI / Shell</td>
-                  <td style="padding: 10px;">PowerShell <code>TerminatorExpectedAtEndOfString</code> crash</td>
-                  <td style="padding: 10px;">Never nest unescaped double quotes inside double-quoted PowerShell commands; use single quotes or direct script invocations.</td>
+                <tr class="u-bd-b-1px-solid-border-color-fallback">
+                  <td class="mono u-p-10px">MEM-005</td>
+                  <td class="u-p-10px">CLI / Shell</td>
+                  <td class="u-p-10px">PowerShell <code>TerminatorExpectedAtEndOfString</code> crash</td>
+                  <td class="u-p-10px">Never nest unescaped double quotes inside double-quoted PowerShell commands; use single quotes or direct script invocations.</td>
                 </tr>
-                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
-                  <td style="padding: 10px;" class="mono">MEM-006</td>
-                  <td style="padding: 10px;">Windows Python</td>
-                  <td style="padding: 10px;"><code>UnicodeEncodeError</code> on terminal stdout</td>
-                  <td style="padding: 10px;">Reconfigure stdout with <code>sys.stdout.reconfigure(encoding='utf-8')</code> or use ASCII status tokens to avoid cp1252 charmap crashes.</td>
+                <tr class="u-bd-b-1px-solid-border-color-fallback">
+                  <td class="mono u-p-10px">MEM-006</td>
+                  <td class="u-p-10px">Windows Python</td>
+                  <td class="u-p-10px"><code>UnicodeEncodeError</code> on terminal stdout</td>
+                  <td class="u-p-10px">Reconfigure stdout with <code>sys.stdout.reconfigure(encoding='utf-8')</code> or use ASCII status tokens to avoid cp1252 charmap crashes.</td>
                 </tr>
-                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
-                  <td style="padding: 10px;" class="mono">MEM-007</td>
-                  <td style="padding: 10px;">Deployment</td>
-                  <td style="padding: 10px;">Manual Netlify direct uploads causing untracked git drift</td>
-                  <td style="padding: 10px;">Always deploy web apps by committing and pushing to GitHub; Netlify listens to the repository and deploys pinned commit states.</td>
+                <tr class="u-bd-b-1px-solid-border-color-fallback">
+                  <td class="mono u-p-10px">MEM-007</td>
+                  <td class="u-p-10px">Deployment</td>
+                  <td class="u-p-10px">Manual Netlify direct uploads causing untracked git drift</td>
+                  <td class="u-p-10px">Always deploy web apps by committing and pushing to GitHub; Netlify listens to the repository and deploys pinned commit states.</td>
                 </tr>
-                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
-                  <td style="padding: 10px;" class="mono">MEM-008</td>
-                  <td style="padding: 10px;">Doc Parsing</td>
-                  <td style="padding: 10px;">Cover letter body prematurely truncated on portfolio URL lines</td>
-                  <td style="padding: 10px;">Never terminate cover letter parsing on contact lines containing portfolio links; only terminate on major structural markdown headers.</td>
+                <tr class="u-bd-b-1px-solid-border-color-fallback">
+                  <td class="mono u-p-10px">MEM-008</td>
+                  <td class="u-p-10px">Doc Parsing</td>
+                  <td class="u-p-10px">Cover letter body prematurely truncated on portfolio URL lines</td>
+                  <td class="u-p-10px">Never terminate cover letter parsing on contact lines containing portfolio links; only terminate on major structural markdown headers.</td>
                 </tr>
-                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
-                  <td style="padding: 10px;" class="mono">MEM-009</td>
-                  <td style="padding: 10px;">API Resiliency</td>
-                  <td style="padding: 10px;">HTTP 429 Too Many Requests rate limits crashing async Discord loops</td>
-                  <td style="padding: 10px;">Always implement exponential backoff retry (sleep 2–4s) and a multi-model rotation pool on both Groq and Gemini.</td>
+                <tr class="u-bd-b-1px-solid-border-color-fallback">
+                  <td class="mono u-p-10px">MEM-009</td>
+                  <td class="u-p-10px">API Resiliency</td>
+                  <td class="u-p-10px">HTTP 429 Too Many Requests rate limits crashing async Discord loops</td>
+                  <td class="u-p-10px">Always implement exponential backoff retry (sleep 2–4s) and a multi-model rotation pool on both Groq and Gemini.</td>
                 </tr>
-                <tr style="border-bottom: 1px solid var(--border-color, #23272f);">
-                  <td style="padding: 10px;" class="mono">MEM-010</td>
-                  <td style="padding: 10px;">Resume Writing</td>
-                  <td style="padding: 10px;">Subjective responsibility bullets failing ATS semantic parsers</td>
-                  <td style="padding: 10px;">Every r&eacute;sum&eacute; experience bullet MUST lead with active verbs and quantify impact with verified metrics, latencies, or percentages.</td>
+                <tr class="u-bd-b-1px-solid-border-color-fallback">
+                  <td class="mono u-p-10px">MEM-010</td>
+                  <td class="u-p-10px">Resume Writing</td>
+                  <td class="u-p-10px">Subjective responsibility bullets failing ATS semantic parsers</td>
+                  <td class="u-p-10px">Every r&eacute;sum&eacute; experience bullet MUST lead with active verbs and quantify impact with verified metrics, latencies, or percentages.</td>
                 </tr>
               </tbody>
             </table>
@@ -619,7 +619,7 @@
             </div>
           </div>
 
-          <h3 style="margin: 28px 0 12px 0;">Retrieval Eval: BM25 vs a Naive Substring Baseline</h3>
+          <h3 class="u-m-28px-0-12px-0">Retrieval Eval: BM25 vs a Naive Substring Baseline</h3>
           <p>
             Each of the 30 queries is a paraphrase labelled with the one rule it should retrieve, and a test fails if
             any query copies a 4-word run from the store. I wrote 15; the other 15 are with an independent reviewer to
@@ -662,7 +662,7 @@
             and re-scores it. CI now fails if BM25 recall@3 or MRR falls below these numbers minus a tolerance.
           </p>
 
-          <h3 style="margin: 28px 0 12px 0;">Architectural Decision: Why BM25 over Dense Vector Embeddings?</h3>
+          <h3 class="u-m-28px-0-12px-0">Architectural Decision: Why BM25 over Dense Vector Embeddings?</h3>
           <p>
             Many AI agent memory solutions reach prematurely for heavy vector databases (ChromaDB, Pinecone, FAISS) and deep learning frameworks (PyTorch, transformers). For a local store of a few hundred guidelines, dense embeddings add a model download, an embedding step on every write, and a dependency stack to maintain, and they can blur exact technical identifiers (e.g. <code>sys.stdout</code> vs <code>sys.stdin</code>) that a keyword match keeps apart.
           </p>
@@ -671,17 +671,17 @@
           </p>
 
           <!-- What Broke & What I Would Change -->
-          <h3 style="margin: 32px 0 12px 0;">Retrospective: What Broke &amp; What I Would Change</h3>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
-            <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); padding: 18px; border-radius: 8px;">
-              <h4 style="color: var(--tone-red); margin-bottom: 8px; font-size: 0.95rem;">⚠️ What Broke in V1</h4>
-              <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+          <h3 class="u-m-32px-0-12px-0">Retrospective: What Broke &amp; What I Would Change</h3>
+          <div class="u-d-grid u-cols-1fr-1fr u-gap-16px u-mb-24px">
+            <div class="u-bg-red-a05 u-bd-1px-solid-red-a20 u-p-18px u-rounded-8px">
+              <h4 class="u-c-tone-red u-mb-8px u-fs-0p95rem">⚠️ What Broke in V1</h4>
+              <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
                 <em>Unmeasured retrospective, recalled rather than logged:</em> naive substring matching seemed to fire on generic coding words like <code>error</code>, <code>file</code>, and <code>test</code>, injecting unrelated rules into the prompt context. The held-out eval above measures recall, not false positives, so it neither confirms nor rules this out.
               </p>
             </div>
-            <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 18px; border-radius: 8px;">
-              <h4 style="color: var(--tone-emerald); margin-bottom: 8px; font-size: 0.95rem;">✓ The Engineering Fix</h4>
-              <p style="font-size: 0.88rem; line-height: 1.5; color: var(--text-secondary); margin: 0;">
+            <div class="u-bg-emerald-a05 u-bd-1px-solid-emerald-a20 u-p-18px u-rounded-8px">
+              <h4 class="u-c-tone-emerald u-mb-8px u-fs-0p95rem">✓ The Engineering Fix</h4>
+              <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
                 Implemented tokenization with an English coding stopword filter, added 3.0× weighting to exact domain tags, and introduced severity multipliers (1.4× for critical bugs) to isolate true matches.
               </p>
             </div>
@@ -693,13 +693,13 @@
     </div>
 
     <!-- Clean Pagination Section (Full Width with Dedicated Spacing) -->
-    <div class="case-pagination-wrap" style="margin-top: 64px; margin-bottom: 32px;">
-      <div class="case-pagination" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+    <div class="case-pagination-wrap u-mt-64px u-mb-32px">
+      <div class="case-pagination u-d-grid u-cols-1fr-1fr u-gap-24px">
         <a href="case-ciel.html" class="pag-card">
           <span class="pag-label">← Previous Case Study</span>
           <span class="pag-title">02 · Manas: Ciel (Voice AI Copilot &amp; HUD)</span>
         </a>
-        <a href="case-aura.html" class="pag-card" style="text-align: right;">
+        <a href="case-aura.html" class="pag-card u-ta-right">
           <span class="pag-label">Next Case Study →</span>
           <span class="pag-title">04 · Aura Coffee &amp; Kitchen (Specialty Commerce)</span>
         </a>
@@ -713,9 +713,9 @@
     <div class="container">
       <div class="footer-bottom">
         <div>© 2026 Hans Aaron Laureles · All Rights Reserved</div>
-        <div style="display: flex; gap: 16px; align-items: center;">
+        <div class="u-d-flex u-gap-16px u-items-center">
           <a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-          <a href="index.html" style="color: var(--accent);">← Selected Work</a>
+          <a href="index.html" class="u-c-accent">← Selected Work</a>
         </div>
       </div>
     </div>
@@ -866,7 +866,7 @@
         const queryTokens = tokenize(query);
         const outputEl = document.getElementById('demo-output');
         if (!queryTokens.length) {
-          outputEl.innerHTML = '<span style="color: #9ca3af;">Please enter a search term above...</span>';
+          outputEl.innerHTML = '<span class="u-c-gray-400">Please enter a search term above...</span>';
           return;
         }
 
@@ -875,7 +875,7 @@
           .sort((a, b) => b.score - a.score);
 
         if (!scored.length) {
-          outputEl.innerHTML = `<span style="color: #4ade80;">[OK] Zero past failure patterns or anti-patterns matched for "${query}".</span>\nSafe to proceed with implementation!`;
+          outputEl.innerHTML = `<span class="u-c-green-400">[OK] Zero past failure patterns or anti-patterns matched for "${query}".</span>\nSafe to proceed with implementation!`;
           return;
         }
 
