@@ -699,52 +699,52 @@ tools = [
           </p>
 
           <!-- Scrolls sideways on narrow screens, like the table in case-memory.html -->
-          <div class="u-ox-auto u-m-20px-0">
-          <table class="case-benchmark-table u-w-100 u-collapse-collapse u-ff-font-mono u-fs-0p86rem">
+          <div class="case-table-wrap">
+          <table class="case-table">
             <thead>
-              <tr class="u-bd-b-2px-solid-border u-ta-left u-c-text-muted">
-                <th class="u-p-10px">PIPELINE STAGE</th>
-                <th class="u-p-10px">ENGINE</th>
-                <th class="u-p-10px">WHAT HAPPENS</th>
-                <th class="u-p-10px u-ws-nowrap">P50 (N=10)</th>
+              <tr>
+                <th>PIPELINE STAGE</th>
+                <th>ENGINE</th>
+                <th>WHAT HAPPENS</th>
+                <th class="u-ws-nowrap">P50 (N=10)</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="u-bd-b-1px-solid-border">
-                <td class="u-p-10px u-fw-600">Audio Normalization</td>
-                <td class="u-p-10px u-c-text-secondary">FFmpeg</td>
-                <td class="u-p-10px u-c-text-secondary">Resample to 16kHz mono WAV with loudness leveling and voice-band filtering.</td>
-                <td class="u-p-10px u-c-text-secondary">32 ms</td>
+              <tr>
+                <td>Audio Normalization</td>
+                <td>FFmpeg</td>
+                <td>Resample to 16kHz mono WAV with loudness leveling and voice-band filtering.</td>
+                <td>32 ms</td>
               </tr>
-              <tr class="u-bd-b-1px-solid-border">
-                <td class="u-p-10px u-fw-600">Speech-to-Text</td>
-                <td class="u-p-10px u-c-text-secondary">Groq Whisper Large v3 Turbo → OpenAI whisper-1</td>
-                <td class="u-p-10px u-c-text-secondary">Domain-vocabulary prompt; the OpenAI tier runs only if Groq fails.</td>
-                <td class="u-p-10px u-c-text-secondary">0.50 s · network</td>
+              <tr>
+                <td>Speech-to-Text</td>
+                <td>Groq Whisper Large v3 Turbo → OpenAI whisper-1</td>
+                <td>Domain-vocabulary prompt; the OpenAI tier runs only if Groq fails.</td>
+                <td>0.50 s · network</td>
               </tr>
-              <tr class="u-bd-b-1px-solid-border">
-                <td class="u-p-10px u-fw-600">Intent Routing</td>
-                <td class="u-p-10px u-c-text-secondary">Keyword pre-router + Groq qwen3.8-27b</td>
-                <td class="u-p-10px u-c-text-secondary">Fast paths for weather, search, and memory reset; the LLM returns a JSON plan for everything else.</td>
-                <td class="u-p-10px u-c-text-secondary">0.58 s · network</td>
+              <tr>
+                <td>Intent Routing</td>
+                <td>Keyword pre-router + Groq qwen3.8-27b</td>
+                <td>Fast paths for weather, search, and memory reset; the LLM returns a JSON plan for everything else.</td>
+                <td>0.58 s · network</td>
               </tr>
-              <tr class="u-bd-b-1px-solid-border">
-                <td class="u-p-10px u-fw-600">Tools &amp; Agents</td>
-                <td class="u-p-10px u-c-text-secondary">wttr.in · DDGS · Obsidian REST · 5 LSFM agents</td>
-                <td class="u-p-10px u-c-text-secondary">Runs the planned tools in worker threads with per-call timeouts; delegated agents run concurrently.</td>
-                <td class="u-p-10px u-c-text-secondary">Per tool: vitals 0.50 s, web search 4.6 s · network</td>
+              <tr>
+                <td>Tools &amp; Agents</td>
+                <td>wttr.in · DDGS · Obsidian REST · 5 LSFM agents</td>
+                <td>Runs the planned tools in worker threads with per-call timeouts; delegated agents run concurrently.</td>
+                <td>Per tool: vitals 0.50 s, web search 4.6 s · network</td>
               </tr>
-              <tr class="u-bd-b-1px-solid-border">
-                <td class="u-p-10px u-fw-600">Synthesis</td>
-                <td class="u-p-10px u-c-text-secondary">Groq qwen3.8-27b</td>
-                <td class="u-p-10px u-c-text-secondary">Writes the full report plus short Japanese and English lines to speak.</td>
-                <td class="u-p-10px u-c-text-secondary">0.96 s · network</td>
+              <tr>
+                <td>Synthesis</td>
+                <td>Groq qwen3.8-27b</td>
+                <td>Writes the full report plus short Japanese and English lines to speak.</td>
+                <td>0.96 s · network</td>
               </tr>
-              <tr class="u-bd-b-1px-solid-border">
-                <td class="u-p-10px u-fw-600">Voice</td>
-                <td class="u-p-10px u-c-text-secondary">Edge-TTS + FFmpeg filter</td>
-                <td class="u-p-10px u-c-text-secondary">Japanese clip, a 350 ms pause, then the English clip, filtered off the event loop in worker threads (no timeout). In this 2026-10-01 run the full MP3 was rendered before playback; streaming is below.</td>
-                <td class="u-p-10px u-c-text-secondary">2.80 s · network (filter alone 81 ms)</td>
+              <tr>
+                <td>Voice</td>
+                <td>Edge-TTS + FFmpeg filter</td>
+                <td>Japanese clip, a 350 ms pause, then the English clip, filtered off the event loop in worker threads (no timeout). In this 2026-10-01 run the full MP3 was rendered before playback; streaming is below.</td>
+                <td>2.80 s · network (filter alone 81 ms)</td>
               </tr>
             </tbody>
           </table>
@@ -754,25 +754,25 @@ tools = [
           <p>
             The table above shows the cost: no sound until the whole reply had been voiced. Ciel now streams the synthesis reply and voices each spoken sentence as soon as the LLM finishes writing it (up to three Edge-TTS requests at once). The HUD plays the clips in order while the rest is still being generated. Time to first audio runs from the start of the mission until the first playable audio URL is broadcast to the HUD; the HUD's fetch of a local file comes on top.
           </p>
-          <div class="u-ox-auto u-m-20px-0">
-          <table class="case-benchmark-table u-w-100 u-collapse-collapse u-ff-font-mono u-fs-0p86rem">
+          <div class="case-table-wrap">
+          <table class="case-table">
             <thead>
-              <tr class="u-bd-b-2px-solid-border u-ta-left u-c-text-muted">
-                <th class="u-p-10px">FULL MISSION, N=10 EACH</th>
-                <th class="u-p-10px u-ws-nowrap">BEFORE (WHOLE REPLY)</th>
-                <th class="u-p-10px u-ws-nowrap">AFTER (PER SENTENCE)</th>
+              <tr>
+                <th>FULL MISSION, N=10 EACH</th>
+                <th class="u-ws-nowrap">BEFORE (WHOLE REPLY)</th>
+                <th class="u-ws-nowrap">AFTER (PER SENTENCE)</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="u-bd-b-1px-solid-border">
-                <td class="u-p-10px u-fw-600">Time to first audio, p50 / p95</td>
-                <td class="u-p-10px u-c-text-secondary">4.60 s / 5.99 s</td>
-                <td class="u-p-10px u-c-text-secondary">1.41 s / 2.00 s</td>
+              <tr>
+                <td>Time to first audio, p50 / p95</td>
+                <td>4.60 s / 5.99 s</td>
+                <td>1.41 s / 2.00 s</td>
               </tr>
-              <tr class="u-bd-b-1px-solid-border">
-                <td class="u-p-10px u-fw-600">Mission complete, p50 / p95</td>
-                <td class="u-p-10px u-c-text-secondary">4.60 s / 5.99 s</td>
-                <td class="u-p-10px u-c-text-secondary">4.29 s / 7.20 s</td>
+              <tr>
+                <td>Mission complete, p50 / p95</td>
+                <td>4.60 s / 5.99 s</td>
+                <td>4.29 s / 7.20 s</td>
               </tr>
             </tbody>
           </table>

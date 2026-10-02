@@ -5314,7 +5314,6 @@ h1, h2 {
 .u-c-tone-purple.u-c-tone-purple.u-c-tone-purple { color: var(--tone-purple); }
 .u-c-tone-red.u-c-tone-red.u-c-tone-red { color: var(--tone-red); }
 .u-c-white.u-c-white.u-c-white { color: var(--white); }
-.u-collapse-collapse.u-collapse-collapse.u-collapse-collapse { border-collapse: collapse; }
 .u-cols-1fr-1fr.u-cols-1fr-1fr.u-cols-1fr-1fr { grid-template-columns: 1fr 1fr; }
 .u-cols-autofit-240.u-cols-autofit-240.u-cols-autofit-240 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 .u-cols-autofit-280.u-cols-autofit-280.u-cols-autofit-280 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
@@ -5327,7 +5326,6 @@ h1, h2 {
 .u-fs-0p78rem.u-fs-0p78rem.u-fs-0p78rem { font-size: 0.78rem; }
 .u-fs-0p7rem.u-fs-0p7rem.u-fs-0p7rem { font-size: 0.7rem; }
 .u-fs-0p85rem.u-fs-0p85rem.u-fs-0p85rem { font-size: 0.85rem; }
-.u-fs-0p86rem.u-fs-0p86rem.u-fs-0p86rem { font-size: 0.86rem; }
 .u-fs-0p88rem.u-fs-0p88rem.u-fs-0p88rem { font-size: 0.88rem; }
 .u-fs-0p8rem.u-fs-0p8rem.u-fs-0p8rem { font-size: 0.8rem; }
 .u-fs-0p92rem.u-fs-0p92rem.u-fs-0p92rem { font-size: 0.92rem; }
@@ -5378,8 +5376,6 @@ h1, h2 {
 .u-mt-36px.u-mt-36px.u-mt-36px { margin-top: 36px; }
 .u-mt-64px.u-mt-64px.u-mt-64px { margin-top: 64px; }
 .u-mt-n12px.u-mt-n12px.u-mt-n12px { margin-top: -12px; }
-.u-ox-auto.u-ox-auto.u-ox-auto { overflow-x: auto; }
-.u-p-10px.u-p-10px.u-p-10px { padding: 10px; }
 .u-p-16px.u-p-16px.u-p-16px { padding: 16px; }
 .u-p-16px-20px.u-p-16px-20px.u-p-16px-20px { padding: 16px 20px; }
 .u-p-18px.u-p-18px.u-p-18px { padding: 18px; }
@@ -5390,10 +5386,6 @@ h1, h2 {
 .u-rounded-radius-sm.u-rounded-radius-sm.u-rounded-radius-sm { border-radius: var(--radius-sm); }
 .u-self-center.u-self-center.u-self-center { align-self: center; }
 .u-ta-center.u-ta-center.u-ta-center { text-align: center; }
-.u-ta-left.u-ta-left.u-ta-left { text-align: left; }
 .u-ta-right.u-ta-right.u-ta-right { text-align: right; }
-.u-w-100.u-w-100.u-w-100 { width: 100%; }
 .u-wrap-wrap.u-wrap-wrap.u-wrap-wrap { flex-wrap: wrap; }
 .u-ws-nowrap.u-ws-nowrap.u-ws-nowrap { white-space: nowrap; }
-.u-bd-b-1px-solid-border.u-bd-b-1px-solid-border.u-bd-b-1px-solid-border { border-bottom: 1px solid var(--border); }
-.u-bd-b-2px-solid-border.u-bd-b-2px-solid-border.u-bd-b-2px-solid-border { border-bottom: 2px solid var(--border); }

@@ -521,76 +521,76 @@
             The episodic memory store maintains 10 verified heuristics continuously distilled from our active production engineering sessions:
           </p>
 
-          <div class="u-ox-auto u-m-20px-0">
-            <table class="u-w-100 u-collapse-collapse u-fs-0p88rem">
+          <div class="case-table-wrap">
+            <table class="case-table">
               <thead>
-                <tr class="u-bd-b-2px-solid-border u-ta-left">
-                  <th class="u-p-10px">ID</th>
-                  <th class="u-p-10px">Domain</th>
-                  <th class="u-p-10px">Observed Symptom</th>
-                  <th class="u-p-10px">Permanent Heuristic</th>
+                <tr>
+                  <th>ID</th>
+                  <th>Domain</th>
+                  <th>Observed Symptom</th>
+                  <th>Permanent Heuristic</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="u-bd-b-1px-solid-border">
-                  <td class="mono u-p-10px">MEM-001</td>
-                  <td class="u-p-10px">Copywriting</td>
-                  <td class="u-p-10px">Robotic terms (SPECIMEN, PROTOCOL) in food e-commerce</td>
-                  <td class="u-p-10px">Strictly forbid sci-fi jargon for culinary/hospitality; use grounded tactile terms (Fresh Roast, Curated, Warm Batch, Shopping Bag).</td>
+                <tr>
+                  <td class="mono">MEM-001</td>
+                  <td>Copywriting</td>
+                  <td>Robotic terms (SPECIMEN, PROTOCOL) in food e-commerce</td>
+                  <td>Strictly forbid sci-fi jargon for culinary/hospitality; use grounded tactile terms (Fresh Roast, Curated, Warm Batch, Shopping Bag).</td>
                 </tr>
-                <tr class="u-bd-b-1px-solid-border">
-                  <td class="mono u-p-10px">MEM-002</td>
-                  <td class="u-p-10px">CSS Layout</td>
-                  <td class="u-p-10px">Closing bracket ']' wrapped onto separate line on desktop</td>
-                  <td class="u-p-10px">Never insert loose spaced bracket text inside inline-flex navigation elements; enforce <code>white-space: nowrap;</code>.</td>
+                <tr>
+                  <td class="mono">MEM-002</td>
+                  <td>CSS Layout</td>
+                  <td>Closing bracket ']' wrapped onto separate line on desktop</td>
+                  <td>Never insert loose spaced bracket text inside inline-flex navigation elements; enforce <code>white-space: nowrap;</code>.</td>
                 </tr>
-                <tr class="u-bd-b-1px-solid-border">
-                  <td class="mono u-p-10px">MEM-003</td>
-                  <td class="u-p-10px">Edge Routing</td>
-                  <td class="u-p-10px">Netlify subdirectory /aura-store loads 404 page</td>
-                  <td class="u-p-10px">Explicit subfolder rewrite rules MUST precede the global catch-all rule (<code>/* /404.html 404</code>) in both <code>_redirects</code> and <code>netlify.toml</code>.</td>
+                <tr>
+                  <td class="mono">MEM-003</td>
+                  <td>Edge Routing</td>
+                  <td>Netlify subdirectory /aura-store loads 404 page</td>
+                  <td>Explicit subfolder rewrite rules MUST precede the global catch-all rule (<code>/* /404.html 404</code>) in both <code>_redirects</code> and <code>netlify.toml</code>.</td>
                 </tr>
-                <tr class="u-bd-b-1px-solid-border">
-                  <td class="mono u-p-10px">MEM-004</td>
-                  <td class="u-p-10px">Localization</td>
-                  <td class="u-p-10px">US card-only checkout fails Philippine conversion</td>
-                  <td class="u-p-10px">Philippine e-commerce must feature GCash, Maya, QR Ph, and Cash on Delivery (COD) alongside domestic +63 phone formatting.</td>
+                <tr>
+                  <td class="mono">MEM-004</td>
+                  <td>Localization</td>
+                  <td>US card-only checkout fails Philippine conversion</td>
+                  <td>Philippine e-commerce must feature GCash, Maya, QR Ph, and Cash on Delivery (COD) alongside domestic +63 phone formatting.</td>
                 </tr>
-                <tr class="u-bd-b-1px-solid-border">
-                  <td class="mono u-p-10px">MEM-005</td>
-                  <td class="u-p-10px">CLI / Shell</td>
-                  <td class="u-p-10px">PowerShell <code>TerminatorExpectedAtEndOfString</code> crash</td>
-                  <td class="u-p-10px">Never nest unescaped double quotes inside double-quoted PowerShell commands; use single quotes or direct script invocations.</td>
+                <tr>
+                  <td class="mono">MEM-005</td>
+                  <td>CLI / Shell</td>
+                  <td>PowerShell <code>TerminatorExpectedAtEndOfString</code> crash</td>
+                  <td>Never nest unescaped double quotes inside double-quoted PowerShell commands; use single quotes or direct script invocations.</td>
                 </tr>
-                <tr class="u-bd-b-1px-solid-border">
-                  <td class="mono u-p-10px">MEM-006</td>
-                  <td class="u-p-10px">Windows Python</td>
-                  <td class="u-p-10px"><code>UnicodeEncodeError</code> on terminal stdout</td>
-                  <td class="u-p-10px">Reconfigure stdout with <code>sys.stdout.reconfigure(encoding='utf-8')</code> or use ASCII status tokens to avoid cp1252 charmap crashes.</td>
+                <tr>
+                  <td class="mono">MEM-006</td>
+                  <td>Windows Python</td>
+                  <td><code>UnicodeEncodeError</code> on terminal stdout</td>
+                  <td>Reconfigure stdout with <code>sys.stdout.reconfigure(encoding='utf-8')</code> or use ASCII status tokens to avoid cp1252 charmap crashes.</td>
                 </tr>
-                <tr class="u-bd-b-1px-solid-border">
-                  <td class="mono u-p-10px">MEM-007</td>
-                  <td class="u-p-10px">Deployment</td>
-                  <td class="u-p-10px">Manual Netlify direct uploads causing untracked git drift</td>
-                  <td class="u-p-10px">Always deploy web apps by committing and pushing to GitHub; Netlify listens to the repository and deploys pinned commit states.</td>
+                <tr>
+                  <td class="mono">MEM-007</td>
+                  <td>Deployment</td>
+                  <td>Manual Netlify direct uploads causing untracked git drift</td>
+                  <td>Always deploy web apps by committing and pushing to GitHub; Netlify listens to the repository and deploys pinned commit states.</td>
                 </tr>
-                <tr class="u-bd-b-1px-solid-border">
-                  <td class="mono u-p-10px">MEM-008</td>
-                  <td class="u-p-10px">Doc Parsing</td>
-                  <td class="u-p-10px">Cover letter body prematurely truncated on portfolio URL lines</td>
-                  <td class="u-p-10px">Never terminate cover letter parsing on contact lines containing portfolio links; only terminate on major structural markdown headers.</td>
+                <tr>
+                  <td class="mono">MEM-008</td>
+                  <td>Doc Parsing</td>
+                  <td>Cover letter body prematurely truncated on portfolio URL lines</td>
+                  <td>Never terminate cover letter parsing on contact lines containing portfolio links; only terminate on major structural markdown headers.</td>
                 </tr>
-                <tr class="u-bd-b-1px-solid-border">
-                  <td class="mono u-p-10px">MEM-009</td>
-                  <td class="u-p-10px">API Resiliency</td>
-                  <td class="u-p-10px">HTTP 429 Too Many Requests rate limits crashing async Discord loops</td>
-                  <td class="u-p-10px">Always implement exponential backoff retry (sleep 2–4s) and a multi-model rotation pool on both Groq and Gemini.</td>
+                <tr>
+                  <td class="mono">MEM-009</td>
+                  <td>API Resiliency</td>
+                  <td>HTTP 429 Too Many Requests rate limits crashing async Discord loops</td>
+                  <td>Always implement exponential backoff retry (sleep 2–4s) and a multi-model rotation pool on both Groq and Gemini.</td>
                 </tr>
-                <tr class="u-bd-b-1px-solid-border">
-                  <td class="mono u-p-10px">MEM-010</td>
-                  <td class="u-p-10px">Resume Writing</td>
-                  <td class="u-p-10px">Subjective responsibility bullets failing ATS semantic parsers</td>
-                  <td class="u-p-10px">Every r&eacute;sum&eacute; experience bullet MUST lead with active verbs and quantify impact with verified metrics, latencies, or percentages.</td>
+                <tr>
+                  <td class="mono">MEM-010</td>
+                  <td>Resume Writing</td>
+                  <td>Subjective responsibility bullets failing ATS semantic parsers</td>
+                  <td>Every r&eacute;sum&eacute; experience bullet MUST lead with active verbs and quantify impact with verified metrics, latencies, or percentages.</td>
                 </tr>
               </tbody>
             </table>
