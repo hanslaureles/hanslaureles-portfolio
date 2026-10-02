@@ -382,7 +382,7 @@ picture {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
 .theme-toggle-btn:hover {
@@ -413,7 +413,7 @@ picture {
   min-height: 48px;
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
   text-decoration: none;
   line-height: 1.4;
   box-sizing: border-box;
@@ -544,7 +544,7 @@ picture {
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  transition: all var(--transition-normal);
+  transition: background var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 [data-theme="dark"] .hero-unified-box {
@@ -848,7 +848,7 @@ picture {
   align-items: center;
   justify-content: center;
   color: var(--text-primary);
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
 }
 
 .project-item:hover .project-arrow {
@@ -913,7 +913,7 @@ picture {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: background var(--transition-fast), border var(--transition-fast), border-color var(--transition-fast), border-radius var(--transition-fast), color var(--transition-fast), height var(--transition-fast), opacity var(--transition-fast), transform var(--transition-fast), width var(--transition-fast);
 }
 
 .showcase-arrow-btn:hover:not(:disabled) {
@@ -1138,7 +1138,7 @@ picture {
   padding: 8px 16px;
   border-radius: var(--radius-md);
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: filter var(--transition-fast), transform var(--transition-fast);
 }
 
 .future-btn-primary:hover {
@@ -1159,7 +1159,7 @@ picture {
   padding: 8px 14px;
   border-radius: var(--radius-md);
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
 .future-btn-secondary:hover {
@@ -1193,7 +1193,7 @@ picture {
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-normal);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-normal);
   text-decoration: none;
   color: inherit;
 }
@@ -1345,7 +1345,7 @@ picture {
   font-size: 0.78rem;
   font-weight: 600;
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
   cursor: pointer;
 }
 
@@ -1384,7 +1384,7 @@ picture {
   font-size: 0.78rem;
   font-weight: 500;
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
 }
 
 .launchpad-btn-secondary:hover {
@@ -2078,7 +2078,7 @@ picture {
   flex-direction: column;
   text-decoration: none;
   color: inherit;
-  transition: all var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .pag-card:hover {
@@ -2140,7 +2140,7 @@ picture {
   border-radius: var(--radius-md);
   cursor: pointer;
   color: var(--text-primary);
-  transition: all var(--transition-fast);
+  transition: background var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
   margin-top: 16px;
 }
 
@@ -2964,7 +2964,7 @@ picture {
   font-size: 0.72rem;
   padding: 3px 8px;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -3278,7 +3278,7 @@ picture {
   font-family: var(--font-sans);
   font-size: 0.88rem;
   font-weight: 600;
-  transition: all var(--transition-normal);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-normal);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -3327,7 +3327,7 @@ picture {
   font-weight: 600;
   color: var(--text-primary);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
 }
 
 .sakura-nav-btn:hover {
@@ -3450,7 +3450,7 @@ picture {
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: all var(--transition-fast);
+  transition: border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .sakura-close-btn:hover {
@@ -3498,7 +3498,7 @@ picture {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 4px 14px;
-  transition: all var(--transition-fast);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .sakura-search-box:focus-within {
@@ -3570,7 +3570,7 @@ picture {
   padding: 6px 12px;
   border-radius: var(--radius-full);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
   text-align: left;
 }
 
@@ -3627,7 +3627,7 @@ picture {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 20px;
-  transition: all var(--transition-fast);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
 
 .sakura-answer-card.primary {
@@ -3698,7 +3698,7 @@ picture {
   font-weight: 600;
   color: var(--tone-pink);
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: transform var(--transition-fast);
 }
 
 .sakura-action-link:hover {
@@ -3774,7 +3774,7 @@ picture {
   padding: 6px 12px;
   text-decoration: none;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .sakura-foot-btn:hover {
@@ -3850,7 +3850,7 @@ picture {
   padding: 6px 14px;
   border-radius: var(--radius-full);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: background var(--transition-fast), border var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -3936,7 +3936,7 @@ picture {
   background: var(--surface);
   margin-top: 4px;
   z-index: 2;
-  transition: all var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .git-node-dot.active {
@@ -3997,7 +3997,7 @@ picture {
   font-size: 0.78rem;
   color: var(--amber-500);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
 .git-sha-btn:hover {
@@ -4097,7 +4097,7 @@ picture {
   padding: 4px 10px;
   border-radius: var(--radius-sm);
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .git-link-pill:hover {
@@ -4137,7 +4137,7 @@ picture {
   font-size: 0.75rem;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
   box-shadow: var(--shadow-sm);
   user-select: none;
 }
@@ -4270,7 +4270,7 @@ picture {
   padding: 4px 10px;
   border-radius: var(--radius-full);
   border: 1px solid transparent;
-  transition: all var(--transition-fast);
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .footer-sentinel-bar:hover {
@@ -4377,7 +4377,7 @@ picture {
   padding: 6px 12px;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: border-color var(--transition-fast), color var(--transition-fast);
   white-space: nowrap;   /* MEM-002: keep "[ ESC / ✕ ]" on one line so brackets never orphan */
   flex-shrink: 0;
 }
@@ -4471,7 +4471,7 @@ picture {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 10px 12px;
-  transition: all 0.25s ease;
+  transition: background 0.25s ease;
 }
 
 [data-theme="light"] .agent-fleet-item {
