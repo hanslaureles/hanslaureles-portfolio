@@ -24,7 +24,7 @@
     },
     {
       id: "KNOW-02",
-      title: "LSFM AI HQ — 5-Agent Autonomous Swarm",
+      title: "LSFM AI HQ — 5-Agent Team",
       category: "Autonomous Systems",
       keywords: ["lsfm", "ai hq", "agents", "swarm", "autonomous", "discord", "multi-agent", "orchestration", "asyncio", "python", "gmail", "triage", "sakura", "chaewon", "kazuha", "yunjin", "eunchae"],
       summary: "Hans architected LSFM AI HQ, an autonomous 5-agent operations platform: five Discord bots with distinct personas on one asyncio event loop, routing LLM work through per-agent Groq and Gemini models with the other provider as a fallback, self-hosted on his own workstation.",
@@ -119,7 +119,7 @@
       title: "Sentinel Telemetry & Ambient Mission Control",
       category: "Telemetry & Observability",
       keywords: ["sentinel", "telemetry", "mission control", "hud", "ping", "vitals", "clock", "manila", "status", "fleet", "heartbeat", "ambient"],
-      summary: "The Sentinel panel on this site is a clearly labeled simulated replay of Hans's 5-agent swarm. The real agents run on his local workstation, and the site has no live connection to them.",
+      summary: "The Sentinel panel on this site is a clearly labeled simulated replay of LSFM AI HQ, Hans's 5-agent team. The real agents run on his local workstation, and the site has no live connection to them.",
       evidence: "Click the hero beacon (or press Alt+S / type 'sentinel' in the terminal) to open it: a real Manila UTC+8 clock, events that mirror the agents' actual schedules, a 'Replay a Mission' walkthrough of the real !apply pipeline, and a copyable architecture summary.",
       linkUrl: "index.html#sentinel",
       linkText: "⚡ Inspect Sentinel Telemetry HUD (Alt+S) →"
@@ -159,7 +159,7 @@
       title: "Obsidian AI Brain & Model Context Protocol (MCP) Bridge",
       category: "Knowledge Systems & Tooling",
       keywords: ["obsidian", "mcp", "model context protocol", "second brain", "vault", "knowledge graph", "memory", "brain", "local rest api", "stdio"],
-      summary: "Hans connected his Obsidian vault to his AI tooling: Antigravity reaches it through an MCP bridge, and the LSFM swarm and Ciel read and write it over Obsidian's Local REST API.",
+      summary: "Hans connected his Obsidian vault to his AI tooling: Antigravity reaches it through an MCP bridge, and LSFM AI HQ and Ciel read and write it over Obsidian's Local REST API.",
       evidence: "Agents can read learned heuristics from Learned_Rules.md, fetch agent profiles, and append session logs over a local HTTPS REST API (port 27124), with a filesystem fallback when Obsidian is closed. The bridge (obsidian_client.py) is in the public lsfm-ai-hq repo; the vault's notes stay private.",
       linkUrl: "case-ciel.html",
       linkText: "🔮 See Obsidian Access in the Ciel Case Study →"
@@ -169,10 +169,10 @@
       title: "Yunjin Automated Design Audit & QA Suite",
       category: "Quality Assurance & Standards",
       keywords: ["audit", "yunjin", "qa", "wcag", "accessibility", "standards", "lint", "health", "score", "assets"],
-      summary: "Hans built Yunjin, an automated portfolio design critic and QA auditor in the LSFM swarm that checks asset hygiene and writes structured design critiques.",
+      summary: "Hans built Yunjin, an automated portfolio design critic and QA auditor on the LSFM AI HQ team that checks asset hygiene and writes structured design critiques.",
       evidence: "Scans every portfolio page for broken image assets once a week, and on !audit / !critique writes LLM design critiques with a portfolio health score.",
       linkUrl: "case-lsfm.html",
-      linkText: "🎨 View LSFM Daemon Roster →"
+      linkText: "🎨 View the LSFM AI HQ Agents →"
     },
     {
       id: "KNOW-17",
@@ -369,7 +369,7 @@
             <div class="chips-list">
               <button class="sakura-chip" data-query="Tell me about the Manas Ciel voice AI copilot">Manas: Ciel Voice AI?</button>
               <button class="sakura-chip" data-query="Does Hans know React and Next.js?">React &amp; Next.js Experience?</button>
-              <button class="sakura-chip" data-query="Tell me about the LSFM 5-agent swarm">5-Agent Autonomous Swarm?</button>
+              <button class="sakura-chip" data-query="Tell me about the LSFM AI HQ 5-agent team">The 5-Agent Team?</button>
               <button class="sakura-chip" data-query="How does FinTrack reduce budgeting friction?">FinTrack Two-Tap Logging?</button>
               <button class="sakura-chip" data-query="What did Hans do at ROC.ph internship?">ROC.ph Internship Work?</button>
               <button class="sakura-chip" data-query="Tell me about Vellum Minimal OS">Vellum Reflection OS?</button>

@@ -31,7 +31,7 @@
     { agent: 'CHAEWON', emoji: '⭐', msg: 'Analyzing ATS fit and tailoring the resume and cover letter.' },
     { agent: 'YUNJIN', emoji: '🎨', msg: 'Curating the flagship case studies that best match the role.' },
     { agent: 'KAZUHA', emoji: '💻', msg: 'Drafting the frontend tech pitch and CS positioning.' },
-    { agent: 'EUNCHAE', emoji: '🛡️', msg: 'QA check: the package is scored against the squad\'s recorded failure lessons.' },
+    { agent: 'EUNCHAE', emoji: '🛡️', msg: 'QA check: the package is scored against the team\'s recorded failure lessons.' },
     { agent: 'SAKURA', emoji: '🌸', msg: 'Master proposal compiled and posted to the approvals channel for review.' }
   ];
 

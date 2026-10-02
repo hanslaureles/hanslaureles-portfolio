@@ -29,7 +29,7 @@
       'status',
       'agents',
       'vitals',
-      'swarm',
+      'roster',
       'projects',
       'audit',
       'rules',
@@ -54,7 +54,7 @@
 <div class="term-line"><span class="term-success">[CODE &amp; KNOWLEDGE]</span> Kazuha: answers codebase questions &amp; reviews uncommitted changes.</div>
 <div class="term-line"><span class="term-success">[DESIGN]</span> Yunjin: portfolio asset audits &amp; design critiques.</div>
 <div class="term-line"><span class="term-success">[SYSTEM GUARDIAN]</span> Eunchae: hardware vitals &amp; health reports.</div>
-<div class="term-line"><span class="term-accent">&gt;&gt; INTERACTIVE CONSOLE READY // not connected to the live swarm</span></div>
+<div class="term-line"><span class="term-accent">&gt;&gt; INTERACTIVE CONSOLE READY // not connected to the live agents</span></div>
 <div class="term-line term-muted" style="margin-top: 6px;">Type <span class="term-highlight">'help'</span> or click any command button below to explore:</div>
 `.trim();
 
@@ -250,6 +250,7 @@
           showVitals();
           break;
 
+        case 'roster':
         case 'swarm':
         case 'fleet':
         case 'topology':
@@ -382,7 +383,7 @@
 
 <div class="term-git-entry">
   <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">8f4a21d</span> <span class="term-badge">tag: v2.5.0</span> <span class="term-muted">[2025 – 2026]</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(swarm):</strong> Creator &amp; Developer — LSFM AI HQ</div>
+  <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(lsfm):</strong> Creator &amp; Developer — LSFM AI HQ</div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Asynchronous Discord Gateway streaming &amp; isolated persona boundaries</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Multi-provider LLM router (Groq ⇄ Gemini, cross-provider fallback) with optional local Ollama on AMD RX 6600 XT</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Headless Edge single-page ATS vector PDF compiler</span></div>
@@ -578,7 +579,7 @@
 <div class="term-line term-accent" style="font-weight: 600;">📡 SENTINEL // AGENT SYSTEM OVERVIEW (SIMULATED REPLAY)</div>
 <div class="term-line term-success">============================================================</div>
 <div class="term-line">Location: Manila, Philippines · UTC+8</div>
-<div class="term-line">Agent System: <span class="term-badge">5 AGENTS · LOCAL HOST</span> · Data: <span class="term-cyan">scripted replay, no live connection to the swarm</span></div>
+<div class="term-line">Agent System: <span class="term-badge">5 AGENTS · LOCAL HOST</span> · Data: <span class="term-cyan">scripted replay, no live connection to the agents</span></div>
 <table class="term-table" style="margin-top: 6px;">
   <thead>
     <tr class="term-muted">
@@ -649,8 +650,8 @@
       appendOutput(`
 <div class="term-line term-cyan" style="font-weight: 600;">// HANS AARON LAURELES — 3-PILLAR SYSTEMS ENGINEERING TRIAD</div>
 <div class="term-block" style="margin: 6px 0;">
-  <div class="term-line"><span class="term-highlight">01. APPLIED AI &amp; MULTI-AGENT SWARMS</span></div>
-  <div class="term-line term-muted">  • Autonomous Multi-Agent Swarms (Discord Gateway API, Decentralized Daemons)</div>
+  <div class="term-line"><span class="term-highlight">01. APPLIED AI &amp; MULTI-AGENT SYSTEMS</span></div>
+  <div class="term-line term-muted">  • Multi-Agent Teams (LSFM AI HQ: 5 Discord agents, one job each)</div>
   <div class="term-line term-muted">  • Local GPU Inference: Ollama on AMD RX 6600 XT, GGUF Quantization</div>
   <div class="term-line term-muted">  • Multi-Provider LLM Routing (Groq LPUs + Gemini, each the other's fallback, local Ollama mode)</div>
   <div class="term-line term-muted">  • Hybrid Vector RAG (Dense Cosine + Sparse BM25 + Reciprocal Rank Fusion)</div>
