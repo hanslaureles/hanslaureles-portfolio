@@ -80,7 +80,8 @@ for (const path of PAGES) {
     });
 
     // 768 px too: the store header scrolled sideways from 641 to 1,040 px, unseen at 375 (3E-10).
-    for (const width of [375, 768]) {
+    // 320 px: the narrowest common phone width (3E-11).
+    for (const width of [320, 375, 768]) {
       test(`does not scroll sideways at ${width} px`, async ({ page }) => {
         await page.setViewportSize({ width, height: 812 });
         await page.goto(path, { waitUntil: "networkidle" });
