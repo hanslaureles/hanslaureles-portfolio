@@ -5,7 +5,9 @@ Checks the deployed site, not the repo:
   - every public route answers with its expected status (cleanUrls pages,
     the /ciel aliases, the Aura subfolder rewrites, the resume PDF);
   - /about.html redirects to /about (cleanUrls);
-  - the security headers from vercel.json are present;
+  - the security headers from vercel.json are present, and the CSP header
+    equals the value in this checkout's vercel.json;
+  - /aura-store references its own stylesheet (root-absolute URLs);
   - the live pages carry the same ?v= cache-buster as index.html in this
     checkout, so a push to main that never deployed shows up as a failure.
 
@@ -13,6 +15,7 @@ Usage: python tools/probe_live.py [base_url]      exit 1 on any failure
 Stdlib only.
 """
 
+import json
 import re
 import sys
 import urllib.error
@@ -80,6 +83,17 @@ def main():
             problems.append(f"header {name}: {headers.get(name)!r} (expected {value!r})")
     if "permissions-policy" not in headers:
         problems.append("header permissions-policy missing")
+    rules = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))["headers"]
+    csp = {h["key"].lower(): h["value"] for r in rules if r["source"] == "/(.*)" for h in r["headers"]}
+    for name in ("content-security-policy-report-only", "content-security-policy"):
+        if name in csp and headers.get(name) != csp[name]:
+            problems.append(f"header {name}: {headers.get(name)!r} (vercel.json has {csp[name]!r})")
+
+    # /aura-store has no trailing slash, so a relative "styles.css" would load the
+    # portfolio's stylesheet (the store shipped unstyled that way until 4A).
+    _, _, body = fetch("/aura-store")
+    if "/aura-store/styles.css" not in body:
+        problems.append("/aura-store: page does not reference /aura-store/styles.css")
 
     print()
     if problems:

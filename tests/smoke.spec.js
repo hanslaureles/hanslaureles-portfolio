@@ -2,8 +2,16 @@
 // serious/critical axe violations, no horizontal scroll at 375 px, and every
 // local link/asset resolves. Plus the interactive checks: theme toggle and a
 // keyboard-operable lightbox.
+const fs = require("fs");
+const nodePath = require("path");
 const { test, expect } = require("@playwright/test");
 const { default: AxeBuilder } = require("@axe-core/playwright");
+
+// The policy production sends (vercel.json is the single source). serve.py ignores
+// vercel.json, so the CSP test adds the header to each page itself.
+const CSP = JSON.parse(fs.readFileSync(nodePath.join(__dirname, "..", "vercel.json"), "utf8"))
+  .headers.find((h) => h.source === "/(.*)").headers
+  .find((h) => h.key === "Content-Security-Policy-Report-Only").value;
 
 const PAGES = [
   "index.html", "about.html", "404.html",
@@ -49,6 +57,21 @@ for (const path of PAGES) {
       const errors = trackErrors(page);
       await page.goto(path, { waitUntil: "networkidle" });
       expect(errors).toEqual([]);
+    });
+
+    test("loads without violating the Content-Security-Policy in vercel.json", async ({ page }) => {
+      await page.addInitScript(() => {
+        window.__csp = [];
+        document.addEventListener("securitypolicyviolation",
+          (e) => window.__csp.push(`${e.violatedDirective} ${e.blockedURI || "(inline)"}`));
+      });
+      await page.route("**/*", async (route) => {
+        if (route.request().resourceType() !== "document") return route.continue();
+        const response = await route.fetch();
+        await route.fulfill({ response, headers: { ...response.headers(), "content-security-policy-report-only": CSP } });
+      });
+      await page.goto(path, { waitUntil: "networkidle" });
+      expect(await page.evaluate(() => window.__csp)).toEqual([]);
     });
 
     test("has no serious or critical axe violations", async ({ page }) => {
