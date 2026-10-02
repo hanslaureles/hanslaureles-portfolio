@@ -945,7 +945,7 @@
 
     function showMemoryCaseStudy() {
       appendOutput(`
-        <div class="term-line term-cyan">// CASE STUDY 06: COGNITIVE MEMORY CORE</div>
+        <div class="term-line term-cyan">// CASE STUDY 03: COGNITIVE MEMORY CORE</div>
         <div class="term-line">Zero-dependency developer agent engine eliminating AI session amnesia through BM25 heuristic recall and self-crystallizing workspace rules.</div>
         <div class="term-line" style="margin: 6px 0;">
           <div class="term-muted">• Latency: 0.81 ms p50 recall on the real 10-entry store (500 calls, i5-12400F, eval 2026-10-02); grows linearly, 695 ms at 10,000 synthetic entries</div>
