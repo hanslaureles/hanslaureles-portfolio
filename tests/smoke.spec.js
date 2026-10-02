@@ -53,14 +53,17 @@ for (const path of PAGES) {
       expect(await axeBlocking(page)).toEqual([]);
     });
 
-    test("does not scroll sideways at 375 px", async ({ page }) => {
-      await page.setViewportSize({ width: 375, height: 812 });
-      await page.goto(path, { waitUntil: "networkidle" });
-      const { scrollW, innerW } = await page.evaluate(() => ({
-        scrollW: document.documentElement.scrollWidth, innerW: window.innerWidth,
-      }));
-      expect(scrollW).toBeLessThanOrEqual(innerW);
-    });
+    // 768 px too: the store header scrolled sideways from 641 to 1,040 px, unseen at 375 (3E-10).
+    for (const width of [375, 768]) {
+      test(`does not scroll sideways at ${width} px`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 812 });
+        await page.goto(path, { waitUntil: "networkidle" });
+        const { scrollW, innerW } = await page.evaluate(() => ({
+          scrollW: document.documentElement.scrollWidth, innerW: window.innerWidth,
+        }));
+        expect(scrollW).toBeLessThanOrEqual(innerW);
+      });
+    }
 
     test("every local link and asset resolves", async ({ page, request }) => {
       await page.goto(path, { waitUntil: "domcontentloaded" });
@@ -175,6 +178,21 @@ for (const scheme of ["light", "dark"]) {
     });
   });
 }
+// 3E-10: the search field showed "Sear…" on phones. Its placeholder must fit whole.
+test("Aura store search shows its whole placeholder from 400 to 1280 px", async ({ page }) => {
+  await page.goto("aura-store/index.html", { waitUntil: "networkidle" });
+  for (const width of [400, 480, 520, 521, 768, 1280]) {
+    await page.setViewportSize({ width, height: 812 });
+    const { have, need } = await page.locator(".search-bar-pill input").evaluate((input) => {
+      const cs = getComputedStyle(input);
+      const ctx = document.createElement("canvas").getContext("2d");
+      ctx.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+      return { have: input.clientWidth, need: Math.ceil(ctx.measureText(input.placeholder).width) };
+    });
+    expect(have, `search input at ${width} px`).toBeGreaterThanOrEqual(need);
+  }
+});
+
 // Aura demo store (its own store.js, not app.js): customizer modal and cart drawer.
 test.describe("Aura store overlays", () => {
   test("customizer: keyboard open, focus inside and trapped, Escape returns focus", async ({ page }) => {

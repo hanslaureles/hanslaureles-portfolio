@@ -1755,10 +1755,34 @@ a {
   }
 }
 
-/* Phones: drop the brand sub-line so the search field has room for its placeholder. */
+/* Tablets: the desktop nav, the 220 px search pill and the Bag button made the
+   header ~1,000 px wide, so 641-1,040 px viewports scrolled sideways. The nav's
+   category links duplicate the menu's filter chips, so it waits for room. */
+@media (max-width: 1040px) {
+  .nav-menu {
+    display: none;
+  }
+}
+
+/* Phones: drop the brand sub-line. */
 @media (max-width: 420px) {
   .brand-sub {
     display: none;
+  }
+}
+
+/* Narrow screens: next to the logo, the search field was 15-100 px wide between
+   360 and 480 px, too narrow for "Search your brew..." (~120 px, shown as "Sear…")
+   or for what you type. Search and Bag move to their own full-width row. */
+@media (max-width: 520px) {
+  .header-inner {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 0;
+    row-gap: 10px;
+  }
+  .header-actions {
+    flex: 1 0 100%;
   }
 }
 
