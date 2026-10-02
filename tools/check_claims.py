@@ -26,6 +26,9 @@ RETRACTED = [
     (r"State: nominal|100% nominal|5/5 Agents Nominal", "status nobody checked"),
     (r"first for every seeded|Top-1 Recall on Test Queries",
      "seeded-query recall claim (replaced by the held-out eval, 3C)"),
+    (r"\+42%|-55%|94% (task|usability|completion)|4\.8/5|-65%|sub-3\.2 ?s|3\.2 ?s (logging|input|average)|"
+     r"12 ?s benchmark|85 ?ms|60 FPS|100% Lighthouse|400 ms FCP|1\.0 ?s LCP",
+     "unsourced design case-study outcome (3E-9; restore only with N, date and method)"),
 ]
 
 

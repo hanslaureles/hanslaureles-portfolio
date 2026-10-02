@@ -139,8 +139,8 @@
       title: "FinTrack App — Algorithmic Financial Intelligence",
       category: "Algorithmic UX & FinTech",
       keywords: ["fintrack", "fintech", "finance", "budget", "budgeting", "expense", "transaction", "loss aversion", "heuristics", "money", "spending"],
-      summary: "Hans architected FinTrack to eliminate personal budget abandonment through a sub-3.2s transaction input engine, behavioral loss aversion nudges, and predictive month-end burn curves.",
-      evidence: "Engineered with modular Figma design tokens, Auto Layout 5.0, single-ceiling daily velocity monitoring, and non-shame behavioral economics feedback achieving 94% usability task completion in testing.",
+      summary: "Hans architected FinTrack to eliminate personal budget abandonment through a two-tap transaction input flow, behavioral loss aversion nudges, and predictive month-end burn curves.",
+      evidence: "Engineered with modular Figma design tokens, Auto Layout 5.0, single-ceiling daily velocity monitoring, and non-shame behavioral economics feedback, prototyped in Figma.",
       linkUrl: "case-fintrack.html",
       linkText: "📊 Read FinTrack Mobile Case Study →"
     },
@@ -370,7 +370,7 @@
               <button class="sakura-chip" data-query="Tell me about the Manas Ciel voice AI copilot">Manas: Ciel Voice AI?</button>
               <button class="sakura-chip" data-query="Does Hans know React and Next.js?">React &amp; Next.js Experience?</button>
               <button class="sakura-chip" data-query="Tell me about the LSFM 5-agent swarm">5-Agent Autonomous Swarm?</button>
-              <button class="sakura-chip" data-query="How does FinTrack reduce budgeting friction?">FinTrack 3.2s Logging?</button>
+              <button class="sakura-chip" data-query="How does FinTrack reduce budgeting friction?">FinTrack Two-Tap Logging?</button>
               <button class="sakura-chip" data-query="What did Hans do at ROC.ph internship?">ROC.ph Internship Work?</button>
               <button class="sakura-chip" data-query="Tell me about Vellum Minimal OS">Vellum Reflection OS?</button>
               <button class="sakura-chip" data-query="Local GPU inference on AMD RX 6600 XT">Local GPU Inference?</button>

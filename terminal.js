@@ -260,8 +260,8 @@
         case 'fintrack':
           appendOutput(`
             <div class="term-line term-success">[FINTRACK-DISPATCH] Personal Finance &amp; Behavioral Budgeting UX</div>
-            <div class="term-line">📊 Sub-3.2s transaction input engine eliminating budget drop-off via non-shame loss aversion.</div>
-            <div class="term-line">⚡ 94% task completion · Auto Layout 5.0 design tokens · Single-ceiling daily burn rate.</div>
+            <div class="term-line">📊 Two-tap transaction input with non-shame, loss-aversion feedback (Figma prototype).</div>
+            <div class="term-line">⚡ Auto Layout 5.0 design tokens · Single-ceiling daily burn rate.</div>
             <div class="term-line">👉 <a href="case-fintrack.html" class="term-link">Read FinTrack Case Study (case-fintrack.html) ↗</a></div>
           `);
           break;
@@ -271,7 +271,7 @@
           appendOutput(`
             <div class="term-line term-success">[VELLUM-DISPATCH] Mindful Reflection Workspace Mobile Concept</div>
             <div class="term-line">🌿 Combats notification fatigue through fluid gesture journaling and dual-scale typography in Figma.</div>
-            <div class="term-line">⚡ 60 FPS gesture responsiveness · Ambient contrast palettes · Zero cognitive friction.</div>
+            <div class="term-line">⚡ Protopie gesture prototypes · Ambient contrast palettes · No streaks, no red badges.</div>
             <div class="term-line">👉 <a href="case-vellum.html" class="term-link">Read Vellum Case Study (case-vellum.html) ↗</a></div>
           `);
           break;
