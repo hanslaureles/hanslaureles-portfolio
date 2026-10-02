@@ -5267,14 +5267,9 @@ h1, h2 {
    style attributes. The tripled class (0,3,0) stands in for inline-style precedence:
    it out-ranks rules like .mobile-drawer-links a.active (0,2,1), as the inline style did. */
 .u-bd-1px-solid-border.u-bd-1px-solid-border.u-bd-1px-solid-border { border: 1px solid var(--border); }
-.u-bd-1px-solid-border-color.u-bd-1px-solid-border-color.u-bd-1px-solid-border-color { border: 1px solid var(--border-color); }
 .u-bd-1px-solid-border-subtle.u-bd-1px-solid-border-subtle.u-bd-1px-solid-border-subtle { border: 1px solid var(--border-subtle); }
 .u-bd-1px-solid-emerald-a20.u-bd-1px-solid-emerald-a20.u-bd-1px-solid-emerald-a20 { border: 1px solid rgba(16, 185, 129, 0.2); }
 .u-bd-1px-solid-red-a20.u-bd-1px-solid-red-a20.u-bd-1px-solid-red-a20 { border: 1px solid rgba(239, 68, 68, 0.2); }
-.u-bd-b-1px-solid-border-color.u-bd-b-1px-solid-border-color.u-bd-b-1px-solid-border-color { border-bottom: 1px solid var(--border-color); }
-.u-bd-b-1px-solid-border-color-fallback.u-bd-b-1px-solid-border-color-fallback.u-bd-b-1px-solid-border-color-fallback { border-bottom: 1px solid var(--border-color, #23272f); }
-.u-bd-b-2px-solid-border-color.u-bd-b-2px-solid-border-color.u-bd-b-2px-solid-border-color { border-bottom: 2px solid var(--border-color); }
-.u-bd-b-2px-solid-border-color-fallback.u-bd-b-2px-solid-border-color-fallback.u-bd-b-2px-solid-border-color-fallback { border-bottom: 2px solid var(--border-color, #23272f); }
 .u-bd-c-amber-500.u-bd-c-amber-500.u-bd-c-amber-500 { border-color: var(--amber-500); }
 .u-bd-c-amber-a30.u-bd-c-amber-a30.u-bd-c-amber-a30 { border-color: rgba(245, 158, 11, 0.3); }
 .u-bd-c-aura-caramel.u-bd-c-aura-caramel.u-bd-c-aura-caramel { border-color: var(--aura-caramel); }
@@ -5396,3 +5391,5 @@ h1, h2 {
 .u-w-100.u-w-100.u-w-100 { width: 100%; }
 .u-wrap-wrap.u-wrap-wrap.u-wrap-wrap { flex-wrap: wrap; }
 .u-ws-nowrap.u-ws-nowrap.u-ws-nowrap { white-space: nowrap; }
+.u-bd-b-1px-solid-border.u-bd-b-1px-solid-border.u-bd-b-1px-solid-border { border-bottom: 1px solid var(--border); }
+.u-bd-b-2px-solid-border.u-bd-b-2px-solid-border.u-bd-b-2px-solid-border { border-bottom: 2px solid var(--border); }
