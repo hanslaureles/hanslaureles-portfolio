@@ -28,7 +28,7 @@
       category: "Autonomous Systems",
       keywords: ["lsfm", "ai hq", "agents", "swarm", "autonomous", "discord", "multi-agent", "orchestration", "asyncio", "python", "gmail", "triage", "sakura", "chaewon", "kazuha", "yunjin", "eunchae"],
       summary: "Hans architected LSFM AI HQ, an autonomous 5-agent operations platform: five Discord bots with distinct personas on one asyncio event loop, routing LLM work through per-agent Groq and Gemini models with the other provider as a fallback, self-hosted on his own workstation.",
-      evidence: "Operates 5 specialized agents: Sakura (Chief of Staff, briefings & Gmail triage), Chaewon (Career & ATS PDF compiler), Yunjin (Design critic), Kazuha (Knowledge & RAG over SQLite), and Eunchae (System Guardian & hardware vitals). Gmail triage uses Google OAuth2 and two-tier classification across 10 custom Gmail labels with non-destructive bulk-archiving.",
+      evidence: "Operates 5 specialized agents: Sakura (Chief of Staff, briefings & Gmail triage), Chaewon (Career & ATS PDF compiler), Yunjin (Design critic), Kazuha (Code & Knowledge: answers codebase questions and reviews uncommitted changes), and Eunchae (System Guardian & hardware vitals). Gmail triage uses Google OAuth2 and two-tier classification across 10 custom Gmail labels with non-destructive bulk-archiving.",
       linkUrl: "case-lsfm.html",
       linkText: "Read LSFM AI HQ Architecture Deep-Dive →"
     },

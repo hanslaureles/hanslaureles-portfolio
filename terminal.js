@@ -51,7 +51,7 @@
 <div class="term-line"><span class="term-success">[MULTI-AGENT]</span> 5 agents: Sakura, Chaewon, Yunjin, Kazuha, Eunchae <span class="term-badge">RUN LOCALLY</span></div>
 <div class="term-line"><span class="term-success">[COORDINATOR]</span> Sakura: daily briefings, Gmail triage &amp; the !apply pipeline.</div>
 <div class="term-line"><span class="term-success">[CAREER]</span> Chaewon: job scouting, ATS tailoring &amp; single-page resume PDFs.</div>
-<div class="term-line"><span class="term-success">[FRONTEND]</span> Kazuha: UI components, code inspection &amp; RAG Q&amp;A.</div>
+<div class="term-line"><span class="term-success">[CODE &amp; KNOWLEDGE]</span> Kazuha: answers codebase questions &amp; reviews uncommitted changes.</div>
 <div class="term-line"><span class="term-success">[DESIGN]</span> Yunjin: portfolio asset audits &amp; design critiques.</div>
 <div class="term-line"><span class="term-success">[SYSTEM GUARDIAN]</span> Eunchae: hardware vitals &amp; health reports.</div>
 <div class="term-line"><span class="term-accent">&gt;&gt; INTERACTIVE CONSOLE READY // not connected to the live swarm</span></div>
@@ -470,7 +470,7 @@
       <td>🐍 Yunjin</td><td>Design Reviewer</td><td>Gemini (gemini-3.6-flash)</td><td>Weekly portfolio audit · !audit, !critique</td>
     </tr>
     <tr>
-      <td>🦢 Kazuha</td><td>Code &amp; RAG</td><td>Groq (qwen3.8-27b) · RAG: Gemini embeddings + BM25</td><td>Research scout Mon/Wed/Fri after 09:30 · !ask, !search, !git</td>
+      <td>🦢 Kazuha</td><td>Code &amp; Knowledge</td><td>Groq (qwen3.8-27b) · RAG: Gemini embeddings + BM25</td><td>Research scout Mon/Wed/Fri after 09:30 · !ask, !search, !git</td>
     </tr>
     <tr>
       <td>🥔 Eunchae</td><td>System Health</td><td>Groq (gpt-oss-20b) · psutil watchdog</td><td>Every 5 min · vitals card after 08:00 · Obsidian heartbeat every 15 min</td>
@@ -499,8 +499,8 @@
   <div class="term-line term-muted">Reviews case studies, checks design systems, and formats single-page resume documents.</div>
 </div>
 <div class="term-block" style="margin: 6px 0;">
-  <div class="term-line"><strong class="term-highlight">🦢 Kazuha (Frontend &amp; Code)</strong></div>
-  <div class="term-line term-muted">Checks code quality, reviews Git changes, and tests web components for accessibility and speed.</div>
+  <div class="term-line"><strong class="term-highlight">🦢 Kazuha (Code &amp; Knowledge)</strong></div>
+  <div class="term-line term-muted">Answers questions about the codebase and reviews uncommitted changes.</div>
 </div>
 <div class="term-block" style="margin: 6px 0;">
   <div class="term-line"><strong class="term-highlight">🥔 Eunchae (System Health)</strong></div>
@@ -593,7 +593,7 @@
       <td>⭐ Chaewon</td><td>Career Assistant</td><td><span class="term-badge">● LOCAL</span></td>
     </tr>
     <tr>
-      <td>💻 Kazuha</td><td>Frontend Agent</td><td><span class="term-badge">● LOCAL</span></td>
+      <td>💻 Kazuha</td><td>Code &amp; Knowledge</td><td><span class="term-badge">● LOCAL</span></td>
     </tr>
     <tr>
       <td>🎨 Yunjin</td><td>Design Reviewer</td><td><span class="term-badge">● LOCAL</span></td>
@@ -930,8 +930,8 @@
 <div class="term-line"><strong class="term-accent">AGENT ROSTER:</strong></div>
 <div class="term-line">  1. 🌸 <strong>Sakura</strong>   | Chief of Staff      | #command-center   | <span class="term-badge success">ORCHESTRATOR</span></div>
 <div class="term-line">     └─ Daily briefings (!briefing), Gmail triage (!inbox, !clean), !apply pipeline</div>
-<div class="term-line">  2. 🦢 <strong>Kazuha</strong>   | Frontend Architect  | #frontend-lab     | <span class="term-badge">TOKEN ENGINE</span></div>
-<div class="term-line">     └─ Design token compliance, UI components, code inspection, RAG Q&amp;A (!ask)</div>
+<div class="term-line">  2. 🦢 <strong>Kazuha</strong>   | Code &amp; Knowledge    | #frontend-lab     | <span class="term-badge">CODE REVIEW</span></div>
+<div class="term-line">     └─ Codebase Q&amp;A (!ask, !search), reviews uncommitted changes (!git, !review)</div>
 <div class="term-line">  3. 🎨 <strong>Yunjin</strong>   | Document Architect  | #portfolio-audits | <span class="term-badge">DESIGN CRITIC</span></div>
 <div class="term-line">     └─ Automated DOM &amp; asset audits (!audit), design critiques (!critique)</div>
 <div class="term-line">  4. 🐯 <strong>Chaewon</strong>  | Career Strategist   | #job-tailoring    | <span class="term-badge">ATS RADAR</span></div>

@@ -303,7 +303,7 @@ Availability: Open for Full-Time & Remote AI & Software Engineering Roles (2026)
 ## Multi-Agent System Overview (5 Agents)
 - 🌸 Sakura (Coordinator Agent): Daily Briefings, Gmail Triage & Job-Application Pipeline
 - ⭐ Chaewon (Career Agent): Single-Page Resume Generator & Job Matching
-- 💻 Kazuha (Frontend Agent): UI Components, Code Inspection & RAG Q&A
+- 💻 Kazuha (Code & Knowledge): Answers codebase questions & reviews uncommitted changes
 - 🎨 Yunjin (Design Reviewer Agent): Portfolio Audits & Case Study Critique
 - 🛡️ Eunchae (System Guardian Agent): Hardware Vitals & Health Reports
 

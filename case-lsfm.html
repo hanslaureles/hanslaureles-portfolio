@@ -280,7 +280,7 @@
                └─ Local: Ollama (qwen2.5-coder:7b) on AMD RX 6600 XT · tried first in auto mode
 <span class="terminal-prompt">[PIPELINE]</span>    5-Stage Autonomous Delegation Topology:
                ├─ 1. 🌸 Sakura   :: Chief of Staff, Briefings &amp; Gmail Triage (!briefing, !inbox, !clean)
-               ├─ 2. 🦢 Kazuha   :: Knowledge &amp; RAG (SQLite vector store, !ask / !search, !inspect)
+               ├─ 2. 🦢 Kazuha   :: Code &amp; Knowledge (codebase Q&amp;A, !ask / !search, !git / !review)
                ├─ 3. 🎨 Yunjin   :: Document Architect &amp; Portfolio Critic (!audit, !critique)
                ├─ 4. 🐯 Chaewon  :: Career Strategist &amp; ATS Vector PDF Tailor (!apply, !pdf, !scout)
                └─ 5. 🥔 Eunchae  :: System Guardian &amp; Vitals Watchdog (!vitals, !health)
@@ -383,14 +383,14 @@
                 <div class="agent-row-info">
                   <div class="agent-row-headline">
                     <span class="agent-row-name">Kazuha</span>
-                    <span class="agent-row-role">// Frontend Architect &amp; UI Sentinel</span>
+                    <span class="agent-row-role">// Code &amp; Knowledge</span>
                   </div>
-                  <p class="agent-row-desc">Enforces zero-framework design token compliance, authors responsive UI
-                    components, inspects code files, and answers codebase questions from the SQLite RAG index.</p>
+                  <p class="agent-row-desc">Answers questions about the codebase from a SQLite search index and reviews
+                    uncommitted changes (<code>!git</code>, <code>!review</code>) before they are committed.</p>
                 </div>
               </div>
               <div class="agent-row-tag">
-                <span class="agent-stack-tag">Token Engine · RAG Q&amp;A</span>
+                <span class="agent-stack-tag">Codebase Q&amp;A · Change Reviews</span>
               </div>
             </div>
 
