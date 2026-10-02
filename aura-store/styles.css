@@ -257,7 +257,8 @@ a {
   color: var(--espresso-muted);
   padding: 8px 18px;
   border-radius: var(--radius-pill);
-  transition: all var(--transition-fast);
+  transition: var(--transition-fast);
+  transition-property: background-color, color;
 }
 
 .nav-link:hover, .nav-link.active {
@@ -282,7 +283,8 @@ a {
   padding: 8px 16px;
   width: 220px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-  transition: all var(--transition-fast);
+  transition: var(--transition-fast);
+  transition-property: border-color, box-shadow, width;
 }
 
 .search-bar-pill:focus-within {
@@ -315,7 +317,8 @@ a {
   font-weight: 700;
   font-size: 0.92rem;
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-bounce);
+  transition: var(--transition-bounce);
+  transition-property: background-color, box-shadow, transform;
 }
 
 .cart-pill-btn:hover {
@@ -429,7 +432,8 @@ a {
   font-size: 1.05rem;
   font-weight: 700;
   box-shadow: var(--shadow-pill);
-  transition: all var(--transition-bounce);
+  transition: var(--transition-bounce);
+  transition-property: background-color, box-shadow, transform;
 }
 
 .btn-primary-pill:hover {
@@ -450,7 +454,8 @@ a {
   font-size: 1.02rem;
   font-weight: 700;
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-fast);
+  transition: var(--transition-fast);
+  transition-property: border-color, color, transform;
 }
 
 .btn-secondary-pill:hover {
@@ -702,7 +707,8 @@ a {
   font-size: 0.95rem;
   font-weight: 700;
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-bounce);
+  transition: var(--transition-bounce);
+  transition-property: background-color, border-color, box-shadow, color, transform;
 }
 
 .category-pill:hover {
@@ -732,7 +738,8 @@ a {
   border: 1px solid var(--border-subtle);
   padding: 20px;
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-bounce);
+  transition: var(--transition-bounce);
+  transition-property: border-color, box-shadow, transform;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -880,7 +887,8 @@ a {
   font-weight: 700;
   padding: 10px 20px;
   border-radius: var(--radius-pill);
-  transition: all var(--transition-bounce);
+  transition: var(--transition-bounce);
+  transition-property: background-color, border-color, box-shadow, color, transform;
   border: 1px solid #F5DAC1;
 }
 
@@ -906,7 +914,8 @@ a {
   padding: 20px;
   opacity: 0;
   visibility: hidden;
-  transition: all var(--transition-normal);
+  transition: var(--transition-normal);
+  transition-property: opacity, visibility;
 }
 
 .modal-overlay.active {
@@ -925,7 +934,8 @@ a {
   display: flex;
   flex-direction: column;
   transform: translateY(24px) scale(0.96);
-  transition: all var(--transition-bounce);
+  transition: var(--transition-bounce);
+  transition-property: transform;
 }
 
 .modal-overlay.active .modal-dialog {
@@ -959,7 +969,8 @@ a {
   justify-content: center;
   font-size: 1.1rem;
   font-weight: 700;
-  transition: all var(--transition-fast);
+  transition: var(--transition-fast);
+  transition-property: background-color, transform;
 }
 
 .modal-close-btn:hover {
@@ -1050,7 +1061,8 @@ picture,
   font-size: 0.86rem;
   font-weight: 600;
   color: var(--espresso-medium);
-  transition: all var(--transition-fast);
+  transition: var(--transition-fast);
+  transition-property: background-color, border-color, color, font-weight;
 }
 
 .option-pill-choice:hover {
@@ -1092,7 +1104,8 @@ picture,
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-  transition: all var(--transition-fast);
+  transition: var(--transition-fast);
+  transition-property: background-color, color;
 }
 
 .stepper-btn:hover {
@@ -1135,7 +1148,8 @@ picture,
   font-size: 1rem;
   font-weight: 700;
   box-shadow: var(--shadow-pill);
-  transition: all var(--transition-bounce);
+  transition: var(--transition-bounce);
+  transition-property: background-color, box-shadow, transform;
 }
 
 .btn-modal-add:hover {
@@ -1154,7 +1168,8 @@ picture,
   z-index: 180;
   opacity: 0;
   visibility: hidden;
-  transition: all var(--transition-normal);
+  transition: var(--transition-normal);
+  transition-property: opacity, visibility;
 }
 
 .cart-drawer-backdrop.active {
@@ -1343,7 +1358,8 @@ picture,
   font-weight: 700;
   font-size: 1.05rem;
   box-shadow: var(--shadow-pill);
-  transition: all var(--transition-bounce);
+  transition: var(--transition-bounce);
+  transition-property: background-color, box-shadow, transform;
 }
 
 .btn-checkout-pill:hover {
@@ -1587,7 +1603,8 @@ picture,
   border-radius: var(--radius-sm);
   background: var(--bg-body);
   font-size: 0.92rem;
-  transition: all var(--transition-fast);
+  transition: var(--transition-fast);
+  transition-property: background-color, border-color, box-shadow;
 }
 
 .form-input:focus {
@@ -1612,7 +1629,8 @@ picture,
   text-align: center;
   background: #FFF;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: var(--transition-fast);
+  transition-property: background-color, border-color;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1650,7 +1668,8 @@ picture,
   padding: 6px 14px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border-subtle);
-  transition: all var(--transition-fast);
+  transition: var(--transition-fast);
+  transition-property: background-color, border-color, color;
   cursor: pointer;
 }
 
