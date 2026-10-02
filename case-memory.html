@@ -104,6 +104,49 @@
       white-space: pre-wrap;
       line-height: 1.5;
     }
+
+    /* Executive summary + retrieval eval table */
+    .case-summary {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 36px;
+      padding: 18px 20px;
+      border: 1px solid var(--border-color, #23272f);
+      border-radius: var(--radius-lg, 12px);
+    }
+    .case-summary > div {
+      display: grid;
+      grid-template-columns: 9.5rem 1fr;
+      gap: 12px;
+    }
+    .case-summary dt {
+      font-family: var(--font-mono, monospace);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding-top: 3px;
+    }
+    .case-summary dd {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+    @media (max-width: 600px) {
+      .case-summary > div { grid-template-columns: 1fr; gap: 2px; }
+    }
+    .eval-table-wrap { overflow-x: auto; margin: 0 0 12px; }
+    .eval-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .eval-table th,
+    .eval-table td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color, #23272f);
+    }
+    .eval-table thead th { border-bottom-width: 2px; }
+    .eval-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .eval-note { font-size: 0.8rem; color: var(--text-muted); margin: 0 0 24px; }
   </style>
   
   <!-- Zero-FOUC Theme Script -->
@@ -192,6 +235,14 @@
       <p class="case-lead">
         Tackling the "Session Amnesia" dilemma in AI code assistants. We engineered a zero-dependency cognitive memory flywheel that performs BM25 episodic heuristic recall before code is generated, records post-mortems of user corrections, and auto-crystallizes high-impact heuristics into authoritative workspace guidelines.
       </p>
+
+      <dl class="case-summary" aria-label="Summary">
+        <div><dt>Problem</dt><dd>Coding agents forget corrections between sessions and repeat the same mistakes.</dd></div>
+        <div><dt>Constraint</dt><dd>Recall runs before every task on a local workstation, so it uses the Python standard library only: no model download, no vector database.</dd></div>
+        <div><dt>Decision</dt><dd>Field-weighted BM25 with tag and severity boosts over a JSONL store of post-mortems.</dd></div>
+        <div><dt>Measured result</dt><dd>On 30 held-out queries: recall@3 0.90, MRR 0.87, 0.81&nbsp;ms p50 on the 10-entry store (i5-12400F, Python 3.11, 2026-10-02). A naive substring baseline scores about the same at this size (<a href="#results">eval</a>).</dd></div>
+        <div><dt>Code</dt><dd><a href="https://github.com/hanslaureles/cognitive-memory-core/tree/main/eval" target="_blank" rel="noopener noreferrer">cognitive-memory-core/eval</a>, rerun with <code>python eval/run_eval.py</code></dd></div>
+      </dl>
 
       <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px;">
         <a href="#simulator" class="btn btn-primary">
@@ -562,24 +613,61 @@
               <div class="benchmark-sub">Zero pip packages / pure stdlib</div>
             </div>
             <div class="benchmark-card">
-              <div class="benchmark-val">5/5</div>
-              <div class="benchmark-label">Top-1 Recall on Test Queries</div>
-              <div class="benchmark-sub">MEM-001 to MEM-005 each ranked first</div>
+              <div class="benchmark-val">0.90</div>
+              <div class="benchmark-label">Recall@3, Held-Out Queries</div>
+              <div class="benchmark-sub">30 paraphrased queries &middot; MRR 0.87</div>
             </div>
           </div>
-          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -12px; margin-bottom: 24px;">Sources:
-            <code>test_memory.py</code> and <code>test_reflect_safety.py</code> in the
-            <a href="https://github.com/hanslaureles/cognitive-memory-core" target="_blank" rel="noopener">cognitive-memory-core</a>
-            repo. The top-1 result uses the five seeded queries in <code>test_memory.py</code>, written alongside the
-            rules they retrieve, so it shows the ranking works, not how it generalizes; a held-out evaluation set is
-            next on the roadmap.</p>
+
+          <h3 style="margin: 28px 0 12px 0;">Retrieval Eval: BM25 vs a Naive Substring Baseline</h3>
+          <p>
+            Each of the 30 queries is a paraphrase labelled with the one rule it should retrieve, and a test fails if
+            any query copies a 4-word run from the store. I wrote 15; the other 15 are with an independent reviewer to
+            replace or approve, so I'm not only grading my own test. The baseline ranks rules by how many query words
+            appear in them as substrings.
+          </p>
+          <div class="eval-table-wrap">
+            <table class="eval-table">
+              <thead>
+                <tr><th scope="col">Retriever</th><th scope="col" class="num">recall@1</th><th scope="col" class="num">recall@3</th><th scope="col" class="num">MRR</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>BM25 (<code>recall.py</code>)</td><td class="num">0.83</td><td class="num">0.90</td><td class="num">0.87</td></tr>
+                <tr><td>Naive substring baseline</td><td class="num">0.80</td><td class="num">0.93</td><td class="num">0.87</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="eval-table-wrap">
+            <table class="eval-table">
+              <thead>
+                <tr><th scope="col">Store size</th><th scope="col" class="num">Calls</th><th scope="col" class="num">p50</th><th scope="col" class="num">p95</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>10 entries (real store)</td><td class="num">500</td><td class="num">0.81 ms</td><td class="num">0.87 ms</td></tr>
+                <tr><td>1,000 entries (synthetic)</td><td class="num">100</td><td class="num">67 ms</td><td class="num">70 ms</td></tr>
+                <tr><td>10,000 entries (synthetic)</td><td class="num">20</td><td class="num">695 ms</td><td class="num">744 ms</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="eval-note">Measured 2026-10-02 with <code>eval/run_eval.py</code> on an Intel Core i5-12400F,
+            Windows 11, Python 3.11.9, commit <code>a9a7e96</code> of
+            <a href="https://github.com/hanslaureles/cognitive-memory-core" target="_blank" rel="noopener">cognitive-memory-core</a>.
+            Each call includes reading and parsing the JSONL store. Synthetic stores are the real entries plus seeded
+            filler drawn from the store's vocabulary. Full output: <code>eval/results/2026-10-02.md</code>.</p>
+          <p>
+            What this shows: on today's 10-entry store, BM25 is not clearly better than a substring search. It ties on
+            MRR, and with 10 entries a top-3 list covers 30% of the store, so recall@3 says little. Its three misses are
+            paraphrases with no shared words, such as "add numbers to the achievements in my CV" for the r&eacute;sum&eacute;-metrics
+            rule, which no keyword method can catch. Latency grows linearly with the store, because every call re-reads
+            and re-scores it. CI now fails if BM25 recall@3 or MRR falls below these numbers minus a tolerance.
+          </p>
 
           <h3 style="margin: 28px 0 12px 0;">Architectural Decision: Why BM25 over Dense Vector Embeddings?</h3>
           <p>
             Many AI agent memory solutions reach prematurely for heavy vector databases (ChromaDB, Pinecone, FAISS) and deep learning frameworks (PyTorch, transformers). For a local store of a few hundred guidelines, dense embeddings add a model download, an embedding step on every write, and a dependency stack to maintain, and they can blur exact technical identifiers (e.g. <code>sys.stdout</code> vs <code>sys.stdin</code>) that a keyword match keeps apart.
           </p>
           <p>
-            By choosing standard library <strong>field-weighted BM25 with tag boosting</strong>, retrieval runs in <strong>0.8 ms at p50</strong> (about 1.5 ms worst case across 2,000 calls on the current 10-entry store; measured with <code>bench_recall.py</code> on an Intel Core i5-12400F, Windows 11, Python 3.11, 2026-10-01), holds nothing in memory between calls, and ranks the correct rule first for every seeded test query, including exact error codes like <code>TerminatorExpectedAtEndOfString</code>.
+            By choosing standard library <strong>field-weighted BM25 with tag boosting</strong>, retrieval runs in <strong>0.8 ms at p50</strong> (about 1.5 ms worst case across 2,000 calls on the current 10-entry store; measured with <code>bench_recall.py</code> on an Intel Core i5-12400F, Windows 11, Python 3.11, 2026-10-01), holds nothing in memory between calls, and matches exact error codes like <code>TerminatorExpectedAtEndOfString</code> as single tokens. The trade-off is in the eval above: it misses paraphrases that share no words with the rule, and past a few hundred entries it would need a precomputed index.
           </p>
 
           <!-- What Broke & What I Would Change -->

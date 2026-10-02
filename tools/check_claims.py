@@ -24,6 +24,8 @@ RETRACTED = [
     (r"ZERO LATENCY|100% vector|2\.5–5s", "absolute or uncited performance claim"),
     (r"~?350\s?MB\+|800\s?ms\+", "unmeasured vector-DB figures"),
     (r"State: nominal|100% nominal|5/5 Agents Nominal", "status nobody checked"),
+    (r"first for every seeded|Top-1 Recall on Test Queries",
+     "seeded-query recall claim (replaced by the held-out eval, 3C)"),
 ]
 
 
