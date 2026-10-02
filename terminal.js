@@ -431,7 +431,7 @@
   <tr><td><span class="term-highlight" style="color: #FBBF24;">ciel</span></td><td>✦ Manas: Ciel Divine Wisdom AI Voice HUD &amp; DSP</td></tr>
   <tr><td><span class="term-highlight">status</span></td><td>Show each agent's engine and schedule</td></tr>
   <tr><td><span class="term-highlight">agents</span></td><td>Learn what each of the 5 AI agents does</td></tr>
-  <tr><td><span class="term-highlight">vitals</span></td><td>⚡ Eunchae's hardware &amp; CPU/RAM watchdog (sample snapshot)</td></tr>
+  <tr><td><span class="term-highlight">vitals</span></td><td>⚡ Eunchae's CPU/RAM/disk watchdog and the workstation hardware</td></tr>
   <tr><td><span class="term-highlight">matrix</span></td><td>🛡️ Inspect 5-agent system orchestration matrix</td></tr>
   <tr><td><span class="term-highlight">projects</span></td><td>Explore selected case studies &amp; live demos</td></tr>
   <tr><td><span class="term-highlight">audit</span></td><td>🎨 View Yunjin's 92/100 design audit &amp; resolution</td></tr>
@@ -911,20 +911,14 @@
 
     function showVitals() {
       appendOutput(`
-<div class="term-line term-comment"># Eunchae Watchdog // Sample Snapshot (static demo values, not a live reading)</div>
-<div class="term-line term-cyan">&gt; sys.watchdog --telemetry --all</div>
+<div class="term-line term-comment"># Eunchae Watchdog // Workstation hardware (no live readings on this site)</div>
+<div class="term-line term-cyan">&gt; sys.watchdog --hardware</div>
 
 <div class="term-line"><span class="term-success">[HOST]</span> Intel Core i5-12400F (12 Logical Threads @ 2.50–4.40 GHz)</div>
 <div class="term-line"><span class="term-success">[SILICON]</span> AMD Radeon RX 6600 XT (8GB GDDR6 VRAM · Ollama local mode)</div>
 <div class="term-line"><span class="term-success">[MEMORY]</span> 16 GB DDR4-3200 (2 × 8 GB, dual-channel)</div>
-<div class="term-line"><span class="term-success">[STORAGE]</span> NVMe Gen4 Primary Partition</div>
 
-<div class="term-line" style="margin-top: 6px;"><span class="term-accent">SAMPLE GAUGES:</span></div>
-<div class="term-line">  CPU Load:   <span class="term-cyan">[██░░░░░░░░░░░░░░░░░░]</span>  4.9%  <span class="term-badge success">COOL</span></div>
-<div class="term-line">  RAM Load:   <span class="term-cyan">[██████████████░░░░░░]</span> 69.6%  <span class="term-badge success">OPTIMAL</span></div>
-<div class="term-line">  NVMe Disk:  <span class="term-cyan">[██████████████░░░░░░]</span> 73.6%  <span class="term-badge success">HEALTHY</span></div>
-
-<div class="term-line term-muted" style="margin-top: 6px;">Gauge values are illustrative. The real watchdog samples CPU, RAM and disk via psutil every 5 minutes on the workstation.</div>
+<div class="term-line term-muted" style="margin-top: 6px;">The watchdog samples CPU, RAM and disk via psutil every 5 minutes on the workstation. The portfolio has no live connection to it, so no readings are shown here.</div>
       `.trim());
     }
 
@@ -954,7 +948,7 @@
         <div class="term-line term-cyan">// CASE STUDY 06: COGNITIVE MEMORY CORE</div>
         <div class="term-line">Zero-dependency developer agent engine eliminating AI session amnesia through BM25 heuristic recall and self-crystallizing workspace rules.</div>
         <div class="term-line" style="margin: 6px 0;">
-          <div class="term-muted">• Latency: 12ms average BM25 tokenized retrieval across active JSONL store</div>
+          <div class="term-muted">• Latency: 0.81 ms p50 recall on the real 10-entry store (500 calls, i5-12400F, eval 2026-10-02); grows linearly, 695 ms at 10,000 synthetic entries</div>
           <div class="term-muted">• Footprint: 100% Python standard library, zero external vector DB dependencies</div>
           <div class="term-muted">• Integrations: Antigravity Customizations (.agents/rules/) + LE SSERAFIM Discord HQ</div>
         </div>

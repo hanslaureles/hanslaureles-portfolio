@@ -31,6 +31,9 @@ RETRACTED = [
      "unsourced design case-study outcome (3E-9; restore only with N, date and method)"),
     (r"WCAG AAA|zero[- ]latency|engagement by over|sub-second FCP|Full WCAG",
      "uncited compliance or performance claim (3E round 1; CI checks WCAG 2.1 AA only)"),
+    (r"SAMPLE GAUGES|\d+(\.\d+)?% load|\d+(\.\d+)? GB of \d+(\.\d+)? GB|\d+(\.\d+)? GB free space|"
+     r"\d+°C \(Feels|\d+ km/h [NSEW]{1,3}\b|within normal range|NVMe Gen4|12 ?ms average",
+     "invented sample telemetry or status (4A; show what the tool reads, or a cited measurement)"),
 ]
 
 
