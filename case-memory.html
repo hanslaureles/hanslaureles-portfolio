@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Cognitive Memory Core — Case Study · Hans Aaron Laureles</title>
-  <meta name="description" content="Case study on the Self-Improving Developer Agent Engine — eliminating AI session amnesia with zero-dependency BM25 episodic retrieval, post-mortem reflection, and self-crystallizing workspace rules.">
+  <meta name="description" content="Case study on Memory Core, a lessons-learned memory for AI coding assistants: it stores past mistakes as lessons, finds the right one with BM25 before each task, and compiles repeated lessons into rules. Pure Python, no dependencies.">
   
   <link rel="canonical" href="https://hanslaureles.vercel.app/case-memory.html">
 
   <!-- OpenGraph / Social Meta Tags -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://hanslaureles.vercel.app/case-memory.html">
-  <meta property="og:title" content="Cognitive Memory Core — Episodic Memory Retrieval Engine Case Study">
-  <meta property="og:description" content="Pure Python standard library episodic memory retrieval engine with BM25 keyword relevance scoring, structured post-mortems, and zero external pip dependencies.">
+  <meta property="og:title" content="Cognitive Memory Core — A Lessons-Learned Memory for AI Coding Assistants">
+  <meta property="og:description" content="A lessons-learned memory for AI coding assistants: BM25 keyword search over past mistakes, in pure Python with zero dependencies.">
   <meta property="og:image" content="https://hanslaureles.vercel.app/images/og/memory-core-memory-mockup.8a710b82.jpg">
 
   <!-- Twitter Meta -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Cognitive Memory Core — Episodic Memory Retrieval Engine Case Study">
-  <meta name="twitter:description" content="Pure Python standard library episodic memory retrieval engine with BM25 keyword relevance scoring, structured post-mortems, and zero external pip dependencies.">
+  <meta name="twitter:title" content="Cognitive Memory Core — A Lessons-Learned Memory for AI Coding Assistants">
+  <meta name="twitter:description" content="A lessons-learned memory for AI coding assistants: BM25 keyword search over past mistakes, in pure Python with zero dependencies.">
   <meta name="twitter:image" content="https://hanslaureles.vercel.app/images/og/memory-core-memory-mockup.8a710b82.jpg">
   
   <!-- Google Fonts: Instrument Serif + Plus Jakarta Sans + JetBrains Mono -->
@@ -206,7 +206,7 @@
       <li><a href="index.html">01. Selected Work</a></li>
       <li><a href="about.html">02. About Me</a></li>
       <li><a href="case-lsfm.html">03. Flagship: LSFM AI HQ</a></li>
-      <li><a href="case-memory.html" class="active">04. Cognitive Memory Core</a></li>
+      <li><a href="case-memory.html" class="active">04. Memory Core</a></li>
       <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer">05. Resume (PDF) ↗</a></li>
       <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer">06. GitHub Profile ↗</a></li>
     </ul>
@@ -222,18 +222,18 @@
       
       <div class="u-d-flex u-gap-8px u-mb-16px u-wrap-wrap">
         <span class="badge badge-accent">Case Study 03 · Applied AI Architecture</span>
-        <span class="badge">Self-Improving Agent Engine</span>
-        <span class="badge">Episodic Memory</span>
+        <span class="badge">Lessons-Learned Memory</span>
+        <span class="badge">BM25 Search</span>
         <span class="badge">Zero-Dependency Python</span>
       </div>
 
       <h1 class="case-title">
-        Cognitive Memory Core — Zero-Dependency<br>
-        <span class="serif-italic">Self-Improving Agent Flywheel</span>
+        Cognitive Memory Core —<br>
+        <span class="serif-italic">A Lessons-Learned Memory for AI Coding Assistants</span>
       </h1>
 
       <p class="case-lead">
-        Tackling the "Session Amnesia" dilemma in AI code assistants. We engineered a zero-dependency cognitive memory flywheel that performs BM25 episodic heuristic recall before code is generated, records post-mortems of user corrections, and auto-crystallizes high-impact heuristics into authoritative workspace guidelines.
+        AI coding assistants forget your corrections when the session ends. Memory Core saves each mistake as a lesson, finds the matching lessons before the next task starts, and turns lessons that keep coming back into written rules. It is pure Python with no dependencies.
       </p>
 
       <dl class="case-summary" aria-label="Summary">
@@ -265,7 +265,7 @@
         </div>
         <div class="case-meta-item">
           <div class="label">Discipline</div>
-          <div class="val">Episodic Retrieval &amp; Developer Tooling</div>
+          <div class="val">Search &amp; Developer Tooling</div>
         </div>
         <div class="case-meta-item">
           <div class="label">Role</div>
@@ -284,31 +284,31 @@
             <span>●</span> The Engineering Challenge (Session Amnesia)
           </div>
           <p class="case-challenge-text">
-            LLM coding assistants suffer from session amnesia: repeated regressions, lost user feedback, and context-window bloat when querying heavyweight external vector databases that require bulky Python pip dependencies.
+            AI coding assistants start every session blank, so they repeat mistakes you already corrected. The usual fix, a vector database, adds a model download and a stack of dependencies.
           </p>
         </div>
         <div class="case-challenge-card solution">
           <div class="case-challenge-tag">
-            <span>●</span> The Architecture Solution (BM25 Flywheel)
+            <span>●</span> The Architecture Solution (BM25 Lesson Search)
           </div>
           <p class="case-challenge-text">
-            Engineered a 100% Python standard library episodic memory engine. Combines fast BM25 relevance scoring over JSONL failure logs, post-mortem reflection, and automatic rule crystallization directly into authoritative workspace guidelines.
+            Built a lessons-learned memory in the Python standard library only. Lessons live in a JSONL file, BM25 keyword search finds the relevant ones before each task, and repeated lessons are compiled into a rules file the assistant reads.
           </p>
         </div>
       </div>
 
       <div class="case-metrics-strip">
         <div class="case-metric-cell">
-          <div class="case-metric-num accent-emerald">0 External Pips</div>
-          <div class="case-metric-label">Zero-Dependency Python</div>
+          <div class="case-metric-num accent-emerald">0 Dependencies</div>
+          <div class="case-metric-label">Python Standard Library Only</div>
         </div>
         <div class="case-metric-cell">
           <div class="case-metric-num accent-blue">BM25 Scored</div>
-          <div class="case-metric-label">Episodic Heuristic Match</div>
+          <div class="case-metric-label">Keyword Search over Past Lessons</div>
         </div>
         <div class="case-metric-cell">
           <div class="case-metric-num">10 Rules</div>
-          <div class="case-metric-label">Crystallized Guidelines</div>
+          <div class="case-metric-label">Compiled from Repeated Lessons</div>
         </div>
         <div class="case-metric-cell">
           <div class="case-metric-num">CI-Tested</div>
@@ -321,7 +321,7 @@
         <picture>
           <source type="image/avif" srcset="images/memory-core/memory-mockup-480.fe2cc1ea.avif 480w, images/memory-core/memory-mockup-960.2fc2c74f.avif 960w, images/memory-core/memory-mockup-1376.c97be728.avif 1376w" sizes="(max-width: 1280px) calc(100vw - 32px), 1240px">
           <source type="image/webp" srcset="images/memory-core/memory-mockup-480.4ead0a78.webp 480w, images/memory-core/memory-mockup-960.18d7e109.webp 960w, images/memory-core/memory-mockup-1376.858de97b.webp 1376w" sizes="(max-width: 1280px) calc(100vw - 32px), 1240px">
-          <img src="images/memory-core/memory-mockup-960.18d7e109.webp" alt="Cognitive Memory Core &amp; Self-Improving Developer Agent Engine Interface Mockup" width="960" height="536" loading="eager" fetchpriority="high" decoding="async" data-full="images/memory-core/memory-mockup-1376.858de97b.webp">
+          <img src="images/memory-core/memory-mockup-960.18d7e109.webp" alt="Memory Core lesson search interface mockup" width="960" height="536" loading="eager" fetchpriority="high" decoding="async" data-full="images/memory-core/memory-mockup-1376.858de97b.webp">
         </picture>
       </div>
 
@@ -333,20 +333,20 @@
             <span class="terminal-dot yellow"></span>
             <span class="terminal-dot green"></span>
           </div>
-          <div class="terminal-title">COGNITIVE_MEMORY_CORE // BM25 HEURISTIC FLYWHEEL</div>
-          <div class="mono u-fs-0p72rem u-c-emerald-500">● 10 CRYSTALLIZED RULES</div>
+          <div class="terminal-title">MEMORY_CORE // LESSON RECALL LOOP</div>
+          <div class="mono u-fs-0p72rem u-c-emerald-500">● 10 RULES</div>
         </div>
         <div class="terminal-body">
-<pre><span class="terminal-comment"># Self-Improving Agent Memory Pipeline &amp; Reflection Flywheel</span>
+<pre><span class="terminal-comment"># How a lesson is found, used, and saved</span>
 <span class="terminal-prompt">[INPUT]</span>       Developer Intent / Prompt Stream ──&gt; pre-flight trigger detection
 <span class="terminal-prompt">[PRE-FLIGHT]</span>  BM25 Relevance Scorer (experience_store.jsonl) ──&gt; [TOP-3 MATCHES]
-<span class="terminal-prompt">[INJECTION]</span>   Dynamic Active Heuristics Header:
+<span class="terminal-prompt">[INJECTION]</span>   Matching lessons added to the prompt:
                ├─ [MEM-005] PowerShell: Avoid nested double quotes in inline execution
                ├─ [MEM-006] Windows Python: UTF-8 stdout reconfiguration against CP1252
                └─ [MEM-007] Deployment: Git commits trigger build rather than direct uploads
 <span class="terminal-prompt">[EXECUTION]</span>   Agent Code Generation &amp; Tool Execution with Active Guardrails
-<span class="terminal-prompt">[FEEDBACK]</span>    User Correction / Error Detected ──&gt; reflect.py (Semantic Jaccard Deduplication)
-<span class="terminal-prompt">[PERSIST]</span>     Auto-Crystallization ──&gt; 03 - Rules &amp; Memory/Learned_Rules.md [OBSIDIAN SYNC]
+<span class="terminal-prompt">[FEEDBACK]</span>    User Correction / Error Detected ──&gt; reflect.py (merges near-duplicate lessons by word overlap)
+<span class="terminal-prompt">[PERSIST]</span>     Repeated lessons compiled into rules ──&gt; 03 - Rules &amp; Memory/Learned_Rules.md [OBSIDIAN SYNC]
 <span class="terminal-success">[OUTCOME]</span>     Lessons persist across sessions · 0 external pip dependencies · Recurring lessons gain weight</pre>
         </div>
       </div>
@@ -364,7 +364,7 @@
           <li><a href="#simulator">02. Live Recall Simulator</a></li>
           <li><a href="#architecture">03. 4-Pillar Engine Specs</a></li>
           <li><a href="#math">04. Mathematical BM25 Scoring</a></li>
-          <li><a href="#heuristics">05. Production Heuristics</a></li>
+          <li><a href="#heuristics">05. The 10 Lessons in the Store</a></li>
           <li><a href="#results">06. Impact &amp; Benchmarks</a></li>
         </ul>
       </aside>
@@ -385,31 +385,31 @@
             <li><strong>Context Window Bloat</strong>: Shoving entire multi-thousand-line project histories into prompt headers wastes token bandwidth and degrades attention quality.</li>
           </ul>
           <p>
-            Instead of treating AI agents as ephemeral chat participants, we treated them as <strong>compounding knowledge engines</strong>. The goal: an agent that becomes measurably smarter after every user correction.
+            The goal is simple: <strong>a correction made once is remembered next time</strong>, without pasting the whole project history into every prompt.
           </p>
         </section>
 
         <!-- Section 02: Interactive Recall Widget -->
         <section id="simulator" class="case-body-section">
           <div class="section-tag">// 02 · REAL-TIME RECALL DEMO</div>
-          <h2>Interactive Simulator: Pre-Flight BM25 Recall</h2>
+          <h2>Interactive Demo: Find Lessons Before a Task</h2>
           <p>
-            Try querying the real episodic memory store below. Watch how the engine scores query tokens against past failure symptoms, root causes, and permanent rules to return tailored heuristics in milliseconds:
+            Search the real lesson store below. Type a task or a bug, and BM25 ranks the 10 lessons by how well their symptoms, causes and rules match your words:
           </p>
 
           <!-- Interactive Memory Console -->
           <div class="memory-console-widget" id="memory-demo">
             <div class="memory-console-header">
               <div>
-                <span class="badge badge-accent u-fs-0p7rem">LIVE RECALL ENGINE</span>
-                <span class="mono u-ml-8px u-fs-0p85rem u-c-text-muted">experience_store.jsonl · 10 Active Heuristics</span>
+                <span class="badge badge-accent u-fs-0p7rem">LIVE LESSON SEARCH</span>
+                <span class="mono u-ml-8px u-fs-0p85rem u-c-text-muted">experience_store.jsonl · 10 lessons</span>
               </div>
               <div class="mono u-fs-0p78rem u-c-accent">CLIENT-SIDE BM25 · RUNS IN YOUR BROWSER</div>
             </div>
 
             <div class="memory-query-bar">
               <input type="text" id="demo-query-input" class="memory-query-input" placeholder="Type a task or bug keyword (e.g. 'navigation flexbox', 'coffee copy', 'netlify 404')..." value="navigation flexbox alignment wide screen">
-              <button id="demo-run-btn" class="btn btn-primary btn-sm">Recall Heuristic ⚡</button>
+              <button id="demo-run-btn" class="btn btn-primary btn-sm">Find Lessons ⚡</button>
             </div>
 
             <div class="memory-chips-row">
@@ -435,9 +435,9 @@
         <!-- Section 03: Architecture -->
         <section id="architecture" class="case-body-section">
           <div class="section-tag">// 03 · ENGINE SPECIFICATION</div>
-          <h2>The 4-Pillar Self-Improving Engine</h2>
+          <h2>The 4 Parts of Memory Core</h2>
           <p>
-            The engine operates without heavy external vector databases or heavyweight pip packages, requiring only standard Python 3:
+            No vector database and no pip packages. It needs only standard Python 3:
           </p>
 
           <div class="u-d-grid u-cols-autofit-280 u-gap-16px u-m-24px-0">
@@ -446,9 +446,9 @@
                 <div class="agent-avatar-badge">📂</div>
                 <span class="agent-domain">PILLAR 01 · DATA LEDGER</span>
               </div>
-              <div class="agent-role-title">Episodic Memory Store</div>
+              <div class="agent-role-title">Lesson Store</div>
               <div class="agent-desc">
-                Append-only JSONL tracking trigger scenario, bug symptom, technical root cause, universal permanent rule, tags, severity, and observation frequency.
+                An append-only JSONL file. Each lesson records what triggered the mistake, the symptom, the root cause, the rule to follow, tags, severity, and how often it has happened.
               </div>
               <span class="agent-stack-tag">experience_store.jsonl</span>
             </div>
@@ -458,9 +458,9 @@
                 <div class="agent-avatar-badge">⚡</div>
                 <span class="agent-domain">PILLAR 02 · RETRIEVAL</span>
               </div>
-              <div class="agent-role-title">Pre-Flight Recall Engine</div>
+              <div class="agent-role-title">Lesson Search</div>
               <div class="agent-desc">
-                Executes fast tokenized BM25 matching across past post-mortems with tag boosting and frequency multipliers. Returns the top matches fast enough to run before every task (measured latency and its conditions are under Results).
+                BM25 keyword search across past lessons, with extra weight for matching tags and for lessons that keep recurring. Returns the top matches fast enough to run before every task (measured latency and its conditions are under Results).
               </div>
               <span class="agent-stack-tag">recall.py · BM25 Algo</span>
             </div>
@@ -470,9 +470,9 @@
                 <div class="agent-avatar-badge">🔄</div>
                 <span class="agent-domain">PILLAR 03 · REFLECTION</span>
               </div>
-              <div class="agent-role-title">Post-Mortem Logger</div>
+              <div class="agent-role-title">Lesson Logger</div>
               <div class="agent-desc">
-                Programmatic and CLI tool to record fixes. Features semantic Jaccard deduplication that reinforces recurring rules rather than polluting memory.
+                A CLI and Python API to record a new lesson. Near-duplicates are merged by word overlap (Jaccard), so a repeated mistake strengthens the existing lesson instead of adding a copy.
               </div>
               <span class="agent-stack-tag">reflect.py · Auto-Dedupe</span>
             </div>
@@ -482,9 +482,9 @@
                 <div class="agent-avatar-badge">💎</div>
                 <span class="agent-domain">PILLAR 04 · COMPILER</span>
               </div>
-              <div class="agent-role-title">Rule Crystallizer</div>
+              <div class="agent-role-title">Rule Compiler</div>
               <div class="agent-desc">
-                Scans episodic memories, groups heuristics by engineering domain, and compiles them into authoritative workspace guidelines permanently read by Antigravity.
+                Groups lessons by topic and compiles them into a rules file (<code>learned_rules.md</code>) that the coding assistant reads at the start of every session.
               </div>
               <span class="agent-stack-tag">crystallize.py → learned_rules.md</span>
             </div>
@@ -496,7 +496,7 @@
           <div class="section-tag">// 04 · ALGORITHMIC MECHANICS</div>
           <h2>Mathematical Retrieval Mechanics</h2>
           <p>
-            Vector embeddings alone frequently struggle with precise syntactic rules (e.g. distinguishing <code>`"`</code> from <code>`'`</code> in PowerShell or exact CSS properties like <code>white-space: nowrap</code>). We designed a domain-weighted BM25 scoring algorithm:
+            Vector embeddings alone frequently struggle with precise syntactic rules (e.g. distinguishing <code>`"`</code> from <code>`'`</code> in PowerShell or exact CSS properties like <code>white-space: nowrap</code>). I designed a domain-weighted BM25 scoring algorithm:
           </p>
 
           <div class="u-bg-surface u-bd-l-3px-solid-accent u-p-18px-24px u-rounded-4px u-m-20px-0 u-ff-font-mono u-fs-0p88rem">
@@ -516,9 +516,9 @@
         <!-- Section 05: Real-World Lessons Distilled -->
         <section id="heuristics" class="case-body-section">
           <div class="section-tag">// 05 · ACTIVE PRODUCTION KNOWLEDGE</div>
-          <h2>Distilled Workspace Heuristics Seeded</h2>
+          <h2>The 10 Lessons in the Store</h2>
           <p>
-            The episodic memory store maintains 10 verified heuristics continuously distilled from our active production engineering sessions:
+            The store holds 10 lessons, each from a real mistake in my own projects:
           </p>
 
           <div class="case-table-wrap">
@@ -528,7 +528,7 @@
                   <th>ID</th>
                   <th>Domain</th>
                   <th>Observed Symptom</th>
-                  <th>Permanent Heuristic</th>
+                  <th>Rule</th>
                 </tr>
               </thead>
               <tbody>
@@ -879,7 +879,7 @@
           return;
         }
 
-        let out = `## ⚡ ACTIVE HEURISTICS & ANTI-PATTERNS (Pre-Flight Recall)\nMatched ${scored.length} distilled rule(s) for query: "${query}"\n\n`;
+        let out = `## ⚡ MATCHING LESSONS (checked before the task)\nMatched ${scored.length} lesson(s) for query: "${query}"\n\n`;
 
         scored.slice(0, 3).forEach((item, idx) => {
           const m = item.mem;

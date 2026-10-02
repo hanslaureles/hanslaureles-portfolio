@@ -393,8 +393,8 @@
 <div class="term-git-entry">
   <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">c71e08a</span> <span class="term-badge">tag: v2.0.0</span> <span class="term-muted">[2024 – 2025]</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(memory):</strong> Developer — Cognitive Memory Core</div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Zero-dependency BM25 heuristic recall core &amp; structured post-mortems</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Workspace rule crystallization permanently eliminating AI session amnesia</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Zero-dependency BM25 lesson search &amp; structured lessons</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Repeated lessons compiled into workspace rules</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">└──</span> <a href="case-memory.html" class="term-link">View Case Study: case-memory.html ↗</a></div>
 </div>
 
@@ -436,7 +436,7 @@
   <tr><td><span class="term-highlight">matrix</span></td><td>🛡️ Inspect 5-agent system orchestration matrix</td></tr>
   <tr><td><span class="term-highlight">projects</span></td><td>Explore selected case studies &amp; live demos</td></tr>
   <tr><td><span class="term-highlight">audit</span></td><td>🎨 View Yunjin's 92/100 design audit &amp; resolution</td></tr>
-  <tr><td><span class="term-highlight">rules</span></td><td>🧠 Inspect 10 active learned rules &amp; heuristics</td></tr>
+  <tr><td><span class="term-highlight">rules</span></td><td>🧠 Inspect the 10 learned lessons &amp; rules</td></tr>
   <tr><td><span class="term-highlight">brain</span></td><td>🤖 Inspect Obsidian AI Brain &amp; MCP bridge</td></tr>
   <tr><td><span class="term-highlight">resume</span></td><td>Download Hans's single-page PDF resume</td></tr>
   <tr><td><span class="term-highlight">sakura</span></td><td>🌸 Chat with Ask Sakura AI assistant</td></tr>
@@ -526,7 +526,7 @@
   </tr>
   <tr>
     <td><strong class="term-accent">03. Cognitive Memory Core</strong></td>
-    <td>Stdlib Python BM25 Episodic Retrieval Engine</td>
+    <td>Lessons-learned memory for AI coding assistants</td>
     <td><a href="case-memory.html" class="term-link">Case Study ↗</a></td>
   </tr>
   <tr>
@@ -842,7 +842,7 @@
         return;
       }
 
-      let html = `<div class="term-line term-accent">⚡ ACTIVE HEURISTICS RETRIEVED (${matches.length} matched):</div>`;
+      let html = `<div class="term-line term-accent">⚡ MATCHING LESSONS (${matches.length} found):</div>`;
       matches.forEach(m => {
         html += `
           <div class="term-block" style="margin: 6px 0; border-left: 2px solid var(--accent); padding-left: 8px;">
@@ -858,8 +858,8 @@
 
     function showRules() {
       appendOutput(`
-        <div class="term-line term-cyan">// WORKSPACE LEARNED RULES &amp; HEURISTICS (Obsidian: 03 - Rules &amp; Memory)</div>
-        <div class="term-line term-muted">Auto-crystallized heuristics from real-world bugs and post-mortems:</div>
+        <div class="term-line term-cyan">// WORKSPACE LESSONS &amp; RULES (Obsidian: 03 - Rules &amp; Memory)</div>
+        <div class="term-line term-muted">Rules compiled from lessons about real bugs:</div>
         <div class="term-block" style="margin: 6px 0;">
           <div class="term-line"><span class="term-highlight">[MEM-001] COPYWRITING</span>: Forbid sci-fi jargon in hospitality; use tactile culinary words.</div>
           <div class="term-line"><span class="term-highlight">[MEM-002] CSS-LAYOUT</span>: No spaced brackets in flex nav; enforce white-space: nowrap.</div>
@@ -902,7 +902,7 @@
   <div class="term-line"><span class="term-highlight">00 - Hub</span>: Central dashboard, quick links &amp; navigation indices</div>
   <div class="term-line"><span class="term-highlight">01 - User</span>: Candidate profile, master resume, interview defense playbook</div>
   <div class="term-line"><span class="term-highlight">02 - Agents</span>: Roster dossiers for Sakura, Chaewon, Yunjin, Kazuha, Eunchae</div>
-  <div class="term-line"><span class="term-highlight">03 - Rules &amp; Memory</span>: 10 active heuristics [MEM-001 to MEM-010], post-mortems</div>
+  <div class="term-line"><span class="term-highlight">03 - Rules &amp; Memory</span>: 10 lessons [MEM-001 to MEM-010]</div>
   <div class="term-line"><span class="term-highlight">04 - Projects</span>: Architectural specs for LSFM, Memory Core, Aura, Lumina, FinTrack</div>
   <div class="term-line"><span class="term-highlight">05 - Daily Logs</span>: Automated timestamped agent dispatches &amp; daily briefings</div>
 </div>
@@ -946,8 +946,8 @@
 
     function showMemoryCaseStudy() {
       appendOutput(`
-        <div class="term-line term-cyan">// CASE STUDY 03: COGNITIVE MEMORY CORE</div>
-        <div class="term-line">Zero-dependency developer agent engine eliminating AI session amnesia through BM25 heuristic recall and self-crystallizing workspace rules.</div>
+        <div class="term-line term-cyan">// CASE STUDY 03: MEMORY CORE</div>
+        <div class="term-line">A lessons-learned memory for AI coding assistants: BM25 finds past lessons before each task, and repeated lessons are compiled into workspace rules. Pure Python, no dependencies.</div>
         <div class="term-line" style="margin: 6px 0;">
           <div class="term-muted">• Latency: 0.81 ms p50 recall on the real 10-entry store (500 calls, i5-12400F, eval 2026-10-02); grows linearly, 695 ms at 10,000 synthetic entries</div>
           <div class="term-muted">• Footprint: 100% Python standard library, zero external vector DB dependencies</div>

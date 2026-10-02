@@ -44,11 +44,11 @@
     },
     {
       id: "KNOW-04",
-      title: "Cognitive Memory Core — Zero-Dependency Memory Flywheel",
+      title: "Cognitive Memory Core — A Lessons-Learned Memory for AI Coding Assistants",
       category: "Cognitive Architecture",
       keywords: ["memory", "cognitive", "bm25", "agent-memory", "recall", "reflect", "crystallize", "rules", "antigravity", "episodic", "retrieval", "flywheel", "amnesia"],
-      summary: "Hans designed and built the Cognitive Memory Core, a self-improving developer agent engine written in 100% pure Python standard library with zero pip dependencies.",
-      evidence: "Executes BM25 heuristic retrieval before agent execution, logs structured failure post-mortems (trigger, symptom, root cause, permanent rule), and auto-crystallizes high-frequency lessons into Antigravity workspace rules to permanently eliminate regression errors.",
+      summary: "Hans designed and built Memory Core, a lessons-learned memory for AI coding assistants, written in the Python standard library with zero pip dependencies.",
+      evidence: "Runs BM25 lesson search before each task, logs each mistake as a structured lesson (trigger, symptom, root cause, rule), and compiles lessons that keep recurring into Antigravity workspace rules.",
       linkUrl: "case-memory.html",
       linkText: "Read Cognitive Memory Case Study →"
     },
