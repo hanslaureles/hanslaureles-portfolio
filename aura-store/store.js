@@ -156,7 +156,7 @@
   // Customizer Modal Elements
   const modalOverlay = document.getElementById('customizer-modal');
   const modalCloseBtn = document.getElementById('modal-close-btn');
-  const modalDrinkImg = document.getElementById('modal-drink-img');
+  const modalDrinkPic = document.getElementById('modal-drink-pic');
   const modalDrinkName = document.getElementById('modal-drink-name');
   const modalDrinkDesc = document.getElementById('modal-drink-desc');
   const modalTotalDisplay = document.getElementById('modal-total-display');
@@ -191,7 +191,7 @@
           <div class="card-rating-badge">
             <span>★</span> ${prod.rating}
           </div>
-          <img src="${prod.image}" alt="${prod.name}" loading="lazy" />
+          ${window.AuraMedia.picture(prod.image, prod.name, '(max-width: 640px) calc(100vw - 48px), 400px', 'loading="lazy"')}
         </div>
         <div class="card-body">
           <span class="card-category-label">${prod.categoryLabel}</span>
@@ -282,8 +282,7 @@
     activeIce = product.category === 'hot' ? 'Hot' : 'Regular Ice';
 
     // Update modal display
-    modalDrinkImg.src = product.image;
-    modalDrinkImg.alt = product.name;
+    modalDrinkPic.innerHTML = window.AuraMedia.picture(product.image, product.name, '90px', 'class="modal-drink-img"');
     modalDrinkName.textContent = product.name;
     modalDrinkDesc.textContent = product.description;
     qtyStepperVal.textContent = activeQty;
@@ -413,7 +412,7 @@
       const itemCard = document.createElement('div');
       itemCard.className = 'cart-item-card';
       itemCard.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" class="cart-item-thumb" />
+        ${window.AuraMedia.picture(item.image, item.name, '70px', 'class="cart-item-thumb"')}
         <div class="cart-item-details">
           <div style="display:flex; justify-content:space-between; align-items:flex-start;">
             <h4 class="cart-item-title">${item.name}</h4>

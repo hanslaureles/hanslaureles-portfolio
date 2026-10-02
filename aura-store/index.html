@@ -112,7 +112,11 @@
             <div class="hero-circle-backdrop"></div>
             
             <div class="hero-image-wrapper">
-              <img src="/aura-store/assets/spanish_latte.jpg" alt="Signature Iced Spanish Latte" />
+              <picture>
+                <source type="image/avif" sizes="(max-width: 640px) 280px, 380px" srcset="/images/aura-store/spanish-latte-480.f9e2922f.avif 480w, /images/aura-store/spanish-latte-960.861e0620.avif 960w, /images/aura-store/spanish-latte-1024.42eadb63.avif 1024w">
+                <source type="image/webp" sizes="(max-width: 640px) 280px, 380px" srcset="/images/aura-store/spanish-latte-480.a60e3b8c.webp 480w, /images/aura-store/spanish-latte-960.fd843d23.webp 960w, /images/aura-store/spanish-latte-1024.4bee1f7e.webp 1024w">
+                <img src="/aura-store/assets/spanish_latte.jpg" alt="Signature Iced Spanish Latte" width="1024" height="1024" fetchpriority="high" decoding="async" />
+              </picture>
             </div>
 
             <!-- Floating Pill Badges -->
@@ -214,7 +218,7 @@
       <div class="modal-body">
         <!-- Selected Drink Banner -->
         <div class="modal-drink-preview">
-          <img id="modal-drink-img" src="" alt="Selected coffee preview" class="modal-drink-img" />
+          <div id="modal-drink-pic" class="modal-drink-pic"></div>
           <div class="modal-drink-info">
             <h3 id="modal-drink-name">Beverage Name</h3>
             <p id="modal-drink-desc">Description of drink</p>
@@ -391,6 +395,7 @@
     </div>
   </footer>
 
+  <script src="/aura-store/media.js?v=2.2.14"></script>
   <script src="/aura-store/store.js?v=2.2.14"></script>
 </body>
 </html>

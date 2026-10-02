@@ -82,7 +82,7 @@
         return `
           <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between;">
             <div style="display: flex; gap: 10px; align-items: center;">
-              <img src="${item.image}" alt="${item.name}" style="width: 48px; height: 48px; border-radius: 8px; object-fit: cover; flex-shrink: 0;" />
+              ${window.AuraMedia.picture(item.image, item.name, '48px', 'style="width: 48px; height: 48px; border-radius: 8px; object-fit: cover; flex-shrink: 0;"')}
               <div>
                 <div style="font-weight: 700; font-size: 0.90rem; color: var(--espresso-dark);">${item.name}</div>
                 <div style="font-size: 0.74rem; color: var(--espresso-light);">${mods}</div>

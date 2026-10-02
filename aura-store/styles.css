@@ -984,6 +984,13 @@ a {
   border-radius: var(--radius-lg);
 }
 
+/* Product photos are <picture> elements (media.js); keep the <img> as the box
+   that card, hero, modal and cart rules size, as before the switch. */
+picture,
+.modal-drink-pic {
+  display: contents;
+}
+
 .modal-drink-img {
   width: 90px;
   height: 90px;

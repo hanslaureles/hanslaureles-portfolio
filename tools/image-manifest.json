@@ -1929,6 +1929,330 @@
     },
     "width": 3000
   },
+  "images/aura-store/artisan_croissant.jpg": {
+    "alpha": false,
+    "height": 1024,
+    "source_bytes": 721449,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 21209,
+          "height": 480,
+          "path": "images/aura-store/artisan-croissant-480.71bfaa53.avif",
+          "ssim": 0.9654,
+          "width": 480
+        },
+        {
+          "bytes": 53519,
+          "height": 960,
+          "path": "images/aura-store/artisan-croissant-960.a6f11446.avif",
+          "ssim": 0.9643,
+          "width": 960
+        },
+        {
+          "bytes": 59830,
+          "height": 1024,
+          "path": "images/aura-store/artisan-croissant-1024.dcd5d38a.avif",
+          "ssim": 0.9616,
+          "width": 1024
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 32264,
+          "height": 480,
+          "path": "images/aura-store/artisan-croissant-480.7569045f.webp",
+          "ssim": 0.9633,
+          "width": 480
+        },
+        {
+          "bytes": 85904,
+          "height": 960,
+          "path": "images/aura-store/artisan-croissant-960.f0ff39fa.webp",
+          "ssim": 0.9618,
+          "width": 960
+        },
+        {
+          "bytes": 95356,
+          "height": 1024,
+          "path": "images/aura-store/artisan-croissant-1024.0aca51a6.webp",
+          "ssim": 0.9622,
+          "width": 1024
+        }
+      ]
+    },
+    "width": 1024
+  },
+  "images/aura-store/caramel_macchiato.jpg": {
+    "alpha": false,
+    "height": 1024,
+    "source_bytes": 672168,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 13180,
+          "height": 480,
+          "path": "images/aura-store/caramel-macchiato-480.57a8375c.avif",
+          "ssim": 0.9657,
+          "width": 480
+        },
+        {
+          "bytes": 30405,
+          "height": 960,
+          "path": "images/aura-store/caramel-macchiato-960.da3fd384.avif",
+          "ssim": 0.9574,
+          "width": 960
+        },
+        {
+          "bytes": 33229,
+          "height": 1024,
+          "path": "images/aura-store/caramel-macchiato-1024.eccf6337.avif",
+          "ssim": 0.9522,
+          "width": 1024
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 20878,
+          "height": 480,
+          "path": "images/aura-store/caramel-macchiato-480.09304fe6.webp",
+          "ssim": 0.9601,
+          "width": 480
+        },
+        {
+          "bytes": 52870,
+          "height": 960,
+          "path": "images/aura-store/caramel-macchiato-960.408169cf.webp",
+          "ssim": 0.9512,
+          "width": 960
+        },
+        {
+          "bytes": 58354,
+          "height": 1024,
+          "path": "images/aura-store/caramel-macchiato-1024.6085bbaf.webp",
+          "ssim": 0.949,
+          "width": 1024
+        }
+      ]
+    },
+    "width": 1024
+  },
+  "images/aura-store/dark_mocha_frappe.jpg": {
+    "alpha": false,
+    "height": 1024,
+    "source_bytes": 728217,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 19587,
+          "height": 480,
+          "path": "images/aura-store/dark-mocha-frappe-480.55cb50d6.avif",
+          "ssim": 0.9654,
+          "width": 480
+        },
+        {
+          "bytes": 46553,
+          "height": 960,
+          "path": "images/aura-store/dark-mocha-frappe-960.06e15a55.avif",
+          "ssim": 0.9591,
+          "width": 960
+        },
+        {
+          "bytes": 51218,
+          "height": 1024,
+          "path": "images/aura-store/dark-mocha-frappe-1024.5c120823.avif",
+          "ssim": 0.9544,
+          "width": 1024
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 29174,
+          "height": 480,
+          "path": "images/aura-store/dark-mocha-frappe-480.d7b8d5a5.webp",
+          "ssim": 0.9653,
+          "width": 480
+        },
+        {
+          "bytes": 76444,
+          "height": 960,
+          "path": "images/aura-store/dark-mocha-frappe-960.6b327d8a.webp",
+          "ssim": 0.9555,
+          "width": 960
+        },
+        {
+          "bytes": 84434,
+          "height": 1024,
+          "path": "images/aura-store/dark-mocha-frappe-1024.f1fab793.webp",
+          "ssim": 0.9541,
+          "width": 1024
+        }
+      ]
+    },
+    "width": 1024
+  },
+  "images/aura-store/matcha_cloud_latte.jpg": {
+    "alpha": false,
+    "height": 1024,
+    "source_bytes": 659758,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 12615,
+          "height": 480,
+          "path": "images/aura-store/matcha-cloud-latte-480.a528c593.avif",
+          "ssim": 0.9565,
+          "width": 480
+        },
+        {
+          "bytes": 33121,
+          "height": 960,
+          "path": "images/aura-store/matcha-cloud-latte-960.42789452.avif",
+          "ssim": 0.9554,
+          "width": 960
+        },
+        {
+          "bytes": 36860,
+          "height": 1024,
+          "path": "images/aura-store/matcha-cloud-latte-1024.999dad1e.avif",
+          "ssim": 0.9512,
+          "width": 1024
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 19748,
+          "height": 480,
+          "path": "images/aura-store/matcha-cloud-latte-480.2c8d02b5.webp",
+          "ssim": 0.9619,
+          "width": 480
+        },
+        {
+          "bytes": 53626,
+          "height": 960,
+          "path": "images/aura-store/matcha-cloud-latte-960.a56f6bfa.webp",
+          "ssim": 0.9562,
+          "width": 960
+        },
+        {
+          "bytes": 60700,
+          "height": 1024,
+          "path": "images/aura-store/matcha-cloud-latte-1024.6a4d3b2b.webp",
+          "ssim": 0.9526,
+          "width": 1024
+        }
+      ]
+    },
+    "width": 1024
+  },
+  "images/aura-store/spanish_latte.jpg": {
+    "alpha": false,
+    "height": 1024,
+    "source_bytes": 662744,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 14654,
+          "height": 480,
+          "path": "images/aura-store/spanish-latte-480.f9e2922f.avif",
+          "ssim": 0.9693,
+          "width": 480
+        },
+        {
+          "bytes": 38824,
+          "height": 960,
+          "path": "images/aura-store/spanish-latte-960.861e0620.avif",
+          "ssim": 0.9654,
+          "width": 960
+        },
+        {
+          "bytes": 43330,
+          "height": 1024,
+          "path": "images/aura-store/spanish-latte-1024.42eadb63.avif",
+          "ssim": 0.9618,
+          "width": 1024
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 21378,
+          "height": 480,
+          "path": "images/aura-store/spanish-latte-480.a60e3b8c.webp",
+          "ssim": 0.9688,
+          "width": 480
+        },
+        {
+          "bytes": 60178,
+          "height": 960,
+          "path": "images/aura-store/spanish-latte-960.fd843d23.webp",
+          "ssim": 0.9639,
+          "width": 960
+        },
+        {
+          "bytes": 67606,
+          "height": 1024,
+          "path": "images/aura-store/spanish-latte-1024.4bee1f7e.webp",
+          "ssim": 0.9603,
+          "width": 1024
+        }
+      ]
+    },
+    "width": 1024
+  },
+  "images/aura-store/velvet_cappuccino.jpg": {
+    "alpha": false,
+    "height": 1024,
+    "source_bytes": 657522,
+    "variants": {
+      "avif": [
+        {
+          "bytes": 12599,
+          "height": 480,
+          "path": "images/aura-store/velvet-cappuccino-480.45d57ff0.avif",
+          "ssim": 0.9426,
+          "width": 480
+        },
+        {
+          "bytes": 31633,
+          "height": 960,
+          "path": "images/aura-store/velvet-cappuccino-960.24f92de3.avif",
+          "ssim": 0.9517,
+          "width": 960
+        },
+        {
+          "bytes": 34899,
+          "height": 1024,
+          "path": "images/aura-store/velvet-cappuccino-1024.5ff794b6.avif",
+          "ssim": 0.9491,
+          "width": 1024
+        }
+      ],
+      "webp": [
+        {
+          "bytes": 21580,
+          "height": 480,
+          "path": "images/aura-store/velvet-cappuccino-480.18f06152.webp",
+          "ssim": 0.9499,
+          "width": 480
+        },
+        {
+          "bytes": 56786,
+          "height": 960,
+          "path": "images/aura-store/velvet-cappuccino-960.8e8eeb7c.webp",
+          "ssim": 0.9523,
+          "width": 960
+        },
+        {
+          "bytes": 63022,
+          "height": 1024,
+          "path": "images/aura-store/velvet-cappuccino-1024.be7f084d.webp",
+          "ssim": 0.9503,
+          "width": 1024
+        }
+      ]
+    },
+    "width": 1024
+  },
   "images/profile-pic.jpg": {
     "alpha": false,
     "height": 4000,
