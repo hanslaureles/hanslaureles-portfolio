@@ -4488,6 +4488,10 @@ picture {
   box-shadow: 0 0 16px rgba(16, 185, 129, 0.35);
 }
 
+.agent-fleet-item.pulse-highlight .agent-fleet-domain {
+  color: var(--text-secondary);
+}
+
 .agent-fleet-header {
   display: flex;
   justify-content: space-between;
