@@ -33,7 +33,7 @@
           key: 'spanish-latte-regular',
           id: 'spanish-latte',
           name: 'Signature Spanish Latte',
-          image: 'assets/spanish_latte.jpg',
+          image: '/aura-store/assets/spanish_latte.jpg',
           unitPrice: 185,
           qty: 2,
           isBeverage: true,
@@ -48,7 +48,7 @@
           key: 'artisan-croissant',
           id: 'artisan-croissant',
           name: 'Artisanal Butter Croissant',
-          image: 'assets/artisan_croissant.jpg',
+          image: '/aura-store/assets/artisan_croissant.jpg',
           unitPrice: 120,
           qty: 1,
           isBeverage: false,
@@ -206,7 +206,7 @@
         localStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(orderData));
         localStorage.removeItem(CART_STORAGE_KEY);
       } catch (e) {}
-      window.location.href = 'confirmation.html';
+      window.location.href = '/aura-store/confirmation.html';
     }, 900);
   };
 

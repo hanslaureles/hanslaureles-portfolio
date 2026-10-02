@@ -19,7 +19,7 @@
       rating: '4.9',
       reviewCount: '1.2k',
       badge: 'Bestseller',
-      image: 'assets/spanish_latte.jpg',
+      image: '/aura-store/assets/spanish_latte.jpg',
       description: 'Velvety espresso marbling into sweetened condensed milk and cold oat milk over handcrafted ice cubes. Smooth, creamy, and delightful.',
       isBeverage: true
     },
@@ -32,7 +32,7 @@
       rating: '4.9',
       reviewCount: '890',
       badge: "Chef's Choice",
-      image: 'assets/velvet_cappuccino.jpg',
+      image: '/aura-store/assets/velvet_cappuccino.jpg',
       description: 'Silky micro-foam poured over a rich double shot of specialty Arabica espresso, crowned with delicate rosetta latte art.',
       isBeverage: true
     },
@@ -45,7 +45,7 @@
       rating: '4.8',
       reviewCount: '750',
       badge: 'Popular',
-      image: 'assets/caramel_macchiato.jpg',
+      image: '/aura-store/assets/caramel_macchiato.jpg',
       description: 'Layers of vanilla sweet milk and bold espresso, finished with dense vanilla cold foam and a rich crisscross golden caramel drizzle.',
       isBeverage: true
     },
@@ -58,7 +58,7 @@
       rating: '4.8',
       reviewCount: '620',
       badge: 'Must Try',
-      image: 'assets/dark_mocha_frappe.jpg',
+      image: '/aura-store/assets/dark_mocha_frappe.jpg',
       description: 'Single-estate espresso blended with rich dark chocolate, iced to perfection and topped with fresh fluffy whipped cream & dark cocoa curls.',
       isBeverage: true
     },
@@ -71,7 +71,7 @@
       rating: '4.9',
       reviewCount: '540',
       badge: 'Trending',
-      image: 'assets/matcha_cloud_latte.jpg',
+      image: '/aura-store/assets/matcha_cloud_latte.jpg',
       description: 'First-harvest ceremonial Japanese Uji matcha layered over chilled oat milk, crowned with a velvety sweet vanilla cloud foam.',
       isBeverage: true
     },
@@ -84,7 +84,7 @@
       rating: '4.9',
       reviewCount: '980',
       badge: 'Fresh Daily',
-      image: 'assets/artisan_croissant.jpg',
+      image: '/aura-store/assets/artisan_croissant.jpg',
       description: 'Golden, flaky, and buttery layers crafted with pure French Normandy butter. Baked fresh every morning in our open kitchen.',
       isBeverage: false
     }

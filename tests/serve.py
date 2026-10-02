@@ -16,6 +16,19 @@ class QuietHandler(http.server.SimpleHTTPRequestHandler):
     def log_message(self, *args):
         pass
 
+    def send_head(self):
+        # Route like vercel.json (cleanUrls, trailingSlash: false): /aura-store serves
+        # aura-store/index.html and /case-ciel serves case-ciel.html with no redirect,
+        # so relative URLs resolve against the same base they get in production.
+        path = self.path.split("?", 1)[0].split("#", 1)[0]
+        local = Path(self.translate_path(path))
+        if not path.endswith("/") and not local.suffix:
+            if (local / "index.html").is_file():
+                self.path = path + "/index.html"
+            elif local.with_suffix(".html").is_file():
+                self.path = path + ".html"
+        return super().send_head()
+
 
 port = int(sys.argv[1])
 root = Path(__file__).resolve().parent.parent

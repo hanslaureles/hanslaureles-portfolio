@@ -10,6 +10,9 @@ const PAGES = [
   "case-lsfm.html", "case-ciel.html", "case-memory.html", "case-aura.html",
   "case-lumina.html", "case-vellum.html", "case-fintrack.html",
   "aura-store/index.html", "aura-store/checkout.html", "aura-store/confirmation.html",
+  // The URLs production actually lands on: Vercel redirects /aura-store/index.html and
+  // /aura-store/ to /aura-store, where relative URLs resolve against "/" (serve.py routes the same way).
+  "aura-store", "aura-store/checkout", "aura-store/confirmation",
 ];
 
 async function axeBlocking(page, include) {
@@ -192,6 +195,20 @@ test("Aura store search shows its whole placeholder from 400 to 1280 px", async 
     expect(have, `search input at ${width} px`).toBeGreaterThanOrEqual(need);
   }
 });
+
+// At /aura-store a relative "styles.css" or "index.html" resolves to the portfolio's own
+// files, so the link check above passes while the store is unstyled and "home" leaves it.
+for (const path of ["aura-store", "aura-store/checkout", "aura-store/confirmation"]) {
+  test(`${path} uses the store's stylesheet and links home inside the store`, async ({ page }) => {
+    await page.goto(path, { waitUntil: "domcontentloaded" });
+    const { sheets, home } = await page.evaluate(() => ({
+      sheets: [...document.querySelectorAll('link[rel="stylesheet"]')].map((l) => new URL(l.href).pathname),
+      home: new URL(document.querySelector(".brand-logo").href).pathname,
+    }));
+    expect(sheets).toContain("/aura-store/styles.css");
+    expect(home).toMatch(/^\/aura-store(\/|\/index\.html)?$/);
+  });
+}
 
 // Aura demo store (its own store.js, not app.js): customizer modal and cart drawer.
 test.describe("Aura store overlays", () => {
