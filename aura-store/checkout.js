@@ -197,10 +197,10 @@
     const submitBtn = document.getElementById('place-order-main-btn');
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.innerHTML = `<span>Connecting to ${orderData.paymentMethod} Gateway...</span>`;
+      submitBtn.innerHTML = '<span>Placing your demo order...</span>';
     }
 
-    // Simulate instant gateway confirmation
+    // Demo store: no payment is sent anywhere; the order stays in this browser for the receipt page.
     setTimeout(() => {
       try {
         localStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(orderData));

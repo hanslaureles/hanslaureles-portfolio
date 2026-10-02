@@ -34,6 +34,8 @@ RETRACTED = [
     (r"SAMPLE GAUGES|\d+(\.\d+)?% load|\d+(\.\d+)? GB of \d+(\.\d+)? GB|\d+(\.\d+)? GB free space|"
      r"\d+°C \(Feels|\d+ km/h [NSEW]{1,3}\b|within normal range|NVMe Gen4|12 ?ms average",
      "invented sample telemetry or status (4A; show what the tool reads, or a cited measurement)"),
+    (r"\d+-bit Encrypt|Connecting to [^<`]{0,40}Gateway|Paid Online|TOTAL PAID",
+     "payment or security claim on the Aura demo (it processes no payment; Codex 4A FIX)"),
 ]
 
 
