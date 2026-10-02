@@ -5208,12 +5208,18 @@ picture {
   --tone-purple: #C084FC;
 }
 
-/* Visible keyboard focus everywhere (WCAG 2.4.7). Comes last so it also beats
-   the outline:none on the terminal and Sakura text inputs. Mouse clicks don't
-   show it; keyboard focus always does. */
+/* Visible keyboard focus everywhere (WCAG 2.4.7).
+   Embedded text inputs inside container widgets with dedicated :focus-within styling
+   (Sakura search box, Terminal CLI window) suppress raw inner outlines to prevent
+   clashing rectangular focus artifacts over rounded parent containers. */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+
+.sakura-input:focus-visible,
+.terminal-input:focus-visible {
+  outline: none;
 }
 
 /* Balanced line breaks: no "Multi-" / "Agent" orphans on multi-line headings. */
