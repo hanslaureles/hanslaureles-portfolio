@@ -874,6 +874,58 @@ tools = [
             The trade-off is in the second row. The first sentence is heard about 3.2 s sooner at p50, but the joined MP3 kept for replay waits for the slowest clip. In one of the ten runs a single Edge-TTS clip took 6.2 s, which set the 7.20 s worst case. Clips play strictly in order, so a slow clip also holds back the sentences after it; the pauses this causes between sentences are not measured yet.
           </p>
 
+          <h3 class="u-m-36px-0-12px-0">One Recorded Mission, Call by Call</h3>
+          <p>
+            The tables above pool many runs. This is a single mission as it happened: the median of 10 runs
+            (3.14 s end to end), with each timed call drawn at its recorded start and end. First audio was ready at
+            <strong>1.25 s</strong>, while the synthesis LLM was still writing.
+          </p>
+          <figure class="trace-figure" aria-describedby="traceCaption">
+            <div class="trace-chart" aria-hidden="true">
+              <div class="trace-row">
+                <span class="trace-label">Router LLM · 492 ms</span>
+                <span class="trace-track"><span class="trace-bar is-llm" style="--start:0.00%;--width:12.30%"></span></span>
+              </div>
+              <div class="trace-row">
+                <span class="trace-label">Synthesis LLM (streamed) · 852 ms</span>
+                <span class="trace-track"><span class="trace-bar is-llm" style="--start:12.31%;--width:21.31%"></span></span>
+              </div>
+              <div class="trace-row">
+                <span class="trace-label">Voice clip 1 · 409 ms</span>
+                <span class="trace-track"><span class="trace-bar is-voice" style="--start:20.88%;--width:10.23%"></span></span>
+              </div>
+              <div class="trace-row">
+                <span class="trace-label">Voice clip 2 · 1.04 s</span>
+                <span class="trace-track"><span class="trace-bar is-voice" style="--start:22.14%;--width:26.05%"></span></span>
+              </div>
+              <div class="trace-row">
+                <span class="trace-label">Voice clip 3 · 1.76 s</span>
+                <span class="trace-track"><span class="trace-bar is-voice" style="--start:24.26%;--width:44.04%"></span></span>
+              </div>
+              <div class="trace-row">
+                <span class="trace-label">Voice clip 4 · 1.86 s</span>
+                <span class="trace-track"><span class="trace-bar is-voice" style="--start:31.12%;--width:46.42%"></span></span>
+              </div>
+              <div class="trace-markers">
+                <div class="trace-marker" style="--at:31.13%"><span>First audio 1.25 s</span></div>
+                <div class="trace-marker is-end" style="--at:78.53%"><span>Done 3.14 s</span></div>
+              </div>
+            </div>
+            <div class="trace-axis" aria-hidden="true"><span>0 s</span><span>1 s</span><span>2 s</span><span>3 s</span><span>4 s</span></div>
+            <table class="sr-only">
+              <caption>Timed calls in one recorded Ciel mission, in milliseconds after the mission started. First audio at 1.25 s; mission complete at 3.14 s.</caption>
+              <thead><tr><th scope="col">Call</th><th scope="col">Starts</th><th scope="col">Ends</th><th scope="col">Duration</th></tr></thead>
+              <tbody><tr><td>Router LLM</td><td>0 ms</td><td>492 ms</td><td>492 ms</td></tr><tr><td>Synthesis LLM (streamed)</td><td>492 ms</td><td>1.34 s</td><td>852 ms</td></tr><tr><td>Voice clip 1</td><td>835 ms</td><td>1.24 s</td><td>409 ms</td></tr><tr><td>Voice clip 2</td><td>886 ms</td><td>1.93 s</td><td>1.04 s</td></tr><tr><td>Voice clip 3</td><td>970 ms</td><td>2.73 s</td><td>1.76 s</td></tr><tr><td>Voice clip 4</td><td>1.24 s</td><td>3.10 s</td><td>1.86 s</td></tr></tbody>
+            </table>
+            <figcaption id="traceCaption">
+              Run 6 of 10, recorded 2026-10-05 with <code>bench/bench_ciel.py --stages e2e_mission</code>
+              (LE-SSERAFIM-AI-HQ <code>c740ed6</code>, Intel Core i5-12400F,
+              Python 3.11.9, edge-tts 7.2.8). Purple: Groq LLM calls; green: Edge-TTS
+              clips, up to three at once. Gaps are time outside the timed calls and are not broken down. Network round trips
+              from this machine, not compute times. Raw data: <code>bench/results/2026-10-05-trace.json</code>.
+            </figcaption>
+          </figure>
+
 
         </section>
 

@@ -4994,6 +4994,128 @@ picture {
   color: var(--text-secondary);
 }
 
+/* Visually hidden, still read by screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Recorded mission trace (4D-2): one real run, bars at their recorded offsets. */
+.trace-figure {
+  --trace-label-w: 15rem;
+  margin: 24px 0 8px;
+}
+
+.trace-chart {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  padding-top: 42px; /* room for two lines of marker labels */
+}
+
+.trace-row {
+  display: grid;
+  grid-template-columns: var(--trace-label-w) 1fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.trace-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trace-track {
+  position: relative;
+  height: 18px;
+  background: var(--bg-subtle);
+  border-radius: 4px;
+}
+
+.trace-bar {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: var(--start);
+  width: var(--width);
+  min-width: 3px;
+  border-radius: 3px;
+  background: var(--tone-blue);
+}
+
+.trace-bar.is-llm { background: var(--tone-purple); }
+.trace-bar.is-voice { background: var(--tone-emerald); }
+
+.trace-markers {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--trace-label-w) + 12px);
+  right: 0;
+  pointer-events: none;
+}
+
+.trace-marker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--at);
+  border-left: 2px dashed var(--accent);
+}
+
+.trace-marker span {
+  position: absolute;
+  top: 0;
+  left: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.trace-marker.is-end span {
+  top: 20px; /* second line, so it never collides with "First audio" */
+  left: auto;
+  right: 4px;
+}
+
+.trace-axis {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0 0 calc(var(--trace-label-w) + 12px);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.trace-figure figcaption {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* Phones: each label on its own line above a full-width bar. */
+@media (max-width: 600px) {
+  .trace-figure { --trace-label-w: 0px; }
+  .trace-row { grid-template-columns: 1fr; gap: 2px; }
+  .trace-label { white-space: normal; }
+  .trace-markers { left: 0; }
+  .trace-axis { margin-left: 0; }
+}
+
 /* Evidence links sit in a short list, not running text: keep a 24 px target (WCAG 2.5.8). */
 .case-adr-fields a {
   display: inline-block;
