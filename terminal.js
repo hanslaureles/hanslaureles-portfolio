@@ -38,7 +38,7 @@
       'sakura',
       'github',
       'contact',
-      'sentinel',
+      'overview',
       'git log',
       'about',
       'clear'
@@ -177,6 +177,7 @@
           showProjects();
           break;
 
+        case 'overview':
         case 'sentinel':
         case 'telemetry':
         case 'ping':
@@ -377,7 +378,7 @@
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Groq Whisper Large v3 Turbo transcription &amp; FFmpeg audio normalization</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Custom voice filter (high-pass, presence EQ, light echo) over Edge-TTS</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Remembers the last 8 exchanges &amp; reads/writes my Obsidian notes</span></div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• 4-domain proactive telemetry sentinel daemon &amp; real-time audio HUD</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• 4 background checks (hardware, Git, daily log, portfolio) &amp; real-time audio HUD</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">└──</span> <a href="case-ciel.html" class="term-link">View Case Study: case-ciel.html ↗</a></div>
 </div>
 
@@ -440,7 +441,7 @@
   <tr><td><span class="term-highlight">brain</span></td><td>🤖 Inspect Obsidian AI Brain &amp; MCP bridge</td></tr>
   <tr><td><span class="term-highlight">resume</span></td><td>Download Hans's single-page PDF resume</td></tr>
   <tr><td><span class="term-highlight">sakura</span></td><td>🌸 Chat with Ask Sakura AI assistant</td></tr>
-  <tr><td><span class="term-highlight">sentinel</span></td><td>Open full system health modal</td></tr>
+  <tr><td><span class="term-highlight">overview</span></td><td>Open the agent overview (status snapshot + replay)</td></tr>
   <tr><td><span class="term-highlight">github</span></td><td>Open GitHub profile &amp; repositories</td></tr>
   <tr><td><span class="term-highlight">contact</span></td><td>Display email and professional links</td></tr>
   <tr><td><span class="term-highlight">git log</span></td><td>View timeline of milestones &amp; education</td></tr>
@@ -564,7 +565,7 @@
   <tr><td><strong class="term-highlight">OBSIDIAN NOTES</strong></td><td>Reads &amp; writes my vault (Rules, Profile, Preferences, Daily log)</td></tr>
   <tr><td><strong class="term-highlight">LIVE DATA</strong></td><td class="term-cyan">Weather (wttr.in) + Web Search (DDGS)</td></tr>
   <tr><td><strong class="term-highlight">MEMORY</strong></td><td class="term-cyan">Remembers the last 8 exchanges</td></tr>
-  <tr><td><strong class="term-highlight">PROACTIVE SENTINELS</strong></td><td>4 Checks: Hardware Vitals, Git Status, Obsidian Daily Log, Portfolio Markers</td></tr>
+  <tr><td><strong class="term-highlight">BACKGROUND CHECKS</strong></td><td>4 Checks: Hardware Vitals, Git Status, Obsidian Daily Log, Portfolio Markers</td></tr>
   <tr><td><strong class="term-highlight">AGENTS</strong></td><td>Hands tasks to the 5 LSFM agents: Sakura, Chaewon, Kazuha, Yunjin, Eunchae</td></tr>
   <tr><td><strong class="term-highlight">LIVE SIMULATOR</strong></td><td><a href="case-ciel.html#simulator" class="term-link">In-Page Voice Demo ↗</a></td></tr>
   <tr><td><strong class="term-highlight">CASE STUDY</strong></td><td><a href="case-ciel.html" class="term-link">portfolio-site/case-ciel.html ↗</a></td></tr>
@@ -576,10 +577,10 @@
     function showSentinelTelemetry(args) {
       appendOutput(`
 <div class="term-line term-success">============================================================</div>
-<div class="term-line term-accent" style="font-weight: 600;">📡 SENTINEL // AGENT SYSTEM OVERVIEW (SIMULATED REPLAY)</div>
+<div class="term-line term-accent" style="font-weight: 600;">📡 AGENT OVERVIEW // LSFM AI HQ</div>
 <div class="term-line term-success">============================================================</div>
 <div class="term-line">Location: Manila, Philippines · UTC+8</div>
-<div class="term-line">Agent System: <span class="term-badge">5 AGENTS · LOCAL HOST</span> · Data: <span class="term-cyan">scripted replay, no live connection to the agents</span></div>
+<div class="term-line">Agent System: <span class="term-badge">5 AGENTS · LOCAL HOST</span> · Data: <span class="term-cyan">status snapshot in the panel (online only if a heartbeat is under 15 min old); events are a scripted replay</span></div>
 <table class="term-table" style="margin-top: 6px;">
   <thead>
     <tr class="term-muted">
@@ -604,7 +605,7 @@
     </tr>
   </tbody>
 </table>
-<div class="term-line term-cyan" style="margin-top: 6px;">[SENTINEL] Opening System Health HUD...</div>
+<div class="term-line term-cyan" style="margin-top: 6px;">[OVERVIEW] Opening the agent overview...</div>
       `.trim());
 
       if (window.openSentinelHUD) {

@@ -378,7 +378,7 @@
 <span class="terminal-prompt">[DSP AUDIO]</span>   Edge-TTS ja-JP-NanamiNeural ──&gt; 350 ms pause ──&gt; en-US-AvaNeural ──&gt; FFmpeg Filter:
                ├─ highpass=f=120 + equalizer=f=3500 (presence lift)
                └─ aecho (light echo)
-<span class="terminal-prompt">[HUD WS]</span>      Live Concentric Rings Broadcast ──&gt; Audio Reactive Waveform &amp; Proactive Sentinel
+<span class="terminal-prompt">[HUD WS]</span>      Live Concentric Rings Broadcast ──&gt; Audio Reactive Waveform &amp; Background-Check Alerts
 <span class="terminal-success">[STATUS]</span>      Two-mode routing · last 8 exchanges · general knowledge</pre>
         </div>
       </div>
@@ -397,7 +397,7 @@
           <li><a href="#pillars">03. The 4 Architectural Pillars</a></li>
           <li><a href="#audio-dsp">04. How the Voice Sounds</a></li>
           <li><a href="#vault-sync">05. Reading &amp; Writing My Notes</a></li>
-          <li><a href="#sentinels">06. Proactive Telemetry Sentinels</a></li>
+          <li><a href="#sentinels">06. Background Checks</a></li>
           <li><a href="#benchmarks">07. Production Benchmarks</a></li>
         </ul>
       </aside>
@@ -535,7 +535,7 @@
                 <div class="agent-avatar-badge u-bg-purple-a15 u-c-purple-500 u-bd-c-purple-a30">🛡️</div>
                 <span class="agent-domain u-c-tone-purple">PILLAR 04 · TELEMETRY</span>
               </div>
-              <div class="agent-role-title">Proactive Telemetry Sentinels</div>
+              <div class="agent-role-title">Background Checks</div>
               <div class="agent-desc">
                 Background loop running 4 checks every 45 seconds: hardware CPU/RAM/disk, Git status, today's Obsidian daily log, and portfolio TODO markers. Pushes the top 3 suggestions to the HUD over WebSockets.
               </div>
@@ -621,35 +621,35 @@ tools = [
           </p>
         </section>
 
-        <!-- Section 06: Proactive Telemetry Sentinels -->
+        <!-- Section 06: Background Checks -->
         <section id="sentinels" class="case-body-section">
-          <div class="section-tag">// 06 · AUTONOMOUS FORESIGHT</div>
-          <h2>Proactive Telemetry Sentinels (Pillar 4)</h2>
+          <div class="section-tag">// 06 · BACKGROUND CHECKS</div>
+          <h2>Background Checks: Ciel Speaks Up First</h2>
           <p>
-            Passive voice assistants only speak when spoken to. Ciel features a dedicated background sentinel engine (<code>proactive_sentinel.py</code>) that runs every 45 seconds while the HUD is connected, ranks what it finds (warning &gt; action &gt; info), and surfaces the top 3 across 4 checks:
+            Passive voice assistants only speak when spoken to. Ciel runs a background-check loop (<code>proactive_sentinel.py</code>) every 45 seconds while the HUD is connected, ranks what it finds (warning &gt; action &gt; info), and surfaces the top 3 across 4 checks:
           </p>
 
           <div class="u-d-grid u-cols-autofit-240 u-gap-14px u-m-20px-0">
             <div class="u-bg-surface u-bd-1px-solid-border u-rounded-8px u-p-16px">
-              <div class="u-fw-600 u-c-tone-amber u-mb-6px">⚡ Hardware Sentinel</div>
+              <div class="u-fw-600 u-c-tone-amber u-mb-6px">⚡ Hardware Check</div>
               <p class="u-fs-0p85rem u-c-text-secondary u-m-0 u-lh-1p5">
                 Reads psutil vitals and warns when CPU load passes 85%, RAM passes 88%, or drive C: drops under 20 GB free. Each warning offers a one-click hand-off to Eunchae.
               </p>
             </div>
             <div class="u-bg-surface u-bd-1px-solid-border u-rounded-8px u-p-16px">
-              <div class="u-fw-600 u-c-tone-emerald u-mb-6px">🗓️ Daily Log Sentinel</div>
+              <div class="u-fw-600 u-c-tone-emerald u-mb-6px">🗓️ Daily Log Check</div>
               <p class="u-fs-0p85rem u-c-text-secondary u-m-0 u-lh-1p5">
                 Opens today's Obsidian daily log. If it's missing, Ciel suggests Sakura's briefing; otherwise it routes the first unchecked priority to the matching agent by keyword.
               </p>
             </div>
             <div class="u-bg-surface u-bd-1px-solid-border u-rounded-8px u-p-16px">
-              <div class="u-fw-600 u-c-tone-blue u-mb-6px">📄 Portfolio Sentinel</div>
+              <div class="u-fw-600 u-c-tone-blue u-mb-6px">📄 Portfolio Check</div>
               <p class="u-fs-0p85rem u-c-text-secondary u-m-0 u-lh-1p5">
                 Scans the portfolio's <code>index.html</code> for leftover TODO or FIXME markers and offers a Yunjin audit.
               </p>
             </div>
             <div class="u-bg-surface u-bd-1px-solid-border u-rounded-8px u-p-16px">
-              <div class="u-fw-600 u-c-tone-purple u-mb-6px">🐙 Git Sentinel</div>
+              <div class="u-fw-600 u-c-tone-purple u-mb-6px">🐙 Git Check</div>
               <p class="u-fs-0p85rem u-c-text-secondary u-m-0 u-lh-1p5">
                 Runs <code>git status --porcelain</code> on the workspace and, at 3 or more uncommitted changes, offers a Kazuha review of the diff.
               </p>
@@ -872,7 +872,7 @@ tools = [
           text: "[CIEL] Querying career preferences. Primary target: Applied AI Engineer, Autonomous Agent Developer, and Full-Stack Systems roles. Target compensation baseline: Competitive global market rate. Work modality: Remote or Hybrid (Metro Manila, PH / Global). Preferred stacks: Python, Node.js, FastMCP, Groq LPU routing, and modern vanilla frontend architecture."
         },
         vitals: {
-          dsp: "⚡ HARDWARE SENTINEL: psutil System Diagnostics → Ciel Telemetry",
+          dsp: "⚡ HARDWARE CHECK: psutil → Ciel",
           text: "[CIEL] Hardware check: psutil reads CPU load, RAM used of total, and free space on drive C:, and I read the three figures back in one sentence."
         },
         dispatch: {

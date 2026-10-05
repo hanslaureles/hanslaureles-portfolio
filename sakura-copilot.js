@@ -116,13 +116,13 @@
     },
     {
       id: "KNOW-11",
-      title: "Sentinel Telemetry & Ambient Mission Control",
+      title: "Agent Overview Panel (Status Snapshot + Replay)",
       category: "Telemetry & Observability",
-      keywords: ["sentinel", "telemetry", "mission control", "hud", "ping", "vitals", "clock", "manila", "status", "fleet", "heartbeat", "ambient"],
-      summary: "The Sentinel panel on this site is a clearly labeled simulated replay of LSFM AI HQ, Hans's 5-agent team. The real agents run on his local workstation, and the site has no live connection to them.",
-      evidence: "Click the hero beacon (or press Alt+S / type 'sentinel' in the terminal) to open it: a real Manila UTC+8 clock, events that mirror the agents' actual schedules, a 'Replay a Mission' walkthrough of the real !apply pipeline, and a copyable architecture summary.",
+      keywords: ["sentinel", "telemetry", "mission control", "hud", "ping", "vitals", "clock", "manila", "status", "fleet", "heartbeat", "ambient", "overview", "snapshot", "online"],
+      summary: "The agent overview panel shows a status snapshot that Hans's workstation publishes on demand (data/status.json, from Eunchae's publisher). An agent counts as online only if its heartbeat is under 15 minutes old when you view the page; otherwise it shows when it was last seen. The site has no live connection to the agents.",
+      evidence: "Click the hero beacon (or press Alt+S / type 'overview' in the terminal) to open it: per-agent status and the snapshot's age, the measured LLM round-trip p50/p95 with sample size and date, a real Manila UTC+8 clock, a scripted 'Replay a Mission' walkthrough of the real !apply pipeline, and a copyable summary.",
       linkUrl: "index.html#sentinel",
-      linkText: "⚡ Inspect Sentinel Telemetry HUD (Alt+S) →"
+      linkText: "⚡ Open the Agent Overview (Alt+S) →"
     },
     {
       id: "KNOW-12",
@@ -180,7 +180,7 @@
       category: "Voice AI & Multi-Agent Systems",
       keywords: ["ciel", "manas", "voice", "hud", "thought acceleration", "groq", "whisper", "tensura", "divine wisdom", "edge-tts", "obsidian", "speech", "copilot", "audio", "dsp", "latency", "real-time", "universal knowledge", "reasoning", "weather", "wttr", "search", "ddgs"],
       summary: "Hans architected Manas: Ciel, a bilingual (Japanese/English) voice copilot with Groq Whisper speech-to-text, live weather (wttr.in), web search (DDGS), and read/write access to his Obsidian notes.",
-      evidence: "Speech-to-text runs FFmpeg 16kHz normalization, then Groq Whisper Large v3 Turbo with an OpenAI Whisper fallback. Replies use Edge-TTS neural voices through a custom FFmpeg voice filter (high-pass, presence EQ, light echo), shown on a canvas ring-visualizer Web HUD with proactive sentinels.",
+      evidence: "Speech-to-text runs FFmpeg 16kHz normalization, then Groq Whisper Large v3 Turbo with an OpenAI Whisper fallback. Replies use Edge-TTS neural voices through a custom FFmpeg voice filter (high-pass, presence EQ, light echo), shown on a canvas ring-visualizer Web HUD with background checks.",
       linkUrl: "case-ciel.html",
       linkText: "🔮 Read Manas: Ciel Case Study →",
       secondaryUrl: "case-ciel.html#simulator",
@@ -377,7 +377,7 @@
               <button class="sakura-chip" data-query="What backend, AWS and cloud systems has Hans used?">AWS &amp; Cloud Systems?</button>
               <button class="sakura-chip" data-query="Tell me about the Cognitive Memory Core project">Cognitive Memory Project?</button>
               <button class="sakura-chip" data-query="What were the results of Yunjin's audit?">Yunjin Design Audit?</button>
-              <button class="sakura-chip" data-query="How does the Sentinel Telemetry system work?">Sentinel Telemetry HUD?</button>
+              <button class="sakura-chip" data-query="How does the agent overview panel work?">Agent Overview Panel?</button>
               <button class="sakura-chip" data-query="Tell me about the git log career timeline">Git Career Timeline?</button>
             </div>
           </div>
