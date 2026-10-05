@@ -373,7 +373,7 @@
 <div class="term-line term-cyan">$ git log --graph --oneline --decorate --stat</div>
 
 <div class="term-git-entry">
-  <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">9fb2617</span> <span class="term-badge success">HEAD -&gt; main</span> <span class="term-badge" style="border-color:#F59E0B;color:#FBBF24;">tag: v3.0.0</span> <span class="term-muted">[2026 – Present]</span></div>
+  <div class="term-line"><span class="term-git-graph">*</span> <span class="term-badge success">HEAD -&gt; main</span> <span class="term-muted">[2026 – Present]</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent" style="color:#FBBF24;">feat(ciel):</strong> Architect &amp; Developer — Manas: Ciel Voice HUD</div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Groq Whisper Large v3 Turbo transcription &amp; FFmpeg audio normalization</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Custom voice filter (high-pass, presence EQ, light echo) over Edge-TTS</span></div>
@@ -383,7 +383,7 @@
 </div>
 
 <div class="term-git-entry">
-  <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">8f4a21d</span> <span class="term-badge">tag: v2.5.0</span> <span class="term-muted">[2025 – 2026]</span></div>
+  <div class="term-line"><span class="term-git-graph">*</span> <span class="term-muted">[2025 – 2026]</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(lsfm):</strong> Creator &amp; Developer — LSFM AI HQ</div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Asynchronous Discord Gateway streaming &amp; isolated persona boundaries</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Multi-provider LLM router (Groq ⇄ Gemini, cross-provider fallback) with optional local Ollama on AMD RX 6600 XT</span></div>
@@ -392,7 +392,7 @@
 </div>
 
 <div class="term-git-entry">
-  <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">c71e08a</span> <span class="term-badge">tag: v2.0.0</span> <span class="term-muted">[2024 – 2025]</span></div>
+  <div class="term-line"><span class="term-git-graph">*</span> <span class="term-muted">[2024 – 2025]</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(memory):</strong> Developer — Cognitive Memory Core</div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Zero-dependency BM25 lesson search &amp; structured lessons</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Repeated lessons compiled into workspace rules</span></div>
@@ -400,7 +400,7 @@
 </div>
 
 <div class="term-git-entry">
-  <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">9f3a21c</span> <span class="term-badge">tag: v1.5.0</span> <span class="term-muted">[Jun 2024 – Aug 2024]</span></div>
+  <div class="term-line"><span class="term-git-graph">*</span> <span class="term-muted">[Jun 2024 – Aug 2024]</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(roc.ph):</strong> UI/UX &amp; Frontend Engineer Intern — ROC.ph</div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Figma design token translation to semantic HTML, Tailwind CSS &amp; React</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Delivered responsive client websites across diverse SME businesses</span></div>
@@ -408,14 +408,14 @@
 </div>
 
 <div class="term-git-entry">
-  <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">5d89b12</span> <span class="term-badge">tag: v1.0.0</span> <span class="term-muted">[2023 – 2024]</span></div>
+  <div class="term-line"><span class="term-git-graph">*</span> <span class="term-muted">[2023 – 2024]</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent">feat(patriot):</strong> Lead Mobile Developer — Capstone: Patriot</div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Serverless microservices on AWS Lambda, DynamoDB, Redis &amp; Cognito</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• React Native cross-platform mobile client with student cohort evaluations</span></div>
 </div>
 
 <div class="term-git-entry">
-  <div class="term-line"><span class="term-git-graph">*</span> <span class="term-git-sha">4b129aa</span> <span class="term-badge">tag: foundation</span> <span class="term-muted">[2021 – 2025]</span></div>
+  <div class="term-line"><span class="term-git-graph">*</span> <span class="term-muted">[2021 – 2025]</span></div>
   <div class="term-line"><span class="term-git-space">&nbsp;</span> <strong class="term-accent">feat(academic):</strong> BS Computer Science — De La Salle University–Dasmariñas</div>
   <div class="term-line"><span class="term-git-space">&nbsp;</span>   <span class="term-muted">• Algorithms, Distributed Systems, Software Engineering, DBMS, HCI</span></div>
 </div>
@@ -537,7 +537,7 @@
   </tr>
   <tr>
     <td><strong class="term-accent">05. Lumina Analytics</strong></td>
-    <td>B2B SaaS Dashboard &amp; Design System</td>
+    <td>Study &amp; Focus Dashboard (Figma + React)</td>
     <td><a href="case-lumina.html" class="term-link">Case Study ↗</a></td>
   </tr>
   <tr>

@@ -16,8 +16,6 @@
       category: 'iced',
       categoryLabel: 'Iced Specialty · 12oz',
       basePrice: 185,
-      rating: '4.9',
-      reviewCount: '1.2k',
       badge: 'Bestseller',
       image: '/aura-store/assets/spanish_latte.jpg',
       description: 'Velvety espresso marbling into sweetened condensed milk and cold oat milk over handcrafted ice cubes. Smooth, creamy, and delightful.',
@@ -29,8 +27,6 @@
       category: 'hot',
       categoryLabel: 'Hot Classic · 8oz',
       basePrice: 170,
-      rating: '4.9',
-      reviewCount: '890',
       badge: "Chef's Choice",
       image: '/aura-store/assets/velvet_cappuccino.jpg',
       description: 'Silky micro-foam poured over a rich double shot of specialty Arabica espresso, crowned with delicate rosetta latte art.',
@@ -42,8 +38,6 @@
       category: 'iced',
       categoryLabel: 'Iced Specialty · 12oz',
       basePrice: 195,
-      rating: '4.8',
-      reviewCount: '750',
       badge: 'Popular',
       image: '/aura-store/assets/caramel_macchiato.jpg',
       description: 'Layers of vanilla sweet milk and bold espresso, finished with dense vanilla cold foam and a rich crisscross golden caramel drizzle.',
@@ -55,8 +49,6 @@
       category: 'blends',
       categoryLabel: 'Frappé & Blend · 16oz',
       basePrice: 210,
-      rating: '4.8',
-      reviewCount: '620',
       badge: 'Must Try',
       image: '/aura-store/assets/dark_mocha_frappe.jpg',
       description: 'Single-estate espresso blended with rich dark chocolate, iced to perfection and topped with fresh fluffy whipped cream & dark cocoa curls.',
@@ -68,8 +60,6 @@
       category: 'iced',
       categoryLabel: 'Botanical & Tea · 12oz',
       basePrice: 190,
-      rating: '4.9',
-      reviewCount: '540',
       badge: 'Trending',
       image: '/aura-store/assets/matcha_cloud_latte.jpg',
       description: 'First-harvest ceremonial Japanese Uji matcha layered over chilled oat milk, crowned with a velvety sweet vanilla cloud foam.',
@@ -81,8 +71,6 @@
       category: 'bakery',
       categoryLabel: 'Fresh Bakery · Daily Bake',
       basePrice: 120,
-      rating: '4.9',
-      reviewCount: '980',
       badge: 'Fresh Daily',
       image: '/aura-store/assets/artisan_croissant.jpg',
       description: 'Golden, flaky, and buttery layers crafted with pure French Normandy butter. Baked fresh every morning in our open kitchen.',
@@ -188,9 +176,6 @@
       card.innerHTML = `
         <div class="card-img-wrap">
           <span class="card-tag">${prod.badge}</span>
-          <div class="card-rating-badge">
-            <span>★</span> ${prod.rating}
-          </div>
           ${window.AuraMedia.picture(prod.image, prod.name, '(max-width: 640px) calc(100vw - 48px), 400px', 'loading="lazy"')}
         </div>
         <div class="card-body">

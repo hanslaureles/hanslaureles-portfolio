@@ -277,12 +277,7 @@
                 <div class="git-commit-top">
                   <div class="git-sha-wrap">
                     <span class="git-graph-symbol">*</span>
-                    <button class="git-sha-btn" data-sha="c1e190a" aria-label="Copy SHA c1e190a" title="Click to copy SHA">
-                      <span class="git-sha-code">c1e190a</span>
-                      <span class="git-copy-icon">📋</span>
-                    </button>
                     <span class="git-badge head">HEAD -&gt; main</span>
-                    <span class="git-badge tag" style="border-color: #F59E0B; color: #FBBF24;">v3.0.0</span>
                   </div>
                   <div class="git-date mono">2026 – PRESENT</div>
                 </div>
@@ -315,11 +310,6 @@
                 <div class="git-commit-top">
                   <div class="git-sha-wrap">
                     <span class="git-graph-symbol">*</span>
-                    <button class="git-sha-btn" data-sha="8f4a21d" aria-label="Copy SHA 8f4a21d" title="Click to copy SHA">
-                      <span class="git-sha-code">8f4a21d</span>
-                      <span class="git-copy-icon">📋</span>
-                    </button>
-                    <span class="git-badge tag">v2.5.0</span>
                   </div>
                   <div class="git-date mono">2025 – PRESENT</div>
                 </div>
@@ -352,11 +342,6 @@
                 <div class="git-commit-top">
                   <div class="git-sha-wrap">
                     <span class="git-graph-symbol">*</span>
-                    <button class="git-sha-btn" data-sha="c71e08a" aria-label="Copy SHA c71e08a" title="Click to copy SHA">
-                      <span class="git-sha-code">c71e08a</span>
-                      <span class="git-copy-icon">📋</span>
-                    </button>
-                    <span class="git-badge tag">v2.0.0</span>
                   </div>
                   <div class="git-date mono">2024 – 2025</div>
                 </div>
@@ -388,11 +373,6 @@
                 <div class="git-commit-top">
                   <div class="git-sha-wrap">
                     <span class="git-graph-symbol">*</span>
-                    <button class="git-sha-btn" data-sha="9f3a21c" aria-label="Copy SHA 9f3a21c" title="Click to copy SHA">
-                      <span class="git-sha-code">9f3a21c</span>
-                      <span class="git-copy-icon">📋</span>
-                    </button>
-                    <span class="git-badge tag">v1.5.0</span>
                   </div>
                   <div class="git-date mono">JUN 2024 – AUG 2024</div>
                 </div>
@@ -421,11 +401,6 @@
                 <div class="git-commit-top">
                   <div class="git-sha-wrap">
                     <span class="git-graph-symbol">*</span>
-                    <button class="git-sha-btn" data-sha="5d89b12" aria-label="Copy SHA 5d89b12" title="Click to copy SHA">
-                      <span class="git-sha-code">5d89b12</span>
-                      <span class="git-copy-icon">📋</span>
-                    </button>
-                    <span class="git-badge tag">v1.0.0</span>
                   </div>
                   <div class="git-date mono">2023 – 2024</div>
                 </div>
@@ -454,11 +429,6 @@
                 <div class="git-commit-top">
                   <div class="git-sha-wrap">
                     <span class="git-graph-symbol">*</span>
-                    <button class="git-sha-btn" data-sha="4b129aa" aria-label="Copy SHA 4b129aa" title="Click to copy SHA">
-                      <span class="git-sha-code">4b129aa</span>
-                      <span class="git-copy-icon">📋</span>
-                    </button>
-                    <span class="git-badge tag">foundation</span>
                   </div>
                   <div class="git-date mono">2021 – 2025</div>
                 </div>
@@ -688,25 +658,6 @@
         setView('git');
       }
 
-      // Copy SHA functionality
-      document.querySelectorAll('.git-sha-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const sha = btn.getAttribute('data-sha');
-          if (!sha) return;
-          navigator.clipboard.writeText(sha).then(() => {
-            const codeSpan = btn.querySelector('.git-sha-code');
-            const iconSpan = btn.querySelector('.git-copy-icon');
-            const origText = codeSpan.textContent;
-            codeSpan.textContent = 'COPIED!';
-            if (iconSpan) iconSpan.textContent = '✓';
-            setTimeout(() => {
-              codeSpan.textContent = origText;
-              if (iconSpan) iconSpan.textContent = '📋';
-            }, 1800);
-          }).catch(() => {});
-        });
-      });
     })();
   </script>
 </body>

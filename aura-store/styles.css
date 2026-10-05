@@ -464,7 +464,7 @@ a {
   transform: translateY(-2px);
 }
 
-/* Customer Trust / Rating Badge */
+/* Hero note under the CTAs */
 .hero-social-proof {
   display: flex;
   align-items: center;
@@ -472,25 +472,6 @@ a {
   padding-top: 16px;
   border-top: 1px solid var(--border-subtle);
   width: 100%;
-}
-
-.avatar-stack {
-  display: flex;
-  align-items: center;
-}
-
-.avatar-stack img {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 2px solid #FFF;
-  margin-left: -10px;
-  object-fit: cover;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
-
-.avatar-stack img:first-child {
-  margin-left: 0;
 }
 
 .social-proof-text {
@@ -793,28 +774,6 @@ a {
   border-radius: var(--radius-pill);
   box-shadow: var(--shadow-sm);
   z-index: 2;
-}
-
-.card-rating-badge {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(6px);
-  color: var(--espresso-dark);
-  font-size: 0.82rem;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  z-index: 2;
-}
-
-.card-rating-badge span {
-  color: var(--accent-gold);
 }
 
 /* Card Body */

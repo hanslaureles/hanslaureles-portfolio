@@ -200,18 +200,18 @@
             <span class="terminal-dot yellow"></span>
             <span class="terminal-dot green"></span>
           </div>
-          <div class="terminal-title">FINTRACK_ENGINE // TRANSACTION INGESTION PIPELINE</div>
+          <div class="terminal-title">FINTRACK // DESIGNED EXPENSE FLOW</div>
           <div class="mono u-fs-0p72rem u-c-emerald-500">● FIGMA PROTOTYPE</div>
         </div>
         <div class="terminal-body">
-<pre><span class="terminal-comment"># FinTrack 2-Tap Transaction Ingestion &amp; Classification Logic</span>
-<span class="terminal-prompt">[INGESTION]</span>   Amount Input ──&gt; Fast Category Heuristics (Top 4 Smart Recommendations)
-<span class="terminal-prompt">[CALCULATION]</span> Dynamic Budget Engine:
-               ├─ Real-Time Safe-to-Spend Ceiling (Monthly Budget - Recurring Fixed)
-               ├─ Daily Velocity Tracker (Alerts when daily burn exceeds 1.25x baseline)
-               └─ Predictive Month-End Balance Curve (Monte Carlo Projection)
-<span class="terminal-prompt">[PSYCHOLOGY]</span>  Behavioral Loss Aversion: Neutral Visual Feedback on Overspend (No Shame Alarms)
-<span class="terminal-success">[PROTOTYPE]</span>   Figma Flow on Auto Layout 5.0 Components &amp; Design Tokens</pre>
+<pre><span class="terminal-comment"># FinTrack 2-tap expense flow, as designed (a Figma prototype: nothing below is computed)</span>
+<span class="terminal-prompt">[INPUT]</span>       Amount ──&gt; 4 suggested categories, one tap to pick
+<span class="terminal-prompt">[BUDGET]</span>      Screens designed around one number:
+               ├─ Safe-to-spend today (monthly budget minus recurring fixed costs)
+               ├─ Overspend nudge when a day runs well above the usual pace
+               └─ Month-end balance curve
+<span class="terminal-prompt">[TONE]</span>        Neutral feedback on overspend: no red alarms or shaming copy
+<span class="terminal-success">[PROTOTYPE]</span>   Figma flow built from Auto Layout components &amp; design tokens</pre>
         </div>
       </div>
     </div>
@@ -251,23 +251,23 @@
 
         <!-- Section 02 -->
         <section id="user-insights" class="case-body-section">
-          <div class="section-tag">// 02 · USER RESEARCH &amp; INSIGHTS</div>
+          <div class="section-tag">// 02 · DESIGN ASSUMPTIONS</div>
           <h2>Key Usability Friction Factors</h2>
           <p>
-            Through user testing sessions with entry-level professionals, three distinct behavioral hurdles emerged:
+            I did not run user testing for FinTrack. The design starts from three friction points I took from reviewing common budgeting apps; they are assumptions the prototype is built to test, not research findings:
           </p>
           <div class="experience-timeline u-m-24px-0">
             <div class="experience-card">
               <h3 class="u-mb-8px">1. Manual Input Friction</h3>
-              <p class="u-fs-0p95rem">Every additional tap required to log an expense (e.g. selecting 4 nested categories) was one more reason to skip logging that day.</p>
+              <p class="u-fs-0p95rem">Every extra tap needed to log an expense (for example, picking through nested categories) is one more reason to skip logging that day.</p>
             </div>
             <div class="experience-card">
               <h3 class="u-mb-8px">2. Lack of Contextual Safe-to-Spend Limits</h3>
-              <p class="u-fs-0p95rem">Users care less about historical ledger history and more about a single critical question: <em>"How much can I safely spend today?"</em></p>
+              <p class="u-fs-0p95rem">The question a budget should answer first is <em>"How much can I safely spend today?"</em>, not what happened last month.</p>
             </div>
             <div class="experience-card">
               <h3 class="u-mb-8px">3. Cluttered Financial Visualizations</h3>
-              <p class="u-fs-0p95rem">Tiny line graphs on small mobile screens caused perceptual confusion rather than actionable insight.</p>
+              <p class="u-fs-0p95rem">Small line graphs on a phone screen are hard to read and rarely tell you what to do next.</p>
             </div>
           </div>
         </section>
