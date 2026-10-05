@@ -131,6 +131,14 @@
         ATS resumes with headless Edge or Chrome. Job applications wait in an approval channel, and mail is never deleted.
       </p>
 
+      <dl class="case-summary" aria-label="Summary">
+        <div><dt>Problem</dt><dd>Busywork across separate tools: digging through promotional email for the messages that matter, reformatting resumes for each applicant tracking system, switching tabs.</dd></div>
+        <div><dt>Constraint</dt><dd>One person, one PC: five agents in one asyncio event loop, cloud models by default, and no step that deletes mail or sends an application without approval.</dd></div>
+        <div><dt>Decision</dt><dd>One job per agent, each with its own model and a fallback to the other provider. Gmail rules run before the LLM, and heavy jobs (PDF builds, triage) get their own two-thread pool (<a href="#decisions">decisions</a>).</dd></div>
+        <div><dt>Measured result</dt><dd>LLM round trip 736&nbsp;ms p50 and 6,177&nbsp;ms p95 (N=50, 2026-10-02); per agent from 312&nbsp;ms (Sakura) to 4,861&nbsp;ms (Yunjin) (<a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-telemetry.md" target="_blank" rel="noopener noreferrer">telemetry</a>). Email-triage accuracy is not measured yet.</dd></div>
+        <div><dt>Code</dt><dd><a href="https://github.com/hanslaureles/lsfm-ai-hq/tree/f665b88ad339dc25dc17a97a65f14de5f3a760e4" target="_blank" rel="noopener noreferrer">lsfm-ai-hq</a> (public export of the private build)</dd></div>
+      </dl>
+
       <div class="u-d-flex u-gap-12px u-wrap-wrap u-mb-36px">
         <a href="#topology" class="btn btn-primary">
           Explore Agent Architecture ↓

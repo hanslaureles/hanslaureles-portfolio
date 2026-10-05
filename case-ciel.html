@@ -274,6 +274,14 @@
         Ciel listens, answers in Japanese and English, hands tasks to my five LSFM agents, reads and writes my Obsidian notes, remembers the last 8 exchanges, and speaks up when something on my PC needs attention. (The name comes from an anime character; the requirements came from my own workflow.)
       </p>
 
+      <dl class="case-summary" aria-label="Summary">
+        <div><dt>Problem</dt><dd>My working context is spread across the terminal, Discord, Obsidian notes and LLM chat tabs, and switching between them by hand breaks focus.</dd></div>
+        <div><dt>Constraint</dt><dd>One voice, in Japanese and English, running on my own PC, that can act on the workstation (hand tasks to the agents, read notes, check vitals) and not only chat.</dd></div>
+        <div><dt>Decision</dt><dd>Speak each sentence as soon as it is written: Edge-TTS gets up to three sentences at once and the HUD plays them in order. Groq, Whisper and Ollama are called over plain HTTP (<a href="#decisions">decisions</a>).</dd></div>
+        <div><dt>Measured result</dt><dd>Time to first audio fell from 4.60&nbsp;s to 1.41&nbsp;s p50 (N=10 each, same prompt and machine, 2026-10-02). The cost: mission-complete p95 rose from 5.99&nbsp;s to 7.20&nbsp;s (<a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-before.md" target="_blank" rel="noopener noreferrer">before</a> · <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-after.md" target="_blank" rel="noopener noreferrer">after</a>).</dd></div>
+        <div><dt>Code</dt><dd>Server side in lsfm-ai-hq: <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/speech_stream.py" target="_blank" rel="noopener noreferrer">speech_stream.py</a>, <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/ciel_server.py" target="_blank" rel="noopener noreferrer">ciel_server.py</a> (the HUD code is private)</dd></div>
+      </dl>
+
       <div class="u-d-flex u-gap-12px u-wrap-wrap u-mb-36px">
         <a href="#simulator" class="btn btn-primary">
           ⚡ Try the Voice Demo ↓

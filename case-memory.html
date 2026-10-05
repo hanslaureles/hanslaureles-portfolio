@@ -105,37 +105,7 @@
       line-height: 1.5;
     }
 
-    /* Executive summary + retrieval eval table */
-    .case-summary {
-      display: grid;
-      gap: 10px;
-      margin: 0 0 36px;
-      padding: 18px 20px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg, 12px);
-    }
-    .case-summary > div {
-      display: grid;
-      grid-template-columns: 9.5rem 1fr;
-      gap: 12px;
-    }
-    .case-summary dt {
-      font-family: var(--font-mono, monospace);
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      padding-top: 3px;
-    }
-    .case-summary dd {
-      margin: 0;
-      font-size: 0.92rem;
-      line-height: 1.5;
-      color: var(--text-secondary);
-    }
-    @media (max-width: 600px) {
-      .case-summary > div { grid-template-columns: 1fr; gap: 2px; }
-    }
+    /* Retrieval eval table (the summary box styles live in styles.css) */
     .eval-table-wrap { overflow-x: auto; margin: 0 0 12px; }
     .eval-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
     .eval-table th,
@@ -326,7 +296,9 @@
       </div>
 
       <!-- Architecture Runtime Telemetry Preview -->
-      <div class="terminal-window u-m-24px-0-32px-0">
+      <details class="tech-detail u-m-24px-0-32px-0">
+      <summary>Show the lesson recall loop</summary>
+      <div class="terminal-window">
         <div class="terminal-topbar">
           <div class="terminal-dots">
             <span class="terminal-dot red"></span>
@@ -350,6 +322,7 @@
 <span class="terminal-success">[OUTCOME]</span>     Lessons persist across sessions · 0 external pip dependencies · Recurring lessons gain weight</pre>
         </div>
       </div>
+      </details>
 
     </div>
 

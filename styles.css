@@ -5446,6 +5446,39 @@ h1, h2 {
 .lightbox-close-btn {
   min-height: 32px;
 }
+/* Case-study summary box (Problem / Constraint / Decision / Measured result / Code).
+   Moved from case-memory's page styles so case-ciel and case-lsfm can share it. */
+.case-summary {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 36px;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+}
+.case-summary > div {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 12px;
+}
+.case-summary dt {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-top: 3px;
+}
+.case-summary dd {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+@media (max-width: 600px) {
+  .case-summary > div { grid-template-columns: 1fr; gap: 2px; }
+}
+
 /* 24 px tap targets for plain evidence links (tables, <dd>, source notes). Vertical
    padding on an inline link grows its hit area without changing line height. */
 .case-body-section a:not([class]),
