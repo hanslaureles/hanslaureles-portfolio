@@ -12,11 +12,11 @@
   const KNOWLEDGE_BASE = [
     {
       id: "KNOW-01",
-      title: "React, Next.js & Frontend Interfaces",
+      title: "React & Frontend Interfaces",
       category: "Frontend Engineering",
       keywords: ["react", "nextjs", "next.js", "frontend", "ui", "ux", "typescript", "javascript", "tailwind", "css", "html", "design systems", "wcag", "swiss"],
-      summary: "Hans is a frontend engineer working in React, Next.js, TypeScript and design tokens, with Swiss editorial typography and WCAG 2.1 AA accessibility checks.",
-      evidence: "Engineered production client interfaces at ROC (roc.ph) with React and Tailwind; designed and built Lumina (a study and focus dashboard in React, TypeScript and Chart.js); built Aura Coffee (/aura-store) with vanilla CSS tokens; and developed Patriot Capstone in React Native.",
+      summary: "Hans is a frontend engineer working in React, TypeScript, vanilla JavaScript and design tokens, with Swiss editorial typography and WCAG 2.1 AA accessibility checks. There is no Next.js project on this site.",
+      evidence: "Engineered production client interfaces at ROC (roc.ph) with React and Tailwind; designed and built Lumina (a study and focus dashboard in React, TypeScript and Chart.js); built Aura Coffee (/aura-store) with vanilla CSS tokens; and developed Patriot Capstone in React Native. This site's CI runs axe-core WCAG 2.1 AA checks on every page.",
       linkUrl: "case-lumina.html",
       linkText: "Explore Lumina Analytics Case Study →",
       secondaryUrl: "case-aura.html",
@@ -130,7 +130,7 @@
       category: "Developer Experience",
       keywords: ["git log", "timeline", "git", "commits", "career track", "milestones", "history", "graph", "career timeline"],
       summary: "Hans built a career timeline styled as `git log --graph` for the homepage terminal and the About page. It is styling only: it shows dates and roles, not real commits.",
-      evidence: "Recruiters can run 'git log' in the homepage CLI or toggle the '$ git log --graph' mode on about.html to inspect commit hashes, milestone branches (v1.0 to v2.5), and copy individual commit SHAs with 1 click.",
+      evidence: "Recruiters can run 'git log' in the homepage CLI or switch the About page to its '$ git log --graph' view to see each milestone's role, dates and highlights, newest first.",
       linkUrl: "about.html#git",
       linkText: "🌿 View $ git log Timeline on About Page →"
     },
@@ -368,7 +368,7 @@
             <div class="chips-label mono">// QUICK QUESTIONS:</div>
             <div class="chips-list">
               <button class="sakura-chip" data-query="Tell me about the Manas Ciel voice AI copilot">Manas: Ciel Voice AI?</button>
-              <button class="sakura-chip" data-query="Does Hans know React and Next.js?">React &amp; Next.js Experience?</button>
+              <button class="sakura-chip" data-query="Does Hans know React?">React Experience?</button>
               <button class="sakura-chip" data-query="Tell me about the LSFM AI HQ 5-agent team">The 5-Agent Team?</button>
               <button class="sakura-chip" data-query="How does FinTrack reduce budgeting friction?">FinTrack Two-Tap Logging?</button>
               <button class="sakura-chip" data-query="What did Hans do at ROC.ph internship?">ROC.ph Internship Work?</button>

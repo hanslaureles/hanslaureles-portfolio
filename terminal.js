@@ -666,7 +666,7 @@
 </div>
 <div class="term-block" style="margin: 6px 0;">
   <div class="term-line"><span class="term-highlight">03. FRONTEND &amp; INTERFACE DESIGN</span></div>
-  <div class="term-line term-muted">  • Modern Web: Vanilla JS/ES6+, React, Next.js, TypeScript, HTML5 Semantic Living Specs</div>
+  <div class="term-line term-muted">  • Modern Web: Vanilla JS/ES6+, React, TypeScript, HTML5 Semantic Living Specs</div>
   <div class="term-line term-muted">  • Design Systems: CSS Custom Properties, Design Tokens, Swiss Typography Hierarchy</div>
   <div class="term-line term-muted">  • High-Dwell Telemetry Boards, Terminal UIs, WCAG 2.1 AA (axe-checked in CI)</div>
 </div>
