@@ -1772,6 +1772,30 @@ picture,
   .header-actions {
     flex: 1 0 100%;
   }
+  /* Touch-first store: a 44 px tap target for the search field. */
+  .search-bar-pill {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .search-bar-pill input {
+    min-height: 44px;
+  }
+}
+
+/* Under 375 px the promo strip wrapped to ~4 lines (140 px) and pushed the hero
+   down: each flex item took its own row. The pieces now flow as one sentence, and
+   the delivery note, which repeats in the perks row, is dropped. */
+@media (max-width: 374px) {
+  .promo-strip-content {
+    display: block;
+    line-height: 1.9;
+  }
+  .promo-tag {
+    margin-right: 6px;
+  }
+  .promo-delivery {
+    display: none;
+  }
 }
 
 /* Reduced Motion: honor the OS setting; near-zero durations keep

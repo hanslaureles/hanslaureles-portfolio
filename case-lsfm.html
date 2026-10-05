@@ -262,7 +262,9 @@
       </div>
 
       <!-- Architecture Runtime Telemetry Preview -->
-      <div class="terminal-window u-m-24px-0-32px-0">
+      <details class="tech-detail u-m-24px-0-32px-0">
+      <summary>Show the architecture overview</summary>
+      <div class="terminal-window">
         <div class="terminal-topbar">
           <div class="terminal-dots">
             <span class="terminal-dot red"></span>
@@ -288,6 +290,7 @@
 <span class="terminal-success">[STATUS]</span>      Agents hosted on my PC · Credentials stay on the workstation · Cloud mode sends prompts to Groq / Gemini</pre>
         </div>
       </div>
+      </details>
 
     </div>
 
@@ -689,6 +692,8 @@
             come from <code>DEFAULT_CONFIG</code> in <code>llm_client.py</code>, and the mode and models can be
             overridden in <code>memory/brain_mode.json</code>.</p>
 
+          <details class="tech-detail">
+          <summary>Show the <code>query_llm()</code> code</summary>
           <div class="terminal-window">
             <div class="terminal-topbar">
               <div class="terminal-dots">
@@ -729,6 +734,7 @@
     <span class="terminal-cmd">raise</span> RuntimeError(f"All LLM providers failed: {'; '.join(errors)}")</pre>
             </div>
           </div>
+          </details>
         </section>
 
         <!-- Section 04: Programmatic Tool Pipelines -->

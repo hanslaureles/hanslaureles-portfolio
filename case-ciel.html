@@ -356,7 +356,9 @@
       </div>
 
       <!-- Architecture Runtime Telemetry Preview -->
-      <div class="terminal-window u-m-24px-0-32px-0">
+      <details class="tech-detail u-m-24px-0-32px-0">
+      <summary>Show the voice pipeline diagram</summary>
+      <div class="terminal-window">
         <div class="terminal-topbar">
           <div class="terminal-dots">
             <span class="terminal-dot red"></span>
@@ -382,6 +384,7 @@
 <span class="terminal-success">[STATUS]</span>      Two-mode routing · last 8 exchanges · general knowledge</pre>
         </div>
       </div>
+      </details>
 
     </div>
 
@@ -669,7 +672,9 @@
             Most voice assistants can't see your notes. Ciel reads and writes my Obsidian vault (`Obsidian-v2/`) through Obsidian's Local REST API, and falls back to reading the files on disk:
           </p>
 
-          <div class="terminal-window u-m-20px-0">
+          <details class="tech-detail u-m-20px-0">
+          <summary>Show the vault tool definitions</summary>
+          <div class="terminal-window">
             <div class="terminal-topbar">
               <div class="terminal-dots">
                 <span class="terminal-dot red"></span>
@@ -705,6 +710,7 @@ tools = [
 ]</pre>
             </div>
           </div>
+          </details>
 
           <p>
             When Hans asks: <em>"What are my working preferences?"</em> or <em>"Remind me of the rule regarding edge redirect syntax,"</em> Ciel picks the matching tool, reads the note, and answers from it. If Obsidian's REST plugin is off, it reads the file from disk instead, so the request still succeeds.

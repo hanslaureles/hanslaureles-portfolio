@@ -4372,7 +4372,7 @@ picture {
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: border-color var(--transition-fast), color var(--transition-fast);
-  white-space: nowrap;   /* MEM-002: keep "[ ESC / ✕ ]" on one line so brackets never orphan */
+  white-space: nowrap;   /* MEM-002: keep "ESC ✕" on one line; no bracket text in this button */
   flex-shrink: 0;
 }
 
@@ -5454,6 +5454,26 @@ h1, h2 {
 .case-body-section a:not([class]),
 .case-summary a:not([class]) {
   padding-block: 4px;
+}
+
+/* Audit D: long diagrams and code fold away so a 30-second read stays short. */
+.tech-detail {
+  margin: 24px 0;
+}
+.tech-detail > summary {
+  width: fit-content;
+  min-height: 24px;
+  padding: 4px 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+.tech-detail > summary:hover {
+  color: var(--accent);
+}
+.tech-detail .terminal-window {
+  margin: 12px 0 0;
 }
 
 /* D2: one measured result on the first screen, as a link to its source. */
