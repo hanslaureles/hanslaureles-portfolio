@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-05T04:54:19+00:00",
+  "swarm": {
+    "sakura": {
+      "status": "stale",
+      "last_heartbeat_utc": "2026-10-02T14:16:25+00:00"
+    },
+    "chaewon": {
+      "status": "stale",
+      "last_heartbeat_utc": "2026-10-02T14:16:23+00:00"
+    },
+    "yunjin": {
+      "status": "stale",
+      "last_heartbeat_utc": "2026-10-02T14:16:24+00:00"
+    },
+    "kazuha": {
+      "status": "stale",
+      "last_heartbeat_utc": "2026-10-02T14:16:27+00:00"
+    },
+    "eunchae": {
+      "status": "stale",
+      "last_heartbeat_utc": "2026-10-02T14:16:29+00:00"
+    }
+  },
+  "llm_latency": {
+    "p50_ms": 736.3,
+    "p95_ms": 6177.1,
+    "sample_count": 50,
+    "measured_on": "2026-10-02",
+    "source": "bench/results/2026-10-02-telemetry.json"
+  },
+  "missions": {
+    "application_packages": 0,
+    "window_days": 7,
+    "source": "memory/applications_log.md"
+  },
+  "vitals": {
+    "cpu_pct": 13.7,
+    "ram_pct": 75.7,
+    "disk_pct": 70.5,
+    "sampled_at": "2026-10-05T04:54:19+00:00"
+  }
+}

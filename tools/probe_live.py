@@ -8,6 +8,7 @@ Checks the deployed site, not the repo:
   - the security headers from vercel.json are present, and the CSP header
     equals the value in this checkout's vercel.json;
   - /aura-store references its own stylesheet (root-absolute URLs);
+  - /data/status.json is served as schema-1 JSON with max-age=0;
   - the live pages carry the same ?v= cache-buster as index.html in this
     checkout, so a push to main that never deployed shows up as a failure.
 
@@ -95,13 +96,25 @@ def main():
     if "/aura-store/styles.css" not in body:
         problems.append("/aura-store: page does not reference /aura-store/styles.css")
 
+    # The agent-status snapshot (4C): served, parseable, never cached. Its age is not a
+    # failure: an old snapshot is shown as old on the page, which is the honest outcome.
+    status, headers, body = fetch("/data/status.json")
+    print(f"{status}  /data/status.json  cache-control: {headers.get('cache-control')}")
+    try:
+        if status != 200 or json.loads(body).get("schema_version") != 1:
+            problems.append(f"/data/status.json: HTTP {status} or schema_version != 1")
+    except ValueError:
+        problems.append("/data/status.json: not valid JSON")
+    if "max-age=0" not in headers.get("cache-control", ""):
+        problems.append(f"/data/status.json: cache-control {headers.get('cache-control')!r} (expected max-age=0)")
+
     print()
     if problems:
         print("FAIL")
         for p in problems:
             print(f"  - {p}")
         return 1
-    print(f"OK: {len(PAGES) + len(FILES) + 1} routes, headers, and ?v={expected_v} live")
+    print(f"OK: {len(PAGES) + len(FILES) + 2} routes, headers, and ?v={expected_v} live")
     return 0
 
 

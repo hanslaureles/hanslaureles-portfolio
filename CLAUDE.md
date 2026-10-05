@@ -18,6 +18,11 @@ Production developer portfolio and kinetic AI agent showcase for **Hans Aaron La
 ## Run Commands
 - Local preview via static server: `npx serve .` or `python -m http.server 3000`
 
+## Agent Status Snapshot (`data/status.json`)
+- Generated, never hand-edited: from `LE-SSERAFIM-AI-HQ`, run `python -m eunchae_publisher` (writes `../portfolio-site/data/status.json`; `--dry-run` prints it). It validates the schema and rejects anything path- or secret-like.
+- Then commit it here as `chore(data): refresh agent status snapshot`. On-demand only (decision D1): no background job commits it.
+- `sentinel.js` shows a bot as online only if its heartbeat is under 15 minutes old when the page is viewed; older snapshots read "last seen …".
+
 ## Build Commands
 - Static site; no compilation or bundling required.
 
