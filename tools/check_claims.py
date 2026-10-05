@@ -47,6 +47,9 @@ RETRACTED = [
      "Lumina/FinTrack feature not in the live build or prototype (Batch 5)"),
     (r"Target compensation|Groq LPU routing",
      "Ciel demo content that Preferences.md does not contain (Batch 5)"),
+    (r"abandon budgeting apps within|severe drop-off|doesn.t hurt retention|sub-3-second|Mood Vector|"
+     r"Eliminating budget abandonment|Inter and Fira Code",
+     "unmeasured behaviour or outcome on a prototype, or a font the build does not load (Batch 5, Codex round 1)"),
 ]
 
 

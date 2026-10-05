@@ -13,13 +13,13 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://hanslaureles.vercel.app/case-lumina.html">
   <meta property="og:title" content="Lumina Analytics — Study &amp; Focus Dashboard Case Study">
-  <meta property="og:description" content="High-density productivity analytics suite and tokenized design system built with React, TypeScript, and modern component architecture.">
+  <meta property="og:description" content="A study and focus dashboard for students, designed in Figma and built in React, TypeScript and Chart.js.">
   <meta property="og:image" content="https://hanslaureles.vercel.app/images/og/lumina-website-lumina-mockup.7cc30dea.jpg">
 
   <!-- Twitter Meta -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Lumina Analytics — Study &amp; Focus Dashboard Case Study">
-  <meta name="twitter:description" content="High-density productivity analytics suite and tokenized design system built with React, TypeScript, and modern component architecture.">
+  <meta name="twitter:description" content="A study and focus dashboard for students, designed in Figma and built in React, TypeScript and Chart.js.">
   <meta name="twitter:image" content="https://hanslaureles.vercel.app/images/og/lumina-website-lumina-mockup.7cc30dea.jpg">
   
   <!-- Google Fonts: Instrument Serif + Plus Jakarta Sans + JetBrains Mono -->
@@ -174,11 +174,11 @@
         </div>
         <div class="case-metric-cell">
           <div class="case-metric-num accent-blue">Chart.js</div>
-          <div class="case-metric-label">Focus &amp; Task Bar Charts, 7 or 30 Days</div>
+          <div class="case-metric-label">Focus &amp; Task Bar Charts: 7 Days or 4 Weeks</div>
         </div>
         <div class="case-metric-cell">
           <div class="case-metric-num">Tailwind</div>
-          <div class="case-metric-label">One Theme Block for Colours &amp; Fonts</div>
+          <div class="case-metric-label">One Theme Block for Colours</div>
         </div>
         <div class="case-metric-cell">
           <div class="case-metric-num">Figma → React</div>
@@ -210,11 +210,11 @@
 <pre><span class="terminal-comment"># Lumina live build: a client-only React app on built-in sample data (no backend, no live feed)</span>
 <span class="terminal-prompt">[VIEWS]</span>       Dashboard · Tasks · Focus · Insights · Settings (one React state switch)
 <span class="terminal-prompt">[DATA]</span>        Sample data in the components; tasks kept in React state
-<span class="terminal-prompt">[CHARTS]</span>      Chart.js via react-chartjs-2: two bar charts, 7- or 30-day view
-               ├─ Focus hours per day
-               └─ Tasks completed per day
+<span class="terminal-prompt">[CHARTS]</span>      Chart.js via react-chartjs-2: two bar charts
+               ├─ Focus hours and tasks completed
+               └─ 7-day view: 7 daily bars · 30-day view: 4 weekly bars
 <span class="terminal-prompt">[TIMER]</span>       25-minute focus timer (setInterval, 1 s tick)
-<span class="terminal-prompt">[STYLE]</span>       Tailwind CSS v4 theme tokens
+<span class="terminal-prompt">[STYLE]</span>       Tailwind CSS v4 colour tokens (@theme)
 <span class="terminal-success">[DEPLOY]</span>      Vite + React 19 + TypeScript build, static on Netlify</pre>
         </div>
       </div>
@@ -271,7 +271,7 @@
             </div>
             <div class="experience-card">
               <h3 class="u-mb-8px">3. Insights</h3>
-              <p class="u-fs-0p95rem">Bar charts of focus hours and tasks completed per day, switchable between the last 7 and 30 days.</p>
+              <p class="u-fs-0p95rem">Bar charts of focus hours and tasks completed: seven daily bars for the last 7 days, or four weekly bars for the last 30.</p>
             </div>
           </div>
         </section>
@@ -387,7 +387,7 @@
           <div class="section-tag">// 04 · THEME &amp; SETTINGS</div>
           <h2>A Small, Consistent Theme</h2>
           <p>
-            The live build keeps its theme in one Tailwind CSS <code>@theme</code> block: four obsidian greys and a border grey, three emerald shades and a glow, with Inter and Fira Code as the type pair. The Figma design uses a light palette; the React build is dark only.
+            The live build keeps its colours in one Tailwind CSS <code>@theme</code> block: four obsidian greys and a border grey, three emerald shades and a glow. The body text is set in Inter. The Figma design uses a light palette; the React build is dark only.
           </p>
           <div class="image-gallery">
             <div class="gallery-item">
@@ -428,7 +428,7 @@
             </div>
             <div class="outcome-card">
               <div class="outcome-number">Tailwind</div>
-              <div class="outcome-label">One Theme Block for Colours &amp; Fonts</div>
+              <div class="outcome-label">One Theme Block for Colours</div>
             </div>
             <div class="outcome-card">
               <div class="outcome-number">Live</div>
