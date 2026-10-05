@@ -325,6 +325,24 @@ test("Aura store search shows its whole placeholder from 400 to 1280 px", async 
   }
 });
 
+// Audit D: Aura is touch-first, so search and the way back get 44 px targets on phones,
+// and the promo strip stays short enough at 320 px to leave the hero on the first screen.
+test("Aura store has 44 px search/back targets and a short promo strip at 320 px", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 812 });
+  await page.goto("aura-store/index.html", { waitUntil: "networkidle" });
+  const h = (sel) => page.locator(sel).evaluate((el) => el.getBoundingClientRect().height);
+  expect(await h(".search-bar-pill input")).toBeGreaterThanOrEqual(44);
+  expect(await h('a[href="/case-aura.html"]')).toBeGreaterThanOrEqual(44);
+  expect(await h(".promo-strip")).toBeLessThanOrEqual(120); // was 195 px, now ~98 px
+});
+
+// Audit D: one chip per command in the terminal's quick-command row.
+test("terminal quick-command chips are not duplicated", async ({ page }) => {
+  await page.goto("index.html", { waitUntil: "domcontentloaded" });
+  const cmds = await page.locator(".term-chip").evaluateAll((els) => els.map((el) => el.dataset.cmd));
+  expect(cmds.length).toBe(new Set(cmds).size);
+});
+
 // At /aura-store a relative "styles.css" or "index.html" resolves to the portfolio's own
 // files, so the link check above passes while the store is unstyled and "home" leaves it.
 for (const path of ["aura-store", "aura-store/checkout", "aura-store/confirmation"]) {
