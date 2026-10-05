@@ -4472,14 +4472,11 @@ picture {
   background: rgba(0, 0, 0, 0.02);
 }
 
+/* Replay highlight: border and glow only. A green background tint dropped the
+   muted meta text and the amber "stale" badge below 4.5:1 while it showed. */
 .agent-fleet-item.pulse-highlight {
-  background: rgba(16, 185, 129, 0.15) !important;
   border-color: var(--emerald-500) !important;
   box-shadow: 0 0 16px rgba(16, 185, 129, 0.35);
-}
-
-.agent-fleet-item.pulse-highlight .agent-fleet-domain {
-  color: var(--text-secondary);
 }
 
 .agent-fleet-header {
