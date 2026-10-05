@@ -36,6 +36,17 @@ RETRACTED = [
      "invented sample telemetry or status (4A; show what the tool reads, or a cited measurement)"),
     (r"\d+-bit Encrypt|Connecting to [^<`]{0,40}Gateway|Paid Online|TOTAL PAID",
      "payment or security claim on the Aura demo (it processes no payment; Codex 4A FIX)"),
+    (r"\b(c1e190a|8f4a21d|c71e08a|9f3a21c|5d89b12|4b129aa|9fb2617)\b",
+     "invented commit hash on the career timeline (Batch 5; exists in no repo)"),
+    (r"\d\.\d ?/ ?5 Star|\d[\d,.]*k?\+? (coffee lovers|reviews)|rating: '\d",
+     "invented Aura rating or review count (Batch 5; the demo store has no customers)"),
+    (r"user interviews with|user testing sessions with|interviews? with (university|students)",
+     "user research that was not run (Batch 5: Vellum and FinTrack are assumption-led)"),
+    (r"B2B (SaaS|Engineering|Dashboard)|sprint velocit|burnup|Monte Carlo|Zero-Garbage|Offscreen Canvas|"
+     r"Time-Series Windowing",
+     "Lumina/FinTrack feature not in the live build or prototype (Batch 5)"),
+    (r"Target compensation|Groq LPU routing",
+     "Ciel demo content that Preferences.md does not contain (Batch 5)"),
 ]
 
 
