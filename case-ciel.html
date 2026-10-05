@@ -441,7 +441,7 @@
                 <dt>Alternatives</dt>
                 <dd>The <code>groq</code> and <code>openai</code> Python SDKs for every provider.</dd>
                 <dt>Why</dt>
-                <dd>Those three services take simple JSON (or a multipart upload) over HTTPS, so one small code path covers them, and the retry rules live in my code: Groq's fractional <code>Retry-After</code> (e.g. 1.5 s) is honoured once if it is 4 s or less, then the next model is tried.</dd>
+                <dd>Groq and Whisper take simple JSON (or a multipart upload) over HTTPS, and Ollama takes the same JSON over plain HTTP on the local machine (<code>127.0.0.1</code>), so one small code path covers all three, and the retry rules live in my code: Groq's fractional <code>Retry-After</code> (e.g. 1.5 s) is honoured once if it is 4 s or less, then the next model is tried.</dd>
                 <dt>Cost</dt>
                 <dd>Streaming, multipart uploads and 429 handling are hand-written, so each needs its own tests (<code>GroqRetryAfterTest</code>).</dd>
                 <dt>Evidence</dt>
@@ -461,7 +461,7 @@
                 <dt>Cost</dt>
                 <dd>Mission-complete p95 rose from 5.99 s to 7.20 s: the joined replay MP3 waits for the slowest clip, and clips play strictly in order, so one slow clip holds back the sentences after it.</dd>
                 <dt>Evidence</dt>
-                <dd><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-before.md" target="_blank" rel="noopener noreferrer"><code>before</code></a> &middot; <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-after.md" target="_blank" rel="noopener noreferrer"><code>after</code></a> &middot; <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/speech_stream.py" target="_blank" rel="noopener noreferrer"><code>speech_stream.py</code></a></dd>
+                <dd><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-before.md" target="_blank" rel="noopener noreferrer"><code>before</code></a> &middot; <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-after.md" target="_blank" rel="noopener noreferrer"><code>after</code></a> &middot; <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/speech_stream.py" target="_blank" rel="noopener noreferrer"><code>speech_stream.py</code></a> &middot; <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/ciel_orchestrator.py" target="_blank" rel="noopener noreferrer"><code>ciel_orchestrator.py</code></a> (clip queue, three at once, in order)</dd>
               </dl>
             </article>
             <article class="case-adr-card" aria-labelledby="adr-ciel-03">
@@ -477,7 +477,7 @@
                 <dt>Cost</dt>
                 <dd>The HUD needs reconnect logic with backoff, and still fetches one snapshot over HTTP when it (re)connects.</dd>
                 <dt>Evidence</dt>
-                <dd><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/ciel_server.py" target="_blank" rel="noopener noreferrer"><code>ciel_server.py</code></a></dd>
+                <dd><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/ciel_server.py" target="_blank" rel="noopener noreferrer"><code>ciel_server.py</code></a> (5 s push, snapshot endpoint) &middot; the HUD's reconnect and snapshot code is in <code>hud.js</code>, in a private repo</dd>
               </dl>
             </article>
           </div>

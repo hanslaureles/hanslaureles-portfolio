@@ -360,7 +360,7 @@
               <h3 id="adr-lsfm-01">Rules first, the LLM only for unknown mail</h3>
               <dl class="case-adr-fields">
                 <dt>Decision</dt>
-                <dd>Sakura's Gmail classifier checks sender, domain and keyword rules first. Only mail no rule recognises goes to the LLM (temperature 0.1, strict JSON reply).</dd>
+                <dd>Sakura's Gmail classifier checks sender, domain and keyword rules first. Only mail no rule recognises goes to the LLM (temperature 0.1). The prompt asks for JSON only; the classifier pulls a JSON object out of the reply when there is one, and falls back to a rule-based label when there isn't.</dd>
                 <dt>Alternatives</dt>
                 <dd>Send every email to the LLM.</dd>
                 <dt>Why</dt>
