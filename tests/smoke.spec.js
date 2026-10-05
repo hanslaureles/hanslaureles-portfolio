@@ -98,15 +98,18 @@ for (const path of PAGES) {
       await page.setViewportSize({ width: 320, height: 812 });
       await page.goto(path, { waitUntil: "networkidle" });
       const { small, tiny } = await page.evaluate(() => {
+        const shown = (el) => {
+          const cs = getComputedStyle(el);
+          return !el.closest("svg") && cs.display !== "none" && cs.visibility !== "hidden" && el.getClientRects().length > 0;
+        };
         const small = [];
         for (const el of document.querySelectorAll("body *")) {
-          if (el.closest("svg") || ![...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim())) continue;
-          const cs = getComputedStyle(el);
-          if (cs.display === "none" || cs.visibility === "hidden" || !el.getClientRects().length) continue;
-          if (parseFloat(cs.fontSize) < 11.95) small.push(`${el.tagName.toLowerCase()}.${el.className} ${cs.fontSize}`);
+          if (![...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim()) || !shown(el)) continue;
+          const px = getComputedStyle(el).fontSize;
+          if (parseFloat(px) < 11.95) small.push(`${el.tagName.toLowerCase()}.${el.className} ${px}`);
         }
-        const tiny = [...document.querySelectorAll("main a")]
-          .filter((a) => { const r = a.getBoundingClientRect(); return r.width && r.height && r.height < 23.5; })
+        const tiny = [...document.querySelectorAll("a[href]")]
+          .filter((a) => { const r = a.getBoundingClientRect(); return shown(a) && r.width && r.height && r.height < 23.5; })
           .map((a) => `${a.textContent.trim().slice(0, 30)} ${Math.round(a.getBoundingClientRect().height)}px`);
         return { small, tiny };
       });
