@@ -232,6 +232,24 @@ test.describe("agent overview status snapshot", () => {
       schema_version: 1, generated_at: iso(60 * MIN),
       swarm: { sakura: { status: "online", last_heartbeat_utc: iso(60 * MIN) } } } }),
     "wrong schema": (route) => route.fulfill({ json: { schema_version: 2, generated_at: iso(0), swarm: {} } }),
+    // Codex 4C FIX: every one of the five agents must be present and well-formed.
+    "missing an agent": (route) => route.fulfill({ json: { schema_version: 1, generated_at: iso(-MIN), swarm: {
+      sakura: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      chaewon: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      kazuha: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      yunjin: { status: "online", last_heartbeat_utc: iso(-MIN) } } } }),
+    "an agent with an unknown status": (route) => route.fulfill({ json: { schema_version: 1, generated_at: iso(-MIN), swarm: {
+      sakura: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      chaewon: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      kazuha: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      yunjin: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      eunchae: { status: "great", last_heartbeat_utc: iso(-MIN) } } } }),
+    "an agent with a bad heartbeat date": (route) => route.fulfill({ json: { schema_version: 1, generated_at: iso(-MIN), swarm: {
+      sakura: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      chaewon: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      kazuha: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      yunjin: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      eunchae: { status: "online", last_heartbeat_utc: "yesterday" } } } }),
   };
   for (const [name, fulfill] of Object.entries(replayCases)) {
     test(`keeps the scripted replay when the snapshot is ${name}`, async ({ page }) => {
@@ -251,7 +269,7 @@ test.describe("agent overview status snapshot", () => {
         chaewon: { status: "online", last_heartbeat_utc: iso(-20 * MIN) },     // was online, now too old
         kazuha: { status: "offline", last_heartbeat_utc: null },
         yunjin: { status: "not_ready", last_heartbeat_utc: iso(-1 * MIN) },
-        eunchae: { status: "online", last_heartbeat_utc: iso(60 * MIN) },      // from the future
+        eunchae: { status: "online", last_heartbeat_utc: iso(2 * MIN) },       // from the future, within clock skew (Codex 4C FIX)
       },
       llm_latency: { p50_ms: 736.3, p95_ms: 6177.1, sample_count: 50, measured_on: "2026-10-02",
         source: "bench/results/2026-10-02-telemetry.json" },

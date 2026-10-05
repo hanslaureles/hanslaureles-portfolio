@@ -43,8 +43,9 @@
   const STATUS_URL = '/data/status.json';
   const AGENT_IDS = ['sakura', 'chaewon', 'kazuha', 'yunjin', 'eunchae'];
   const ONLINE_MAX_AGE_MS = 15 * 60 * 1000;  // eunchae_publisher.STALE_AFTER_S
-  const CLOCK_SKEW_MS = 5 * 60 * 1000;       // tolerated drift between viewer and workstation clocks
+  const CLOCK_SKEW_MS = 5 * 60 * 1000;       // tolerated drift for generated_at only, never for "online"
   const FETCH_TIMEOUT_MS = 5000;
+  const STATUSES = ['online', 'not_ready', 'stale', 'offline', 'unknown'];  // eunchae_publisher.STATUSES
   let snapshot = null;
 
   function parseUtc(value) {
@@ -61,20 +62,26 @@
     if (generatedAt === null || generatedAt > now + CLOCK_SKEW_MS) return null;
     if (!raw.swarm || typeof raw.swarm !== 'object') return null;
 
+    // All five agents must be present and well-formed (as eunchae_publisher.validate_status
+    // requires); a partial or odd swarm keeps the replay rather than guessing.
     const agents = {};
-    AGENT_IDS.forEach(id => {
+    for (const id of AGENT_IDS) {
       const s = raw.swarm[id];
-      const beat = s && typeof s === 'object' ? parseUtc(s.last_heartbeat_utc) : null;
-      const fresh = beat !== null && beat <= now + CLOCK_SKEW_MS && now - beat <= ONLINE_MAX_AGE_MS;
+      if (!s || typeof s !== 'object' || !STATUSES.includes(s.status)) return null;
+      const beat = parseUtc(s.last_heartbeat_utc);
+      if (s.last_heartbeat_utc !== null && beat === null) return null;
+
+      // A heartbeat after `now` is never fresh: like the publisher, treat it as unknown.
+      const fresh = beat !== null && beat <= now && now - beat <= ONLINE_MAX_AGE_MS;
       let state;
-      if (beat !== null && beat > now + CLOCK_SKEW_MS) state = 'unknown';       // heartbeat from the future
+      if (beat !== null && beat > now) state = 'unknown';
       else if (fresh && s.status === 'online') state = 'online';
       else if (fresh && s.status === 'not_ready') state = 'starting';
       else if (beat !== null) state = 'last-seen';
-      else if (s && s.status === 'offline') state = 'offline';
+      else if (s.status === 'offline') state = 'offline';
       else state = 'unknown';
       agents[id] = { state, beat };
-    });
+    }
 
     const lat = raw.llm_latency;
     const latency = lat && typeof lat === 'object' && Number.isFinite(lat.p50_ms) && Number.isFinite(lat.p95_ms)
