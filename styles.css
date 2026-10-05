@@ -332,7 +332,7 @@ picture {
 
 .brand-subtitle {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -581,8 +581,8 @@ picture {
 }
 
 .hero-chip {
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
   color: var(--text-secondary);
   background: var(--bg-subtle);
   padding: 5px 12px;
@@ -633,7 +633,7 @@ picture {
 
 .btn-micro-badge {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   background: var(--accent-subtle);
   color: var(--accent);
   padding: 2px 6px;
@@ -651,7 +651,7 @@ picture {
   margin-top: 26px;
   padding-top: 22px;
   border-top: 1px solid var(--border-subtle);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
 }
 
 .hero-stat-cell {
@@ -659,7 +659,7 @@ picture {
 }
 
 .hero-stat-num {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
   font-size: clamp(1.8rem, 2.8vw, 2.4rem);
   font-weight: 700;
   color: var(--text-primary);
@@ -674,7 +674,7 @@ picture {
 }
 
 .hero-stat-label {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 0.84rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -683,8 +683,8 @@ picture {
 }
 
 .hero-stat-sub {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   color: var(--text-muted);
   margin-top: 2px;
 }
@@ -830,7 +830,7 @@ picture {
 
 .tag-pill {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 3px 8px;
   border-radius: var(--radius-sm);
   background: var(--bg-subtle);
@@ -1060,7 +1060,7 @@ picture {
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   color: var(--accent);
@@ -1068,7 +1068,7 @@ picture {
 
 .future-status-pill {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: var(--text-muted);
   border: 1px dashed var(--border);
@@ -1291,7 +1291,7 @@ picture {
   border: 1px solid rgba(16, 185, 129, 0.4);
   color: var(--emerald-500);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   padding: 4px 10px;
@@ -1314,7 +1314,7 @@ picture {
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--text-secondary);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 500;
   padding: 4px 10px;
   border-radius: var(--radius-full);
@@ -1637,7 +1637,7 @@ picture {
 
 .case-meta-item .label {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
   margin-bottom: 4px;
@@ -1680,7 +1680,7 @@ picture {
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1737,7 +1737,7 @@ picture {
 
 .case-metric-label {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -2093,7 +2093,7 @@ picture {
 
 .pag-label {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
   margin-bottom: 6px;
@@ -2374,7 +2374,7 @@ picture {
     font-size: 0.98rem;
   }
   .brand-subtitle {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     max-width: 200px;
     white-space: nowrap;
     overflow: hidden;
@@ -2404,13 +2404,13 @@ picture {
   .hero-meta-bar .badge {
     width: 100%;
     justify-content: center;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     text-align: center;
   }
   .sentinel-beacon-btn {
     width: 100%;
     justify-content: center;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
   }
   .hero-headline-wrap {
     margin: 24px auto 24px auto;
@@ -2470,7 +2470,7 @@ picture {
   .telemetry-live-indicator {
     width: 100%;
     justify-content: center;
-    font-size: 0.68rem;
+    font-size: 0.75rem;
   }
   .agent-grid {
     grid-template-columns: 1fr;
@@ -2494,7 +2494,7 @@ picture {
     gap: 5px;
   }
   .terminal-title {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -2502,7 +2502,7 @@ picture {
     flex: 1;
   }
   .terminal-top-badge {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     flex-shrink: 0;
     white-space: nowrap;
   }
@@ -2519,12 +2519,12 @@ picture {
   }
   .term-quick-label {
     flex-shrink: 0;
-    font-size: 0.62rem;
+    font-size: 0.75rem;
   }
   .term-chip {
     flex-shrink: 0;
     white-space: nowrap;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     padding: 4px 8px;
   }
   .terminal-body {
@@ -2747,7 +2747,7 @@ picture {
 
 .agent-domain {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -2762,7 +2762,7 @@ picture {
 .agent-stack-tag {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   background: var(--bg-subtle);
   color: var(--text-secondary);
   padding: 3px 8px;
@@ -2927,7 +2927,7 @@ picture {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--slate-400);
 }
 
@@ -2953,7 +2953,7 @@ picture {
 }
 
 .term-quick-label {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--ink-400);
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -2965,7 +2965,7 @@ picture {
   border-radius: 4px;
   color: var(--slate-400);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 3px 8px;
   cursor: pointer;
   transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
@@ -3093,7 +3093,7 @@ picture {
 
 .term-badge {
   display: inline-block;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   padding: 1px 6px;
   border-radius: 3px;
   font-weight: 600;
@@ -3128,7 +3128,7 @@ picture {
 .term-table th {
   background: var(--ink-915);
   color: var(--ink-300);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -3241,7 +3241,7 @@ picture {
 
 .arch-box-subtitle {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 
@@ -3299,7 +3299,7 @@ picture {
 
 .sakura-trigger-tag {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   padding: 2px 6px;
   background: rgba(244, 114, 182, 0.15);
   color: var(--tone-pink);
@@ -3427,7 +3427,7 @@ picture {
 
 .sakura-tag {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   background: rgba(244, 114, 182, 0.15);
   color: var(--tone-pink);
   padding: 2px 6px;
@@ -3437,7 +3437,7 @@ picture {
 
 .sakura-sub {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   margin-top: 2px;
 }
@@ -3471,7 +3471,7 @@ picture {
   background: var(--bg-subtle);
   border-bottom: 1px solid var(--border-subtle);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
 }
 
@@ -3555,7 +3555,7 @@ picture {
 }
 
 .chips-label {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 
@@ -3647,7 +3647,7 @@ picture {
 
 .sakura-category-tag {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   color: var(--tone-pink);
   font-weight: 600;
@@ -3656,7 +3656,7 @@ picture {
 
 .sakura-score-badge {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--tone-emerald);
   background: rgba(16, 185, 129, 0.1);
   padding: 2px 8px;
@@ -3795,6 +3795,30 @@ picture {
     right: 16px;
     padding: 8px 14px;
     font-size: 0.82rem;
+  }
+}
+
+/* Under 375 px the pill covered body text; keep only the 🌸 (the button has an aria-label). */
+@media (max-width: 374px) {
+  .sakura-floating-trigger .sakura-trigger-text,
+  .sakura-floating-trigger .sakura-trigger-tag {
+    display: none;
+  }
+  .sakura-floating-trigger {
+    padding: 10px;
+  }
+  /* The hero status bar wrapped to three lines; the clock and label are extras. */
+  .sentinel-beacon-tag,
+  .sentinel-beacon-divider,
+  .sentinel-beacon-clock {
+    display: none;
+  }
+  .sentinel-beacon-status {
+    white-space: nowrap;
+  }
+  /* The nav subtitle truncated mid-word; the H1 already states the role. */
+  .brand-subtitle {
+    display: none;
   }
 }
 
@@ -3982,7 +4006,7 @@ picture {
 
 .git-badge {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   padding: 2px 7px;
   border-radius: var(--radius-sm);
   font-weight: 500;
@@ -4182,7 +4206,7 @@ picture {
   white-space: nowrap;
   flex-shrink: 0;
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -4234,7 +4258,7 @@ picture {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   cursor: pointer;
   padding: 4px 10px;
@@ -4323,7 +4347,7 @@ picture {
   background: rgba(16, 185, 129, 0.1);
   border: 1px solid rgba(16, 185, 129, 0.3);
   color: var(--tone-emerald);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
   padding: 3px 9px;
   border-radius: var(--radius-full);
@@ -4379,7 +4403,7 @@ picture {
 }
 
 .sentinel-metric-label {
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   letter-spacing: 0.05em;
   font-weight: 600;
@@ -4402,7 +4426,7 @@ picture {
 }
 
 .sentinel-metric-sub {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 
@@ -4425,7 +4449,7 @@ picture {
 }
 
 .sentinel-subheading-tag {
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 
@@ -4485,14 +4509,14 @@ picture {
 }
 
 .agent-fleet-domain {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   line-height: 1.2;
 }
 
 .agent-status-badge {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 600;
   padding: 3px 9px;
   border-radius: var(--radius-full);
@@ -4536,7 +4560,7 @@ picture {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 
@@ -4546,7 +4570,7 @@ picture {
 
 .agent-inline-action-btn {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--accent);
   background: transparent;
   border: none;
@@ -4569,7 +4593,7 @@ picture {
   height: 270px;
   overflow-y: auto;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   line-height: 1.5;
   display: flex;
   flex-direction: column;
@@ -4667,7 +4691,7 @@ picture {
     font-size: 1.25rem;
   }
   .sentinel-beacon-btn {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     padding: 5px 10px;
     gap: 6px;
   }
@@ -4692,10 +4716,10 @@ picture {
     font-size: 0.82rem;
   }
   .agent-fleet-role {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
   }
   .agent-status-badge {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     padding: 2px 7px;
   }
   .sentinel-actions-row {
@@ -4713,7 +4737,7 @@ picture {
     gap: 8px;
   }
   .terminal-title {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -4736,12 +4760,12 @@ picture {
   }
   .term-quick-label {
     flex-shrink: 0;
-    font-size: 0.62rem;
+    font-size: 0.75rem;
   }
   .term-chip {
     flex-shrink: 0;
     white-space: nowrap;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     padding: 4px 8px;
   }
   .terminal-body {
@@ -4814,7 +4838,7 @@ picture {
 
 .hardware-spec-label {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -4831,7 +4855,7 @@ picture {
 
 .hardware-spec-sub {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
   margin-top: 3px;
 }
@@ -4892,7 +4916,7 @@ picture {
 
 .lifecycle-actor {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 
@@ -5040,7 +5064,7 @@ picture {
   top: 0;
   left: 4px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--accent);
   white-space: nowrap;
@@ -5057,7 +5081,7 @@ picture {
   justify-content: space-between;
   margin: 6px 0 0 calc(var(--trace-label-w) + 12px);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 
@@ -5203,7 +5227,7 @@ picture {
 .routing-table th {
   background: var(--bg-secondary);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-muted);
@@ -5231,7 +5255,7 @@ picture {
 
 .routing-speed-badge {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 2px 8px;
   border-radius: 999px;
   background: rgba(56, 189, 248, 0.1);
@@ -5425,6 +5449,13 @@ h1, h2 {
 .lightbox-close-btn {
   min-height: 32px;
 }
+/* 24 px tap targets for plain evidence links (tables, <dd>, source notes). Vertical
+   padding on an inline link grows its hit area without changing line height. */
+.case-body-section a:not([class]),
+.case-summary a:not([class]) {
+  padding-block: 4px;
+}
+
 /* D2: one measured result on the first screen, as a link to its source. */
 .hero-chip-proof {
   color: inherit;
@@ -5499,10 +5530,8 @@ h1, h2 {
 .u-d-grid.u-d-grid.u-d-grid { display: grid; }
 .u-d-inline-flex.u-d-inline-flex.u-d-inline-flex { display: inline-flex; }
 .u-ff-font-mono.u-ff-font-mono.u-ff-font-mono { font-family: var(--font-mono); }
-.u-fs-0p72rem.u-fs-0p72rem.u-fs-0p72rem { font-size: 0.72rem; }
 .u-fs-0p75rem.u-fs-0p75rem.u-fs-0p75rem { font-size: 0.75rem; }
 .u-fs-0p78rem.u-fs-0p78rem.u-fs-0p78rem { font-size: 0.78rem; }
-.u-fs-0p7rem.u-fs-0p7rem.u-fs-0p7rem { font-size: 0.7rem; }
 .u-fs-0p85rem.u-fs-0p85rem.u-fs-0p85rem { font-size: 0.85rem; }
 .u-fs-0p88rem.u-fs-0p88rem.u-fs-0p88rem { font-size: 0.88rem; }
 .u-fs-0p8rem.u-fs-0p8rem.u-fs-0p8rem { font-size: 0.8rem; }
