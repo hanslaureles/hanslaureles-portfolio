@@ -937,7 +937,7 @@
 <div class="term-line">  3. 🎨 <strong>Yunjin</strong>   | Document Architect  | #portfolio-audits | <span class="term-badge">DESIGN CRITIC</span></div>
 <div class="term-line">     └─ Automated DOM &amp; asset audits (!audit), design critiques (!critique)</div>
 <div class="term-line">  4. 🐯 <strong>Chaewon</strong>  | Career Strategist   | #job-tailoring    | <span class="term-badge">ATS RADAR</span></div>
-<div class="term-line">     └─ Job scouting (!scout), ATS tailoring (!apply), headless vector PDF (!pdf)</div>
+<div class="term-line">     └─ Job scouting (!scout), ATS tailoring (!tailor), headless vector PDF (!pdf)</div>
 <div class="term-line">  5. 🥔 <strong>Eunchae</strong>  | System Guardian     | #pc-vitals        | <span class="term-badge">VITALS WATCHDOG</span></div>
 <div class="term-line">     └─ Hardware vitals via psutil (5-min cycle), health reports (!health)</div>
 
