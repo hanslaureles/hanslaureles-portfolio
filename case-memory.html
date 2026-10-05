@@ -364,8 +364,8 @@
           <li><a href="#decisions">02. Design Decisions</a></li>
           <li><a href="#retrospective">03. What Broke &amp; What I&rsquo;d Change</a></li>
           <li><a href="#simulator">04. Live Recall Simulator</a></li>
-          <li><a href="#architecture">05. 4-Pillar Engine Specs</a></li>
-          <li><a href="#math">06. Mathematical BM25 Scoring</a></li>
+          <li><a href="#architecture">05. The 4 Parts of Memory Core</a></li>
+          <li><a href="#math">06. How BM25 Ranks Lessons</a></li>
           <li><a href="#heuristics">07. The 10 Lessons in the Store</a></li>
           <li><a href="#results">08. Impact &amp; Benchmarks</a></li>
         </ul>
@@ -559,7 +559,7 @@
         <!-- Section 04: Mathematical Retrieval Mechanics -->
         <section id="math" class="case-body-section">
           <div class="section-tag">// 06 · ALGORITHMIC MECHANICS</div>
-          <h2>Mathematical Retrieval Mechanics</h2>
+          <h2>How BM25 Ranks Lessons</h2>
           <p>
             Vector embeddings alone frequently struggle with precise syntactic rules (e.g. distinguishing <code>`"`</code> from <code>`'`</code> in PowerShell or exact CSS properties like <code>white-space: nowrap</code>). I designed a domain-weighted BM25 scoring algorithm:
           </p>

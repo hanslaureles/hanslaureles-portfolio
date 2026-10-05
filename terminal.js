@@ -48,7 +48,7 @@
     const INITIAL_BANNER = `
 <div class="term-line term-comment"># Hans's Multi-Agent System // interactive portfolio console (runs in your browser)</div>
 <div class="term-line"><span class="term-prompt">&gt;</span> <span class="term-cmd">list-agents</span></div>
-<div class="term-line"><span class="term-success">[MULTI-AGENT]</span> 5 agents: Sakura, Chaewon, Yunjin, Kazuha, Eunchae <span class="term-badge">RUN LOCALLY</span></div>
+<div class="term-line"><span class="term-success">[MULTI-AGENT]</span> 5 agents: Sakura, Chaewon, Yunjin, Kazuha, Eunchae <span class="term-badge">HOSTED ON MY PC</span></div>
 <div class="term-line"><span class="term-success">[COORDINATOR]</span> Sakura: daily briefings, Gmail triage &amp; the !apply pipeline.</div>
 <div class="term-line"><span class="term-success">[CAREER]</span> Chaewon: job scouting, ATS tailoring &amp; single-page resume PDFs.</div>
 <div class="term-line"><span class="term-success">[CODE &amp; KNOWLEDGE]</span> Kazuha: answers codebase questions &amp; reviews uncommitted changes.</div>
@@ -263,7 +263,7 @@
           appendOutput(`
             <div class="term-line term-success">[FINTRACK-DISPATCH] Personal Finance &amp; Behavioral Budgeting UX</div>
             <div class="term-line">📊 Two-tap transaction input with non-shame, loss-aversion feedback (Figma prototype).</div>
-            <div class="term-line">⚡ Auto Layout 5.0 design tokens · Single-ceiling daily burn rate.</div>
+            <div class="term-line">⚡ Auto Layout components &amp; variables · One daily safe-to-spend number.</div>
             <div class="term-line">👉 <a href="case-fintrack.html" class="term-link">Read FinTrack Case Study (case-fintrack.html) ↗</a></div>
           `);
           break;
@@ -272,7 +272,7 @@
         case 'vellum':
           appendOutput(`
             <div class="term-line term-success">[VELLUM-DISPATCH] Mindful Reflection Workspace Mobile Concept</div>
-            <div class="term-line">🌿 Combats notification fatigue through fluid gesture journaling and dual-scale typography in Figma.</div>
+            <div class="term-line">🌿 A Figma journaling concept: swipe-based check-ins, no push nagging, a two-scale type hierarchy.</div>
             <div class="term-line">⚡ Protopie gesture prototypes · Ambient contrast palettes · No streaks, no red badges.</div>
             <div class="term-line">👉 <a href="case-vellum.html" class="term-link">Read Vellum Case Study (case-vellum.html) ↗</a></div>
           `);
@@ -665,7 +665,7 @@
   <div class="term-line term-muted">  • Distributed Systems: AWS Lambda, DynamoDB, Redis Caching, Node.js</div>
 </div>
 <div class="term-block" style="margin: 6px 0;">
-  <div class="term-line"><span class="term-highlight">03. EXECUTIVE INTERFACE CRAFT &amp; FRONTEND</span></div>
+  <div class="term-line"><span class="term-highlight">03. FRONTEND &amp; INTERFACE DESIGN</span></div>
   <div class="term-line term-muted">  • Modern Web: Vanilla JS/ES6+, React, Next.js, TypeScript, HTML5 Semantic Living Specs</div>
   <div class="term-line term-muted">  • Design Systems: CSS Custom Properties, Design Tokens, Swiss Typography Hierarchy</div>
   <div class="term-line term-muted">  • High-Dwell Telemetry Boards, Terminal UIs, WCAG 2.1 AA (axe-checked in CI)</div>
@@ -740,7 +740,7 @@
           {
             doc: 'master_resume.md: Skills',
             score: '0.891',
-            text: 'Executive Interface Craft: Design Tokens, CSS Custom Properties, Swiss Editorial Typography, WCAG 2.1 AA accessibility checks.'
+            text: 'Interface design: design tokens, CSS custom properties, Swiss editorial typography, WCAG 2.1 AA accessibility checks.'
           }
         ];
       } else if (qLower.includes('email') || qLower.includes('gmail') || qLower.includes('eunchae')) {
@@ -853,7 +853,7 @@
           </div>
         `;
       });
-      html += `<div class="term-line term-success">✓ Keyword-matched in your browser against a sample of experience_store.jsonl (the Python BM25 engine measures 0.8 ms median recall)</div>`;
+      html += `<div class="term-line term-success">✓ Keyword-matched in your browser against a sample of experience_store.jsonl (the Python BM25 engine measures 0.81 ms median on the 10-lesson store)</div>`;
       appendOutput(html.trim());
     }
 

@@ -140,7 +140,7 @@
       category: "Algorithmic UX & FinTech",
       keywords: ["fintrack", "fintech", "finance", "budget", "budgeting", "expense", "transaction", "loss aversion", "heuristics", "money", "spending"],
       summary: "Hans architected FinTrack to eliminate personal budget abandonment through a two-tap transaction input flow, behavioral loss aversion nudges, and predictive month-end burn curves.",
-      evidence: "Engineered with modular Figma design tokens, Auto Layout 5.0, single-ceiling daily velocity monitoring, and non-shame behavioral economics feedback, prototyped in Figma.",
+      evidence: "A Figma prototype built from Auto Layout components and variables: a two-tap expense flow, one daily safe-to-spend number, and neutral feedback on overspends.",
       linkUrl: "case-fintrack.html",
       linkText: "📊 Read FinTrack Mobile Case Study →"
     },
@@ -150,7 +150,7 @@
       category: "Interaction Systems & Mobile UX",
       keywords: ["vellum", "minimalist", "calm", "wellness", "mood tracking", "reflection", "mobile concept", "ambient", "os", "gestures"],
       summary: "Hans designed Vellum, an ambient mobile reflection companion engineered to combat notification fatigue and cognitive context-switching friction.",
-      evidence: "Features fluid gesture-driven journaling, dual-scale Swiss typographic hierarchy, and calm ambient color palettes built using Auto Layout 5.0 tokenized components.",
+      evidence: "A Figma and ProtoPie prototype with swipe-based mood check-ins, a two-scale type hierarchy and a calm palette, built from Auto Layout components.",
       linkUrl: "case-vellum.html",
       linkText: "🌿 Explore Vellum Mobile Case Study →"
     },
