@@ -336,11 +336,13 @@ test("Aura store has 44 px search/back targets and a short promo strip at 320 px
   expect(await h(".promo-strip")).toBeLessThanOrEqual(120); // was 195 px, now ~98 px
 });
 
-// Audit D: one chip per command in the terminal's quick-command row.
-test("terminal quick-command chips are not duplicated", async ({ page }) => {
+// Audit D: one chip per command, and at most 8 chips (choice overload); `help` lists the rest.
+test("terminal quick-command chips are unique, at most 8, and include help", async ({ page }) => {
   await page.goto("index.html", { waitUntil: "domcontentloaded" });
   const cmds = await page.locator(".term-chip").evaluateAll((els) => els.map((el) => el.dataset.cmd));
   expect(cmds.length).toBe(new Set(cmds).size);
+  expect(cmds.length).toBeLessThanOrEqual(8);
+  expect(cmds).toContain("help");
 });
 
 // At /aura-store a relative "styles.css" or "index.html" resolves to the portfolio's own
