@@ -59,6 +59,13 @@ RETRACTED = [
      "unmeasured outcome or puffery in an Ask Sakura answer (Codex plain-language NOTE)"),
     (r"React,? (&amp; |& |and )?Next\.?js|Next\.js, TypeScript",
      "Next.js claimed as a skill (Hans, 2026-10-05: no real Next.js work to show)"),
+    # Glossary (copy audit §1): visible names only. Lowercase search keywords in
+    # sakura-copilot.js and code identifiers (swarm, sentinel-*) stay allowed.
+    (r"\b(multi-|5-)?agent swarm\b|agent daemons?\b|operations squad|"
+     r"(?-i:Divine Wisdom|Thought Acceleration|[Tt]elepathic|Tensura|Sentinel HUD|System Sentinel|RAG Sentinel|"
+     r"UI Sentinel|Git Sentinel|Developer Memory|BM25 Flywheel|Agent Flywheel|Episodic Memory Retrieval|"
+     r"Payment Rails|Philippine [Rr]ails|RAILS\b)",
+     "retired glossary term (copy audit §1: say LSFM AI HQ / 5-agent team, Memory Core, voice filter, payment options)"),
 ]
 
 

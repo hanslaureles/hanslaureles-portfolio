@@ -327,9 +327,9 @@
           appendOutput(`
             <div class="term-line term-success">[GITHUB-DISPATCH] Connecting to GitHub profile...</div>
             <div class="term-line">🐙 Profile: <a href="https://github.com/hanslaureles" target="_blank" rel="noopener" class="term-link">github.com/hanslaureles ↗</a></div>
-            <div class="term-line">⭐ Multi-Agent Swarm: <a href="https://github.com/hanslaureles/lsfm-ai-hq" target="_blank" rel="noopener" class="term-link">github.com/hanslaureles/lsfm-ai-hq ↗</a></div>
+            <div class="term-line">⭐ LSFM AI HQ (5-agent team): <a href="https://github.com/hanslaureles/lsfm-ai-hq" target="_blank" rel="noopener" class="term-link">github.com/hanslaureles/lsfm-ai-hq ↗</a></div>
             <div class="term-line">💠 Voice Copilot HUD: <a href="https://github.com/hanslaureles/manas-ciel" target="_blank" rel="noopener" class="term-link">github.com/hanslaureles/manas-ciel ↗</a></div>
-            <div class="term-line">🧠 Developer Memory: <a href="https://github.com/hanslaureles/cognitive-memory-core" target="_blank" rel="noopener" class="term-link">github.com/hanslaureles/cognitive-memory-core ↗</a></div>
+            <div class="term-line">🧠 Memory Core: <a href="https://github.com/hanslaureles/cognitive-memory-core" target="_blank" rel="noopener" class="term-link">github.com/hanslaureles/cognitive-memory-core ↗</a></div>
           `);
           window.open('https://github.com/hanslaureles', '_blank');
           break;
