@@ -59,6 +59,8 @@ RETRACTED = [
      "unmeasured outcome or puffery in an Ask Sakura answer (Codex plain-language NOTE)"),
     (r"React,? (&amp; |& |and )?Next\.?js|Next\.js, TypeScript",
      "Next.js claimed as a skill (Hans, 2026-10-05: no real Next.js work to show)"),
+    (r"badge: ['\"](Bestseller|Trending|Popular)",
+     "Aura popularity tag (Hans, 2026-10-06: the demo store has no sales to rank)"),
     # Glossary (copy audit §1): visible names only. Lowercase search keywords in
     # sakura-copilot.js and code identifiers (swarm, sentinel-*) stay allowed.
     (r"\b(multi-|5-)?agent swarm\b|agent daemons?\b|operations squad|"

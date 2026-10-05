@@ -16,7 +16,6 @@
       category: 'iced',
       categoryLabel: 'Iced Specialty · 12oz',
       basePrice: 185,
-      badge: 'Bestseller',
       image: '/aura-store/assets/spanish_latte.jpg',
       description: 'Velvety espresso marbling into sweetened condensed milk and cold oat milk over handcrafted ice cubes. Smooth, creamy, and delightful.',
       isBeverage: true
@@ -38,7 +37,6 @@
       category: 'iced',
       categoryLabel: 'Iced Specialty · 12oz',
       basePrice: 195,
-      badge: 'Popular',
       image: '/aura-store/assets/caramel_macchiato.jpg',
       description: 'Layers of vanilla sweet milk and bold espresso, finished with dense vanilla cold foam and a rich crisscross golden caramel drizzle.',
       isBeverage: true
@@ -60,7 +58,6 @@
       category: 'iced',
       categoryLabel: 'Botanical & Tea · 12oz',
       basePrice: 190,
-      badge: 'Trending',
       image: '/aura-store/assets/matcha_cloud_latte.jpg',
       description: 'First-harvest ceremonial Japanese Uji matcha layered over chilled oat milk, crowned with a velvety sweet vanilla cloud foam.',
       isBeverage: true
@@ -175,7 +172,7 @@
       card.className = 'product-card';
       card.innerHTML = `
         <div class="card-img-wrap">
-          <span class="card-tag">${prod.badge}</span>
+          ${prod.badge ? `<span class="card-tag">${prod.badge}</span>` : ''}
           ${window.AuraMedia.picture(prod.image, prod.name, '(max-width: 640px) calc(100vw - 48px), 400px', 'loading="lazy"')}
         </div>
         <div class="card-body">
