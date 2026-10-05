@@ -885,7 +885,7 @@
           <h2>What the System Guarantees</h2>
           <p>
             The figures below are properties you can confirm by reading the public code, not performance claims.
-            Latency and accuracy benchmarks are the next milestone (see the footnote).
+            The one measured number, LLM round-trip latency, is in the footnote with its source; triage accuracy is the next milestone.
           </p>
 
           <div class="benchmark-grid">
@@ -912,9 +912,7 @@
           </div>
           <p class="u-fs-0p8rem u-c-text-muted u-mt-n12px u-mb-24px">*No paid
             servers: the agents run on a personal workstation, and cloud LLM calls go to the Groq and Gemini APIs. API
-            spend isn't stated here because there is no dated billing record to cite yet. Latency and triage accuracy aren't listed: the client doesn't stream responses yet (so
-            time-to-first-token isn't measured), and a labeled email evaluation set is still to be built. Both are on
-            the roadmap.</p>
+            spend isn't stated here because there is no dated billing record to cite yet. LLM round trip (not streamed, as the bots call it): <strong>736 ms p50, 6.18 s p95</strong> over 50 calls, ten per agent, in cloud mode on 2026-10-02, from 312 ms (Sakura, Groq) to 4.86 s (Yunjin, Gemini) at p50 (<a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-telemetry.md" target="_blank" rel="noopener noreferrer"><code>2026-10-02-telemetry.md</code></a>). Triage accuracy isn't listed: a labeled email evaluation set is still to be built.</p>
 
           <h3 class="u-m-32px-0-12px-0">Failure Modes &amp; Where the Code Handles Them</h3>
           <p>

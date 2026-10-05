@@ -241,7 +241,7 @@
         <div><dt>Constraint</dt><dd>Recall runs before every task on a local workstation, so it uses the Python standard library only: no model download, no vector database.</dd></div>
         <div><dt>Decision</dt><dd>Field-weighted BM25 with tag and severity boosts over a JSONL store of post-mortems.</dd></div>
         <div><dt>Measured result</dt><dd>On 30 held-out queries: recall@3 0.90, MRR 0.87, 0.81&nbsp;ms p50 on the 10-entry store (i5-12400F, Python 3.11, 2026-10-02). A naive substring baseline scores about the same at this size (<a href="#results">eval</a>).</dd></div>
-        <div><dt>Code</dt><dd><a href="https://github.com/hanslaureles/cognitive-memory-core/tree/main/eval" target="_blank" rel="noopener noreferrer">cognitive-memory-core/eval</a>, rerun with <code>python eval/run_eval.py</code></dd></div>
+        <div><dt>Code</dt><dd><a href="https://github.com/hanslaureles/cognitive-memory-core/tree/7f2525845c15f6778f835a037e16b1fa54961353/eval" target="_blank" rel="noopener noreferrer">cognitive-memory-core/eval</a>, rerun with <code>python eval/run_eval.py</code></dd></div>
       </dl>
 
       <div class="u-d-flex u-gap-12px u-wrap-wrap u-mb-36px">
@@ -718,7 +718,7 @@
             Windows 11, Python 3.11.9, commit <code>a9a7e96</code> of
             <a href="https://github.com/hanslaureles/cognitive-memory-core" target="_blank" rel="noopener">cognitive-memory-core</a>.
             Each call includes reading and parsing the JSONL store. Synthetic stores are the real entries plus seeded
-            filler drawn from the store's vocabulary. Full output: <code>eval/results/2026-10-02.md</code>.</p>
+            filler drawn from the store's vocabulary. Full output: <a href="https://github.com/hanslaureles/cognitive-memory-core/blob/7f2525845c15f6778f835a037e16b1fa54961353/eval/results/2026-10-02.md" target="_blank" rel="noopener noreferrer"><code>eval/results/2026-10-02.md</code></a>.</p>
           <p>
             What this shows: on today's 10-entry store, BM25 is not clearly better than a substring search. It ties on
             MRR, and with 10 entries a top-3 list covers 30% of the store, so recall@3 says little. Its three misses are

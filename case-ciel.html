@@ -507,7 +507,7 @@
               <span class="u-c-accent">🛠️</span> Production Architecture Note
             </h3>
             <p class="u-fs-0p88rem u-lh-1p6 u-c-text-secondary u-m-0">
-              While <code>edge-tts</code> needs no API key and returned an English clip in 0.42 s p50 in the 2026-10-01 bench (a network round trip to Microsoft's service), enterprise production deployment would swap it for self-hosted Kokoro/Vits pipelines or dedicated WebRTC audio streaming to satisfy enterprise uptime SLAs.
+              While <code>edge-tts</code> needs no API key and returned an English clip in 0.42 s p50 in the <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-01.md" target="_blank" rel="noopener noreferrer">2026-10-01 bench</a> (a network round trip to Microsoft's service), enterprise production deployment would swap it for self-hosted Kokoro/Vits pipelines or dedicated WebRTC audio streaming to satisfy enterprise uptime SLAs.
             </p>
           </div>
         </section>
@@ -785,7 +785,7 @@ tools = [
           </figure>
           <p>
             Every voice turn runs through these stages on my workstation (Intel Core i5-12400F, 16GB DDR4, AMD Radeon RX 6600 XT, Windows 11). The p50 column comes from <code>bench/bench_ciel.py</code> in the public repo: N = 10 runs per stage on 2026-10-01 (full results, including p95 and max:
-            <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/main/bench/results/2026-10-01.md" target="_blank" rel="noopener"><code>bench/results/2026-10-01.md</code></a>). Network stages are round trips from this machine at that time, not compute times. A full mission for a general-knowledge prompt (routing, synthesis and bilingual speech) took <strong>4.43 s p50</strong> (max 5.71 s).
+            <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-01.md" target="_blank" rel="noopener noreferrer"><code>bench/results/2026-10-01.md</code></a>). Network stages are round trips from this machine at that time, not compute times. A full mission for a general-knowledge prompt (routing, synthesis and bilingual speech) took <strong>4.43 s p50</strong> (max 5.71 s).
           </p>
 
           <!-- Scrolls sideways on narrow screens, like the table in case-memory.html -->
@@ -868,7 +868,7 @@ tools = [
           </table>
           </div>
           <p class="u-fs-0p8rem u-c-text-muted">
-            Measured 2026-10-02 with <code>bench/bench_ciel.py --stages e2e_mission --runs 10</code>: the same general-knowledge prompt, Groq paced 45 s between runs, on an Intel Core i5-12400F, Windows 11, Python 3.11.9, ffmpeg 9.0.2, edge-tts 7.2.8. Network round trips from this machine, not compute times; with 10 runs, p95 is the max. <strong>Private workstation build</strong> (LE-SSERAFIM-AI-HQ <code>3315b69</code> before, <code>3eedda9</code> after); the streaming code and these results are not yet in the public lsfm-ai-hq repo.
+            Measured 2026-10-02 with <code>bench/bench_ciel.py --stages e2e_mission --runs 10</code>: the same general-knowledge prompt, Groq paced 45 s between runs, on an Intel Core i5-12400F, Windows 11, Python 3.11.9, ffmpeg 9.0.2, edge-tts 7.2.8. Network round trips from this machine, not compute times; with 10 runs, p95 is the max. Code: LE-SSERAFIM-AI-HQ <code>3315b69</code> (before) and <code>3eedda9</code> (after), public in lsfm-ai-hq since <code>14a319f</code> (<a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/speech_stream.py" target="_blank" rel="noopener noreferrer"><code>speech_stream.py</code></a>). Full results: <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-before.md" target="_blank" rel="noopener noreferrer"><code>ttfa-before.md</code></a>, <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-after.md" target="_blank" rel="noopener noreferrer"><code>ttfa-after.md</code></a>.
           </p>
           <p>
             The trade-off is in the second row. The first sentence is heard about 3.2 s sooner at p50, but the joined MP3 kept for replay waits for the slowest clip. In one of the ten runs a single Edge-TTS clip took 6.2 s, which set the 7.20 s worst case. Clips play strictly in order, so a slow clip also holds back the sentences after it; the pauses this causes between sentences are not measured yet.
