@@ -92,6 +92,28 @@ for (const path of PAGES) {
       });
     }
 
+    // Visual pass (audit D): 12 px text floor and 24 px link targets (WCAG 2.5.8) at 320 px.
+    // SVG text is skipped: its units scale with the drawing.
+    test("has no text under 12 px or links under 24 px tall at 320 px", async ({ page }) => {
+      await page.setViewportSize({ width: 320, height: 812 });
+      await page.goto(path, { waitUntil: "networkidle" });
+      const { small, tiny } = await page.evaluate(() => {
+        const small = [];
+        for (const el of document.querySelectorAll("body *")) {
+          if (el.closest("svg") || ![...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim())) continue;
+          const cs = getComputedStyle(el);
+          if (cs.display === "none" || cs.visibility === "hidden" || !el.getClientRects().length) continue;
+          if (parseFloat(cs.fontSize) < 11.95) small.push(`${el.tagName.toLowerCase()}.${el.className} ${cs.fontSize}`);
+        }
+        const tiny = [...document.querySelectorAll("main a")]
+          .filter((a) => { const r = a.getBoundingClientRect(); return r.width && r.height && r.height < 23.5; })
+          .map((a) => `${a.textContent.trim().slice(0, 30)} ${Math.round(a.getBoundingClientRect().height)}px`);
+        return { small, tiny };
+      });
+      expect(small).toEqual([]);
+      expect(tiny).toEqual([]);
+    });
+
     test("every local link and asset resolves", async ({ page, request }) => {
       await page.goto(path, { waitUntil: "domcontentloaded" });
       const urls = await page.evaluate(() => {
