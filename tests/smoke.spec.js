@@ -205,6 +205,68 @@ for (const scheme of ["light", "dark"]) {
     });
   });
 }
+// 4C: the agent overview reads /data/status.json. It may only say "online" for a heartbeat
+// under 15 minutes old at view time, and any bad or missing file must leave the replay intact.
+test.describe("agent overview status snapshot", () => {
+  const iso = (offsetMs) => new Date(Date.now() + offsetMs).toISOString();
+  const MIN = 60_000;
+  const badges = (page) => page.locator(".agent-fleet-item .agent-status-badge");
+
+  async function openWith(page, fulfill) {
+    const errors = [];
+    // Chromium itself logs every failed fetch ("Failed to load resource … 404"); page code
+    // cannot suppress that line, so only errors from our scripts count here.
+    page.on("console", (m) => m.type() === "error" && !m.text().startsWith("Failed to load resource") && errors.push(m.text()));
+    page.on("pageerror", (e) => errors.push(e.message));
+    await page.route("**/data/status.json", fulfill);
+    await page.goto("index.html", { waitUntil: "networkidle" });
+    await page.locator("#sentinelToggleBtn").click();
+    return errors;
+  }
+
+  const replayCases = {
+    "missing (404)": (route) => route.fulfill({ status: 404, body: "" }),
+    "not JSON": (route) => route.fulfill({ status: 200, contentType: "application/json", body: "{oops" }),
+    "empty body": (route) => route.fulfill({ status: 200, contentType: "application/json", body: "" }),
+    "generated in the future": (route) => route.fulfill({ json: {
+      schema_version: 1, generated_at: iso(60 * MIN),
+      swarm: { sakura: { status: "online", last_heartbeat_utc: iso(60 * MIN) } } } }),
+    "wrong schema": (route) => route.fulfill({ json: { schema_version: 2, generated_at: iso(0), swarm: {} } }),
+  };
+  for (const [name, fulfill] of Object.entries(replayCases)) {
+    test(`keeps the scripted replay when the snapshot is ${name}`, async ({ page }) => {
+      const errors = await openWith(page, fulfill);
+      await expect(page.locator("#agentOverviewSourceVal")).toHaveText("REPLAY");
+      await expect(badges(page)).toHaveText(Array(5).fill("● LOCAL"));
+      expect(errors).toEqual([]);
+    });
+  }
+
+  test("says online only for fresh heartbeats", async ({ page }) => {
+    const errors = await openWith(page, (route) => route.fulfill({ json: {
+      schema_version: 1,
+      generated_at: iso(-1 * MIN),
+      swarm: {
+        sakura: { status: "online", last_heartbeat_utc: iso(-2 * MIN) },       // fresh
+        chaewon: { status: "online", last_heartbeat_utc: iso(-20 * MIN) },     // was online, now too old
+        kazuha: { status: "offline", last_heartbeat_utc: null },
+        yunjin: { status: "not_ready", last_heartbeat_utc: iso(-1 * MIN) },
+        eunchae: { status: "online", last_heartbeat_utc: iso(60 * MIN) },      // from the future
+      },
+      llm_latency: { p50_ms: 736.3, p95_ms: 6177.1, sample_count: 50, measured_on: "2026-10-02",
+        source: "bench/results/2026-10-02-telemetry.json" },
+      missions: { application_packages: 0, window_days: 7, source: "memory/applications_log.md" },
+    } }));
+    // DOM order: sakura, chaewon, kazuha, yunjin, eunchae
+    await expect(badges(page)).toHaveText(
+      ["● ONLINE", "LAST SEEN 20 MIN AGO", "OFFLINE", "● STARTING", "UNKNOWN"]);
+    await expect(page.locator("#agentOverviewAgentsVal")).toHaveText("1/5 ONLINE");
+    await expect(page.locator("#agentOverviewSourceSub")).toHaveText("Published 1 min ago");
+    await expect(page.locator("#agentOverviewMeta")).toContainText("p50 736 ms, p95 6,177 ms (N=50, measured 2026-10-02)");
+    expect(errors).toEqual([]);
+  });
+});
+
 // 3E-10: the search field showed "Sear…" on phones. Its placeholder must fit whole.
 test("Aura store search shows its whole placeholder from 400 to 1280 px", async ({ page }) => {
   await page.goto("aura-store/index.html", { waitUntil: "networkidle" });

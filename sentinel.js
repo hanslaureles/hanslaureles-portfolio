@@ -1,8 +1,12 @@
 /**
- * SENTINEL — AGENT SYSTEM OVERVIEW (SIMULATED REPLAY)
- * The portfolio has no live connection to the LSFM swarm, which runs on a local workstation.
- * Everything in this panel is a scripted replay, and each event mirrors a real schedule or
- * pipeline step in LE-SSERAFIM-AI-HQ (bot_*.py). No numbers are generated or faked.
+ * AGENT OVERVIEW PANEL
+ * The portfolio has no live connection to the LSFM AI HQ agents, which run on a local workstation.
+ * - Agent status comes from /data/status.json, a snapshot that LE-SSERAFIM-AI-HQ's
+ *   eunchae_publisher writes on demand. A bot reads "online" only if its heartbeat is under
+ *   15 minutes old at the moment the page is viewed; anything older reads "last seen …".
+ * - If the snapshot is missing or malformed, the panel stays on the scripted replay.
+ * - The event stream is always a scripted replay; each event mirrors a real schedule or
+ *   pipeline step in LE-SSERAFIM-AI-HQ (bot_*.py). No numbers are generated or faked.
  */
 
 (function () {
@@ -35,6 +39,146 @@
     { agent: 'SAKURA', emoji: '🌸', msg: 'Master proposal compiled and posted to the approvals channel for review.' }
   ];
 
+  // --- Agent status snapshot (/data/status.json, schema 1) ---
+  const STATUS_URL = '/data/status.json';
+  const AGENT_IDS = ['sakura', 'chaewon', 'kazuha', 'yunjin', 'eunchae'];
+  const ONLINE_MAX_AGE_MS = 15 * 60 * 1000;  // eunchae_publisher.STALE_AFTER_S
+  const CLOCK_SKEW_MS = 5 * 60 * 1000;       // tolerated drift between viewer and workstation clocks
+  const FETCH_TIMEOUT_MS = 5000;
+  let snapshot = null;
+
+  function parseUtc(value) {
+    if (typeof value !== 'string') return null;
+    const t = Date.parse(value);
+    return Number.isFinite(t) ? t : null;
+  }
+
+  // Turns the raw file into what the panel shows, judged at time `now` (ms). Returns null
+  // for anything that is not a usable schema-1 snapshot, so the caller keeps the replay.
+  function parseStatus(raw, now) {
+    if (!raw || typeof raw !== 'object' || raw.schema_version !== 1) return null;
+    const generatedAt = parseUtc(raw.generated_at);
+    if (generatedAt === null || generatedAt > now + CLOCK_SKEW_MS) return null;
+    if (!raw.swarm || typeof raw.swarm !== 'object') return null;
+
+    const agents = {};
+    AGENT_IDS.forEach(id => {
+      const s = raw.swarm[id];
+      const beat = s && typeof s === 'object' ? parseUtc(s.last_heartbeat_utc) : null;
+      const fresh = beat !== null && beat <= now + CLOCK_SKEW_MS && now - beat <= ONLINE_MAX_AGE_MS;
+      let state;
+      if (beat !== null && beat > now + CLOCK_SKEW_MS) state = 'unknown';       // heartbeat from the future
+      else if (fresh && s.status === 'online') state = 'online';
+      else if (fresh && s.status === 'not_ready') state = 'starting';
+      else if (beat !== null) state = 'last-seen';
+      else if (s && s.status === 'offline') state = 'offline';
+      else state = 'unknown';
+      agents[id] = { state, beat };
+    });
+
+    const lat = raw.llm_latency;
+    const latency = lat && typeof lat === 'object' && Number.isFinite(lat.p50_ms) && Number.isFinite(lat.p95_ms)
+      && Number.isInteger(lat.sample_count) && lat.sample_count > 0 && typeof lat.measured_on === 'string'
+      ? { p50: lat.p50_ms, p95: lat.p95_ms, n: lat.sample_count, date: lat.measured_on }
+      : null;
+    const m = raw.missions;
+    const packages = m && Number.isInteger(m.application_packages) && m.application_packages >= 0
+      ? { count: m.application_packages, days: m.window_days } : null;
+
+    return { generatedAt, agents, latency, packages };
+  }
+
+  function timeAgo(ms) {
+    const min = Math.floor(Math.max(0, ms) / 60000);
+    if (min < 1) return 'just now';
+    if (min < 60) return `${min} min ago`;
+    const h = Math.floor(min / 60);
+    if (h < 48) return `${h} h ago`;
+    return `${Math.floor(h / 24)} days ago`;
+  }
+
+  const BADGES = {
+    'online': ['badge-online', () => '● ONLINE'],
+    'starting': ['badge-ready', () => '● STARTING'],
+    'last-seen': ['badge-stale', (a, now) => `LAST SEEN ${timeAgo(now - a.beat).toUpperCase()}`],
+    'offline': ['badge-offline', () => 'OFFLINE'],
+    'unknown': ['badge-offline', () => 'UNKNOWN']
+  };
+
+  function setText(id, text) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  }
+
+  // Re-run on every open: "online" and "… ago" depend on when the panel is viewed.
+  function renderSnapshot() {
+    if (!snapshot) return;
+    const now = Date.now();
+    const raw = snapshot.raw;
+    const view = parseStatus(raw, now);
+    if (!view) return;
+
+    let onlineCount = 0;
+    AGENT_IDS.forEach(id => {
+      const a = view.agents[id];
+      if (a.state === 'online') onlineCount++;
+      const badge = document.querySelector(`.agent-fleet-item[data-agent="${id}"] .agent-status-badge`);
+      if (!badge) return;
+      const [cls, label] = BADGES[a.state];
+      badge.classList.remove('badge-online', 'badge-ready', 'badge-stale', 'badge-offline');
+      badge.classList.add(cls);
+      badge.textContent = label(a, now);
+    });
+
+    const age = timeAgo(now - view.generatedAt);
+    setText('agentOverviewAgentsVal', `${onlineCount}/5 ONLINE`);
+    const countEl = document.getElementById('agentOverviewAgentsVal');
+    if (countEl && countEl.parentElement) countEl.parentElement.classList.toggle('highlight-green', onlineCount > 0);
+    setText('agentOverviewAgentsSub', 'Online = heartbeat under 15 min old');
+    setText('agentOverviewSourceVal', 'SNAPSHOT');
+    setText('agentOverviewSourceSub', `Published ${age}`);
+    setText('agentOverviewNote',
+      `Agent status comes from a snapshot my workstation published ${age}. A bot counts as online only if it ` +
+      'checked in within the last 15 minutes. The event stream below is still a scripted replay.');
+    setText('agentOverviewBadge', 'Snapshot');
+    setText('heroAgentBadge', `Snapshot · ${age}`);
+    const opener = document.getElementById('sentinelToggleBtn');
+    if (opener) opener.setAttribute('aria-label', `Open the agent overview (status snapshot published ${age}; not a live connection)`);
+
+    const meta = [];
+    if (view.latency) {
+      meta.push(`LLM round trip p50 ${Math.round(view.latency.p50).toLocaleString('en-US')} ms, ` +
+        `p95 ${Math.round(view.latency.p95).toLocaleString('en-US')} ms (N=${view.latency.n}, measured ${view.latency.date})`);
+    }
+    if (view.packages) {
+      meta.push(`${view.packages.count} job-application package${view.packages.count === 1 ? '' : 's'} in the last ${view.packages.days} days`);
+    }
+    const metaEl = document.getElementById('agentOverviewMeta');
+    if (metaEl && meta.length) {
+      metaEl.textContent = meta.join(' · ');
+      metaEl.hidden = false;
+    }
+  }
+
+  // Any failure (404, offline preview, timeout, bad JSON) leaves the replay untouched, silently.
+  async function loadSnapshot() {
+    if (!window.fetch) return;
+    const ctrl = window.AbortController ? new AbortController() : null;
+    const timer = ctrl ? setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS) : null;
+    try {
+      const res = await fetch(STATUS_URL, { cache: 'no-store', signal: ctrl ? ctrl.signal : undefined });
+      if (!res.ok) return;
+      const raw = await res.json();
+      if (!parseStatus(raw, Date.now())) return;
+      snapshot = { raw };
+      renderSnapshot();
+    } catch (e) {
+      // keep the replay
+    } finally {
+      if (timer) clearTimeout(timer);
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', initSentinel);
 
   function initSentinel() {
@@ -57,6 +201,8 @@
       seedInitialLogs();
       startEventStream();
     }
+
+    if (modal) loadSnapshot();
 
     // Attach Event Listeners
     if (openBtn) {
@@ -171,6 +317,7 @@
   function openModal() {
     if (!modal) return;
     lastFocusedElement = document.activeElement;
+    renderSnapshot();
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     // app.js owns scroll lock, inert background and focus return for all overlays.
@@ -295,8 +442,14 @@
   // --- Copy Architecture Report ---
   function handleCopyReport() {
     const time = getManilaTimestamp();
+    const view = snapshot ? parseStatus(snapshot.raw, Date.now()) : null;
+    const statusLine = view
+      ? `Agent status: snapshot published ${timeAgo(Date.now() - view.generatedAt)} (${new Date(view.generatedAt).toISOString()}); ` +
+        AGENT_IDS.map(id => `${id} ${view.agents[id].state}`).join(', ')
+      : 'Agent status: no snapshot loaded (scripted replay only)';
     const report = `# Hans Aaron Laureles — Multi-Agent System Status Report
 Timestamp: ${time} (Manila UTC+8)
+${statusLine}
 Location: Manila, Philippines
 Availability: Open for Full-Time & Remote AI & Software Engineering Roles (2026)
 

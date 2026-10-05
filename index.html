@@ -136,7 +136,7 @@
             aria-label="Open the agent system overview (simulated replay, not a live connection)"
             title="Open the agent system overview (Alt+S)" aria-keyshortcuts="Alt+S">
             <span class="sentinel-pulse-beacon is-simulated" aria-hidden="true"></span>
-            <span class="sentinel-sim-badge">Simulated / Replay</span>
+            <span class="sentinel-sim-badge" id="heroAgentBadge">Simulated / Replay</span>
             <span class="sentinel-beacon-tag">LOCAL AGENTS:</span>
             <span class="sentinel-beacon-status">5-Agent Team</span>
             <span class="sentinel-beacon-divider">·</span>
@@ -804,9 +804,9 @@
             </div>
             <h2 id="sentinelModalTitle" class="sentinel-title">Agent System Overview</h2>
             <p class="sentinel-sim-note" id="sentinelSimNote">
-              <span class="sentinel-sim-badge">Simulated / Replay</span>
-              This panel replays scripted events. The agents run on my local workstation, and this site has no live
-              connection to them.
+              <span class="sentinel-sim-badge" id="agentOverviewBadge">Simulated / Replay</span>
+              <span id="agentOverviewNote">This panel replays scripted events. The agents run on my local workstation,
+              and this site has no live connection to them.</span>
             </p>
           </div>
           <button class="sentinel-close-btn" id="sentinelCloseBtn" aria-label="Close Sentinel HUD">
@@ -819,17 +819,17 @@
           <div class="sentinel-metric-card">
             <span class="sentinel-metric-label mono">AGENT SYSTEM</span>
             <div class="sentinel-metric-val highlight-green">
-              <span>5 AGENTS</span>
+              <span id="agentOverviewAgentsVal">5 AGENTS</span>
             </div>
-            <span class="sentinel-metric-sub mono">Discord bots · local host</span>
+            <span class="sentinel-metric-sub mono" id="agentOverviewAgentsSub">Discord bots · local host</span>
           </div>
 
           <div class="sentinel-metric-card">
             <span class="sentinel-metric-label mono">DATA SOURCE</span>
             <div class="sentinel-metric-val">
-              <span>REPLAY</span>
+              <span id="agentOverviewSourceVal">REPLAY</span>
             </div>
-            <span class="sentinel-metric-sub mono">Scripted · not a live feed</span>
+            <span class="sentinel-metric-sub mono" id="agentOverviewSourceSub">Scripted · not a live feed</span>
           </div>
 
           <div class="sentinel-metric-card">
@@ -848,6 +848,7 @@
             <span class="sentinel-metric-sub mono">Full-time &amp; Remote Roles</span>
           </div>
         </div>
+        <p class="sentinel-sim-note sentinel-snapshot-meta" id="agentOverviewMeta" hidden></p>
 
         <!-- Main Body: Two Columns (Agent Roster & Live Event Stream) -->
         <div class="sentinel-hud-body">

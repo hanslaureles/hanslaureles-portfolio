@@ -4258,6 +4258,11 @@ picture {
   color: var(--text-secondary);
 }
 
+.sentinel-snapshot-meta {
+  margin: 0 0 18px 0;
+  max-width: none;
+}
+
 .sentinel-sim-note .sentinel-sim-badge {
   margin-right: 6px;
   vertical-align: 1px;
@@ -4548,6 +4553,19 @@ picture {
   color: var(--tone-sky);
   background: rgba(56, 189, 248, 0.12);
   border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+/* Snapshot states (sentinel.js): an old heartbeat, or no usable heartbeat at all. */
+.agent-status-badge.badge-stale {
+  color: var(--tone-amber);
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.agent-status-badge.badge-offline {
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
 }
 
 .agent-fleet-meta {
