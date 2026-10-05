@@ -393,12 +393,13 @@
         <div class="case-toc-title">Table of Contents</div>
         <ul class="case-toc-list">
           <li><a href="#concept">01. The Problem: Scattered Context</a></li>
-          <li><a href="#simulator">02. Voice Demo</a></li>
-          <li><a href="#pillars">03. The 4 Architectural Pillars</a></li>
-          <li><a href="#audio-dsp">04. How the Voice Sounds</a></li>
-          <li><a href="#vault-sync">05. Reading &amp; Writing My Notes</a></li>
-          <li><a href="#sentinels">06. Background Checks</a></li>
-          <li><a href="#benchmarks">07. Production Benchmarks</a></li>
+          <li><a href="#decisions">02. Design Decisions</a></li>
+          <li><a href="#simulator">03. Voice Demo</a></li>
+          <li><a href="#pillars">04. The 4 Architectural Pillars</a></li>
+          <li><a href="#audio-dsp">05. How the Voice Sounds</a></li>
+          <li><a href="#vault-sync">06. Reading &amp; Writing My Notes</a></li>
+          <li><a href="#sentinels">07. Background Checks</a></li>
+          <li><a href="#benchmarks">08. Production Benchmarks</a></li>
         </ul>
       </aside>
 
@@ -422,9 +423,68 @@
           </div>
         </section>
 
+        <!-- Section 02: Design Decisions (4D) -->
+        <section id="decisions" class="case-body-section">
+          <div class="section-tag">// 02 · DESIGN DECISIONS</div>
+          <h2>Design Decisions &amp; Their Costs</h2>
+          <p>
+            Each card is one decision: what I chose, what I passed over, why, and what it costs. The evidence links point at the public code or result file at a pinned commit.
+          </p>
+          <div class="case-adr-list">
+            <article class="case-adr-card" aria-labelledby="adr-ciel-01">
+              <div class="case-adr-id">ADR-CIEL-01</div>
+              <h3 id="adr-ciel-01">Plain HTTP for Groq, Whisper and Ollama; an SDK only for Gemini</h3>
+              <dl class="case-adr-fields">
+                <dt>Decision</dt>
+                <dd>Groq chat (including streaming), Groq and OpenAI Whisper, and local Ollama are called with Python's <code>urllib</code>. Gemini goes through Google's <code>google-genai</code> SDK.</dd>
+                <dt>Alternatives</dt>
+                <dd>The <code>groq</code> and <code>openai</code> Python SDKs for every provider.</dd>
+                <dt>Why</dt>
+                <dd>Those three services take simple JSON (or a multipart upload) over HTTPS, so one small code path covers them, and the retry rules live in my code: Groq's fractional <code>Retry-After</code> (e.g. 1.5 s) is honoured once if it is 4 s or less, then the next model is tried.</dd>
+                <dt>Cost</dt>
+                <dd>Streaming, multipart uploads and 429 handling are hand-written, so each needs its own tests (<code>GroqRetryAfterTest</code>).</dd>
+                <dt>Evidence</dt>
+                <dd><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/llm_client.py" target="_blank" rel="noopener noreferrer"><code>llm_client.py</code></a> &middot; <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/voice_engine.py" target="_blank" rel="noopener noreferrer"><code>voice_engine.py</code></a></dd>
+              </dl>
+            </article>
+            <article class="case-adr-card" aria-labelledby="adr-ciel-02">
+              <div class="case-adr-id">ADR-CIEL-02</div>
+              <h3 id="adr-ciel-02">Speak each sentence as soon as it is written</h3>
+              <dl class="case-adr-fields">
+                <dt>Decision</dt>
+                <dd>Stream the synthesis reply and send each finished sentence to Edge-TTS (up to three requests at once); the HUD plays the clips in order.</dd>
+                <dt>Alternatives</dt>
+                <dd>Voice the whole reply after the LLM finishes (the 2026-10-01 design).</dd>
+                <dt>Why</dt>
+                <dd>Time to first audio fell from 4.60 s to 1.41 s p50 (N=10 each, 2026-10-02, same prompt and machine).</dd>
+                <dt>Cost</dt>
+                <dd>Mission-complete p95 rose from 5.99 s to 7.20 s: the joined replay MP3 waits for the slowest clip, and clips play strictly in order, so one slow clip holds back the sentences after it.</dd>
+                <dt>Evidence</dt>
+                <dd><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-before.md" target="_blank" rel="noopener noreferrer"><code>before</code></a> &middot; <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-after.md" target="_blank" rel="noopener noreferrer"><code>after</code></a> &middot; <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/speech_stream.py" target="_blank" rel="noopener noreferrer"><code>speech_stream.py</code></a></dd>
+              </dl>
+            </article>
+            <article class="case-adr-card" aria-labelledby="adr-ciel-03">
+              <div class="case-adr-id">ADR-CIEL-03</div>
+              <h3 id="adr-ciel-03">Push telemetry over the WebSocket instead of polling</h3>
+              <dl class="case-adr-fields">
+                <dt>Decision</dt>
+                <dd>The server pushes CPU, RAM and disk readings to connected HUDs every 5 s, and samples only while a client is connected.</dd>
+                <dt>Alternatives</dt>
+                <dd>The HUD polling an HTTP endpoint on a timer (how it worked before).</dd>
+                <dt>Why</dt>
+                <dd>Nothing is sampled or requested when no HUD is open, and the readings arrive on the WebSocket the HUD already holds for mission events.</dd>
+                <dt>Cost</dt>
+                <dd>The HUD needs reconnect logic with backoff, and still fetches one snapshot over HTTP when it (re)connects.</dd>
+                <dt>Evidence</dt>
+                <dd><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/ciel_server.py" target="_blank" rel="noopener noreferrer"><code>ciel_server.py</code></a></dd>
+              </dl>
+            </article>
+          </div>
+        </section>
+
         <!-- Section 02: Interactive Simulator -->
         <section id="simulator" class="case-body-section">
-          <div class="section-tag">// 02 · REAL-TIME HUD DEMO</div>
+          <div class="section-tag">// 03 · REAL-TIME HUD DEMO</div>
           <h2>Voice Demo: What Ciel Can Do</h2>
           <p>
             A scripted demo of Ciel's replies. Click any prompt chip to see the kind of response Ciel gives. Replies are pre-written examples, not live output:
@@ -487,7 +547,7 @@
 
         <!-- Section 03: The 4 Pillars -->
         <section id="pillars" class="case-body-section">
-          <div class="section-tag">// 03 · ARCHITECTURAL FOUNDATION</div>
+          <div class="section-tag">// 04 · ARCHITECTURAL FOUNDATION</div>
           <h2>The 4 Pillars of Manas: Ciel</h2>
           <p>
             Ciel has four parts: agent control, memory and notes, speech, and background checks.
@@ -546,7 +606,7 @@
 
         <!-- Section 04: Speech DSP & Acceleration -->
         <section id="audio-dsp" class="case-body-section">
-          <div class="section-tag">// 04 · SIGNAL PROCESSING &amp; DSP</div>
+          <div class="section-tag">// 05 · SIGNAL PROCESSING &amp; DSP</div>
           <h2>How the Voice Sounds: Audio Cleanup &amp; Voice Filter</h2>
           <p>
             Plain text-to-speech sounds flat. To give Ciel a calm, close presence, the pipeline has two FFmpeg stages, one on the way in and one on the way out:
@@ -573,7 +633,7 @@
 
         <!-- Section 05: Obsidian Notes -->
         <section id="vault-sync" class="case-body-section">
-          <div class="section-tag">// 05 · READ &amp; WRITE NOTES</div>
+          <div class="section-tag">// 06 · READ &amp; WRITE NOTES</div>
           <h2>Ciel Reads and Writes My Obsidian Notes</h2>
           <p>
             Most voice assistants can't see your notes. Ciel reads and writes my Obsidian vault (`Obsidian-v2/`) through Obsidian's Local REST API, and falls back to reading the files on disk:
@@ -623,7 +683,7 @@ tools = [
 
         <!-- Section 06: Background Checks -->
         <section id="sentinels" class="case-body-section">
-          <div class="section-tag">// 06 · BACKGROUND CHECKS</div>
+          <div class="section-tag">// 07 · BACKGROUND CHECKS</div>
           <h2>Background Checks: Ciel Speaks Up First</h2>
           <p>
             Passive voice assistants only speak when spoken to. Ciel runs a background-check loop (<code>proactive_sentinel.py</code>) every 45 seconds while the HUD is connected, ranks what it finds (warning &gt; action &gt; info), and surfaces the top 3 across 4 checks:
@@ -663,7 +723,7 @@ tools = [
 
         <!-- Section 07: Benchmarks & Retrospective -->
         <section id="benchmarks" class="case-body-section">
-          <div class="section-tag">// 07 · PIPELINE STAGES &amp; RETROSPECTIVE</div>
+          <div class="section-tag">// 08 · PIPELINE STAGES &amp; RETROSPECTIVE</div>
           <h2>Pipeline Stages &amp; Architectural Retrospective</h2>
 
           <figure class="lifecycle-figure">

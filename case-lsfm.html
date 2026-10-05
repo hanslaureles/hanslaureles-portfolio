@@ -299,10 +299,11 @@
         <div class="case-toc-title">Architecture Sections</div>
         <ul class="case-toc-list">
           <li><a href="#problem">01. Problem &amp; The Autonomous Vision</a></li>
-          <li><a href="#topology">02. Multi-Agent System Architecture</a></li>
-          <li><a href="#inference">03. Hybrid Local/Cloud Inference</a></li>
-          <li><a href="#tools">04. Programmatic Tool Pipelines</a></li>
-          <li><a href="#benchmarks">05. Guarantees &amp; Retrospective</a></li>
+          <li><a href="#decisions">02. Design Decisions</a></li>
+          <li><a href="#topology">03. Multi-Agent System Architecture</a></li>
+          <li><a href="#inference">04. Hybrid Local/Cloud Inference</a></li>
+          <li><a href="#tools">05. Programmatic Tool Pipelines</a></li>
+          <li><a href="#benchmarks">06. Guarantees &amp; Retrospective</a></li>
         </ul>
       </aside>
 
@@ -345,9 +346,52 @@
           </p>
         </section>
 
+        <!-- Section 02: Design Decisions (4D) -->
+        <section id="decisions" class="case-body-section">
+          <div class="section-tag">// 02 · DESIGN DECISIONS</div>
+          <h2>Design Decisions &amp; Their Costs</h2>
+          <p>
+            Each card is one decision: what I chose, what I passed over, why, and what it costs. The evidence links point at the public code or result file at a pinned commit.
+          </p>
+          <div class="case-adr-list">
+            <article class="case-adr-card" aria-labelledby="adr-lsfm-01">
+              <div class="case-adr-id">ADR-LSFM-01</div>
+              <h3 id="adr-lsfm-01">Rules first, the LLM only for unknown mail</h3>
+              <dl class="case-adr-fields">
+                <dt>Decision</dt>
+                <dd>Sakura's Gmail classifier checks sender, domain and keyword rules first. Only mail no rule recognises goes to the LLM (temperature 0.1, strict JSON reply).</dd>
+                <dt>Alternatives</dt>
+                <dd>Send every email to the LLM.</dd>
+                <dt>Why</dt>
+                <dd>Common senders (job platforms, banks, shops, newsletters) get the same label every time with no model call; the LLM only handles the long tail.</dd>
+                <dt>Cost</dt>
+                <dd>The rule lists are maintained by hand, and neither tier's accuracy is measured yet: there is no labelled email set.</dd>
+                <dt>Evidence</dt>
+                <dd><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/gmail_engine.py" target="_blank" rel="noopener noreferrer"><code>gmail_engine.py</code></a></dd>
+              </dl>
+            </article>
+            <article class="case-adr-card" aria-labelledby="adr-lsfm-02">
+              <div class="case-adr-id">ADR-LSFM-02</div>
+              <h3 id="adr-lsfm-02">A separate two-thread pool for heavy jobs</h3>
+              <dl class="case-adr-fields">
+                <dt>Decision</dt>
+                <dd>PDF builds (headless Edge, up to 25 s), Gmail triage and sweeps run on their own 2-worker pool. LLM text calls stay on asyncio's default executor.</dd>
+                <dt>Alternatives</dt>
+                <dd>Run everything on the default executor.</dd>
+                <dt>Why</dt>
+                <dd>A burst of heavy jobs could take every default thread and make quick calls (vitals, chat replies, Obsidian reads) wait behind them.</dd>
+                <dt>Cost</dt>
+                <dd>Only two heavy jobs run at once; the rest queue. LLM calls deliberately stay off this pool, or a chat reply would wait behind a PDF build.</dd>
+                <dt>Evidence</dt>
+                <dd><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/heavy_jobs.py" target="_blank" rel="noopener noreferrer"><code>heavy_jobs.py</code></a></dd>
+              </dl>
+            </article>
+          </div>
+        </section>
+
         <!-- Section 02: Multi-Agent Architecture & Delegation Protocol -->
         <section id="topology" class="case-body-section">
-          <div class="section-tag">// 02 · MULTI-AGENT ARCHITECTURE &amp; DELEGATION</div>
+          <div class="section-tag">// 03 · MULTI-AGENT ARCHITECTURE &amp; DELEGATION</div>
           <h2>Decentralized Agent Specialization &amp; Inter-Agent Delegation</h2>
           <p>
             Rather than relying on a monolithic prompt that collapses under context pollution, LSFM AI HQ decomposes
@@ -545,7 +589,7 @@
 
         <!-- Section 03: Hybrid Inference Router -->
         <section id="inference" class="case-body-section">
-          <div class="section-tag">// 03 · INFERENCE RUNTIME</div>
+          <div class="section-tag">// 04 · INFERENCE RUNTIME</div>
           <h2>Multi-Provider Routing: Groq, Gemini &amp; an Optional Local GPU</h2>
           <p>
             A core engineering priority was <strong>high-quality output within provider rate limits</strong> without locking
@@ -665,7 +709,7 @@
 
         <!-- Section 04: Programmatic Tool Pipelines -->
         <section id="tools" class="case-body-section">
-          <div class="section-tag">// 04 · REAL-WORLD APIS &amp; TOOLS</div>
+          <div class="section-tag">// 05 · REAL-WORLD APIS &amp; TOOLS</div>
           <h2>Deterministic Automation: Headless PDF &amp; Gmail Triage</h2>
           <p>
             Language models are only as useful as their ability to alter state in the real world. LSFM AI HQ integrates
@@ -812,7 +856,7 @@
 
         <!-- Section 05: Benchmarks & Reliability -->
         <section id="benchmarks" class="case-body-section">
-          <div class="section-tag">// 05 · OPERATING CHARACTERISTICS &amp; RETROSPECTIVE</div>
+          <div class="section-tag">// 06 · OPERATING CHARACTERISTICS &amp; RETROSPECTIVE</div>
           <h2>What the System Guarantees &amp; What Broke</h2>
           <p>
             The figures below are properties you can confirm by reading the public code, not performance claims.

@@ -361,11 +361,12 @@
         <div class="case-toc-title">Table of Contents</div>
         <ul class="case-toc-list">
           <li><a href="#dilemma">01. Session Amnesia Dilemma</a></li>
-          <li><a href="#simulator">02. Live Recall Simulator</a></li>
-          <li><a href="#architecture">03. 4-Pillar Engine Specs</a></li>
-          <li><a href="#math">04. Mathematical BM25 Scoring</a></li>
-          <li><a href="#heuristics">05. The 10 Lessons in the Store</a></li>
-          <li><a href="#results">06. Impact &amp; Benchmarks</a></li>
+          <li><a href="#decisions">02. Design Decisions</a></li>
+          <li><a href="#simulator">03. Live Recall Simulator</a></li>
+          <li><a href="#architecture">04. 4-Pillar Engine Specs</a></li>
+          <li><a href="#math">05. Mathematical BM25 Scoring</a></li>
+          <li><a href="#heuristics">06. The 10 Lessons in the Store</a></li>
+          <li><a href="#results">07. Impact &amp; Benchmarks</a></li>
         </ul>
       </aside>
 
@@ -389,9 +390,52 @@
           </p>
         </section>
 
+        <!-- Section 02: Design Decisions (4D) -->
+        <section id="decisions" class="case-body-section">
+          <div class="section-tag">// 02 · DESIGN DECISIONS</div>
+          <h2>Design Decisions &amp; Their Costs</h2>
+          <p>
+            Each card is one decision: what I chose, what I passed over, why, and what it costs. The evidence links point at the public code or result file at a pinned commit.
+          </p>
+          <div class="case-adr-list">
+            <article class="case-adr-card" aria-labelledby="adr-mem-01">
+              <div class="case-adr-id">ADR-MEM-01</div>
+              <h3 id="adr-mem-01">Keyword BM25 in the standard library, not a vector database</h3>
+              <dl class="case-adr-fields">
+                <dt>Decision</dt>
+                <dd>Field-weighted BM25 over the JSONL lesson store, with tag and severity boosts, in the Python standard library only.</dd>
+                <dt>Alternatives</dt>
+                <dd>Dense embeddings with ChromaDB, FAISS or sqlite-vss.</dd>
+                <dt>Why</dt>
+                <dd>No model download, no embedding step on every write, and exact identifiers such as <code>TerminatorExpectedAtEndOfString</code> match as single tokens. 0.81 ms p50 on the real 10-entry store (500 calls, 2026-10-02).</dd>
+                <dt>Cost</dt>
+                <dd>It misses paraphrases that share no words with the rule (3 of 30 held-out queries) and is not clearly better than a substring baseline at this size. Latency grows linearly: 67 ms p50 at 1,000 entries and 695 ms at 10,000 (synthetic stores).</dd>
+                <dt>Evidence</dt>
+                <dd><a href="https://github.com/hanslaureles/cognitive-memory-core/blob/7f2525845c15f6778f835a037e16b1fa54961353/eval/results/2026-10-02.md" target="_blank" rel="noopener noreferrer"><code>eval/results/2026-10-02.md</code></a> &middot; <a href="https://github.com/hanslaureles/cognitive-memory-core/blob/7f2525845c15f6778f835a037e16b1fa54961353/recall.py" target="_blank" rel="noopener noreferrer"><code>recall.py</code></a></dd>
+              </dl>
+            </article>
+            <article class="case-adr-card" aria-labelledby="adr-mem-02">
+              <div class="case-adr-id">ADR-MEM-02</div>
+              <h3 id="adr-mem-02">An OS file lock around every write, then an atomic replace</h3>
+              <dl class="case-adr-fields">
+                <dt>Decision</dt>
+                <dd><code>reflect.py</code> holds an OS lock (<code>msvcrt</code> on Windows, <code>fcntl</code> elsewhere) on <code>store.jsonl.lock</code> for the whole read-modify-write, writes a uniquely named temp file, and swaps it in with <code>os.replace</code>.</dd>
+                <dt>Alternatives</dt>
+                <dd>Append to the JSONL file without a lock, or an age-based lockfile that other writers can take over.</dd>
+                <dt>Why</dt>
+                <dd>Without the lock, two writers both read N lessons and both write N+1, so one lesson is lost. The OS releases the lock if its holder dies, so there is never a stale lock to reclaim.</dd>
+                <dt>Cost</dt>
+                <dd>Other writers poll every 20 ms and give up with <code>TimeoutError</code> after 10 s. On Windows the swap fails while a reader has the store open, so it is retried for up to 1 s. The <code>.lock</code> file must stay on disk.</dd>
+                <dt>Evidence</dt>
+                <dd><a href="https://github.com/hanslaureles/cognitive-memory-core/blob/7f2525845c15f6778f835a037e16b1fa54961353/reflect.py" target="_blank" rel="noopener noreferrer"><code>reflect.py</code></a> &middot; <a href="https://github.com/hanslaureles/cognitive-memory-core/blob/7f2525845c15f6778f835a037e16b1fa54961353/test_reflect_safety.py" target="_blank" rel="noopener noreferrer"><code>test_reflect_safety.py</code></a></dd>
+              </dl>
+            </article>
+          </div>
+        </section>
+
         <!-- Section 02: Interactive Recall Widget -->
         <section id="simulator" class="case-body-section">
-          <div class="section-tag">// 02 · REAL-TIME RECALL DEMO</div>
+          <div class="section-tag">// 03 · REAL-TIME RECALL DEMO</div>
           <h2>Interactive Demo: Find Lessons Before a Task</h2>
           <p>
             Search the real lesson store below. Type a task or a bug, and BM25 ranks the 10 lessons by how well their symptoms, causes and rules match your words:
@@ -434,7 +478,7 @@
 
         <!-- Section 03: Architecture -->
         <section id="architecture" class="case-body-section">
-          <div class="section-tag">// 03 · ENGINE SPECIFICATION</div>
+          <div class="section-tag">// 04 · ENGINE SPECIFICATION</div>
           <h2>The 4 Parts of Memory Core</h2>
           <p>
             No vector database and no pip packages. It needs only standard Python 3:
@@ -493,7 +537,7 @@
 
         <!-- Section 04: Mathematical Retrieval Mechanics -->
         <section id="math" class="case-body-section">
-          <div class="section-tag">// 04 · ALGORITHMIC MECHANICS</div>
+          <div class="section-tag">// 05 · ALGORITHMIC MECHANICS</div>
           <h2>Mathematical Retrieval Mechanics</h2>
           <p>
             Vector embeddings alone frequently struggle with precise syntactic rules (e.g. distinguishing <code>`"`</code> from <code>`'`</code> in PowerShell or exact CSS properties like <code>white-space: nowrap</code>). I designed a domain-weighted BM25 scoring algorithm:
@@ -515,7 +559,7 @@
 
         <!-- Section 05: Real-World Lessons Distilled -->
         <section id="heuristics" class="case-body-section">
-          <div class="section-tag">// 05 · ACTIVE PRODUCTION KNOWLEDGE</div>
+          <div class="section-tag">// 06 · ACTIVE PRODUCTION KNOWLEDGE</div>
           <h2>The 10 Lessons in the Store</h2>
           <p>
             The store holds 10 lessons, each from a real mistake in my own projects:
@@ -599,7 +643,7 @@
 
         <!-- Section 06: Results & Retrospective -->
         <section id="results" class="case-body-section">
-          <div class="section-tag">// 06 · EVALS, METRICS &amp; RETROSPECTIVE</div>
+          <div class="section-tag">// 07 · EVALS, METRICS &amp; RETROSPECTIVE</div>
           <h2>Engineering Impact, Retrieval Evals &amp; Retrospective</h2>
           <div class="benchmark-grid">
             <div class="benchmark-card">
@@ -662,13 +706,6 @@
             and re-scores it. CI now fails if BM25 recall@3 or MRR falls below these numbers minus a tolerance.
           </p>
 
-          <h3 class="u-m-28px-0-12px-0">Architectural Decision: Why BM25 over Dense Vector Embeddings?</h3>
-          <p>
-            Many AI agent memory solutions reach prematurely for heavy vector databases (ChromaDB, Pinecone, FAISS) and deep learning frameworks (PyTorch, transformers). For a local store of a few hundred guidelines, dense embeddings add a model download, an embedding step on every write, and a dependency stack to maintain, and they can blur exact technical identifiers (e.g. <code>sys.stdout</code> vs <code>sys.stdin</code>) that a keyword match keeps apart.
-          </p>
-          <p>
-            By choosing standard library <strong>field-weighted BM25 with tag boosting</strong>, retrieval runs in <strong>0.8 ms at p50</strong> (about 1.5 ms worst case across 2,000 calls on the current 10-entry store; measured with <code>bench_recall.py</code> on an Intel Core i5-12400F, Windows 11, Python 3.11, 2026-10-01), holds nothing in memory between calls, and matches exact error codes like <code>TerminatorExpectedAtEndOfString</code> as single tokens. The trade-off is in the eval above: it misses paraphrases that share no words with the rule, and past a few hundred entries it would need a precomputed index.
-          </p>
 
           <!-- What Broke & What I Would Change -->
           <h3 class="u-m-32px-0-12px-0">Retrospective: What Broke &amp; What I Would Change</h3>

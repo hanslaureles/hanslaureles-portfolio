@@ -4943,6 +4943,73 @@ picture {
   margin-bottom: 6px;
 }
 
+/* Design decision records (4D): Decision / Alternatives / Why / Cost / Evidence */
+.case-adr-list {
+  display: grid;
+  gap: 16px;
+  margin: 24px 0 8px;
+}
+
+.case-adr-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+}
+
+.case-adr-id {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.case-adr-card h3 {
+  font-size: 1.05rem;
+  line-height: 1.35;
+  margin: 6px 0 14px;
+}
+
+.case-adr-fields {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 10px 16px;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.case-adr-fields dt {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding-top: 2px;
+}
+
+.case-adr-fields dd {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+/* Evidence links sit in a short list, not running text: keep a 24 px target (WCAG 2.5.8). */
+.case-adr-fields a {
+  display: inline-block;
+  padding: 3px 0;
+}
+
+@media (max-width: 600px) {
+  .case-adr-fields {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  .case-adr-fields dd {
+    margin-bottom: 10px;
+  }
+}
+
 .lifecycle-card-desc {
   font-size: 0.84rem;
   color: var(--text-secondary);
