@@ -441,7 +441,7 @@
                 <dt>Alternatives</dt>
                 <dd>The <code>groq</code> and <code>openai</code> Python SDKs for every provider.</dd>
                 <dt>Why</dt>
-                <dd>Groq and Whisper take simple JSON (or a multipart upload) over HTTPS, and Ollama takes the same JSON over plain HTTP on the local machine (<code>127.0.0.1</code>), so one small code path covers all three, and the retry rules live in my code: Groq's fractional <code>Retry-After</code> (e.g. 1.5 s) is honoured once if it is 4 s or less, then the next model is tried.</dd>
+                <dd>Groq and Whisper take simple JSON (or a multipart upload) over HTTPS, and Ollama takes the same JSON over plain HTTP on the local machine (<code>127.0.0.1</code>), so the same lightweight standard-library approach covers all three without an SDK, and the retry rules live in my code: Groq's fractional <code>Retry-After</code> (e.g. 1.5 s) is honoured once if it is 4 s or less, then the next model is tried.</dd>
                 <dt>Cost</dt>
                 <dd>Streaming, multipart uploads and 429 handling are hand-written, so each needs its own tests (<code>GroqRetryAfterTest</code>).</dd>
                 <dt>Evidence</dt>
