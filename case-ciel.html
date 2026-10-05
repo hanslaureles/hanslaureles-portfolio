@@ -394,12 +394,13 @@
         <ul class="case-toc-list">
           <li><a href="#concept">01. The Problem: Scattered Context</a></li>
           <li><a href="#decisions">02. Design Decisions</a></li>
-          <li><a href="#simulator">03. Voice Demo</a></li>
-          <li><a href="#pillars">04. The 4 Architectural Pillars</a></li>
-          <li><a href="#audio-dsp">05. How the Voice Sounds</a></li>
-          <li><a href="#vault-sync">06. Reading &amp; Writing My Notes</a></li>
-          <li><a href="#sentinels">07. Background Checks</a></li>
-          <li><a href="#benchmarks">08. Production Benchmarks</a></li>
+          <li><a href="#retrospective">03. What Broke &amp; What I&rsquo;d Change</a></li>
+          <li><a href="#simulator">04. Voice Demo</a></li>
+          <li><a href="#pillars">05. The 4 Architectural Pillars</a></li>
+          <li><a href="#audio-dsp">06. How the Voice Sounds</a></li>
+          <li><a href="#vault-sync">07. Reading &amp; Writing My Notes</a></li>
+          <li><a href="#sentinels">08. Background Checks</a></li>
+          <li><a href="#benchmarks">09. Production Benchmarks</a></li>
         </ul>
       </aside>
 
@@ -482,9 +483,38 @@
           </div>
         </section>
 
+        <!-- Section 03: Retrospective (4D) -->
+        <section id="retrospective" class="case-body-section">
+          <div class="section-tag">// 03 · RETROSPECTIVE</div>
+          <h2>What Broke &amp; What I Would Change</h2>
+          <div class="u-d-grid u-cols-1fr-1fr u-gap-16px u-mb-24px">
+            <div class="u-bg-red-a05 u-bd-1px-solid-red-a20 u-p-18px u-rounded-8px">
+              <h3 class="u-c-tone-red u-mb-8px u-fs-0p95rem">⚠️ What Broke in V1</h3>
+              <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
+                Synchronous weather queries to <code>wttr.in</code> and live web search during voice generation caused the audio stream to block and stutter when the user had high internet latency.
+              </p>
+            </div>
+            <div class="u-bg-emerald-a05 u-bd-1px-solid-emerald-a20 u-p-18px u-rounded-8px">
+              <h3 class="u-c-tone-emerald u-mb-8px u-fs-0p95rem">→ The Fix (Shipped)</h3>
+              <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
+                <strong>Fixed, and the code is public in lsfm-ai-hq:</strong> every blocking call in a mission now runs in a worker thread via <code>asyncio.to_thread</code>: named mission tools (weather, web search, both LLM calls, psutil, Obsidian, git, Gmail, the PDF build) have per-call timeouts, while FFmpeg runs off the event loop without a timeout. The server's event loop keeps serving other clients while a mission waits. Independent agents run concurrently with <code>asyncio.gather</code>. A call that times out ends as an honest <code>failed</code> ("timed out after N s"), never an empty success. At most two missions run at once; a few more queue, and anything beyond that is refused with a 503 instead of flooding the thread pool. Regression tests prove the loop keeps ticking while a tool blocks.
+              </p>
+            </div>
+          </div>
+
+          <div class="u-bg-white-a02 u-bd-1px-solid-border u-p-20px u-rounded-8px u-mt-24px">
+            <h3 class="u-mb-8px u-fs-0p95rem u-d-flex u-items-center u-gap-8px">
+              <span class="u-c-accent">🛠️</span> Production Architecture Note
+            </h3>
+            <p class="u-fs-0p88rem u-lh-1p6 u-c-text-secondary u-m-0">
+              While <code>edge-tts</code> needs no API key and returned an English clip in 0.42 s p50 in the 2026-10-01 bench (a network round trip to Microsoft's service), enterprise production deployment would swap it for self-hosted Kokoro/Vits pipelines or dedicated WebRTC audio streaming to satisfy enterprise uptime SLAs.
+            </p>
+          </div>
+        </section>
+
         <!-- Section 02: Interactive Simulator -->
         <section id="simulator" class="case-body-section">
-          <div class="section-tag">// 03 · REAL-TIME HUD DEMO</div>
+          <div class="section-tag">// 04 · REAL-TIME HUD DEMO</div>
           <h2>Voice Demo: What Ciel Can Do</h2>
           <p>
             A scripted demo of Ciel's replies. Click any prompt chip to see the kind of response Ciel gives. Replies are pre-written examples, not live output:
@@ -547,7 +577,7 @@
 
         <!-- Section 03: The 4 Pillars -->
         <section id="pillars" class="case-body-section">
-          <div class="section-tag">// 04 · ARCHITECTURAL FOUNDATION</div>
+          <div class="section-tag">// 05 · ARCHITECTURAL FOUNDATION</div>
           <h2>The 4 Pillars of Manas: Ciel</h2>
           <p>
             Ciel has four parts: agent control, memory and notes, speech, and background checks.
@@ -606,7 +636,7 @@
 
         <!-- Section 04: Speech DSP & Acceleration -->
         <section id="audio-dsp" class="case-body-section">
-          <div class="section-tag">// 05 · SIGNAL PROCESSING &amp; DSP</div>
+          <div class="section-tag">// 06 · SIGNAL PROCESSING &amp; DSP</div>
           <h2>How the Voice Sounds: Audio Cleanup &amp; Voice Filter</h2>
           <p>
             Plain text-to-speech sounds flat. To give Ciel a calm, close presence, the pipeline has two FFmpeg stages, one on the way in and one on the way out:
@@ -633,7 +663,7 @@
 
         <!-- Section 05: Obsidian Notes -->
         <section id="vault-sync" class="case-body-section">
-          <div class="section-tag">// 06 · READ &amp; WRITE NOTES</div>
+          <div class="section-tag">// 07 · READ &amp; WRITE NOTES</div>
           <h2>Ciel Reads and Writes My Obsidian Notes</h2>
           <p>
             Most voice assistants can't see your notes. Ciel reads and writes my Obsidian vault (`Obsidian-v2/`) through Obsidian's Local REST API, and falls back to reading the files on disk:
@@ -683,7 +713,7 @@ tools = [
 
         <!-- Section 06: Background Checks -->
         <section id="sentinels" class="case-body-section">
-          <div class="section-tag">// 07 · BACKGROUND CHECKS</div>
+          <div class="section-tag">// 08 · BACKGROUND CHECKS</div>
           <h2>Background Checks: Ciel Speaks Up First</h2>
           <p>
             Passive voice assistants only speak when spoken to. Ciel runs a background-check loop (<code>proactive_sentinel.py</code>) every 45 seconds while the HUD is connected, ranks what it finds (warning &gt; action &gt; info), and surfaces the top 3 across 4 checks:
@@ -723,8 +753,8 @@ tools = [
 
         <!-- Section 07: Benchmarks & Retrospective -->
         <section id="benchmarks" class="case-body-section">
-          <div class="section-tag">// 08 · PIPELINE STAGES &amp; RETROSPECTIVE</div>
-          <h2>Pipeline Stages &amp; Architectural Retrospective</h2>
+          <div class="section-tag">// 09 · PIPELINE STAGES &amp; TIMINGS</div>
+          <h2>Pipeline Stages &amp; Measured Timings</h2>
 
           <figure class="lifecycle-figure">
             <svg class="lifecycle-svg" viewBox="0 0 360 512" role="img" aria-labelledby="lcTitle lcDesc">
@@ -844,31 +874,7 @@ tools = [
             The trade-off is in the second row. The first sentence is heard about 3.2 s sooner at p50, but the joined MP3 kept for replay waits for the slowest clip. In one of the ten runs a single Edge-TTS clip took 6.2 s, which set the 7.20 s worst case. Clips play strictly in order, so a slow clip also holds back the sentences after it; the pauses this causes between sentences are not measured yet.
           </p>
 
-          <!-- What Broke & What I Would Change -->
-          <h3 class="u-m-36px-0-12px-0">Retrospective: What Broke &amp; What I Would Change</h3>
-          <div class="u-d-grid u-cols-1fr-1fr u-gap-16px u-mb-24px">
-            <div class="u-bg-red-a05 u-bd-1px-solid-red-a20 u-p-18px u-rounded-8px">
-              <h4 class="u-c-tone-red u-mb-8px u-fs-0p95rem">⚠️ What Broke in V1</h4>
-              <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
-                Synchronous weather queries to <code>wttr.in</code> and live web search during voice generation caused the audio stream to block and stutter when the user had high internet latency.
-              </p>
-            </div>
-            <div class="u-bg-emerald-a05 u-bd-1px-solid-emerald-a20 u-p-18px u-rounded-8px">
-              <h4 class="u-c-tone-emerald u-mb-8px u-fs-0p95rem">→ The Fix (Shipped)</h4>
-              <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
-                <strong>Fixed, and the code is public in lsfm-ai-hq:</strong> every blocking call in a mission now runs in a worker thread via <code>asyncio.to_thread</code>: named mission tools (weather, web search, both LLM calls, psutil, Obsidian, git, Gmail, the PDF build) have per-call timeouts, while FFmpeg runs off the event loop without a timeout. The server's event loop keeps serving other clients while a mission waits. Independent agents run concurrently with <code>asyncio.gather</code>. A call that times out ends as an honest <code>failed</code> ("timed out after N s"), never an empty success. At most two missions run at once; a few more queue, and anything beyond that is refused with a 503 instead of flooding the thread pool. Regression tests prove the loop keeps ticking while a tool blocks.
-              </p>
-            </div>
-          </div>
 
-          <div class="u-bg-white-a02 u-bd-1px-solid-border u-p-20px u-rounded-8px u-mt-24px">
-            <h4 class="u-mb-8px u-fs-0p95rem u-d-flex u-items-center u-gap-8px">
-              <span class="u-c-accent">🛠️</span> Production Architecture Note
-            </h4>
-            <p class="u-fs-0p88rem u-lh-1p6 u-c-text-secondary u-m-0">
-              While <code>edge-tts</code> needs no API key and returned an English clip in 0.42 s p50 in the 2026-10-01 bench (a network round trip to Microsoft's service), enterprise production deployment would swap it for self-hosted Kokoro/Vits pipelines or dedicated WebRTC audio streaming to satisfy enterprise uptime SLAs.
-            </p>
-          </div>
         </section>
 
       </div>

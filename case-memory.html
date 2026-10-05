@@ -362,11 +362,12 @@
         <ul class="case-toc-list">
           <li><a href="#dilemma">01. Session Amnesia Dilemma</a></li>
           <li><a href="#decisions">02. Design Decisions</a></li>
-          <li><a href="#simulator">03. Live Recall Simulator</a></li>
-          <li><a href="#architecture">04. 4-Pillar Engine Specs</a></li>
-          <li><a href="#math">05. Mathematical BM25 Scoring</a></li>
-          <li><a href="#heuristics">06. The 10 Lessons in the Store</a></li>
-          <li><a href="#results">07. Impact &amp; Benchmarks</a></li>
+          <li><a href="#retrospective">03. What Broke &amp; What I&rsquo;d Change</a></li>
+          <li><a href="#simulator">04. Live Recall Simulator</a></li>
+          <li><a href="#architecture">05. 4-Pillar Engine Specs</a></li>
+          <li><a href="#math">06. Mathematical BM25 Scoring</a></li>
+          <li><a href="#heuristics">07. The 10 Lessons in the Store</a></li>
+          <li><a href="#results">08. Impact &amp; Benchmarks</a></li>
         </ul>
       </aside>
 
@@ -433,9 +434,29 @@
           </div>
         </section>
 
+        <!-- Section 03: Retrospective (4D) -->
+        <section id="retrospective" class="case-body-section">
+          <div class="section-tag">// 03 · RETROSPECTIVE</div>
+          <h2>What Broke &amp; What I Would Change</h2>
+          <div class="u-d-grid u-cols-1fr-1fr u-gap-16px u-mb-24px">
+            <div class="u-bg-red-a05 u-bd-1px-solid-red-a20 u-p-18px u-rounded-8px">
+              <h3 class="u-c-tone-red u-mb-8px u-fs-0p95rem">⚠️ What Broke in V1</h3>
+              <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
+                <em>Unmeasured retrospective, recalled rather than logged:</em> naive substring matching seemed to fire on generic coding words like <code>error</code>, <code>file</code>, and <code>test</code>, injecting unrelated rules into the prompt context. The held-out eval (Evals &amp; Metrics, below) measures recall, not false positives, so it neither confirms nor rules this out.
+              </p>
+            </div>
+            <div class="u-bg-emerald-a05 u-bd-1px-solid-emerald-a20 u-p-18px u-rounded-8px">
+              <h3 class="u-c-tone-emerald u-mb-8px u-fs-0p95rem">✓ The Engineering Fix</h3>
+              <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
+                Implemented tokenization with an English coding stopword filter, added 3.0× weighting to exact domain tags, and introduced severity multipliers (1.4× for critical bugs) to isolate true matches.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <!-- Section 02: Interactive Recall Widget -->
         <section id="simulator" class="case-body-section">
-          <div class="section-tag">// 03 · REAL-TIME RECALL DEMO</div>
+          <div class="section-tag">// 04 · REAL-TIME RECALL DEMO</div>
           <h2>Interactive Demo: Find Lessons Before a Task</h2>
           <p>
             Search the real lesson store below. Type a task or a bug, and BM25 ranks the 10 lessons by how well their symptoms, causes and rules match your words:
@@ -478,7 +499,7 @@
 
         <!-- Section 03: Architecture -->
         <section id="architecture" class="case-body-section">
-          <div class="section-tag">// 04 · ENGINE SPECIFICATION</div>
+          <div class="section-tag">// 05 · ENGINE SPECIFICATION</div>
           <h2>The 4 Parts of Memory Core</h2>
           <p>
             No vector database and no pip packages. It needs only standard Python 3:
@@ -537,7 +558,7 @@
 
         <!-- Section 04: Mathematical Retrieval Mechanics -->
         <section id="math" class="case-body-section">
-          <div class="section-tag">// 05 · ALGORITHMIC MECHANICS</div>
+          <div class="section-tag">// 06 · ALGORITHMIC MECHANICS</div>
           <h2>Mathematical Retrieval Mechanics</h2>
           <p>
             Vector embeddings alone frequently struggle with precise syntactic rules (e.g. distinguishing <code>`"`</code> from <code>`'`</code> in PowerShell or exact CSS properties like <code>white-space: nowrap</code>). I designed a domain-weighted BM25 scoring algorithm:
@@ -559,7 +580,7 @@
 
         <!-- Section 05: Real-World Lessons Distilled -->
         <section id="heuristics" class="case-body-section">
-          <div class="section-tag">// 06 · ACTIVE PRODUCTION KNOWLEDGE</div>
+          <div class="section-tag">// 07 · ACTIVE PRODUCTION KNOWLEDGE</div>
           <h2>The 10 Lessons in the Store</h2>
           <p>
             The store holds 10 lessons, each from a real mistake in my own projects:
@@ -643,8 +664,8 @@
 
         <!-- Section 06: Results & Retrospective -->
         <section id="results" class="case-body-section">
-          <div class="section-tag">// 07 · EVALS, METRICS &amp; RETROSPECTIVE</div>
-          <h2>Engineering Impact, Retrieval Evals &amp; Retrospective</h2>
+          <div class="section-tag">// 08 · EVALS &amp; METRICS</div>
+          <h2>Retrieval Evals &amp; Benchmarks</h2>
           <div class="benchmark-grid">
             <div class="benchmark-card">
               <div class="benchmark-val">pytest</div>
@@ -707,22 +728,7 @@
           </p>
 
 
-          <!-- What Broke & What I Would Change -->
-          <h3 class="u-m-32px-0-12px-0">Retrospective: What Broke &amp; What I Would Change</h3>
-          <div class="u-d-grid u-cols-1fr-1fr u-gap-16px u-mb-24px">
-            <div class="u-bg-red-a05 u-bd-1px-solid-red-a20 u-p-18px u-rounded-8px">
-              <h4 class="u-c-tone-red u-mb-8px u-fs-0p95rem">⚠️ What Broke in V1</h4>
-              <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
-                <em>Unmeasured retrospective, recalled rather than logged:</em> naive substring matching seemed to fire on generic coding words like <code>error</code>, <code>file</code>, and <code>test</code>, injecting unrelated rules into the prompt context. The held-out eval above measures recall, not false positives, so it neither confirms nor rules this out.
-              </p>
-            </div>
-            <div class="u-bg-emerald-a05 u-bd-1px-solid-emerald-a20 u-p-18px u-rounded-8px">
-              <h4 class="u-c-tone-emerald u-mb-8px u-fs-0p95rem">✓ The Engineering Fix</h4>
-              <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
-                Implemented tokenization with an English coding stopword filter, added 3.0× weighting to exact domain tags, and introduced severity multipliers (1.4× for critical bugs) to isolate true matches.
-              </p>
-            </div>
-          </div>
+
         </section>
 
       </div>

@@ -300,10 +300,11 @@
         <ul class="case-toc-list">
           <li><a href="#problem">01. Problem &amp; The Autonomous Vision</a></li>
           <li><a href="#decisions">02. Design Decisions</a></li>
-          <li><a href="#topology">03. Multi-Agent System Architecture</a></li>
-          <li><a href="#inference">04. Hybrid Local/Cloud Inference</a></li>
-          <li><a href="#tools">05. Programmatic Tool Pipelines</a></li>
-          <li><a href="#benchmarks">06. Guarantees &amp; Retrospective</a></li>
+          <li><a href="#retrospective">03. What Broke &amp; What I&rsquo;d Change</a></li>
+          <li><a href="#topology">04. Multi-Agent System Architecture</a></li>
+          <li><a href="#inference">05. Hybrid Local/Cloud Inference</a></li>
+          <li><a href="#tools">06. Programmatic Tool Pipelines</a></li>
+          <li><a href="#benchmarks">07. Guarantees &amp; Failure Modes</a></li>
         </ul>
       </aside>
 
@@ -389,9 +390,33 @@
           </div>
         </section>
 
+        <!-- Section 03: Retrospective (4D) -->
+        <section id="retrospective" class="case-body-section">
+          <div class="section-tag">// 03 · RETROSPECTIVE</div>
+          <h2>What Broke &amp; What I Would Change</h2>
+          <div class="u-d-grid u-cols-1fr-1fr u-gap-16px u-mb-24px">
+            <div class="u-bg-red-a05 u-bd-1px-solid-red-a20 u-p-18px u-rounded-8px">
+              <h3 class="u-c-tone-red u-mb-8px u-fs-0p95rem">⚠️ What Broke in V1</h3>
+              <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
+                Unbounded asynchronous Discord Gateway event listeners without rate-limit backoff triggered HTTP 429
+                rate limit exceptions from Groq API during sudden batch notification spikes.
+              </p>
+            </div>
+            <div class="u-bg-emerald-a05 u-bd-1px-solid-emerald-a20 u-p-18px u-rounded-8px">
+              <h3 class="u-c-tone-emerald u-mb-8px u-fs-0p95rem">✓ The Engineering Fix</h3>
+              <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
+                Added a second provider: any Groq failure, including a 429, now falls through to Gemini instead of
+                failing the request. <strong>What I'd change next:</strong> there's still no retry with backoff and no
+                shared rate limiter across the five agents, and the HTTP calls are blocking (run in worker threads).
+                V2 moves to an async client with a token bucket and jittered exponential backoff.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <!-- Section 02: Multi-Agent Architecture & Delegation Protocol -->
         <section id="topology" class="case-body-section">
-          <div class="section-tag">// 03 · MULTI-AGENT ARCHITECTURE &amp; DELEGATION</div>
+          <div class="section-tag">// 04 · MULTI-AGENT ARCHITECTURE &amp; DELEGATION</div>
           <h2>Decentralized Agent Specialization &amp; Inter-Agent Delegation</h2>
           <p>
             Rather than relying on a monolithic prompt that collapses under context pollution, LSFM AI HQ decomposes
@@ -589,7 +614,7 @@
 
         <!-- Section 03: Hybrid Inference Router -->
         <section id="inference" class="case-body-section">
-          <div class="section-tag">// 04 · INFERENCE RUNTIME</div>
+          <div class="section-tag">// 05 · INFERENCE RUNTIME</div>
           <h2>Multi-Provider Routing: Groq, Gemini &amp; an Optional Local GPU</h2>
           <p>
             A core engineering priority was <strong>high-quality output within provider rate limits</strong> without locking
@@ -709,7 +734,7 @@
 
         <!-- Section 04: Programmatic Tool Pipelines -->
         <section id="tools" class="case-body-section">
-          <div class="section-tag">// 05 · REAL-WORLD APIS &amp; TOOLS</div>
+          <div class="section-tag">// 06 · REAL-WORLD APIS &amp; TOOLS</div>
           <h2>Deterministic Automation: Headless PDF &amp; Gmail Triage</h2>
           <p>
             Language models are only as useful as their ability to alter state in the real world. LSFM AI HQ integrates
@@ -856,8 +881,8 @@
 
         <!-- Section 05: Benchmarks & Reliability -->
         <section id="benchmarks" class="case-body-section">
-          <div class="section-tag">// 06 · OPERATING CHARACTERISTICS &amp; RETROSPECTIVE</div>
-          <h2>What the System Guarantees &amp; What Broke</h2>
+          <div class="section-tag">// 07 · OPERATING CHARACTERISTICS</div>
+          <h2>What the System Guarantees</h2>
           <p>
             The figures below are properties you can confirm by reading the public code, not performance claims.
             Latency and accuracy benchmarks are the next milestone (see the footnote).
@@ -957,26 +982,6 @@
               Mail.</li>
           </ul>
 
-          <!-- What Broke & What I Would Change -->
-          <h3 class="u-m-36px-0-12px-0">Retrospective: What Broke &amp; What I Would Change</h3>
-          <div class="u-d-grid u-cols-1fr-1fr u-gap-16px u-mb-24px">
-            <div class="u-bg-red-a05 u-bd-1px-solid-red-a20 u-p-18px u-rounded-8px">
-              <h4 class="u-c-tone-red u-mb-8px u-fs-0p95rem">⚠️ What Broke in V1</h4>
-              <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
-                Unbounded asynchronous Discord Gateway event listeners without rate-limit backoff triggered HTTP 429
-                rate limit exceptions from Groq API during sudden batch notification spikes.
-              </p>
-            </div>
-            <div class="u-bg-emerald-a05 u-bd-1px-solid-emerald-a20 u-p-18px u-rounded-8px">
-              <h4 class="u-c-tone-emerald u-mb-8px u-fs-0p95rem">✓ The Engineering Fix</h4>
-              <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
-                Added a second provider: any Groq failure, including a 429, now falls through to Gemini instead of
-                failing the request. <strong>What I'd change next:</strong> there's still no retry with backoff and no
-                shared rate limiter across the five agents, and the HTTP calls are blocking (run in worker threads).
-                V2 moves to an async client with a token bucket and jittered exponential backoff.
-              </p>
-            </div>
-          </div>
 
           <!-- How I Built This Note -->
           <div class="u-bg-white-a02 u-bd-1px-solid-border u-p-20px u-rounded-8px u-mt-24px">
