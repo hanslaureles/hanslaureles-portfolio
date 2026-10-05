@@ -54,6 +54,9 @@ RETRACTED = [
      "superseded memory figure (cite the 0.81 ms 2026-10-02 eval) or agents claimed to run models locally (cloud is default)"),
     (r"Auto Layout 5\.0|Enterprise Safety|Executive Interface Craft|Clutter Purging",
      "audit plain-language withdrawal (no such Figma version; personal project; never deletes mail)"),
+    (r"eliminate (personal )?budget abandonment|combat notification fatigue|authentic developer-native|"
+     r"Algorithmic Financial Intelligence",
+     "unmeasured outcome or puffery in an Ask Sakura answer (Codex plain-language NOTE)"),
 ]
 
 

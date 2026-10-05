@@ -12,10 +12,10 @@
   const KNOWLEDGE_BASE = [
     {
       id: "KNOW-01",
-      title: "React, Next.js & Frontend Interface Craft",
+      title: "React, Next.js & Frontend Interfaces",
       category: "Frontend Engineering",
       keywords: ["react", "nextjs", "next.js", "frontend", "ui", "ux", "typescript", "javascript", "tailwind", "css", "html", "design systems", "wcag", "swiss"],
-      summary: "Hans is a high-craft frontend engineer and systems architect specializing in React, Next.js, TypeScript, and design token architectures. He bridges computer science rigor with executive Swiss editorial typography and WCAG 2.1 AA accessibility.",
+      summary: "Hans is a frontend engineer working in React, Next.js, TypeScript and design tokens, with Swiss editorial typography and WCAG 2.1 AA accessibility checks.",
       evidence: "Engineered production client interfaces at ROC (roc.ph) with React and Tailwind; designed and built Lumina (a study and focus dashboard in React, TypeScript and Chart.js); built Aura Coffee (/aura-store) with vanilla CSS tokens; and developed Patriot Capstone in React Native.",
       linkUrl: "case-lumina.html",
       linkText: "Explore Lumina Analytics Case Study →",
@@ -129,27 +129,27 @@
       title: "Git Career Timeline ($ git log --graph)",
       category: "Developer Experience",
       keywords: ["git log", "timeline", "git", "commits", "career track", "milestones", "history", "graph", "career timeline"],
-      summary: "Hans built an authentic developer-native Git branch career timeline view across the homepage interactive terminal and the About page.",
+      summary: "Hans built a career timeline styled as `git log --graph` for the homepage terminal and the About page. It is styling only: it shows dates and roles, not real commits.",
       evidence: "Recruiters can run 'git log' in the homepage CLI or toggle the '$ git log --graph' mode on about.html to inspect commit hashes, milestone branches (v1.0 to v2.5), and copy individual commit SHAs with 1 click.",
       linkUrl: "about.html#git",
       linkText: "🌿 View $ git log Timeline on About Page →"
     },
     {
       id: "KNOW-13",
-      title: "FinTrack App — Algorithmic Financial Intelligence",
+      title: "FinTrack — Budgeting App Concept (Figma)",
       category: "Algorithmic UX & FinTech",
       keywords: ["fintrack", "fintech", "finance", "budget", "budgeting", "expense", "transaction", "loss aversion", "heuristics", "money", "spending"],
-      summary: "Hans architected FinTrack to eliminate personal budget abandonment through a two-tap transaction input flow, behavioral loss aversion nudges, and predictive month-end burn curves.",
+      summary: "Hans designed FinTrack, a budgeting app concept in Figma: a two-tap expense flow, one daily safe-to-spend number and neutral overspend feedback. It is untested; the prototype is built to check whether fewer taps make daily logging stick.",
       evidence: "A Figma prototype built from Auto Layout components and variables: a two-tap expense flow, one daily safe-to-spend number, and neutral feedback on overspends.",
       linkUrl: "case-fintrack.html",
       linkText: "📊 Read FinTrack Mobile Case Study →"
     },
     {
       id: "KNOW-14",
-      title: "Vellum Minimal OS — Ambient Reflection Workspace",
+      title: "Vellum — Calm Journaling App Concept (Figma)",
       category: "Interaction Systems & Mobile UX",
       keywords: ["vellum", "minimalist", "calm", "wellness", "mood tracking", "reflection", "mobile concept", "ambient", "os", "gestures"],
-      summary: "Hans designed Vellum, an ambient mobile reflection companion engineered to combat notification fatigue and cognitive context-switching friction.",
+      summary: "Hans designed Vellum, a calm journaling app concept in Figma and ProtoPie: no streaks or push nagging, and three modes (mood check-in, guided breathing, free writing). It is an untested design, not a shipped app.",
       evidence: "A Figma and ProtoPie prototype with swipe-based mood check-ins, a two-scale type hierarchy and a calm palette, built from Auto Layout components.",
       linkUrl: "case-vellum.html",
       linkText: "🌿 Explore Vellum Mobile Case Study →"
