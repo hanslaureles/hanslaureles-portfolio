@@ -336,6 +336,28 @@ test("Aura store has 44 px search/back targets and a short promo strip at 320 px
   expect(await h(".promo-strip")).toBeLessThanOrEqual(120); // was 195 px, now ~98 px
 });
 
+// Codex 2026-10-06: `help` advertised `matrix`, which had no handler. Every command help lists must run.
+test("every command listed by help runs", async ({ page }) => {
+  await page.addInitScript(() => {
+    window.open = () => null;                    // github, resume: no new tabs in the test
+    HTMLAnchorElement.prototype.click = () => {}; // resume: no download
+  });
+  await page.goto("index.html", { waitUntil: "domcontentloaded" });
+  const input = page.locator("#terminal-input");
+  const run = async (cmd) => { await input.fill(cmd); await input.press("Enter"); };
+  await run("help");
+  const cmds = await page.locator("#terminal-output .term-table .term-highlight").allInnerTexts();
+  expect(cmds.length).toBeGreaterThan(5);
+  const dead = [];
+  for (const cmd of cmds.map((c) => c.trim())) {
+    if (cmd === "sakura") continue; // opens the Sakura drawer over the terminal; covered by the overlay tests
+    await run("clear");
+    await run(cmd);
+    if (/command not found/.test(await page.locator("#terminal-output").innerText())) dead.push(cmd);
+  }
+  expect(dead).toEqual([]);
+});
+
 // Audit D: one chip per command, and at most 8 chips (choice overload); `help` lists the rest.
 test("terminal quick-command chips are unique, at most 8, and include help", async ({ page }) => {
   await page.goto("index.html", { waitUntil: "domcontentloaded" });

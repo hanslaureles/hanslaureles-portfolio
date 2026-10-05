@@ -40,7 +40,6 @@
       'contact',
       'overview',
       'git log',
-      'about',
       'clear'
     ];
 
@@ -434,7 +433,6 @@
   <tr><td><span class="term-highlight">status</span></td><td>Show each agent's engine and schedule</td></tr>
   <tr><td><span class="term-highlight">agents</span></td><td>Learn what each of the 5 AI agents does</td></tr>
   <tr><td><span class="term-highlight">vitals</span></td><td>⚡ Eunchae's CPU/RAM/disk watchdog and the workstation hardware</td></tr>
-  <tr><td><span class="term-highlight">matrix</span></td><td>🛡️ Inspect 5-agent system orchestration matrix</td></tr>
   <tr><td><span class="term-highlight">projects</span></td><td>Explore selected case studies &amp; live demos</td></tr>
   <tr><td><span class="term-highlight">audit</span></td><td>🎨 View Yunjin's 92/100 design audit &amp; resolution</td></tr>
   <tr><td><span class="term-highlight">rules</span></td><td>🧠 Inspect the 10 learned lessons &amp; rules</td></tr>
@@ -692,7 +690,7 @@
     function triggerResumeDownload() {
       appendOutput(`
 <div class="term-line term-success">[PDF-ENGINE] Fetching canonical single-page ATS resume...</div>
-<div class="term-line">Initiating download: <span class="term-cyan">Hans_Laureles_Resume.pdf</span> (236 KB)</div>
+<div class="term-line">Initiating download: <span class="term-cyan">Hans_Laureles_Resume.pdf</span> (1 page)</div>
 <div class="term-line term-muted">Compiled with Headless Edge ATS Engine · Selectable-Text PDF</div>
       `.trim());
 
