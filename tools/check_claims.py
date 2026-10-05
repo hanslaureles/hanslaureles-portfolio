@@ -50,6 +50,10 @@ RETRACTED = [
     (r"abandon budgeting apps within|severe drop-off|doesn.t hurt retention|sub-3-second|Mood Vector|"
      r"Eliminating budget abandonment|Inter and Fira Code",
      "unmeasured behaviour or outcome on a prototype, or a font the build does not load (Batch 5, Codex round 1)"),
+    (r"\b0\.8 ?ms\b|2,000 calls|RUN LOCALLY|running 5 specialized AI agents locally",
+     "superseded memory figure (cite the 0.81 ms 2026-10-02 eval) or agents claimed to run models locally (cloud is default)"),
+    (r"Auto Layout 5\.0|Enterprise Safety|Executive Interface Craft|Clutter Purging",
+     "audit plain-language withdrawal (no such Figma version; personal project; never deletes mail)"),
 ]
 
 
