@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=2.2.28">
+  <link rel="stylesheet" href="styles.css?v=2.2.29">
   
   <style>
     /* Ciel Interactive Audio & Prompt Simulator */
@@ -378,7 +378,7 @@
         </div>
         <div class="terminal-body">
 <pre><span class="terminal-comment"># How one voice request flows through Ciel</span>
-<span class="terminal-prompt">[INGEST]</span>      Browser MediaRecorder (webm) ──&gt; FFmpeg 16kHz mono normalization
+<span class="terminal-prompt">[INGEST]</span>      Browser MediaRecorder (webm) ──&gt; FFmpeg 16 kHz mono + voice-band filter
 <span class="terminal-prompt">[ASR]</span>         Groq Whisper Large v3 Turbo (Domain Vocabulary Prompting) ──&gt; OpenAI whisper-1 fallback
 <span class="terminal-prompt">[ROUTER]</span>      Ciel planner (two modes)
                ├─ Mode 1: Universal Knowledge &amp; Reasoning (Algorithms, Architecture, CS, Philosophy)
@@ -525,7 +525,7 @@
 
         <!-- Section 02: Interactive Simulator -->
         <section id="simulator" class="case-body-section">
-          <div class="section-tag">// 04 · REAL-TIME HUD DEMO</div>
+          <div class="section-tag">// 04 · SCRIPTED HUD DEMO</div>
           <h2>Voice Demo: What Ciel Can Do</h2>
           <p>
             A scripted demo of Ciel's replies. Click any prompt chip to see the kind of response Ciel gives. Replies are pre-written examples, not live output:
@@ -577,13 +577,14 @@
             </div>
 
             <div class="ciel-dsp-badge mono" id="demoDspBadge">
-              ⚡ AUDIO PIPELINE: FFmpeg 16kHz Mono Normalization → Groq Whisper Turbo → Edge-TTS + voice filter
+              ⚡ AUDIO PIPELINE: FFmpeg 16 kHz mono + voice-band filter → Groq Whisper Turbo → Edge-TTS + voice filter
             </div>
 
             <div id="ciel-demo-output" class="ciel-response-box">
               <span class="u-c-amber-400">[CIEL · SAMPLE REPLY]</span> Delegating to the 5-agent team. Eunchae reports CPU, RAM and disk use; Yunjin scans the portfolio for broken assets; Kazuha lists the current branch and uncommitted files; Sakura pulls today's priorities from the daily log. Summary compiled for you.
             </div>
           </div>
+          <p class="u-fs-0p85rem u-c-text-muted">The live HUD gets these steps from <code>ciel_server.py</code> over a WebSocket at <code>/ws</code>: <code>plan_formed</code>, <code>agent_state</code>, <code>ciel_audio_chunk</code> and <code>ciel_complete</code> per mission, plus CPU and RAM pushed every 5 s.</p>
         </section>
 
         <!-- Section 03: The 4 Pillars -->
@@ -626,7 +627,7 @@
               </div>
               <div class="agent-role-title">Clean Audio In, Clear Voice Out</div>
               <div class="agent-desc">
-                FFmpeg 16kHz mono audio normalization, Groq Whisper Large v3 Turbo with domain vocabulary prompting, an OpenAI Whisper fallback, and live Web Audio ring reactivity.
+                FFmpeg conversion to 16 kHz mono with a voice-band filter, Groq Whisper Large v3 Turbo with domain vocabulary prompting, an OpenAI Whisper fallback, and live Web Audio ring reactivity.
               </div>
               <span class="agent-stack-tag">Groq Whisper Turbo · Edge-TTS DSP</span>
             </div>
@@ -664,7 +665,7 @@
             Engineering rationale for these parameters:
           </p>
           <ul class="u-m-16px-0-24px-20px u-lh-1p8">
-            <li><strong>16kHz Mono Normalization</strong>: Whisper models are trained on 16,000 Hz single-channel audio. Converting the browser's WebM/Opus recording through stdin/stdout pipes avoids temp files and container ambiguity, and the 80 Hz–7.5 kHz band-pass trims rumble and hiss before transcription.</li>
+            <li><strong>16 kHz Mono Conversion</strong>: Whisper models are trained on 16,000 Hz single-channel audio. Converting the browser's WebM/Opus recording through stdin/stdout pipes avoids temp files and container ambiguity, and the 80 Hz–7.5 kHz band-pass trims rumble and hiss before transcription.</li>
             <li><strong>Bilingual Sequencing</strong>: The Japanese line plays first, then a 350 ms pause, then the English line, so the two voices read as one deliberate utterance rather than an overlap.</li>
             <li><strong>Presence, Not Speed</strong>: A 120 Hz high-pass removes room boom and a +3 dB lift at 3.5 kHz adds clarity. The voices themselves are tuned slightly lower and slower (−2 to −3 Hz pitch, −1 to −2% rate) for a calm delivery.</li>
             <li><strong>"Inside the Mind" Echo</strong>: Two faint reflections at 25 ms and 45 ms create the sense of an internal thought rather than an external loudspeaker, without the smear of a full reverb.</li>
@@ -815,9 +816,9 @@ tools = [
             </thead>
             <tbody>
               <tr>
-                <td>Audio Normalization</td>
+                <td>Audio Conversion</td>
                 <td>FFmpeg</td>
-                <td>Resample to 16kHz mono WAV with loudness leveling and voice-band filtering.</td>
+                <td>Resample to 16 kHz mono WAV with a fixed gain (×1.8) and an 80 Hz–7.5 kHz band-pass.</td>
                 <td>32 ms</td>
               </tr>
               <tr>
@@ -975,9 +976,9 @@ tools = [
     </div>
   </footer>
 
-  <script src="app.js?v=2.2.28"></script>
-  <script src="sakura-copilot.js?v=2.2.28"></script>
+  <script src="app.js?v=2.2.29"></script>
+  <script src="sakura-copilot.js?v=2.2.29"></script>
   
-  <script src="case-ciel-demo.js?v=2.2.28"></script>
+  <script src="case-ciel-demo.js?v=2.2.29"></script>
 </body>
 </html>

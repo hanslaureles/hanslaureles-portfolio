@@ -70,6 +70,10 @@ RETRACTED = [
      r"UI Sentinel|Git Sentinel|Developer Memory|BM25 Flywheel|Agent Flywheel|Episodic Memory Retrieval|"
      r"Payment Rails|Philippine [Rr]ails|RAILS\b)",
      "retired glossary term (copy audit §1: say LSFM AI HQ / 5-agent team, Memory Core, voice filter, payment options)"),
+    # 5D: voice_engine.py resamples to 16 kHz mono with a fixed gain (volume=1.8) and an
+    # 80 Hz-7.5 kHz band-pass. Nothing measures or normalises loudness.
+    (r"(?<![.\w])normali[sz](ation|ed|e)\b|loudness leveling|volume leveling",  # not str.normalize()
+     "FFmpeg converts to 16 kHz mono with a fixed gain and band-pass; it does not normalise loudness"),
 ]
 
 

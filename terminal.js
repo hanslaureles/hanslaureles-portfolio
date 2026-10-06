@@ -374,7 +374,7 @@
 <div class="term-git-entry">
   <div class="term-line"><span class="term-git-graph">*</span> <span class="term-badge success">HEAD -&gt; main</span> <span class="term-muted">[2026 – Present]</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span> <strong class="term-accent" style="color:#FBBF24;">feat(ciel):</strong> Architect &amp; Developer — Manas: Ciel Voice HUD</div>
-  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Groq Whisper Large v3 Turbo transcription &amp; FFmpeg audio normalization</span></div>
+  <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Groq Whisper Large v3 Turbo transcription &amp; FFmpeg 16 kHz mono conversion</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Custom voice filter (high-pass, presence EQ, light echo) over Edge-TTS</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• Remembers the last 8 exchanges &amp; reads/writes my Obsidian notes</span></div>
   <div class="term-line"><span class="term-git-pipe">|</span>   <span class="term-muted">• 4 background checks (hardware, Git, daily log, portfolio) &amp; real-time audio HUD</span></div>
@@ -558,7 +558,7 @@
 <div class="term-line" style="color: #F59E0B; font-weight: 600;">✨ MANAS: CIEL // BILINGUAL VOICE ASSISTANT</div>
 <table class="term-table">
   <tr><td><strong class="term-highlight">CORE ARCHITECTURE</strong></td><td class="term-cyan">Async Python 3.11 server (aiohttp) · two-mode planner</td></tr>
-  <tr><td><strong class="term-highlight">AUDIO PIPELINE</strong></td><td>FFmpeg 16kHz Mono Normalization + Groq Whisper Large v3 Turbo (OpenAI Whisper fallback)</td></tr>
+  <tr><td><strong class="term-highlight">AUDIO PIPELINE</strong></td><td>FFmpeg 16 kHz mono conversion + Groq Whisper Large v3 Turbo (OpenAI Whisper fallback)</td></tr>
   <tr><td><strong class="term-highlight">VOICE FILTER</strong></td><td style="color: #10B981;">High-pass · Presence EQ · Light Echo · Edge-TTS (ja-JP-NanamiNeural + en-US-AvaNeural)</td></tr>
   <tr><td><strong class="term-highlight">OBSIDIAN NOTES</strong></td><td>Reads &amp; writes my vault (Rules, Profile, Preferences, Daily log)</td></tr>
   <tr><td><strong class="term-highlight">LIVE DATA</strong></td><td class="term-cyan">Weather (wttr.in) + Web Search (DDGS)</td></tr>
