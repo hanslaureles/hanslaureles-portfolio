@@ -40,6 +40,20 @@ async function expectFocusTrapped(page, dialog) {
   }
 }
 
+// Serve every document with the vercel.json CSP enforced and collect violations in window.__csp.
+async function enforceCsp(page) {
+  await page.addInitScript(() => {
+    window.__csp = [];
+    document.addEventListener("securitypolicyviolation",
+      (e) => window.__csp.push(`${e.violatedDirective} ${e.blockedURI || "(inline)"} ${e.sourceFile || ""}:${e.lineNumber}`));
+  });
+  await page.route("**/*", async (route) => {
+    if (route.request().resourceType() !== "document") return route.continue();
+    const response = await route.fetch();
+    await route.fulfill({ response, headers: { ...response.headers(), "content-security-policy": CSP } });
+  });
+}
+
 function trackErrors(page) {
   const errors = [];
   page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
@@ -60,16 +74,7 @@ for (const path of PAGES) {
     });
 
     test("loads without violating the Content-Security-Policy in vercel.json", async ({ page }) => {
-      await page.addInitScript(() => {
-        window.__csp = [];
-        document.addEventListener("securitypolicyviolation",
-          (e) => window.__csp.push(`${e.violatedDirective} ${e.blockedURI || "(inline)"}`));
-      });
-      await page.route("**/*", async (route) => {
-        if (route.request().resourceType() !== "document") return route.continue();
-        const response = await route.fetch();
-        await route.fulfill({ response, headers: { ...response.headers(), "content-security-policy": CSP } });
-      });
+      await enforceCsp(page);
       await page.goto(path, { waitUntil: "networkidle" });
       expect(await page.evaluate(() => window.__csp)).toEqual([]);
     });
@@ -417,3 +422,95 @@ test.describe("Aura store overlays", () => {
     await expect(trigger).toBeFocused();
   });
 });
+
+// Phase 5A: with the vercel.json CSP enforced (no 'unsafe-inline' for scripts), the page
+// scripts and the Aura handlers must still work, and nothing may raise a violation.
+test.describe("page scripts and Aura handlers work under the enforced CSP", () => {
+  test.beforeEach(async ({ page }) => {
+    await enforceCsp(page);
+    await page.addInitScript(() => {
+      window.__copied = [];
+      window.alert = () => {};
+      Object.defineProperty(navigator, "clipboard",
+        { configurable: true, value: { writeText: async (t) => { window.__copied.push(t); } } });
+    });
+  });
+  test.afterEach(async ({ page }) => {
+    expect(await page.evaluate(() => window.__csp)).toEqual([]);
+  });
+
+  test("about: the git view toggle switches views", async ({ page }) => {
+    await page.goto("about.html");
+    await page.locator("#btnViewGit").click();
+    await expect(page.locator("#experience-git-view")).toBeVisible();
+    await expect(page.locator("#btnViewGit")).toHaveAttribute("aria-selected", "true");
+  });
+
+  test("case-ciel: a demo chip shows its sample reply", async ({ page }) => {
+    await page.goto("case-ciel.html");
+    await page.locator('.ciel-chip[data-query="weather"]').click();
+    await expect(page.locator("#ciel-demo-output")).toContainText("wttr.in");
+  });
+
+  test("case-memory: the recall demo runs on load and from a chip", async ({ page }) => {
+    await page.goto("case-memory.html");
+    await expect(page.locator("#demo-output")).toContainText("MATCHING LESSONS");
+    const chip = page.locator(".memory-chip").first();
+    await chip.click();
+    await expect(page.locator("#demo-query-input")).toHaveValue(await chip.getAttribute("data-query"));
+    await expect(page.locator("#demo-output")).toContainText("MATCHING LESSONS");
+  });
+
+  test("Aura store: promo code copies and nav links filter the menu", async ({ page }) => {
+    await page.goto("aura-store/index.html");
+    await page.locator(".promo-code").click();
+    await expect.poll(() => page.evaluate(() => window.__copied)).toEqual(["AURASIP"]);
+    await page.locator(".nav-menu .nav-link", { hasText: "Iced Brews" }).click();
+    await expect(page.locator('.category-pill[data-category="iced"]')).toHaveClass(/active/);
+  });
+
+  test("Aura checkout: autofill, payment, courier, and express pay to the receipt", async ({ page }) => {
+    await page.goto("aura-store/checkout.html");
+    await page.locator(".demo-fill-btn").click();
+    await expect(page.locator("#email")).not.toHaveValue("");
+    await page.locator('[data-method="card"]').click();
+    await expect(page.locator('[data-method="card"]')).toHaveClass(/active/);
+    await expect(page.locator('[data-method="gcash"]')).not.toHaveClass(/active/);
+    await page.locator('input[name="courier"][value="express"]').check();
+    await expect(page.locator("#sum-delivery")).toHaveText("₱120.00");
+    await page.getByRole("button", { name: "Pay with Maya" }).click();
+    await expect(page).toHaveURL(/confirmation/);
+    await expect(page.locator("#receipt-payment")).toContainText("MAYA");
+  });
+});
+
+// 5A-6: the CSP crawl as a test. Every visible button / summary / role=button on every page is
+// clicked once under the enforced policy; any violation on any document fails (a re-added
+// onclick= shows up as script-src-attr).
+for (const path of PAGES.filter((p) => p.endsWith(".html"))) {
+  test(`${path}: clicking every control raises no CSP violation`, async ({ page }) => {
+    test.setTimeout(120_000);
+    const hits = [];
+    await page.exposeBinding("__cspReport", (_, v) => hits.push(v));
+    await enforceCsp(page);
+    await page.addInitScript(() => {
+      window.open = () => null;
+      window.alert = () => {};
+      HTMLAnchorElement.prototype.click = function () {}; // downloads
+      document.addEventListener("securitypolicyviolation",
+        (e) => window.__cspReport(`${location.pathname} ${e.violatedDirective} ${e.sourceFile || ""}:${e.lineNumber}`));
+    });
+    page.on("dialog", (d) => d.dismiss().catch(() => {}));
+    const controls = "button:visible, summary:visible, [role=button]:visible";
+    await page.goto(path, { waitUntil: "networkidle" });
+    const start = page.url();
+    const n = Math.min(await page.locator(controls).count(), 60);
+    for (let i = 0; i < n; i++) {
+      if (page.url() !== start) await page.goto(path, { waitUntil: "networkidle" });
+      await page.locator(controls).nth(i).click({ timeout: 1500 }).catch(() => {});
+      await page.waitForTimeout(100);
+      await page.keyboard.press("Escape").catch(() => {});
+    }
+    expect(hits).toEqual([]);
+  });
+}
