@@ -461,6 +461,20 @@
 
   // --- 7. Event Listeners Initializer ---
   function initListeners() {
+    // Nav shortcuts and the promo code (inline onclick= until 5A; the CSP allows no inline handlers)
+    document.querySelectorAll('[data-filter]').forEach(link => {
+      link.addEventListener('click', () => {
+        const pill = document.querySelector(`.category-pill[data-category="${link.dataset.filter}"]`);
+        if (pill) pill.click();
+      });
+    });
+    document.querySelectorAll('[data-copy]').forEach(el => {
+      el.addEventListener('click', () => {
+        navigator.clipboard.writeText(el.dataset.copy);
+        alert(`Code ${el.dataset.copy} copied!`);
+      });
+    });
+
     // Category Pills Filter
     categoryPills.forEach(pill => {
       pill.addEventListener('click', () => {

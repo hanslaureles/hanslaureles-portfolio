@@ -116,18 +116,18 @@
   }
 
   // --- 3. Interactive Handlers ---
-  window.updateCourierOption = function (courierType) {
+  function updateCourierOption(courierType) {
     selectedCourier = courierType;
     renderOrderSummary();
-  };
+  }
 
-  window.selectPaymentMethod = function (methodKey, el) {
+  function selectPaymentMethod(methodKey, el) {
     selectedPayment = methodKey;
     document.querySelectorAll('.payment-method-pill').forEach(p => p.classList.remove('active'));
     if (el) el.classList.add('active');
-  };
+  }
 
-  window.autofillDemo = function () {
+  function autofillDemo() {
     document.getElementById('email').value = 'maria.santos@gmail.com';
     document.getElementById('firstName').value = 'Maria';
     document.getElementById('lastName').value = 'Santos';
@@ -137,22 +137,22 @@
     document.getElementById('city').value = 'Taguig City';
     document.getElementById('province').value = 'Metro Manila';
     document.getElementById('zip').value = '1634';
-  };
+  }
 
-  window.quickExpressPay = function (walletName) {
-    window.autofillDemo();
+  function quickExpressPay(walletName) {
+    autofillDemo();
     const pill = document.querySelector(`[data-method="${walletName.toLowerCase()}"]`);
     if (pill) {
-      window.selectPaymentMethod(walletName.toLowerCase(), pill);
+      selectPaymentMethod(walletName.toLowerCase(), pill);
     }
     const form = document.getElementById('checkout-form');
     if (form) {
       form.requestSubmit();
     }
-  };
+  }
 
   // --- 4. Place Order & Route to Scalloped Confirmation Receipt ---
-  window.handlePlaceOrder = function (event) {
+  function handlePlaceOrder(event) {
     event.preventDefault();
 
     const email = document.getElementById('email').value.trim();
@@ -208,12 +208,27 @@
       } catch (e) {}
       window.location.href = '/aura-store/confirmation.html';
     }, 900);
-  };
+  }
 
   // --- 5. Init on Load ---
+  // Listeners replace the inline onclick= / onchange= / onsubmit= (5A: the CSP allows none).
+  function initListeners() {
+    document.querySelectorAll('[data-express-pay]').forEach(btn =>
+      btn.addEventListener('click', () => quickExpressPay(btn.dataset.expressPay)));
+    const form = document.getElementById('checkout-form');
+    if (form) form.addEventListener('submit', handlePlaceOrder);
+    const fill = document.querySelector('.demo-fill-btn');
+    if (fill) fill.addEventListener('click', autofillDemo);
+    document.querySelectorAll('input[name="courier"]').forEach(radio =>
+      radio.addEventListener('change', () => updateCourierOption(radio.value)));
+    document.querySelectorAll('.payment-method-pill').forEach(pill =>
+      pill.addEventListener('click', () => selectPaymentMethod(pill.dataset.method, pill)));
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     loadCart();
     renderOrderSummary();
+    initListeners();
   });
 
 })();

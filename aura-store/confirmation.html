@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/aura-store/styles.css?v=2.2.26">
+  <link rel="stylesheet" href="/aura-store/styles.css?v=2.2.27">
   <style>
     /* Scalloped edge styling */
     .scallop-receipt {
@@ -144,83 +144,6 @@
     </div>
   </main>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const ORDER_STORAGE_KEY = 'aura_last_order';
-      let orderData = null;
-
-      try {
-        const saved = localStorage.getItem(ORDER_STORAGE_KEY);
-        if (saved) {
-          orderData = JSON.parse(saved);
-        }
-      } catch (e) {}
-
-      // Fallback demo order if visited directly
-      if (!orderData) {
-        orderData = {
-          orderId: 'AUR-5821',
-          timestamp: new Date().toLocaleString(),
-          customer: {
-            name: 'Maria Santos',
-            phone: '0917 842 1900',
-            address: 'Unit 14B, Arya Residences, McKinley Pkwy, Taguig City'
-          },
-          courier: 'Standard Roastery Courier',
-          paymentMethod: 'GCASH',
-          items: [
-            {
-              name: 'Signature Spanish Latte',
-              qty: 2,
-              unitPrice: 185,
-              customizations: {
-                size: 'Regular (12oz)',
-                milk: 'Oat Milk',
-                sweetness: '70% (Less Sweet)'
-              }
-            },
-            {
-              name: 'Artisanal Butter Croissant',
-              qty: 1,
-              unitPrice: 120,
-              customizations: null
-            }
-          ],
-          subtotal: 490,
-          deliveryFee: 60,
-          total: 550
-        };
-      }
-
-      // Populate Receipt DOM
-      document.getElementById('receipt-order-id').textContent = orderData.orderId;
-      document.getElementById('receipt-customer-name').textContent = orderData.customer.name;
-      document.getElementById('receipt-customer-address').textContent = orderData.customer.address;
-      document.getElementById('receipt-payment').textContent = orderData.paymentMethod;
-      document.getElementById('receipt-subtotal').textContent = `₱${orderData.subtotal.toFixed(2)}`;
-      document.getElementById('receipt-delivery').textContent = orderData.deliveryFee === 0 ? 'FREE' : `₱${orderData.deliveryFee.toFixed(2)}`;
-      document.getElementById('receipt-total').textContent = `₱${orderData.total.toFixed(2)}`;
-
-      const itemsBody = document.getElementById('receipt-items-body');
-      itemsBody.innerHTML = orderData.items.map(item => {
-        const mods = item.customizations 
-          ? `<br><small style="color:var(--espresso-light); font-size:0.75rem;">${item.customizations.size} · ${item.customizations.milk} · ${item.customizations.sweetness}</small>`
-          : '<br><small style="color:var(--espresso-light); font-size:0.75rem;">Fresh Daily Bake</small>';
-
-        return `
-          <tr>
-            <td style="font-weight: 700;">${item.qty}×</td>
-            <td>
-              <strong style="color: var(--espresso-dark);">${item.name}</strong>
-              ${mods}
-            </td>
-            <td style="text-align: right; font-weight: 700;">
-              ₱${(item.unitPrice * item.qty).toFixed(2)}
-            </td>
-          </tr>
-        `;
-      }).join('');
-    });
-  </script>
+  <script src="/aura-store/confirmation.js?v=2.2.27"></script>
 </body>
 </html>

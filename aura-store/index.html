@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/aura-store/styles.css?v=2.2.26">
+  <link rel="stylesheet" href="/aura-store/styles.css?v=2.2.27">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
       <div class="promo-strip-content">
         <span class="promo-tag">Special Treat</span>
         <span>Enjoy <strong>15% OFF</strong> your first handcrafted drink with code</span>
-        <span class="promo-code" onclick="navigator.clipboard.writeText('AURASIP'); alert('Code AURASIP copied!');" title="Click to copy">AURASIP</span>
+        <span class="promo-code" data-copy="AURASIP" title="Click to copy">AURASIP</span>
         <span class="promo-delivery">· Free courier delivery on orders over ₱500</span>
       </div>
     </div>
@@ -40,10 +40,10 @@
         <!-- Desktop Navigation Links -->
         <nav class="nav-menu" aria-label="Main Navigation">
           <a href="#menu" class="nav-link active">All Menu</a>
-          <a href="#menu" class="nav-link" onclick="document.querySelector('[data-category=iced]').click()">Iced Brews</a>
-          <a href="#menu" class="nav-link" onclick="document.querySelector('[data-category=hot]').click()">Hot Coffee</a>
-          <a href="#menu" class="nav-link" onclick="document.querySelector('[data-category=blends]').click()">Frappés</a>
-          <a href="#menu" class="nav-link" onclick="document.querySelector('[data-category=bakery]').click()">Bakery</a>
+          <a href="#menu" class="nav-link" data-filter="iced">Iced Brews</a>
+          <a href="#menu" class="nav-link" data-filter="hot">Hot Coffee</a>
+          <a href="#menu" class="nav-link" data-filter="blends">Frappés</a>
+          <a href="#menu" class="nav-link" data-filter="bakery">Bakery</a>
         </nav>
 
         <!-- Header Actions: Search & Cart -->
@@ -388,7 +388,7 @@
     </div>
   </footer>
 
-  <script src="/aura-store/media.js?v=2.2.26"></script>
-  <script src="/aura-store/store.js?v=2.2.26"></script>
+  <script src="/aura-store/media.js?v=2.2.27"></script>
+  <script src="/aura-store/store.js?v=2.2.27"></script>
 </body>
 </html>

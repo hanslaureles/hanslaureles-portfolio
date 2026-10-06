@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=2.2.26">
+  <link rel="stylesheet" href="styles.css?v=2.2.27">
   
   <!-- Zero-FOUC Theme Script -->
   <script>
@@ -618,47 +618,8 @@
     </div>
   </footer>
 
-  <script src="app.js?v=2.2.26"></script>
-  <script src="sakura-copilot.js?v=2.2.26"></script>
-  <script>
-    // Dual-Mode Experience View Toggler & SHA Copy
-    (function () {
-      const btnCards = document.getElementById('btnViewCards');
-      const btnGit = document.getElementById('btnViewGit');
-      const cardsView = document.getElementById('experience-cards-view');
-      const gitView = document.getElementById('experience-git-view');
-
-      if (!btnCards || !btnGit || !cardsView || !gitView) return;
-
-      function setView(mode) {
-        if (mode === 'git') {
-          cardsView.style.display = 'none';
-          gitView.style.display = 'block';
-          btnGit.classList.add('active');
-          btnGit.setAttribute('aria-selected', 'true');
-          btnCards.classList.remove('active');
-          btnCards.setAttribute('aria-selected', 'false');
-          try { localStorage.setItem('hans_about_view_pref', 'git'); } catch(e) {}
-        } else {
-          gitView.style.display = 'none';
-          cardsView.style.display = 'flex';
-          btnCards.classList.add('active');
-          btnCards.setAttribute('aria-selected', 'true');
-          btnGit.classList.remove('active');
-          btnGit.setAttribute('aria-selected', 'false');
-          try { localStorage.setItem('hans_about_view_pref', 'cards'); } catch(e) {}
-        }
-      }
-
-      btnCards.addEventListener('click', () => setView('cards'));
-      btnGit.addEventListener('click', () => setView('git'));
-
-      // Check saved preference or URL hash
-      if (window.location.hash === '#git' || (function(){ try { return localStorage.getItem('hans_about_view_pref') === 'git'; } catch(e){ return false; } })()) {
-        setView('git');
-      }
-
-    })();
-  </script>
+  <script src="app.js?v=2.2.27"></script>
+  <script src="sakura-copilot.js?v=2.2.27"></script>
+  <script src="about-view.js?v=2.2.27"></script>
 </body>
 </html>
