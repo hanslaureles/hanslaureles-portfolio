@@ -88,9 +88,13 @@ def main():
     csp = {h["key"].lower(): h["value"] for r in rules if r["source"] == "/(.*)" for h in r["headers"]}
     # The CSP is enforced (batch B, 2026-10-06): the enforced header must match vercel.json and the
     # report-only header must be gone, so a revert to report-only shows up as a failure.
-    if headers.get("content-security-policy") != csp.get("content-security-policy"):
+    # A key missing from both sides would compare None == None, so require it in vercel.json first.
+    expected_csp = csp.get("content-security-policy")
+    if not expected_csp:
+        problems.append("vercel.json: no enforced Content-Security-Policy header for /(.*)")
+    elif headers.get("content-security-policy") != expected_csp:
         problems.append(f"header content-security-policy: {headers.get('content-security-policy')!r} "
-                        f"(vercel.json has {csp.get('content-security-policy')!r})")
+                        f"(vercel.json has {expected_csp!r})")
     if "content-security-policy-report-only" in headers:
         problems.append("header content-security-policy-report-only still sent (expected only the enforced CSP)")
 
