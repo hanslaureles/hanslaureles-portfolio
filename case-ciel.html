@@ -584,7 +584,7 @@
               <span class="u-c-amber-400">[CIEL · SAMPLE REPLY]</span> Delegating to the 5-agent team. Eunchae reports CPU, RAM and disk use; Yunjin scans the portfolio for broken assets; Kazuha lists the current branch and uncommitted files; Sakura pulls today's priorities from the daily log. Summary compiled for you.
             </div>
           </div>
-          <p class="u-fs-0p85rem u-c-text-muted">The live HUD gets these steps from <code>ciel_server.py</code> over a WebSocket at <code>/ws</code>: <code>plan_formed</code>, <code>agent_state</code>, <code>ciel_audio_chunk</code> and <code>ciel_complete</code> per mission, plus CPU and RAM pushed every 5 s.</p>
+          <p class="u-fs-0p85rem u-c-text-muted">The live HUD gets these steps from <code>ciel_server.py</code> over a WebSocket at <code>/ws</code>, as they happen: <code>plan_formed</code> when Ciel has a plan, <code>agent_state</code> for each agent it delegates to, <code>ciel_audio_chunk</code> for each spoken clip, then <code>ciel_complete</code> or <code>ciel_error</code>. CPU and RAM are pushed every 5 s.</p>
         </section>
 
         <!-- Section 03: The 4 Pillars -->
