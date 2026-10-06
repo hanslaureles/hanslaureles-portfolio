@@ -48,7 +48,7 @@ jobs:
         run: python tools/check_claims.py
       # Enforced CSP: no inline handlers, inline scripts only by hash, same policy on Vercel and Netlify (5A).
       - name: CSP guard
-        run: python tools/check_csp.py
+        run: python tools/check_csp.py && python tools/test_check_csp.py
 
   # Browser smoke tests: console errors, axe (no serious/critical), 375 px
   # overflow, local links, theme toggle, keyboard lightbox and mobile menu.
