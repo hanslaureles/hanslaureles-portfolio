@@ -386,6 +386,25 @@ for (const path of ["aura-store", "aura-store/checkout", "aura-store/confirmatio
   });
 }
 
+// 5C (Codex 5A NOTE P2): the six payment options were <div>s, reachable by mouse only.
+test("Aura checkout payment options are a keyboard-operable radio group", async ({ page }) => {
+  await page.goto("aura-store/checkout.html", { waitUntil: "networkidle" });
+  const group = page.getByRole("radiogroup", { name: "Select Payment Method" });
+  const radios = group.getByRole("radio");
+  await expect(radios).toHaveCount(6);
+  await expect(group.getByRole("radio", { name: "GCash E-Wallet" })).toBeChecked();
+  await group.getByRole("radio", { name: "GCash E-Wallet" }).focus();
+  await page.keyboard.press("ArrowRight");
+  const maya = group.getByRole("radio", { name: "Maya Wallet / QR" });
+  await expect(maya).toBeChecked();
+  await expect(maya).toBeFocused();
+  await expect(page.locator('.payment-method-pill[data-method="maya"]')).toHaveClass(/active/);
+  await expect(page.locator('.payment-method-pill[data-method="gcash"]')).not.toHaveClass(/active/);
+  // The focused option must show a visible focus ring.
+  const outline = await page.locator('.payment-method-pill[data-method="maya"]').evaluate((el) => getComputedStyle(el).outlineStyle);
+  expect(outline).not.toBe("none");
+});
+
 // Aura demo store (its own store.js, not app.js): customizer modal and cart drawer.
 test.describe("Aura store overlays", () => {
   test("customizer: keyboard open, focus inside and trapped, Escape returns focus", async ({ page }) => {

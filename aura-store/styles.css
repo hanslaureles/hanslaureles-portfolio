@@ -1594,6 +1594,17 @@ picture,
   flex-direction: column;
   align-items: center;
   gap: 6px;
+  position: relative; /* anchors the visually hidden radio inside */
+}
+
+/* Each pill is a <label> around a native radio (5C): arrow keys move the choice. */
+.payment-method-pill:has(input:focus-visible) {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.payment-method-pill .payment-method-icon {
+  font-size: 1.4rem;
 }
 
 .payment-method-pill:hover {

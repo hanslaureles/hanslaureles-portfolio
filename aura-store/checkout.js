@@ -124,7 +124,11 @@
   function selectPaymentMethod(methodKey, el) {
     selectedPayment = methodKey;
     document.querySelectorAll('.payment-method-pill').forEach(p => p.classList.remove('active'));
-    if (el) el.classList.add('active');
+    if (el) {
+      el.classList.add('active');
+      const radio = el.querySelector('input[type="radio"]');
+      if (radio) radio.checked = true; // express pay picks the pill without a click
+    }
   }
 
   function autofillDemo() {
@@ -221,8 +225,9 @@
     if (fill) fill.addEventListener('click', autofillDemo);
     document.querySelectorAll('input[name="courier"]').forEach(radio =>
       radio.addEventListener('change', () => updateCourierOption(radio.value)));
-    document.querySelectorAll('.payment-method-pill').forEach(pill =>
-      pill.addEventListener('click', () => selectPaymentMethod(pill.dataset.method, pill)));
+    // Each pill is a <label> around a radio, so click, Space and the arrow keys all land here.
+    document.querySelectorAll('input[name="payment"]').forEach(radio =>
+      radio.addEventListener('change', () => selectPaymentMethod(radio.value, radio.closest('.payment-method-pill'))));
   }
 
   document.addEventListener('DOMContentLoaded', () => {
