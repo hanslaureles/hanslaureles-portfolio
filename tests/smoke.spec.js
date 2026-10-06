@@ -11,7 +11,7 @@ const { default: AxeBuilder } = require("@axe-core/playwright");
 // vercel.json, so the CSP test adds the header to each page itself.
 const CSP = JSON.parse(fs.readFileSync(nodePath.join(__dirname, "..", "vercel.json"), "utf8"))
   .headers.find((h) => h.source === "/(.*)").headers
-  .find((h) => h.key === "Content-Security-Policy-Report-Only").value;
+  .find((h) => h.key === "Content-Security-Policy").value;
 
 const PAGES = [
   "index.html", "about.html", "404.html",
@@ -68,7 +68,7 @@ for (const path of PAGES) {
       await page.route("**/*", async (route) => {
         if (route.request().resourceType() !== "document") return route.continue();
         const response = await route.fetch();
-        await route.fulfill({ response, headers: { ...response.headers(), "content-security-policy-report-only": CSP } });
+        await route.fulfill({ response, headers: { ...response.headers(), "content-security-policy": CSP } });
       });
       await page.goto(path, { waitUntil: "networkidle" });
       expect(await page.evaluate(() => window.__csp)).toEqual([]);

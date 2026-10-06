@@ -5,8 +5,8 @@ Checks the deployed site, not the repo:
   - every public route answers with its expected status (cleanUrls pages,
     the /ciel aliases, the Aura subfolder rewrites, the resume PDF);
   - /about.html redirects to /about (cleanUrls);
-  - the security headers from vercel.json are present, and the CSP header
-    equals the value in this checkout's vercel.json;
+  - the security headers from vercel.json are present, the enforced CSP header
+    equals the value in this checkout's vercel.json, and no report-only CSP is sent;
   - /aura-store references its own stylesheet (root-absolute URLs);
   - /data/status.json is served as schema-1 JSON with max-age=0;
   - the live pages carry the same ?v= cache-buster as index.html in this
@@ -86,9 +86,13 @@ def main():
         problems.append("header permissions-policy missing")
     rules = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))["headers"]
     csp = {h["key"].lower(): h["value"] for r in rules if r["source"] == "/(.*)" for h in r["headers"]}
-    for name in ("content-security-policy-report-only", "content-security-policy"):
-        if name in csp and headers.get(name) != csp[name]:
-            problems.append(f"header {name}: {headers.get(name)!r} (vercel.json has {csp[name]!r})")
+    # The CSP is enforced (batch B, 2026-10-06): the enforced header must match vercel.json and the
+    # report-only header must be gone, so a revert to report-only shows up as a failure.
+    if headers.get("content-security-policy") != csp.get("content-security-policy"):
+        problems.append(f"header content-security-policy: {headers.get('content-security-policy')!r} "
+                        f"(vercel.json has {csp.get('content-security-policy')!r})")
+    if "content-security-policy-report-only" in headers:
+        problems.append("header content-security-policy-report-only still sent (expected only the enforced CSP)")
 
     # /aura-store has no trailing slash, so a relative "styles.css" would load the
     # portfolio's stylesheet (the store shipped unstyled that way until 4A).
