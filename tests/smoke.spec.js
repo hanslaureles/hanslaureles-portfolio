@@ -496,6 +496,25 @@ for (const motion of ["no-preference", "reduce"]) {
   });
 }
 
+// 5E-3: metric cards drawn from the recorded runs (tools/build_metric_cards.py, data/bench/).
+// One tick per run; the 12 px, 320 px and axe guards above cover the pages they sit on.
+for (const [path, id, rows, runs] of [["case-ciel.html", "ttfa-2026-10-02", 2, 20],
+                                      ["case-lsfm.html", "llm-roundtrip-2026-10-02", 5, 50]]) {
+  test(`${path}: the ${id} card shows every recorded run`, async ({ page }) => {
+    await page.goto(path, { waitUntil: "domcontentloaded" });
+    const card = page.locator(`figure.metric-card[data-metric="${id}"]`);
+    await expect(card).toHaveCount(1);
+    await expect(card.locator(".mc-row")).toHaveCount(rows);
+    await expect(card.locator(".mc-run")).toHaveCount(runs);
+    await expect(card.locator(".mc-p50")).toHaveCount(rows);
+    for (const strip of await card.locator("svg.mc-strip").all()) {
+      await expect(strip).toHaveAttribute("role", "img");
+      await expect(strip).toHaveAttribute("aria-label", /^\d+ runs: .+ to .+, p50 .+$/);
+    }
+    await expect(card.locator('a[href*="lsfm-ai-hq/blob/5fb3216"]').first()).toBeVisible();
+  });
+}
+
 // Aura demo store (its own store.js, not app.js): customizer modal and cart drawer.
 test.describe("Aura store overlays", () => {
   test("customizer: keyboard open, focus inside and trapped, Escape returns focus", async ({ page }) => {

@@ -1,0 +1,70 @@
+{
+ "id": "ttfa-2026-10-02",
+ "page": "case-ciel.html",
+ "title": "Time to first audio",
+ "date": "2026-10-02",
+ "unit": "s",
+ "axis": {
+  "scale": "linear",
+  "min": 0,
+  "max": 6000
+ },
+ "headline": "{0} → {1}",
+ "headline_stats": [
+  [
+   "p50",
+   0
+  ],
+  [
+   "p50",
+   1
+  ]
+ ],
+ "meta": "p50 · N = {n_each} each · {date}",
+ "source_repo": "hanslaureles/lsfm-ai-hq",
+ "source_commit": "5fb3216aeaad3cbbb07cae3deef26c81d470da1f",
+ "rows": [
+  {
+   "label": "Before streaming",
+   "source": "bench/results/2026-10-02-ttfa-before.json",
+   "key": [
+    "stages",
+    "e2e.time_to_first_audio",
+    "samples_ms"
+   ],
+   "samples_ms": [
+    4178.9,
+    3512.4,
+    3400.1,
+    5991.1,
+    5836.5,
+    4700.8,
+    4035.1,
+    5517.8,
+    5596.2,
+    4596.4
+   ]
+  },
+  {
+   "label": "After streaming",
+   "source": "bench/results/2026-10-02-ttfa-after.json",
+   "key": [
+    "stages",
+    "e2e.time_to_first_audio",
+    "samples_ms"
+   ],
+   "samples_ms": [
+    1407.6,
+    1367.4,
+    1572.9,
+    1614.8,
+    1409.8,
+    1336.2,
+    1307.3,
+    1361.8,
+    1996.8,
+    1778.1
+   ]
+  }
+ ]
+}

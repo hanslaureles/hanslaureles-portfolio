@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="styles.css?v=2.2.30">
+  <link rel="stylesheet" href="styles.css?v=2.2.31">
   
   <style>
     /* Ciel Interactive Audio & Prompt Simulator */
@@ -278,7 +278,15 @@
         <div><dt>Problem</dt><dd>My working context is spread across the terminal, Discord, Obsidian notes and LLM chat tabs, and switching between them by hand breaks focus.</dd></div>
         <div><dt>Constraint</dt><dd>One voice, in Japanese and English, running on my own PC, that can act on the workstation (hand tasks to the agents, read notes, check vitals) and not only chat.</dd></div>
         <div><dt>Decision</dt><dd>Speak each sentence as soon as it is written: Edge-TTS gets up to three sentences at once and the HUD plays them in order. Groq, Whisper and Ollama are called with Python's standard library, no SDK: HTTPS for Groq and Whisper, local HTTP for Ollama (<a href="#decisions">decisions</a>).</dd></div>
-        <div><dt>Measured result</dt><dd>Time to first audio fell from 4.60&nbsp;s to 1.41&nbsp;s p50 (N=10 each, same prompt and machine, 2026-10-02). The cost: mission-complete p95 rose from 5.99&nbsp;s to 7.20&nbsp;s (<a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-before.md" target="_blank" rel="noopener noreferrer">before</a> · <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-after.md" target="_blank" rel="noopener noreferrer">after</a>).</dd></div>
+        <div><dt>Measured result</dt><dd>Time to first audio fell from 4.60&nbsp;s to 1.41&nbsp;s p50 (N=10 each, same prompt and machine, 2026-10-02). The cost: mission-complete p95 rose from 5.99&nbsp;s to 7.20&nbsp;s (<a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-before.md" target="_blank" rel="noopener noreferrer">before</a> · <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-after.md" target="_blank" rel="noopener noreferrer">after</a>).<!-- metric:ttfa-2026-10-02 -->
+<figure class="metric-card" data-metric="ttfa-2026-10-02" aria-labelledby="mc-ttfa-2026-10-02">
+  <figcaption id="mc-ttfa-2026-10-02"><span class="metric-card-title">Time to first audio</span><span class="metric-card-value">4.60 s → 1.41 s</span><span class="metric-card-meta">p50 · N = 10 each · 2026-10-02</span></figcaption>
+  <div class="mc-row"><span class="mc-label">Before streaming</span><svg class="mc-strip" viewBox="0 0 1000 20" preserveAspectRatio="none" role="img" aria-label="10 runs: 3.40 s to 5.99 s, p50 4.60 s"><line class="mc-run" x1="696.5" x2="696.5" y1="4" y2="16"/><line class="mc-run" x1="585.4" x2="585.4" y1="4" y2="16"/><line class="mc-run" x1="566.7" x2="566.7" y1="4" y2="16"/><line class="mc-run" x1="998.5" x2="998.5" y1="4" y2="16"/><line class="mc-run" x1="972.8" x2="972.8" y1="4" y2="16"/><line class="mc-run" x1="783.5" x2="783.5" y1="4" y2="16"/><line class="mc-run" x1="672.5" x2="672.5" y1="4" y2="16"/><line class="mc-run" x1="919.6" x2="919.6" y1="4" y2="16"/><line class="mc-run" x1="932.7" x2="932.7" y1="4" y2="16"/><line class="mc-run" x1="766.1" x2="766.1" y1="4" y2="16"/><line class="mc-p50" x1="766.1" x2="766.1" y1="0" y2="20"/></svg><span class="mc-stat">4.60 s</span></div>
+  <div class="mc-row"><span class="mc-label">After streaming</span><svg class="mc-strip" viewBox="0 0 1000 20" preserveAspectRatio="none" role="img" aria-label="10 runs: 1.31 s to 2.00 s, p50 1.41 s"><line class="mc-run" x1="234.6" x2="234.6" y1="4" y2="16"/><line class="mc-run" x1="227.9" x2="227.9" y1="4" y2="16"/><line class="mc-run" x1="262.1" x2="262.1" y1="4" y2="16"/><line class="mc-run" x1="269.1" x2="269.1" y1="4" y2="16"/><line class="mc-run" x1="235.0" x2="235.0" y1="4" y2="16"/><line class="mc-run" x1="222.7" x2="222.7" y1="4" y2="16"/><line class="mc-run" x1="217.9" x2="217.9" y1="4" y2="16"/><line class="mc-run" x1="227.0" x2="227.0" y1="4" y2="16"/><line class="mc-run" x1="332.8" x2="332.8" y1="4" y2="16"/><line class="mc-run" x1="296.4" x2="296.4" y1="4" y2="16"/><line class="mc-p50" x1="234.6" x2="234.6" y1="0" y2="20"/></svg><span class="mc-stat">1.41 s</span></div>
+  <div class="mc-axis" aria-hidden="true"><span>0 s</span><span>linear scale</span><span>6 s</span></div>
+  <p class="metric-card-source">Each tick is one recorded run; the tall tick is the p50. Source: <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-before.json" target="_blank" rel="noopener noreferrer">2026-10-02-ttfa-before.json</a> · <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-after.json" target="_blank" rel="noopener noreferrer">2026-10-02-ttfa-after.json</a></p>
+</figure>
+<!-- /metric --></dd></div>
         <div><dt>Code</dt><dd>Server side in lsfm-ai-hq: <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/speech_stream.py" target="_blank" rel="noopener noreferrer">speech_stream.py</a>, <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/ciel_server.py" target="_blank" rel="noopener noreferrer">ciel_server.py</a> (the HUD code is private)</dd></div>
       </dl>
 
@@ -976,9 +984,9 @@ tools = [
     </div>
   </footer>
 
-  <script src="app.js?v=2.2.30"></script>
-  <script src="sakura-copilot.js?v=2.2.30"></script>
+  <script src="app.js?v=2.2.31"></script>
+  <script src="sakura-copilot.js?v=2.2.31"></script>
   
-  <script src="case-ciel-demo.js?v=2.2.30"></script>
+  <script src="case-ciel-demo.js?v=2.2.31"></script>
 </body>
 </html>

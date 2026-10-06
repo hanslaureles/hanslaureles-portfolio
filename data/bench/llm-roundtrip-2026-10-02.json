@@ -1,0 +1,138 @@
+{
+ "id": "llm-roundtrip-2026-10-02",
+ "page": "case-lsfm.html",
+ "title": "LLM round trip",
+ "date": "2026-10-02",
+ "unit": "ms",
+ "axis": {
+  "scale": "log",
+  "min": 250,
+  "max": 8000
+ },
+ "headline": "{0} p50 · {1} p95",
+ "headline_stats": [
+  [
+   "p50",
+   "all"
+  ],
+  [
+   "p95",
+   "all"
+  ]
+ ],
+ "meta": "N = {n_total} · {n_each} per agent · {date}",
+ "source_repo": "hanslaureles/lsfm-ai-hq",
+ "source_commit": "5fb3216aeaad3cbbb07cae3deef26c81d470da1f",
+ "rows": [
+  {
+   "label": "Sakura",
+   "source": "bench/results/2026-10-02-telemetry.json",
+   "key": [
+    "agents",
+    "sakura",
+    "calls"
+   ],
+   "field": "total_ms",
+   "samples_ms": [
+    312.0,
+    308.7,
+    338.0,
+    370.0,
+    360.1,
+    300.3,
+    466.7,
+    292.0,
+    310.7,
+    326.2
+   ]
+  },
+  {
+   "label": "Chaewon",
+   "source": "bench/results/2026-10-02-telemetry.json",
+   "key": [
+    "agents",
+    "chaewon",
+    "calls"
+   ],
+   "field": "total_ms",
+   "samples_ms": [
+    772.4,
+    854.3,
+    752.4,
+    786.3,
+    773.1,
+    812.0,
+    736.3,
+    931.0,
+    836.0,
+    810.0
+   ]
+  },
+  {
+   "label": "Yunjin",
+   "source": "bench/results/2026-10-02-telemetry.json",
+   "key": [
+    "agents",
+    "yunjin",
+    "calls"
+   ],
+   "field": "total_ms",
+   "samples_ms": [
+    6827.4,
+    7011.6,
+    5480.1,
+    4474.7,
+    4379.9,
+    5688.5,
+    4674.3,
+    4861.1,
+    6177.1,
+    4257.1
+   ]
+  },
+  {
+   "label": "Kazuha",
+   "source": "bench/results/2026-10-02-telemetry.json",
+   "key": [
+    "agents",
+    "kazuha",
+    "calls"
+   ],
+   "field": "total_ms",
+   "samples_ms": [
+    333.6,
+    318.8,
+    307.2,
+    357.4,
+    370.2,
+    299.1,
+    554.1,
+    344.3,
+    491.3,
+    308.4
+   ]
+  },
+  {
+   "label": "Eunchae",
+   "source": "bench/results/2026-10-02-telemetry.json",
+   "key": [
+    "agents",
+    "eunchae",
+    "calls"
+   ],
+   "field": "total_ms",
+   "samples_ms": [
+    691.6,
+    466.9,
+    593.3,
+    918.3,
+    886.0,
+    747.1,
+    881.2,
+    780.0,
+    728.2,
+    766.7
+   ]
+  }
+ ]
+}

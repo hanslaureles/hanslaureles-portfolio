@@ -33,7 +33,7 @@
     href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=2.2.30">
+  <link rel="stylesheet" href="styles.css?v=2.2.31">
 
   <!-- Zero-FOUC Theme Script -->
   <script>
@@ -135,7 +135,18 @@
         <div><dt>Problem</dt><dd>Busywork across separate tools: digging through promotional email for the messages that matter, reformatting resumes for each applicant tracking system, switching tabs.</dd></div>
         <div><dt>Constraint</dt><dd>One person, one PC: five agents in one asyncio event loop, cloud models by default, and no step that deletes mail or sends an application without approval.</dd></div>
         <div><dt>Decision</dt><dd>One job per agent, each with its own model and a fallback to the other provider. Gmail rules run before the LLM, and heavy jobs (PDF builds, triage) get their own two-thread pool (<a href="#decisions">decisions</a>).</dd></div>
-        <div><dt>Measured result</dt><dd>LLM round trip 736&nbsp;ms p50 and 6,177&nbsp;ms p95 (N=50, 2026-10-02); per agent from 312&nbsp;ms (Sakura) to 4,861&nbsp;ms (Yunjin) (<a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-telemetry.md" target="_blank" rel="noopener noreferrer">telemetry</a>). Email-triage accuracy is not measured yet.</dd></div>
+        <div><dt>Measured result</dt><dd>LLM round trip 736&nbsp;ms p50 and 6,177&nbsp;ms p95 (N=50, 2026-10-02); per agent from 312&nbsp;ms (Sakura) to 4,861&nbsp;ms (Yunjin) (<a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-telemetry.md" target="_blank" rel="noopener noreferrer">telemetry</a>). Email-triage accuracy is not measured yet.<!-- metric:llm-roundtrip-2026-10-02 -->
+<figure class="metric-card" data-metric="llm-roundtrip-2026-10-02" aria-labelledby="mc-llm-roundtrip-2026-10-02">
+  <figcaption id="mc-llm-roundtrip-2026-10-02"><span class="metric-card-title">LLM round trip</span><span class="metric-card-value">736 ms p50 · 6,177 ms p95</span><span class="metric-card-meta">N = 50 · 10 per agent · 2026-10-02</span></figcaption>
+  <div class="mc-row"><span class="mc-label">Sakura</span><svg class="mc-strip" viewBox="0 0 1000 20" preserveAspectRatio="none" role="img" aria-label="10 runs: 292 ms to 467 ms, p50 312 ms"><line class="mc-run" x1="63.9" x2="63.9" y1="4" y2="16"/><line class="mc-run" x1="60.9" x2="60.9" y1="4" y2="16"/><line class="mc-run" x1="87.0" x2="87.0" y1="4" y2="16"/><line class="mc-run" x1="113.1" x2="113.1" y1="4" y2="16"/><line class="mc-run" x1="105.3" x2="105.3" y1="4" y2="16"/><line class="mc-run" x1="52.9" x2="52.9" y1="4" y2="16"/><line class="mc-run" x1="180.1" x2="180.1" y1="4" y2="16"/><line class="mc-run" x1="44.8" x2="44.8" y1="4" y2="16"/><line class="mc-run" x1="62.7" x2="62.7" y1="4" y2="16"/><line class="mc-run" x1="76.8" x2="76.8" y1="4" y2="16"/><line class="mc-p50" x1="63.9" x2="63.9" y1="0" y2="20"/></svg><span class="mc-stat">312 ms</span></div>
+  <div class="mc-row"><span class="mc-label">Chaewon</span><svg class="mc-strip" viewBox="0 0 1000 20" preserveAspectRatio="none" role="img" aria-label="10 runs: 736 ms to 931 ms, p50 786 ms"><line class="mc-run" x1="325.5" x2="325.5" y1="4" y2="16"/><line class="mc-run" x1="354.6" x2="354.6" y1="4" y2="16"/><line class="mc-run" x1="317.9" x2="317.9" y1="4" y2="16"/><line class="mc-run" x1="330.6" x2="330.6" y1="4" y2="16"/><line class="mc-run" x1="325.7" x2="325.7" y1="4" y2="16"/><line class="mc-run" x1="339.9" x2="339.9" y1="4" y2="16"/><line class="mc-run" x1="311.7" x2="311.7" y1="4" y2="16"/><line class="mc-run" x1="379.4" x2="379.4" y1="4" y2="16"/><line class="mc-run" x1="348.3" x2="348.3" y1="4" y2="16"/><line class="mc-run" x1="339.2" x2="339.2" y1="4" y2="16"/><line class="mc-p50" x1="330.6" x2="330.6" y1="0" y2="20"/></svg><span class="mc-stat">786 ms</span></div>
+  <div class="mc-row"><span class="mc-label">Yunjin</span><svg class="mc-strip" viewBox="0 0 1000 20" preserveAspectRatio="none" role="img" aria-label="10 runs: 4,257 ms to 7,012 ms, p50 4,861 ms"><line class="mc-run" x1="954.3" x2="954.3" y1="4" y2="16"/><line class="mc-run" x1="961.9" x2="961.9" y1="4" y2="16"/><line class="mc-run" x1="890.8" x2="890.8" y1="4" y2="16"/><line class="mc-run" x1="832.4" x2="832.4" y1="4" y2="16"/><line class="mc-run" x1="826.2" x2="826.2" y1="4" y2="16"/><line class="mc-run" x1="901.6" x2="901.6" y1="4" y2="16"/><line class="mc-run" x1="845.0" x2="845.0" y1="4" y2="16"/><line class="mc-run" x1="856.3" x2="856.3" y1="4" y2="16"/><line class="mc-run" x1="925.4" x2="925.4" y1="4" y2="16"/><line class="mc-run" x1="818.0" x2="818.0" y1="4" y2="16"/><line class="mc-p50" x1="856.3" x2="856.3" y1="0" y2="20"/></svg><span class="mc-stat">4,861 ms</span></div>
+  <div class="mc-row"><span class="mc-label">Kazuha</span><svg class="mc-strip" viewBox="0 0 1000 20" preserveAspectRatio="none" role="img" aria-label="10 runs: 299 ms to 554 ms, p50 334 ms"><line class="mc-run" x1="83.2" x2="83.2" y1="4" y2="16"/><line class="mc-run" x1="70.1" x2="70.1" y1="4" y2="16"/><line class="mc-run" x1="59.5" x2="59.5" y1="4" y2="16"/><line class="mc-run" x1="103.1" x2="103.1" y1="4" y2="16"/><line class="mc-run" x1="113.3" x2="113.3" y1="4" y2="16"/><line class="mc-run" x1="51.7" x2="51.7" y1="4" y2="16"/><line class="mc-run" x1="229.6" x2="229.6" y1="4" y2="16"/><line class="mc-run" x1="92.3" x2="92.3" y1="4" y2="16"/><line class="mc-run" x1="194.9" x2="194.9" y1="4" y2="16"/><line class="mc-run" x1="60.6" x2="60.6" y1="4" y2="16"/><line class="mc-p50" x1="83.2" x2="83.2" y1="0" y2="20"/></svg><span class="mc-stat">334 ms</span></div>
+  <div class="mc-row"><span class="mc-label">Eunchae</span><svg class="mc-strip" viewBox="0 0 1000 20" preserveAspectRatio="none" role="img" aria-label="10 runs: 467 ms to 918 ms, p50 747 ms"><line class="mc-run" x1="293.6" x2="293.6" y1="4" y2="16"/><line class="mc-run" x1="180.2" x2="180.2" y1="4" y2="16"/><line class="mc-run" x1="249.4" x2="249.4" y1="4" y2="16"/><line class="mc-run" x1="375.4" x2="375.4" y1="4" y2="16"/><line class="mc-run" x1="365.1" x2="365.1" y1="4" y2="16"/><line class="mc-run" x1="315.9" x2="315.9" y1="4" y2="16"/><line class="mc-run" x1="363.5" x2="363.5" y1="4" y2="16"/><line class="mc-run" x1="328.3" x2="328.3" y1="4" y2="16"/><line class="mc-run" x1="308.5" x2="308.5" y1="4" y2="16"/><line class="mc-run" x1="323.3" x2="323.3" y1="4" y2="16"/><line class="mc-p50" x1="315.9" x2="315.9" y1="0" y2="20"/></svg><span class="mc-stat">747 ms</span></div>
+  <div class="mc-axis" aria-hidden="true"><span>250 ms</span><span>log scale</span><span>8 s</span></div>
+  <p class="metric-card-source">Each tick is one recorded run; the tall tick is the p50. Source: <a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-telemetry.json" target="_blank" rel="noopener noreferrer">2026-10-02-telemetry.json</a></p>
+</figure>
+<!-- /metric --></dd></div>
         <div><dt>Code</dt><dd><a href="https://github.com/hanslaureles/lsfm-ai-hq/tree/f665b88ad339dc25dc17a97a65f14de5f3a760e4" target="_blank" rel="noopener noreferrer">lsfm-ai-hq</a> (public export of the private build)</dd></div>
       </dl>
 
@@ -1048,8 +1059,8 @@
     </div>
   </footer>
 
-  <script src="app.js?v=2.2.30"></script>
-  <script src="sakura-copilot.js?v=2.2.30"></script>
+  <script src="app.js?v=2.2.31"></script>
+  <script src="sakura-copilot.js?v=2.2.31"></script>
 </body>
 
 </html>
