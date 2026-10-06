@@ -432,19 +432,25 @@ test.describe("view transitions between index and case studies", () => {
     });
   }
 
-  // The real thing: clicking a card title starts a view transition on the case page
-  // (pagereveal carries one), and reduced motion gets a plain navigation.
+  // The real thing: a click on any of the card's three links (image, title, button; all
+  // go to the same case page) starts a view transition there (pagereveal carries one), so
+  // the title morphs whichever was clicked (Codex 5E V1: intended, and CSS-only cannot
+  // tell the links apart). Reduced motion gets a plain navigation.
+  const CARD_LINKS = { image: ".card-media a img", title: ".card-title-link", button: ".launchpad-btn-secondary, .launchpad-btn-primary" };
   for (const motion of ["no-preference", "reduce"]) {
-    test(`clicking a card title ${motion === "reduce" ? "does not start" : "starts"} a view transition (${motion})`, async ({ page }) => {
-      await page.emulateMedia({ reducedMotion: motion });
-      await page.addInitScript(() => {
-        window.addEventListener("pagereveal", (e) => { window.__vt = Boolean(e.viewTransition); });
+    for (const [what, selector] of Object.entries(CARD_LINKS)) {
+      test(`clicking a card's ${what} link ${motion === "reduce" ? "does not start" : "starts"} a view transition (${motion})`, async ({ page }) => {
+        await page.emulateMedia({ reducedMotion: motion });
+        await page.addInitScript(() => {
+          window.addEventListener("pagereveal", (e) => { window.__vt = Boolean(e.viewTransition); });
+        });
+        await page.goto("index.html", { waitUntil: "networkidle" });
+        const card = page.locator("article.editorial-card:not(.is-clone)", { has: page.locator('a[href="case-memory.html"]') });
+        await card.locator(selector).filter({ visible: true }).first().click();
+        await page.waitForURL(/case-memory/);
+        await expect.poll(() => page.evaluate(() => window.__vt)).toBe(motion !== "reduce");
       });
-      await page.goto("index.html", { waitUntil: "networkidle" });
-      await page.locator('article:not(.is-clone) .card-title-link[href="case-memory.html"]').click();
-      await page.waitForURL(/case-memory/);
-      await expect.poll(() => page.evaluate(() => window.__vt)).toBe(motion !== "reduce");
-    });
+    }
   }
 
   test("navigation transitions are opted in only without reduced motion", async ({ page }) => {
