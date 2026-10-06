@@ -459,6 +459,11 @@ test.describe("page scripts and Aura handlers work under the enforced CSP", () =
     await chip.click();
     await expect(page.locator("#demo-query-input")).toHaveValue(await chip.getAttribute("data-query"));
     await expect(page.locator("#demo-output")).toContainText("MATCHING LESSONS");
+    // Codex 5A A6: a query that matches nothing is echoed as text, never parsed as HTML.
+    await page.locator("#demo-query-input").fill("<qqzzy>qqzzx</qqzzy>");
+    await page.locator("#demo-run-btn").click();
+    await expect(page.locator("#demo-output")).toContainText('matched for "<qqzzy>qqzzx</qqzzy>"');
+    await expect(page.locator("#demo-output qqzzy")).toHaveCount(0);
   });
 
   test("Aura store: promo code copies and nav links filter the menu", async ({ page }) => {

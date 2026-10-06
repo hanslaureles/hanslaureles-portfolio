@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const itemsBody = document.getElementById('receipt-items-body');
   itemsBody.innerHTML = orderData.items.map(item => {
-    const mods = item.customizations 
+    const mods = item.customizations
       ? `<br><small style="color:var(--espresso-light); font-size:0.75rem;">${item.customizations.size} · ${item.customizations.milk} · ${item.customizations.sweetness}</small>`
       : '<br><small style="color:var(--espresso-light); font-size:0.75rem;">Fresh Daily Bake</small>';
 

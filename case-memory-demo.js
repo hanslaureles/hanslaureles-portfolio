@@ -152,7 +152,11 @@
       .sort((a, b) => b.score - a.score);
 
     if (!scored.length) {
-      outputEl.innerHTML = `<span class="u-c-green-400">[OK] Zero past failure patterns or anti-patterns matched for "${query}".</span>\nSafe to proceed with implementation!`;
+      // The query is typed by the visitor: text, never HTML (Codex 5A A6).
+      const ok = document.createElement('span');
+      ok.className = 'u-c-green-400';
+      ok.textContent = `[OK] Zero past failure patterns or anti-patterns matched for "${query}".`;
+      outputEl.replaceChildren(ok, '\nSafe to proceed with implementation!');
       return;
     }
 
