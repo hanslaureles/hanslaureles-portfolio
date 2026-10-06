@@ -405,6 +405,91 @@ test("Aura checkout payment options are a keyboard-operable radio group", async 
   expect(outline).not.toBe("none");
 });
 
+// 5E-1: the index card title morphs into its case-study <h1> (cross-document view transition).
+const CASE_SLUGS = ["lsfm", "ciel", "memory", "aura", "lumina", "vellum", "fintrack"];
+const vtNames = (page) => page.evaluate(() => [...document.querySelectorAll("*")]
+  .map((el) => getComputedStyle(el).viewTransitionName).filter((n) => n && n !== "none"));
+
+test.describe("view transitions between index and case studies", () => {
+  test("the index gives each card title its own transition name", async ({ page }) => {
+    await page.goto("index.html", { waitUntil: "domcontentloaded" });
+    const names = await vtNames(page);
+    expect(names.length).toBe(new Set(names).size); // a duplicate name makes the browser skip the transition
+    for (const slug of CASE_SLUGS) {
+      const name = await page.locator(`article:not(.is-clone) .card-title-link[href="case-${slug}.html"] h3`)
+        .evaluate((el) => getComputedStyle(el).viewTransitionName);
+      expect(name, slug).toBe(`case-${slug}-title`);
+    }
+  });
+
+  for (const slug of CASE_SLUGS) {
+    test(`case-${slug}: the <h1> shares the card's name, once`, async ({ page }) => {
+      await page.goto(`case-${slug}.html`, { waitUntil: "domcontentloaded" });
+      const names = await vtNames(page);
+      expect(names.length).toBe(new Set(names).size);
+      expect(await page.locator("h1.case-title").evaluate((el) => getComputedStyle(el).viewTransitionName))
+        .toBe(`case-${slug}-title`);
+    });
+  }
+
+  // The real thing: clicking a card title starts a view transition on the case page
+  // (pagereveal carries one), and reduced motion gets a plain navigation.
+  for (const motion of ["no-preference", "reduce"]) {
+    test(`clicking a card title ${motion === "reduce" ? "does not start" : "starts"} a view transition (${motion})`, async ({ page }) => {
+      await page.emulateMedia({ reducedMotion: motion });
+      await page.addInitScript(() => {
+        window.addEventListener("pagereveal", (e) => { window.__vt = Boolean(e.viewTransition); });
+      });
+      await page.goto("index.html", { waitUntil: "networkidle" });
+      await page.locator('article:not(.is-clone) .card-title-link[href="case-memory.html"]').click();
+      await page.waitForURL(/case-memory/);
+      await expect.poll(() => page.evaluate(() => window.__vt)).toBe(motion !== "reduce");
+    });
+  }
+
+  test("navigation transitions are opted in only without reduced motion", async ({ page }) => {
+    await page.goto("index.html", { waitUntil: "domcontentloaded" });
+    const where = await page.evaluate(() => {
+      const found = [];
+      const walk = (rules, media) => {
+        for (const r of rules) {
+          if (r.cssRules && r.media) walk(r.cssRules, r.media.mediaText);
+          else if (r.cssText.startsWith("@view-transition")) found.push(media || "top level");
+        }
+      };
+      for (const sheet of document.styleSheets) {
+        try { walk(sheet.cssRules, null); } catch (e) { /* cross-origin font sheet */ }
+      }
+      return found;
+    });
+    expect(where).toEqual(["(prefers-reduced-motion: no-preference)"]);
+  });
+});
+
+// 5E-2: a 2 px reading-progress line at the top of case pages, driven by scroll (CSS only).
+for (const motion of ["no-preference", "reduce"]) {
+  test(`case pages show a reading-progress bar that follows scroll (${motion})`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: motion });
+    const scaleX = () => page.evaluate(() => {
+      const cs = getComputedStyle(document.body, "::before");
+      if (cs.content === "none" || cs.position !== "fixed") return null;
+      const m = cs.transform.match(/matrix\(([^,]+)/);
+      return m ? Number(m[1]) : (cs.transform === "none" ? 1 : null);
+    });
+    await page.goto("case-lsfm.html", { waitUntil: "networkidle" });
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.waitForTimeout(100);
+    expect(await scaleX()).toBeLessThan(0.02);
+    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+    await page.waitForTimeout(200);
+    expect(await scaleX()).toBeGreaterThan(0.98);
+    for (const other of ["index.html", "aura-store/index.html"]) {
+      await page.goto(other, { waitUntil: "domcontentloaded" });
+      expect(await scaleX(), other).toBeNull();
+    }
+  });
+}
+
 // Aura demo store (its own store.js, not app.js): customizer modal and cart drawer.
 test.describe("Aura store overlays", () => {
   test("customizer: keyboard open, focus inside and trapped, Escape returns focus", async ({ page }) => {

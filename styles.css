@@ -5646,3 +5646,54 @@ h1, h2 {
 .u-ta-right.u-ta-right.u-ta-right { text-align: right; }
 .u-wrap-wrap.u-wrap-wrap.u-wrap-wrap { flex-wrap: wrap; }
 .u-ws-nowrap.u-ws-nowrap.u-ws-nowrap { white-space: nowrap; }
+
+/* 5E-1: page transitions. Each index card's title morphs into its case study's <h1>
+   (and back); the rest of the page cross-fades. No JS. Off under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+.card-title-link[href="case-lsfm.html"] h3,
+.case-title[data-case="lsfm"] { view-transition-name: case-lsfm-title; }
+.card-title-link[href="case-ciel.html"] h3,
+.case-title[data-case="ciel"] { view-transition-name: case-ciel-title; }
+.card-title-link[href="case-memory.html"] h3,
+.case-title[data-case="memory"] { view-transition-name: case-memory-title; }
+.card-title-link[href="case-aura.html"] h3,
+.case-title[data-case="aura"] { view-transition-name: case-aura-title; }
+.card-title-link[href="case-lumina.html"] h3,
+.case-title[data-case="lumina"] { view-transition-name: case-lumina-title; }
+.card-title-link[href="case-vellum.html"] h3,
+.case-title[data-case="vellum"] { view-transition-name: case-vellum-title; }
+.card-title-link[href="case-fintrack.html"] h3,
+.case-title[data-case="fintrack"] { view-transition-name: case-fintrack-title; }
+/* The carousel clones each card twice (app.js, .is-clone); a name used more than once
+   makes the browser skip the transition, so only the original card keeps it. */
+.is-clone .card-title-link[href] h3 { view-transition-name: none; }
+
+/* 5E-2: reading progress on case-study pages: a 2 px line at the top that fills as
+   the reader scrolls (scroll-driven animation, no JS). Above the sticky header
+   (z-index 100), below drawers and modals. Decorative: the contents list shows position. */
+@keyframes case-read-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@supports (animation-timeline: scroll()) {
+  body:has(.case-sidebar)::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform-origin: 0 50%;
+    z-index: 101;
+    pointer-events: none;
+    animation: case-read-progress linear both;
+    animation-timeline: scroll(root);
+  }
+}
