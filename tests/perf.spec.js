@@ -106,6 +106,10 @@ test("page weight within budget; LCP reported", async ({ browser }, testInfo) =>
   await testInfo.attach("perf.json", { body: JSON.stringify(report, null, 1), contentType: "application/json" });
 
   if (process.env.UPDATE_BUDGET) {
+    // Files sorted by name, so a regenerated budget's diff shows only real size changes (Codex 6D-2 P5).
+    for (const views of Object.values(measured)) {
+      for (const v of Object.values(views)) v.files = Object.fromEntries(Object.entries(v.files).sort());
+    }
     fs.writeFileSync(BUDGET_FILE, JSON.stringify({ ...budget, pages: measured }, null, 1) + "\n");
     console.log(`wrote ${BUDGET_FILE}`);
   }
