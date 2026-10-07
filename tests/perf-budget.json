@@ -1,0 +1,317 @@
+{
+ "note": "Performance budget (6D-2): first-party bytes per page and viewport as git stores them (LF), third-party blocked. perf.spec.js fails over +10%. Regenerate with UPDATE_BUDGET=1 npx playwright test perf.spec.js and commit. lcp: per page and viewport runner baseline in ms (median of 3); null until set from CI runs.",
+ "lcp": null,
+ "pages": {
+  "index.html": {
+   "desktop": {
+    "bytes": 366882,
+    "files": {
+     "/index.html": 53843,
+     "/styles.css": 127908,
+     "/app.js": 20101,
+     "/terminal.js": 54845,
+     "/sakura-copilot.js": 32640,
+     "/sentinel.js": 20359,
+     "/data/status.json": 1038,
+     "/images/lsfm-hq/lsfm-hq-mockup-480.c86b4aba.avif": 4676,
+     "/images/ciel/ciel-mockup-480.eecfa9ee.avif": 10292,
+     "/images/memory-core/memory-mockup-480.fe2cc1ea.avif": 19957,
+     "/images/aura-website/aura-mockup-480.b04fa192.avif": 3549,
+     "/images/vellum-mobile-app/vellum-mockup-480.aefaa558.avif": 5532,
+     "/images/lumina-website/lumina-mockup-480.dcd86236.avif": 6397,
+     "/images/fintrack-mobile-app/fintrack-mockup-480.d086d51f.avif": 5745
+    }
+   },
+   "mobile": {
+    "bytes": 366882,
+    "files": {
+     "/index.html": 53843,
+     "/styles.css": 127908,
+     "/app.js": 20101,
+     "/terminal.js": 54845,
+     "/sakura-copilot.js": 32640,
+     "/sentinel.js": 20359,
+     "/images/lsfm-hq/lsfm-hq-mockup-480.c86b4aba.avif": 4676,
+     "/images/ciel/ciel-mockup-480.eecfa9ee.avif": 10292,
+     "/images/memory-core/memory-mockup-480.fe2cc1ea.avif": 19957,
+     "/images/aura-website/aura-mockup-480.b04fa192.avif": 3549,
+     "/images/lumina-website/lumina-mockup-480.dcd86236.avif": 6397,
+     "/images/vellum-mobile-app/vellum-mockup-480.aefaa558.avif": 5532,
+     "/images/fintrack-mobile-app/fintrack-mockup-480.d086d51f.avif": 5745,
+     "/data/status.json": 1038
+    }
+   }
+  },
+  "about.html": {
+   "desktop": {
+    "bytes": 225296,
+    "files": {
+     "/about.html": 35594,
+     "/styles.css": 127908,
+     "/images/profile-pic-480.43163c35.avif": 7406,
+     "/app.js": 20101,
+     "/sakura-copilot.js": 32640,
+     "/about-view.js": 1647
+    }
+   },
+   "mobile": {
+    "bytes": 225296,
+    "files": {
+     "/about.html": 35594,
+     "/styles.css": 127908,
+     "/images/profile-pic-480.43163c35.avif": 7406,
+     "/sakura-copilot.js": 32640,
+     "/app.js": 20101,
+     "/about-view.js": 1647
+    }
+   }
+  },
+  "404.html": {
+   "desktop": {
+    "bytes": 151565,
+    "files": {
+     "/404.html": 3556,
+     "/styles.css": 127908,
+     "/app.js": 20101
+    }
+   },
+   "mobile": {
+    "bytes": 151565,
+    "files": {
+     "/404.html": 3556,
+     "/styles.css": 127908,
+     "/app.js": 20101
+    }
+   }
+  },
+  "case-lsfm.html": {
+   "desktop": {
+    "bytes": 281503,
+    "files": {
+     "/case-lsfm.html": 66254,
+     "/styles.css": 127908,
+     "/images/lsfm-hq/lsfm-hq-mockup-1600.02722453.avif": 34600,
+     "/app.js": 20101,
+     "/sakura-copilot.js": 32640
+    }
+   },
+   "mobile": {
+    "bytes": 251579,
+    "files": {
+     "/case-lsfm.html": 66254,
+     "/styles.css": 127908,
+     "/images/lsfm-hq/lsfm-hq-mockup-480.c86b4aba.avif": 4676,
+     "/app.js": 20101,
+     "/sakura-copilot.js": 32640
+    }
+   }
+  },
+  "case-ciel.html": {
+   "desktop": {
+    "bytes": 292603,
+    "files": {
+     "/case-ciel.html": 63735,
+     "/styles.css": 127908,
+     "/images/ciel/ciel-mockup-1600.c5fa93f8.avif": 43897,
+     "/sakura-copilot.js": 32640,
+     "/app.js": 20101,
+     "/case-ciel-demo.js": 4322
+    }
+   },
+   "mobile": {
+    "bytes": 258998,
+    "files": {
+     "/case-ciel.html": 63735,
+     "/styles.css": 127908,
+     "/images/ciel/ciel-mockup-480.eecfa9ee.avif": 10292,
+     "/app.js": 20101,
+     "/sakura-copilot.js": 32640,
+     "/case-ciel-demo.js": 4322
+    }
+   }
+  },
+  "case-memory.html": {
+   "desktop": {
+    "bytes": 319724,
+    "files": {
+     "/case-memory.html": 42093,
+     "/styles.css": 127908,
+     "/images/memory-core/memory-mockup-1376.c97be728.avif": 86616,
+     "/case-memory-demo.js": 10366,
+     "/app.js": 20101,
+     "/sakura-copilot.js": 32640
+    }
+   },
+   "mobile": {
+    "bytes": 253065,
+    "files": {
+     "/case-memory.html": 42093,
+     "/styles.css": 127908,
+     "/images/memory-core/memory-mockup-480.fe2cc1ea.avif": 19957,
+     "/case-memory-demo.js": 10366,
+     "/app.js": 20101,
+     "/sakura-copilot.js": 32640
+    }
+   }
+  },
+  "case-aura.html": {
+   "desktop": {
+    "bytes": 234423,
+    "files": {
+     "/case-aura.html": 30787,
+     "/styles.css": 127908,
+     "/images/aura-website/aura-mockup-1600.bfcd01ac.avif": 22987,
+     "/app.js": 20101,
+     "/sakura-copilot.js": 32640
+    }
+   },
+   "mobile": {
+    "bytes": 214985,
+    "files": {
+     "/case-aura.html": 30787,
+     "/styles.css": 127908,
+     "/images/aura-website/aura-mockup-480.b04fa192.avif": 3549,
+     "/app.js": 20101,
+     "/sakura-copilot.js": 32640
+    }
+   }
+  },
+  "case-lumina.html": {
+   "desktop": {
+    "bytes": 234510,
+    "files": {
+     "/case-lumina.html": 30197,
+     "/styles.css": 127908,
+     "/images/lumina-website/lumina-mockup-1600.20ec6b1b.avif": 23664,
+     "/app.js": 20101,
+     "/sakura-copilot.js": 32640
+    }
+   },
+   "mobile": {
+    "bytes": 217243,
+    "files": {
+     "/case-lumina.html": 30197,
+     "/styles.css": 127908,
+     "/images/lumina-website/lumina-mockup-480.dcd86236.avif": 6397,
+     "/sakura-copilot.js": 32640,
+     "/app.js": 20101
+    }
+   }
+  },
+  "case-vellum.html": {
+   "desktop": {
+    "bytes": 227168,
+    "files": {
+     "/case-vellum.html": 28072,
+     "/images/vellum-mobile-app/vellum-mockup-1600.3b5c1af6.avif": 18447,
+     "/styles.css": 127908,
+     "/app.js": 20101,
+     "/sakura-copilot.js": 32640
+    }
+   },
+   "mobile": {
+    "bytes": 214253,
+    "files": {
+     "/case-vellum.html": 28072,
+     "/styles.css": 127908,
+     "/images/vellum-mobile-app/vellum-mockup-480.aefaa558.avif": 5532,
+     "/app.js": 20101,
+     "/sakura-copilot.js": 32640
+    }
+   }
+  },
+  "case-fintrack.html": {
+   "desktop": {
+    "bytes": 226455,
+    "files": {
+     "/case-fintrack.html": 25411,
+     "/images/fintrack-mobile-app/fintrack-mockup-1417.cef3f6c0.avif": 20395,
+     "/styles.css": 127908,
+     "/app.js": 20101,
+     "/sakura-copilot.js": 32640
+    }
+   },
+   "mobile": {
+    "bytes": 211805,
+    "files": {
+     "/case-fintrack.html": 25411,
+     "/styles.css": 127908,
+     "/images/fintrack-mobile-app/fintrack-mockup-480.d086d51f.avif": 5745,
+     "/app.js": 20101,
+     "/sakura-copilot.js": 32640
+    }
+   }
+  },
+  "aura-store/index.html": {
+   "desktop": {
+    "bytes": 174937,
+    "files": {
+     "/aura-store/index.html": 17505,
+     "/aura-store/styles.css": 38160,
+     "/images/aura-store/spanish-latte-480.f9e2922f.avif": 14654,
+     "/aura-store/media.js": 3095,
+     "/aura-store/store.js": 22333,
+     "/images/aura-store/velvet-cappuccino-480.45d57ff0.avif": 12599,
+     "/images/aura-store/caramel-macchiato-480.57a8375c.avif": 13180,
+     "/images/aura-store/dark-mocha-frappe-480.55cb50d6.avif": 19587,
+     "/images/aura-store/matcha-cloud-latte-480.a528c593.avif": 12615,
+     "/images/aura-store/artisan-croissant-480.71bfaa53.avif": 21209
+    }
+   },
+   "mobile": {
+    "bytes": 121526,
+    "files": {
+     "/aura-store/index.html": 17505,
+     "/aura-store/styles.css": 38160,
+     "/images/aura-store/spanish-latte-480.f9e2922f.avif": 14654,
+     "/aura-store/media.js": 3095,
+     "/aura-store/store.js": 22333,
+     "/images/aura-store/velvet-cappuccino-480.45d57ff0.avif": 12599,
+     "/images/aura-store/caramel-macchiato-480.57a8375c.avif": 13180
+    }
+   }
+  },
+  "aura-store/checkout.html": {
+   "desktop": {
+    "bytes": 100949,
+    "files": {
+     "/aura-store/checkout.html": 14604,
+     "/aura-store/styles.css": 38160,
+     "/aura-store/media.js": 3095,
+     "/aura-store/checkout.js": 9227,
+     "/images/aura-store/spanish-latte-480.f9e2922f.avif": 14654,
+     "/images/aura-store/artisan-croissant-480.71bfaa53.avif": 21209
+    }
+   },
+   "mobile": {
+    "bytes": 100949,
+    "files": {
+     "/aura-store/checkout.html": 14604,
+     "/aura-store/styles.css": 38160,
+     "/aura-store/media.js": 3095,
+     "/aura-store/checkout.js": 9227,
+     "/images/aura-store/spanish-latte-480.f9e2922f.avif": 14654,
+     "/images/aura-store/artisan-croissant-480.71bfaa53.avif": 21209
+    }
+   }
+  },
+  "aura-store/confirmation.html": {
+   "desktop": {
+    "bytes": 47392,
+    "files": {
+     "/aura-store/confirmation.html": 6400,
+     "/aura-store/styles.css": 38160,
+     "/aura-store/confirmation.js": 2832
+    }
+   },
+   "mobile": {
+    "bytes": 47392,
+    "files": {
+     "/aura-store/confirmation.html": 6400,
+     "/aura-store/styles.css": 38160,
+     "/aura-store/confirmation.js": 2832
+    }
+   }
+  }
+ }
+}
