@@ -74,6 +74,9 @@ RETRACTED = [
     # 80 Hz-7.5 kHz band-pass. Nothing measures or normalises loudness.
     (r"(?<![.\w])normali[sz](ation|ed|e)\b|loudness leveling|volume leveling",  # not str.normalize()
      "FFmpeg converts to 16 kHz mono with a fixed gain and band-pass; it does not normalise loudness"),
+    # 8B-1: the vault was reorganised in 6A-2 (2026-10-06); its paths live in obsidian_client.VAULT_PATHS.
+    (r"Obsidian-v2|\b0[0-5] - (Hub|User|Agents|Rules|Projects|Daily)|\[OBSIDIAN SYNC\]",
+     "old Obsidian vault layout (renamed in 6A-2; use the paths in obsidian_client.VAULT_PATHS)"),
 ]
 
 

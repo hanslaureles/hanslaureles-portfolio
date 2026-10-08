@@ -17,11 +17,11 @@
       text: "[CIEL] Notice: The Raft consensus algorithm decomposes state machine replication into 3 distinct subproblems: Leader Election, Log Replication, and Safety. Nodes exist as Follower, Candidate, or Leader. When a follower detects a randomized heartbeat timeout (150–300ms), it transitions to Candidate, increments its term, and requests votes. Upon receiving a majority quorum, the node ascends to Leader and begins serving client requests with atomic log append guarantees."
     },
     rules: {
-      dsp: "⚡ OBSIDIAN NOTES: Vault Read `03 - Rules & Memory/Learned_Rules.md` → Ciel Synthesizer",
+      dsp: "⚡ OBSIDIAN NOTES: Vault Read `03 Knowledge/Learned_Rules.md` → Ciel Synthesizer",
       text: "[CIEL] Accessing Obsidian Learned Rules. 10 rules currently active: Rule MEM-005 enforces avoiding nested double quotes in PowerShell inline scripts; Rule MEM-006 mandates explicit UTF-8 reconfiguration in Windows Python consoles; Rule MEM-007 requires atomic Git commits for build triggers rather than manual asset copying."
     },
     career: {
-      dsp: "⚡ OBSIDIAN NOTES: Vault Read `01 - User/Preferences.md` → Ciel Synthesizer",
+      dsp: "⚡ OBSIDIAN NOTES: Vault Read `03 Knowledge/Preferences.md` → Ciel Synthesizer",
       text: "[CIEL] Reading your working preferences. Tone: professional but warm, answer first, no filler. Budget: use the hardware you already have before buying anything new. Models: 7B to 9B quantised, to stay inside the RX 6600 XT's 8 GB of VRAM. Deploys: always commit and push to GitHub, never drag and drop. E-commerce demos: GCash, Maya, QR Ph and cash on delivery, with +63 phone numbers."
     },
     vitals: {

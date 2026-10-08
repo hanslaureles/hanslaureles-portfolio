@@ -857,7 +857,7 @@
 
     function showRules() {
       appendOutput(`
-        <div class="term-line term-cyan">// WORKSPACE LESSONS &amp; RULES (Obsidian: 03 - Rules &amp; Memory)</div>
+        <div class="term-line term-cyan">// WORKSPACE LESSONS &amp; RULES (Obsidian: 03 Knowledge/Learned_Rules.md)</div>
         <div class="term-line term-muted">Rules compiled from lessons about real bugs:</div>
         <div class="term-block" style="margin: 6px 0;">
           <div class="term-line"><span class="term-highlight">[MEM-001] COPYWRITING</span>: Forbid sci-fi jargon in hospitality; use tactile culinary words.</div>
@@ -898,12 +898,11 @@
 <div class="term-line term-cyan" style="font-weight: 600;">// OBSIDIAN NOTES // VAULT STRUCTURE</div>
 <div class="term-line"><span class="term-success">[BRIDGE]</span> Antigravity reaches the vault through an MCP server. The LSFM agents and Ciel use obsidian_client.py (public in lsfm-ai-hq) over Obsidian's Local REST API, with a filesystem fallback. The vault's notes stay private.</div>
 <div class="term-block" style="margin: 6px 0;">
-  <div class="term-line"><span class="term-highlight">00 - Hub</span>: Central dashboard, quick links &amp; navigation indices</div>
-  <div class="term-line"><span class="term-highlight">01 - User</span>: Candidate profile, master resume, interview defense playbook</div>
-  <div class="term-line"><span class="term-highlight">02 - Agents</span>: Roster dossiers for Sakura, Chaewon, Yunjin, Kazuha, Eunchae</div>
-  <div class="term-line"><span class="term-highlight">03 - Rules &amp; Memory</span>: 10 lessons [MEM-001 to MEM-010]</div>
-  <div class="term-line"><span class="term-highlight">04 - Projects</span>: Architectural specs for LSFM, Memory Core, Aura, Lumina, FinTrack</div>
-  <div class="term-line"><span class="term-highlight">05 - Daily Logs</span>: Automated timestamped agent dispatches &amp; daily briefings</div>
+  <div class="term-line"><span class="term-highlight">01 Projects</span>: Plans and reports mirrored from my workspace</div>
+  <div class="term-line"><span class="term-highlight">02 Research</span>: Kazuha's applied AI research digests</div>
+  <div class="term-line"><span class="term-highlight">03 Knowledge</span>: My profile, working preferences and learned rules</div>
+  <div class="term-line"><span class="term-highlight">05 Daily Logs</span>: Daily logs, agent dispatches and the evening summary</div>
+  <div class="term-line"><span class="term-highlight">06 Agent Documentation</span>: One note per agent</div>
 </div>
 <div class="term-line term-muted">Local REST API Endpoint: https://127.0.0.1:27124 (Zero-Cloud Local Storage)</div>
       `.trim());

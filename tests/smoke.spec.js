@@ -363,6 +363,21 @@ test("every command listed by help runs", async ({ page }) => {
   expect(dead).toEqual([]);
 });
 
+// 8B-1: the vault was reorganised in 6A-2; the terminal names the folders obsidian_client.VAULT_PATHS uses.
+test("terminal rules and vault commands show the current vault layout", async ({ page }) => {
+  await page.goto("index.html", { waitUntil: "domcontentloaded" });
+  const input = page.locator("#terminal-input");
+  const out = page.locator("#terminal-output");
+  for (const [cmd, expected] of [["rules", ["03 Knowledge/Learned_Rules.md"]],
+                                 ["obsidian", ["01 Projects", "02 Research", "03 Knowledge", "05 Daily Logs", "06 Agent Documentation"]]]) {
+    await input.fill("clear"); await input.press("Enter");
+    await input.fill(cmd); await input.press("Enter");
+    const text = await out.innerText();
+    for (const name of expected) expect(text, cmd).toContain(name);
+    expect(text, cmd).not.toMatch(/0[0-5] - (Hub|User|Agents|Rules|Projects|Daily)/);
+  }
+});
+
 // Audit D: one chip per command, and at most 8 chips (choice overload); `help` lists the rest.
 test("terminal quick-command chips are unique, at most 8, and include help", async ({ page }) => {
   await page.goto("index.html", { waitUntil: "domcontentloaded" });
