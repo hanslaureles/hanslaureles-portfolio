@@ -427,7 +427,7 @@
               <h3 class="u-c-tone-emerald u-mb-8px u-fs-0p95rem">✓ The Engineering Fix</h3>
               <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
                 Added a second provider: any Groq failure, including a 429, now falls through to Gemini instead of
-                failing the request. <strong>What I'd change next:</strong> a 429 waits for Groq's <code>Retry-After</code> and a circuit breaker skips a provider that keeps failing, but there's still no jittered backoff after a server error and no
+                failing the request. <strong>What I'd change next:</strong> a 429 waits for Groq's <code>Retry-After</code> and a circuit breaker sends a provider that keeps failing to the back of the line, but there's still no jittered backoff after a server error and no
                 shared rate limiter across the five agents, and the HTTP calls are blocking (run in worker threads).
                 V2 moves to an async client with a token bucket and jittered exponential backoff.
               </p>
@@ -966,7 +966,7 @@
                 </tr>
                 <tr>
                   <td>The PC restarts mid-morning, or a post is half sent</td>
-                  <td>Each scheduled post claims its day before its first message, so it is never sent twice; if writing it fails, nothing is claimed and the next check tries again; if sending fails halfway, one notice names the command to send it by hand.</td>
+                  <td>Each scheduled post claims its day before its first message, so it is never sent twice; if writing it fails, nothing is claimed and the next check tries again; if sending fails halfway, one notice names the command to send it by hand (for example <code>!rollup</code>).</td>
                   <td><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/410f66e5f8210ff8331856204d3aa9a771605c44/daily_once.py#L41-L77" target="_blank" rel="noopener noreferrer"><code>daily_once.py</code> L41&ndash;77</a><br><code>RunDailyTest</code></td>
                 </tr>
                 <tr>
