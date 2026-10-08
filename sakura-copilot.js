@@ -109,7 +109,7 @@
       title: "Candidate Profile, Location & Contact Details",
       category: "Candidate Logistics",
       keywords: ["contact", "email", "location", "hire", "job", "salary", "remote", "cavite", "manila", "philippines", "availability", "resume", "pdf"],
-      summary: "Hans Aaron Laureles is based in Manila / Cavite, Philippines, and is actively seeking full-time Applied AI Engineer, Agent Systems, or Full-Stack Builder opportunities (Open to Remote, Hybrid, or Relocation).",
+      summary: "Hans Aaron Laureles is based in Cavite, Philippines, and is actively seeking full-time remote Applied AI Engineer, Agent Systems, or Full-Stack Builder roles.",
       evidence: "Email: hanslaureles92@gmail.com | Portfolio: hanslaureles.vercel.app | GitHub: github.com/hanslaureles. You can download his 1-page executive ATS vector resume directly from this site.",
       linkUrl: "Hans_Laureles_Resume.pdf",
       linkText: "📄 Download Hans's 1-Page ATS Resume (PDF) →"
@@ -120,7 +120,7 @@
       category: "Telemetry & Observability",
       keywords: ["sentinel", "telemetry", "mission control", "hud", "ping", "vitals", "clock", "manila", "status", "fleet", "heartbeat", "ambient", "overview", "snapshot", "online"],
       summary: "The agent overview panel shows a status snapshot that Hans's workstation publishes on demand (data/status.json, from Eunchae's publisher). An agent counts as online only if its heartbeat is under 15 minutes old when you view the page; otherwise it shows when it was last seen. The site has no live connection to the agents.",
-      evidence: "Click the hero beacon (or press Alt+S / type 'overview' in the terminal) to open it: per-agent status and the snapshot's age, the measured LLM round-trip p50/p95 with sample size and date, a real Manila UTC+8 clock, a scripted 'Replay a Mission' walkthrough of the real !apply pipeline, and a copyable summary.",
+      evidence: "Click the hero beacon (or press Alt+S / type 'overview' in the terminal) to open it: per-agent status and the snapshot's age, the measured LLM round-trip p50/p95 with sample size and date, a real Philippine-time (UTC+8) clock, a scripted 'Replay a Mission' walkthrough of the real !apply pipeline, and a copyable summary.",
       linkUrl: "index.html#sentinel",
       linkText: "⚡ Open the Agent Overview (Alt+S) →"
     },

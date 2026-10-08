@@ -77,6 +77,11 @@ RETRACTED = [
     # 8B-1: the vault was reorganised in 6A-2 (2026-10-06); its paths live in obsidian_client.VAULT_PATHS.
     (r"Obsidian-v2|\b0[0-5] - (Hub|User|Agents|Rules|Projects|Daily)|\[OBSIDIAN SYNC\]",
      "old Obsidian vault layout (renamed in 6A-2; use the paths in obsidian_client.VAULT_PATHS)"),
+    # 2026-10-08 (Hans): he lives in Cavite and is open to remote roles only. Asia/Manila (the
+    # timezone) and the Aura demo store's Metro Manila addresses are not about him and stay.
+    (r"Manila or remote|Manila, (PH|Philippines)|Manila / Cavite|Cavite / Manila|UTC\+8 Manila|Manila UTC\+8|"
+     r"Hybrid, or Relocation",
+     "Hans's location is Cavite, PH, and he is open to remote roles only"),
 ]
 
 

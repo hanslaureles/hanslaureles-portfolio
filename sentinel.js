@@ -288,7 +288,7 @@
     window.toggleSentinelHUD = () => isModalOpen() ? closeModal() : openModal();
   }
 
-  // --- Clock Logic (Manila UTC+8) ---
+  // --- Clock Logic (Philippine time, UTC+8) ---
   function updateClock() {
     try {
       const now = new Date();
@@ -455,9 +455,9 @@
         AGENT_IDS.map(id => `${id} ${view.agents[id].state}`).join(', ')
       : 'Agent status: no snapshot loaded (scripted replay only)';
     const report = `# Hans Aaron Laureles — Multi-Agent System Status Report
-Timestamp: ${time} (Manila UTC+8)
+Timestamp: ${time} (UTC+8)
 ${statusLine}
-Location: Manila, Philippines
+Location: Cavite, Philippines
 Availability: Open for Full-Time & Remote AI & Software Engineering Roles (2026)
 
 ## Multi-Agent System Overview (5 Agents)

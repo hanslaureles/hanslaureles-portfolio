@@ -317,7 +317,7 @@
             <div class="term-line term-cyan">guest@recruiter</div>
             <div class="term-line term-muted">Access Level: VIP Recruiter / Engineering Leader</div>
             <div class="term-line">Target: Hans Aaron Laureles — Applied AI Engineer &amp; Full-Stack Builder</div>
-            <div class="term-line term-muted">Origin: Manila, Philippines [GMT+8] · DLSU-D Computer Science</div>
+            <div class="term-line term-muted">Origin: Cavite, Philippines [GMT+8] · DLSU-D Computer Science</div>
           `);
           break;
 
@@ -478,7 +478,7 @@
   </tbody>
 </table>
 <div class="term-line term-muted" style="margin-top: 4px;">All agents share one LLM layer: Groq first, Gemini (gemini-3.6-flash) if Groq fails, optional local Ollama (qwen2.5-coder:7b).</div>
-<div class="term-line term-muted">Host: Intel Core i5-12400F · 16 GB DDR4 · AMD Radeon RX 6600 XT (8 GB) · Manila, Philippines (UTC+8)</div>
+<div class="term-line term-muted">Host: Intel Core i5-12400F · 16 GB DDR4 · AMD Radeon RX 6600 XT (8 GB) · Cavite, Philippines (UTC+8)</div>
 <div class="term-line term-cyan" style="margin-top: 4px;">💡 Tip: Type <span class="term-highlight">'agents'</span> to see what each agent does, or <span class="term-highlight">'projects'</span> to view work.</div>
       `.trim());
     }
@@ -577,7 +577,7 @@
 <div class="term-line term-success">============================================================</div>
 <div class="term-line term-accent" style="font-weight: 600;">📡 AGENT OVERVIEW // LSFM AI HQ</div>
 <div class="term-line term-success">============================================================</div>
-<div class="term-line">Location: Manila, Philippines · UTC+8</div>
+<div class="term-line">Location: Cavite, Philippines · UTC+8</div>
 <div class="term-line">Agent System: <span class="term-badge">5 AGENTS · LOCAL HOST</span> · Data: <span class="term-cyan">status snapshot in the panel (online only if a heartbeat is under 15 min old); events are a scripted replay</span></div>
 <table class="term-table" style="margin-top: 6px;">
   <thead>

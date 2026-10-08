@@ -34,7 +34,7 @@
     },
     weather: {
       dsp: "⚡ LIVE WEATHER: wttr.in → Ciel",
-      text: "[CIEL] Weather for Cavite / Manila from wttr.in: conditions, temperature and feels-like, humidity, wind speed and direction, UV index, and today's high and low, read back in one sentence."
+      text: "[CIEL] Weather for Cavite from wttr.in: conditions, temperature and feels-like, humidity, wind speed and direction, UV index, and today's high and low, read back in one sentence."
     },
     search: {
       dsp: "⚡ WEB SEARCH: DuckDuckGo (DDGS) → cited sources",
