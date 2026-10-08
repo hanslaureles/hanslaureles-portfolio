@@ -378,6 +378,21 @@ test("terminal rules and vault commands show the current vault layout", async ({
   }
 });
 
+// 8B-2: the failure table names the Phase 6 and 8C guards, each linked at a pinned public commit.
+test("case-lsfm failure table lists the 413, run_daily and single-instance rows, pinned", async ({ page }) => {
+  await page.goto("case-lsfm.html", { waitUntil: "domcontentloaded" });
+  const pinned = /^https:\/\/github\.com\/hanslaureles\/lsfm-ai-hq\/blob\/[0-9a-f]{40}\//;
+  for (const [when, file, testName] of [["Groq answers 413", "llm_client.py", "TestRollupDispatchCap"],
+                                        ["post is half sent", "daily_once.py", "RunDailyTest"],
+                                        ["started twice", "instance_lock.py", "InstanceLockTest"]]) {
+    const row = page.locator("table.case-table tr", { hasText: when });
+    await expect(row, when).toHaveCount(1);
+    const href = await row.locator(`a:has(code:text-is("${file}"))`).first().getAttribute("href");
+    expect(href, when).toMatch(pinned);
+    await expect(row.locator("code", { hasText: testName }), when).toHaveCount(1);
+  }
+});
+
 // Audit D: one chip per command, and at most 8 chips (choice overload); `help` lists the rest.
 test("terminal quick-command chips are unique, at most 8, and include help", async ({ page }) => {
   await page.goto("index.html", { waitUntil: "domcontentloaded" });

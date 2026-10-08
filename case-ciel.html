@@ -271,7 +271,7 @@
       </h1>
 
       <p class="case-lead">
-        Ciel listens, answers in Japanese and English, hands tasks to my five LSFM agents, reads and writes my Obsidian notes, remembers the last 8 exchanges, and speaks up when something on my PC needs attention. (The name comes from an anime character; the requirements came from my own workflow.)
+        Ciel listens, answers in Japanese and English, hands tasks to my five LSFM agents, reads and writes my Obsidian notes, remembers the last 8 exchanges in each HUD tab, and speaks up when something on my PC needs attention. (The name comes from an anime character; the requirements came from my own workflow.)
       </p>
 
       <dl class="case-summary" aria-label="Summary">
@@ -338,7 +338,7 @@
             <span>●</span> The Architecture Solution
           </div>
           <p class="case-challenge-text">
-            Built Ciel as an async Python server: Groq Whisper Large v3 Turbo transcribes speech (OpenAI Whisper as fallback), Edge-TTS voices pass through a custom FFmpeg voice filter, and Ciel remembers the last 8 exchanges, reads and writes my Obsidian notes, and runs background checks on my PC.
+            Built Ciel as an async Python server: Groq Whisper Large v3 Turbo transcribes speech (OpenAI Whisper as fallback), Edge-TTS voices pass through a custom FFmpeg voice filter, and Ciel remembers the last 8 exchanges of each HUD tab separately, reads and writes my Obsidian notes, and runs background checks on my PC.
           </p>
         </div>
       </div>
@@ -592,7 +592,7 @@
               <span class="u-c-amber-400">[CIEL · SAMPLE REPLY]</span> Delegating to the 5-agent team. Eunchae reports CPU, RAM and disk use; Yunjin scans the portfolio for broken assets; Kazuha lists the current branch and uncommitted files; Sakura pulls today's priorities from the daily log. Summary compiled for you.
             </div>
           </div>
-          <p class="u-fs-0p85rem u-c-text-muted">The live HUD gets these steps from <code>ciel_server.py</code> over a WebSocket at <code>/ws</code>, as they happen: <code>plan_formed</code> when Ciel has a plan, <code>agent_state</code> for each agent it delegates to, <code>ciel_audio_chunk</code> for each spoken clip, then <code>ciel_complete</code> or <code>ciel_error</code>. CPU and RAM are pushed every 5 s.</p>
+          <p class="u-fs-0p85rem u-c-text-muted">The live HUD gets these steps from <code>ciel_server.py</code> over a WebSocket at <code>/ws</code>, as they happen: <code>plan_formed</code> when Ciel has a plan, <code>agent_state</code> for each agent it delegates to, <code>ciel_audio_chunk</code> for each spoken clip, then <code>ciel_complete</code> or <code>ciel_error</code>. CPU and RAM are pushed every 5 s. Each tab has its own session id, so a mission's events reach only the tab that asked, and the HUD's stamp shows how the plan was made (by the LLM, by a keyword fast path, or by a fallback). The HUD's own browser tests replay these events against a faked server in CI.</p>
         </section>
 
         <!-- Section 03: The 4 Pillars -->
@@ -623,7 +623,7 @@
               </div>
               <div class="agent-role-title">Memory &amp; Obsidian Notes</div>
               <div class="agent-desc">
-                Remembers the last 8 exchanges, checks live weather (`wttr.in`) and the web (`ddgs`), and reads and writes my Obsidian notes (`ciel_read_rules`, `ciel_read_profile`, `ciel_search_vault`, `ciel_save_to_daily`).
+                Remembers the last 8 exchanges per HUD tab (up to 16 tabs; the least recently used is forgotten first), checks live weather (`wttr.in`) and the web (`ddgs`), and reads and writes my Obsidian notes (`ciel_read_rules`, `ciel_read_profile`, `ciel_search_vault`, `ciel_save_to_daily`).
               </div>
               <span class="agent-stack-tag">Last 8 Exchanges · wttr.in · DDGS · Obsidian</span>
             </div>

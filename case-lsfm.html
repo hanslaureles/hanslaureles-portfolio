@@ -427,7 +427,7 @@
               <h3 class="u-c-tone-emerald u-mb-8px u-fs-0p95rem">✓ The Engineering Fix</h3>
               <p class="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
                 Added a second provider: any Groq failure, including a 429, now falls through to Gemini instead of
-                failing the request. <strong>What I'd change next:</strong> there's still no retry with backoff and no
+                failing the request. <strong>What I'd change next:</strong> a 429 waits for Groq's <code>Retry-After</code> and a circuit breaker skips a provider that keeps failing, but there's still no jittered backoff after a server error and no
                 shared rate limiter across the five agents, and the HTTP calls are blocking (run in worker threads).
                 V2 moves to an async client with a token bucket and jittered exponential backoff.
               </p>
@@ -958,6 +958,21 @@
                   <td>Groq answers 429</td>
                   <td>Honours <code>Retry-After</code> (including decimals like 1.5 s) once if it is 4 s or less; otherwise moves to the next Groq model.</td>
                   <td><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/14a319fb9fa1b65794382c3e7a566d3b9b2fbf0e/llm_client.py#L212-L227" target="_blank" rel="noopener noreferrer"><code>llm_client.py</code> L212&ndash;227</a><br><code>GroqRetryAfterTest</code></td>
+                </tr>
+                <tr>
+                  <td>Groq answers 413 (request too large)</td>
+                  <td>Skips the other Groq models, since each would get the same request, and moves on to Gemini; Groq's reason is logged. The evening rollup caps the day's log it sends at 12 KB, keeping the agents' own posts first.</td>
+                  <td><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/410f66e5f8210ff8331856204d3aa9a771605c44/llm_client.py#L310-L318" target="_blank" rel="noopener noreferrer"><code>llm_client.py</code> L310&ndash;318</a><br><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/410f66e5f8210ff8331856204d3aa9a771605c44/sakura_engine.py#L228-L263" target="_blank" rel="noopener noreferrer"><code>sakura_engine.py</code> L228&ndash;263</a><br><code>TestRollupDispatchCap</code></td>
+                </tr>
+                <tr>
+                  <td>The PC restarts mid-morning, or a post is half sent</td>
+                  <td>Each scheduled post claims its day before its first message, so it is never sent twice; if writing it fails, nothing is claimed and the next check tries again; if sending fails halfway, one notice names the command to send it by hand.</td>
+                  <td><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/410f66e5f8210ff8331856204d3aa9a771605c44/daily_once.py#L41-L77" target="_blank" rel="noopener noreferrer"><code>daily_once.py</code> L41&ndash;77</a><br><code>RunDailyTest</code></td>
+                </tr>
+                <tr>
+                  <td>The bots are started twice</td>
+                  <td>The second start exits with the running copy's PID; nothing is killed.</td>
+                  <td><a href="https://github.com/hanslaureles/lsfm-ai-hq/blob/410f66e5f8210ff8331856204d3aa9a771605c44/instance_lock.py#L46-L50" target="_blank" rel="noopener noreferrer"><code>instance_lock.py</code> L46&ndash;50</a><br><code>InstanceLockTest</code></td>
                 </tr>
                 <tr>
                   <td>A whole cloud provider is down</td>

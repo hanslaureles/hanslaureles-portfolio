@@ -317,7 +317,7 @@
                ├─ [MEM-006] Windows Python: UTF-8 stdout reconfiguration against CP1252
                └─ [MEM-007] Deployment: Git commits trigger build rather than direct uploads
 <span class="terminal-prompt">[EXECUTION]</span>   Agent Code Generation &amp; Tool Execution with Active Guardrails
-<span class="terminal-prompt">[FEEDBACK]</span>    User Correction / Error Detected ──&gt; reflect.py (merges near-duplicate lessons by word overlap)
+<span class="terminal-prompt">[FEEDBACK]</span>    User Correction / Error Detected ──&gt; reflect.py (merges a near-duplicate lesson of the same domain)
 <span class="terminal-prompt">[PERSIST]</span>     Repeated lessons compiled into rules ──&gt; .agents/rules/learned_rules.md
 <span class="terminal-success">[OUTCOME]</span>     Lessons persist across sessions · 0 external pip dependencies · Recurring lessons gain weight</pre>
         </div>
@@ -510,7 +510,7 @@
               </div>
               <div class="agent-role-title">Lesson Logger</div>
               <div class="agent-desc">
-                A CLI and Python API to record a new lesson. Near-duplicates are merged by word overlap (Jaccard), so a repeated mistake strengthens the existing lesson instead of adding a copy.
+                A CLI and Python API to record a new lesson. A near-duplicate in the same domain is merged into its closest match by word overlap (Jaccard), so a repeated mistake strengthens the existing lesson instead of adding a copy. <code>--supersedes MEM-xxx</code> retires an outdated rule: recall, dedupe and crystallize skip it from then on.
               </div>
               <span class="agent-stack-tag">reflect.py · Auto-Dedupe</span>
             </div>
