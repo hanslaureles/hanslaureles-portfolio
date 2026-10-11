@@ -4,7 +4,7 @@ because no code or measurement backs them (MEM-010, Phase 3A). Add a pattern
 whenever a claim is retracted, so it can't drift back in with new copy.
 
 Usage: python tools/check_claims.py      exit 1 if any match
-Stdlib only; scans *.html, aura-store/*.html and *.js.
+Stdlib only; scans *.html, aura-store/*.html, *.js and README.md.
 """
 
 import re
@@ -65,7 +65,7 @@ RETRACTED = [
      "Aura popularity tag (Hans, 2026-10-06: the demo store has no sales to rank)"),
     # Glossary (copy audit §1): visible names only. Lowercase search keywords in
     # sakura-copilot.js and code identifiers (swarm, sentinel-*) stay allowed.
-    (r"\b(multi-|5-)?agent swarm\b|agent daemons?\b|operations squad|"
+    (r"\b(multi-|5-)?agent swarm\b|operations swarm\b|swarm orchestrator|agent daemons?\b|operations squad|"
      r"(?-i:Divine Wisdom|Thought Acceleration|[Tt]elepathic|Tensura|Sentinel HUD|System Sentinel|RAG Sentinel|"
      r"UI Sentinel|Git Sentinel|Developer Memory|BM25 Flywheel|Agent Flywheel|Episodic Memory Retrieval|"
      r"Payment Rails|Philippine [Rr]ails|RAILS\b)",
@@ -87,7 +87,7 @@ RETRACTED = [
 
 def main():
     files = sorted([*ROOT.glob("*.html"), *ROOT.glob("aura-store/*.html"), *ROOT.glob("*.js"),
-                    *ROOT.glob("aura-store/*.js")])
+                    *ROOT.glob("aura-store/*.js"), ROOT / "README.md"])  # README: the public repo's front page
     hits = 0
     for path in files:
         for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):

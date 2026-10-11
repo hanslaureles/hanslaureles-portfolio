@@ -4,10 +4,10 @@
 Production developer portfolio and kinetic AI agent showcase for **Hans Aaron Laureles** (Applied AI Engineer & Full-Stack Builder). Live deployed on Vercel.
 
 ## Architecture
-- `index.html`: Main landing page, agent fleet telemetry, terminal playground, kinetic project showcase.
+- `index.html`: Main landing page, Agent Overview, terminal, case study list.
 - `sakura-copilot.js`: "Ask Sakura" in-browser BM25 recruiter copilot.
 - `terminal.js`: Interactive Unix recruiter playground CLI.
-- `sentinel.js`: Swarm telemetry and mission control HUD.
+- `sentinel.js`: Agent Overview panel (labelled scripted replay plus the `data/status.json` snapshot).
 - `case-*.html`: Flagship project case studies (Ciel, LSFM, Cognitive Memory, Aura Store).
 - `vercel.json` & `netlify.toml`: Deployment routing and asset caching configurations.
 

@@ -1,72 +1,62 @@
 <div align="center">
 
-# 🌐 Hans Aaron Laureles — Personal Portfolio
-### AI Systems Engineer & Full-Stack Builder
-**Live Website:** [hanslaureles.vercel.app](https://hanslaureles.vercel.app/)
+# Hans Aaron Laureles — Portfolio
+### Applied AI Engineer & Full-Stack Builder
+**Live site:** [hanslaureles.vercel.app](https://hanslaureles.vercel.app/)
 
 [![CI](https://github.com/hanslaureles/hanslaureles-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/hanslaureles/hanslaureles-portfolio/actions/workflows/ci.yml)
-[![Live Site](https://img.shields.io/badge/Live_Site-hanslaureles.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://hanslaureles.vercel.app/)
-[![Vercel Deployment](https://img.shields.io/badge/Deployment-Vercel_Edge-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://hanslaureles.vercel.app/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+[![Live site probe](https://github.com/hanslaureles/hanslaureles-portfolio/actions/workflows/live-probe.yml/badge.svg)](https://github.com/hanslaureles/hanslaureles-portfolio/actions/workflows/live-probe.yml)
 
 </div>
 
 ---
 
-## 📖 Overview
+## What is on the site
 
-The official web engineering portfolio of **Hans Aaron Laureles**, showcasing:
-- **✨ Manas: Ciel Divine Wisdom AI Copilot (`case-ciel.html`)**: Real-time bilingual (Japanese/English) voice copilot and supervisory intelligence featuring Groq Whisper Large v3 Turbo transcription with an OpenAI Whisper fallback, Edge-TTS voices through a custom FFmpeg "Thought Acceleration" filter, an 8-turn sliding working memory buffer, bidirectional Obsidian Second Brain access, and proactive 4-domain telemetry sentinels.
-- **Flagship Multi-Agent Architecture**: The **LSFM AI HQ** autonomous 5-agent operations swarm, routing LLM work across Groq and Gemini with an optional local Ollama mode on a consumer AMD Radeon RX 6600 XT, plus automated tools (Gmail OAuth2 two-tier triage, headless Edge vector PDF engine, hybrid BM25 + vector RAG over SQLite).
-- **🌸 "Ask Sakura" Recruiter AI Copilot (`sakura-copilot.js`)**: In-browser client-side BM25 grounded knowledge assistant with 17 curated knowledge chunks, quick suggestion chips, citation cards, and direct deep-links.
-- **📡 Ambient Agent Telemetry & Sentinel HUD (`sentinel.js`)**: Interactive hero beacon with real-time UTC+8 Manila clock, simulated sub-20ms ping jitter, 5-agent fleet roster, live event telemetry stream, simulated fleet probe, and clipboard architecture report export.
-- **🌿 `$ git log` Career & Milestone Timeline**: Dual-mode interactive timeline switcher on `about.html` (`[ 📄 Executive Cards ]` vs `[ 🌿 $ git log --graph ]`) with 1-click copyable commit SHAs, milestone tags (v1.0 to v3.0), and interactive terminal `git log` command.
-- **🎠 Kinetic Curated Showcase Carousel**: Horizontal snap scroll track with `←` / `→` arrow buttons, live active card index counter (`01 / 07` to `07 / 07`), and responsive sliding progress bar.
-- **☕ Aura Coffee & Kitchen Live Store (`aura-store/`)**: Fully functional artisanal coffeehouse e-commerce web app featuring multi-option drink customization, dynamic slide-over bag drawer, and seamless 1-page checkout.
-- **🔬 Cognitive Memory Core & Simulator (`case-memory.html#simulator`)**: Zero-dependency BM25 episodic recall (<15ms) developer agent engine eliminating AI session amnesia with automated post-mortem reflections and permanent workspace rule crystallization.
-- **💻 Interactive Unix Playground Terminal (`terminal.js`)**: Authentic in-browser command line supporting tab autocomplete, command history (`↑`/`↓`), quick-action execution chips, and live architecture queries (`ciel`, `sentinel`, `git log`, `status`, `benchmark`, `recall`, `aura`, `sakura`).
-- **🏛️ Swiss Editorial Design System**: Rigorous typographic scale (Inter, Newsreader, JetBrains Mono), CSS Custom Properties, and responsive dark/light theme switching.
+**Case studies** (in site order):
 
----
+1. **LSFM AI HQ** (`case-lsfm.html`): a 5-agent team on Discord, one job per agent, sharing one LLM layer (Groq and Gemini in the cloud, each falling back to the other; optional local Ollama mode).
+2. **Manas: Ciel** (`case-ciel.html`): a bilingual (Japanese/English) voice copilot with a web HUD. It coordinates the five agents or answers directly, remembers the last 8 exchanges in each HUD tab, speaks each sentence as soon as it is written, runs background checks, and reads and writes my Obsidian notes.
+3. **Memory Core** (`case-memory.html`): a lessons-learned memory for AI coding assistants, Python standard library only. Measured results and their dates are on the page.
+4. **Aura Coffee & Kitchen** (`case-aura.html`, demo at `/aura-store`): a one-page coffee ordering demo with a drink customizer and 6 payment options (GCash, Maya, GrabPay, card, QR Ph, cash on delivery). It charges nothing.
+5. **Lumina** (`case-lumina.html`): a student study dashboard on sample data.
+6. **Vellum** (`case-vellum.html`) and 7. **FinTrack** (`case-fintrack.html`): untested Figma concepts.
 
-## 🛠️ Tech Stack & Architecture
+**Interactive parts:**
 
-- **Frontend Core**: Semantic HTML5 Living Standard & Vanilla ES6+ JavaScript (zero bloated framework dependencies, instant load times, WCAG AAA accessibility).
-- **Styling**: Vanilla CSS3 Design Tokens with fluid clamp scales, CSS Grid, custom micro-animations, and CSS Custom Properties.
-- **Agent Copilot Engine (`sakura-copilot.js`)**: Robertson-Spärck Jones BM25 search engine with token weighting, stop-word elimination, and instant client-side resolution (<2ms).
-- **Telemetry Subsystem (`sentinel.js`)**: Event-driven modal HUD with simulated live network probes, jitter modeling, and Manila UTC+8 synchronization.
-- **Terminal Engine (`terminal.js`)**: Simulated Unix shell supporting tab autocomplete, history buffers, quick-action chips, and interactive command dispatching.
-- **Deployment & Edge Routing**: Vercel Global Edge Network with automated continuous deployment from GitHub (`vercel.json`), clean extensionless URLs (`cleanUrls: true`), and immutable HTTP security headers.
+- **Terminal** (`terminal.js`): an in-browser command line (`help` lists the commands) with tab completion and history.
+- **Ask Sakura** (`sakura-copilot.js`): in-browser BM25 Q&A over 17 hand-written knowledge chunks, with suggestion chips and links to the source page. Nothing is sent to a server.
+- **Agent Overview** (`sentinel.js`): a labelled, scripted replay of the agents' real schedules and pipeline steps, plus the published status snapshot `data/status.json`. A bot shows as online only if its heartbeat was under 15 minutes old when the page is viewed. The site has no live connection to the agents.
 
----
+## How it is built
 
-## 🚀 Deployment & Local Development
+- Static HTML, CSS and vanilla JavaScript: no framework, no build step.
+- Swiss editorial design system: Plus Jakarta Sans, Instrument Serif and JetBrains Mono; colour tokens in CSS custom properties; light and dark themes.
+- Hosted on Vercel from `main` (`vercel.json`: clean URLs, redirects, security headers and an enforced Content Security Policy with hashed inline scripts). `netlify.toml` and `_redirects` are fallback route files for other hosts.
+- `data/status.json` is generated by `eunchae_publisher` in the agents' repo and committed here on demand; it is never hand-edited.
 
-### Deploy to Vercel (Production)
-1. Push updates to GitHub:
-   ```bash
-   sync_portfolio.bat
-   ```
-2. Import repository in **[Vercel Dashboard](https://vercel.com/new)**:
-   - Select repository: `hanslaureles/hanslaureles-portfolio`
-   - Framework Preset: `Other` (Static HTML)
-   - Root Directory: `./`
-   - Click **Deploy**
+## Checks
 
-### Local Preview
-No build steps or npm installations required:
+CI (`.github/workflows/ci.yml`) runs on every push:
+
+- `node --check` on every script, and `tools/check_headings.py`, `check_assets.py`, `check_claims.py` (retracted claims and retired names stay out, this README included), `check_csp.py`, `build_metric_cards.py --check`.
+- Playwright smoke tests (`tests/`): every page loads with no console errors or failed requests, no serious or critical axe violations, no sideways scroll at 375 or 768 px, and every local link resolves; plus a per-page weight budget.
+
+A daily job (`live-probe.yml`) checks that production serves the routes, the security headers and this repo's `?v=` asset versions.
+
+## Local preview
+
 ```bash
-# Start a local HTTP server
 python -m http.server 8080
 ```
-Open `http://localhost:8080` in any browser.
 
----
+Then open `http://localhost:8080`.
 
-## 👨‍💻 Author
+## Contact
 
-**Hans Aaron Laureles**  
-- 🌐 [Portfolio](https://hanslaureles.vercel.app/)  
-- 💼 [LinkedIn](https://linkedin.com/in/hanslaureles)  
-- 🐙 [GitHub](https://github.com/hanslaureles)  
-- 📧 [hanslaureles92@gmail.com](mailto:hanslaureles92@gmail.com)
+**Hans Aaron Laureles**, Cavite, Philippines, open to remote roles.
+
+- [Portfolio](https://hanslaureles.vercel.app/)
+- [LinkedIn](https://linkedin.com/in/hanslaureles)
+- [GitHub](https://github.com/hanslaureles)
+- [hanslaureles92@gmail.com](mailto:hanslaureles92@gmail.com)
