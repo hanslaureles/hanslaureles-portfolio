@@ -57,10 +57,12 @@
  "pages": {
   "index.html": {
    "desktop": {
-    "bytes": 366882,
+    "bytes": 274910,
     "files": {
-     "/app.js": 20101,
      "/data/status.json": 1038,
+     "/discovery.js": 9040,
+     "/home.css": 75735,
+     "/home.js": 12388,
      "/images/aura-website/aura-mockup-480.b04fa192.avif": 3549,
      "/images/ciel/ciel-mockup-480.eecfa9ee.avif": 10292,
      "/images/fintrack-mobile-app/fintrack-mockup-480.d086d51f.avif": 5745,
@@ -68,230 +70,224 @@
      "/images/lumina-website/lumina-mockup-480.dcd86236.avif": 6397,
      "/images/memory-core/memory-mockup-480.fe2cc1ea.avif": 19957,
      "/images/vellum-mobile-app/vellum-mockup-480.aefaa558.avif": 5532,
-     "/index.html": 53843,
-     "/sakura-copilot.js": 32640,
-     "/sentinel.js": 20359,
-     "/styles.css": 127908,
-     "/terminal.js": 54845
+     "/index.html": 60896,
+     "/motion.js": 4854,
+     "/sakura-copilot.js": 33721,
+     "/sentinel.js": 21090
     }
    },
    "mobile": {
-    "bytes": 366882,
+    "bytes": 229054,
     "files": {
-     "/app.js": 20101,
      "/data/status.json": 1038,
-     "/images/aura-website/aura-mockup-480.b04fa192.avif": 3549,
+     "/discovery.js": 9040,
+     "/home.css": 75735,
+     "/home.js": 12388,
      "/images/ciel/ciel-mockup-480.eecfa9ee.avif": 10292,
-     "/images/fintrack-mobile-app/fintrack-mockup-480.d086d51f.avif": 5745,
-     "/images/lsfm-hq/lsfm-hq-mockup-480.c86b4aba.avif": 4676,
-     "/images/lumina-website/lumina-mockup-480.dcd86236.avif": 6397,
-     "/images/memory-core/memory-mockup-480.fe2cc1ea.avif": 19957,
-     "/images/vellum-mobile-app/vellum-mockup-480.aefaa558.avif": 5532,
-     "/index.html": 53843,
-     "/sakura-copilot.js": 32640,
-     "/sentinel.js": 20359,
-     "/styles.css": 127908,
-     "/terminal.js": 54845
+     "/index.html": 60896,
+     "/motion.js": 4854,
+     "/sakura-copilot.js": 33721,
+     "/sentinel.js": 21090
     }
    }
   },
   "about.html": {
    "desktop": {
-    "bytes": 225296,
+    "bytes": 172441,
     "files": {
      "/about-view.js": 1647,
-     "/about.html": 35594,
-     "/app.js": 20101,
+     "/about.html": 35614,
+     "/app.js": 12972,
      "/images/profile-pic-480.43163c35.avif": 7406,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    },
    "mobile": {
-    "bytes": 225296,
+    "bytes": 172441,
     "files": {
      "/about-view.js": 1647,
-     "/about.html": 35594,
-     "/app.js": 20101,
+     "/about.html": 35614,
+     "/app.js": 12972,
      "/images/profile-pic-480.43163c35.avif": 7406,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    }
   },
   "404.html": {
    "desktop": {
-    "bytes": 151565,
+    "bytes": 97609,
     "files": {
      "/404.html": 3556,
-     "/app.js": 20101,
-     "/styles.css": 127908
+     "/app.js": 12972,
+     "/styles.css": 81081
     }
    },
    "mobile": {
-    "bytes": 151565,
+    "bytes": 97609,
     "files": {
      "/404.html": 3556,
-     "/app.js": 20101,
-     "/styles.css": 127908
+     "/app.js": 12972,
+     "/styles.css": 81081
     }
    }
   },
   "case-lsfm.html": {
    "desktop": {
-    "bytes": 281503,
+    "bytes": 230773,
     "files": {
-     "/app.js": 20101,
-     "/case-lsfm.html": 66254,
+     "/app.js": 12972,
+     "/case-lsfm.html": 68399,
      "/images/lsfm-hq/lsfm-hq-mockup-1600.02722453.avif": 34600,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    },
    "mobile": {
-    "bytes": 251579,
+    "bytes": 200849,
     "files": {
-     "/app.js": 20101,
-     "/case-lsfm.html": 66254,
+     "/app.js": 12972,
+     "/case-lsfm.html": 68399,
      "/images/lsfm-hq/lsfm-hq-mockup-480.c86b4aba.avif": 4676,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    }
   },
   "case-ciel.html": {
    "desktop": {
-    "bytes": 292603,
+    "bytes": 240071,
     "files": {
-     "/app.js": 20101,
-     "/case-ciel-demo.js": 4322,
-     "/case-ciel.html": 63735,
+     "/app.js": 12972,
+     "/case-ciel-demo.js": 4309,
+     "/case-ciel.html": 64091,
      "/images/ciel/ciel-mockup-1600.c5fa93f8.avif": 43897,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    },
    "mobile": {
-    "bytes": 258998,
+    "bytes": 206466,
     "files": {
-     "/app.js": 20101,
-     "/case-ciel-demo.js": 4322,
-     "/case-ciel.html": 63735,
+     "/app.js": 12972,
+     "/case-ciel-demo.js": 4309,
+     "/case-ciel.html": 64091,
      "/images/ciel/ciel-mockup-480.eecfa9ee.avif": 10292,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    }
   },
   "case-memory.html": {
    "desktop": {
-    "bytes": 319724,
+    "bytes": 266982,
     "files": {
-     "/app.js": 20101,
+     "/app.js": 12972,
      "/case-memory-demo.js": 10366,
-     "/case-memory.html": 42093,
+     "/case-memory.html": 42226,
      "/images/memory-core/memory-mockup-1376.c97be728.avif": 86616,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    },
    "mobile": {
-    "bytes": 253065,
+    "bytes": 200323,
     "files": {
-     "/app.js": 20101,
+     "/app.js": 12972,
      "/case-memory-demo.js": 10366,
-     "/case-memory.html": 42093,
+     "/case-memory.html": 42226,
      "/images/memory-core/memory-mockup-480.fe2cc1ea.avif": 19957,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    }
   },
   "case-aura.html": {
    "desktop": {
-    "bytes": 234423,
+    "bytes": 181548,
     "files": {
-     "/app.js": 20101,
+     "/app.js": 12972,
      "/case-aura.html": 30787,
      "/images/aura-website/aura-mockup-1600.bfcd01ac.avif": 22987,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    },
    "mobile": {
-    "bytes": 214985,
+    "bytes": 162110,
     "files": {
-     "/app.js": 20101,
+     "/app.js": 12972,
      "/case-aura.html": 30787,
      "/images/aura-website/aura-mockup-480.b04fa192.avif": 3549,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    }
   },
   "case-lumina.html": {
    "desktop": {
-    "bytes": 234510,
+    "bytes": 181635,
     "files": {
-     "/app.js": 20101,
+     "/app.js": 12972,
      "/case-lumina.html": 30197,
      "/images/lumina-website/lumina-mockup-1600.20ec6b1b.avif": 23664,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    },
    "mobile": {
-    "bytes": 217243,
+    "bytes": 164368,
     "files": {
-     "/app.js": 20101,
+     "/app.js": 12972,
      "/case-lumina.html": 30197,
      "/images/lumina-website/lumina-mockup-480.dcd86236.avif": 6397,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    }
   },
   "case-vellum.html": {
    "desktop": {
-    "bytes": 227168,
+    "bytes": 174293,
     "files": {
-     "/app.js": 20101,
+     "/app.js": 12972,
      "/case-vellum.html": 28072,
      "/images/vellum-mobile-app/vellum-mockup-1600.3b5c1af6.avif": 18447,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    },
    "mobile": {
-    "bytes": 214253,
+    "bytes": 161378,
     "files": {
-     "/app.js": 20101,
+     "/app.js": 12972,
      "/case-vellum.html": 28072,
      "/images/vellum-mobile-app/vellum-mockup-480.aefaa558.avif": 5532,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    }
   },
   "case-fintrack.html": {
    "desktop": {
-    "bytes": 226455,
+    "bytes": 173580,
     "files": {
-     "/app.js": 20101,
+     "/app.js": 12972,
      "/case-fintrack.html": 25411,
      "/images/fintrack-mobile-app/fintrack-mockup-1417.cef3f6c0.avif": 20395,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    },
    "mobile": {
-    "bytes": 211805,
+    "bytes": 158930,
     "files": {
-     "/app.js": 20101,
+     "/app.js": 12972,
      "/case-fintrack.html": 25411,
      "/images/fintrack-mobile-app/fintrack-mockup-480.d086d51f.avif": 5745,
-     "/sakura-copilot.js": 32640,
-     "/styles.css": 127908
+     "/sakura-copilot.js": 33721,
+     "/styles.css": 81081
     }
    }
   },
