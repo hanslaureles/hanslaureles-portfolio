@@ -7,7 +7,7 @@ Production developer portfolio and kinetic AI agent showcase for **Hans Aaron La
 - `index.html`: Homepage (hero, request replay, work grid with filters and Index view, method, experience, proof strip, FAQ, contact). Ported 2026-10-21 from the approved prototype (`portfolio-redesign-prototype` `077d5b9`).
 - `home.css` / `home.js`: the homepage's own stylesheet and script; the homepage does not load `styles.css` or `app.js`. The header is shared with every page, so header changes go into both `home.css` and `styles.css` (and keep the markup identical).
 - `discovery.js` (filters, Index view, pipeline replay, FAQ tabs) and `motion.js` (button, entry and tilt motion): homepage only.
-- `sakura-copilot.js`: "Ask Sakura" in-browser BM25 recruiter copilot, shared by every page; it uses Lucide icons where the homepage sprite exists and text glyphs elsewhere.
+- `sakura-copilot.js`: "Ask Sakura" in-browser BM25 recruiter copilot, shared by the homepage, About and the case studies (not 404 or the Aura store); it uses Lucide icons where the homepage sprite exists and text glyphs elsewhere.
 - `sentinel.js`: Agent Overview panel on the homepage (labelled scripted replay plus the `data/status.json` snapshot).
 - `case-*.html`: Flagship project case studies (Ciel, LSFM, Cognitive Memory, Aura Store).
 - `vercel.json` & `netlify.toml`: Deployment routing and asset caching configurations.

@@ -26,7 +26,7 @@
 
 **Interactive parts:**
 
-- **Ask Sakura** (`sakura-copilot.js`, on every page): in-browser BM25 Q&A over 17 hand-written knowledge chunks, with suggestion chips and links to the source page. Nothing is sent to a server.
+- **Ask Sakura** (`sakura-copilot.js`, on the homepage, About and the case studies): in-browser BM25 Q&A over 17 hand-written knowledge chunks, with suggestion chips and links to the source page. Nothing is sent to a server.
 - **Agent Overview** (`sentinel.js`, homepage): a labelled, scripted replay of the agents' real schedules and pipeline steps, plus the published status snapshot `data/status.json`. A bot shows as online only if its heartbeat was under 15 minutes old when the page is viewed. The site has no live connection to the agents.
 
 ## How it is built
