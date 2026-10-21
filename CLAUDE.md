@@ -4,10 +4,11 @@
 Production developer portfolio and kinetic AI agent showcase for **Hans Aaron Laureles** (Applied AI Engineer & Full-Stack Builder). Live deployed on Vercel.
 
 ## Architecture
-- `index.html`: Main landing page, Agent Overview, terminal, case study list.
-- `sakura-copilot.js`: "Ask Sakura" in-browser BM25 recruiter copilot.
-- `terminal.js`: Interactive Unix recruiter playground CLI.
-- `sentinel.js`: Agent Overview panel (labelled scripted replay plus the `data/status.json` snapshot).
+- `index.html`: Homepage (hero, request replay, work grid with filters and Index view, method, experience, proof strip, FAQ, contact). Ported 2026-10-21 from the approved prototype (`portfolio-redesign-prototype` `077d5b9`).
+- `home.css` / `home.js`: the homepage's own stylesheet and script; the homepage does not load `styles.css` or `app.js`. The header is shared with every page, so header changes go into both `home.css` and `styles.css` (and keep the markup identical).
+- `discovery.js` (filters, Index view, pipeline replay, FAQ tabs) and `motion.js` (button, entry and tilt motion): homepage only.
+- `sakura-copilot.js`: "Ask Sakura" in-browser BM25 recruiter copilot, shared by every page; it uses Lucide icons where the homepage sprite exists and text glyphs elsewhere.
+- `sentinel.js`: Agent Overview panel on the homepage (labelled scripted replay plus the `data/status.json` snapshot).
 - `case-*.html`: Flagship project case studies (Ciel, LSFM, Cognitive Memory, Aura Store).
 - `vercel.json` & `netlify.toml`: Deployment routing and asset caching configurations.
 
@@ -28,7 +29,8 @@ Production developer portfolio and kinetic AI agent showcase for **Hans Aaron La
 
 ## Test Commands
 - Same checks as CI: `node --check` on every `*.js` and `aura-store/*.js`; `python tools/check_headings.py` (one h1, no skipped levels); `python tools/check_assets.py` (no duplicate script/stylesheet includes, every local include has `?v=`); `python tools/check_claims.py` (retracted claims stay out; add a pattern whenever a claim is withdrawn).
-- Bump `?v=` on every page when shared JS/CSS changes.
+- Bump `?v=` on every page when shared JS/CSS changes; every page uses the same value (`probe_live.py` requires it).
+- The homepage's inline theme snippet differs from the other pages' (it also sets `data-motion`), so `script-src` carries two hashes; editing either snippet means updating its hash in `vercel.json`, `netlify.toml` and `tools/test_check_csp.py`.
 - Playwright smoke tests (CI job `smoke`): `cd tests && npm ci && npx playwright install chromium && npx playwright test`. Every page: no console errors or failed requests, no serious/critical axe violations, no sideways scroll at 375 or 768 px, all local links resolve; plus theme toggle, keyboard lightbox, mobile menu, and the Aura search placeholder fitting from 400 to 1280 px. Lives in `tests/` with its own package.json so the site root stays plain static files (`.vercelignore` excludes it).
 - Performance budget (`tests/perf.spec.js`, runs with the smoke tests, 6D-2): each page's first-party weight at 1280 and 375 px (bytes as git stores them, LF; Google Fonts blocked) must stay within 10% of `tests/perf-budget.json`; LCP (median of 3 loads) is printed, and gated at max(2× baseline, baseline + 500 ms) once `lcp` in the budget holds runner baselines. After a deliberate size change: `UPDATE_BUDGET=1 npx playwright test perf.spec.js` (PowerShell: `$env:UPDATE_BUDGET='1'`), then commit the JSON.
 - Live probe: `python tools/probe_live.py` (also daily in `.github/workflows/live-probe.yml`): routes, /about.html redirect, security headers, and that production serves the repo's `?v=`.
