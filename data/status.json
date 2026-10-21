@@ -1,26 +1,26 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-05T04:54:19+00:00",
+  "generated_at": "2026-10-21T07:17:58+00:00",
   "swarm": {
     "sakura": {
       "status": "stale",
-      "last_heartbeat_utc": "2026-10-02T14:16:25+00:00"
+      "last_heartbeat_utc": "2026-10-20T13:01:23+00:00"
     },
     "chaewon": {
       "status": "stale",
-      "last_heartbeat_utc": "2026-10-02T14:16:23+00:00"
+      "last_heartbeat_utc": "2026-10-20T13:01:21+00:00"
     },
     "yunjin": {
       "status": "stale",
-      "last_heartbeat_utc": "2026-10-02T14:16:24+00:00"
+      "last_heartbeat_utc": "2026-10-20T13:01:22+00:00"
     },
     "kazuha": {
       "status": "stale",
-      "last_heartbeat_utc": "2026-10-02T14:16:27+00:00"
+      "last_heartbeat_utc": "2026-10-20T13:01:25+00:00"
     },
     "eunchae": {
       "status": "stale",
-      "last_heartbeat_utc": "2026-10-02T14:16:29+00:00"
+      "last_heartbeat_utc": "2026-10-20T13:01:26+00:00"
     }
   },
   "llm_latency": {
@@ -36,9 +36,9 @@
     "source": "memory/applications_log.md"
   },
   "vitals": {
-    "cpu_pct": 13.7,
-    "ram_pct": 75.7,
-    "disk_pct": 70.5,
-    "sampled_at": "2026-10-05T04:54:19+00:00"
+    "cpu_pct": 11.0,
+    "ram_pct": 81.3,
+    "disk_pct": 78.7,
+    "sampled_at": "2026-10-21T07:17:58+00:00"
   }
 }
