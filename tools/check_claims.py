@@ -13,6 +13,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
+TEST_COUNT = "hardcoded test count (goes stale; point at CI instead)"
+
 RETRACTED = [
     (r"\$0\.00|\$0/mo|zero[- ]cost|zero (cloud|recurring|unexpected)|low[- ]cost|free[- ]tier",
      "unbacked cost claim (no dated billing record)"),
@@ -20,7 +22,7 @@ RETRACTED = [
      "Groq-first routing for every agent (Yunjin runs Gemini first)"),
     (r"\b14B\s+(param|model)|7B and 14B", "no 14B model runs locally"),
     (r"0\.015s|\b\d+ (Unit |automated )?Tests\b|\b\d+/\d+ (automated )?tests\b",
-     "hardcoded test count (goes stale; point at CI instead)"),
+     TEST_COUNT),
     (r"ZERO LATENCY|100% vector|2\.5–5s", "absolute or uncited performance claim"),
     (r"~?350\s?MB\+|800\s?ms\+", "unmeasured vector-DB figures"),
     (r"State: nominal|100% nominal|5/5 Agents Nominal", "status nobody checked"),
@@ -92,6 +94,10 @@ def main():
     for path in files:
         for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             for pattern, why in RETRACTED:
+                # A count on the same line as the GitHub Actions run it came from is the
+                # dated, sourced form (homepage proof strip), not a free-standing claim.
+                if why == TEST_COUNT and "/actions/runs/" in line:
+                    continue
                 if re.search(pattern, line, re.IGNORECASE):
                     hits += 1
                     print(f"FAIL {path.relative_to(ROOT).as_posix()}:{n}: {why}\n     {line.strip()[:140]}")

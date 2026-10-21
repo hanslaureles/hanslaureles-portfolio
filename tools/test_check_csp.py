@@ -16,7 +16,8 @@ from pathlib import Path
 import check_csp
 
 REPO = Path(__file__).resolve().parent.parent
-HASHED = "script-src 'self' 'sha256-CityW3eaBWHgazqMiMn47dd6tTGQlMKpYOtT2YnhMMw=';"
+HASHED = ("script-src 'self' 'sha256-CityW3eaBWHgazqMiMn47dd6tTGQlMKpYOtT2YnhMMw=' "
+          "'sha256-M3bwmOirMh114Uru7/L8rAcZ75l+YSyXYEY0hrHB2FY=';")
 
 
 def fixture(extra_html="", policy=lambda p: p, aura_only=False):

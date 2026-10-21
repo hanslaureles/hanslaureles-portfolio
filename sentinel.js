@@ -21,22 +21,22 @@
 
   // Each event describes a real schedule (tasks.loop) or command in the public lsfm-ai-hq repo.
   const REPLAY_EVENTS = [
-    { agent: 'EUNCHAE', emoji: '🛡️', msg: 'Watchdog cycle: CPU, RAM and disk sampled via psutil (every 5 min).' },
-    { agent: 'SAKURA', emoji: '🌸', msg: 'Daily briefing posts once a day after 08:00.' },
-    { agent: 'YUNJIN', emoji: '🎨', msg: 'Weekly portfolio audit: page structure and image assets scanned.' },
-    { agent: 'SAKURA', emoji: '🌸', msg: 'On !inbox: unread mail is classified into 10 LSFM/ Gmail labels.' },
-    { agent: 'KAZUHA', emoji: '💻', msg: 'On !ask: answers are grounded in the SQLite + Gemini-embedding knowledge base.' },
-    { agent: 'CHAEWON', emoji: '⭐', msg: 'On !pdf: the single-page ATS resume is compiled with headless Edge.' }
+    { agent: 'EUNCHAE', icon: 'shield', msg: 'Watchdog cycle: CPU, RAM and disk sampled via psutil (every 5 min).' },
+    { agent: 'SAKURA', icon: 'workflow', msg: 'Daily briefing posts once a day after 08:00.' },
+    { agent: 'YUNJIN', icon: 'palette', msg: 'Weekly portfolio audit: page structure and image assets scanned.' },
+    { agent: 'SAKURA', icon: 'workflow', msg: 'On !inbox: unread mail is classified into 10 LSFM/ Gmail labels.' },
+    { agent: 'KAZUHA', icon: 'code', msg: 'On !ask: answers are grounded in the SQLite + Gemini-embedding knowledge base.' },
+    { agent: 'CHAEWON', icon: 'briefcase', msg: 'On !pdf: the single-page ATS resume is compiled with headless Edge.' }
   ];
 
   // Scripted replay of the real !apply pipeline in bot_sakura.py, in its actual order.
   const MISSION_REPLAY = [
-    { agent: 'SAKURA', emoji: '🌸', msg: '!apply <job url> received: scraping the posting, extracting role and company.' },
-    { agent: 'CHAEWON', emoji: '⭐', msg: 'Analyzing ATS fit and tailoring the resume and cover letter.' },
-    { agent: 'YUNJIN', emoji: '🎨', msg: 'Curating the flagship case studies that best match the role.' },
-    { agent: 'KAZUHA', emoji: '💻', msg: 'Drafting the frontend tech pitch and CS positioning.' },
-    { agent: 'EUNCHAE', emoji: '🛡️', msg: 'QA check: the package is scored against the team\'s recorded failure lessons.' },
-    { agent: 'SAKURA', emoji: '🌸', msg: 'Master proposal compiled and posted to the approvals channel for review.' }
+    { agent: 'SAKURA', icon: 'workflow', msg: '!apply <job url> received: scraping the posting, extracting role and company.' },
+    { agent: 'CHAEWON', icon: 'briefcase', msg: 'Analyzing ATS fit and tailoring the resume and cover letter.' },
+    { agent: 'YUNJIN', icon: 'palette', msg: 'Curating the flagship case studies that best match the role.' },
+    { agent: 'KAZUHA', icon: 'code', msg: 'Drafting the frontend tech pitch and CS positioning.' },
+    { agent: 'EUNCHAE', icon: 'shield', msg: 'QA check: the package is scored against the team\'s recorded failure lessons.' },
+    { agent: 'SAKURA', icon: 'workflow', msg: 'Master proposal compiled and posted to the approvals channel for review.' }
   ];
 
   // --- Agent status snapshot (/data/status.json, schema 1) ---
@@ -365,22 +365,23 @@
     }
   }
 
-  function appendLog(agent, emoji, msg, isHighlight = false) {
+  function appendLog(agent, icon, msg, isHighlight = false) {
     if (!logFeed) return;
 
     const row = document.createElement('div');
     row.className = `sentinel-log-row ${isHighlight ? 'log-highlight' : ''}`;
-    
+
     // Built with textContent so messages like "!apply <job url>" render literally, never as markup.
     const parts = [
       ['log-time mono', `[${getManilaTimestamp()}]`],
-      ['log-agent mono', `${emoji} ${agent}:`],
+      ['log-agent mono', `${agent}:`],
       ['log-msg', msg]
     ];
     parts.forEach(([cls, text], i) => {
       const span = document.createElement('span');
       span.className = cls;
       span.textContent = text;
+      if (i === 1) span.insertAdjacentHTML('afterbegin', window.portfolioIcon(icon) + ' ');
       row.appendChild(span);
       if (i < parts.length - 1) row.appendChild(document.createTextNode(' '));
     });
@@ -398,8 +399,8 @@
 
   function seedInitialLogs() {
     logFeed.innerHTML = '';
-    appendLog('REPLAY', '▶', 'Scripted replay. Each event mirrors a real agent schedule; this is not a live feed.', true);
-    REPLAY_EVENTS.slice(0, 3).forEach(ev => appendLog(ev.agent, ev.emoji, ev.msg));
+    appendLog('REPLAY', 'play', 'Scripted replay. Each event mirrors a real agent schedule; this is not a live feed.', true);
+    REPLAY_EVENTS.slice(0, 3).forEach(ev => appendLog(ev.agent, ev.icon, ev.msg));
   }
 
   function startEventStream() {
@@ -408,10 +409,10 @@
     // Cycle through the schedule events in order (deterministic, no random data).
     let nextIndex = 3;
     eventInterval = setInterval(() => {
-      if (!document.hidden && isModalOpen() && !(replayBtn && replayBtn.disabled)) {
+      if (!window.portfolioMotion.disabled && !document.hidden && isModalOpen() && !(replayBtn && replayBtn.disabled)) {
         const ev = REPLAY_EVENTS[nextIndex % REPLAY_EVENTS.length];
         nextIndex++;
-        appendLog(ev.agent, ev.emoji, ev.msg);
+        appendLog(ev.agent, ev.icon, ev.msg);
       }
     }, 7000);
   }
@@ -419,18 +420,22 @@
   // --- Scripted "Replay a Mission" walkthrough of the real !apply pipeline ---
   function handleReplayMission() {
     if (!replayBtn || replayBtn.disabled) return;
+    if (window.portfolioMotion.disabled) {
+      MISSION_REPLAY.forEach(step => appendLog(step.agent, step.icon, step.msg));
+      return;
+    }
     replayBtn.disabled = true;
     const originalText = replayBtn.innerHTML;
-    replayBtn.innerHTML = `<span>▶ Replaying...</span>`;
+    replayBtn.innerHTML = `<span>${window.portfolioIcon('play')} Replaying...</span>`;
     replayTimers.forEach(clearTimeout);
     replayTimers = [];
 
-    appendLog('REPLAY', '▶', 'Mission replay: the !apply job-application pipeline, step by step.', true);
+    appendLog('REPLAY', 'play', 'Mission replay: the !apply job-application pipeline, step by step.', true);
 
     const agentItems = document.querySelectorAll('.agent-fleet-item');
     MISSION_REPLAY.forEach((step, idx) => {
       replayTimers.push(setTimeout(() => {
-        appendLog(step.agent, step.emoji, step.msg);
+        appendLog(step.agent, step.icon, step.msg);
         const card = Array.from(agentItems).find(el => el.dataset.agent === step.agent.toLowerCase());
         if (card) {
           card.classList.add('pulse-highlight');
@@ -440,11 +445,20 @@
     });
 
     replayTimers.push(setTimeout(() => {
-      appendLog('REPLAY', '■', 'Replay complete. In production, each step is an LLM call or tool run on the workstation.', true);
+      appendLog('REPLAY', 'check', 'Replay complete. In production, each step is an LLM call or tool run on the workstation.', true);
       replayBtn.disabled = false;
       replayBtn.innerHTML = originalText;
     }, (MISSION_REPLAY.length + 1) * 650));
   }
+
+  window.addEventListener('portfoliomotionchange', () => {
+    if (!window.portfolioMotion.disabled || !replayBtn?.disabled) return;
+    replayTimers.forEach(clearTimeout);
+    replayTimers = [];
+    replayBtn.disabled = false;
+    replayBtn.innerHTML = `${window.portfolioIcon('play')} Replay a Mission`;
+    document.querySelectorAll('.pulse-highlight').forEach(el => el.classList.remove('pulse-highlight'));
+  });
 
   // --- Copy Architecture Report ---
   function handleCopyReport() {
@@ -461,11 +475,11 @@ Location: Cavite, Philippines
 Availability: Open for Full-Time & Remote AI & Software Engineering Roles (2026)
 
 ## Multi-Agent System Overview (5 Agents)
-- 🌸 Sakura (Coordinator Agent): Daily Briefings, Gmail Triage & Job-Application Pipeline
-- ⭐ Chaewon (Career Agent): Single-Page Resume Generator & Job Matching
-- 💻 Kazuha (Code & Knowledge): Answers codebase questions & reviews uncommitted changes
-- 🎨 Yunjin (Design Reviewer Agent): Portfolio Audits & Case Study Critique
-- 🛡️ Eunchae (System Guardian Agent): Hardware Vitals & Health Reports
+- Sakura (Coordinator Agent): Daily Briefings, Gmail Triage & Job-Application Pipeline
+- Chaewon (Career Agent): Single-Page Resume Generator & Job Matching
+- Kazuha (Code & Knowledge): Answers codebase questions & reviews uncommitted changes
+- Yunjin (Design Reviewer Agent): Portfolio Audits & Case Study Critique
+- Eunchae (System Guardian Agent): Hardware Vitals & Health Reports
 
 ## Architecture & Hosting
 - AI Models: Groq + Gemini cloud APIs, with an optional local Ollama mode
@@ -488,7 +502,7 @@ Availability: Open for Full-Time & Remote AI & Software Engineering Roles (2026)
   function showCopyFeedback() {
     if (!copyBtn) return;
     const orig = copyBtn.innerHTML;
-    copyBtn.innerHTML = `<span>✓ Copied Report to Clipboard!</span>`;
+    copyBtn.innerHTML = `<span>${window.portfolioIcon('check')} Copied Report to Clipboard!</span>`;
     setTimeout(() => {
       copyBtn.innerHTML = orig;
     }, 2000);

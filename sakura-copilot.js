@@ -6,6 +6,12 @@
 (function () {
   'use strict';
 
+  // The homepage carries an inline Lucide sprite (home.js defines portfolioIcon); the
+  // other pages keep their text glyphs.
+  const hasIcons = () => !!document.querySelector('.icon-definitions') && typeof window.portfolioIcon === 'function';
+  const icon = (name, glyph) => (hasIcons() ? window.portfolioIcon(name) : glyph);
+  const linkLabel = (text) => (hasIcons() ? `${window.portfolioIcon('arrow-up-right')} ${text}` : `${text} →`);
+
   // ============================================================================
   // 1. CURATED KNOWLEDGE CORPUS (Pre-Indexed Chunks)
   // ============================================================================
@@ -18,9 +24,9 @@
       summary: "Hans is a frontend engineer working in React, TypeScript, vanilla JavaScript and design tokens, with Swiss editorial typography and WCAG 2.1 AA accessibility checks. There is no Next.js project on this site.",
       evidence: "Engineered production client interfaces at ROC (roc.ph) with React and Tailwind; designed and built Lumina (a study and focus dashboard in React, TypeScript and Chart.js); built Aura Coffee (/aura-store) with vanilla CSS tokens; and developed Patriot Capstone in React Native. This site's CI runs axe-core WCAG 2.1 AA checks on every page.",
       linkUrl: "case-lumina.html",
-      linkText: "Explore Lumina Analytics Case Study →",
+      linkText: "Explore Lumina Analytics Case Study",
       secondaryUrl: "case-aura.html",
-      secondaryText: "View Aura Coffee E-Commerce →"
+      secondaryText: "View Aura Coffee E-Commerce"
     },
     {
       id: "KNOW-02",
@@ -30,7 +36,7 @@
       summary: "Hans architected LSFM AI HQ, an autonomous 5-agent operations platform: five Discord bots with distinct personas on one asyncio event loop, routing LLM work through per-agent Groq and Gemini models with the other provider as a fallback, self-hosted on his own workstation.",
       evidence: "Operates 5 specialized agents: Sakura (Chief of Staff, briefings & Gmail triage), Chaewon (Career & ATS PDF compiler), Yunjin (Design critic), Kazuha (Code & Knowledge: answers codebase questions and reviews uncommitted changes), and Eunchae (System Guardian & hardware vitals). Gmail triage uses Google OAuth2 and two-tier classification across 10 custom Gmail labels with non-destructive bulk-archiving.",
       linkUrl: "case-lsfm.html",
-      linkText: "Read LSFM AI HQ Architecture Deep-Dive →"
+      linkText: "Read LSFM AI HQ Architecture Deep-Dive"
     },
     {
       id: "KNOW-03",
@@ -40,7 +46,7 @@
       summary: "Hans built an LLM router with three operator-selectable modes: cloud (per-agent models on Groq and Gemini, each falling back to the other provider), local (Ollama qwen2.5-coder:7b on his AMD Radeon RX 6600 XT, 8GB VRAM), and auto (local first, then cloud).",
       evidence: "Switchable live from Discord with !mode. Local mode keeps prompts on the workstation and fails fast if Ollama isn't running; auto mode probes Ollama and falls through to the cloud chain (Groq then Gemini; Gemini then Groq for Yunjin) on any local error. There is no automatic cloud-to-local failover.",
       linkUrl: "case-lsfm.html",
-      linkText: "Inspect Hybrid Router in Case Study →"
+      linkText: "Inspect Hybrid Router in Case Study"
     },
     {
       id: "KNOW-04",
@@ -50,7 +56,7 @@
       summary: "Hans designed and built Memory Core, a lessons-learned memory for AI coding assistants, written in the Python standard library with zero pip dependencies.",
       evidence: "Runs BM25 lesson search before each task, logs each mistake as a structured lesson (trigger, symptom, root cause, rule), and compiles lessons that keep recurring into Antigravity workspace rules.",
       linkUrl: "case-memory.html",
-      linkText: "Read Cognitive Memory Case Study →"
+      linkText: "Read Cognitive Memory Case Study"
     },
     {
       id: "KNOW-05",
@@ -60,7 +66,7 @@
       summary: "Hans served as UI/UX & Frontend Engineer Intern at ROC (roc.ph) in General Trias, Cavite (June – August 2024), taking client products from Figma design specs to production web deployments.",
       evidence: "Architected responsive interfaces applying Nielsen Norman Group usability heuristics; converted Figma designs into semantic HTML5, modern CSS, Tailwind, and React; participated in agile client reviews and Git workflows across production client websites.",
       linkUrl: "about.html",
-      linkText: "Read Career Background in About Me →"
+      linkText: "Read Career Background in About Me"
     },
     {
       id: "KNOW-06",
@@ -70,7 +76,7 @@
       summary: "As Lead Mobile Developer for his BS CS capstone at DLSU-D, Hans engineered 'Patriot', a real-time mobile matchmaking and community system built on serverless cloud microservices.",
       evidence: "Built cross-platform mobile frontend in React Native (TypeScript) integrated with AWS Lambda, DynamoDB, Redis in-memory caching, and AWS Cognito auth. Designed custom algorithmic interest scoring via multidimensional matrices and conducted structured usability evaluations with student cohorts.",
       linkUrl: "about.html",
-      linkText: "View Capstone Architecture in About Me →"
+      linkText: "View Capstone Architecture in About Me"
     },
     {
       id: "KNOW-07",
@@ -80,7 +86,7 @@
       summary: "Hans's systems stack includes AWS (Lambda, DynamoDB, Cognito, S3), Redis in-memory caching, asynchronous Python microservices (asyncio), Google Workspace REST APIs with OAuth2 token rotation, and headless Edge/Chromium automation.",
       evidence: "Engineered headless Edge PDF pipelines that compile single-page ATS-compliant vector PDFs directly, and OAuth2 batch triage sorting unread emails into 10 hierarchical labels.",
       linkUrl: "about.html",
-      linkText: "View 3-Pillar Technical Matrix →"
+      linkText: "View 3-Pillar Technical Matrix"
     },
     {
       id: "KNOW-08",
@@ -90,9 +96,9 @@
       summary: "Hans designed and engineered Aura Coffee & Kitchen, an artisanal specialty coffeehouse web store with drink customization, a slide-over bag drawer, and a one-page checkout with 6 payment options (GCash, Maya, GrabPay, card, QR Ph, and cash on delivery).",
       evidence: "Fully interactive production build live directly on this site at /aura-store! Features drink temperature/milk customizers, delivery threshold trackers, and 1-page checkout simulating GCash, Maya, and QR Ph.",
       linkUrl: "aura-store/index.html",
-      linkText: "⚡ Launch Interactive Store Demo (/aura-store) →",
+      linkText: "Launch Interactive Store Demo (/aura-store)",
       secondaryUrl: "case-aura.html",
-      secondaryText: "Read Aura Design Case Study →"
+      secondaryText: "Read Aura Design Case Study"
     },
     {
       id: "KNOW-09",
@@ -102,7 +108,7 @@
       summary: "Hans graduated with a Bachelor of Science in Computer Science (BS CS) from De La Salle University–Dasmariñas (DLSU-D, 2021–2025).",
       evidence: "Completed rigorous coursework in Distributed Systems, Algorithms & Complexities, Software Engineering, Database Management Systems, Human-Computer Interaction (HCI), and Object-Oriented Software Design.",
       linkUrl: "about.html",
-      linkText: "Read Academic History on About Page →"
+      linkText: "Read Academic History on About Page"
     },
     {
       id: "KNOW-10",
@@ -112,7 +118,7 @@
       summary: "Hans Aaron Laureles is based in Cavite, Philippines, and is actively seeking full-time remote Applied AI Engineer, Agent Systems, or Full-Stack Builder roles.",
       evidence: "Email: hanslaureles92@gmail.com | Portfolio: hanslaureles.vercel.app | GitHub: github.com/hanslaureles. You can download his 1-page executive ATS vector resume directly from this site.",
       linkUrl: "Hans_Laureles_Resume.pdf",
-      linkText: "📄 Download Hans's 1-Page ATS Resume (PDF) →"
+      linkText: "Download Hans's 1-Page ATS Resume (PDF)"
     },
     {
       id: "KNOW-11",
@@ -120,19 +126,19 @@
       category: "Telemetry & Observability",
       keywords: ["sentinel", "telemetry", "mission control", "hud", "ping", "vitals", "clock", "manila", "status", "fleet", "heartbeat", "ambient", "overview", "snapshot", "online"],
       summary: "The agent overview panel shows a status snapshot that Hans's workstation publishes on demand (data/status.json, from Eunchae's publisher). An agent counts as online only if its heartbeat is under 15 minutes old when you view the page; otherwise it shows when it was last seen. The site has no live connection to the agents.",
-      evidence: "Click the hero beacon (or press Alt+S / type 'overview' in the terminal) to open it: per-agent status and the snapshot's age, the measured LLM round-trip p50/p95 with sample size and date, a real Philippine-time (UTC+8) clock, a scripted 'Replay a Mission' walkthrough of the real !apply pipeline, and a copyable summary.",
-      linkUrl: "index.html#sentinel",
-      linkText: "⚡ Open the Agent Overview (Alt+S) →"
+      evidence: "Click Agent overview in the LSFM card (or press Alt+S) to open it: per-agent status and the snapshot's age, the measured LLM round-trip p50/p95 with sample size and date, a real Philippine-time (UTC+8) clock, a scripted 'Replay a Mission' walkthrough of the real !apply pipeline, and a copyable summary.",
+      linkUrl: "index.html#project-lsfm",
+      linkText: "Open the Agent Overview (Alt+S)"
     },
     {
       id: "KNOW-12",
       title: "Git Career Timeline ($ git log --graph)",
       category: "Developer Experience",
       keywords: ["git log", "timeline", "git", "commits", "career track", "milestones", "history", "graph", "career timeline"],
-      summary: "Hans built a career timeline styled as `git log --graph` for the homepage terminal and the About page. It is styling only: it shows dates and roles, not real commits.",
-      evidence: "Recruiters can run 'git log' in the homepage CLI or switch the About page to its '$ git log --graph' view to see each milestone's role, dates and highlights, newest first.",
+      summary: "Hans built a career timeline styled as `git log --graph` for the About page. It is styling only: it shows dates and roles, not real commits.",
+      evidence: "Recruiters can switch the About page to its '$ git log --graph' view to see each milestone's role, dates and highlights, newest first.",
       linkUrl: "about.html#git",
-      linkText: "🌿 View $ git log Timeline on About Page →"
+      linkText: "View $ git log Timeline on About Page"
     },
     {
       id: "KNOW-13",
@@ -142,7 +148,7 @@
       summary: "Hans designed FinTrack, a budgeting app concept in Figma: a two-tap expense flow, one daily safe-to-spend number and neutral overspend feedback. It is untested; the prototype is built to check whether fewer taps make daily logging stick.",
       evidence: "A Figma prototype built from Auto Layout components and variables: a two-tap expense flow, one daily safe-to-spend number, and neutral feedback on overspends.",
       linkUrl: "case-fintrack.html",
-      linkText: "📊 Read FinTrack Mobile Case Study →"
+      linkText: "Read FinTrack Mobile Case Study"
     },
     {
       id: "KNOW-14",
@@ -152,7 +158,7 @@
       summary: "Hans designed Vellum, a calm journaling app concept in Figma and ProtoPie: no streaks or push nagging, and three modes (mood check-in, guided breathing, free writing). It is an untested design, not a shipped app.",
       evidence: "A Figma and ProtoPie prototype with swipe-based mood check-ins, a two-scale type hierarchy and a calm palette, built from Auto Layout components.",
       linkUrl: "case-vellum.html",
-      linkText: "🌿 Explore Vellum Mobile Case Study →"
+      linkText: "Explore Vellum Mobile Case Study"
     },
     {
       id: "KNOW-15",
@@ -162,7 +168,7 @@
       summary: "Hans connected his Obsidian vault to his AI tooling: Antigravity reaches it through an MCP bridge, and LSFM AI HQ and Ciel read and write it over Obsidian's Local REST API.",
       evidence: "Agents can read learned heuristics from Learned_Rules.md, fetch agent profiles, and append session logs over a local HTTPS REST API (port 27124), with a filesystem fallback when Obsidian is closed. The bridge (obsidian_client.py) is in the public lsfm-ai-hq repo; the vault's notes stay private.",
       linkUrl: "case-ciel.html",
-      linkText: "🔮 See Obsidian Access in the Ciel Case Study →"
+      linkText: "See Obsidian Access in the Ciel Case Study"
     },
     {
       id: "KNOW-16",
@@ -172,7 +178,7 @@
       summary: "Hans built Yunjin, an automated portfolio design critic and QA auditor on the LSFM AI HQ team that checks asset hygiene and writes structured design critiques.",
       evidence: "Scans every portfolio page for broken image assets once a week, and on !audit / !critique writes LLM design critiques with a portfolio health score.",
       linkUrl: "case-lsfm.html",
-      linkText: "🎨 View the LSFM AI HQ Agents →"
+      linkText: "View the LSFM AI HQ Agents"
     },
     {
       id: "KNOW-17",
@@ -182,9 +188,9 @@
       summary: "Hans architected Manas: Ciel, a bilingual (Japanese/English) voice copilot with Groq Whisper speech-to-text, live weather (wttr.in), web search (DDGS), and read/write access to his Obsidian notes.",
       evidence: "Speech-to-text runs FFmpeg (16 kHz mono, voice-band filter), then Groq Whisper Large v3 Turbo with an OpenAI Whisper fallback. Replies use Edge-TTS neural voices through a custom FFmpeg voice filter (high-pass, presence EQ, light echo), shown on a canvas ring-visualizer Web HUD with background checks.",
       linkUrl: "case-ciel.html",
-      linkText: "🔮 Read Manas: Ciel Case Study →",
+      linkText: "Read Manas: Ciel Case Study",
       secondaryUrl: "case-ciel.html#simulator",
-      secondaryText: "⚡ Test Voice Simulator →"
+      secondaryText: "Test Voice Simulator"
     }
   ];
 
@@ -314,7 +320,7 @@
     floatingBtn.setAttribute('aria-label', 'Open Ask Sakura AI Recruiter Assistant');
     floatingBtn.innerHTML = `
       <span class="sakura-badge-pulse"></span>
-      <span class="sakura-trigger-icon">🌸</span>
+      <span class="sakura-trigger-icon" aria-hidden="true">🌸</span>
       <span class="sakura-trigger-text">Ask Sakura</span>
       <span class="sakura-trigger-tag">AI</span>
     `;
@@ -323,12 +329,12 @@
     // 2. Slide-Over Drawer Shell
     const drawerHtml = `
       <div class="sakura-backdrop" id="sakuraBackdrop"></div>
-      <aside class="sakura-drawer" id="sakuraDrawer" role="dialog" aria-modal="true" aria-label="Ask Sakura AI Recruiter Assistant">
-        
+      <div class="sakura-drawer" id="sakuraDrawer" role="dialog" aria-modal="true" aria-label="Ask Sakura AI Recruiter Assistant">
+
         <!-- Header -->
         <div class="sakura-header">
           <div class="sakura-brand">
-            <div class="sakura-avatar">🌸</div>
+            <div class="sakura-avatar">${icon('workflow', '🌸')}</div>
             <div class="sakura-meta">
               <div class="sakura-title">
                 <span>Sakura</span>
@@ -337,7 +343,7 @@
               <div class="sakura-sub">Ask anything about Hans's work &amp; experience</div>
             </div>
           </div>
-          <button class="sakura-close-btn" id="sakuraCloseBtn" aria-label="Close Drawer (ESC)">✕ <span class="mono" style="font-size: 0.75rem; color: var(--text-muted);">ESC</span></button>
+          <button class="sakura-close-btn" id="sakuraCloseBtn" aria-label="Close Drawer (ESC)">${icon('x', '✕')} <span class="mono" style="font-size: 0.75rem; color: var(--text-muted);">ESC</span></button>
         </div>
 
         <!-- Status Banner -->
@@ -348,19 +354,19 @@
 
         <!-- Body -->
         <div class="sakura-body">
-          
+
           <!-- Search Input Box -->
           <div class="sakura-search-box">
             <span class="search-prompt">&gt;</span>
-            <input 
-              type="text" 
-              id="sakuraSearchInput" 
-              class="sakura-input" 
+            <input
+              type="text"
+              id="sakuraSearchInput"
+              class="sakura-input"
               placeholder="Ask anything (e.g., 'What cloud services has Hans used?')..."
               autocomplete="off"
               spellcheck="false"
             />
-            <button class="sakura-clear-input" id="sakuraClearInput" style="display: none;" aria-label="Clear Input">✕</button>
+            <button class="sakura-clear-input" id="sakuraClearInput" style="display: none;" aria-label="Clear Input">${icon('x', '✕')}</button>
           </div>
 
           <!-- Quick Suggestion Prompts -->
@@ -398,18 +404,18 @@
         <div class="sakura-footer">
           <div class="sakura-footer-links">
             <a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer" class="sakura-foot-btn">
-              📄 Download Resume
+              ${icon('clipboard', '📄')} Download Resume
             </a>
             <a href="case-lsfm.html" class="sakura-foot-btn">
-              ⭐ LSFM Case Study
+              ${icon('briefcase', '⭐')} LSFM Case Study
             </a>
             <button class="sakura-foot-btn" id="sakuraCopyEmail">
-              ✉️ Copy Email
+              ${icon('mail', '✉️')} Copy Email
             </button>
           </div>
         </div>
 
-      </aside>
+      </div>
     `;
 
     const container = document.createElement('div');
@@ -468,6 +474,20 @@
     closeBtn.addEventListener('click', closeDrawer);
     backdrop.addEventListener('click', closeDrawer);
 
+    // Keep the overview action available directly from Sakura without a command console.
+    outputContainer.addEventListener('click', (event) => {
+      const link = event.target.closest('a[href$="#project-lsfm"]');
+      const cardButton = document.getElementById('sentinelToggleBtn');
+      const overviewButton = cardButton?.getClientRects().length
+        ? cardButton : document.getElementById('heroOverviewBtn');
+      // Pages without the overview (case studies, About) follow the link to the homepage.
+      if (!link || !overviewButton) return;
+      event.preventDefault();
+      closeDrawer();
+      overviewButton.focus();
+      overviewButton.click();
+    });
+
     // Global Keyboard Shortcuts (ESC to close, Ctrl+K / Cmd+K to open).
     // The bare "/" shortcut was dropped: single-character shortcuts fail WCAG 2.1.4.
     document.addEventListener('keydown', (e) => {
@@ -514,7 +534,7 @@
       copyEmailBtn.addEventListener('click', () => {
         navigator.clipboard.writeText('hanslaureles92@gmail.com').then(() => {
           const original = copyEmailBtn.innerHTML;
-          copyEmailBtn.innerHTML = '✅ Copied to Clipboard!';
+          copyEmailBtn.innerHTML = `${icon('check', '✅')} Copied to Clipboard!`;
           setTimeout(() => copyEmailBtn.innerHTML = original, 2000);
         });
       });
@@ -542,7 +562,7 @@
             <h3>I couldn't find an answer for "${escapeHtml(query)}"</h3>
             <p>Try asking with keywords like <code>React</code>, <code>AWS</code>, <code>ROC.ph</code>, <code>Projects</code>, or <code>Education</code>, or browse Hans's case studies directly below.</p>
             <div style="margin-top: 16px;">
-              <a href="about.html" class="btn btn-outline btn-sm">Read Full Profile (About Me) →</a>
+              <a href="about.html" class="btn btn-outline btn-sm">Read Full Profile (About Me)${hasIcons() ? '' : ' →'}</a>
             </div>
           </div>
         `;
@@ -555,7 +575,7 @@
 
       let html = `
         <div class="sakura-search-meta">
-          <span class="mono" style="color: var(--tone-pink); font-weight: 600;">🌸 SAKURA BRIEFING</span>
+          <span class="mono" style="color: var(--tone-pink); font-weight: 600;">${icon('workflow', '🌸')} SAKURA BRIEFING</span>
           <span class="mono" style="color: var(--text-muted);">${results.length} relevant topic${results.length > 1 ? 's' : ''} found</span>
         </div>
 
@@ -566,7 +586,7 @@
           </div>
 
           <h3 class="sakura-answer-title">${topMatch.doc.title}</h3>
-          
+
           <div class="sakura-answer-lead">
             ${topMatch.doc.summary}
           </div>
@@ -577,8 +597,8 @@
           </div>
 
           <div class="sakura-actions">
-            ${topMatch.doc.linkUrl ? `<a href="${topMatch.doc.linkUrl}" class="sakura-action-link">${topMatch.doc.linkText}</a>` : ''}
-            ${topMatch.doc.secondaryUrl ? `<a href="${topMatch.doc.secondaryUrl}" class="sakura-action-link secondary">${topMatch.doc.secondaryText}</a>` : ''}
+            ${topMatch.doc.linkUrl ? `<a href="${topMatch.doc.linkUrl}" class="sakura-action-link">${linkLabel(topMatch.doc.linkText)}</a>` : ''}
+            ${topMatch.doc.secondaryUrl ? `<a href="${topMatch.doc.secondaryUrl}" class="sakura-action-link secondary">${linkLabel(topMatch.doc.secondaryText)}</a>` : ''}
           </div>
         </div>
       `;
@@ -597,7 +617,7 @@
               </div>
               <h4 style="margin: 6px 0 8px; font-size: 1rem;">${item.doc.title}</h4>
               <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0 0 10px;">${item.doc.summary}</p>
-              ${item.doc.linkUrl ? `<a href="${item.doc.linkUrl}" class="sakura-action-link sm">${item.doc.linkText}</a>` : ''}
+              ${item.doc.linkUrl ? `<a href="${item.doc.linkUrl}" class="sakura-action-link sm">${linkLabel(item.doc.linkText)}</a>` : ''}
             </div>
           `;
         });

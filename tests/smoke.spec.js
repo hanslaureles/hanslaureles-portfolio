@@ -341,41 +341,60 @@ test("Aura store has 44 px search/back targets and a short promo strip at 320 px
   expect(await h(".promo-strip")).toBeLessThanOrEqual(120); // was 195 px, now ~98 px
 });
 
-// Codex 2026-10-06: `help` advertised `matrix`, which had no handler. Every command help lists must run.
-test("every command listed by help runs", async ({ page }) => {
-  await page.addInitScript(() => {
-    window.open = () => null;                    // github, resume: no new tabs in the test
-    HTMLAnchorElement.prototype.click = () => {}; // resume: no download
-  });
-  await page.goto("index.html", { waitUntil: "domcontentloaded" });
-  const input = page.locator("#terminal-input");
-  const run = async (cmd) => { await input.fill(cmd); await input.press("Enter"); };
-  await run("help");
-  const cmds = await page.locator("#terminal-output .term-table .term-highlight").allInnerTexts();
-  expect(cmds.length).toBeGreaterThan(5);
-  const dead = [];
-  for (const cmd of cmds.map((c) => c.trim())) {
-    if (cmd === "sakura") continue; // opens the Sakura drawer over the terminal; covered by the overlay tests
-    await run("clear");
-    await run(cmd);
-    if (/command not found/.test(await page.locator("#terminal-output").innerText())) dead.push(cmd);
+// Homepage redesign (2026-10-21): the work filters count and show exactly the spec's groups.
+test("homepage work filters show the listed projects", async ({ page }) => {
+  await page.goto("index.html", { waitUntil: "networkidle" });
+  const groups = {
+    All: ["ciel", "lsfm", "memory", "aura", "lumina", "vellum", "fintrack"],
+    AI: ["ciel", "lsfm", "memory"], Web: ["aura", "lumina"], Mobile: ["vellum", "fintrack"],
+  };
+  for (const [filter, ids] of Object.entries(groups)) {
+    const tab = page.locator(`.work-filters [data-filter="${filter}"]`);
+    await expect(tab.locator(".filter-count"), filter).toHaveText(String(ids.length));
+    await tab.click();
+    await expect(tab).toHaveAttribute("aria-selected", "true");
+    await expect.poll(() => page.locator("#work-gallery .project-card:visible").evaluateAll((els) => els.map((el) => el.id)), filter)
+      .toEqual(ids.map((id) => `project-${id}`));
   }
-  expect(dead).toEqual([]);
 });
 
-// 8B-1: the vault was reorganised in 6A-2; the terminal names the folders obsidian_client.VAULT_PATHS uses.
-test("terminal rules and vault commands show the current vault layout", async ({ page }) => {
-  await page.goto("index.html", { waitUntil: "domcontentloaded" });
-  const input = page.locator("#terminal-input");
-  const out = page.locator("#terminal-output");
-  for (const [cmd, expected] of [["rules", ["03 Knowledge/Learned_Rules.md"]],
-                                 ["obsidian", ["01 Projects", "02 Research", "03 Knowledge", "05 Daily Logs", "06 Agent Documentation"]]]) {
-    await input.fill("clear"); await input.press("Enter");
-    await input.fill(cmd); await input.press("Enter");
-    const text = await out.innerText();
-    for (const name of expected) expect(text, cmd).toContain(name);
-    expect(text, cmd).not.toMatch(/0[0-5] - (Hub|User|Agents|Rules|Projects|Daily)/);
-  }
+// sakura-copilot.js is shared: its agent-overview answer opens the overview on the homepage
+// and, on pages without one, follows the link to the homepage instead of swallowing the click.
+test("Sakura's agent overview link works from a case page and from the homepage", async ({ page }) => {
+  const ask = async () => {
+    await page.locator(".sakura-floating-trigger").click();
+    await page.locator("#sakuraSearchInput").fill("agent overview snapshot");
+    await page.keyboard.press("Enter");
+    await page.locator('#sakuraOutput a[href="index.html#project-lsfm"]').first().click();
+  };
+  await page.goto("case-lsfm.html", { waitUntil: "networkidle" });
+  await ask();
+  await page.waitForURL(/index\.html#project-lsfm$/);
+  await page.waitForLoadState("networkidle");
+  await ask();
+  await expect(page.locator("#sentinelModal")).toBeVisible();
+  await expect(page.locator("#sakuraDrawer")).toBeHidden();
+});
+
+// The homepage has its own script (home.js) but must share the theme key with every other page.
+test("a theme chosen on one page applies on first paint of the other", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "light" });
+  // With the page scripts blocked, only the inline head snippet (first paint) can set the theme.
+  const firstPaintTheme = async (path) => {
+    await page.route("**/*.js*", (route) => route.abort());
+    await page.goto(path, { waitUntil: "domcontentloaded" });
+    const theme = await page.locator("html").getAttribute("data-theme");
+    await page.unroute("**/*.js*");
+    return theme;
+  };
+  await page.goto("case-memory.html");
+  await page.locator(".theme-toggle-btn").first().click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  expect(await firstPaintTheme("index.html")).toBe("dark");
+  await page.goto("index.html");
+  await page.locator(".theme-toggle-btn").first().click();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  expect(await firstPaintTheme("case-memory.html")).toBe("light");
 });
 
 // 8B-2: the failure table names the Phase 6 and 8C guards, each linked at a pinned public commit.
@@ -391,15 +410,6 @@ test("case-lsfm failure table lists the 413, run_daily and single-instance rows,
     expect(href, when).toMatch(pinned);
     await expect(row.locator("code", { hasText: testName }), when).toHaveCount(1);
   }
-});
-
-// Audit D: one chip per command, and at most 8 chips (choice overload); `help` lists the rest.
-test("terminal quick-command chips are unique, at most 8, and include help", async ({ page }) => {
-  await page.goto("index.html", { waitUntil: "domcontentloaded" });
-  const cmds = await page.locator(".term-chip").evaluateAll((els) => els.map((el) => el.dataset.cmd));
-  expect(cmds.length).toBe(new Set(cmds).size);
-  expect(cmds.length).toBeLessThanOrEqual(8);
-  expect(cmds).toContain("help");
 });
 
 // At /aura-store a relative "styles.css" or "index.html" resolves to the portfolio's own
@@ -446,7 +456,7 @@ test.describe("view transitions between index and case studies", () => {
     const names = await vtNames(page);
     expect(names.length).toBe(new Set(names).size); // a duplicate name makes the browser skip the transition
     for (const slug of CASE_SLUGS) {
-      const name = await page.locator(`article:not(.is-clone) .card-title-link[href="case-${slug}.html"] h3`)
+      const name = await page.locator(`article#project-${slug} h3`)
         .evaluate((el) => getComputedStyle(el).viewTransitionName);
       expect(name, slug).toBe(`case-${slug}-title`);
     }
@@ -466,7 +476,7 @@ test.describe("view transitions between index and case studies", () => {
   // go to the same case page) starts a view transition there (pagereveal carries one), so
   // the title morphs whichever was clicked (Codex 5E V1: intended, and CSS-only cannot
   // tell the links apart). Reduced motion gets a plain navigation.
-  const CARD_LINKS = { image: ".card-media a img", title: ".card-title-link", button: ".launchpad-btn-secondary, .launchpad-btn-primary" };
+  const CARD_LINKS = { image: ".project-image img", title: "h3 a", button: ".project-case-link" };
   for (const motion of ["no-preference", "reduce"]) {
     for (const [what, selector] of Object.entries(CARD_LINKS)) {
       test(`clicking a card's ${what} link ${motion === "reduce" ? "does not start" : "starts"} a view transition (${motion})`, async ({ page }) => {
@@ -475,7 +485,7 @@ test.describe("view transitions between index and case studies", () => {
           window.addEventListener("pagereveal", (e) => { window.__vt = Boolean(e.viewTransition); });
         });
         await page.goto("index.html", { waitUntil: "networkidle" });
-        const card = page.locator("article.editorial-card:not(.is-clone)", { has: page.locator('a[href="case-memory.html"]') });
+        const card = page.locator("article#project-memory");
         await card.locator(selector).filter({ visible: true }).first().click();
         await page.waitForURL(/case-memory/);
         await expect.poll(() => page.evaluate(() => window.__vt)).toBe(motion !== "reduce");
