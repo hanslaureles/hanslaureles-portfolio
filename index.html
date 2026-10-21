@@ -56,7 +56,6 @@
   <a class="skip-link" href="#main-content">Skip to content</a>
   <svg class="icon-definitions" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
     <symbol id="icon-graduation-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 1-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" /><path d="M22 10v6" /><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" /></symbol>
-    <symbol id="icon-timer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" x2="14" y1="2" y2="2" /><line x1="12" x2="15" y1="14" y2="11" /><circle cx="12" cy="14" r="8" /></symbol>
     <symbol id="icon-message-square" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" /></symbol>
     <symbol id="icon-circle-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><path d="m16 9-5.5 5.5L8 12" /></symbol>
     <symbol id="icon-workflow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="8" x="3" y="3" rx="2" />
@@ -193,30 +192,30 @@
               <span class="badge-dot" aria-hidden="true"></span>
               <span>Based in Cavite, PH · open to remote Applied AI &amp; full-stack roles</span>
             </div>
-            <!-- One measured result, with its conditions, on the first screen (D2). -->
-            <a class="hero-chip hero-chip-proof" href="case-memory.html#results">
-              <span class="hero-chip-icon" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#icon-timer"></use></svg></span>
-              <span>Memory lookup: 0.81 ms p50 on 10 lessons <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></span>
+            <!-- Plain-language first screen; measurements live in the case studies. -->
+            <a class="hero-chip hero-chip-proof" href="#in-the-open">
+              <span class="hero-chip-icon" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#icon-circle-check"></use></svg></span>
+              <span>Built and tested in the open <svg class="icon" aria-hidden="true"><use href="#icon-arrow-down"></use></svg></span>
             </a>
           </div>
 
           <div class="hero-box-body">
             <p class="hero-lead-text">
-              I build <strong>AI agents that do real work</strong> and <strong>the web interfaces around them</strong>: agents that route LLM calls between Groq and Gemini, with an optional local model on my own AMD RX 6600 XT (Ollama); a lessons-learned memory for AI coding assistants; and hand-built web apps.
+              I build <strong>AI agents that do real work</strong> and <strong>the web interfaces around them</strong>. My agents can use cloud AI services or run privately on my own computer, and I design the screens people use to work with them.
             </p>
 
             <div class="hero-proof-strip">
               <a href="case-lsfm.html" class="hero-proof-item">
                 <span>01 <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></span>
-                <span><strong>LSFM AI HQ:</strong> 5-agent Discord system with Groq ⇄ Gemini cross-provider routing &amp; two-tier Gmail classification</span>
+                <span><strong>LSFM AI HQ:</strong> A team of five AI helpers on Discord that sort my email, tailor my resume for each job and check my code</span>
               </a>
               <a href="case-ciel.html" class="hero-proof-item">
                 <span>02 <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></span>
-                <span><strong>Manas: Ciel:</strong> Bilingual voice copilot with Groq Whisper speech-to-text, live weather &amp; a real-time Web HUD</span>
+                <span><strong>Manas: Ciel:</strong> A voice assistant for my desk that answers out loud in Japanese and English, with weather, web search and a live dashboard</span>
               </a>
               <a href="case-memory.html" class="hero-proof-item">
                 <span>03 <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></span>
-                <span><strong>Memory Core:</strong> A lessons-learned memory for AI coding assistants, in pure Python with lock-safe writes and CI-run tests</span>
+                <span><strong>Memory Core:</strong> Saves the mistakes my AI coding tools make and reminds them before the next task</span>
               </a>
             </div>
           </div>
@@ -231,25 +230,6 @@
 
               <span>GitHub <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></span>
             </a>
-          </div>
-
-          <div class="hero-stats-strip">
-            <div class="hero-stat-cell">
-              <div class="hero-stat-num">5</div>
-              <div class="hero-stat-label">Autonomous Agents</div>
-              <div class="hero-stat-sub">Discord Event Pipeline</div>
-            </div>
-            <div class="hero-stat-cell">
-              <div class="hero-stat-num">7</div>
-              <div class="hero-stat-label">Featured Projects</div>
-              <div class="hero-stat-sub">AI, Systems &amp; Web</div>
-            </div>
-            <div class="hero-stat-cell">
-              <div class="hero-stat-num text-label">Cloud + Local</div>
-              <div class="hero-stat-label">Groq &amp; Gemini, Optional Local GPU</div>
-              <div class="hero-stat-sub">Python · Ollama · React</div>
-            </div>
-            <a class="hero-stat-cell" href="#in-the-open"><div class="hero-stat-num">434</div><div class="hero-stat-label">CI tests passing</div><div class="hero-stat-sub">public LSFM AI HQ</div></a>
           </div>
         </div>
 
@@ -342,7 +322,6 @@
               <h3><a href="case-ciel.html">Manas: Ciel</a></h3>
               <p class="project-problem">My work was spread across the terminal, Discord, notes and chat tabs, and switching between them by hand broke my focus.</p>
               <p class="project-description" hidden>A bilingual voice assistant for my dev workstation: live weather, web search.</p>
-              <p class="project-fact" hidden><a href="case-ciel.html#benchmarks">Time to first audio 4.60 <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg> 1.41 s p50, N=10</a></p>
               <ul class="index-stack project-stack" aria-label="Stack"><li>Python 3.11 (aiohttp)</li><li>Groq Whisper Turbo</li><li>Edge-TTS</li><li>FFmpeg DSP</li><li>Vanilla JS/CSS</li></ul>
               <div class="project-actions">
                 <a href="case-ciel.html" class="project-case-link">Case study <span aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></span></a>
@@ -397,7 +376,6 @@
               <h3><a href="case-memory.html">Cognitive Memory Core</a></h3>
               <p class="project-problem">Coding agents forget my corrections between sessions and repeat the same mistakes.</p>
               <p class="project-description" hidden>A lessons-learned memory for AI coding assistants: it saves past mistakes.</p>
-              <p class="project-fact" hidden><a href="case-memory.html#results">0.81 ms p50 recall on a 10-entry store</a></p>
               <ul class="index-stack project-stack" aria-label="Stack"><li>Python 3.11 (Stdlib)</li><li>BM25 Scorer</li><li>JSONL</li></ul>
               <div class="project-actions">
                 <a href="case-memory.html" class="project-case-link">Case study <span aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></span></a>
@@ -486,8 +464,8 @@
         <ol class="home-grid process-strip">
           <li><a href="case-lsfm.html#problem"><span class="process-number">01</span><h3>Problem &amp; constraint</h3><p>Busywork spread across separate tools.</p></a></li>
           <li><a href="case-lsfm.html#decisions"><span class="process-number">02</span><h3>Decisions &amp; their costs</h3><p>What I chose, what I passed over, why, and what it costs.</p></a></li>
-          <li><a href="case-lsfm.html#benchmarks"><span class="process-number">03</span><h3>Measured results</h3><p>Properties you can confirm by reading the public code.</p></a></li>
-          <li><a href="case-lsfm.html#retrospective"><span class="process-number">04</span><h3>What broke &amp; what I&#x27;d change</h3><p>Rate limit exceptions from Groq API during sudden batch notification spikes.</p></a></li>
+          <li><a href="case-lsfm.html#benchmarks"><span class="process-number">03</span><h3>Results you can check</h3><p>Every claim points to public code or a test.</p></a></li>
+          <li><a href="case-lsfm.html#retrospective"><span class="process-number">04</span><h3>What broke &amp; what I&#x27;d change</h3><p>A burst of notifications hit the AI service’s usage limit, so I added a backup provider.</p></a></li>
         </ol>
       </div>
     </section>
@@ -516,8 +494,8 @@
       <div class="container">
         <h2 id="proof-title" class="home-section-title"><span class="section-word" aria-hidden="true">PROOF</span>In the open</h2>
         <ul class="home-grid proof-strip">
-          <li><a href="https://github.com/hanslaureles/lsfm-ai-hq/actions/runs/39259275242" target="_blank" rel="noopener noreferrer"><span class="proof-label">Public LSFM AI HQ tests</span><span class="proof-value">434 tests passing in CI <span aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></span></span></a></li>
-          <li><a href="https://github.com/hanslaureles/cognitive-memory-core/actions/runs/37581718335" target="_blank" rel="noopener noreferrer"><span class="proof-label">Cognitive Memory Core tests</span><span class="proof-value">32 tests passing in CI <span aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></span></span></a></li>
+          <li><a href="https://github.com/hanslaureles/lsfm-ai-hq/actions/runs/39259275242" target="_blank" rel="noopener noreferrer"><span class="proof-label">Public LSFM AI HQ tests</span><span class="proof-value">434 automated tests, all passing <span aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></span></span></a></li>
+          <li><a href="https://github.com/hanslaureles/cognitive-memory-core/actions/runs/37581718335" target="_blank" rel="noopener noreferrer"><span class="proof-label">Cognitive Memory Core tests</span><span class="proof-value">32 automated tests, all passing <span aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></span></span></a></li>
           <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer"><span class="proof-label">Public GitHub activity</span><span class="proof-value">268 contributions in the past year <span aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></span></span></a></li>
         </ul>
         <p class="proof-date">As of <time datetime="2026-10-21">21 Oct 2026</time></p>

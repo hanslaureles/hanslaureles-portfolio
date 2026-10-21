@@ -137,7 +137,7 @@
           </p>
 
           <p>
-            I studied distributed computing, databases and algorithms. When language models started using real tools instead of only generating text, I moved my focus there: <strong>routing work across several models, running them on my own GPU, and making tool use predictable.</strong>
+            I studied distributed computing, databases and algorithms. When language models started using real tools instead of only generating text, I moved my focus there: <strong>sharing work across several AI models, running them on my own computer, and making sure they use tools predictably.</strong>
           </p>
 
           <p>
@@ -181,9 +181,9 @@
               <div class="exp-period">JUN 2024 – AUG 2024</div>
             </div>
             <ul class="exp-bullets">
-              <li>Designed and prototyped responsive web interfaces in Figma, strictly applying Nielsen Norman Group usability heuristics and design token standards.</li>
-              <li>Translated design specifications into accessible, semantic HTML5, modern CSS, Tailwind CSS, and React components deployed across production client sites.</li>
-              <li>Collaborated within agile sprint cycles, participating in daily standups, code reviews, Git version control workflows, and rapid client feedback iterations.</li>
+              <li>Designed web pages in Figma that work on any screen size, following established usability guidelines and a shared design system.</li>
+              <li>Turned those designs into accessible HTML, CSS, Tailwind and React for live client websites.</li>
+              <li>Worked in agile sprints with daily standups, code reviews, Git, and quick rounds of client feedback.</li>
             </ul>
           </div>
 
@@ -197,9 +197,9 @@
               <div class="exp-period">2026 – PRESENT</div>
             </div>
             <ul class="exp-bullets">
-              <li>Architected a real-time conversational voice assistant with Groq Whisper speech-to-text (OpenAI Whisper fallback), bilingual Edge-TTS replies, and a custom FFmpeg voice filter.</li>
-              <li>Added live weather (wttr.in) and web search (DuckDuckGo), and Ciel remembers the last 8 exchanges.</li>
-              <li>Built an animated web dashboard whose rings and waveform react to Ciel's voice (Web Audio API), and gave Ciel read and write access to my Obsidian notes.</li>
+              <li>Built a voice assistant you talk to out loud: it turns speech into text (Groq Whisper), answers in Japanese and English, and speaks with a custom voice filter.</li>
+              <li>Ciel can check the weather, search the web, remember the recent conversation, and read and write my Obsidian notes.</li>
+              <li>Built an animated web dashboard whose rings and waveform move with Ciel's voice.</li>
             </ul>
           </div>
 
@@ -214,8 +214,8 @@
             </div>
             <ul class="exp-bullets">
               <li>Built LSFM AI HQ, a 5-agent team on Discord where each agent has one job: daily briefings, email triage, job applications, design reviews, and code checks.</li>
-              <li>Engineered LLM routing with three operator-selectable modes: per-agent cloud models on Groq and Gemini, each falling back to the other provider, local Ollama (qwen2.5-coder:7b) on an AMD RX 6600 XT for private work, and auto (local first, then cloud), self-hosted on a personal workstation.</li>
-              <li>Built programmatic tool pipelines including a headless Edge ATS single-page resume compiler and a two-tier Gmail classifier (rules, then LLM) sorting inbox mail into 10 custom labels with non-destructive bulk-archiving.</li>
+              <li>The agents use cloud AI (Groq and Gemini, each a backup for the other) or a local model on my own computer for private work, and I choose the mode.</li>
+              <li>Built the tools they use: a resume builder that makes a one-page PDF for applicant tracking systems, and an email sorter that labels my inbox and archives clutter without deleting anything.</li>
             </ul>
           </div>
 
@@ -229,9 +229,9 @@
               <div class="exp-period">2024 – 2025</div>
             </div>
             <ul class="exp-bullets">
-              <li>Built a lessons-learned memory for AI coding assistants using only the Python 3.11 standard library, with zero external dependencies.</li>
-              <li>Implemented BM25 keyword search that finds the relevant past lessons and rules before each coding task starts.</li>
-              <li>Structured persistent JSONL memory logs for automated agent reflection, preventing recurring implementation mistakes across multi-turn agent sessions.</li>
+              <li>Built a memory for AI coding assistants in plain Python, with no outside packages to install.</li>
+              <li>Before each coding task, it searches past lessons by keyword and shows the ones that apply.</li>
+              <li>Each mistake is saved as a lesson (what happened, why, and the rule for next time), so the assistant is less likely to repeat it.</li>
             </ul>
           </div>
 
@@ -245,9 +245,9 @@
               <div class="exp-period">2023 – 2024</div>
             </div>
             <ul class="exp-bullets">
-              <li>Designed and built a cross-platform mobile matchmaking application in React Native (TypeScript) featuring custom interest-matching logic based on multi-dimensional user preference matrices.</li>
-              <li>Integrated mobile client with serverless AWS infrastructure (Lambda, DynamoDB, Cognito authentication) and Redis in-memory caching to optimize session management and profile retrieval.</li>
-              <li>Conducted structured usability evaluations across university student cohorts to iterate on screen navigation, form design ergonomics, and visual hierarchy.</li>
+              <li>Designed and built a mobile app (React Native, TypeScript) that matches university students by shared interests.</li>
+              <li>Connected it to an AWS backend (Lambda, DynamoDB, Cognito sign-in) with Redis caching so profiles load quickly.</li>
+              <li>Ran usability tests with students and used the results to improve navigation, forms and layout.</li>
             </ul>
           </div>
 
@@ -286,12 +286,12 @@
                 </div>
                 <div class="git-commit-author mono">Author: Hans Aaron Laureles &lt;hanslaureles92@gmail.com&gt;</div>
                 <div class="git-commit-desc">
-                  Bilingual voice assistant with Groq Whisper speech-to-text, a custom voice filter, live weather, web search, and an animated web dashboard.
+                  A voice assistant that answers out loud in Japanese and English, with weather, web search and an animated dashboard.
                 </div>
                 <ul class="git-commit-bullets mono">
-                  <li>+ Custom voice filter (FFmpeg high-pass, presence EQ, light echo) over Edge-TTS voices</li>
-                  <li>+ Live weather (wttr.in) &amp; web search (DuckDuckGo / DDGS)</li>
-                  <li>+ Procedural SVG mandala Web HUD with Web Audio API reactive frequency bins</li>
+                  <li>+ Custom voice filter on the spoken replies</li>
+                  <li>+ Live weather and web search</li>
+                  <li>+ Animated dashboard that moves with Ciel's voice</li>
                 </ul>
                 <div class="git-commit-actions">
                   <a href="case-ciel.html" class="git-link-pill">Explore Case Study →</a>
@@ -318,12 +318,12 @@
                 </div>
                 <div class="git-commit-author mono">Author: Hans Aaron Laureles &lt;hanslaureles92@gmail.com&gt;</div>
                 <div class="git-commit-desc">
-                  Autonomous 5-agent operations platform orchestrating Discord Gateway streaming, multi-provider LLM routing, and automated tool pipelines.
+                  A team of five AI helpers on Discord, each with one job: briefings, email, job applications, design reviews and code checks.
                 </div>
                 <ul class="git-commit-bullets mono">
-                  <li>+ Asynchronous Discord Gateway streaming &amp; domain-isolated prompt personas</li>
-                  <li>+ LLM router: per-agent Groq ⇄ Gemini with cross-provider fallback, optional local Ollama on AMD RX 6600 XT</li>
-                  <li>+ Headless Chromium ATS vector resume single-page compiler</li>
+                  <li>+ Each agent has its own role and personality</li>
+                  <li>+ Cloud AI with a backup provider, or a private local model</li>
+                  <li>+ One-page resume PDFs built for applicant tracking systems</li>
                 </ul>
                 <div class="git-commit-actions">
                   <a href="case-lsfm.html" class="git-link-pill">Explore Case Study →</a>
@@ -353,9 +353,9 @@
                   A lessons-learned memory for AI coding assistants: past mistakes are saved as lessons, recalled before each task, and compiled into workspace rules.
                 </div>
                 <ul class="git-commit-bullets mono">
-                  <li>+ BM25 lesson search before each task</li>
-                  <li>+ Structured post-mortem reflection schema (trigger, symptom, root cause, permanent rule)</li>
-                  <li>+ 100% Python standard library implementation with zero external pip packages</li>
+                  <li>+ Finds the relevant lessons before each task</li>
+                  <li>+ Each lesson records what went wrong, why, and the rule for next time</li>
+                  <li>+ Plain Python, nothing extra to install</li>
                 </ul>
                 <div class="git-commit-actions">
                   <a href="case-memory.html" class="git-link-pill">Explore Case Study →</a>
@@ -409,12 +409,12 @@
                 </div>
                 <div class="git-commit-author mono">Author: Hans Aaron Laureles &lt;hanslaureles92@gmail.com&gt;</div>
                 <div class="git-commit-desc">
-                  Cloud microservices backend and cross-platform mobile app for real-time university community matchmaking.
+                  A mobile app that matches university students by shared interests, with a cloud backend.
                 </div>
                 <ul class="git-commit-bullets mono">
-                  <li>+ Serverless infrastructure on AWS Lambda, DynamoDB, Redis caching &amp; Cognito auth</li>
-                  <li>+ Algorithmic interest correlation matrices in TypeScript</li>
-                  <li>+ React Native client with structured student cohort usability evaluations</li>
+                  <li>+ AWS backend with fast profile loading</li>
+                  <li>+ Interest matching written in TypeScript</li>
+                  <li>+ React Native app, improved through usability tests with students</li>
                 </ul>
               </div>
             </div>
@@ -460,7 +460,7 @@
         </div>
 
         <p style="margin-bottom: 24px; max-width: 800px;">
-          Actively advancing capabilities across multi-agent orchestration, consumer GPU model quantization, and deterministic tool execution.
+          What I'm practising now: getting AI agents to work together, running AI models on my own computer, and making them use tools reliably.
         </p>
 
         <div class="experience-timeline">
@@ -473,7 +473,7 @@
               <div class="badge badge-accent">PRACTICE</div>
             </div>
             <p style="font-size: 0.95rem;">
-              Programmatic LLM workflows, structured JSON schemas, few-shot prompting, and chain-of-thought task decomposition for agentic tool use.
+              Writing instructions that get reliable, structured answers from AI models, and breaking big tasks into smaller steps.
             </p>
           </div>
           
@@ -481,12 +481,12 @@
             <div class="exp-header">
               <div>
                 <div class="exp-title">Local Models on My GPU</div>
-                <div class="exp-company">Ollama · GGUF Quantization · AMD Radeon RX 6600 XT</div>
+                <div class="exp-company">Ollama · on my own graphics card</div>
               </div>
               <div class="badge badge-accent">PRACTICE</div>
             </div>
             <p style="font-size: 0.95rem;">
-              Running quantized 7B and 9B models (qwen2.5-coder:7b, qwen3.5:9b) locally on a consumer AMD Radeon RX 6600 XT with 8 GB of VRAM.
+              Running smaller open AI models on an ordinary gaming graphics card, so private work can stay on my computer.
             </p>
           </div>
         </div>
@@ -513,7 +513,7 @@
               <span class="skill-pill">Multi-Agent Systems</span>
               <span class="skill-pill">Hybrid Vector RAG (Dense + BM25)</span>
               <span class="skill-pill">Model Context Protocol (MCP)</span>
-              <span class="skill-pill">LLM Evaluations &amp; Evals</span>
+              <span class="skill-pill">LLM Evaluations</span>
               <span class="skill-pill">Local GPU Inference (Ollama)</span>
               <span class="skill-pill">Ollama &amp; GGUF Quantization</span>
               <span class="skill-pill">Structured JSON Schemas</span>
