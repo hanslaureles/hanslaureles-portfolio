@@ -1,3 +1,46 @@
+import { LEGACY_CSP } from './lib/csp.mjs';
+
+const pages = ['about', '404', 'case-lsfm', 'case-ciel', 'case-memory',
+  'case-aura', 'case-lumina', 'case-vellum', 'case-fintrack'];
+
 /** @type {import('next').NextConfig} */
-const config = { trailingSlash: false };
+const config = {
+  trailingSlash: false,
+  // Both Aura entry URLs must answer directly under the legacy contract.
+  skipTrailingSlashRedirect: true,
+  async redirects() {
+    return [
+      { source: '/index.html', destination: '/', permanent: true },
+      { source: '/aura-store/index.html', destination: '/aura-store', permanent: true },
+      { source: '/:page.html', destination: '/:page', permanent: true },
+      { source: '/aura-store/:page.html', destination: '/aura-store/:page', permanent: true },
+    ];
+  },
+  async rewrites() {
+    return [
+      { source: '/', destination: '/index.html' },
+      ...pages.map(page => ({ source: `/${page}`, destination: `/${page}.html` })),
+      { source: '/ciel', destination: '/case-ciel.html' },
+      { source: '/ciel-hud', destination: '/case-ciel.html' },
+      { source: '/aura-store', destination: '/aura-store/index.html' },
+      { source: '/aura-store/', destination: '/aura-store/index.html' },
+      { source: '/aura-store/:page(checkout|confirmation)', destination: '/aura-store/:page.html' },
+    ];
+  },
+  async headers() {
+    return [
+      { source: '/:path*', headers: [
+        { key: 'X-Content-Type-Options', value: 'nosniff' },
+        { key: 'X-Frame-Options', value: 'DENY' },
+        { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+        { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()' },
+        { key: 'Content-Security-Policy', value: LEGACY_CSP },
+      ] },
+      { source: '/images/:path*', headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }] },
+      { source: '/:path*.:ext(css|js)', headers: [{ key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' }] },
+      { source: '/data/:path*', headers: [{ key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' }] },
+      { source: '/:path*.pdf', headers: [{ key: 'Cache-Control', value: 'public, max-age=86400, must-revalidate' }] },
+    ];
+  },
+};
 export default config;
