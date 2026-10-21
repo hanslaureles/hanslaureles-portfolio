@@ -376,6 +376,18 @@ test("Sakura's agent overview link works from a case page and from the homepage"
   await expect(page.locator("#sakuraDrawer")).toBeHidden();
 });
 
+// Codex QA F1 (2026-10-21): the prototype's crawler exclusion was copied into the homepage
+// by the port. No published page may ask search engines to drop or not follow it.
+test("no page carries a noindex or nofollow robots directive", () => {
+  const root = nodePath.join(__dirname, "..");
+  const pages = [...fs.readdirSync(root), ...fs.readdirSync(nodePath.join(root, "aura-store")).map((f) => `aura-store/${f}`)]
+    .filter((f) => f.endsWith(".html"));
+  expect(pages).toContain("index.html");
+  const blocked = pages.filter((f) => /<meta[^>]+name=["'](robots|googlebot)["'][^>]*(noindex|nofollow|none)/i
+    .test(fs.readFileSync(nodePath.join(root, f), "utf8")));
+  expect(blocked).toEqual([]);
+});
+
 // The homepage has its own script (home.js) but must share the theme key with every other page.
 test("a theme chosen on one page applies on first paint of the other", async ({ page }) => {
   await page.emulateMedia({ colorScheme: "light" });
