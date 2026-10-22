@@ -2,8 +2,7 @@
 Metric cards (Phase 5E-3): one tick per recorded run, drawn as static inline SVG
 from data/bench/*.json (values copied from lsfm-ai-hq at a pinned commit).
 
-  python tools/build_metric_cards.py                 write each card into its page
-  python tools/build_metric_cards.py --check         exit 1 if a page's card differs from its
+  python tools/build_metric_cards.py --root .rendered --check         exit 1 if a page's card differs from its
                                                      data, or the page's prose disagrees with it
   python tools/build_metric_cards.py --verify-source <lsfm-ai-hq checkout>
                                                      exit 1 if a data file differs from its source
@@ -12,7 +11,8 @@ from data/bench/*.json (values copied from lsfm-ai-hq at a pinned commit).
 Ticks, not lines: each one is a separate run, and a line would suggest a trend over
 time that these runs are not. Percentiles are nearest-rank, as in the benchmark
 (bench/bench_ciel.py), so a card always shows the published p50 / p95.
-Stdlib only. No JS on the page; CSP unchanged.
+MetricCard renders on the server; this read-only validator checks the exported HTML.
+Stdlib only. The reference renderer is retained as an independent arithmetic oracle.
 """
 
 import html
@@ -25,7 +25,7 @@ import argparse
 from pathlib import Path
 from html.parser import HTMLParser
 
-ROOT = Path(__file__).resolve().parent.parent / "public"
+ROOT = Path(__file__).resolve().parent.parent / ".rendered"
 DATA = ROOT / "data" / "bench"
 WIDTH = 1000  # SVG user units; the strip stretches to its column (preserveAspectRatio="none")
 
@@ -165,15 +165,11 @@ def prose_problems(card, page_text):
             for v in headline_values(card) if v not in around]
 
 
-def build(write):
+def build():
     problems = []
     for card in cards():
         page = ROOT / card["page"]
         text = page.read_text(encoding="utf-8")
-        marker = block_re(card["id"]).search(text)
-        if write and marker:
-            text = text[:marker.start(2)] + "\n" + render(card) + "\n" + text[marker.end(2):]
-            page.write_text(text, encoding="utf-8")
         match = figure_match(card["id"], text)
         if not match:
             problems.append(f"{card['page']}: no metric figure {card['id']}")
@@ -252,8 +248,8 @@ def main(argv):
         return self_test()
     if argv[1:2] == ["--verify-source"] and len(argv) == 3:
         problems = verify_source(argv[2])
-    elif argv[1:] in ([], ["--check"]):
-        problems = build(write=not argv[1:])
+    elif argv[1:] == ["--check"]:
+        problems = build()
     else:
         print(__doc__)
         return 2

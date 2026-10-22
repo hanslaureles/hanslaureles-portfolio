@@ -54,7 +54,7 @@ jobs:
 
       # Retracted claims (unbacked cost, stale counts, Groq-first routing...) stay out.
       - name: Retracted claims
-        run: python tools/check_claims.py --root .rendered
+        run: python tools/check_claims.py --root public && python tools/check_claims.py --root .rendered
       # Enforced CSP: no inline handlers, inline scripts only by hash, same policy on Vercel and Netlify (5A).
       - name: CSP guard
         run: python tools/check_csp.py --root public && python tools/test_check_csp.py --root public

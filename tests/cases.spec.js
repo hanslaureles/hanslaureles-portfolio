@@ -29,6 +29,17 @@ for (const route of migrated) {
       await expect(page.locator('main')).toContainText('Return to Selected Work');
       await expect(page.getByRole('navigation', { name: 'Main Navigation' })).toBeVisible();
       await expect(page.locator('main a[href="index.html"]').first()).toBeVisible();
+      const progress = () => page.evaluate(() => {
+        const matrix = getComputedStyle(document.body, '::before').transform.match(/matrix\(([^,]+)/);
+        return matrix ? Number(matrix[1]) : null;
+      });
+      for (const reducedMotion of ['no-preference', 'reduce']) {
+        await page.emulateMedia({ reducedMotion });
+        await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+        await expect.poll(progress).toBeLessThan(0.02);
+        await page.evaluate(() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' }));
+        await expect.poll(progress).toBeGreaterThan(0.98);
+      }
     } finally { await context.close(); }
   });
 }

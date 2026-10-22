@@ -86,4 +86,3 @@
     .eval-table thead th { border-bottom-width: 2px; }
     .eval-table .num { text-align: right; font-variant-numeric: tabular-nums; }
     .eval-note { font-size: 0.8rem; color: var(--text-muted); margin: 0 0 24px; }
-  

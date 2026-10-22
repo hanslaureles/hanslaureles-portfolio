@@ -117,14 +117,14 @@
   },
   "404.html": {
    "desktop": {
-    "bytes": 636567,
+    "bytes": 636544,
     "files": {
-     "/404": 13436,
-     "/_next/static/chunks/1dd_a6n3i-3-4.js": 181457,
+     "/404": 13457,
+     "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
-     "/_next/static/chunks/2e71f39yygp93.js": 19402,
-     "/_next/static/chunks/2khxl0v1q4i6n.js": 229820,
-     "/_next/static/chunks/3333gs1h_w689.js": 20744,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
+     "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
+     "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
      "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
      "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
@@ -133,14 +133,14 @@
     }
    },
    "mobile": {
-    "bytes": 636567,
+    "bytes": 636544,
     "files": {
-     "/404": 13436,
-     "/_next/static/chunks/1dd_a6n3i-3-4.js": 181457,
+     "/404": 13457,
+     "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
-     "/_next/static/chunks/2e71f39yygp93.js": 19402,
-     "/_next/static/chunks/2khxl0v1q4i6n.js": 229820,
-     "/_next/static/chunks/3333gs1h_w689.js": 20744,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
+     "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
+     "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
      "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
      "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
@@ -151,13 +151,13 @@
   },
   "case-lsfm.html": {
    "desktop": {
-    "bytes": 872736,
+    "bytes": 872754,
     "files": {
      "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
      "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
      "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
-     "/_next/static/chunks/314cuv8us9grj.js": 19340,
      "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
      "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
@@ -170,13 +170,13 @@
     }
    },
    "mobile": {
-    "bytes": 842812,
+    "bytes": 842830,
     "files": {
      "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
      "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
      "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
-     "/_next/static/chunks/314cuv8us9grj.js": 19340,
      "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
      "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
@@ -191,13 +191,13 @@
   },
   "case-ciel.html": {
    "desktop": {
-    "bytes": 867452,
+    "bytes": 867478,
     "files": {
      "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
      "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
      "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
-     "/_next/static/chunks/314cuv8us9grj.js": 19340,
      "/_next/static/chunks/3gb2yh5gh1vkm.css": 2974,
      "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
@@ -205,20 +205,20 @@
      "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
      "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
      "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
-     "/case-ciel": 152246,
+     "/case-ciel": 152254,
      "/case-ciel-demo.js": 4309,
      "/images/ciel/ciel-mockup-1600.c5fa93f8.avif": 43897,
      "/sakura-copilot.js": 33721
     }
    },
    "mobile": {
-    "bytes": 833847,
+    "bytes": 833873,
     "files": {
      "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
      "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
      "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
-     "/_next/static/chunks/314cuv8us9grj.js": 19340,
      "/_next/static/chunks/3gb2yh5gh1vkm.css": 2974,
      "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
@@ -226,7 +226,7 @@
      "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
      "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
      "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
-     "/case-ciel": 152246,
+     "/case-ciel": 152254,
      "/case-ciel-demo.js": 4309,
      "/images/ciel/ciel-mockup-480.eecfa9ee.avif": 10292,
      "/sakura-copilot.js": 33721
@@ -235,14 +235,14 @@
   },
   "case-memory.html": {
    "desktop": {
-    "bytes": 876659,
+    "bytes": 876876,
     "files": {
      "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
      "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
-     "/_next/static/chunks/2q222m-2420gr.js": 7057,
      "/_next/static/chunks/2x3qj8bh10yhh.css": 1765,
-     "/_next/static/chunks/314cuv8us9grj.js": 19340,
      "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
      "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
@@ -250,21 +250,21 @@
      "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
      "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
      "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
-     "/case-memory": 102469,
+     "/case-memory": 102489,
      "/case-memory-demo.js": 10366,
      "/images/memory-core/memory-mockup-1376.c97be728.avif": 86616,
      "/sakura-copilot.js": 33721
     }
    },
    "mobile": {
-    "bytes": 810000,
+    "bytes": 810217,
     "files": {
      "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
      "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
-     "/_next/static/chunks/2q222m-2420gr.js": 7057,
      "/_next/static/chunks/2x3qj8bh10yhh.css": 1765,
-     "/_next/static/chunks/314cuv8us9grj.js": 19340,
      "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
      "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
@@ -272,7 +272,7 @@
      "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
      "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
      "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
-     "/case-memory": 102469,
+     "/case-memory": 102489,
      "/case-memory-demo.js": 10366,
      "/images/memory-core/memory-mockup-480.fe2cc1ea.avif": 19957,
      "/sakura-copilot.js": 33721
@@ -281,41 +281,41 @@
   },
   "case-aura.html": {
    "desktop": {
-    "bytes": 785701,
+    "bytes": 786134,
     "files": {
      "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
-     "/_next/static/chunks/1s7-6figwix69.js": 6860,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
      "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
      "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
-     "/_next/static/chunks/3nx6jw43_gf_a.js": 19765,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
      "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
      "/_next/static/media/1a099d89ee94ee96.35a5cae5tspm2.woff2": 21688,
      "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
      "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
      "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
-     "/case-aura": 76951,
+     "/case-aura": 77415,
      "/images/aura-website/aura-mockup-1600.bfcd01ac.avif": 22987,
      "/sakura-copilot.js": 33721
     }
    },
    "mobile": {
-    "bytes": 766263,
+    "bytes": 766696,
     "files": {
      "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
-     "/_next/static/chunks/1s7-6figwix69.js": 6860,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
      "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
      "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
-     "/_next/static/chunks/3nx6jw43_gf_a.js": 19765,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
      "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
      "/_next/static/media/1a099d89ee94ee96.35a5cae5tspm2.woff2": 21688,
      "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
      "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
      "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
-     "/case-aura": 76951,
+     "/case-aura": 77415,
      "/images/aura-website/aura-mockup-480.b04fa192.avif": 3549,
      "/sakura-copilot.js": 33721
     }
@@ -323,39 +323,39 @@
   },
   "case-lumina.html": {
    "desktop": {
-    "bytes": 763013,
+    "bytes": 763446,
     "files": {
      "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
-     "/_next/static/chunks/1s7-6figwix69.js": 6860,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
      "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
      "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
-     "/_next/static/chunks/3nx6jw43_gf_a.js": 19765,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
      "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
      "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
      "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
      "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
-     "/case-lumina": 75274,
+     "/case-lumina": 75738,
      "/images/lumina-website/lumina-mockup-1600.20ec6b1b.avif": 23664,
      "/sakura-copilot.js": 33721
     }
    },
    "mobile": {
-    "bytes": 745746,
+    "bytes": 746179,
     "files": {
      "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
-     "/_next/static/chunks/1s7-6figwix69.js": 6860,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
      "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
      "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
-     "/_next/static/chunks/3nx6jw43_gf_a.js": 19765,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
      "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
      "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
      "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
      "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
-     "/case-lumina": 75274,
+     "/case-lumina": 75738,
      "/images/lumina-website/lumina-mockup-480.dcd86236.avif": 6397,
      "/sakura-copilot.js": 33721
     }
@@ -363,39 +363,39 @@
   },
   "case-vellum.html": {
    "desktop": {
-    "bytes": 753092,
+    "bytes": 753525,
     "files": {
      "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
-     "/_next/static/chunks/1s7-6figwix69.js": 6860,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
      "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
      "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
-     "/_next/static/chunks/3nx6jw43_gf_a.js": 19765,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
      "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
      "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
      "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
      "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
-     "/case-vellum": 70570,
+     "/case-vellum": 71034,
      "/images/vellum-mobile-app/vellum-mockup-1600.3b5c1af6.avif": 18447,
      "/sakura-copilot.js": 33721
     }
    },
    "mobile": {
-    "bytes": 740177,
+    "bytes": 740610,
     "files": {
      "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
-     "/_next/static/chunks/1s7-6figwix69.js": 6860,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
      "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
      "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
-     "/_next/static/chunks/3nx6jw43_gf_a.js": 19765,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
      "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
      "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
      "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
      "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
-     "/case-vellum": 70570,
+     "/case-vellum": 71034,
      "/images/vellum-mobile-app/vellum-mockup-480.aefaa558.avif": 5532,
      "/sakura-copilot.js": 33721
     }
@@ -403,39 +403,39 @@
   },
   "case-fintrack.html": {
    "desktop": {
-    "bytes": 749112,
+    "bytes": 749545,
     "files": {
      "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
-     "/_next/static/chunks/1s7-6figwix69.js": 6860,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
      "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
      "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
-     "/_next/static/chunks/3nx6jw43_gf_a.js": 19765,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
      "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
      "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
      "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
      "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
-     "/case-fintrack": 64642,
+     "/case-fintrack": 65106,
      "/images/fintrack-mobile-app/fintrack-mockup-1417.cef3f6c0.avif": 20395,
      "/sakura-copilot.js": 33721
     }
    },
    "mobile": {
-    "bytes": 734462,
+    "bytes": 734895,
     "files": {
      "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
-     "/_next/static/chunks/1s7-6figwix69.js": 6860,
+     "/_next/static/chunks/23gku--qdzbl1.js": 19358,
      "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
      "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
-     "/_next/static/chunks/3nx6jw43_gf_a.js": 19765,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
      "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
      "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
      "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
      "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
-     "/case-fintrack": 64642,
+     "/case-fintrack": 65106,
      "/images/fintrack-mobile-app/fintrack-mockup-480.d086d51f.avif": 5745,
      "/sakura-copilot.js": 33721
     }
