@@ -1,11 +1,14 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Icon from './home/Icon';
 
 export default function ContactEmail({
   compact = false,
+  home = false,
 }: {
   compact?: boolean;
+  home?: boolean;
 }) {
   const [copied, setCopied] = useState(false);
   const timeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
@@ -22,15 +25,45 @@ export default function ContactEmail({
   }
   return (
     <button
-      className={`contact-email-btn btn ${compact ? 'btn-outline' : 'btn-primary'}`}
+      className={
+        home && !compact
+          ? 'contact-email-btn'
+          : `contact-email-btn btn ${compact ? 'btn-outline' : 'btn-primary'}`
+      }
+      title={home && !compact ? 'Click to copy email' : undefined}
       data-email="hanslaureles92@gmail.com"
       style={compact ? { width: '100%', justifyContent: 'center' } : undefined}
       onClick={copy}
     >
       {copied ? (
-        <><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2B8A3E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>{' '}Copied: hanslaureles92@gmail.com</>
+        <>
+          {home ? (
+            <Icon name="check" />
+          ) : (
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#2B8A3E"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          )}{' '}
+          Copied: hanslaureles92@gmail.com
+        </>
       ) : compact ? (
         'hanslaureles92@gmail.com'
+      ) : home ? (
+        <>
+          <Icon name="mail" /> <span>hanslaureles92@gmail.com</span>{' '}
+          <span className="mono" style={{ fontSize: '0.75rem', opacity: 0.7 }}>
+            [COPY]
+          </span>
+        </>
       ) : (
         <>
           <svg

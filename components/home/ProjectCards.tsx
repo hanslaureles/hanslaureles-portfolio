@@ -214,11 +214,6 @@ export default function ProjectCards() {
                   </>
                 )}
               </div>
-              {project.scope && (
-                <p className="project-scope" hidden>
-                  <span>Doesn’t do:</span> {project.scope}
-                </p>
-              )}
             </div>
           </article>
         );

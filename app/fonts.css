@@ -1,4 +1,4 @@
-:root {
+html[class] {
   --font-sans: var(--next-sans);
   --font-serif: var(--next-serif);
   --font-mono: var(--next-mono);

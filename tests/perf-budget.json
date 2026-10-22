@@ -57,12 +57,22 @@
  "pages": {
   "index.html": {
    "desktop": {
-    "bytes": 274910,
+    "bytes": 895856,
     "files": {
-     "/data/status.json": 1038,
-     "/discovery.js": 9040,
-     "/home.css": 75735,
-     "/home.js": 12388,
+     "/": 131752,
+     "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1up913jpkyowv.css": 11289,
+     "/_next/static/chunks/1v89nd970op5l.js": 22627,
+     "/_next/static/chunks/2f2yba98cmf1o.js": 32974,
+     "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
+     "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
+     "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
+     "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
+     "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
+     "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
+     "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
+     "/data/status.json": 1042,
+     "/home.css": 74916,
      "/images/aura-website/aura-mockup-480.b04fa192.avif": 3549,
      "/images/ciel/ciel-mockup-480.eecfa9ee.avif": 10292,
      "/images/fintrack-mobile-app/fintrack-mockup-480.d086d51f.avif": 5745,
@@ -70,24 +80,29 @@
      "/images/lumina-website/lumina-mockup-480.dcd86236.avif": 6397,
      "/images/memory-core/memory-mockup-480.fe2cc1ea.avif": 19957,
      "/images/vellum-mobile-app/vellum-mockup-480.aefaa558.avif": 5532,
-     "/index.html": 60896,
-     "/motion.js": 4854,
-     "/sakura-copilot.js": 33721,
-     "/sentinel.js": 21090
+     "/sakura-copilot.js": 33721
     }
    },
    "mobile": {
-    "bytes": 229054,
+    "bytes": 854676,
     "files": {
-     "/data/status.json": 1038,
-     "/discovery.js": 9040,
-     "/home.css": 75735,
-     "/home.js": 12388,
+     "/": 131752,
+     "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1up913jpkyowv.css": 11289,
+     "/_next/static/chunks/1v89nd970op5l.js": 22627,
+     "/_next/static/chunks/2f2yba98cmf1o.js": 32974,
+     "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
+     "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
+     "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
+     "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
+     "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
+     "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
+     "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
+     "/data/status.json": 1042,
+     "/home.css": 74916,
      "/images/ciel/ciel-mockup-480.eecfa9ee.avif": 10292,
-     "/index.html": 60896,
-     "/motion.js": 4854,
-     "/sakura-copilot.js": 33721,
-     "/sentinel.js": 21090
+     "/images/lsfm-hq/lsfm-hq-mockup-480.c86b4aba.avif": 4676,
+     "/sakura-copilot.js": 33721
     }
    }
   },

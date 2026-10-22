@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const { LEGACY_CSP, buildCsp } = require('../lib/csp.mjs');
 
 test('CSP nonce is per request', async ({ request }) => {
-  for (const path of ['/no-such-page', '/404', '/about', ...require('fs').readdirSync(require('path').join(__dirname, '../app')).filter(name => name.startsWith('case-')).map(name => '/' + name)]) {
+  for (const path of ['/', '/no-such-page', '/404', '/about', ...require('fs').readdirSync(require('path').join(__dirname, '../app')).filter(name => name.startsWith('case-')).map(name => '/' + name)]) {
     const nonces = [];
     for (let i = 0; i < 2; i++) {
       const response = await request.get(path);
@@ -19,7 +19,7 @@ test('CSP nonce is per request', async ({ request }) => {
 });
 
 test('legacy pages keep the hash CSP', async ({ request }) => {
-  for (const path of ['/', '/aura-store', '/aura-store/checkout']) {
+  for (const path of ['/aura-store', '/aura-store/checkout']) {
     expect((await request.get(path)).headers()['content-security-policy']).toBe(LEGACY_CSP);
   }
 });
@@ -130,7 +130,7 @@ test('security headers match the legacy values', async ({ request }) => {
       'referrer-policy': 'strict-origin-when-cross-origin',
       'permissions-policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()',
     });
-    expect(response.headers()['content-security-policy']).toBe(path === '/about'
+    expect(response.headers()['content-security-policy']).toBe(path === '/about' || path === '/'
       ? buildCsp(/'nonce-([^']+)'/.exec(response.headers()['content-security-policy'])[1]) : LEGACY_CSP);
   }
   const fs = require('fs');

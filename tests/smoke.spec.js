@@ -262,6 +262,12 @@ test.describe("agent overview status snapshot", () => {
       kazuha: { status: "online", last_heartbeat_utc: iso(-MIN) },
       yunjin: { status: "online", last_heartbeat_utc: iso(-MIN) },
       eunchae: { status: "great", last_heartbeat_utc: iso(-MIN) } } } }),
+    "an agent with a non-string status": (route) => route.fulfill({ json: { schema_version: 1, generated_at: iso(-MIN), swarm: {
+      sakura: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      chaewon: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      kazuha: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      yunjin: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      eunchae: { status: ["online"], last_heartbeat_utc: iso(-MIN) } } } }),
     "an agent with a bad heartbeat date": (route) => route.fulfill({ json: { schema_version: 1, generated_at: iso(-MIN), swarm: {
       sakura: { status: "online", last_heartbeat_utc: iso(-MIN) },
       chaewon: { status: "online", last_heartbeat_utc: iso(-MIN) },
@@ -366,13 +372,13 @@ test("Sakura's agent overview link works from a case page and from the homepage"
 
 // Codex QA F1 (2026-10-21): the prototype's crawler exclusion was copied into the homepage
 // by the port. No published page may ask search engines to drop or not follow it.
-test("no page carries a noindex or nofollow robots directive", () => {
-  const root = nodePath.join(__dirname, "..", "public");
-  const pages = [...fs.readdirSync(root), ...fs.readdirSync(nodePath.join(root, "aura-store")).map((f) => `aura-store/${f}`)]
-    .filter((f) => f.endsWith(".html"));
-  expect(pages).toContain("index.html");
-  const blocked = pages.filter((f) => /<meta[^>]+name=["'](robots|googlebot)["'][^>]*(noindex|nofollow|none)/i
-    .test(fs.readFileSync(nodePath.join(root, f), "utf8")));
+test("no page carries a noindex or nofollow robots directive", async ({ request }) => {
+  const blocked = [];
+  for (const path of new Set(PAGES)) {
+    const response = await request.get(path);
+    expect(response.status()).toBe(200);
+    if (/<meta[^>]+name=["'](robots|googlebot)["'][^>]*(noindex|nofollow|none)/i.test(await response.text())) blocked.push(path);
+  }
   expect(blocked).toEqual([]);
 });
 

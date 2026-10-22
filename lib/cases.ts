@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-export type MenuLink = { href: string; label: string; className?: string; target?: string; rel?: string };
+import type { CSSProperties, ReactNode } from 'react';
+export type MenuLink = { href: string; label: ReactNode; className?: string; target?: string; rel?: string; style?: CSSProperties };
 
 export const cases: { slug: string; title: string; type: string; category: 'AI' | 'Web' | 'Mobile'; metadata: Metadata; mobileLinks: MenuLink[] }[] = [
   {

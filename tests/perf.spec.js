@@ -18,6 +18,9 @@ const PAGES = ["index.html", "about.html", "404.html", "case-lsfm.html", "case-c
 const VIEWPORTS = { desktop: { width: 1280, height: 800 }, mobile: { width: 375, height: 812 } };
 const WEIGHT_MARGIN = 0.10;
 const LCP_LOADS = 3;
+// Plan §7: immutable 4cdd1e0 gzip baseline, with a one-time 160 KiB runtime allowance.
+const HOME_GZIP_BASELINE = { desktop: 110729, mobile: 69549 };
+const HOME_GZIP_ALLOWANCE = 163840;
 const TEXT_FILE = /\.(html|css|js|mjs|json|svg|txt|webmanifest)$/;
 const SELECTED = process.env.PERF_PAGES ? process.env.PERF_PAGES.split(',') : PAGES;
 
@@ -83,6 +86,8 @@ test("page weight within budget; LCP reported", async ({ browser }, testInfo) =>
       const lcp = lcps.length ? Math.round(median(lcps)) : null;
       (measured[page] ||= {})[vp] = { bytes, files };
       report.push({ page, vp, bytes, gzip, kb: +kb(bytes), lcp_ms: lcp });
+      if (page === 'index.html') expect.soft(gzip, `homepage ${vp}: amended gzip transfer limit`)
+        .toBeLessThanOrEqual(HOME_GZIP_BASELINE[vp] + HOME_GZIP_ALLOWANCE);
 
       const base = budget.pages?.[page]?.[vp];
       if (!process.env.UPDATE_BUDGET) {

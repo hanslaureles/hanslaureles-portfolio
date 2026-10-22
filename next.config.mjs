@@ -17,7 +17,6 @@ const config = {
   },
   async rewrites() {
     return [
-      { source: '/', destination: '/index.html' },
       ...legacyPages.map(page => ({ source: `/${page}`, destination: `/${page}.html` })),
       { source: '/ciel', destination: '/case-ciel' },
       { source: '/ciel-hud', destination: '/case-ciel' },

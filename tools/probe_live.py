@@ -5,11 +5,11 @@ Checks the deployed site, not the repo:
   - every public route answers with its expected status (cleanUrls pages,
     the /ciel aliases, the Aura subfolder rewrites, the resume PDF);
   - /about.html redirects to /about (cleanUrls);
-  - the security headers from vercel.json are present, the enforced CSP header
-    equals the value in this checkout's vercel.json, and no report-only CSP is sent;
+  - security headers are present; app CSP matches buildCsp with the response nonce,
+    Aura keeps the legacy policy, and no report-only CSP is sent;
   - /aura-store references its own stylesheet (root-absolute URLs);
   - /data/status.json is served as schema-1 JSON with max-age=0;
-  - the live pages carry the same ?v= cache-buster as index.html in this
+  - the live pages carry the same ?v= cache-buster as the theme/script source in this
     checkout, so a push to main that never deployed shows up as a failure.
 
 Usage: python tools/probe_live.py [base_url]      exit 1 on any failure
@@ -54,7 +54,9 @@ def fetch(path):
 
 
 def main():
-    expected_v = re.search(r"\?v=([\d.]+)", (ROOT / "index.html").read_text(encoding="utf-8")).group(1)
+    legacy_home = (ROOT / "index.html").is_file()
+    version_source = ROOT / "index.html" if legacy_home else REPO / "components/home/Motion.tsx"
+    expected_v = re.search(r"\?v=([\d.]+)", version_source.read_text(encoding="utf-8")).group(1)
     problems = []
 
     for path in PAGES:
@@ -87,15 +89,28 @@ def main():
             problems.append(f"header {name}: {headers.get(name)!r} (expected {value!r})")
     if "permissions-policy" not in headers:
         problems.append("header permissions-policy missing")
+    nonce = re.search(r"'nonce-([A-Za-z0-9+/]+={0,2})'", headers.get("content-security-policy", ""))
     result = subprocess.run(["node", "--input-type=module", "-e",
-        "import config from './next.config.mjs'; console.log(JSON.stringify(await config.headers()))"],
+        "import config from './next.config.mjs'; import {buildCsp} from './lib/csp.mjs'; "
+        "console.log(JSON.stringify({rules:await config.headers(),app:buildCsp(process.argv[1])}))",
+        nonce.group(1) if nonce else ""],
         cwd=REPO, capture_output=True, text=True, check=True)
-    rules = json.loads(result.stdout)
+    policies = json.loads(result.stdout)
+    rules = policies["rules"]
     csp = {h["key"].lower(): h["value"] for r in rules if r["source"] == "/aura-store/:path*" for h in r["headers"]}
     # The CSP is enforced (batch B, 2026-10-06): the enforced header must match vercel.json and the
     # report-only header must be gone, so a revert to report-only shows up as a failure.
     # A key missing from both sides would compare None == None, so require it in vercel.json first.
     expected_csp = csp.get("content-security-policy")
+    aura_csp = expected_csp
+    if not aura_csp:
+        problems.append("legacy Aura CSP missing from config")
+    if not legacy_home:
+        expected_csp = policies["app"]
+        if not nonce:
+            problems.append("homepage CSP has no nonce")
+        if "public" in headers.get("cache-control", ""):
+            problems.append("app homepage HTML is publicly cacheable")
     if not expected_csp:
         problems.append("vercel.json: no enforced Content-Security-Policy header for /(.*)")
     elif headers.get("content-security-policy") != expected_csp:
@@ -106,7 +121,9 @@ def main():
 
     # /aura-store has no trailing slash, so a relative "styles.css" would load the
     # portfolio's stylesheet (the store shipped unstyled that way until 4A).
-    _, _, body = fetch("/aura-store")
+    _, aura_headers, body = fetch("/aura-store")
+    if aura_headers.get("content-security-policy") != aura_csp:
+        problems.append("/aura-store: CSP differs from the legacy policy")
     if "/aura-store/styles.css" not in body:
         problems.append("/aura-store: page does not reference /aura-store/styles.css")
 
