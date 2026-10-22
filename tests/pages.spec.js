@@ -8,6 +8,8 @@ test('About is readable without JS under the nonce policy', async ({ browser, ba
     expect(response.status()).toBe(200);
     expect(response.headers()['content-security-policy']).toContain("'nonce-");
     await expect(page.locator('h1')).toBeVisible();
+    await expect(page.locator('#experience-cards-view')).toBeVisible();
+    await expect(page.locator('#experience-git-view')).toBeHidden();
     await expect(page.locator('#experience-cards-view')).toContainText('ROC.PH');
     await expect(page.getByRole('link', { name: 'Return to Selected Work' })).toBeVisible();
   } finally { await context.close(); }
