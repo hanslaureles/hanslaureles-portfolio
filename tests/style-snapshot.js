@@ -21,6 +21,38 @@ const PROPS = ["color", "background-color", "background-image", "border-top-colo
   "justify-content", "gap", "grid-template-columns", "width", "height", "opacity", "box-shadow", "overflow-x",
   "list-style-type", "text-decoration-line", "vertical-align", "position"];
 
+async function snapshotStyles(tab) {
+  const transitions = await tab.evaluate(() => [...document.querySelectorAll("body *")]
+    .map((el) => getComputedStyle(el).transitionProperty));
+  await tab.addStyleTag({ content: "*,*::before,*::after{transition:none!important;animation:none!important}" });
+  // Load every used face after freezing motion, including faces in initially hidden UI.
+  await tab.evaluate(async () => {
+    const fonts = new Set([...document.querySelectorAll('body *')].map(el => {
+      const css = getComputedStyle(el);
+      return `${css.fontStyle} ${css.fontWeight} ${css.fontSize} ${css.fontFamily}`;
+    }));
+    await Promise.all([...fonts].map(font => document.fonts.load(font)));
+    await document.fonts.ready;
+  });
+  await tab.waitForTimeout(150);
+  const rows = await tab.evaluate((props) => {
+    const key = (el) => {
+      const parts = [];
+      for (let e = el; e && e !== document.body; e = e.parentElement) {
+        const i = [...e.parentElement.children].indexOf(e);
+        parts.unshift(`${e.tagName.toLowerCase()}[${i}]`);
+      }
+      return parts.join(">");
+    };
+    return [...document.querySelectorAll("body *")].map((el) => {
+      const cs = getComputedStyle(el);
+      return [key(el), props.map((p) => cs.getPropertyValue(p))];
+    });
+  }, PROPS);
+  rows.forEach((r, i) => r[1].push(transitions[i]));
+  return Object.fromEntries(rows);
+}
+
 async function snapshot(browser) {
   const out = {};
   for (const page of PAGES) {
@@ -30,26 +62,7 @@ async function snapshot(browser) {
         await ctx.addInitScript((t) => { try { localStorage.setItem("hans_portfolio_theme", t); } catch (e) {} }, theme);
         const tab = await ctx.newPage();
         await tab.goto(`${BASE}/${page}`, { waitUntil: "networkidle" });
-        const transitions = await tab.evaluate(() => [...document.querySelectorAll("body *")]
-          .map((el) => getComputedStyle(el).transitionProperty));
-        await tab.addStyleTag({ content: "*,*::before,*::after{transition:none!important;animation:none!important}" });
-        await tab.waitForTimeout(150);
-        const rows = await tab.evaluate((props) => {
-          const key = (el) => {
-            const parts = [];
-            for (let e = el; e && e !== document.body; e = e.parentElement) {
-              const i = [...e.parentElement.children].indexOf(e);
-              parts.unshift(`${e.tagName.toLowerCase()}[${i}]`);
-            }
-            return parts.join(">");
-          };
-          return [...document.querySelectorAll("body *")].map((el) => {
-            const cs = getComputedStyle(el);
-            return [key(el), props.map((p) => cs.getPropertyValue(p))];
-          });
-        }, PROPS);
-        rows.forEach((r, i) => r[1].push(transitions[i]));
-        out[`${page} ${width} ${theme}`] = Object.fromEntries(rows);
+        out[`${page} ${width} ${theme}`] = await snapshotStyles(tab);
         await ctx.close();
       }
     }
@@ -60,8 +73,8 @@ async function snapshot(browser) {
 function diff(before, after) {
   const names = [...PROPS, "transition-property"];
   let n = 0;
-  for (const view of Object.keys(before)) {
-    const a = before[view], b = after[view] || {};
+  for (const view of new Set([...Object.keys(before), ...Object.keys(after)])) {
+    const a = before[view] || {}, b = after[view] || {};
     for (const el of new Set([...Object.keys(a), ...Object.keys(b)])) {
       if (!a[el] || !b[el]) { console.log(`${view} ${el}: element ${a[el] ? "removed" : "added"}`); n++; continue; }
       a[el].forEach((v, i) => {
@@ -70,9 +83,12 @@ function diff(before, after) {
     }
   }
   console.log(`${n} difference(s)`);
+  return n;
 }
 
-(async () => {
+module.exports = { snapshotStyles, diff };
+
+if (require.main === module) (async () => {
   const [outFile, flag, beforeFile] = process.argv.slice(2);
   const browser = await chromium.launch();
   try {
