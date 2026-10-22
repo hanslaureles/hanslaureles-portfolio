@@ -7,7 +7,7 @@ const axisLabel = (ms: number, unit: string) => ms === 0 ? `0 ${unit}` : ms < 10
 
 export default function MetricCard({ id }: { id: string }) {
   const card = loadBench(id), axis = card.axis;
-  const x = (ms: number) => Math.round(10000 * (axis.scale === 'log' ? (Math.log(ms) - Math.log(axis.min)) / (Math.log(axis.max) - Math.log(axis.min)) : (ms-axis.min)/(axis.max-axis.min))) / 10;
+  const x = (ms: number) => Number((1000 * (axis.scale === 'log' ? (Math.log(ms) - Math.log(axis.min)) / (Math.log(axis.max) - Math.log(axis.min)) : (ms-axis.min)/(axis.max-axis.min))).toFixed(1));
   const counts = card.rows.map(row => row.samples_ms.length);
   const values = card.headline_stats.map(([stat, rows]) => fmt(percentile(rows === 'all' ? card.rows.flatMap(row => row.samples_ms) : card.rows[rows].samples_ms, Number(stat.slice(1))), card.unit));
   const headline = card.headline.replace(/\{(\d+)\}/g, (_, index) => values[Number(index)]);

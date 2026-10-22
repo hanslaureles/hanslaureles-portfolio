@@ -23,6 +23,7 @@ import subprocess
 import sys
 import argparse
 from pathlib import Path
+from html.parser import HTMLParser
 
 ROOT = Path(__file__).resolve().parent.parent / "public"
 DATA = ROOT / "data" / "bench"
@@ -107,16 +108,59 @@ def cards():
     return [json.loads(p.read_text(encoding="utf-8")) for p in sorted(DATA.glob("*.json"))]
 
 
+def figure_match(cid, text):
+    return re.search(r'<figure\b[^>]*data-metric="' + re.escape(cid) + r'"[^>]*>[\s\S]*?</figure>', text)
+
+
+class CardTree(HTMLParser):
+    """Compare semantic card markup; React comments/whitespace are transport details."""
+    def __init__(self):
+        super().__init__()
+        self.root = ["root", (), []]
+        self.stack = [self.root]
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        for key in ("x1", "x2", "y1", "y2"):
+            if key in attrs:
+                attrs[key] = f"{float(attrs[key]):g}"
+        node = [tag, tuple(sorted(attrs.items())), []]
+        self.stack[-1][2].append(node)
+        if tag not in ("br", "hr", "img", "input", "source", "meta", "link"):
+            self.stack.append(node)
+
+    def handle_endtag(self, tag):
+        if len(self.stack) > 1 and self.stack[-1][0] == tag:
+            self.stack.pop()
+
+    def handle_data(self, data):
+        children = self.stack[-1][2]
+        if children and isinstance(children[-1], str):
+            children[-1] += data
+        else:
+            children.append(data)
+
+
+def card_tree(text):
+    parser = CardTree()
+    parser.feed(text)
+    def clean(node):
+        if isinstance(node, str):
+            return " ".join(node.split())
+        return (node[0], node[1], tuple(value for child in node[2] if (value := clean(child))))
+    return clean(parser.root)
+
+
 def prose_problems(card, page_text):
-    """The sentence the card sits in (its enclosing <dd>, card removed) must state the same
-    headline figures. Not the whole page: a figure repeated elsewhere would hide a stale line."""
-    m = block_re(card["id"]).search(page_text)
+    # Inspect only the enclosing dd, with the card removed: repeated numbers elsewhere cannot hide stale prose.
+    m = figure_match(card["id"], page_text)
     if not m:
         return []
     start, end = page_text.rfind("<dd>", 0, m.start()), page_text.find("</dd>", m.end())
     if start < 0 or end < 0:
         return [f"{card['page']}: card {card['id']} is not inside a <dd>"]
-    around = (page_text[start:m.start()] + page_text[m.end():end]).replace("&nbsp;", " ")
+    around = html.unescape(re.sub(r"<[^>]*>", "", page_text[start:m.start()] + page_text[m.end():end]))
+    around = " ".join(around.split())
     return [f"{card['page']}: the sentence around card {card['id']} does not state {v!r} (the data gives it)"
             for v in headline_values(card) if v not in around]
 
@@ -125,21 +169,16 @@ def build(write):
     problems = []
     for card in cards():
         page = ROOT / card["page"]
-        text = page.read_bytes().decode("utf-8")
-        m = block_re(card["id"]).search(text)
-        if not m:
-            problems.append(f"{card['page']}: no <!-- metric:{card['id']} --> marker")
-            continue
-        nl = "\r\n" if "\r\n" in text else "\n"
-        want = nl + render(card).replace("\n", nl) + nl
-        if m.group(2) != want:
-            if write:
-                text = text[:m.start(2)] + want + text[m.end(2):]
-                page.write_bytes(text.encode("utf-8"))
-                print(f"wrote {card['id']} -> {card['page']}")
-            else:
-                problems.append(f"{card['page']}: card {card['id']} differs from data/bench/{card['id']}.json "
-                                f"(run python tools/build_metric_cards.py)")
+        text = page.read_text(encoding="utf-8")
+        marker = block_re(card["id"]).search(text)
+        if write and marker:
+            text = text[:marker.start(2)] + "\n" + render(card) + "\n" + text[marker.end(2):]
+            page.write_text(text, encoding="utf-8")
+        match = figure_match(card["id"], text)
+        if not match:
+            problems.append(f"{card['page']}: no metric figure {card['id']}")
+        elif card_tree(match[0]) != card_tree(render(card)):
+            problems.append(f"{card['page']}: card {card['id']} differs from data/bench/{card['id']}.json")
         problems += prose_problems(card, text)
     return problems
 
@@ -193,6 +232,10 @@ def self_test():
     assert block_re("t").search(page).group(2) == f"\n{svg}\n"  # unchanged page passes
     tampered = page.replace('class="mc-run" x1="', 'class="mc-run" x1="9', 1)  # move one tick
     assert tampered != page and block_re("t").search(tampered).group(2) != f"\n{svg}\n"
+    assert card_tree(svg) == card_tree(svg.replace("</span>", "</span><!-- -->", 1))
+    assert card_tree(svg) != card_tree(svg.replace('class="mc-run" x1="', 'class="mc-run" x1="9', 1))
+    assert prose_problems(card, "<dd>200<!-- --> ms" + svg + "</dd>") == []
+    assert prose_problems(card, "<dd>210 ms" + svg + "</dd>")
     print("self-test ok")
     return 0
 

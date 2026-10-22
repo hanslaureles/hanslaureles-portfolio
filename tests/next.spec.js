@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const { LEGACY_CSP, buildCsp } = require('../lib/csp.mjs');
 
 test('CSP nonce is per request', async ({ request }) => {
-  for (const path of ['/no-such-page', '/404']) {
+  for (const path of ['/no-such-page', '/404', ...require('fs').readdirSync(require('path').join(__dirname, '../app')).filter(name => name.startsWith('case-')).map(name => '/' + name)]) {
     const nonces = [];
     for (let i = 0; i < 2; i++) {
       const response = await request.get(path);
@@ -19,7 +19,7 @@ test('CSP nonce is per request', async ({ request }) => {
 });
 
 test('legacy pages keep the hash CSP', async ({ request }) => {
-  for (const path of ['/', '/about', '/case-ciel', '/ciel-hud', '/aura-store', '/aura-store/checkout']) {
+  for (const path of ['/', '/about', '/aura-store', '/aura-store/checkout']) {
     expect((await request.get(path)).headers()['content-security-policy']).toBe(LEGACY_CSP);
   }
 });

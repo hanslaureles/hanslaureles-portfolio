@@ -23,5 +23,5 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const nonce = requestHeaders.get('x-nonce') || '';
   const currentCase = cases.find(item => '/case-' + item.slug === requestHeaders.get('x-portfolio-path'));
   const isCase = Boolean(currentCase);
-  return <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`} suppressHydrationWarning><head><base href="/" /><ThemeScript nonce={nonce} /></head><body><Header current={isCase ? 'work' : undefined} mobileLinks={currentCase?.mobileLinks} />{children}<Footer minimal={isCase} /><Overlays /></body></html>;
+  return <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`} suppressHydrationWarning><head><base href="/" /><ThemeScript nonce={nonce} /></head><body><Header current={isCase ? 'work' : undefined} mobileLinks={currentCase?.mobileLinks} showSakura={currentCase?.slug === 'ciel'} />{children}<Footer minimal={isCase} /><Overlays /></body></html>;
 }

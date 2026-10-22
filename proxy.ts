@@ -11,7 +11,7 @@ export function proxy(request: NextRequest) {
   const headers = new Headers(request.headers);
   headers.set('x-nonce', nonce);
   headers.set('Content-Security-Policy', policy);
-  headers.set('x-portfolio-path', pathname);
+  headers.set('x-portfolio-path', ['/ciel', '/ciel-hud'].includes(pathname) ? '/case-ciel' : pathname);
   // Next reserves the literal /404 route with status 404; legacy /404 answers 200.
   const destination = pathname === '/404' ? '/legacy-404' : pathname === '/legacy-404' ? '/no-such-page' : null;
   const response = destination

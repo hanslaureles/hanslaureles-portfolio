@@ -19,8 +19,8 @@ const config = {
     return [
       { source: '/', destination: '/index.html' },
       ...legacyPages.map(page => ({ source: `/${page}`, destination: `/${page}.html` })),
-      { source: '/ciel', destination: '/case-ciel.html' },
-      { source: '/ciel-hud', destination: '/case-ciel.html' },
+      { source: '/ciel', destination: '/case-ciel' },
+      { source: '/ciel-hud', destination: '/case-ciel' },
       { source: '/aura-store', destination: '/aura-store/index.html' },
       { source: '/aura-store/', destination: '/aura-store/index.html' },
       { source: '/aura-store/:page(checkout|confirmation)', destination: '/aura-store/:page.html' },
