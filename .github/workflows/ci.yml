@@ -26,6 +26,12 @@ jobs:
       - name: Install and build Next.js
         run: npm ci && npm run build
 
+      - name: Render production HTML
+        run: |
+          npm run start > /tmp/portfolio-next.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:5174/ > /dev/null && break; sleep 1; done
+          node tests/render-pages.mjs
+
       - name: JavaScript syntax
         run: |
           for f in public/*.js public/aura-store/*.js; do
@@ -40,7 +46,7 @@ jobs:
 
       # One h1 per page, no skipped levels (handoff invariant 14).
       - name: Heading outline
-        run: python tools/check_headings.py --root public
+        run: python tools/check_headings.py --root .rendered
 
       # No script/stylesheet included twice; every local include has ?v=.
       - name: Asset includes
@@ -48,7 +54,7 @@ jobs:
 
       # Retracted claims (unbacked cost, stale counts, Groq-first routing...) stay out.
       - name: Retracted claims
-        run: python tools/check_claims.py --root public
+        run: python tools/check_claims.py --root .rendered
       # Enforced CSP: no inline handlers, inline scripts only by hash, same policy on Vercel and Netlify (5A).
       - name: CSP guard
         run: python tools/check_csp.py --root public && python tools/test_check_csp.py --root public

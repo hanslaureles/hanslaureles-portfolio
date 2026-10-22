@@ -26,6 +26,11 @@ async function captureRoute(browser, base, route) {
           Object.assign(result, await page.evaluate(() => {
             const normalize = text => text.replace(/\s+/g, ' ').trim();
             return {
+              head: {
+                title: document.title,
+                description: document.querySelector('meta[name="description"]')?.content || '',
+                og: Object.fromEntries([...document.querySelectorAll('meta[property^="og:"]')].map(el => [el.getAttribute('property'), el.content]).sort()),
+              },
               h: [...document.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(el => `${el.tagName.toLowerCase()}:${normalize(el.textContent)}`),
               text: normalize(document.querySelector('main').innerText),
               links: [...document.querySelectorAll('main a[href],header a[href]')].map(el => el.getAttribute('href')).sort(),

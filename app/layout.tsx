@@ -14,11 +14,12 @@ const serif = Instrument_Serif({ subsets: ['latin'], weight: '400', style: ['nor
 const mono = JetBrains_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--next-mono', adjustFontFallback: false, fallback: ['SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'] });
 
 export const metadata: Metadata = {
-  title: '404 — Page Not Found · Hans Aaron Laureles',
-  description: 'The page you are looking for does not exist or has been moved.',
+  title: 'Hans Aaron Laureles',
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
-  const nonce = (await headers()).get('x-nonce') || '';
-  return <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`} suppressHydrationWarning><head><base href="/" /><ThemeScript nonce={nonce} /></head><body><Header />{children}<Footer /><Overlays /></body></html>;
+  const requestHeaders = await headers();
+  const nonce = requestHeaders.get('x-nonce') || '';
+  const isCase = requestHeaders.get('x-portfolio-path')?.startsWith('/case-') || false;
+  return <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`} suppressHydrationWarning><head><base href="/" /><ThemeScript nonce={nonce} /></head><body><Header current={isCase ? 'work' : undefined} />{children}<Footer minimal={isCase} /><Overlays /></body></html>;
 }

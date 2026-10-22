@@ -6,3 +6,4 @@ export default function NotFound() {
     <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}><a href="index.html" className="btn btn-primary">← Return to Selected Work</a><a href="about.html" className="btn btn-outline">Read About Me</a></div>
   </div></main>;
 }
+export { notFoundMetadata as metadata } from '../lib/not-found-metadata';

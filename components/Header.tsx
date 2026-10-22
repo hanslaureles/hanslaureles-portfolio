@@ -8,6 +8,7 @@ export default function Header({ current }: { current?: 'work' | 'about' }) {
       <li><a href="index.html" className={`nav-link${current === 'work' ? ' active' : ''}`}>Selected Work</a></li>
       <li><a href="about.html" className={`nav-link${current === 'about' ? ' active' : ''}`}>About Me</a></li>
       <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer" className="nav-link">Resume ↗</a></li>
+      {current && <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer" className="nav-link">GitHub ↗</a></li>}
     </ul></nav>
     <div className="header-actions"><ThemeToggle />{current && <MobileMenu />}</div>
   </div></header>;

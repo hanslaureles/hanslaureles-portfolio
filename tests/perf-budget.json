@@ -265,23 +265,41 @@
   },
   "case-vellum.html": {
    "desktop": {
-    "bytes": 174293,
+    "bytes": 753092,
     "files": {
-     "/app.js": 12972,
-     "/case-vellum.html": 28072,
+     "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1m9wtzffstvds.css": 72342,
+     "/_next/static/chunks/1s7-6figwix69.js": 6860,
+     "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
+     "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
+     "/_next/static/chunks/3nx6jw43_gf_a.js": 19765,
+     "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
+     "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
+     "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
+     "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
+     "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
+     "/case-vellum": 70570,
      "/images/vellum-mobile-app/vellum-mockup-1600.3b5c1af6.avif": 18447,
-     "/sakura-copilot.js": 33721,
-     "/styles.css": 81081
+     "/sakura-copilot.js": 33721
     }
    },
    "mobile": {
-    "bytes": 161378,
+    "bytes": 740177,
     "files": {
-     "/app.js": 12972,
-     "/case-vellum.html": 28072,
+     "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1m9wtzffstvds.css": 72342,
+     "/_next/static/chunks/1s7-6figwix69.js": 6860,
+     "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
+     "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
+     "/_next/static/chunks/3nx6jw43_gf_a.js": 19765,
+     "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
+     "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
+     "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
+     "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
+     "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
+     "/case-vellum": 70570,
      "/images/vellum-mobile-app/vellum-mockup-480.aefaa558.avif": 5532,
-     "/sakura-copilot.js": 33721,
-     "/styles.css": 81081
+     "/sakura-copilot.js": 33721
     }
    }
   },
