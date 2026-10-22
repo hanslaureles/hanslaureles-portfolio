@@ -21,9 +21,10 @@ import math
 import re
 import subprocess
 import sys
+import argparse
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent / "public"
 DATA = ROOT / "data" / "bench"
 WIDTH = 1000  # SVG user units; the strip stretches to its column (preserveAspectRatio="none")
 
@@ -197,6 +198,13 @@ def self_test():
 
 
 def main(argv):
+    global ROOT, DATA
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, default=ROOT)
+    args, remaining = parser.parse_known_args(argv[1:])
+    ROOT = args.root.resolve()
+    DATA = ROOT / "data" / "bench"
+    argv = [argv[0], *remaining]
     if argv[1:2] == ["--self-test"]:
         return self_test()
     if argv[1:2] == ["--verify-source"] and len(argv) == 3:

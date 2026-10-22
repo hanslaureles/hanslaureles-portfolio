@@ -10,7 +10,7 @@ const { test, expect } = require("@playwright/test");
 const fs = require("fs");
 const path = require("path");
 
-const ROOT = path.resolve(__dirname, "..");
+const ROOT = path.resolve(__dirname, "..", "public");
 const BUDGET_FILE = path.join(__dirname, "perf-budget.json");
 const PAGES = ["index.html", "about.html", "404.html", "case-lsfm.html", "case-ciel.html", "case-memory.html",
   "case-aura.html", "case-lumina.html", "case-vellum.html", "case-fintrack.html",

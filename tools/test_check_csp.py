@@ -10,12 +10,16 @@ import contextlib
 import io
 import shutil
 import sys
+import argparse
+import json
+import subprocess
 import tempfile
 from pathlib import Path
 
 import check_csp
 
 REPO = Path(__file__).resolve().parent.parent
+ROOT = REPO / "public"
 HASHED = ("script-src 'self' 'sha256-CityW3eaBWHgazqMiMn47dd6tTGQlMKpYOtT2YnhMMw=' "
           "'sha256-M3bwmOirMh114Uru7/L8rAcZ75l+YSyXYEY0hrHB2FY=';")
 
@@ -23,10 +27,15 @@ HASHED = ("script-src 'self' 'sha256-CityW3eaBWHgazqMiMn47dd6tTGQlMKpYOtT2YnhMMw
 def fixture(extra_html="", policy=lambda p: p, aura_only=False):
     tmp = Path(tempfile.mkdtemp())
     (tmp / "aura-store").mkdir()
-    for f in ["vercel.json", "netlify.toml"]:
-        (tmp / f).write_text(policy((REPO / f).read_text(encoding="utf-8")), encoding="utf-8")
-    for p in [*REPO.glob("aura-store/*.html"), *([] if aura_only else REPO.glob("*.html"))]:
-        shutil.copy(p, tmp / p.relative_to(REPO))
+    result = subprocess.run(["node", "--input-type=module", "-e",
+        "import config from './next.config.mjs'; console.log(JSON.stringify(await config.headers()))"],
+        cwd=REPO, capture_output=True, text=True, check=True)
+    rules = json.loads(result.stdout)
+    rules[0]["source"] = "/(.*)"
+    (tmp / "vercel.json").write_text(policy(json.dumps({"headers": rules})), encoding="utf-8")
+    (tmp / "netlify.toml").write_text(policy((REPO / "netlify.toml").read_text(encoding="utf-8")), encoding="utf-8")
+    for p in [*ROOT.glob("aura-store/*.html"), *([] if aura_only else ROOT.glob("*.html"))]:
+        shutil.copy(p, tmp / p.relative_to(ROOT))
     page = tmp / "aura-store/index.html"
     page.write_text(page.read_text(encoding="utf-8").replace("</body>", extra_html + "</body>"), encoding="utf-8")
     return tmp
@@ -58,4 +67,7 @@ def main():
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, default=ROOT)
+    ROOT = parser.parse_args().root.resolve()
     sys.exit(main())

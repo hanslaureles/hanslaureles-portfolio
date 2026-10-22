@@ -1,4 +1,5 @@
 const { test, expect } = require('@playwright/test');
+const { LEGACY_CSP } = require('../lib/csp.mjs');
 
 test('legacy URLs', async ({ request }) => {
   for (const [source, target] of [
@@ -24,7 +25,6 @@ test('legacy URLs', async ({ request }) => {
 });
 
 test('security headers match the legacy values', async ({ request }) => {
-  const { LEGACY_CSP } = await import('../lib/csp.mjs');
   for (const path of ['/', '/about', '/aura-store']) {
     const response = await request.get(path);
     expect(response.headers()).toMatchObject({

@@ -17,14 +17,17 @@ Stdlib only.
 """
 
 import json
+import argparse
+import subprocess
 import re
 import sys
 import urllib.error
 import urllib.request
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-BASE = (sys.argv[1] if len(sys.argv) > 1 else "https://hanslaureles.vercel.app").rstrip("/")
+REPO = Path(__file__).resolve().parent.parent
+ROOT = REPO / "public"
+BASE = "https://hanslaureles.vercel.app"
 
 PAGES = ["/", "/about", "/case-lsfm", "/case-ciel", "/case-memory", "/case-aura", "/case-lumina",
          "/case-vellum", "/case-fintrack", "/ciel", "/ciel-hud", "/aura-store", "/aura-store/checkout"]
@@ -84,8 +87,11 @@ def main():
             problems.append(f"header {name}: {headers.get(name)!r} (expected {value!r})")
     if "permissions-policy" not in headers:
         problems.append("header permissions-policy missing")
-    rules = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))["headers"]
-    csp = {h["key"].lower(): h["value"] for r in rules if r["source"] == "/(.*)" for h in r["headers"]}
+    result = subprocess.run(["node", "--input-type=module", "-e",
+        "import config from './next.config.mjs'; console.log(JSON.stringify(await config.headers()))"],
+        cwd=REPO, capture_output=True, text=True, check=True)
+    rules = json.loads(result.stdout)
+    csp = {h["key"].lower(): h["value"] for r in rules if r["source"] == "/:path*" for h in r["headers"]}
     # The CSP is enforced (batch B, 2026-10-06): the enforced header must match vercel.json and the
     # report-only header must be gone, so a revert to report-only shows up as a failure.
     # A key missing from both sides would compare None == None, so require it in vercel.json first.
@@ -127,4 +133,9 @@ def main():
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("base_url", nargs="?", default=BASE)
+    parser.add_argument("--root", type=Path, default=ROOT)
+    args = parser.parse_args()
+    ROOT, BASE = args.root.resolve(), args.base_url.rstrip("/")
     sys.exit(main())

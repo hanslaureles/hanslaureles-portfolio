@@ -1,9 +1,6 @@
-// Smoke tests run against the site root served as plain static files, the way
-// Vercel serves it (cleanUrls aside, so pages are requested as *.html).
 const { defineConfig } = require("@playwright/test");
 
 const PORT = 5174;
-const python = process.platform === "win32" ? "python" : "python3";
 
 module.exports = defineConfig({
   testDir: ".",
@@ -17,9 +14,9 @@ module.exports = defineConfig({
     browserName: "chromium",
   },
   webServer: {
-    command: `${python} serve.py ${PORT}`,
-    url: `http://127.0.0.1:${PORT}/index.html`,
+    command: `npm --prefix .. run build && npm --prefix .. run start -- -p ${PORT}`,
+    url: `http://127.0.0.1:${PORT}/`,
     reuseExistingServer: !process.env.CI,
-    timeout: 20_000,
+    timeout: 120_000,
   },
 });

@@ -1,16 +1,14 @@
 // Computed-style snapshot for refactors that must not change how pages look (3E-5).
-//   node style-snapshot.js before.json        (from tests/; serves the site root itself)
+//   node style-snapshot.js before.json        (from tests/; connects to next start)
 //   node style-snapshot.js after.json --diff before.json
 // For each case study at 1280 and 375 px, in light and dark, records the computed
 // styles below for every element, keyed by its DOM path, then (with --diff) prints
 // every difference. Animations and transitions are frozen before measuring;
 // transition-property is recorded separately, on the unfrozen page.
 const { chromium } = require("@playwright/test");
-const { spawn } = require("child_process");
 const fs = require("fs");
-const path = require("path");
 
-const PORT = 5175;
+const BASE = process.env.SNAPSHOT_BASE_URL || 'http://127.0.0.1:5174';
 // SNAPSHOT_PAGES=index.html,about.html checks other pages instead.
 const PAGES = process.env.SNAPSHOT_PAGES ? process.env.SNAPSHOT_PAGES.split(",") : ["case-ciel.html", "case-memory.html", "case-lsfm.html", "case-aura.html",
                "case-lumina.html", "case-vellum.html", "case-fintrack.html"];
@@ -31,7 +29,7 @@ async function snapshot(browser) {
         const ctx = await browser.newContext({ viewport: { width, height: 900 } });
         await ctx.addInitScript((t) => { try { localStorage.setItem("hans_portfolio_theme", t); } catch (e) {} }, theme);
         const tab = await ctx.newPage();
-        await tab.goto(`http://127.0.0.1:${PORT}/${page}`, { waitUntil: "networkidle" });
+        await tab.goto(`${BASE}/${page}`, { waitUntil: "networkidle" });
         const transitions = await tab.evaluate(() => [...document.querySelectorAll("body *")]
           .map((el) => getComputedStyle(el).transitionProperty));
         await tab.addStyleTag({ content: "*,*::before,*::after{transition:none!important;animation:none!important}" });
@@ -76,9 +74,6 @@ function diff(before, after) {
 
 (async () => {
   const [outFile, flag, beforeFile] = process.argv.slice(2);
-  const python = process.platform === "win32" ? "python" : "python3";
-  const server = spawn(python, [path.join(__dirname, "serve.py"), String(PORT)], { stdio: "ignore" });
-  await new Promise((r) => setTimeout(r, 1200));
   const browser = await chromium.launch();
   try {
     const snap = await snapshot(browser);
@@ -87,6 +82,5 @@ function diff(before, after) {
     if (flag === "--diff") diff(JSON.parse(fs.readFileSync(beforeFile, "utf8")), snap);
   } finally {
     await browser.close();
-    server.kill();
   }
 })();
