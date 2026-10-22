@@ -151,23 +151,41 @@
   },
   "case-lsfm.html": {
    "desktop": {
-    "bytes": 230773,
+    "bytes": 872736,
     "files": {
-     "/app.js": 12972,
-     "/case-lsfm.html": 68399,
+     "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
+     "/_next/static/chunks/1m9wtzffstvds.css": 72342,
+     "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
+     "/_next/static/chunks/314cuv8us9grj.js": 19340,
+     "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
+     "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
+     "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
+     "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
+     "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
+     "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
+     "/case-lsfm": 174110,
      "/images/lsfm-hq/lsfm-hq-mockup-1600.02722453.avif": 34600,
-     "/sakura-copilot.js": 33721,
-     "/styles.css": 81081
+     "/sakura-copilot.js": 33721
     }
    },
    "mobile": {
-    "bytes": 200849,
+    "bytes": 842812,
     "files": {
-     "/app.js": 12972,
-     "/case-lsfm.html": 68399,
+     "/_next/static/chunks/0psvc2-xx4oyr.js": 228651,
+     "/_next/static/chunks/1jx8pyhxnilpy.js": 7236,
+     "/_next/static/chunks/1m9wtzffstvds.css": 72342,
+     "/_next/static/chunks/2n2x6ko-morcw.js": 22520,
+     "/_next/static/chunks/314cuv8us9grj.js": 19340,
+     "/_next/static/chunks/3k4davrwg1zqs.js": 180850,
+     "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
+     "/_next/static/media/051742360c26797e.p.1bkzbscqrt8rl.woff2": 31340,
+     "/_next/static/media/7ebf22b5a21034f8.p.3j3877k49yy0l.woff2": 15684,
+     "/_next/static/media/e41d5df559864f9e.p.1g73gv09-xcb6.woff2": 15040,
+     "/_next/static/media/fba5a26ea33df6a3.p.18rizl4rsrl42.woff2": 27272,
+     "/case-lsfm": 174110,
      "/images/lsfm-hq/lsfm-hq-mockup-480.c86b4aba.avif": 4676,
-     "/sakura-copilot.js": 33721,
-     "/styles.css": 81081
+     "/sakura-copilot.js": 33721
     }
    }
   },
