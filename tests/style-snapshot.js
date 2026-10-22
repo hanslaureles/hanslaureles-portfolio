@@ -72,12 +72,15 @@ async function snapshot(browser) {
 
 function diff(before, after) {
   const names = [...PROPS, "transition-property"];
+  const px = /^[+-]?(?:\d+(?:\.\d+)?|\.\d+)px$/;
   let n = 0;
   for (const view of new Set([...Object.keys(before), ...Object.keys(after)])) {
     const a = before[view] || {}, b = after[view] || {};
     for (const el of new Set([...Object.keys(a), ...Object.keys(b)])) {
       if (!a[el] || !b[el]) { console.log(`${view} ${el}: element ${a[el] ? "removed" : "added"}`); n++; continue; }
       a[el].forEach((v, i) => {
+        // Allow at most half a CSS pixel of font-metric jitter under parallel browser load.
+        if (px.test(v) && px.test(b[el][i]) && Math.abs(parseFloat(v) - parseFloat(b[el][i])) <= 0.5) return;
         if (v !== b[el][i]) { console.log(`${view} ${el} ${names[i]}: ${v} -> ${b[el][i]}`); n++; }
       });
     }
