@@ -4,7 +4,7 @@ const path = require('node:path');
 const { ROUTES, filename, captureRoute } = require('./capture-parity');
 const { diff, normalizeStyles } = require('./style-snapshot');
 
-const MIGRATED = ['/case-lumina', '/case-fintrack', '/case-vellum', '/404'];
+const MIGRATED = ['/case-aura', '/case-lumina', '/case-fintrack', '/case-vellum', '/404'];
 
 for (const route of ROUTES) {
   test(`legacy parity: ${route}`, async ({ browser, baseURL }) => {
