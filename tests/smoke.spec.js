@@ -7,8 +7,6 @@ const nodePath = require("path");
 const { test, expect } = require("@playwright/test");
 const { default: AxeBuilder } = require("@axe-core/playwright");
 
-const { LEGACY_CSP: CSP } = require("../lib/csp.mjs");
-
 const LEGACY_PAGES = [
   "index.html", "about.html", "404.html",
   "case-lsfm.html", "case-ciel.html", "case-memory.html", "case-aura.html",
@@ -37,27 +35,22 @@ async function expectFocusTrapped(page, dialog) {
   }
 }
 
-// Serve every document with the vercel.json CSP enforced and collect violations in window.__csp.
+// Observe the server's own CSP, including request nonces on App Router pages.
 async function enforceCsp(page) {
   await page.addInitScript(() => {
     window.__csp = [];
     document.addEventListener("securitypolicyviolation",
       (e) => window.__csp.push(`${e.violatedDirective} ${e.blockedURI || "(inline)"} ${e.sourceFile || ""}:${e.lineNumber}`));
   });
-  await page.route("**/*", async (route) => {
-    if (route.request().resourceType() !== "document") return route.continue();
-    const response = await route.fetch();
-    await route.fulfill({ response, headers: { ...response.headers(), "content-security-policy": CSP } });
-  });
 }
 
-function trackErrors(page) {
+function trackErrors(page, expectedStatus = 200) {
   const errors = [];
-  page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
+  page.on("console", (m) => { if (m.type() === "error" && !(expectedStatus === 404 && m.text().includes('404 (Not Found)') && m.location().url.split('?')[0].endsWith('/404'))) errors.push(m.text()); });
   page.on("pageerror", (e) => errors.push(String(e)));
   page.on("requestfailed", (r) => errors.push(`request failed: ${r.url()}`));
   page.on("response", (r) => {
-    if (r.status() >= 400 && r.url().startsWith("http://127.0.0.1")) errors.push(`${r.status()} ${r.url()}`);
+    if (r.status() >= 400 && r.url().startsWith("http://127.0.0.1") && !(r.status() === expectedStatus && r.request().resourceType() === 'document')) errors.push(`${r.status()} ${r.url()}`);
   });
   return errors;
 }
@@ -65,7 +58,7 @@ function trackErrors(page) {
 for (const [index, path] of PAGES.entries()) {
   test.describe(LEGACY_PAGES[index], () => {
     test("loads with no console errors or failed requests", async ({ page }) => {
-      const errors = trackErrors(page);
+      const errors = trackErrors(page, LEGACY_PAGES[index] === '404.html' ? 404 : 200);
       await page.goto(path, { waitUntil: "networkidle" });
       expect(errors).toEqual([]);
     });

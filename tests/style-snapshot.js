@@ -70,6 +70,36 @@ async function snapshot(browser) {
   return out;
 }
 
+// Compare UI nodes, not React transport tags or the empty hidden streaming marker.
+function normalizeStyles(styles) {
+  const out = {};
+  for (const [view, rows] of Object.entries(styles)) {
+    const hiddenMarkers = Object.keys(rows).filter(key => /^div\[\d+\]$/.test(key) && rows[key][PROPS.indexOf('display')] === 'none' && !Object.keys(rows).some(child => child.startsWith(key + '>')));
+    const paths = new Map();
+    const children = new Map();
+    out[view] = {};
+    for (const [key, values] of Object.entries(rows)) {
+      if (/(^|>)(script|style|link|meta|next-route-announcer)\[/.test(key) || hiddenMarkers.includes(key)) continue;
+      let original = '', parent = '';
+      for (const part of key.split('>')) {
+        original += (original ? '>' : '') + part;
+        if (!paths.has(original)) {
+          const index = children.get(parent) || 0;
+          children.set(parent, index + 1);
+          paths.set(original, (parent ? parent + '>' : '') + part.replace(/\[\d+\]$/, `[${index}]`));
+        }
+        parent = paths.get(original);
+      }
+      out[view][parent] = values.map((value, index) => index === PROPS.indexOf('font-family') ? value.split(',').map(family => {
+        const name = family.trim().replace(/["']/g, '');
+        const match = /^(?:__)?(Plus[_ ]Jakarta[_ ]Sans|Instrument[_ ]Serif|JetBrains[_ ]Mono)(?:_[a-z0-9]+)?$/i.exec(name);
+        return match ? match[1].replaceAll('_', ' ') : name;
+      }).join(', ') : value);
+    }
+  }
+  return out;
+}
+
 function diff(before, after) {
   const names = [...PROPS, "transition-property"];
   const px = /^[+-]?(?:\d+(?:\.\d+)?|\.\d+)px$/;
@@ -89,7 +119,7 @@ function diff(before, after) {
   return n;
 }
 
-module.exports = { snapshotStyles, diff };
+module.exports = { snapshotStyles, diff, normalizeStyles };
 
 if (require.main === module) (async () => {
   const [outFile, flag, beforeFile] = process.argv.slice(2);

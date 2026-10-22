@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const { LEGACY_CSP, buildCsp } = require('../lib/csp.mjs');
 
 test('CSP nonce is per request', async ({ request }) => {
-  for (const path of ['/no-such-page']) {
+  for (const path of ['/no-such-page', '/404']) {
     const nonces = [];
     for (let i = 0; i < 2; i++) {
       const response = await request.get(path);
@@ -22,6 +22,61 @@ test('legacy pages keep the hash CSP', async ({ request }) => {
   for (const path of ['/', '/about', '/case-ciel', '/ciel-hud', '/aura-store', '/aura-store/checkout']) {
     expect((await request.get(path)).headers()['content-security-policy']).toBe(LEGACY_CSP);
   }
+});
+
+test('custom 404 returns status 404', async ({ page }) => {
+  const response = await page.goto('/no-such-page');
+  expect(response.status()).toBe(404);
+  await expect(page.locator('h1')).toHaveText('Lost in the Margins.');
+  expect(response.headers()['x-powered-by']).toBeUndefined();
+});
+
+test('404 is readable without JS', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  try {
+    const page = await context.newPage();
+    const response = await page.goto(new URL('/no-such-page', baseURL).href);
+    expect(response.status()).toBe(404);
+    await expect(page.locator('h1')).toHaveText('Lost in the Margins.');
+    await expect(page.locator('main')).toContainText('The requested URL was not found on this server');
+    await expect(page.getByRole('link', { name: 'Return to Selected Work' })).toHaveAttribute('href', 'index.html');
+    await expect(page.getByRole('navigation')).toBeVisible();
+  } finally { await context.close(); }
+});
+
+test('stored theme is applied on first paint of the app route', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ colorScheme: 'light' });
+  try {
+    await context.addInitScript(() => {
+      localStorage.setItem('hans_portfolio_theme', 'dark');
+      requestAnimationFrame(() => { window.__firstTheme = document.documentElement.getAttribute('data-theme'); });
+    });
+    await context.route('**/*.js*', route => route.abort());
+    const page = await context.newPage();
+    await page.goto(new URL('/no-such-page', baseURL).href, { waitUntil: 'domcontentloaded' });
+    expect(await page.locator('html').getAttribute('data-theme')).toBe('dark');
+    await expect.poll(() => page.evaluate(() => window.__firstTheme)).toBe('dark');
+  } finally { await context.close(); }
+});
+
+test('app theme controls work under the server nonce policy', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'light' });
+  await page.goto('/no-such-page');
+  await page.getByRole('button', { name: 'Toggle light and dark theme' }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  expect(await page.evaluate(() => localStorage.getItem('hans_portfolio_theme'))).toBe('dark');
+  await page.keyboard.press('Alt+t');
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+});
+
+test('app scripts carry the response nonce and fonts stay local', async ({ page, baseURL }) => {
+  const remote = [];
+  page.on('request', request => { if (new URL(request.url()).origin !== new URL(baseURL).origin) remote.push(request.url()); });
+  const response = await page.goto('/no-such-page', { waitUntil: 'networkidle' });
+  const nonce = /'nonce-([^']+)'/.exec(response.headers()['content-security-policy'])[1];
+  expect(await page.locator('script').evaluateAll(scripts => scripts.map(script => script.nonce))).toEqual(expect.arrayContaining([nonce]));
+  expect(await page.locator('script').evaluateAll(scripts => scripts.every(script => Boolean(script.nonce)))).toBe(true);
+  expect(remote).toEqual([]);
 });
 
 test('legacy URLs', async ({ request }) => {

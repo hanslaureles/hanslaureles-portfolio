@@ -15,7 +15,7 @@ for (const dir of ['data/bench', 'images']) {
 }
 for (const route of routes) {
   const response = await fetch(new URL(route, base));
-  if (response.status !== 200) throw new Error(`${route}: HTTP ${response.status}`);
+  if (response.status !== (route === '/404' ? 404 : 200)) throw new Error(`${route}: HTTP ${response.status}`);
   const file = route === '/' ? 'index.html' : route.startsWith('/aura-store') && ['/aura-store', '/aura-store/'].includes(route)
     ? 'aura-store/index.html' : route.slice(1) + (path.extname(route) ? '' : '.html');
   const target = path.join(out, file);

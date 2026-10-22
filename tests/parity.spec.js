@@ -2,9 +2,9 @@ const { test, expect } = require('@playwright/test');
 const fs = require('node:fs');
 const path = require('node:path');
 const { ROUTES, filename, captureRoute } = require('./capture-parity');
-const { diff } = require('./style-snapshot');
+const { diff, normalizeStyles } = require('./style-snapshot');
 
-const MIGRATED = [];
+const MIGRATED = ['/404'];
 
 for (const route of ROUTES) {
   test(`legacy parity: ${route}`, async ({ browser, baseURL }) => {
@@ -14,6 +14,6 @@ for (const route of ROUTES) {
     expect(actual.h).toEqual(expected.h);
     expect(actual.text).toBe(expected.text);
     expect(actual.links).toEqual(expected.links);
-    expect(diff(expected.styles, actual.styles)).toBe(0);
+    expect(diff(normalizeStyles(expected.styles), normalizeStyles(actual.styles))).toBe(0);
   });
 }
