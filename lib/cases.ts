@@ -293,7 +293,7 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
     "type": "Case Study",
     "category": "AI",
     "metadata": {
-      "title": "Manas: Ciel — Case Study · Hans Aaron LaurelesLifecycle of one Ciel voice request",
+      "title": "Manas: Ciel — Case Study · Hans Aaron Laureles",
       "description": "Case study on Manas: Ciel, a bilingual voice assistant for my dev workstation: Groq Whisper speech-to-text, a custom FFmpeg voice filter, reads and writes my Obsidian notes, and hands tasks to five AI agents.",
       "alternates": {
         "canonical": "https://hanslaureles.vercel.app/case-ciel.html"

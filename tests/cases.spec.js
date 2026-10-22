@@ -3,6 +3,14 @@ const fs = require('node:fs');
 const path = require('node:path');
 const migrated = fs.readdirSync(path.join(__dirname, '../app')).filter(name => name.startsWith('case-'));
 
+test('Ciel document title stays separate from its SVG title on every alias', async ({ page }) => {
+  for (const route of ['/case-ciel', '/ciel', '/ciel-hud']) {
+    await page.goto(route);
+    await expect(page).toHaveTitle('Manas: Ciel — Case Study · Hans Aaron Laureles');
+    await expect(page.locator('svg title#lcTitle')).toHaveText('Lifecycle of one Ciel voice request');
+  }
+});
+
 test('case variants of legacy paths keep the legacy CSP', async ({ request }) => {
   const { LEGACY_CSP } = require('../lib/csp.mjs');
   for (const url of ['/About', '/ABOUT']) {

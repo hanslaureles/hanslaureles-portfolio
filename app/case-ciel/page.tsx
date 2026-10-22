@@ -7,7 +7,7 @@ import { cases } from '../../lib/cases';
 export const metadata = cases.find(item => item.slug === 'ciel')!.metadata;
 
 export default function Page() {
-  return <CaseLayout slug="ciel" title="Manas: Ciel — Case Study · Hans Aaron LaurelesLifecycle of one Ciel voice request">{"\n    \n    "}
+  return <CaseLayout slug="ciel" title="Manas: Ciel — Case Study · Hans Aaron Laureles">{"\n    \n    "}
 {"\n    "}
 <div className="case-hero">
 {"\n      "}

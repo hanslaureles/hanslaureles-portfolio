@@ -1,5 +1,5 @@
 // Capture from a static server of `git archive 4cdd1e0`, never from a migration build.
-// Usage (tests/): node capture-parity.js http://127.0.0.1:5176
+// Usage (tests/): node capture-parity.js http://127.0.0.1:5176 [--head-only]
 const { chromium } = require('@playwright/test');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -52,10 +52,14 @@ if (require.main === module) (async () => {
   const base = process.argv[2];
   assert(base, 'Usage: node capture-parity.js <baseline-static-server-url>');
   const out = path.join(__dirname, 'parity');
+  const headOnly = process.argv.includes('--head-only');
   fs.mkdirSync(out, { recursive: true });
   const browser = await chromium.launch();
   try {
     for (const route of ROUTES) {
+      const target = path.join(out, `${filename(route)}.json`);
+      const existing = headOnly ? JSON.parse(fs.readFileSync(target, 'utf8')) : null;
+      if (headOnly && !existing.head) continue;
       const file = `${filename(route)}.html`;
       const response = await fetch(new URL(file, base + '/'));
       const bytes = Buffer.from(await response.arrayBuffer());
@@ -63,8 +67,10 @@ if (require.main === module) (async () => {
       assert(response.ok, `${file}: HTTP ${response.status}`);
       assert(bytes.equals(baseline), `${file}: server bytes differ from 4cdd1e0`);
       const data = await captureRoute(browser, base, '/' + file);
-      fs.writeFileSync(path.join(out, `${filename(route)}.json`), JSON.stringify(data) + '\n');
-      console.log(`${route}: captured headings, text, links and 4 style views from 4cdd1e0`);
+      if (!headOnly || JSON.stringify(existing.head) !== JSON.stringify(data.head)) {
+        fs.writeFileSync(target, JSON.stringify(headOnly ? { ...existing, head: data.head } : data) + '\n');
+      }
+      console.log(`${route}: captured ${headOnly ? 'head only' : 'headings, text, links and 4 style views'} from 4cdd1e0`);
     }
   } finally {
     await browser.close();
