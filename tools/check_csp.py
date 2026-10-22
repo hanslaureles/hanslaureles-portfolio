@@ -5,7 +5,8 @@ CSP guard (Phase 5A): the enforced policy allows no inline script except by hash
   - the effective script policy (script-src-elem / -attr -> script-src ->
     default-src) exists and has no 'unsafe-inline' or *;
   - every inline <script> on every page hashes to a 'sha256-...' in script-src,
-    and every hash in script-src is used by some page (no stale hash);
+    and every hash in script-src is used, except the documented retired About
+    theme hash retained by the unchanged Aura policy until cutover;
   - no page has an inline event handler (onclick=...), an srcdoc= or a javascript: URL.
 
 Editing the theme snippet without updating both headers fails here, not in
@@ -113,7 +114,10 @@ def main():
                 problems.append(f"{rel}:{line}: inline <script> {h} is not in script-src")
         problems += [f"{rel}:{line}: inline handler, srcdoc or javascript: URL {what}" for line, what in parser.bad]
 
-    problems += [f"script-src hash {h} is used by no page (stale)" for h in sorted(allowed - used)]
+    # About's theme script retired, but D5 keeps Aura's exact legacy policy until cutover.
+    retired = {"sha256-CityW3eaBWHgazqMiMn47dd6tTGQlMKpYOtT2YnhMMw="} if (
+        not (ROOT / "about.html").exists() and (REPO / "app/about/page.tsx").is_file()) else set()
+    problems += [f"script-src hash {h} is used by no page (stale)" for h in sorted(allowed - used - retired)]
 
     for p in problems:
         print(f"FAIL {p}")

@@ -59,7 +59,6 @@ if (require.main === module) (async () => {
     for (const route of ROUTES) {
       const target = path.join(out, `${filename(route)}.json`);
       const existing = headOnly ? JSON.parse(fs.readFileSync(target, 'utf8')) : null;
-      if (headOnly && !existing.head) continue;
       const file = `${filename(route)}.html`;
       const response = await fetch(new URL(file, base + '/'));
       const bytes = Buffer.from(await response.arrayBuffer());

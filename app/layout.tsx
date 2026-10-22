@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import { cases } from '../lib/cases';
 import Footer from '../components/Footer';
 import Overlays from '../components/Overlays';
+import { aboutLinks } from '../lib/about';
 import { ThemeScript } from '../components/ThemeScript';
 import '../public/styles.css';
 import './fonts.css';
@@ -23,5 +24,6 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const nonce = requestHeaders.get('x-nonce') || '';
   const currentCase = cases.find(item => '/case-' + item.slug === requestHeaders.get('x-portfolio-path'));
   const isCase = Boolean(currentCase);
-  return <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`} suppressHydrationWarning><head><base href="/" /><ThemeScript nonce={nonce} /></head><body><Header current={isCase ? 'work' : undefined} mobileLinks={currentCase?.mobileLinks} showSakura={currentCase?.slug === 'ciel'} />{children}<Footer minimal={isCase} lsfm={currentCase?.slug === 'lsfm'} /><Overlays /></body></html>;
+  const isAbout = requestHeaders.get('x-portfolio-path') === '/about';
+  return <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`} suppressHydrationWarning><head><base href="/" /><ThemeScript nonce={nonce} /></head><body><Header current={isAbout ? 'about' : isCase ? 'work' : undefined} mobileLinks={isAbout ? aboutLinks : currentCase?.mobileLinks} showSakura={isAbout || currentCase?.slug === 'ciel'} />{children}<Footer minimal={isCase} lsfm={currentCase?.slug === 'lsfm'} about={isAbout} /><Overlays /></body></html>;
 }

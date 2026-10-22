@@ -11,12 +11,11 @@ test('Ciel document title stays separate from its SVG title on every alias', asy
   }
 });
 
-test('case variants of legacy paths keep the legacy CSP', async ({ request }) => {
-  const { LEGACY_CSP } = require('../lib/csp.mjs');
+test('case variants of migrated About return 404 under the nonce policy', async ({ request }) => {
   for (const url of ['/About', '/ABOUT']) {
     const response = await request.get(url);
-    expect(response.status()).toBe(200);
-    expect(response.headers()['content-security-policy']).toBe(LEGACY_CSP);
+    expect(response.status()).toBe(404);
+    expect(response.headers()['content-security-policy']).toContain("'nonce-");
   }
 });
 

@@ -11,6 +11,6 @@ export default function Header({ current, mobileLinks, showSakura = false }: { c
       <li><a href="Hans_Laureles_Resume.pdf" target="_blank" rel="noopener noreferrer" className="nav-link">Resume ↗</a></li>
       {current && <li><a href="https://github.com/hanslaureles" target="_blank" rel="noopener noreferrer" className="nav-link">GitHub ↗</a></li>}
     </ul></nav>
-    <div className="header-actions">{showSakura && <button className="sakura-nav-btn" id="sakuraNavBtn" aria-label="Ask Sakura AI Recruiter Assistant" title="Ask Sakura AI Copilot (Ctrl+K)" aria-keyshortcuts="Control+K Meta+K"><span>🌸</span>{' '}<span>Ask Sakura</span></button>}<ThemeToggle />{mobileLinks && <MobileMenu links={mobileLinks} />}</div>
+    <div className="header-actions">{showSakura && <button className="sakura-nav-btn" id="sakuraNavBtn" aria-label="Ask Sakura AI Recruiter Assistant" title="Ask Sakura AI Copilot (Ctrl+K)" aria-keyshortcuts="Control+K Meta+K"><span>🌸</span>{' '}<span>Ask Sakura</span></button>}<ThemeToggle />{mobileLinks && <MobileMenu links={mobileLinks} contact={current === 'about'} />}</div>
   </div></header>;
 }

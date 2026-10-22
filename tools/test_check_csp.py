@@ -49,6 +49,7 @@ CASES = [  # (name, root, expected exit code)
     ("no script-src, default-src 'unsafe-inline'", lambda: fixture(policy=lambda p: p.replace(HASHED, "").replace(
         "default-src 'self';", "default-src 'self' 'unsafe-inline';"), aura_only=True), 1),
     ("script-src-attr 'unsafe-inline'", lambda: fixture(policy=lambda p: p.replace(HASHED, HASHED + " script-src-attr 'unsafe-inline';")), 1),
+    ("unknown stale hash", lambda: fixture(policy=lambda p: p.replace("script-src 'self'", "script-src 'self' 'sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='")), 1),
     ("a real JSON-LD block", lambda: fixture('<script type="application/ld+json">{"@type": "Store"}</script>'), 0),
     ("the site as committed", lambda: fixture(), 0),
 ]
