@@ -10,7 +10,10 @@ export function proxy(request: NextRequest) {
   const headers = new Headers(request.headers);
   headers.set('x-nonce', nonce);
   headers.set('Content-Security-Policy', policy);
-  const response = NextResponse.next({ request: { headers } });
+  // Next reserves the literal /404 route with status 404; legacy /404 answers 200.
+  const response = request.nextUrl.pathname === '/404'
+    ? NextResponse.rewrite(new URL('/legacy-404', request.url), { request: { headers } })
+    : NextResponse.next({ request: { headers } });
   response.headers.set('Content-Security-Policy', policy);
   response.headers.set('Cache-Control', 'private, no-store, max-age=0, must-revalidate');
   return response;

@@ -31,33 +31,38 @@ test('custom 404 returns status 404', async ({ page }) => {
   expect(response.headers()['x-powered-by']).toBeUndefined();
 });
 
-test('404 is readable without JS', async ({ browser, baseURL }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false });
-  try {
-    const page = await context.newPage();
-    const response = await page.goto(new URL('/no-such-page', baseURL).href);
-    expect(response.status()).toBe(404);
-    await expect(page.locator('h1')).toHaveText('Lost in the Margins.');
-    await expect(page.locator('main')).toContainText('The requested URL was not found on this server');
-    await expect(page.getByRole('link', { name: 'Return to Selected Work' })).toHaveAttribute('href', 'index.html');
-    await expect(page.getByRole('navigation')).toBeVisible();
-  } finally { await context.close(); }
-});
+for (const [path, status] of [['/no-such-page', 404], ['/404', 200]]) {
+  test(`404 is readable without JS: ${path}`, async ({ browser, baseURL }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false });
+    try {
+      const page = await context.newPage();
+      const response = await page.goto(new URL(path, baseURL).href);
+      await expect(page.locator('h1')).toHaveText('Lost in the Margins.');
+      expect(response.status()).toBe(status);
+      await expect(page.locator('header')).toBeVisible();
+      await expect(page.locator('footer')).toBeVisible();
+      await expect(page.locator('main')).toContainText('The requested URL was not found on this server');
+      await expect(page.getByRole('link', { name: 'Return to Selected Work' })).toHaveAttribute('href', 'index.html');
+      await expect(page.getByRole('navigation')).toBeVisible();
+    } finally { await context.close(); }
+  });
 
-test('stored theme is applied on first paint of the app route', async ({ browser, baseURL }) => {
-  const context = await browser.newContext({ colorScheme: 'light' });
-  try {
-    await context.addInitScript(() => {
-      localStorage.setItem('hans_portfolio_theme', 'dark');
-      requestAnimationFrame(() => { window.__firstTheme = document.documentElement.getAttribute('data-theme'); });
-    });
-    await context.route('**/*.js*', route => route.abort());
-    const page = await context.newPage();
-    await page.goto(new URL('/no-such-page', baseURL).href, { waitUntil: 'domcontentloaded' });
-    expect(await page.locator('html').getAttribute('data-theme')).toBe('dark');
-    await expect.poll(() => page.evaluate(() => window.__firstTheme)).toBe('dark');
-  } finally { await context.close(); }
-});
+  test(`stored theme is applied on first paint of the app route: ${path}`, async ({ browser, baseURL }) => {
+    const context = await browser.newContext({ colorScheme: 'light' });
+    try {
+      await context.addInitScript(() => {
+        localStorage.setItem('hans_portfolio_theme', 'dark');
+        requestAnimationFrame(() => { window.__firstTheme = document.documentElement.getAttribute('data-theme'); });
+      });
+      await context.route('**/*.js*', route => route.abort());
+      const page = await context.newPage();
+      const response = await page.goto(new URL(path, baseURL).href, { waitUntil: 'domcontentloaded' });
+      expect(response.status()).toBe(status);
+      expect(await page.locator('html').getAttribute('data-theme')).toBe('dark');
+      await expect.poll(() => page.evaluate(() => window.__firstTheme)).toBe('dark');
+    } finally { await context.close(); }
+  });
+}
 
 test('app theme controls work under the server nonce policy', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'light' });
@@ -95,7 +100,7 @@ test('app scripts carry the response nonce and fonts stay local', async ({ page,
 
 test('legacy URLs', async ({ request }) => {
   for (const [source, target] of [
-    ['/index.html', '/'], ['/about.html', '/about'], ['/case-ciel.html', '/case-ciel'],
+    ['/index.html', '/'], ['/about.html', '/about'], ['/case-ciel.html', '/case-ciel'], ['/404.html', '/404'],
     ['/aura-store/index.html', '/aura-store'],
   ]) {
     const response = await request.get(source, { maxRedirects: 0 });

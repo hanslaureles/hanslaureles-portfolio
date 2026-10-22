@@ -117,12 +117,12 @@
   },
   "404.html": {
    "desktop": {
-    "bytes": 632250,
+    "bytes": 636567,
     "files": {
-     "/404": 9136,
-     "/_next/static/chunks/0y3gtqx0ujec0.js": 19385,
+     "/404": 13436,
      "/_next/static/chunks/1dd_a6n3i-3-4.js": 181457,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
+     "/_next/static/chunks/2e71f39yygp93.js": 19402,
      "/_next/static/chunks/2khxl0v1q4i6n.js": 229820,
      "/_next/static/chunks/3333gs1h_w689.js": 20744,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,
@@ -133,12 +133,12 @@
     }
    },
    "mobile": {
-    "bytes": 632250,
+    "bytes": 636567,
     "files": {
-     "/404": 9136,
-     "/_next/static/chunks/0y3gtqx0ujec0.js": 19385,
+     "/404": 13436,
      "/_next/static/chunks/1dd_a6n3i-3-4.js": 181457,
      "/_next/static/chunks/1m9wtzffstvds.css": 72342,
+     "/_next/static/chunks/2e71f39yygp93.js": 19402,
      "/_next/static/chunks/2khxl0v1q4i6n.js": 229820,
      "/_next/static/chunks/3333gs1h_w689.js": 20744,
      "/_next/static/chunks/turbopack-3-ry682tkyiqk.js": 10030,

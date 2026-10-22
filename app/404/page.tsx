@@ -1,5 +1,1 @@
-import { notFound } from 'next/navigation';
-
-export default function MissingPage() {
-  notFound();
-}
+export { default } from '../not-found';

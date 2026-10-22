@@ -10,7 +10,7 @@ for (const route of ROUTES) {
   test(`legacy parity: ${route}`, async ({ browser, baseURL }) => {
     test.skip(!MIGRATED.includes(route), 'Legacy file; enable when its App Router route migrates');
     const expected = JSON.parse(fs.readFileSync(path.join(__dirname, 'parity', `${filename(route)}.json`), 'utf8'));
-    const actual = await captureRoute(browser, baseURL, route === '/404' ? '/no-such-page' : route);
+    const actual = await captureRoute(browser, baseURL, route);
     expect(actual.h).toEqual(expected.h);
     expect(actual.text).toBe(expected.text);
     expect(actual.links).toEqual(expected.links);

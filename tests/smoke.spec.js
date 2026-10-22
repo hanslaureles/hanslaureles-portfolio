@@ -58,8 +58,9 @@ function trackErrors(page, expectedStatus = 200) {
 for (const [index, path] of PAGES.entries()) {
   test.describe(LEGACY_PAGES[index], () => {
     test("loads with no console errors or failed requests", async ({ page }) => {
-      const errors = trackErrors(page, LEGACY_PAGES[index] === '404.html' ? 404 : 200);
-      await page.goto(path, { waitUntil: "networkidle" });
+      const errors = trackErrors(page);
+      const response = await page.goto(path, { waitUntil: "networkidle" });
+      expect(response.status()).toBe(200);
       expect(errors).toEqual([]);
     });
 
