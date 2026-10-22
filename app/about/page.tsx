@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { headers } from 'next/headers';
-import Script from 'next/script';
+import Sakura from '../../components/Sakura';
 import AboutView from '../../components/AboutView';
 import ReadingProgress from '../../components/ReadingProgress';
 import ContactEmail from '../../components/ContactEmail';
@@ -33,7 +32,6 @@ export const metadata: Metadata = {
 };
 
 export default async function About() {
-  const nonce = (await headers()).get('x-nonce') || '';
   return (
     <>
       <main id="main-content" className="section-spacing">
@@ -408,11 +406,7 @@ export default async function About() {
         </div>
       </main>
       <ReadingProgress />
-      <Script
-        src="/sakura-copilot.js?v=2.2.34"
-        nonce={nonce}
-        strategy="afterInteractive"
-      />
+      <Sakura />
     </>
   );
 }

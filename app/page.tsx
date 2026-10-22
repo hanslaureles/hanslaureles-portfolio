@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { headers } from 'next/headers';
 import Hero from '../components/home/Hero';
 import ProjectCards, { ProjectIndex } from '../components/home/ProjectCards';
 import Sections, { ContactSection } from '../components/home/Sections';
@@ -44,7 +43,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const nonce = (await headers()).get('x-nonce') || '';
   return (
     <>
       <main id="main-content" tabIndex={-1}>
@@ -68,7 +66,7 @@ export default async function Home() {
       </main>
       <HomeFooter />
       <AgentOverview />
-      <Motion nonce={nonce} />
+      <Motion />
     </>
   );
 }

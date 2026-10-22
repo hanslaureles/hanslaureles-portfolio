@@ -55,7 +55,7 @@ def fetch(path):
 
 def main():
     legacy_home = (ROOT / "index.html").is_file()
-    version_source = ROOT / "index.html" if legacy_home else REPO / "components/home/Motion.tsx"
+    version_source = ROOT / "index.html" if legacy_home else REPO / "app/layout.tsx"
     expected_v = re.search(r"\?v=([\d.]+)", version_source.read_text(encoding="utf-8")).group(1)
     problems = []
 

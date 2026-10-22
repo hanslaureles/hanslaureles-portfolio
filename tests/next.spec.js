@@ -1,6 +1,65 @@
 const { test, expect } = require('@playwright/test');
 const { LEGACY_CSP, buildCsp } = require('../lib/csp.mjs');
 
+test.describe('sakura API', () => {
+  let headers;
+  test.beforeEach(async ({}, testInfo) => {
+    headers = { 'x-forwarded-for': `test-${testInfo.testId}-${Date.now()}` };
+  });
+  async function check(response, status) {
+    expect(response.status()).toBe(status);
+    expect(response.headers()['content-type']).toContain('application/json');
+    expect(response.headers()['cache-control']).toContain('no-store');
+    expect(response.status()).not.toBe(500);
+    return response.json();
+  }
+  for (const golden of require('./sakura-golden.json').cases) {
+    test(`golden: ${golden.question}`, async ({ request }) => {
+      const body = await check(await request.post('/api/sakura', { headers, data: { question: golden.question } }), 200);
+      expect(body.answers).toEqual(golden.answers);
+    });
+  }
+  test('400 empty, missing and invalid questions', async ({ request }) => {
+    for (const data of [{}, { question: '' }, { question: '  ' }, { question: 12 }, null, []]) {
+      await check(await request.post('/api/sakura', { headers: { ...headers, 'content-type': 'application/json' }, data: Buffer.from(JSON.stringify(data)) }), 400);
+    }
+  });
+  test('413 over 2000 characters; 2000 accepted', async ({ request }) => {
+    await check(await request.post('/api/sakura', { headers, data: { question: 'a'.repeat(2000) } }), 200);
+    await check(await request.post('/api/sakura', { headers, data: { question: 'a'.repeat(2001) } }), 413);
+  });
+  test('413 bounds the actual request body', async ({ request }) => {
+    await check(await request.post('/api/sakura', { headers, data: { question: 'React', padding: 'a'.repeat(66000) } }), 413);
+  });
+  test('415 non-JSON', async ({ request }) => {
+    await check(await request.post('/api/sakura', { headers: { ...headers, 'content-type': 'text/plain' }, data: '{"question":"React"}' }), 415);
+  });
+  test('malformed JSON never returns 500', async ({ request }) => {
+    await check(await request.post('/api/sakura', { headers: { ...headers, 'content-type': 'application/json' }, data: Buffer.from('{') }), 400);
+  });
+  test('405 other methods', async ({ request }) => {
+    for (const method of ['GET', 'HEAD', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']) {
+      const response = await request.fetch('/api/sakura', { method, headers });
+      expect(response.status()).toBe(405);
+      expect(response.headers().allow).toBe('POST');
+    }
+  });
+  test('429 after 20 a minute per IP', async ({ request }) => {
+    for (let i = 0; i < 20; i++) await check(await request.post('/api/sakura', { headers, data: { question: 'React' } }), 200);
+    const response = await request.post('/api/sakura', { headers, data: { question: 'React' } });
+    await check(response, 429);
+    expect(Number(response.headers()['retry-after'])).toBeGreaterThan(0);
+    await check(await request.post('/api/sakura', { headers: { 'x-forwarded-for': `${headers['x-forwarded-for']}-other` }, data: { question: 'React' } }), 200);
+  });
+  test('input is never echoed as HTML', async ({ request }) => {
+    const question = '<img src=x onerror=alert(1)> React <script>alert(1)</script>';
+    const response = await request.post('/api/sakura', { headers, data: { question } });
+    await check(response, 200);
+    expect(await response.text()).not.toContain(question);
+    expect(await response.text()).not.toContain('<script>');
+  });
+});
+
 test('CSP nonce is per request', async ({ request }) => {
   for (const path of ['/', '/no-such-page', '/404', '/about', ...require('fs').readdirSync(require('path').join(__dirname, '../app')).filter(name => name.startsWith('case-')).map(name => '/' + name)]) {
     const nonces = [];

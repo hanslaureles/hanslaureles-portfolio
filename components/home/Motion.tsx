@@ -1,14 +1,14 @@
 'use client';
 
 import { useEffect } from 'react';
-import Script from 'next/script';
+import Sakura from '../Sakura';
 import {
   motionDisabled,
   skipTransition,
   transition,
 } from '../../lib/home-browser';
 
-export default function Motion({ nonce }: { nonce: string }) {
+export default function Motion() {
   useEffect(() => {
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     const fine = matchMedia('(hover: hover) and (pointer: fine)');
@@ -216,14 +216,5 @@ export default function Motion({ nonce }: { nonce: string }) {
       delete window.portfolioTransition;
     };
   }, []);
-  return (
-    <Script
-      src="/sakura-copilot.js?v=2.2.34"
-      nonce={nonce}
-      strategy="afterInteractive"
-      onReady={() => {
-        window.dispatchEvent(new Event('portfoliohome:ready'));
-      }}
-    />
-  );
+  return <Sakura home />;
 }

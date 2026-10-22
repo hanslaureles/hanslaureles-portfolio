@@ -193,7 +193,8 @@ for (const scheme of ["light", "dark"]) {
       await expect(page.locator("#sakuraDrawer")).toBeVisible();
       await page.locator("#sakuraSearchInput").fill("multi-agent experience");
       await page.keyboard.press("Enter");
-      await expect(page.locator("#sakuraOutput")).not.toBeEmpty();
+      await expect(page.locator("#sakuraOutput .sakura-answer-card.primary")).toBeVisible();
+      await expect(page.locator("#sakuraOutput .sakura-answer-title")).toHaveText("LSFM AI HQ — 5-Agent Team");
       await page.waitForTimeout(SETTLE_MS);
       expect(await axeBlocking(page, "#sakuraDrawer")).toEqual([]);
     });
