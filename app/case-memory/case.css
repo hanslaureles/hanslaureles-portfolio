@@ -1,0 +1,89 @@
+
+    /* Interactive Recall Widget Styles */
+    .memory-console-widget {
+      background: var(--ink-935);
+      border: 1px solid var(--ink-805);
+      border-radius: var(--radius-lg, 12px);
+      padding: 24px;
+      margin: 32px 0;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+    .memory-console-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--ink-805);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .memory-query-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .memory-query-input {
+      flex: 1;
+      background: var(--ink-955);
+      border: 1px solid var(--ink-765);
+      color: var(--text-primary, #f3f4f6);
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-family: var(--font-mono, monospace);
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .memory-query-input:focus {
+      outline: none;
+      border-color: var(--accent, #e57373);
+    }
+    .memory-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .memory-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--ink-765);
+      color: var(--text-secondary, #9ca3af);
+      font-family: var(--font-mono, monospace);
+      font-size: 0.78rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .memory-chip:hover {
+      background: rgba(229, 115, 115, 0.15);
+      border-color: var(--accent, #e57373);
+      color: #fff;
+    }
+    .memory-result-box {
+      background: var(--ink-955);
+      border: 1px solid var(--ink-765);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: var(--font-mono, monospace);
+      font-size: 0.85rem;
+      min-height: 140px;
+      max-height: 400px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+
+    /* Retrieval eval table (the summary box styles live in styles.css) */
+    .eval-table-wrap { overflow-x: auto; margin: 0 0 12px; }
+    .eval-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .eval-table th,
+    .eval-table td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .eval-table thead th { border-bottom-width: 2px; }
+    .eval-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .eval-note { font-size: 0.8rem; color: var(--text-muted); margin: 0 0 24px; }
+  

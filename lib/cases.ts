@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
+export type MenuLink = { href: string; label: string; className?: string; target?: string; rel?: string };
 
-export const cases: { slug: string; title: string; type: string; category: 'AI' | 'Web' | 'Mobile'; metadata: Metadata }[] = [
+export const cases: { slug: string; title: string; type: string; category: 'AI' | 'Web' | 'Mobile'; metadata: Metadata; mobileLinks: MenuLink[] }[] = [
   {
     "slug": "vellum",
     "title": "Vellum",
@@ -29,7 +30,33 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
           "https://hanslaureles.vercel.app/images/og/vellum-mobile-app-vellum-mockup.3632e9ed.jpg"
         ]
       }
-    }
+    },
+    "mobileLinks": [
+      {
+        "href": "index.html",
+        "label": "Selected Work"
+      },
+      {
+        "href": "about.html",
+        "label": "About Me"
+      },
+      {
+        "href": "case-lsfm.html",
+        "label": "Flagship: LSFM AI HQ"
+      },
+      {
+        "href": "Hans_Laureles_Resume.pdf",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "label": "Resume (PDF) ↗"
+      },
+      {
+        "href": "https://github.com/hanslaureles",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "label": "GitHub Profile ↗"
+      }
+    ]
   },
   {
     "slug": "fintrack",
@@ -59,7 +86,33 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
           "https://hanslaureles.vercel.app/images/og/fintrack-mobile-app-fintrack-mockup.48bd6584.jpg"
         ]
       }
-    }
+    },
+    "mobileLinks": [
+      {
+        "href": "index.html",
+        "label": "Selected Work"
+      },
+      {
+        "href": "about.html",
+        "label": "About Me"
+      },
+      {
+        "href": "case-lsfm.html",
+        "label": "Flagship: LSFM AI HQ"
+      },
+      {
+        "href": "Hans_Laureles_Resume.pdf",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "label": "Resume (PDF) ↗"
+      },
+      {
+        "href": "https://github.com/hanslaureles",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "label": "GitHub Profile ↗"
+      }
+    ]
   },
   {
     "slug": "lumina",
@@ -89,7 +142,33 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
           "https://hanslaureles.vercel.app/images/og/lumina-website-lumina-mockup.7cc30dea.jpg"
         ]
       }
-    }
+    },
+    "mobileLinks": [
+      {
+        "href": "index.html",
+        "label": "Selected Work"
+      },
+      {
+        "href": "about.html",
+        "label": "About Me"
+      },
+      {
+        "href": "case-lsfm.html",
+        "label": "Flagship: LSFM AI HQ"
+      },
+      {
+        "href": "Hans_Laureles_Resume.pdf",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "label": "Resume (PDF) ↗"
+      },
+      {
+        "href": "https://github.com/hanslaureles",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "label": "GitHub Profile ↗"
+      }
+    ]
   },
   {
     "slug": "aura",
@@ -119,7 +198,33 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
           "https://hanslaureles.vercel.app/images/og/aura-website-aura-mockup.d7fe7f88.jpg"
         ]
       }
-    }
+    },
+    "mobileLinks": [
+      {
+        "href": "index.html",
+        "label": "Selected Work"
+      },
+      {
+        "href": "about.html",
+        "label": "About Me"
+      },
+      {
+        "href": "case-lsfm.html",
+        "label": "Flagship: LSFM AI HQ"
+      },
+      {
+        "href": "Hans_Laureles_Resume.pdf",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "label": "Resume (PDF) ↗"
+      },
+      {
+        "href": "https://github.com/hanslaureles",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "label": "GitHub Profile ↗"
+      }
+    ]
   },
   {
     "slug": "memory",
@@ -149,7 +254,38 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
           "https://hanslaureles.vercel.app/images/og/memory-core-memory-mockup.8a710b82.jpg"
         ]
       }
-    }
+    },
+    "mobileLinks": [
+      {
+        "href": "index.html",
+        "label": "Selected Work"
+      },
+      {
+        "href": "about.html",
+        "label": "About Me"
+      },
+      {
+        "href": "case-lsfm.html",
+        "label": "Flagship: LSFM AI HQ"
+      },
+      {
+        "href": "case-memory.html",
+        "className": "active",
+        "label": "Memory Core"
+      },
+      {
+        "href": "Hans_Laureles_Resume.pdf",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "label": "Resume (PDF) ↗"
+      },
+      {
+        "href": "https://github.com/hanslaureles",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "label": "GitHub Profile ↗"
+      }
+    ]
   },
   {
     "slug": "ciel",
@@ -179,7 +315,47 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
           "https://hanslaureles.vercel.app/images/og/ciel-ciel-mockup.76ad2967.jpg"
         ]
       }
-    }
+    },
+    "mobileLinks": [
+      {
+        "href": "index.html",
+        "label": "Selected Work"
+      },
+      {
+        "href": "#",
+        "className": "open-sakura-btn u-c-tone-pink u-fw-600",
+        "label": "🌸 Ask Sakura (AI Copilot)"
+      },
+      {
+        "href": "about.html",
+        "label": "About Me"
+      },
+      {
+        "href": "case-ciel.html",
+        "className": "active u-c-tone-amber u-fw-600",
+        "label": "✦ Manas: Ciel"
+      },
+      {
+        "href": "case-lsfm.html",
+        "label": "LSFM AI HQ"
+      },
+      {
+        "href": "case-memory.html",
+        "label": "Memory Core"
+      },
+      {
+        "href": "Hans_Laureles_Resume.pdf",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "label": "Resume (PDF) ↗"
+      },
+      {
+        "href": "https://github.com/hanslaureles",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "label": "GitHub Profile ↗"
+      }
+    ]
   },
   {
     "slug": "lsfm",
@@ -209,6 +385,33 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
           "https://hanslaureles.vercel.app/images/og/lsfm-hq-lsfm-hq-mockup.50a40e3c.jpg"
         ]
       }
-    }
+    },
+    "mobileLinks": [
+      {
+        "href": "index.html",
+        "label": "Selected Work"
+      },
+      {
+        "href": "about.html",
+        "label": "About Me"
+      },
+      {
+        "href": "case-lsfm.html",
+        "className": "active",
+        "label": "Flagship: LSFM AI HQ"
+      },
+      {
+        "href": "Hans_Laureles_Resume.pdf",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "label": "Resume (PDF) ↗"
+      },
+      {
+        "href": "https://github.com/hanslaureles",
+        "target": "_blank",
+        "rel": "noopener noreferrer",
+        "label": "GitHub Profile ↗"
+      }
+    ]
   }
 ];
