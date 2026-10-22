@@ -31,7 +31,8 @@ def fixture(extra_html="", policy=lambda p: p, aura_only=False):
         "import config from './next.config.mjs'; console.log(JSON.stringify(await config.headers()))"],
         cwd=REPO, capture_output=True, text=True, check=True)
     rules = json.loads(result.stdout)
-    rules[0]["source"] = "/(.*)"
+    headers = next(r["headers"] for r in rules if r["source"] == "/aura-store/:path*")
+    rules = [{"source": "/(.*)", "headers": headers}]
     (tmp / "vercel.json").write_text(policy(json.dumps({"headers": rules})), encoding="utf-8")
     (tmp / "netlify.toml").write_text(policy((REPO / "netlify.toml").read_text(encoding="utf-8")), encoding="utf-8")
     for p in [*ROOT.glob("aura-store/*.html"), *([] if aura_only else ROOT.glob("*.html"))]:

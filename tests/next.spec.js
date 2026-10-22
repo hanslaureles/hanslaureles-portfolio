@@ -1,5 +1,28 @@
 const { test, expect } = require('@playwright/test');
-const { LEGACY_CSP } = require('../lib/csp.mjs');
+const { LEGACY_CSP, buildCsp } = require('../lib/csp.mjs');
+
+test('CSP nonce is per request', async ({ request }) => {
+  for (const path of ['/no-such-page']) {
+    const nonces = [];
+    for (let i = 0; i < 2; i++) {
+      const response = await request.get(path);
+      const policy = response.headers()['content-security-policy'];
+      const nonce = /'nonce-([^']+)'/.exec(policy || '')?.[1];
+      expect(nonce).toBeTruthy();
+      expect(Buffer.from(nonce, 'base64')).toHaveLength(16);
+      expect(policy).toBe(buildCsp(nonce));
+      expect(response.headers()['cache-control']).not.toContain('public');
+      nonces.push(nonce);
+    }
+    expect(nonces[0]).not.toBe(nonces[1]);
+  }
+});
+
+test('legacy pages keep the hash CSP', async ({ request }) => {
+  for (const path of ['/', '/about', '/case-ciel', '/ciel-hud', '/aura-store', '/aura-store/checkout']) {
+    expect((await request.get(path)).headers()['content-security-policy']).toBe(LEGACY_CSP);
+  }
+});
 
 test('legacy URLs', async ({ request }) => {
   for (const [source, target] of [

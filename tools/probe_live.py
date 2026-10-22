@@ -91,7 +91,7 @@ def main():
         "import config from './next.config.mjs'; console.log(JSON.stringify(await config.headers()))"],
         cwd=REPO, capture_output=True, text=True, check=True)
     rules = json.loads(result.stdout)
-    csp = {h["key"].lower(): h["value"] for r in rules if r["source"] == "/:path*" for h in r["headers"]}
+    csp = {h["key"].lower(): h["value"] for r in rules if r["source"] == "/aura-store/:path*" for h in r["headers"]}
     # The CSP is enforced (batch B, 2026-10-06): the enforced header must match vercel.json and the
     # report-only header must be gone, so a revert to report-only shows up as a failure.
     # A key missing from both sides would compare None == None, so require it in vercel.json first.

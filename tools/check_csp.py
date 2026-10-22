@@ -73,7 +73,7 @@ def policies():
             "import config from './next.config.mjs'; console.log(JSON.stringify(await config.headers()))"],
             cwd=REPO, capture_output=True, text=True, check=True)
         rules = json.loads(result.stdout)
-    vercel = next((h["value"] for r in rules if r["source"] in ("/(.*)", "/:path*") for h in r["headers"]
+    vercel = next((h["value"] for r in rules if r["source"] in ("/(.*)", "/:path*", "/aura-store/:path*") for h in r["headers"]
                    if h["key"] == "Content-Security-Policy"), None)
     netlify = next((h["values"].get("Content-Security-Policy") for h in
                     tomllib.loads(((ROOT if (ROOT / "netlify.toml").is_file() else REPO) / "netlify.toml").read_text(encoding="utf-8")).get("headers", [])
