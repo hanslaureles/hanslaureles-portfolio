@@ -69,6 +69,20 @@ test('app theme controls work under the server nonce policy', async ({ page }) =
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
 });
 
+test('app theme shortcut stands down for IME and editable fields', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'light' });
+  await page.goto('/no-such-page');
+  await page.getByRole('button', { name: 'Toggle light and dark theme' }).click();
+  await page.keyboard.press('Alt+t');
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await page.dispatchEvent('body', 'keydown', { code: 'KeyT', altKey: true, keyCode: 229 });
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await page.evaluate(() => { const input = document.createElement('input'); input.id = 'editable-probe'; document.body.append(input); });
+  await page.locator('#editable-probe').focus();
+  await page.keyboard.press('Alt+t');
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+});
+
 test('app scripts carry the response nonce and fonts stay local', async ({ page, baseURL }) => {
   const remote = [];
   page.on('request', request => { if (new URL(request.url()).origin !== new URL(baseURL).origin) remote.push(request.url()); });

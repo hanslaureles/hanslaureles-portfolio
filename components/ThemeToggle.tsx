@@ -8,7 +8,7 @@ export default function ThemeToggle() {
     setDark(document.documentElement.getAttribute('data-theme') === 'dark');
     function shortcut(event: KeyboardEvent) {
       const target = event.target instanceof Element ? event.target : null;
-      if (event.code === 'KeyT' && event.altKey && !event.ctrlKey && !event.metaKey && !event.repeat && !event.isComposing && !event.getModifierState('AltGraph') && !target?.closest('input,textarea,select,[contenteditable]:not([contenteditable="false"])')) {
+      if (event.code === 'KeyT' && event.altKey && !event.ctrlKey && !event.metaKey && !event.repeat && !event.isComposing && event.keyCode !== 229 && !event.getModifierState('AltGraph') && !target?.closest('input,textarea,select,[contenteditable]:not([contenteditable="false"])')) {
         event.preventDefault();
         toggle();
       }
