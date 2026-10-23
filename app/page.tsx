@@ -1,3 +1,4 @@
+import '../styles/home.css';
 import type { Metadata } from 'next';
 import Hero from '../components/home/Hero';
 import ProjectCards, { ProjectIndex } from '../components/home/ProjectCards';

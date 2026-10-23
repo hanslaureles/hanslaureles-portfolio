@@ -42,7 +42,7 @@ jobs:
       - name: Deploy configs parse
         run: |
           python -c "import json; json.load(open('vercel.json', encoding='utf-8'))"
-          python -c "import tomllib; [tomllib.load(open(p, 'rb')) for p in ('netlify.toml', 'public/aura-store/netlify.toml')]"
+          python -c "import tomllib; tomllib.load(open('public/aura-store/netlify.toml', 'rb'))"
 
       # One h1 per page, no skipped levels (handoff invariant 14).
       - name: Heading outline

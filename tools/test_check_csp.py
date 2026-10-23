@@ -20,8 +20,7 @@ import check_csp
 
 REPO = Path(__file__).resolve().parent.parent
 ROOT = REPO / "public"
-HASHED = ("script-src 'self' 'sha256-CityW3eaBWHgazqMiMn47dd6tTGQlMKpYOtT2YnhMMw=' "
-          "'sha256-M3bwmOirMh114Uru7/L8rAcZ75l+YSyXYEY0hrHB2FY=';")
+HASHED = "script-src 'self';"
 
 
 def fixture(extra_html="", policy=lambda p: p, aura_only=False):
@@ -34,7 +33,7 @@ def fixture(extra_html="", policy=lambda p: p, aura_only=False):
     headers = next(r["headers"] for r in rules if r["source"] == "/aura-store/:path*")
     rules = [{"source": "/(.*)", "headers": headers}]
     (tmp / "vercel.json").write_text(policy(json.dumps({"headers": rules})), encoding="utf-8")
-    (tmp / "netlify.toml").write_text(policy((REPO / "netlify.toml").read_text(encoding="utf-8")), encoding="utf-8")
+    (tmp / "aura-store/netlify.toml").write_text(policy((ROOT / "aura-store/netlify.toml").read_text(encoding="utf-8")), encoding="utf-8")
     for p in [*ROOT.glob("aura-store/*.html"), *([] if aura_only else ROOT.glob("*.html"))]:
         shutil.copy(p, tmp / p.relative_to(ROOT))
     page = tmp / "aura-store/index.html"
@@ -50,6 +49,8 @@ CASES = [  # (name, root, expected exit code)
         "default-src 'self';", "default-src 'self' 'unsafe-inline';"), aura_only=True), 1),
     ("script-src-attr 'unsafe-inline'", lambda: fixture(policy=lambda p: p.replace(HASHED, HASHED + " script-src-attr 'unsafe-inline';")), 1),
     ("unknown stale hash", lambda: fixture(policy=lambda p: p.replace("script-src 'self'", "script-src 'self' 'sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='")), 1),
+    ("retired About hash is stale", lambda: fixture(policy=lambda p: p.replace("script-src 'self'", "script-src 'self' 'sha256-CityW3eaBWHgazqMiMn47dd6tTGQlMKpYOtT2YnhMMw='")), 1),
+    ("retired homepage hash is stale", lambda: fixture(policy=lambda p: p.replace("script-src 'self'", "script-src 'self' 'sha256-M3bwmOirMh114Uru7/L8rAcZ75l+YSyXYEY0hrHB2FY='")), 1),
     ("a real JSON-LD block", lambda: fixture('<script type="application/ld+json">{"@type": "Store"}</script>'), 0),
     ("the site as committed", lambda: fixture(), 0),
 ]

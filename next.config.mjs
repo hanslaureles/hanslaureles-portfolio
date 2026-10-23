@@ -1,5 +1,4 @@
 import { LEGACY_CSP } from './lib/csp.mjs';
-import { legacyPages, legacyPaths } from './lib/legacy-routes.ts';
 
 /** @type {import('next').NextConfig} */
 const config = {
@@ -17,7 +16,6 @@ const config = {
   },
   async rewrites() {
     return [
-      ...legacyPages.map(page => ({ source: `/${page}`, destination: `/${page}.html` })),
       { source: '/ciel', destination: '/case-ciel' },
       { source: '/ciel-hud', destination: '/case-ciel' },
       { source: '/aura-store', destination: '/aura-store/index.html' },
@@ -33,7 +31,7 @@ const config = {
         { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
         { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()' },
       ] },
-      ...[...legacyPaths, '/:page.html', '/aura-store/:path*'].map(source => ({
+      ...['/aura-store/:path*'].map(source => ({
         source, headers: [{ key: 'Content-Security-Policy', value: LEGACY_CSP }],
       })),
       { source: '/images/:path*', headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }] },

@@ -11,6 +11,7 @@ import { ThemeScript } from '../components/ThemeScript';
 import { homeLinks } from '../components/home/HomeLinks';
 import { IconDefinitions } from '../components/home/Icon';
 import './fonts.css';
+import '../styles/styles.css';
 
 const plusJakartaSans = localFont({
   src: './fonts/plus-jakarta-sans/plus-jakarta-sans-latin-normal.woff2',
@@ -178,11 +179,6 @@ export default async function RootLayout({
     >
       <head>
         <base href="/" />
-        <link
-          rel="stylesheet"
-          href={isHome ? '/home.css?v=2.2.34' : '/styles.css?v=2.2.34'}
-          precedence="next"
-        />
         <ThemeScript nonce={nonce} />
       </head>
       <body>

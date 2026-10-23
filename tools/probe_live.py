@@ -31,7 +31,7 @@ BASE = "https://hanslaureles.vercel.app"
 
 PAGES = ["/", "/about", "/case-lsfm", "/case-ciel", "/case-memory", "/case-aura", "/case-lumina",
          "/case-vellum", "/case-fintrack", "/ciel", "/ciel-hud", "/aura-store", "/aura-store/checkout"]
-FILES = ["/Hans_Laureles_Resume.pdf", "/styles.css", "/app.js"]
+FILES = ["/Hans_Laureles_Resume.pdf", "/case-ciel-demo.js", "/case-memory-demo.js"]
 HEADERS = {"x-content-type-options": "nosniff", "x-frame-options": "DENY",
            "referrer-policy": "strict-origin-when-cross-origin"}
 
@@ -55,7 +55,7 @@ def fetch(path):
 
 def main():
     legacy_home = (ROOT / "index.html").is_file()
-    version_source = ROOT / "index.html" if legacy_home else REPO / "app/layout.tsx"
+    version_source = ROOT / "index.html" if legacy_home else REPO / "components/CielDemo.tsx"
     expected_v = re.search(r"\?v=([\d.]+)", version_source.read_text(encoding="utf-8")).group(1)
     problems = []
 

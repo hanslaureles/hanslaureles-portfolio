@@ -1,11 +1,9 @@
 import { randomBytes } from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { buildCsp } from './lib/csp.mjs';
-import { legacyPaths } from './lib/legacy-routes';
 
 export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname.toLowerCase();
-  if (legacyPaths.includes(pathname)) return NextResponse.next();
   const nonce = randomBytes(16).toString('base64');
   const policy = buildCsp(nonce);
   const headers = new Headers(request.headers);

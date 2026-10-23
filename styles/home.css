@@ -2363,11 +2363,7 @@ html[data-view-transition]::view-transition-group(*) { animation: none; }
 /* 5E-1 (as on the old homepage): each work-card title morphs into its case study's <h1>
    and back; off under reduced motion. Same-document theme/filter transitions
    (data-view-transition) leave the titles out, so they only cross-fade. */
-@media (prefers-reduced-motion: no-preference) {
-  @view-transition {
-    navigation: auto;
-  }
-}
+
 html:not([data-view-transition]) #project-lsfm h3 { view-transition-name: case-lsfm-title; }
 html:not([data-view-transition]) #project-ciel h3 { view-transition-name: case-ciel-title; }
 html:not([data-view-transition]) #project-memory h3 { view-transition-name: case-memory-title; }
@@ -2490,7 +2486,7 @@ html[data-motion="off"] .pipeline-dot { display: none; }
 html[data-motion="off"] .project-card { transform: none !important; }
 
 /* Amendment 4: the published landing, with one centred glass-panel column. */
-.hero-section { padding: 48px 0 80px; }
+.hero-section { padding: 48px 0 80px; border-bottom: 0; }
 .hero-headline-wrap { max-width: 1060px; margin: 0 auto 32px; text-align: center; }
 .hero-headline { font-size: clamp(36px, 3.9vw, 56px); font-size-adjust: ch-width 0.48; line-height: 1.15; margin: 0; text-align: center; }
 .hero-unified-box { display: flex; flex-direction: column; gap: 24px; padding: 32px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: linear-gradient(180deg, var(--surface), var(--bg-subtle)); box-shadow: var(--shadow-md); position: relative; }

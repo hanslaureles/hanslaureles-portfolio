@@ -1,15 +1,14 @@
 """
 CSP guard (Phase 5A): the enforced policy allows no inline script except by hash.
 
-  - vercel.json and netlify.toml send the same Content-Security-Policy;
+  - Next.js and the Aura Netlify config send the same static Content-Security-Policy;
   - the effective script policy (script-src-elem / -attr -> script-src ->
     default-src) exists and has no 'unsafe-inline' or *;
   - every inline <script> on every page hashes to a 'sha256-...' in script-src,
-    and every hash in script-src is used, except the documented retired About
-    and homepage theme hashes retained by the unchanged Aura policy until cutover;
+    and every hash in script-src is used;
   - no page has an inline event handler (onclick=...), an srcdoc= or a javascript: URL.
 
-Editing the theme snippet without updating both headers fails here, not in
+Adding an inline script without updating both policies fails here, not in
 production. Hashes are taken over the script text with CRLF -> LF, as the
 browser's HTML parser does, so CRLF working copies and LF deploys agree.
 
@@ -77,7 +76,7 @@ def policies():
     vercel = next((h["value"] for r in rules if r["source"] in ("/(.*)", "/:path*", "/aura-store/:path*") for h in r["headers"]
                    if h["key"] == "Content-Security-Policy"), None)
     netlify = next((h["values"].get("Content-Security-Policy") for h in
-                    tomllib.loads(((ROOT if (ROOT / "netlify.toml").is_file() else REPO) / "netlify.toml").read_text(encoding="utf-8")).get("headers", [])
+                    tomllib.loads((ROOT / "aura-store/netlify.toml").read_text(encoding="utf-8")).get("headers", [])
                     if h.get("for") == "/*"), None)
     return vercel, netlify
 
@@ -114,12 +113,7 @@ def main():
                 problems.append(f"{rel}:{line}: inline <script> {h} is not in script-src")
         problems += [f"{rel}:{line}: inline handler, srcdoc or javascript: URL {what}" for line, what in parser.bad]
 
-    # Theme scripts retired, but D5 keeps Aura's exact legacy policy until cutover.
-    retired = {"sha256-CityW3eaBWHgazqMiMn47dd6tTGQlMKpYOtT2YnhMMw="} if (
-        not (ROOT / "about.html").exists() and (REPO / "app/about/page.tsx").is_file()) else set()
-    if not (ROOT / "index.html").exists() and (REPO / "app/page.tsx").is_file():
-        retired.add("sha256-M3bwmOirMh114Uru7/L8rAcZ75l+YSyXYEY0hrHB2FY=")
-    problems += [f"script-src hash {h} is used by no page (stale)" for h in sorted(allowed - used - retired)]
+    problems += [f"script-src hash {h} is used by no page (stale)" for h in sorted(allowed - used)]
 
     for p in problems:
         print(f"FAIL {p}")
