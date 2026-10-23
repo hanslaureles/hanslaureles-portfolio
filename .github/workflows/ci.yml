@@ -72,8 +72,6 @@ jobs:
         working-directory: tests
     steps:
       - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0 # Same-run parity archives the immutable 4cdd1e0 baseline.
 
       - uses: actions/setup-node@v5
         with:

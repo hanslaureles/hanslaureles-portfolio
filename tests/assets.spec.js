@@ -1,7 +1,9 @@
 const { test, expect } = require('@playwright/test');
 const { existsSync } = require('node:fs');
 const path = require('node:path');
-const { ROUTES } = require('./capture-parity');
+
+const ROUTES = ['/', '/about', '/404', '/case-lsfm', '/case-ciel', '/case-memory',
+  '/case-aura', '/case-lumina', '/case-vellum', '/case-fintrack'];
 
 const REMOVED = [
   'app.js',
