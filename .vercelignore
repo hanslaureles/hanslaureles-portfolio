@@ -1,3 +1,2 @@
 # Test harness: never part of the deployed site.
 tests/
-tools/

@@ -32,7 +32,7 @@ import sys
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-SITE_ROOT = Path(__file__).resolve().parent.parent / "public"
+SITE_ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = SITE_ROOT / "images"
 MANIFEST = Path(__file__).resolve().parent / "image-manifest.json"
 
@@ -145,16 +145,12 @@ def process(src_root: Path, rel: str, want_og: bool) -> tuple[str, dict]:
 
 
 def main() -> int:
-    global SITE_ROOT, OUT_DIR
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--root", type=Path, default=SITE_ROOT, help="Public site output directory")
     ap.add_argument("--src", required=True, type=Path, help="Directory that contains images/<...> originals")
     ap.add_argument("--only", nargs="+", required=True, help="Relative paths (images/...) to process")
     ap.add_argument("--og", nargs="*", default=[], help="Subset of --only that also needs an og:image JPEG")
     ap.add_argument("--jobs", type=int, default=4)
     args = ap.parse_args()
-    SITE_ROOT = args.root.resolve()
-    OUT_DIR = SITE_ROOT / "images"
 
     for tool in ("ffmpeg", "ffprobe"):
         if not shutil.which(tool):

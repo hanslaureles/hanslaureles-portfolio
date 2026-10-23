@@ -7,9 +7,6 @@ desktop.ini
 
 # Playwright smoke tests (tests/)
 node_modules/
-.next/
-.rendered/
-*.tsbuildinfo
 tests/test-results/
 tests/playwright-report/
 
