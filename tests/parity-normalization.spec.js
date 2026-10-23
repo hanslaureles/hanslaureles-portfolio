@@ -16,9 +16,15 @@ test('parity normalization preserves UI, color and layout differences', () => {
 });
 
 test('parity normalization maps only the intended generated font families', () => {
-  for (const [family, expected] of [['__Plus_Jakarta_Sans_a123', 'Plus Jakarta Sans'], ['__Instrument_Serif_b234', 'Instrument Serif'], ['__JetBrains_Mono_c345', 'JetBrains Mono']]) {
+  for (const [family, expected] of [['__Plus_Jakarta_Sans_a123', 'Plus Jakarta Sans'], ['__Instrument_Serif_b234', 'Instrument Serif'], ['__JetBrains_Mono_c345', 'JetBrains Mono'], ['plusJakartaSans_a123', 'Plus Jakarta Sans'], ['instrumentSerif_b234', 'Instrument Serif'], ['jetBrainsMono_c345', 'JetBrains Mono']]) {
     const changed = structuredClone(baseline);
     changed['1280 light']['header[0]'][23] = `"${family}", Arial`;
     expect(normalizeStyles(changed)['1280 light']['header[0]'][23]).toBe(`${expected}, Arial`);
+  }
+  for (const family of ['Wrong Family', 'localFont_a123', 'plusJakartaSansWrong_a123']) {
+    const changed = structuredClone(baseline);
+    changed['1280 light']['header[0]'][23] = family;
+    expect(normalizeStyles(changed)['1280 light']['header[0]'][23]).toBe(family);
+    expect(diff(normalizeStyles(baseline), normalizeStyles(changed))).toBeGreaterThan(0);
   }
 });

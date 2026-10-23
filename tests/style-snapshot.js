@@ -92,8 +92,9 @@ function normalizeStyles(styles) {
       }
       out[view][parent] = values.map((value, index) => index === PROPS.indexOf('font-family') ? value.split(',').map(family => {
         const name = family.trim().replace(/["']/g, '');
-        const match = /^(?:__)?(Plus[_ ]Jakarta[_ ]Sans|Instrument[_ ]Serif|JetBrains[_ ]Mono)(?:_[a-z0-9]+)?$/i.exec(name);
-        return match ? match[1].replaceAll('_', ' ') : name;
+        const match = /^(?:__)?(Plus[_ ]?Jakarta[_ ]?Sans|Instrument[_ ]?Serif|JetBrains[_ ]?Mono)(?:_[a-z0-9]+)?$/i.exec(name);
+        const families = { plusjakartasans: 'Plus Jakarta Sans', instrumentserif: 'Instrument Serif', jetbrainsmono: 'JetBrains Mono' };
+        return match ? families[match[1].replace(/[_ ]/g, '').toLowerCase()] : name;
       }).join(', ') : value);
     }
   }
