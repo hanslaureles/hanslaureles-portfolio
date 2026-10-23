@@ -9,9 +9,11 @@ Stdlib only; scans *.html, aura-store/*.html, *.js and README.md.
 
 import re
 import sys
+import argparse
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+REPO = Path(__file__).resolve().parent.parent
+ROOT = REPO / "public"
 
 TEST_COUNT = "hardcoded test count (goes stale; point at CI instead)"
 
@@ -89,7 +91,7 @@ RETRACTED = [
 
 def main():
     files = sorted([*ROOT.glob("*.html"), *ROOT.glob("aura-store/*.html"), *ROOT.glob("*.js"),
-                    *ROOT.glob("aura-store/*.js"), ROOT / "README.md"])  # README: the public repo's front page
+                    *ROOT.glob("aura-store/*.js"), REPO / "README.md"])  # README: the public repo's front page
     hits = 0
     for path in files:
         for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
@@ -100,10 +102,13 @@ def main():
                     continue
                 if re.search(pattern, line, re.IGNORECASE):
                     hits += 1
-                    print(f"FAIL {path.relative_to(ROOT).as_posix()}:{n}: {why}\n     {line.strip()[:140]}")
+                    print(f"FAIL {(path.relative_to(ROOT) if path.is_relative_to(ROOT) else path.relative_to(REPO)).as_posix()}:{n}: {why}\n     {line.strip()[:140]}")
     print(f"\n{len(files)} files scanned, {hits} retracted claim(s) found")
     return 1 if hits else 0
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, default=ROOT)
+    ROOT = parser.parse_args().root.resolve()
     sys.exit(main())
