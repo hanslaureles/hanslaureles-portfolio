@@ -90,7 +90,7 @@ test('custom 404 returns status 404', async ({ page }) => {
   expect(response.headers()['x-powered-by']).toBeUndefined();
 });
 
-for (const [path, status] of [['/no-such-page', 404], ['/404', 200]]) {
+for (const [path, status] of [['/no-such-page', 404], ['/404', 404]]) {
   test(`404 is readable without JS: ${path}`, async ({ browser, baseURL }) => {
     const context = await browser.newContext({ javaScriptEnabled: false });
     try {
@@ -165,7 +165,7 @@ test('legacy URLs', async ({ request }) => {
     const response = await request.get(source, { maxRedirects: 0 });
     expect(response.status(), source).toBe(308);
     expect(new URL(response.headers().location, response.url()).pathname).toBe(target);
-    expect((await request.get(target, { maxRedirects: 0 })).status()).toBe(200);
+    expect((await request.get(target, { maxRedirects: 0 })).status()).toBe(target === '/404' ? 404 : 200);
   }
   for (const alias of ['/ciel', '/ciel-hud']) {
     const response = await request.get(alias, { maxRedirects: 0 });

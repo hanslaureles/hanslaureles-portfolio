@@ -12,11 +12,7 @@ export function proxy(request: NextRequest) {
   headers.set('x-nonce', nonce);
   headers.set('Content-Security-Policy', policy);
   headers.set('x-portfolio-path', ['/ciel', '/ciel-hud'].includes(pathname) ? '/case-ciel' : pathname);
-  // Next reserves the literal /404 route with status 404; legacy /404 answers 200.
-  const destination = pathname === '/404' ? '/legacy-404' : pathname === '/legacy-404' ? '/no-such-page' : null;
-  const response = destination
-    ? NextResponse.rewrite(new URL(destination, request.url), { request: { headers } })
-    : NextResponse.next({ request: { headers } });
+  const response = NextResponse.next({ request: { headers } });
   response.headers.set('Content-Security-Policy', policy);
   response.headers.set('Cache-Control', 'private, no-store, max-age=0, must-revalidate');
   return response;

@@ -56,11 +56,12 @@ function trackErrors(page, expectedStatus = 200) {
 }
 
 for (const [index, path] of PAGES.entries()) {
+  const expectedStatus = LEGACY_PAGES[index] === '404.html' ? 404 : 200;
   test.describe(LEGACY_PAGES[index], () => {
     test("loads with no console errors or failed requests", async ({ page }) => {
-      const errors = trackErrors(page);
+      const errors = trackErrors(page, expectedStatus);
       const response = await page.goto(path, { waitUntil: "networkidle" });
-      expect(response.status()).toBe(200);
+      expect(response.status()).toBe(expectedStatus);
       expect(errors).toEqual([]);
     });
 
@@ -372,13 +373,15 @@ test("Sakura's agent overview link works from a case page and from the homepage"
 });
 
 // Codex QA F1 (2026-10-21): the prototype's crawler exclusion was copied into the homepage
-// by the port. No published page may ask search engines to drop or not follow it.
-test("no page carries a noindex or nofollow robots directive", async ({ request }) => {
+// by the port. Published pages stay indexable; Next excludes its real 404 page.
+test("published pages stay indexable and the 404 page is excluded", async ({ request }) => {
   const blocked = [];
   for (const path of new Set(PAGES)) {
     const response = await request.get(path);
-    expect(response.status()).toBe(200);
-    if (/<meta[^>]+name=["'](robots|googlebot)["'][^>]*(noindex|nofollow|none)/i.test(await response.text())) blocked.push(path);
+    expect(response.status()).toBe(path === '404' ? 404 : 200);
+    const html = await response.text();
+    if (path === '404') expect(html).toMatch(/<meta[^>]+name=["']robots["'][^>]+content=["']noindex["']/i);
+    else if (/<meta[^>]+name=["'](robots|googlebot)["'][^>]*(noindex|nofollow|none)/i.test(html)) blocked.push(path);
   }
   expect(blocked).toEqual([]);
 });

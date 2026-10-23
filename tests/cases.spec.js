@@ -19,9 +19,15 @@ test('case variants of migrated About return 404 under the nonce policy', async 
   }
 });
 
-test('helper route is not public', async ({ request }) => {
-  expect((await request.get('/legacy-404')).status()).toBe(404);
-  expect((await request.get('/404')).status()).toBe(200);
+test('404 and the removed helper return full not-found pages', async ({ request }) => {
+  for (const route of ['/legacy-404', '/404']) {
+    const response = await request.get(route);
+    expect(response.status()).toBe(404);
+    const html = await response.text();
+    for (const tag of ['header', 'main', 'footer', 'h1']) expect(html).toContain(`<${tag}`);
+    expect(html).toContain('Lost in the');
+  }
+  expect(fs.existsSync(path.join(__dirname, '../app/legacy-404'))).toBe(false);
 });
 
 for (const route of migrated) {
