@@ -11,6 +11,16 @@ const ROUTES = ['/', '/about', '/404', '/case-lsfm', '/case-ciel', '/case-memory
   '/case-aura', '/case-lumina', '/case-vellum', '/case-fintrack'];
 const filename = route => route === '/' ? 'index' : route.slice(1);
 
+async function verifyLegacyPage(base, route) {
+  const file = `${filename(route)}.html`;
+  const response = await fetch(new URL('/' + file, base));
+  const bytes = Buffer.from(await response.arrayBuffer());
+  const baseline = execFileSync('git', ['show', `4cdd1e0:${file}`], { cwd: path.join(__dirname, '..') });
+  assert(response.ok, `${file}: HTTP ${response.status}`);
+  assert(bytes.equals(baseline), `${file}: server bytes differ from 4cdd1e0`);
+  return '/' + file;
+}
+
 async function captureRoute(browser, base, route) {
   const result = { h: [], text: '', links: [], styles: {} };
   for (const width of [1280, 375]) {
@@ -46,7 +56,7 @@ async function captureRoute(browser, base, route) {
   return result;
 }
 
-module.exports = { ROUTES, filename, captureRoute };
+module.exports = { ROUTES, filename, captureRoute, verifyLegacyPage };
 
 if (require.main === module) (async () => {
   const base = process.argv[2];
@@ -59,13 +69,8 @@ if (require.main === module) (async () => {
     for (const route of ROUTES) {
       const target = path.join(out, `${filename(route)}.json`);
       const existing = headOnly ? JSON.parse(fs.readFileSync(target, 'utf8')) : null;
-      const file = `${filename(route)}.html`;
-      const response = await fetch(new URL(file, base + '/'));
-      const bytes = Buffer.from(await response.arrayBuffer());
-      const baseline = execFileSync('git', ['show', `4cdd1e0:${file}`], { cwd: path.join(__dirname, '..') });
-      assert(response.ok, `${file}: HTTP ${response.status}`);
-      assert(bytes.equals(baseline), `${file}: server bytes differ from 4cdd1e0`);
-      const data = await captureRoute(browser, base, '/' + file);
+      const legacyRoute = await verifyLegacyPage(base, route);
+      const data = await captureRoute(browser, base, legacyRoute);
       if (!headOnly || JSON.stringify(existing.head) !== JSON.stringify(data.head)) {
         fs.writeFileSync(target, JSON.stringify(headOnly ? { ...existing, head: data.head } : data) + '\n');
       }
