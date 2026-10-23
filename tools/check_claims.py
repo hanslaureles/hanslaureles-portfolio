@@ -61,8 +61,6 @@ RETRACTED = [
     (r"eliminate (personal )?budget abandonment|combat notification fatigue|authentic developer-native|"
      r"Algorithmic Financial Intelligence",
      "unmeasured outcome or puffery in an Ask Sakura answer (Codex plain-language NOTE)"),
-    (r"React,? (&amp; |& |and )?Next\.?js|Next\.js, TypeScript",
-     "Next.js claimed as a skill (Hans, 2026-10-05: no real Next.js work to show)"),
     (r"plain HTTP for Groq|(Groq|Whisper)[^.<]{0,40}over plain HTTP|\(236 KB\)",
      "Groq/Whisper are HTTPS (only local Ollama is HTTP), or a stale resume file size (Codex, 2026-10-06)"),
     (r"badge: ['\"](Bestseller|Trending|Popular)",

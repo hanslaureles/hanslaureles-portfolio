@@ -13,7 +13,7 @@
 
 ## Implementation and release status
 
-This branch contains the Next.js migration awaiting independent QA and a separately approved production release. The live site still serves the static `4cdd1e0` release. README architecture describes this checkout; it is not a new skills or resume claim (D8).
+The Next.js App Router migration went live on 23 October 2026 through merge [`9c8bec4`](https://github.com/hanslaureles/hanslaureles-portfolio/commit/9c8bec4f092b0cc6080ec90d4d32f20cb12b554a). Production SHA/header probes, the Aura demo checkout, desktop/mobile checks and [main CI](https://github.com/hanslaureles/hanslaureles-portfolio/actions/runs/39939975556) passed. The paired HQ publisher release is `a6618b6`.
 
 ## What is on the site
 
@@ -28,7 +28,7 @@ The homepage combines selected projects, category filters and an Index view, a s
 - `next/font/local` serves committed OFL woff2 files for Plus Jakarta Sans, Instrument Serif and JetBrains Mono. Latin preloads; extended-Latin loads on demand. App builds need no Google network access.
 - `styles/styles.css` is imported by the root layout; `styles/home.css` supplies homepage overrides. Ciel and Memory have route CSS. Two case-demo scripts remain in `public/` because those pages still load them.
 - `public/aura-store/` remains legacy static HTML/CSS/JavaScript with its own font-host CSP and subfolder aliases. Its Netlify config stays; root Netlify fallback files are removed. `vercel.json` remains present; Next configuration owns the migration routes and headers.
-- `public/data/status.json` remains generated and committed on demand. HQ's publisher target change is held on `feat/nextjs-status-target` (`6926e47`) for the paired release; HQ main/runtime are unchanged.
+- `public/data/status.json` remains generated and committed on demand. HQ's publisher now targets `../portfolio-site/public/data/status.json` (`a6618b6`); publishing still requires an explicit run and a separate portfolio commit.
 
 ## Local development and validation
 
@@ -60,7 +60,15 @@ npx playwright test --workers=2
 cd ..
 ```
 
-Tests cover head/style/content parity, visible content without JS, first-paint theme, nonce CSP, API abuse, mobile menus, overlays, accessibility, transitions, local links and a route/asset crawl. The final performance test measures desktop/mobile cold loads with third-party requests blocked. Its immutable homepage gzip ceiling excludes fonts and allows at most 163,840 B growth over `4cdd1e0` per view. The release gate also requires LCP median growth of at most 500 ms.
+The default suite covers visible content without JS, first-paint theme, nonce CSP, API abuse, mobile menus, overlays, accessibility, transitions, local links and a route/asset crawl. Frozen migration style/content/head parity is now opt-in, since approved copy changes can intentionally differ from the `4cdd1e0` fixtures:
+
+```powershell
+cd tests
+npm run test:parity -- --workers=2
+cd ..
+```
+
+The parity comparer, font-family mapping, tolerances and fixtures remain unchanged. The default suite retains their unit tests and the offline baseline-font guard. The final performance test measures desktop/mobile cold loads with third-party requests blocked. Its immutable homepage gzip ceiling excludes fonts and allows at most 163,840 B growth over `4cdd1e0` per view. The release gate also requires LCP median growth of at most 500 ms.
 
 With `next start` running:
 

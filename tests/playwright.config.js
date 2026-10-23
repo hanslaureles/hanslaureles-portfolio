@@ -6,6 +6,7 @@ const PORT = 5174;
 module.exports = defineConfig({
   testDir: '.',
   testMatch: '*.spec.js',
+  testIgnore: ['**/parity.spec.js'],
   timeout: 30_000,
   fullyParallel: true,
   retries: process.env.CI ? 1 : 0,

@@ -211,7 +211,7 @@ export const questions = [
     label: 'Stack',
     question: 'What do you build with?',
     answer:
-      'Python 3.11, TypeScript/JavaScript and React; Groq, Gemini and local Ollama models for the AI side.',
+      'Python 3.11, TypeScript/JavaScript, React and Next.js (App Router); Groq, Gemini and local Ollama models for the AI side.',
   },
   {
     label: 'Start',

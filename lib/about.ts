@@ -212,6 +212,7 @@ export const skills = [
     title: 'Interface Craft & Design',
     items: [
       'React',
+      'Next.js (App Router)',
       'TypeScript & ES6+',
       'Design Tokens & CSS Vars',
       'Figma Prototyping',
