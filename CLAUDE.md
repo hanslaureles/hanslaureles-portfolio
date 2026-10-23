@@ -1,89 +1,51 @@
-# Portfolio project guide
+﻿# Claude Code Project Guide — Portfolio Site (`portfolio-site`)
 
-## Scope and release gate
-
-This checkout implements the portfolio migration on `feat/nextjs`. Production remains the static `4cdd1e0` release until Claude independently clears Phase 6 and Hans separately approves Task 6.5. Codex implements this assigned migration; Claude performs read-only QA. Local commits do not authorize a push, merge, promotion, Vercel configuration change or HQ runtime change.
-
-About skills, the homepage FAQ stack line, HQ `memory/master_resume.md` and the Next.js skill pattern in `tools/check_claims.py` stay unchanged until live verification passes (D8).
+## Project Purpose
+Production developer portfolio and kinetic AI agent showcase for **Hans Aaron Laureles** (Applied AI Engineer & Full-Stack Builder). Live deployed on Vercel.
 
 ## Architecture
+- `index.html`: Homepage (hero, request replay, work grid with filters and Index view, method, experience, proof strip, FAQ, contact). Ported 2026-10-21 from the approved prototype (`portfolio-redesign-prototype` `077d5b9`).
+- `home.css` / `home.js`: the homepage's own stylesheet and script; the homepage does not load `styles.css` or `app.js`. The header is shared with every page, so header changes go into both `home.css` and `styles.css` (and keep the markup identical).
+- `discovery.js` (filters, Index view, pipeline replay, FAQ tabs) and `motion.js` (button, entry and tilt motion): homepage only.
+- `sakura-copilot.js`: "Ask Sakura" in-browser BM25 recruiter copilot, shared by the homepage, About and the case studies (not 404 or the Aura store); it uses Lucide icons where the homepage sprite exists and text glyphs elsewhere.
+- `sentinel.js`: Agent Overview panel on the homepage (labelled scripted replay plus the `data/status.json` snapshot).
+- `case-*.html`: Flagship project case studies (Ciel, LSFM, Cognitive Memory, Aura Store).
+- `vercel.json` & `netlify.toml`: Deployment routing and asset caching configurations.
 
-- `app/`: Next.js App Router server pages, per-page metadata, root header/footer and theme script. Browser behavior lives in focused client components under `components/`: mobile menu, theme toggle, overlays, About view and homepage controls. Keep ordinary anchors for full-document view transitions.
-- `proxy.ts`: fresh 16-byte nonce per app request; forwards the nonce and CSP to rendering, sends the enforced policy and private/no-store HTML. `lib/csp.mjs` is the shared policy source. Aura uses its separate static policy; its pages contain no inline scripts or retired theme hashes.
-- `app/api/sakura/route.ts` and `lib/sakura/`: retrieval-only BM25 answers from committed knowledge. No model/provider calls. Preserve question/body limits, JSON validation, 20-per-minute rate limit and non-HTML responses.
-- `app/version.json/route.ts`: runtime `VERCEL_GIT_COMMIT_SHA`, `Cache-Control: no-store`. The live probe compares it with the checked-out Git HEAD.
-- `app/fonts/`: committed OFL woff2 files with source URLs/hashes and family licences. `next/font/local` preloads Latin; extended-Latin faces load only when needed. Keep CSS variables, unicode ranges and fallback stacks. No Google request at app build time.
-- `styles/styles.css`: shared base, imported by `app/layout.tsx`. `styles/home.css`: homepage overrides, imported by `app/page.tsx`. Ciel and Memory have route CSS. Preserve stylesheet order, the explicit homepage hero reset and the single reduced-motion navigation opt-in.
-- `public/`: images, data, resume PDF, the two still-used case-demo scripts and the **legacy static Aura store**. Keep Aura's scripts/styles, subfolder `netlify.toml`, explicit aliases and Google font hosts. Root Netlify routing is retired.
-- `/404` and unknown paths return 404 with the complete server-rendered custom UI. Old `.html` URLs redirect once to clean routes; `/ciel` and `/ciel-hud` alias `/case-ciel`.
+## Tech Stack
+- Vanilla HTML5, modern semantic CSS (Swiss-inspired editorial design system)
+- Vanilla JavaScript (ES6+), zero heavy frontend framework runtime
 
-## Install, run and build
+## Run Commands
+- Local preview via static server: `npx serve .` or `python -m http.server 3000`
 
-Use Node 24 and Python 3.11 or later. Dependencies are pinned in both lockfiles; test dependencies are separate.
+## Agent Status Snapshot (`data/status.json`)
+- Generated, never hand-edited: from `LE-SSERAFIM-AI-HQ`, run `python -m eunchae_publisher` (writes `../portfolio-site/data/status.json`; `--dry-run` prints it). It validates the schema and rejects anything path- or secret-like.
+- Then commit it here as `chore(data): refresh agent status snapshot`. On-demand only (decision D1): no background job commits it.
+- `sentinel.js` shows a bot as online only if its heartbeat is under 15 minutes old when the page is viewed; older snapshots read "last seen …".
 
-```powershell
-npm ci
-cd tests
-npm ci
-npx playwright install chromium
-cd ..
-npm run dev
-```
+## Build Commands
+- Static site; no compilation or bundling required.
 
-Development uses port 5174. For production validation, stop development first:
+## Test Commands
+- Same checks as CI: `node --check` on every `*.js` and `aura-store/*.js`; `python tools/check_headings.py` (one h1, no skipped levels); `python tools/check_assets.py` (no duplicate script/stylesheet includes, every local include has `?v=`); `python tools/check_claims.py` (retracted claims stay out; add a pattern whenever a claim is withdrawn).
+- Bump `?v=` on every page when shared JS/CSS changes; every page uses the same value (`probe_live.py` requires it).
+- The homepage's inline theme snippet differs from the other pages' (it also sets `data-motion`), so `script-src` carries two hashes; editing either snippet means updating its hash in `vercel.json`, `netlify.toml` and `tools/test_check_csp.py`.
+- Playwright smoke tests (CI job `smoke`): `cd tests && npm ci && npx playwright install chromium && npx playwright test`. Every page: no console errors or failed requests, no serious/critical axe violations, no sideways scroll at 375 or 768 px, all local links resolve; plus theme toggle, keyboard lightbox, mobile menu, and the Aura search placeholder fitting from 400 to 1280 px. Lives in `tests/` with its own package.json so the site root stays plain static files (`.vercelignore` excludes it).
+- Performance budget (`tests/perf.spec.js`, runs with the smoke tests, 6D-2): each page's first-party weight at 1280 and 375 px (bytes as git stores them, LF; Google Fonts blocked) must stay within 10% of `tests/perf-budget.json`; LCP (median of 3 loads) is printed, and gated at max(2× baseline, baseline + 500 ms) once `lcp` in the budget holds runner baselines. After a deliberate size change: `UPDATE_BUDGET=1 npx playwright test perf.spec.js` (PowerShell: `$env:UPDATE_BUDGET='1'`), then commit the JSON.
+- Live probe: `python tools/probe_live.py` (also daily in `.github/workflows/live-probe.yml`): routes, /about.html redirect, security headers, and that production serves the repo's `?v=`.
+- Accessibility rules: text colours come from tokens (`--text-*`, `--tone-*` darken on light backgrounds); always-dark widgets re-declare the dark tokens; overlays go through `window.portfolioOverlay` (scroll lock, inert background, focus return).
 
-```powershell
-npm run build
-npx tsc --noEmit
-$env:VERCEL_GIT_COMMIT_SHA = git rev-parse HEAD
-npm run start
-```
+## Important Constraints
+- High-density typography and kinetic animations must remain 60fps on mobile and desktop.
+- Dark mode aesthetic with strict WCAG contrast compliance.
 
-Run `tsc` after a fresh build so generated route types match the current tree. The SHA assignment is for local verification only; Vercel supplies its own deployment SHA.
+## Known Issues
+- Large static PDF resume and asset links must remain consistent across Vercel route rewrites.
 
-## Validation
+## Security Requirements
+- Client-side static code only; never bundle or expose secret API keys in JavaScript files.
 
-```powershell
-cd tests
-npx playwright test --workers=2
-cd ..
-```
-
-The harness builds and starts Next.js on 5174, supplies current HEAD as the local deployment SHA, and reuses an existing server outside CI. Stop a stale server before testing a new commit. Browser checks cover all ten parity routes including head metadata, visible content without JavaScript, first-paint theme, nonce CSP, API abuse, accessibility, mobile controls, transitions and a 17-route asset crawl. Retired public assets must be absent and unrequested. `tests/probe.spec.js` runs the 18-route live probe locally and verifies its rejection cases.
-
-With `next start` running, export HTML and run the guards on their appropriate roots:
-
-```powershell
-node tests/render-pages.mjs
-python tools/check_headings.py --root .rendered
-python tools/check_claims.py --root .rendered
-python tools/build_metric_cards.py --root .rendered --check
-python tools/build_metric_cards.py --root .rendered --self-test
-python tools/check_headings.py --root public
-python tools/check_claims.py --root public
-python tools/check_assets.py --root public
-python tools/check_csp.py --root public
-python tools/test_check_csp.py --root public
-```
-
-`.rendered/` is ignored. CSP hashing and static include checks target Aura's source HTML; browser tests validate nonce-bearing app HTML. Syntax-check the remaining `public/**/*.js` with `node --check`. Use only a dry run/help when inspecting the image optimizer; do not re-encode assets as housekeeping.
-
-Performance uses three cold loads per page and viewport, blocks third-party requests, reports decoded bytes and fonts-excluded gzip, and compares page weight with the committed budget. Refresh only for a deliberate change:
-
-```powershell
-cd tests
-$env:UPDATE_BUDGET = '1'
-npx playwright test perf.spec.js --workers=2
-Remove-Item Env:UPDATE_BUDGET
-cd ..
-```
-
-The immutable homepage gzip guard remains active during updates: legacy desktop 110,729 B and mobile 69,549 B, plus at most 163,840 B each. Task 6.5 must also verify LCP median growth is at most 500 ms against `4cdd1e0`.
-
-After an approved deployment, check out its exact expected revision and run `python tools/probe_live.py <deployment-url> --root public`. It checks 18 routes including `/404`, `/version.json`, Aura, the PDF, status data and the `.html` redirect, plus enforced CSP/cache policy. Do not run the new probe against static production and mistake the expected version-endpoint failure for release verification.
-
-## Published status and content
-
-`public/data/status.json` is generated by HQ's `eunchae_publisher`, never hand-edited. HQ main still targets the old root `data/status.json`; preserved release branch `feat/nextjs-status-target` at `6926e47` changes it to `../portfolio-site/public/data/status.json`. Ship that branch only with the approved migration release. Do not invoke the publisher or alter HQ runtime during local migration work. The UI labels old snapshots as old; it has no live connection to agents.
-
-Preserve the Swiss editorial typography, CSS tokens, light/dark contrast, reduced motion and keyboard/focus behavior. Ground public copy in repository evidence; do not add credentials, unverified skills, telemetry or performance claims. Keep case-study demo scripts until their actual callers are migrated.
+## Deployment Information
+- Hosted on Vercel (`vercel.json`) with Netlify fallback (`netlify.toml`).
+- Remote: `https://github.com/hanslaureles/hanslaureles-portfolio.git` on branch `main`.

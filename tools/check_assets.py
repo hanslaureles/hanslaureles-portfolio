@@ -9,12 +9,10 @@ Stdlib only; parses *.html and aura-store/*.html.
 """
 
 import sys
-import argparse
 from html.parser import HTMLParser
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
-ROOT = REPO / "public"
+ROOT = Path(__file__).resolve().parent.parent
 
 
 class Includes(HTMLParser):
@@ -65,7 +63,4 @@ def main():
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--root", type=Path, default=ROOT)
-    ROOT = parser.parse_args().root.resolve()
     sys.exit(main())

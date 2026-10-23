@@ -23,18 +23,9 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install and build Next.js
-        run: npm ci && npm run build
-
-      - name: Render production HTML
-        run: |
-          npm run start > /tmp/portfolio-next.log 2>&1 &
-          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:5174/ > /dev/null && break; sleep 1; done
-          node tests/render-pages.mjs
-
       - name: JavaScript syntax
         run: |
-          for f in public/*.js public/aura-store/*.js; do
+          for f in *.js aura-store/*.js; do
             echo "node --check $f"
             node --check "$f"
           done
@@ -42,25 +33,25 @@ jobs:
       - name: Deploy configs parse
         run: |
           python -c "import json; json.load(open('vercel.json', encoding='utf-8'))"
-          python -c "import tomllib; tomllib.load(open('public/aura-store/netlify.toml', 'rb'))"
+          python -c "import tomllib; [tomllib.load(open(p, 'rb')) for p in ('netlify.toml', 'aura-store/netlify.toml')]"
 
       # One h1 per page, no skipped levels (handoff invariant 14).
       - name: Heading outline
-        run: python tools/check_headings.py --root .rendered
+        run: python tools/check_headings.py
 
       # No script/stylesheet included twice; every local include has ?v=.
       - name: Asset includes
-        run: python tools/check_assets.py --root public
+        run: python tools/check_assets.py
 
       # Retracted claims (unbacked cost, stale counts, Groq-first routing...) stay out.
       - name: Retracted claims
-        run: python tools/check_claims.py --root public && python tools/check_claims.py --root .rendered
+        run: python tools/check_claims.py
       # Enforced CSP: no inline handlers, inline scripts only by hash, same policy on Vercel and Netlify (5A).
       - name: CSP guard
-        run: python tools/check_csp.py --root public && python tools/test_check_csp.py --root public
+        run: python tools/check_csp.py && python tools/test_check_csp.py
       # Metric cards match data/bench/*.json, and the pages' prose states the same figures (5E-3).
       - name: Metric cards
-        run: python tools/build_metric_cards.py --root .rendered --check && python tools/build_metric_cards.py --root .rendered --self-test
+        run: python tools/build_metric_cards.py --check && python tools/build_metric_cards.py --self-test
 
   # Browser smoke tests: console errors, axe (no serious/critical), 375 px
   # overflow, local links, theme toggle, keyboard lightbox and mobile menu.
@@ -83,9 +74,6 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install Next.js dependencies
-        run: npm --prefix .. ci
-
       - name: Install test dependencies
         run: npm ci
 
@@ -93,7 +81,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Playwright smoke tests
-        run: npx playwright test --workers=2
+        run: npx playwright test
 
       - name: Upload report on failure
         if: failure()
