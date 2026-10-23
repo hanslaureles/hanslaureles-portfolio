@@ -21,12 +21,13 @@ async function verifyLegacyPage(base, route) {
   return '/' + file;
 }
 
-async function captureRoute(browser, base, route) {
+async function captureRoute(browser, base, route, prepareContext) {
   const result = { h: [], text: '', links: [], styles: {} };
   for (const width of [1280, 375]) {
     for (const theme of ['light', 'dark']) {
       const context = await browser.newContext({ viewport: { width, height: 900 } });
       try {
+        if (prepareContext) await prepareContext(context);
         await context.addInitScript(t => localStorage.setItem('hans_portfolio_theme', t), theme);
         const page = await context.newPage();
         await page.goto(new URL(route, base).href, { waitUntil: 'networkidle' });
