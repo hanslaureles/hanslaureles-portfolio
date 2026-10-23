@@ -9,6 +9,7 @@ const {
 } = require('./capture-parity');
 const { diff, normalizeStyles } = require('./style-snapshot');
 const { startLegacyBaseline } = require('./legacy-baseline');
+const { useCommittedFonts } = require('./legacy-fonts');
 
 const test = base.extend({
   legacyURL: [
@@ -56,7 +57,7 @@ for (const route of ROUTES) {
     expect(actual.links).toEqual(expected.links);
     const legacyRoute = await verifyLegacyPage(legacyURL, route);
     console.log(`${route}: legacy HTML byte-verified against 4cdd1e0`);
-    const legacy = await captureRoute(browser, legacyURL, legacyRoute);
+    const legacy = await captureRoute(browser, legacyURL, legacyRoute, useCommittedFonts);
     // Committed content/head fixtures are portable; style fixtures are not.
     expect(
       diff(normalizeStyles(legacy.styles), normalizeStyles(actual.styles)),
