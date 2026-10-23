@@ -75,6 +75,84 @@ const jetBrainsMono = localFont({
   fallback: ['SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
 });
 
+// Extended faces join the existing families without adding preloads.
+const plusJakartaSansExtended = localFont({
+  src: [
+    {
+      path: './fonts/plus-jakarta-sans/plus-jakarta-sans-latin-ext-normal.woff2',
+      style: 'normal',
+    },
+  ],
+  weight: '300 700',
+  display: 'swap',
+  preload: false,
+  adjustFontFallback: false,
+  variable: '--next-sans-extended',
+  declarations: [
+    {
+      prop: 'font-family',
+      value: 'plusJakartaSans',
+    },
+    {
+      prop: 'unicode-range',
+      value:
+        'U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF',
+    },
+  ],
+});
+const instrumentSerifExtended = localFont({
+  src: [
+    {
+      path: './fonts/instrument-serif/instrument-serif-latin-ext-italic.woff2',
+      style: 'italic',
+    },
+    {
+      path: './fonts/instrument-serif/instrument-serif-latin-ext-normal.woff2',
+      style: 'normal',
+    },
+  ],
+  weight: '400',
+  display: 'swap',
+  preload: false,
+  adjustFontFallback: false,
+  variable: '--next-serif-extended',
+  declarations: [
+    {
+      prop: 'font-family',
+      value: 'instrumentSerif',
+    },
+    {
+      prop: 'unicode-range',
+      value:
+        'U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF',
+    },
+  ],
+});
+const jetBrainsMonoExtended = localFont({
+  src: [
+    {
+      path: './fonts/jetbrains-mono/jetbrains-mono-latin-ext-normal.woff2',
+      style: 'normal',
+    },
+  ],
+  weight: '400 500',
+  display: 'swap',
+  preload: false,
+  adjustFontFallback: false,
+  variable: '--next-mono-extended',
+  declarations: [
+    {
+      prop: 'font-family',
+      value: 'jetBrainsMono',
+    },
+    {
+      prop: 'unicode-range',
+      value:
+        'U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF',
+    },
+  ],
+});
+
 export const metadata: Metadata = {
   title: 'Hans Aaron Laureles',
 };
@@ -95,7 +173,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} ${instrumentSerif.variable} ${jetBrainsMono.variable}`}
+      className={`${plusJakartaSans.variable} ${instrumentSerif.variable} ${jetBrainsMono.variable} ${plusJakartaSansExtended.variable} ${instrumentSerifExtended.variable} ${jetBrainsMonoExtended.variable}`}
       suppressHydrationWarning
     >
       <head>
