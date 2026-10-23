@@ -13,7 +13,7 @@
 
 ## Implementation and release status
 
-The Next.js App Router migration went live on 23 October 2026 through merge [`9c8bec4`](https://github.com/hanslaureles/hanslaureles-portfolio/commit/9c8bec4f092b0cc6080ec90d4d32f20cb12b554a). Production SHA/header probes, the Aura demo checkout, desktop/mobile checks and [main CI](https://github.com/hanslaureles/hanslaureles-portfolio/actions/runs/39939975556) passed. The paired HQ publisher release is `a6618b6`.
+The Next.js App Router migration went live on 23 October 2026 through merge [`9c8bec4`](https://github.com/hanslaureles/hanslaureles-portfolio/commit/9c8bec4f092b0cc6080ec90d4d32f20cb12b554a). Production SHA/header probes, the Aura demo checkout, desktop/mobile checks and [main CI](https://github.com/hanslaureles/hanslaureles-portfolio/actions/runs/39939975556) passed. The paired HQ publisher release is `a6618b6`. The Next.js skill claims followed in [`3e7b4ef`](https://github.com/hanslaureles/hanslaureles-portfolio/commit/3e7b4ef4e097b61416c87dd51bf8d296dd688705) once production was verified.
 
 ## What is on the site
 
@@ -60,15 +60,7 @@ npx playwright test --workers=2
 cd ..
 ```
 
-The default suite covers visible content without JS, first-paint theme, nonce CSP, API abuse, mobile menus, overlays, accessibility, transitions, local links and a route/asset crawl. Frozen migration style/content/head parity is now opt-in, since approved copy changes can intentionally differ from the `4cdd1e0` fixtures:
-
-```powershell
-cd tests
-npm run test:parity -- --workers=2
-cd ..
-```
-
-The parity comparer, font-family mapping, tolerances and fixtures remain unchanged. The default suite retains their unit tests and the offline baseline-font guard. The final performance test measures desktop/mobile cold loads with third-party requests blocked. Its immutable homepage gzip ceiling excludes fonts and allows at most 163,840 B growth over `4cdd1e0` per view. The release gate also requires LCP median growth of at most 500 ms.
+The default suite covers visible content without JS, first-paint theme, nonce CSP, API abuse, mobile menus, overlays, accessibility, transitions, local links and a route/asset crawl. The style/content/head parity suite that compared the migration with frozen static `4cdd1e0` captures was retired after release, because approved copy changes now differ from those captures on purpose. The performance test measures desktop/mobile cold loads with third-party requests blocked. Its immutable homepage gzip ceiling excludes fonts and allows at most 163,840 B growth over `4cdd1e0` per view.
 
 With `next start` running:
 
@@ -87,9 +79,9 @@ python tools/test_check_csp.py --root public
 
 `.rendered/` is ignored. The rendered checks inspect app copy; static include/hash checks inspect Aura's HTML. Syntax-check all remaining `public/**/*.js` with `node --check`. CI runs on main pushes and pull requests. Refresh performance budgets deliberately from `tests/` with `$env:UPDATE_BUDGET='1'; npx playwright test perf.spec.js --workers=2`, then remove that environment variable and review the budget diff; the homepage gzip ceiling still applies during an update.
 
-After an approved deployment, `python tools/probe_live.py <deployment-url> --root public` checks 18 routes and compares `/version.json` with local `git rev-parse HEAD`. The endpoint is no-store and reads Vercel's deployment SHA. The probe also checks app nonce CSP, Aura's static CSP, the custom 404, redirect and status-data cache policy. The daily workflow runs this probe against production after release; it cannot verify the still-static production release with the new endpoint.
+After an approved deployment, `python tools/probe_live.py <deployment-url> --root public` checks 18 routes and compares `/version.json` with local `git rev-parse HEAD`. The endpoint is no-store and reads Vercel's deployment SHA. The probe also checks app nonce CSP, Aura's static CSP, the custom 404, redirect and status-data cache policy. A daily workflow runs this probe against production.
 
-See [CLAUDE.md](CLAUDE.md) for release boundaries and maintenance commands. About/FAQ skills, the resume and the claims guard remain gated on Task 6.5 live verification.
+See [CLAUDE.md](CLAUDE.md) for release boundaries and maintenance commands.
 
 
 ## Contact
