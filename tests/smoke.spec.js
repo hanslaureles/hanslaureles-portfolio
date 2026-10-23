@@ -7,21 +7,16 @@ const nodePath = require("path");
 const { test, expect } = require("@playwright/test");
 const { default: AxeBuilder } = require("@axe-core/playwright");
 
-// The policy production sends (vercel.json is the single source). serve.py ignores
-// vercel.json, so the CSP test adds the header to each page itself.
-const CSP = JSON.parse(fs.readFileSync(nodePath.join(__dirname, "..", "vercel.json"), "utf8"))
-  .headers.find((h) => h.source === "/(.*)").headers
-  .find((h) => h.key === "Content-Security-Policy").value;
-
-const PAGES = [
+const LEGACY_PAGES = [
   "index.html", "about.html", "404.html",
   "case-lsfm.html", "case-ciel.html", "case-memory.html", "case-aura.html",
   "case-lumina.html", "case-vellum.html", "case-fintrack.html",
   "aura-store/index.html", "aura-store/checkout.html", "aura-store/confirmation.html",
-  // The URLs production actually lands on: Vercel redirects /aura-store/index.html and
-  // /aura-store/ to /aura-store, where relative URLs resolve against "/" (serve.py routes the same way).
+  // Retain the original Aura coverage slots while requesting their clean URLs.
   "aura-store", "aura-store/checkout", "aura-store/confirmation",
 ];
+const cleanPath = p => p.replace(/^index\.html$/, "/").replace(/aura-store\/index\.html$/, "aura-store").replace(/\.html$/, "");
+const PAGES = LEGACY_PAGES.map(cleanPath);
 
 async function axeBlocking(page, include) {
   let builder = new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]);
@@ -40,36 +35,33 @@ async function expectFocusTrapped(page, dialog) {
   }
 }
 
-// Serve every document with the vercel.json CSP enforced and collect violations in window.__csp.
+// Observe the server's own CSP, including request nonces on App Router pages.
 async function enforceCsp(page) {
   await page.addInitScript(() => {
     window.__csp = [];
     document.addEventListener("securitypolicyviolation",
       (e) => window.__csp.push(`${e.violatedDirective} ${e.blockedURI || "(inline)"} ${e.sourceFile || ""}:${e.lineNumber}`));
   });
-  await page.route("**/*", async (route) => {
-    if (route.request().resourceType() !== "document") return route.continue();
-    const response = await route.fetch();
-    await route.fulfill({ response, headers: { ...response.headers(), "content-security-policy": CSP } });
-  });
 }
 
-function trackErrors(page) {
+function trackErrors(page, expectedStatus = 200) {
   const errors = [];
-  page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
+  page.on("console", (m) => { if (m.type() === "error" && !(expectedStatus === 404 && m.text().includes('404 (Not Found)') && m.location().url.split('?')[0].endsWith('/404'))) errors.push(m.text()); });
   page.on("pageerror", (e) => errors.push(String(e)));
   page.on("requestfailed", (r) => errors.push(`request failed: ${r.url()}`));
   page.on("response", (r) => {
-    if (r.status() >= 400 && r.url().startsWith("http://127.0.0.1")) errors.push(`${r.status()} ${r.url()}`);
+    if (r.status() >= 400 && r.url().startsWith("http://127.0.0.1") && !(r.status() === expectedStatus && r.request().resourceType() === 'document')) errors.push(`${r.status()} ${r.url()}`);
   });
   return errors;
 }
 
-for (const path of PAGES) {
-  test.describe(path, () => {
+for (const [index, path] of PAGES.entries()) {
+  const expectedStatus = LEGACY_PAGES[index] === '404.html' ? 404 : 200;
+  test.describe(LEGACY_PAGES[index], () => {
     test("loads with no console errors or failed requests", async ({ page }) => {
-      const errors = trackErrors(page);
-      await page.goto(path, { waitUntil: "networkidle" });
+      const errors = trackErrors(page, expectedStatus);
+      const response = await page.goto(path, { waitUntil: "networkidle" });
+      expect(response.status()).toBe(expectedStatus);
       expect(errors).toEqual([]);
     });
 
@@ -138,11 +130,8 @@ for (const path of PAGES) {
       });
       const broken = [];
       for (const p of urls) {
-        // Vercel's cleanUrls serves /about as about.html; the static server needs the file name.
-        const candidates = /\.[a-z0-9]+$/i.test(p) || p.endsWith("/") ? [p] : [p, `${p}.html`];
-        let ok = false;
-        for (const c of candidates) if ((await request.get(c)).ok()) { ok = true; break; }
-        if (!ok) broken.push(p);
+        // All public clean paths resolve directly on the Next server.
+        if (!(await request.get(p)).ok()) broken.push(p);
       }
       expect(broken).toEqual([]);
     });
@@ -150,7 +139,7 @@ for (const path of PAGES) {
 }
 
 test("theme toggle switches data-theme and back", async ({ page }) => {
-  await page.goto("case-memory.html"); // the page where a duplicate app.js once made this a no-op
+  await page.goto("case-memory"); // the page where a duplicate app.js once made this a no-op
   const html = page.locator("html");
   const before = await html.getAttribute("data-theme");
   await page.locator(".theme-toggle-btn").first().click();
@@ -160,7 +149,7 @@ test("theme toggle switches data-theme and back", async ({ page }) => {
 });
 
 test("lightbox opens from the keyboard, closes with Escape, and returns focus", async ({ page }) => {
-  await page.goto("case-aura.html");
+  await page.goto("case-aura");
   const trigger = page.locator(".gallery-item .lightbox-trigger, .full-width-image .lightbox-trigger").first();
   await trigger.focus();
   await expect(trigger).toBeFocused();
@@ -179,7 +168,7 @@ test("lightbox opens from the keyboard, closes with Escape, and returns focus", 
 
 test("mobile menu exposes its state and closes with Escape", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
-  await page.goto("index.html");
+  await page.goto("/");
   const button = page.locator(".mobile-menu-btn");
   await expect(button).toHaveAttribute("aria-expanded", "false");
   await button.click();
@@ -200,18 +189,19 @@ for (const scheme of ["light", "dark"]) {
     test.use({ colorScheme: scheme });
 
     test("Sakura drawer with an answer", async ({ page }) => {
-      await page.goto("index.html", { waitUntil: "networkidle" });
+      await page.goto("/", { waitUntil: "networkidle" });
       await page.locator(".sakura-floating-trigger").click();
       await expect(page.locator("#sakuraDrawer")).toBeVisible();
       await page.locator("#sakuraSearchInput").fill("multi-agent experience");
       await page.keyboard.press("Enter");
-      await expect(page.locator("#sakuraOutput")).not.toBeEmpty();
+      await expect(page.locator("#sakuraOutput .sakura-answer-card.primary")).toBeVisible();
+      await expect(page.locator("#sakuraOutput .sakura-answer-title")).toHaveText("LSFM AI HQ — 5-Agent Team");
       await page.waitForTimeout(SETTLE_MS);
       expect(await axeBlocking(page, "#sakuraDrawer")).toEqual([]);
     });
 
     test("Sentinel modal after a mission replay", async ({ page }) => {
-      await page.goto("index.html", { waitUntil: "networkidle" });
+      await page.goto("/", { waitUntil: "networkidle" });
       await page.locator("#sentinelToggleBtn").click();
       await page.locator("#sentinelReplayBtn").click();
       await expect(page.locator("#sentinelLogFeed .log-highlight").nth(1)).toBeVisible({ timeout: 10_000 });
@@ -221,14 +211,14 @@ for (const scheme of ["light", "dark"]) {
 
     test("mobile drawer", async ({ page }) => {
       await page.setViewportSize({ width: 375, height: 812 });
-      await page.goto("index.html", { waitUntil: "networkidle" });
+      await page.goto("/", { waitUntil: "networkidle" });
       await page.locator(".mobile-menu-btn").click();
       await page.waitForTimeout(SETTLE_MS);
       expect(await axeBlocking(page, ".mobile-drawer")).toEqual([]);
     });
 
     test("lightbox", async ({ page }) => {
-      await page.goto("case-aura.html", { waitUntil: "networkidle" });
+      await page.goto("case-aura", { waitUntil: "networkidle" });
       await page.locator(".lightbox-trigger").first().click();
       await page.waitForTimeout(SETTLE_MS);
       expect(await axeBlocking(page, ".lightbox-modal")).toEqual([]);
@@ -249,7 +239,7 @@ test.describe("agent overview status snapshot", () => {
     page.on("console", (m) => m.type() === "error" && !m.text().startsWith("Failed to load resource") && errors.push(m.text()));
     page.on("pageerror", (e) => errors.push(e.message));
     await page.route("**/data/status.json", fulfill);
-    await page.goto("index.html", { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "networkidle" });
     await page.locator("#sentinelToggleBtn").click();
     return errors;
   }
@@ -274,6 +264,12 @@ test.describe("agent overview status snapshot", () => {
       kazuha: { status: "online", last_heartbeat_utc: iso(-MIN) },
       yunjin: { status: "online", last_heartbeat_utc: iso(-MIN) },
       eunchae: { status: "great", last_heartbeat_utc: iso(-MIN) } } } }),
+    "an agent with a non-string status": (route) => route.fulfill({ json: { schema_version: 1, generated_at: iso(-MIN), swarm: {
+      sakura: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      chaewon: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      kazuha: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      yunjin: { status: "online", last_heartbeat_utc: iso(-MIN) },
+      eunchae: { status: ["online"], last_heartbeat_utc: iso(-MIN) } } } }),
     "an agent with a bad heartbeat date": (route) => route.fulfill({ json: { schema_version: 1, generated_at: iso(-MIN), swarm: {
       sakura: { status: "online", last_heartbeat_utc: iso(-MIN) },
       chaewon: { status: "online", last_heartbeat_utc: iso(-MIN) },
@@ -317,7 +313,7 @@ test.describe("agent overview status snapshot", () => {
 
 // 3E-10: the search field showed "Sear…" on phones. Its placeholder must fit whole.
 test("Aura store search shows its whole placeholder from 400 to 1280 px", async ({ page }) => {
-  await page.goto("aura-store/index.html", { waitUntil: "networkidle" });
+  await page.goto("aura-store", { waitUntil: "networkidle" });
   for (const width of [400, 480, 520, 521, 768, 1280]) {
     await page.setViewportSize({ width, height: 812 });
     const { have, need } = await page.locator(".search-bar-pill input").evaluate((input) => {
@@ -334,7 +330,7 @@ test("Aura store search shows its whole placeholder from 400 to 1280 px", async 
 // and the promo strip stays short enough at 320 px to leave the hero on the first screen.
 test("Aura store has 44 px search/back targets and a short promo strip at 320 px", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 812 });
-  await page.goto("aura-store/index.html", { waitUntil: "networkidle" });
+  await page.goto("aura-store", { waitUntil: "networkidle" });
   const h = (sel) => page.locator(sel).evaluate((el) => el.getBoundingClientRect().height);
   expect(await h(".search-bar-pill input")).toBeGreaterThanOrEqual(44);
   expect(await h('a[href="/case-aura.html"]')).toBeGreaterThanOrEqual(44);
@@ -343,7 +339,7 @@ test("Aura store has 44 px search/back targets and a short promo strip at 320 px
 
 // Homepage redesign (2026-10-21): the work filters count and show exactly the spec's groups.
 test("homepage work filters show the listed projects", async ({ page }) => {
-  await page.goto("index.html", { waitUntil: "networkidle" });
+  await page.goto("/", { waitUntil: "networkidle" });
   const groups = {
     All: ["ciel", "lsfm", "memory", "aura", "lumina", "vellum", "fintrack"],
     AI: ["ciel", "lsfm", "memory"], Web: ["aura", "lumina"], Mobile: ["vellum", "fintrack"],
@@ -367,9 +363,9 @@ test("Sakura's agent overview link works from a case page and from the homepage"
     await page.keyboard.press("Enter");
     await page.locator('#sakuraOutput a[href="index.html#project-lsfm"]').first().click();
   };
-  await page.goto("case-lsfm.html", { waitUntil: "networkidle" });
+  await page.goto("case-lsfm", { waitUntil: "networkidle" });
   await ask();
-  await page.waitForURL(/index\.html#project-lsfm$/);
+  await page.waitForURL(/\/#project-lsfm$/);
   await page.waitForLoadState("networkidle");
   await ask();
   await expect(page.locator("#sentinelModal")).toBeVisible();
@@ -377,14 +373,16 @@ test("Sakura's agent overview link works from a case page and from the homepage"
 });
 
 // Codex QA F1 (2026-10-21): the prototype's crawler exclusion was copied into the homepage
-// by the port. No published page may ask search engines to drop or not follow it.
-test("no page carries a noindex or nofollow robots directive", () => {
-  const root = nodePath.join(__dirname, "..");
-  const pages = [...fs.readdirSync(root), ...fs.readdirSync(nodePath.join(root, "aura-store")).map((f) => `aura-store/${f}`)]
-    .filter((f) => f.endsWith(".html"));
-  expect(pages).toContain("index.html");
-  const blocked = pages.filter((f) => /<meta[^>]+name=["'](robots|googlebot)["'][^>]*(noindex|nofollow|none)/i
-    .test(fs.readFileSync(nodePath.join(root, f), "utf8")));
+// by the port. Published pages stay indexable; Next excludes its real 404 page.
+test("published pages stay indexable and the 404 page is excluded", async ({ request }) => {
+  const blocked = [];
+  for (const path of new Set(PAGES)) {
+    const response = await request.get(path);
+    expect(response.status()).toBe(path === '404' ? 404 : 200);
+    const html = await response.text();
+    if (path === '404') expect(html).toMatch(/<meta[^>]+name=["']robots["'][^>]+content=["']noindex["']/i);
+    else if (/<meta[^>]+name=["'](robots|googlebot)["'][^>]*(noindex|nofollow|none)/i.test(html)) blocked.push(path);
+  }
   expect(blocked).toEqual([]);
 });
 
@@ -399,19 +397,19 @@ test("a theme chosen on one page applies on first paint of the other", async ({ 
     await page.unroute("**/*.js*");
     return theme;
   };
-  await page.goto("case-memory.html");
+  await page.goto("case-memory");
   await page.locator(".theme-toggle-btn").first().click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-  expect(await firstPaintTheme("index.html")).toBe("dark");
-  await page.goto("index.html");
+  expect(await firstPaintTheme("/")).toBe("dark");
+  await page.goto("/");
   await page.locator(".theme-toggle-btn").first().click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
-  expect(await firstPaintTheme("case-memory.html")).toBe("light");
+  expect(await firstPaintTheme("case-memory")).toBe("light");
 });
 
 // 8B-2: the failure table names the Phase 6 and 8C guards, each linked at a pinned public commit.
 test("case-lsfm failure table lists the 413, run_daily and single-instance rows, pinned", async ({ page }) => {
-  await page.goto("case-lsfm.html", { waitUntil: "domcontentloaded" });
+  await page.goto("case-lsfm", { waitUntil: "domcontentloaded" });
   const pinned = /^https:\/\/github\.com\/hanslaureles\/lsfm-ai-hq\/blob\/[0-9a-f]{40}\//;
   for (const [when, file, testName] of [["Groq answers 413", "llm_client.py", "TestRollupDispatchCap"],
                                         ["post is half sent", "daily_once.py", "RunDailyTest"],
@@ -440,7 +438,7 @@ for (const path of ["aura-store", "aura-store/checkout", "aura-store/confirmatio
 
 // 5C (Codex 5A NOTE P2): the six payment options were <div>s, reachable by mouse only.
 test("Aura checkout payment options are a keyboard-operable radio group", async ({ page }) => {
-  await page.goto("aura-store/checkout.html", { waitUntil: "networkidle" });
+  await page.goto("aura-store/checkout", { waitUntil: "networkidle" });
   const group = page.getByRole("radiogroup", { name: "Select Payment Method" });
   const radios = group.getByRole("radio");
   await expect(radios).toHaveCount(6);
@@ -464,7 +462,7 @@ const vtNames = (page) => page.evaluate(() => [...document.querySelectorAll("*")
 
 test.describe("view transitions between index and case studies", () => {
   test("the index gives each card title its own transition name", async ({ page }) => {
-    await page.goto("index.html", { waitUntil: "domcontentloaded" });
+    await page.goto("/", { waitUntil: "domcontentloaded" });
     const names = await vtNames(page);
     expect(names.length).toBe(new Set(names).size); // a duplicate name makes the browser skip the transition
     for (const slug of CASE_SLUGS) {
@@ -476,7 +474,7 @@ test.describe("view transitions between index and case studies", () => {
 
   for (const slug of CASE_SLUGS) {
     test(`case-${slug}: the <h1> shares the card's name, once`, async ({ page }) => {
-      await page.goto(`case-${slug}.html`, { waitUntil: "domcontentloaded" });
+      await page.goto(`case-${slug}`, { waitUntil: "domcontentloaded" });
       const names = await vtNames(page);
       expect(names.length).toBe(new Set(names).size);
       expect(await page.locator("h1.case-title").evaluate((el) => getComputedStyle(el).viewTransitionName))
@@ -496,7 +494,7 @@ test.describe("view transitions between index and case studies", () => {
         await page.addInitScript(() => {
           window.addEventListener("pagereveal", (e) => { window.__vt = Boolean(e.viewTransition); });
         });
-        await page.goto("index.html", { waitUntil: "networkidle" });
+        await page.goto("/", { waitUntil: "networkidle" });
         const card = page.locator("article#project-memory");
         await card.locator(selector).filter({ visible: true }).first().click();
         await page.waitForURL(/case-memory/);
@@ -506,7 +504,7 @@ test.describe("view transitions between index and case studies", () => {
   }
 
   test("navigation transitions are opted in only without reduced motion", async ({ page }) => {
-    await page.goto("index.html", { waitUntil: "domcontentloaded" });
+    await page.goto("/", { waitUntil: "domcontentloaded" });
     const where = await page.evaluate(() => {
       const found = [];
       const walk = (rules, media) => {
@@ -534,14 +532,14 @@ for (const motion of ["no-preference", "reduce"]) {
       const m = cs.transform.match(/matrix\(([^,]+)/);
       return m ? Number(m[1]) : (cs.transform === "none" ? 1 : null);
     });
-    await page.goto("case-lsfm.html", { waitUntil: "networkidle" });
+    await page.goto("case-lsfm", { waitUntil: "networkidle" });
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.waitForTimeout(100);
     expect(await scaleX()).toBeLessThan(0.02);
     await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
     await page.waitForTimeout(200);
     expect(await scaleX()).toBeGreaterThan(0.98);
-    for (const other of ["index.html", "aura-store/index.html"]) {
+    for (const other of ["/", "aura-store"]) {
       await page.goto(other, { waitUntil: "domcontentloaded" });
       expect(await scaleX(), other).toBeNull();
     }
@@ -550,8 +548,8 @@ for (const motion of ["no-preference", "reduce"]) {
 
 // 5E-3: metric cards drawn from the recorded runs (tools/build_metric_cards.py, data/bench/).
 // One tick per run; the 12 px, 320 px and axe guards above cover the pages they sit on.
-for (const [path, id, rows, runs] of [["case-ciel.html", "ttfa-2026-10-02", 2, 20],
-                                      ["case-lsfm.html", "llm-roundtrip-2026-10-02", 5, 50]]) {
+for (const [path, id, rows, runs] of [["case-ciel", "ttfa-2026-10-02", 2, 20],
+                                      ["case-lsfm", "llm-roundtrip-2026-10-02", 5, 50]]) {
   test(`${path}: the ${id} card shows every recorded run`, async ({ page }) => {
     await page.goto(path, { waitUntil: "domcontentloaded" });
     const card = page.locator(`figure.metric-card[data-metric="${id}"]`);
@@ -570,7 +568,7 @@ for (const [path, id, rows, runs] of [["case-ciel.html", "ttfa-2026-10-02", 2, 2
 // Aura demo store (its own store.js, not app.js): customizer modal and cart drawer.
 test.describe("Aura store overlays", () => {
   test("customizer: keyboard open, focus inside and trapped, Escape returns focus", async ({ page }) => {
-    await page.goto("aura-store/index.html", { waitUntil: "networkidle" });
+    await page.goto("aura-store", { waitUntil: "networkidle" });
     await expect(page.getByRole("dialog")).toHaveCount(0); // nothing exposed while closed
     const trigger = page.locator(".card-add-pill").first();
     await trigger.focus();
@@ -587,7 +585,7 @@ test.describe("Aura store overlays", () => {
   });
 
   test("cart drawer: hidden while closed, keyboard open, trapped, Escape returns focus", async ({ page }) => {
-    await page.goto("aura-store/index.html", { waitUntil: "networkidle" });
+    await page.goto("aura-store", { waitUntil: "networkidle" });
     const drawer = page.locator("#cart-drawer");
     await expect(drawer).toBeHidden();
     const trigger = page.locator("#cart-trigger");
@@ -621,20 +619,20 @@ test.describe("page scripts and Aura handlers work under the enforced CSP", () =
   });
 
   test("about: the git view toggle switches views", async ({ page }) => {
-    await page.goto("about.html");
+    await page.goto("about");
     await page.locator("#btnViewGit").click();
     await expect(page.locator("#experience-git-view")).toBeVisible();
     await expect(page.locator("#btnViewGit")).toHaveAttribute("aria-selected", "true");
   });
 
   test("case-ciel: a demo chip shows its sample reply", async ({ page }) => {
-    await page.goto("case-ciel.html");
+    await page.goto("case-ciel");
     await page.locator('.ciel-chip[data-query="weather"]').click();
     await expect(page.locator("#ciel-demo-output")).toContainText("wttr.in");
   });
 
   test("case-memory: the recall demo runs on load and from a chip", async ({ page }) => {
-    await page.goto("case-memory.html");
+    await page.goto("case-memory");
     await expect(page.locator("#demo-output")).toContainText("MATCHING LESSONS");
     const chip = page.locator(".memory-chip").first();
     await chip.click();
@@ -648,7 +646,7 @@ test.describe("page scripts and Aura handlers work under the enforced CSP", () =
   });
 
   test("Aura store: promo code copies and nav links filter the menu", async ({ page }) => {
-    await page.goto("aura-store/index.html");
+    await page.goto("aura-store");
     await page.locator(".promo-code").click();
     await expect.poll(() => page.evaluate(() => window.__copied)).toEqual(["AURASIP"]);
     await page.locator(".nav-menu .nav-link", { hasText: "Iced Brews" }).click();
@@ -656,7 +654,7 @@ test.describe("page scripts and Aura handlers work under the enforced CSP", () =
   });
 
   test("Aura checkout: autofill, payment, courier, and express pay to the receipt", async ({ page }) => {
-    await page.goto("aura-store/checkout.html");
+    await page.goto("aura-store/checkout");
     await page.locator(".demo-fill-btn").click();
     await expect(page.locator("#email")).not.toHaveValue("");
     await page.locator('[data-method="card"]').click();
@@ -673,7 +671,7 @@ test.describe("page scripts and Aura handlers work under the enforced CSP", () =
 // 5A-6: the CSP crawl as a test. Every visible button / summary / role=button on every page is
 // clicked once under the enforced policy; any violation on any document fails (a re-added
 // onclick= shows up as script-src-attr).
-for (const path of PAGES.filter((p) => p.endsWith(".html"))) {
+for (const path of PAGES.slice(0, 13)) {
   test(`${path}: clicking every control raises no CSP violation`, async ({ page }) => {
     test.setTimeout(120_000);
     const hits = [];

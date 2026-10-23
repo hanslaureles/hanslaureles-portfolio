@@ -11,49 +11,78 @@
 
 ---
 
+## Implementation and release status
+
+This branch contains the Next.js migration awaiting independent QA and a separately approved production release. The live site still serves the static `4cdd1e0` release. README architecture describes this checkout; it is not a new skills or resume claim (D8).
+
 ## What is on the site
 
-**Case studies** (in site order):
+Seven case studies cover LSFM AI HQ, Manas: Ciel, Memory Core, Aura Coffee & Kitchen, Lumina, Vellum and FinTrack. They use `/case-{lsfm,ciel,memory,aura,lumina,vellum,fintrack}`; old `.html` links redirect, and `/ciel` and `/ciel-hud` remain aliases. The Aura ordering demo is at `/aura-store`; it processes no payment.
 
-1. **LSFM AI HQ** (`case-lsfm.html`): a 5-agent team on Discord, one job per agent, sharing one LLM layer (Groq and Gemini in the cloud, each falling back to the other; optional local Ollama mode).
-2. **Manas: Ciel** (`case-ciel.html`): a bilingual (Japanese/English) voice copilot with a web HUD. It coordinates the five agents or answers directly, remembers the last 8 exchanges in each HUD tab, speaks each sentence as soon as it is written, runs background checks, and reads and writes my Obsidian notes.
-3. **Memory Core** (`case-memory.html`): a lessons-learned memory for AI coding assistants, Python standard library only. Measured results and their dates are on the page.
-4. **Aura Coffee & Kitchen** (`case-aura.html`, demo at `/aura-store`): a one-page coffee ordering demo with a drink customizer and 6 payment options (GCash, Maya, GrabPay, card, QR Ph, cash on delivery). It charges nothing.
-5. **Lumina** (`case-lumina.html`): a student study dashboard on sample data.
-6. **Vellum** (`case-vellum.html`) and 7. **FinTrack** (`case-fintrack.html`): untested Figma concepts.
+The homepage combines selected projects, category filters and an Index view, a scripted request replay, experience, dated evidence, FAQ and contact. About has cards and git views. **Ask Sakura** sends a question to the retrieval-only `/api/sakura` route, which scores committed knowledge with BM25; it makes no model calls. **Agent Overview** combines labelled scripted replay with the published `public/data/status.json` snapshot, not a live agent connection.
 
-**Homepage** (`index.html`, `home.css`, `home.js`): the hero, a scripted replay of one LSFM AI HQ request ("Watch a request run"), all seven projects in one grid with category filters and an Index view (`discovery.js`), how I work, experience, a dated "In the open" proof strip linking each number to its source, a recruiter FAQ and a contact banner. `motion.js` adds the button, entry and card-tilt motion; everything stops under `prefers-reduced-motion`.
+## How this checkout is built
 
-**Interactive parts:**
+- Next.js App Router server pages and per-page metadata; focused React client components handle menus, overlays, theme, About views and homepage interactions. Ordinary anchors preserve full-document view transitions and reduced-motion behavior.
+- `proxy.ts` creates a fresh nonce for app responses and enforces the CSP from `lib/csp.mjs`, with private/no-store HTML. `/404` and unknown URLs return 404 with the full custom page, including without JavaScript.
+- `next/font/local` serves committed OFL woff2 files for Plus Jakarta Sans, Instrument Serif and JetBrains Mono. Latin preloads; extended-Latin loads on demand. App builds need no Google network access.
+- `styles/styles.css` is imported by the root layout; `styles/home.css` supplies homepage overrides. Ciel and Memory have route CSS. Two case-demo scripts remain in `public/` because those pages still load them.
+- `public/aura-store/` remains legacy static HTML/CSS/JavaScript with its own font-host CSP and subfolder aliases. Its Netlify config stays; root Netlify fallback files are removed. `vercel.json` remains present; Next configuration owns the migration routes and headers.
+- `public/data/status.json` remains generated and committed on demand. HQ's publisher target change is held on `feat/nextjs-status-target` (`6926e47`) for the paired release; HQ main/runtime are unchanged.
 
-- **Ask Sakura** (`sakura-copilot.js`, on the homepage, About and the case studies): in-browser BM25 Q&A over 17 hand-written knowledge chunks, with suggestion chips and links to the source page. Nothing is sent to a server.
-- **Agent Overview** (`sentinel.js`, homepage): a labelled, scripted replay of the agents' real schedules and pipeline steps, plus the published status snapshot `data/status.json`. A bot shows as online only if its heartbeat was under 15 minutes old when the page is viewed. The site has no live connection to the agents.
+## Local development and validation
 
-## How it is built
+Use Node 24 and Python 3.11 or later. Root and test dependencies have separate lockfiles:
 
-- Static HTML, CSS and vanilla JavaScript: no framework, no build step.
-- Swiss editorial design system: Plus Jakarta Sans, Instrument Serif and JetBrains Mono; colour tokens in CSS custom properties; light and dark themes.
-- The homepage has its own stylesheet and script (`home.css`, `home.js`); every other page shares `styles.css` and `app.js`. The header is the same on all pages, so a header change goes into both stylesheets.
-- Homepage icons are inline [Lucide](https://lucide.dev/) SVG (no package or CDN); see [Icon credit](#icon-credit).
-- Hosted on Vercel from `main` (`vercel.json`: clean URLs, redirects, security headers and an enforced Content Security Policy with hashed inline scripts). `netlify.toml` and `_redirects` are fallback route files for other hosts.
-- `data/status.json` is generated by `eunchae_publisher` in the agents' repo and committed here on demand; it is never hand-edited.
-
-## Checks
-
-CI (`.github/workflows/ci.yml`) runs on every push:
-
-- `node --check` on every script, and `tools/check_headings.py`, `check_assets.py`, `check_claims.py` (retracted claims and retired names stay out, this README included), `check_csp.py`, `build_metric_cards.py --check`.
-- Playwright smoke tests (`tests/`): every page loads with no console errors or failed requests, no serious or critical axe violations, no sideways scroll at 375 or 768 px, and every local link resolves; plus a per-page weight budget.
-
-A daily job (`live-probe.yml`) checks that production serves the routes, the security headers and this repo's `?v=` asset versions.
-
-## Local preview
-
-```bash
-python -m http.server 8080
+```powershell
+npm ci
+cd tests
+npm ci
+npx playwright install chromium
+cd ..
+npm run dev
 ```
 
-Then open `http://localhost:8080`.
+Open `http://localhost:5174`. For a production build, stop the development server first:
+
+```powershell
+npm run build
+npx tsc --noEmit
+$env:VERCEL_GIT_COMMIT_SHA = git rev-parse HEAD
+npm run start
+```
+
+Run the suite from `tests/`; its harness builds/starts Next.js and supplies the local Git SHA. Stop an existing server after changing commits so it cannot serve a stale build:
+
+```powershell
+cd tests
+npx playwright test --workers=2
+cd ..
+```
+
+Tests cover head/style/content parity, visible content without JS, first-paint theme, nonce CSP, API abuse, mobile menus, overlays, accessibility, transitions, local links and a route/asset crawl. The final performance test measures desktop/mobile cold loads with third-party requests blocked. Its immutable homepage gzip ceiling excludes fonts and allows at most 163,840 B growth over `4cdd1e0` per view. The release gate also requires LCP median growth of at most 500 ms.
+
+With `next start` running:
+
+```powershell
+node tests/render-pages.mjs
+python tools/check_headings.py --root .rendered
+python tools/check_claims.py --root .rendered
+python tools/build_metric_cards.py --root .rendered --check
+python tools/build_metric_cards.py --root .rendered --self-test
+python tools/check_headings.py --root public
+python tools/check_claims.py --root public
+python tools/check_assets.py --root public
+python tools/check_csp.py --root public
+python tools/test_check_csp.py --root public
+```
+
+`.rendered/` is ignored. The rendered checks inspect app copy; static include/hash checks inspect Aura's HTML. Syntax-check all remaining `public/**/*.js` with `node --check`. CI runs on main pushes and pull requests. Refresh performance budgets deliberately from `tests/` with `$env:UPDATE_BUDGET='1'; npx playwright test perf.spec.js --workers=2`, then remove that environment variable and review the budget diff; the homepage gzip ceiling still applies during an update.
+
+After an approved deployment, `python tools/probe_live.py <deployment-url> --root public` checks 18 routes and compares `/version.json` with local `git rev-parse HEAD`. The endpoint is no-store and reads Vercel's deployment SHA. The probe also checks app nonce CSP, Aura's static CSP, the custom 404, redirect and status-data cache policy. The daily workflow runs this probe against production after release; it cannot verify the still-static production release with the new endpoint.
+
+See [CLAUDE.md](CLAUDE.md) for release boundaries and maintenance commands. About/FAQ skills, the resume and the claims guard remain gated on Task 6.5 live verification.
+
 
 ## Contact
 
