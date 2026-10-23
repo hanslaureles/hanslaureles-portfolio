@@ -1,14 +1,14 @@
 """
 CSP guard (Phase 5A): the enforced policy allows no inline script except by hash.
 
-  - vercel.json and netlify.toml send the same Content-Security-Policy;
+  - Next.js and the Aura Netlify config send the same static Content-Security-Policy;
   - the effective script policy (script-src-elem / -attr -> script-src ->
     default-src) exists and has no 'unsafe-inline' or *;
   - every inline <script> on every page hashes to a 'sha256-...' in script-src,
-    and every hash in script-src is used by some page (no stale hash);
+    and every hash in script-src is used;
   - no page has an inline event handler (onclick=...), an srcdoc= or a javascript: URL.
 
-Editing the theme snippet without updating both headers fails here, not in
+Adding an inline script without updating both policies fails here, not in
 production. Hashes are taken over the script text with CRLF -> LF, as the
 browser's HTML parser does, so CRLF working copies and LF deploys agree.
 
@@ -19,12 +19,15 @@ Stdlib only; parses *.html and aura-store/*.html.
 import base64
 import hashlib
 import json
+import subprocess
 import sys
+import argparse
 import tomllib
 from html.parser import HTMLParser
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+REPO = Path(__file__).resolve().parent.parent
+ROOT = REPO / "public"
 
 
 class Page(HTMLParser):
@@ -63,11 +66,17 @@ def sha256(text):
 
 
 def policies():
-    rules = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))["headers"]
-    vercel = next((h["value"] for r in rules if r["source"] == "/(.*)" for h in r["headers"]
+    if (ROOT / "vercel.json").is_file():
+        rules = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))["headers"]
+    else:
+        result = subprocess.run(["node", "--input-type=module", "-e",
+            "import config from './next.config.mjs'; console.log(JSON.stringify(await config.headers()))"],
+            cwd=REPO, capture_output=True, text=True, check=True)
+        rules = json.loads(result.stdout)
+    vercel = next((h["value"] for r in rules if r["source"] in ("/(.*)", "/:path*", "/aura-store/:path*") for h in r["headers"]
                    if h["key"] == "Content-Security-Policy"), None)
     netlify = next((h["values"].get("Content-Security-Policy") for h in
-                    tomllib.loads((ROOT / "netlify.toml").read_text(encoding="utf-8")).get("headers", [])
+                    tomllib.loads((ROOT / "aura-store/netlify.toml").read_text(encoding="utf-8")).get("headers", [])
                     if h.get("for") == "/*"), None)
     return vercel, netlify
 
@@ -113,4 +122,7 @@ def main():
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--root", type=Path, default=ROOT)
+    ROOT = parser.parse_args().root.resolve()
     sys.exit(main())
