@@ -10,7 +10,7 @@ const { test, expect } = require("@playwright/test");
 const fs = require("fs");
 const path = require("path");
 
-const ROOT = path.resolve(__dirname, "..");
+const ROOT = path.resolve(__dirname, "..", "public");
 const BUDGET_FILE = path.join(__dirname, "perf-budget.json");
 const PAGES = ["index.html", "about.html", "404.html", "case-lsfm.html", "case-ciel.html", "case-memory.html",
   "case-aura.html", "case-lumina.html", "case-vellum.html", "case-fintrack.html",
@@ -18,7 +18,11 @@ const PAGES = ["index.html", "about.html", "404.html", "case-lsfm.html", "case-c
 const VIEWPORTS = { desktop: { width: 1280, height: 800 }, mobile: { width: 375, height: 812 } };
 const WEIGHT_MARGIN = 0.10;
 const LCP_LOADS = 3;
+// Plan §7: immutable 4cdd1e0 gzip baseline, with a one-time 160 KiB runtime allowance.
+const HOME_GZIP_BASELINE = { desktop: 110729, mobile: 69549 };
+const HOME_GZIP_ALLOWANCE = 163840;
 const TEXT_FILE = /\.(html|css|js|mjs|json|svg|txt|webmanifest)$/;
+const SELECTED = process.env.PERF_PAGES ? process.env.PERF_PAGES.split(',') : PAGES;
 
 // Bytes as git stores them (LF). A Windows checkout with core.autocrlf=true has CRLF
 // text files, 1.6-4.3 % heavier per page (measured 2026-10-07); dropping the CRs makes a
@@ -46,15 +50,17 @@ async function load(browser, baseURL, page, viewport) {
     await tab.waitForLoadState("networkidle");
     const { entries, lcp } = await tab.evaluate(o => ({
       entries: [...performance.getEntriesByType("navigation"), ...performance.getEntriesByType("resource")]
-        .filter(e => e.name.startsWith(o)).map(e => ({ url: e.name, size: e.decodedBodySize })),
+        .filter(e => e.name.startsWith(o)).map(e => ({ url: e.name, size: e.decodedBodySize, encoded: e.encodedBodySize })),
       lcp: window.__lcp,
     }), origin);
     const files = {};
-    for (const { url, size } of entries) {
+    let gzip = 0;
+    for (const { url, size, encoded } of entries) {
       const pathname = new URL(url).pathname; // ?v= cache-busters are not part of the name
       files[pathname] = (files[pathname] || 0) + size - carriageReturns(pathname);
+      if (!/\.(woff2?|ttf|otf)$/.test(pathname)) gzip += encoded;
     }
-    return { files, bytes: Object.values(files).reduce((a, b) => a + b, 0), lcp };
+    return { files, bytes: Object.values(files).reduce((a, b) => a + b, 0), gzip, lcp };
   } finally {
     await context.close();
   }
@@ -70,15 +76,18 @@ test("page weight within budget; LCP reported", async ({ browser }, testInfo) =>
   const measured = {};
   const report = [];
 
-  for (const page of PAGES) {
+  for (const page of SELECTED) {
+    expect(PAGES).toContain(page);
     for (const [vp, viewport] of Object.entries(VIEWPORTS)) {
       const loads = [];
       for (let i = 0; i < LCP_LOADS; i++) loads.push(await load(browser, baseURL, page, viewport));
-      const { files, bytes } = loads[0];
+      const { files, bytes, gzip } = loads[0];
       const lcps = loads.map(l => l.lcp).filter(Number.isFinite);
       const lcp = lcps.length ? Math.round(median(lcps)) : null;
       (measured[page] ||= {})[vp] = { bytes, files };
-      report.push({ page, vp, kb: +kb(bytes), lcp_ms: lcp });
+      report.push({ page, vp, bytes, gzip, kb: +kb(bytes), lcp_ms: lcp });
+      if (page === 'index.html') expect.soft(gzip, `homepage ${vp}: amended gzip transfer limit`)
+        .toBeLessThanOrEqual(HOME_GZIP_BASELINE[vp] + HOME_GZIP_ALLOWANCE);
 
       const base = budget.pages?.[page]?.[vp];
       if (!process.env.UPDATE_BUDGET) {
@@ -102,7 +111,7 @@ test("page weight within budget; LCP reported", async ({ browser }, testInfo) =>
     }
   }
 
-  console.log(report.map(r => `${r.page.padEnd(30)} ${r.vp.padEnd(8)} ${String(r.kb).padStart(7)} KB  LCP ${r.lcp_ms} ms`).join("\n"));
+  console.log(report.map(r => `${r.page.padEnd(30)} ${r.vp.padEnd(8)} ${r.bytes} decoded bytes  ${r.gzip} gzip bytes (fonts excluded)  LCP ${r.lcp_ms} ms`).join("\n"));
   await testInfo.attach("perf.json", { body: JSON.stringify(report, null, 1), contentType: "application/json" });
 
   if (process.env.UPDATE_BUDGET) {
@@ -110,7 +119,7 @@ test("page weight within budget; LCP reported", async ({ browser }, testInfo) =>
     for (const views of Object.values(measured)) {
       for (const v of Object.values(views)) v.files = Object.fromEntries(Object.entries(v.files).sort());
     }
-    fs.writeFileSync(BUDGET_FILE, JSON.stringify({ ...budget, pages: measured }, null, 1) + "\n");
+    fs.writeFileSync(BUDGET_FILE, JSON.stringify({ ...budget, pages: { ...budget.pages, ...measured } }, null, 1) + "\n");
     console.log(`wrote ${BUDGET_FILE}`);
   }
 });
