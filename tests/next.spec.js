@@ -1,6 +1,16 @@
 const { test, expect } = require('@playwright/test');
 const { LEGACY_CSP, buildCsp } = require('../lib/csp.mjs');
 
+test('version.json reports the deployment SHA without caching', async ({ request }) => {
+  const response = await request.get('/version.json');
+  expect(response.status()).toBe(200);
+  expect(response.headers()['content-type']).toContain('application/json');
+  expect(response.headers()['cache-control']).toContain('no-store');
+  expect(response.headers()['cache-control']).not.toContain('public');
+  const sha = require('node:child_process').execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+  expect(await response.json()).toEqual({ sha });
+});
+
 test.describe('sakura API', () => {
   let headers;
   test.beforeEach(async ({}, testInfo) => {
