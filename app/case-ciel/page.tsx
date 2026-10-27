@@ -57,7 +57,8 @@ export default function Page() {
             <dt>Measured result</dt>
             <dd>
               Time to first audio fell from 4.60 s to 1.41 s p50 (N=10 each, same prompt and
-              machine, 2026-10-02). The cost: mission-complete p95 rose from 5.99 s to 7.20 s (
+              machine, 2026-10-02); the current build measured 1.56 s p50 on 2026-10-27. The cost:
+              mission-complete p95 rose from 5.99 s to 7.20 s (
               <a
                 href="https://github.com/hanslaureles/lsfm-ai-hq/blob/5fb3216aeaad3cbbb07cae3deef26c81d470da1f/bench/results/2026-10-02-ttfa-before.md"
                 target="_blank"
@@ -1110,6 +1111,12 @@ tools = [
                 </tbody>
               </table>
             </div>
+            <p className="u-fs-0p8rem u-c-text-muted">
+              Re-measured 2026-10-27 on the current build (LE-SSERAFIM-AI-HQ <code>fa5c930</code>,
+              where the router writes a direct answer itself): time to first audio 1.56 s p50 /
+              2.23 s p95, mission complete 3.71 s / 5.72 s, N=10 with none excluded (
+              <code>bench/results/2026-10-27-ciel-ttfa.md</code>).
+            </p>
             <p className="u-fs-0p8rem u-c-text-muted">
               Measured 2026-10-02 with{' '}
               <code>bench/bench_ciel.py --stages e2e_mission --runs 10</code>: the same
