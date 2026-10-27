@@ -70,7 +70,7 @@ export const experience = [
     title: 'Developer — Cognitive Memory Core',
     company:
       'Lessons-Learned Memory for AI Coding Assistants · Open-Source Project',
-    period: '2024 – 2025',
+    period: '2026',
     bullets: [
       'Built a memory for AI coding assistants in plain Python, with no outside packages to install.',
       'Before each coding task, it searches past lessons by keyword and shows the ones that apply.',
@@ -79,12 +79,12 @@ export const experience = [
   },
   {
     title: 'Lead Mobile Developer & Systems Builder — Capstone: Patriot',
-    company: 'DLSU–Dasmariñas · BS Computer Science Capstone',
+    company: 'DLSU–Dasmariñas · Three-Person BS CS Capstone',
     period: '2023 – 2025',
     bullets: [
-      'Designed and built a mobile app (React Native, TypeScript) that matches university students by shared interests.',
-      'Connected it to an AWS backend (Lambda, DynamoDB, Cognito sign-in) with Redis caching so profiles load quickly.',
-      'Ran usability tests with students and used the results to improve navigation, forms and layout.',
+      'Led mobile development of a React Native and TypeScript app for anonymous, keyword-matched student chats.',
+      'Integrated AWS Lambda, DynamoDB and Cognito, with Redis-backed keyword lookup for matchmaking.',
+      'Contributed to a beta capstone evaluated through app demonstrations and questionnaires with 50 campus participants.',
     ],
   },
 ];
@@ -128,7 +128,7 @@ export const milestones = [
   },
   {
     type: 'memory',
-    period: '2024 – 2025',
+    period: '2026',
     title: 'Developer — Cognitive Memory Core',
     description:
       'A lessons-learned memory for AI coding assistants: past mistakes are saved as lessons, recalled before each task, and compiled into workspace rules.',
@@ -156,11 +156,11 @@ export const milestones = [
     period: '2023 – 2025',
     title: 'Lead Mobile Developer — Capstone: Patriot (DLSU-D)',
     description:
-      'A mobile app that matches university students by shared interests, with a cloud backend.',
+      'A three-person capstone: anonymous one-to-one student messaging with keyword-based matching and an AWS backend.',
     bullets: [
-      'AWS backend with fast profile loading',
-      'Interest matching written in TypeScript',
-      'React Native app, improved through usability tests with students',
+      'AWS Lambda, DynamoDB and Cognito integration',
+      'Redis-backed keyword lookup for matchmaking',
+      'React Native and TypeScript app; beta evaluated by 50 campus participants',
     ],
   },
   {

@@ -111,7 +111,7 @@ export const KNOWLEDGE_BASE = [
     summary:
       'Hans designed and built Memory Core, a lessons-learned memory for AI coding assistants, written in the Python standard library with zero pip dependencies.',
     evidence:
-      'Runs BM25 lesson search before each task, logs each mistake as a structured lesson (trigger, symptom, root cause, rule), and compiles lessons that keep recurring into Antigravity workspace rules.',
+      'Runs BM25 lesson search before each task, logs each mistake as a structured lesson (trigger, symptom, root cause, rule), and compiles recurring lessons into shared workspace rules. Built in 2026.',
     linkUrl: 'case-memory.html',
     linkText: 'Read Cognitive Memory Case Study',
   },
@@ -158,9 +158,9 @@ export const KNOWLEDGE_BASE = [
       'mobile',
     ],
     summary:
-      "As Lead Mobile Developer for his BS CS capstone at DLSU-D, Hans engineered 'Patriot', a real-time mobile matchmaking and community system built on serverless cloud microservices.",
+      "As Lead Mobile Developer on a three-person BS CS capstone team at DLSU-D (2023–2025), Hans developed Patriot, an anonymous one-to-one student messaging app with keyword-based matchmaking.",
     evidence:
-      'Built cross-platform mobile frontend in React Native (TypeScript) integrated with AWS Lambda, DynamoDB, Redis in-memory caching, and AWS Cognito auth. Designed custom algorithmic interest scoring via multidimensional matrices and conducted structured usability evaluations with student cohorts.',
+      'Developed the React Native and TypeScript mobile client integrated with AWS Lambda, DynamoDB and Cognito. The documented matching algorithm uses Redis-backed keyword indexing and lookup. The beta capstone was evaluated through app demonstrations and questionnaires with 50 campus participants; community-building remained a recommendation.',
     linkUrl: 'about.html',
     linkText: 'View Capstone Architecture in About Me',
   },
