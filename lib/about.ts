@@ -80,7 +80,7 @@ export const experience = [
   {
     title: 'Lead Mobile Developer & Systems Builder — Capstone: Patriot',
     company: 'DLSU–Dasmariñas · BS Computer Science Capstone',
-    period: '2023 – 2024',
+    period: '2023 – 2025',
     bullets: [
       'Designed and built a mobile app (React Native, TypeScript) that matches university students by shared interests.',
       'Connected it to an AWS backend (Lambda, DynamoDB, Cognito sign-in) with Redis caching so profiles load quickly.',
@@ -153,7 +153,7 @@ export const milestones = [
   },
   {
     type: 'patriot',
-    period: '2023 – 2024',
+    period: '2023 – 2025',
     title: 'Lead Mobile Developer — Capstone: Patriot (DLSU-D)',
     description:
       'A mobile app that matches university students by shared interests, with a cloud backend.',
