@@ -2569,3 +2569,13 @@ main > section:not(.hero-section) { padding: 0 0 var(--section-gap); }
   background: rgba(16, 185, 129, 0.06);
   font-weight: 500;
 }
+
+/* Static labels read as text, not controls (Hans's review, 2026-10-27): no pill border or fill,
+   a small dot or separator instead. Borders stay on things you can click. */
+.badge, .badge-accent { padding: 0; border: 0; border-radius: 0; background: none; }
+.badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.7; flex: none; }
+.badge:has(.badge-dot)::before { content: none; }
+.index-stack li { padding: 0; border: 0; border-radius: 0; }
+.index-stack li + li::before { content: '\00b7'; margin-right: 8px; color: var(--text-muted); }
+a.hero-chip:hover { border-color: var(--text-muted); color: var(--text-primary); }
+a.hero-chip-live:hover { border-color: rgba(16, 185, 129, 0.55); color: var(--tone-emerald); }

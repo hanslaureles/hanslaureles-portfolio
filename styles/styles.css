@@ -3566,3 +3566,11 @@ h1, h2 {
   .mc-axis { margin-left: 0; margin-right: 0; }
   .metric-card-value { font-size: 1.6rem; }
 }
+
+/* Static labels read as text, not controls (Hans's review, 2026-10-27): no pill border or fill,
+   a small dot or hairline instead. Borders stay on things you can click. */
+.badge, .badge-accent { padding: 0; border: 0; border-radius: 0; background: none; }
+.badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.7; flex: none; }
+.badge:has(.badge-dot)::before { content: none; }
+.agent-stack-tag { padding: 0 0 0 8px; border: 0; border-left: 1px solid var(--border-strong); border-radius: 0; background: none; }
+.routing-speed-badge { padding: 0; border: 0; border-radius: 0; background: none; }

@@ -12,19 +12,19 @@ export default function Hero() {
         </div>
         <div className="hero-unified-box">
           <div className="hero-box-header">
-            <div className="hero-chip">
-              <span className="hero-chip-icon">
+            <a className="hero-chip" href="about.html#experience">
+              <span className="hero-chip-icon" aria-hidden="true">
                 <Icon name="graduation-cap" />
               </span>
               <span>BS Computer Science Graduate · DLSU-D</span>
-            </div>
-            <div className="hero-chip hero-chip-live">
+            </a>
+            <a className="hero-chip hero-chip-live" href="#contact">
               <span className="badge-dot" aria-hidden="true" />
               <span>
                 Based in Cavite, PH · open to remote Applied AI &amp; full-stack
                 roles
               </span>
-            </div>
+            </a>
             <a className="hero-chip hero-chip-proof" href="#in-the-open">
               <span className="hero-chip-icon" aria-hidden="true">
                 <Icon name="circle-check" />
