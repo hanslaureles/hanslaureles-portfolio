@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <CaseLayout slug="lsfm" title="LSFM AI HQ — Case Study · Hans Aaron Laureles">
       <div className="case-hero">
-        <a href="index.html" className="case-back-link">
+        <a href="/index.html" className="case-back-link">
           Return to Selected Work
         </a>
         <div className="u-d-flex u-gap-8px u-mb-16px u-wrap-wrap">
@@ -213,23 +213,23 @@ export default function Page() {
           <picture>
             <source
               type="image/avif"
-              srcSet="images/lsfm-hq/lsfm-hq-mockup-480.c86b4aba.avif 480w, images/lsfm-hq/lsfm-hq-mockup-960.9ba78915.avif 960w, images/lsfm-hq/lsfm-hq-mockup-1600.02722453.avif 1600w, images/lsfm-hq/lsfm-hq-mockup-2400.1dc6a8f5.avif 2400w"
+              srcSet="/images/lsfm-hq/lsfm-hq-mockup-480.c86b4aba.avif 480w, /images/lsfm-hq/lsfm-hq-mockup-960.9ba78915.avif 960w, /images/lsfm-hq/lsfm-hq-mockup-1600.02722453.avif 1600w, /images/lsfm-hq/lsfm-hq-mockup-2400.1dc6a8f5.avif 2400w"
               sizes="(max-width: 1280px) calc(100vw - 32px), 1240px"
             />
             <source
               type="image/webp"
-              srcSet="images/lsfm-hq/lsfm-hq-mockup-480.8e5bec8b.webp 480w, images/lsfm-hq/lsfm-hq-mockup-960.08acbeb1.webp 960w, images/lsfm-hq/lsfm-hq-mockup-1600.a9a3b45c.webp 1600w, images/lsfm-hq/lsfm-hq-mockup-2400.9e520f6c.webp 2400w"
+              srcSet="/images/lsfm-hq/lsfm-hq-mockup-480.8e5bec8b.webp 480w, /images/lsfm-hq/lsfm-hq-mockup-960.08acbeb1.webp 960w, /images/lsfm-hq/lsfm-hq-mockup-1600.a9a3b45c.webp 1600w, /images/lsfm-hq/lsfm-hq-mockup-2400.9e520f6c.webp 2400w"
               sizes="(max-width: 1280px) calc(100vw - 32px), 1240px"
             />
             <img
-              src="images/lsfm-hq/lsfm-hq-mockup-960.08acbeb1.webp"
+              src="/images/lsfm-hq/lsfm-hq-mockup-960.08acbeb1.webp"
               alt="LSFM AI HQ Discord Operations Interface Mockup"
               width="960"
               height="720"
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              data-full="images/lsfm-hq/lsfm-hq-mockup-2400.9e520f6c.webp"
+              data-full="/images/lsfm-hq/lsfm-hq-mockup-2400.9e520f6c.webp"
             />
           </picture>
         </div>
@@ -1327,11 +1327,11 @@ export default function Page() {
       </div>
       <div className="case-pagination-wrap u-mt-64px u-mb-32px">
         <div className="case-pagination u-d-grid u-cols-1fr-1fr u-gap-24px">
-          <a href="case-fintrack.html" className="pag-card">
+          <a href="/case-fintrack.html" className="pag-card">
             <span className="pag-label">Previous Case Study</span>{' '}
             <span className="pag-title">07 · FinTrack App (FinTech UX)</span>
           </a>
-          <a href="case-ciel.html" className="pag-card u-ta-right">
+          <a href="/case-ciel.html" className="pag-card u-ta-right">
             <span className="pag-label">Next Case Study</span>{' '}
             <span className="pag-title">02 · Manas: Ciel (Voice AI Copilot &amp; HUD)</span>
           </a>

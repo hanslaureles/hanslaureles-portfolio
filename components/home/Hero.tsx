@@ -12,7 +12,7 @@ export default function Hero() {
         </div>
         <div className="hero-unified-box">
           <div className="hero-box-header">
-            <a className="hero-chip" href="about.html#experience">
+            <a className="hero-chip" href="/about.html#experience">
               <span className="hero-chip-icon" aria-hidden="true">
                 <Icon name="graduation-cap" />
               </span>
@@ -42,7 +42,7 @@ export default function Hero() {
               design the screens people use to work with them.
             </p>
             <div className="hero-proof-strip">
-              <a href="case-lsfm.html" className="hero-proof-item">
+              <a href="/case-lsfm.html" className="hero-proof-item">
                 <span>
                   01
                 </span>
@@ -52,7 +52,7 @@ export default function Hero() {
                   check my code
                 </span>
               </a>
-              <a href="case-ciel.html" className="hero-proof-item">
+              <a href="/case-ciel.html" className="hero-proof-item">
                 <span>
                   02
                 </span>
@@ -62,7 +62,7 @@ export default function Hero() {
                   web search and a live dashboard
                 </span>
               </a>
-              <a href="case-memory.html" className="hero-proof-item">
+              <a href="/case-memory.html" className="hero-proof-item">
                 <span>
                   03
                 </span>
@@ -87,7 +87,7 @@ export default function Hero() {
               <span className="btn-micro-badge">5 Agents</span>
             </button>
             <a
-              href="Hans_Laureles_Resume.pdf"
+              href="/Hans_Laureles_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-outline"

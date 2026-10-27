@@ -178,7 +178,6 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <base href="/" />
         <ThemeScript nonce={nonce} />
       </head>
       <body>

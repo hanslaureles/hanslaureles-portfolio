@@ -111,7 +111,7 @@ for (const [path, status] of [['/no-such-page', 404], ['/404', 404]]) {
       await expect(page.locator('header')).toBeVisible();
       await expect(page.locator('footer')).toBeVisible();
       await expect(page.locator('main')).toContainText('The requested URL was not found on this server');
-      await expect(page.getByRole('link', { name: 'Return to Selected Work' })).toHaveAttribute('href', 'index.html');
+      await expect(page.getByRole('link', { name: 'Return to Selected Work' })).toHaveAttribute('href', '/index.html');
       await expect(page.getByRole('navigation')).toBeVisible();
     } finally { await context.close(); }
   });

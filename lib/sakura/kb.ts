@@ -22,12 +22,12 @@ export const KNOWLEDGE_BASE = [
       'swiss',
     ],
     summary:
-      'Hans is a frontend engineer working in React, TypeScript, vanilla JavaScript and design tokens, with Swiss editorial typography and WCAG 2.1 AA accessibility checks. There is no Next.js project on this site.',
+      'Hans is a frontend engineer working in React, TypeScript, vanilla JavaScript and design tokens, with Swiss editorial typography and WCAG 2.1 AA accessibility checks. This portfolio uses Next.js App Router with React and TypeScript.',
     evidence:
       "Engineered production client interfaces at ROC (roc.ph) with React and Tailwind; designed and built Lumina (a study and focus dashboard in React, TypeScript and Chart.js); built Aura Coffee (/aura-store) with vanilla CSS tokens; and developed Patriot Capstone in React Native. This site's CI runs axe-core WCAG 2.1 AA checks on every page.",
-    linkUrl: 'case-lumina.html',
+    linkUrl: '/case-lumina.html',
     linkText: 'Explore Lumina Analytics Case Study',
-    secondaryUrl: 'case-aura.html',
+    secondaryUrl: '/case-aura.html',
     secondaryText: 'View Aura Coffee E-Commerce',
   },
   {
@@ -57,7 +57,7 @@ export const KNOWLEDGE_BASE = [
       'Hans architected LSFM AI HQ, an autonomous 5-agent operations platform: five Discord bots with distinct personas on one asyncio event loop, routing LLM work through per-agent Groq and Gemini models with the other provider as a fallback, self-hosted on his own workstation.',
     evidence:
       'Operates 5 specialized agents: Sakura (Chief of Staff, briefings & Gmail triage), Chaewon (Career & ATS PDF compiler), Yunjin (Design critic), Kazuha (Code & Knowledge: answers codebase questions and reviews uncommitted changes), and Eunchae (System Guardian & hardware vitals). Gmail triage uses Google OAuth2 and two-tier classification across 10 custom Gmail labels with non-destructive bulk-archiving.',
-    linkUrl: 'case-lsfm.html',
+    linkUrl: '/case-lsfm.html',
     linkText: 'Read LSFM AI HQ Architecture Deep-Dive',
   },
   {
@@ -85,7 +85,7 @@ export const KNOWLEDGE_BASE = [
       'Hans built an LLM router with three operator-selectable modes: cloud (per-agent models on Groq and Gemini, each falling back to the other provider), local (Ollama qwen2.5-coder:7b on his AMD Radeon RX 6600 XT, 8GB VRAM), and auto (local first, then cloud).',
     evidence:
       "Switchable live from Discord with !mode. Local mode keeps prompts on the workstation and fails fast if Ollama isn't running; auto mode probes Ollama and falls through to the cloud chain (Groq then Gemini; Gemini then Groq for Yunjin) on any local error. There is no automatic cloud-to-local failover.",
-    linkUrl: 'case-lsfm.html',
+    linkUrl: '/case-lsfm.html',
     linkText: 'Inspect Hybrid Router in Case Study',
   },
   {
@@ -112,7 +112,7 @@ export const KNOWLEDGE_BASE = [
       'Hans designed and built Memory Core, a lessons-learned memory for AI coding assistants, written in the Python standard library with zero pip dependencies.',
     evidence:
       'Runs BM25 lesson search before each task, logs each mistake as a structured lesson (trigger, symptom, root cause, rule), and compiles recurring lessons into shared workspace rules. Built in 2026.',
-    linkUrl: 'case-memory.html',
+    linkUrl: '/case-memory.html',
     linkText: 'Read Cognitive Memory Case Study',
   },
   {
@@ -136,7 +136,7 @@ export const KNOWLEDGE_BASE = [
       'Hans served as UI/UX & Frontend Engineer Intern at ROC (roc.ph) in General Trias, Cavite (June – August 2024), taking client products from Figma design specs to production web deployments.',
     evidence:
       'Architected responsive interfaces applying Nielsen Norman Group usability heuristics; converted Figma designs into semantic HTML5, modern CSS, Tailwind, and React; participated in agile client reviews and Git workflows across production client websites.',
-    linkUrl: 'about.html',
+    linkUrl: '/about.html',
     linkText: 'Read Career Background in About Me',
   },
   {
@@ -161,7 +161,7 @@ export const KNOWLEDGE_BASE = [
       "As Lead Mobile Developer on a three-person BS CS capstone team at DLSU-D (2023–2025), Hans developed Patriot, an anonymous one-to-one student messaging app with keyword-based matchmaking.",
     evidence:
       'Developed the React Native and TypeScript mobile client integrated with AWS Lambda, DynamoDB and Cognito. The documented matching algorithm uses Redis-backed keyword indexing and lookup. The beta capstone was evaluated through app demonstrations and questionnaires with 50 campus participants; community-building remained a recommendation.',
-    linkUrl: 'about.html',
+    linkUrl: '/about.html',
     linkText: 'View Capstone Architecture in About Me',
   },
   {
@@ -188,7 +188,7 @@ export const KNOWLEDGE_BASE = [
       "Hans's systems stack includes AWS (Lambda, DynamoDB, Cognito, S3), Redis in-memory caching, asynchronous Python microservices (asyncio), Google Workspace REST APIs with OAuth2 token rotation, and headless Edge/Chromium automation.",
     evidence:
       'Engineered headless Edge PDF pipelines that compile single-page ATS-compliant vector PDFs directly, and OAuth2 batch triage sorting unread emails into 10 hierarchical labels.',
-    linkUrl: 'about.html',
+    linkUrl: '/about.html',
     linkText: 'View 3-Pillar Technical Matrix',
   },
   {
@@ -213,9 +213,9 @@ export const KNOWLEDGE_BASE = [
       'Hans designed and engineered Aura Coffee & Kitchen, an artisanal specialty coffeehouse web store with drink customization, a slide-over bag drawer, and a one-page checkout with 6 payment options (GCash, Maya, GrabPay, card, QR Ph, and cash on delivery).',
     evidence:
       'Fully interactive production build live directly on this site at /aura-store! Features drink temperature/milk customizers, delivery threshold trackers, and 1-page checkout simulating GCash, Maya, and QR Ph.',
-    linkUrl: 'aura-store/index.html',
+    linkUrl: '/aura-store/index.html',
     linkText: 'Launch Interactive Store Demo (/aura-store)',
-    secondaryUrl: 'case-aura.html',
+    secondaryUrl: '/case-aura.html',
     secondaryText: 'Read Aura Design Case Study',
   },
   {
@@ -239,7 +239,7 @@ export const KNOWLEDGE_BASE = [
       'Hans graduated with a Bachelor of Science in Computer Science (BS CS) from De La Salle University–Dasmariñas (DLSU-D, 2021–2025).',
     evidence:
       'Completed rigorous coursework in Distributed Systems, Algorithms & Complexities, Software Engineering, Database Management Systems, Human-Computer Interaction (HCI), and Object-Oriented Software Design.',
-    linkUrl: 'about.html',
+    linkUrl: '/about.html',
     linkText: 'Read Academic History on About Page',
   },
   {
@@ -265,7 +265,7 @@ export const KNOWLEDGE_BASE = [
       'Hans Aaron Laureles is based in Cavite, Philippines, and is actively seeking full-time remote Applied AI Engineer, Agent Systems, or Full-Stack Builder roles.',
     evidence:
       'Email: hanslaureles92@gmail.com | Portfolio: hanslaureles.vercel.app | GitHub: github.com/hanslaureles. You can download his 1-page executive ATS vector resume directly from this site.',
-    linkUrl: 'Hans_Laureles_Resume.pdf',
+    linkUrl: '/Hans_Laureles_Resume.pdf',
     linkText: "Download Hans's 1-Page ATS Resume (PDF)",
   },
   {
@@ -293,7 +293,7 @@ export const KNOWLEDGE_BASE = [
       "The agent overview panel shows a status snapshot that Hans's workstation publishes on demand (data/status.json, from Eunchae's publisher). An agent counts as online only if its heartbeat is under 15 minutes old when you view the page; otherwise it shows when it was last seen. The site has no live connection to the agents.",
     evidence:
       "Click Agent overview in the LSFM card (or press Alt+S) to open it: per-agent status and the snapshot's age, the measured LLM round-trip p50/p95 with sample size and date, a real Philippine-time (UTC+8) clock, a scripted 'Replay a Mission' walkthrough of the real !apply pipeline, and a copyable summary.",
-    linkUrl: 'index.html#project-lsfm',
+    linkUrl: '/index.html#project-lsfm',
     linkText: 'Open the Agent Overview (Alt+S)',
   },
   {
@@ -314,8 +314,8 @@ export const KNOWLEDGE_BASE = [
     summary:
       'Hans built a career timeline styled as `git log --graph` for the About page. It is styling only: it shows dates and roles, not real commits.',
     evidence:
-      "Recruiters can switch the About page to its '$ git log --graph' view to see each milestone's role, dates and highlights, newest first.",
-    linkUrl: 'about.html#git',
+      "Recruiters can switch the About page to its '$ git log --graph' view to see each milestone's role, dates and highlights: ongoing work first, then completed milestones by year.",
+    linkUrl: '/about.html#git',
     linkText: 'View $ git log Timeline on About Page',
   },
   {
@@ -339,7 +339,7 @@ export const KNOWLEDGE_BASE = [
       'Hans designed FinTrack, a budgeting app concept in Figma: a two-tap expense flow, one daily safe-to-spend number and neutral overspend feedback. It is untested; the prototype is built to check whether fewer taps make daily logging stick.',
     evidence:
       'A Figma prototype built from Auto Layout components and variables: a two-tap expense flow, one daily safe-to-spend number, and neutral feedback on overspends.',
-    linkUrl: 'case-fintrack.html',
+    linkUrl: '/case-fintrack.html',
     linkText: 'Read FinTrack Mobile Case Study',
   },
   {
@@ -362,12 +362,12 @@ export const KNOWLEDGE_BASE = [
       'Hans designed Vellum, a calm journaling app concept in Figma and ProtoPie: no streaks or push nagging, and three modes (mood check-in, guided breathing, free writing). It is an untested design, not a shipped app.',
     evidence:
       'A Figma and ProtoPie prototype with swipe-based mood check-ins, a two-scale type hierarchy and a calm palette, built from Auto Layout components.',
-    linkUrl: 'case-vellum.html',
+    linkUrl: '/case-vellum.html',
     linkText: 'Explore Vellum Mobile Case Study',
   },
   {
     id: 'KNOW-15',
-    title: 'Obsidian AI Brain & Model Context Protocol (MCP) Bridge',
+    title: 'Obsidian Shared Knowledge & Coordinated Access',
     category: 'Knowledge Systems & Tooling',
     keywords: [
       'obsidian',
@@ -382,10 +382,10 @@ export const KNOWLEDGE_BASE = [
       'stdio',
     ],
     summary:
-      "Hans connected his Obsidian vault to his AI tooling: Antigravity reaches it through an MCP bridge, and LSFM AI HQ and Ciel read and write it over Obsidian's Local REST API.",
+      "Hans connected his Obsidian vault to LSFM AI HQ and Ciel. Reads try the Local REST API first, with a disk fallback; writes go directly to disk under a shared cross-process lock.",
     evidence:
-      "Agents can read learned heuristics from Learned_Rules.md, fetch agent profiles, and append session logs over a local HTTPS REST API (port 27124), with a filesystem fallback when Obsidian is closed. The bridge (obsidian_client.py) is in the public lsfm-ai-hq repo; the vault's notes stay private.",
-    linkUrl: 'case-ciel.html',
+      "Agents can read learned heuristics from Learned_Rules.md and fetch agent profiles through REST-first reads with a disk fallback. Session logs are appended on disk under a shared lock to prevent duplicate writes. The bridge (obsidian_client.py) is in the public lsfm-ai-hq repo; the vault's notes stay private.",
+    linkUrl: '/case-ciel.html',
     linkText: 'See Obsidian Access in the Ciel Case Study',
   },
   {
@@ -408,7 +408,7 @@ export const KNOWLEDGE_BASE = [
       'Hans built Yunjin, an automated portfolio design critic and QA auditor on the LSFM AI HQ team that checks asset hygiene and writes structured design critiques.',
     evidence:
       'Scans every portfolio page for broken image assets once a week, and on !audit / !critique writes LLM design critiques with a portfolio health score.',
-    linkUrl: 'case-lsfm.html',
+    linkUrl: '/case-lsfm.html',
     linkText: 'View the LSFM AI HQ Agents',
   },
   {
@@ -444,9 +444,9 @@ export const KNOWLEDGE_BASE = [
       'Hans architected Manas: Ciel, a bilingual (Japanese/English) voice copilot with Groq Whisper speech-to-text, live weather (wttr.in), web search (DDGS), and read/write access to his Obsidian notes.',
     evidence:
       'Speech-to-text runs FFmpeg (16 kHz mono, voice-band filter), then Groq Whisper Large v3 Turbo with an OpenAI Whisper fallback. Replies use Edge-TTS neural voices through a custom FFmpeg voice filter (high-pass, presence EQ, light echo), shown on a canvas ring-visualizer Web HUD with background checks.',
-    linkUrl: 'case-ciel.html',
+    linkUrl: '/case-ciel.html',
     linkText: 'Read Manas: Ciel Case Study',
-    secondaryUrl: 'case-ciel.html#simulator',
+    secondaryUrl: '/case-ciel.html#simulator',
     secondaryText: 'Test Voice Simulator',
   },
 ];

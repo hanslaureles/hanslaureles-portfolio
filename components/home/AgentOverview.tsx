@@ -480,7 +480,7 @@ Availability: Open for Full-Time & Remote AI & Software Engineering Roles (2026)
                           </button>
                         ) : agent.id === 'chaewon' ? (
                           <a
-                            href="Hans_Laureles_Resume.pdf"
+                            href="/Hans_Laureles_Resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="agent-inline-action-btn"
@@ -489,7 +489,7 @@ Availability: Open for Full-Time & Remote AI & Software Engineering Roles (2026)
                           </a>
                         ) : agent.id === 'yunjin' ? (
                           <a
-                            href="case-lsfm.html"
+                            href="/case-lsfm.html"
                             className="agent-inline-action-btn"
                           >
                             Read Case Study

@@ -10,7 +10,7 @@ export default function HomeFooter() {
             <ul className="footer-nav-list">
               {projects.map((project) => (
                 <li key={project.slug}>
-                  <a href={`case-${project.slug}.html`}>{project.title}</a>
+                  <a href={`/case-${project.slug}.html`}>{project.title}</a>
                 </li>
               ))}
             </ul>
@@ -45,7 +45,7 @@ export default function HomeFooter() {
             <h3>More</h3>
             <ul className="footer-nav-list">
               <li>
-                <a href="about.html">About me</a>
+                <a href="/about.html">About me</a>
               </li>
             </ul>
           </div>

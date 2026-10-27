@@ -11,9 +11,9 @@
           "title": "Git Career Timeline ($ git log --graph)",
           "category": "Developer Experience",
           "summary": "Hans built a career timeline styled as `git log --graph` for the About page. It is styling only: it shows dates and roles, not real commits.",
-          "evidence": "Recruiters can switch the About page to its '$ git log --graph' view to see each milestone's role, dates and highlights, newest first.",
+          "evidence": "Recruiters can switch the About page to its '$ git log --graph' view to see each milestone's role, dates and highlights: ongoing work first, then completed milestones by year.",
           "linkText": "View $ git log Timeline on About Page",
-          "link": "about.html#git"
+          "link": "/about.html#git"
         },
         {
           "id": "KNOW-05",
@@ -22,7 +22,7 @@
           "summary": "Hans served as UI/UX & Frontend Engineer Intern at ROC (roc.ph) in General Trias, Cavite (June – August 2024), taking client products from Figma design specs to production web deployments.",
           "evidence": "Architected responsive interfaces applying Nielsen Norman Group usability heuristics; converted Figma designs into semantic HTML5, modern CSS, Tailwind, and React; participated in agile client reviews and Git workflows across production client websites.",
           "linkText": "Read Career Background in About Me",
-          "link": "about.html"
+          "link": "/about.html"
         },
         {
           "id": "KNOW-02",
@@ -31,7 +31,7 @@
           "summary": "Hans architected LSFM AI HQ, an autonomous 5-agent operations platform: five Discord bots with distinct personas on one asyncio event loop, routing LLM work through per-agent Groq and Gemini models with the other provider as a fallback, self-hosted on his own workstation.",
           "evidence": "Operates 5 specialized agents: Sakura (Chief of Staff, briefings & Gmail triage), Chaewon (Career & ATS PDF compiler), Yunjin (Design critic), Kazuha (Code & Knowledge: answers codebase questions and reviews uncommitted changes), and Eunchae (System Guardian & hardware vitals). Gmail triage uses Google OAuth2 and two-tier classification across 10 custom Gmail labels with non-destructive bulk-archiving.",
           "linkText": "Read LSFM AI HQ Architecture Deep-Dive",
-          "link": "case-lsfm.html"
+          "link": "/case-lsfm.html"
         }
       ]
     },
@@ -45,16 +45,7 @@
           "summary": "Hans architected LSFM AI HQ, an autonomous 5-agent operations platform: five Discord bots with distinct personas on one asyncio event loop, routing LLM work through per-agent Groq and Gemini models with the other provider as a fallback, self-hosted on his own workstation.",
           "evidence": "Operates 5 specialized agents: Sakura (Chief of Staff, briefings & Gmail triage), Chaewon (Career & ATS PDF compiler), Yunjin (Design critic), Kazuha (Code & Knowledge: answers codebase questions and reviews uncommitted changes), and Eunchae (System Guardian & hardware vitals). Gmail triage uses Google OAuth2 and two-tier classification across 10 custom Gmail labels with non-destructive bulk-archiving.",
           "linkText": "Read LSFM AI HQ Architecture Deep-Dive",
-          "link": "case-lsfm.html"
-        },
-        {
-          "id": "KNOW-15",
-          "title": "Obsidian AI Brain & Model Context Protocol (MCP) Bridge",
-          "category": "Knowledge Systems & Tooling",
-          "summary": "Hans connected his Obsidian vault to his AI tooling: Antigravity reaches it through an MCP bridge, and LSFM AI HQ and Ciel read and write it over Obsidian's Local REST API.",
-          "evidence": "Agents can read learned heuristics from Learned_Rules.md, fetch agent profiles, and append session logs over a local HTTPS REST API (port 27124), with a filesystem fallback when Obsidian is closed. The bridge (obsidian_client.py) is in the public lsfm-ai-hq repo; the vault's notes stay private.",
-          "linkText": "See Obsidian Access in the Ciel Case Study",
-          "link": "case-ciel.html"
+          "link": "/case-lsfm.html"
         },
         {
           "id": "KNOW-16",
@@ -63,7 +54,16 @@
           "summary": "Hans built Yunjin, an automated portfolio design critic and QA auditor on the LSFM AI HQ team that checks asset hygiene and writes structured design critiques.",
           "evidence": "Scans every portfolio page for broken image assets once a week, and on !audit / !critique writes LLM design critiques with a portfolio health score.",
           "linkText": "View the LSFM AI HQ Agents",
-          "link": "case-lsfm.html"
+          "link": "/case-lsfm.html"
+        },
+        {
+          "id": "KNOW-15",
+          "title": "Obsidian Shared Knowledge & Coordinated Access",
+          "category": "Knowledge Systems & Tooling",
+          "summary": "Hans connected his Obsidian vault to LSFM AI HQ and Ciel. Reads try the Local REST API first, with a disk fallback; writes go directly to disk under a shared cross-process lock.",
+          "evidence": "Agents can read learned heuristics from Learned_Rules.md and fetch agent profiles through REST-first reads with a disk fallback. Session logs are appended on disk under a shared lock to prevent duplicate writes. The bridge (obsidian_client.py) is in the public lsfm-ai-hq repo; the vault's notes stay private.",
+          "linkText": "See Obsidian Access in the Ciel Case Study",
+          "link": "/case-ciel.html"
         }
       ]
     },
@@ -77,16 +77,16 @@
           "summary": "Hans designed and built Memory Core, a lessons-learned memory for AI coding assistants, written in the Python standard library with zero pip dependencies.",
           "evidence": "Runs BM25 lesson search before each task, logs each mistake as a structured lesson (trigger, symptom, root cause, rule), and compiles recurring lessons into shared workspace rules. Built in 2026.",
           "linkText": "Read Cognitive Memory Case Study",
-          "link": "case-memory.html"
+          "link": "/case-memory.html"
         },
         {
           "id": "KNOW-15",
-          "title": "Obsidian AI Brain & Model Context Protocol (MCP) Bridge",
+          "title": "Obsidian Shared Knowledge & Coordinated Access",
           "category": "Knowledge Systems & Tooling",
-          "summary": "Hans connected his Obsidian vault to his AI tooling: Antigravity reaches it through an MCP bridge, and LSFM AI HQ and Ciel read and write it over Obsidian's Local REST API.",
-          "evidence": "Agents can read learned heuristics from Learned_Rules.md, fetch agent profiles, and append session logs over a local HTTPS REST API (port 27124), with a filesystem fallback when Obsidian is closed. The bridge (obsidian_client.py) is in the public lsfm-ai-hq repo; the vault's notes stay private.",
+          "summary": "Hans connected his Obsidian vault to LSFM AI HQ and Ciel. Reads try the Local REST API first, with a disk fallback; writes go directly to disk under a shared cross-process lock.",
+          "evidence": "Agents can read learned heuristics from Learned_Rules.md and fetch agent profiles through REST-first reads with a disk fallback. Session logs are appended on disk under a shared lock to prevent duplicate writes. The bridge (obsidian_client.py) is in the public lsfm-ai-hq repo; the vault's notes stay private.",
           "linkText": "See Obsidian Access in the Ciel Case Study",
-          "link": "case-ciel.html"
+          "link": "/case-ciel.html"
         }
       ]
     },
@@ -104,7 +104,7 @@
           "summary": "Hans's systems stack includes AWS (Lambda, DynamoDB, Cognito, S3), Redis in-memory caching, asynchronous Python microservices (asyncio), Google Workspace REST APIs with OAuth2 token rotation, and headless Edge/Chromium automation.",
           "evidence": "Engineered headless Edge PDF pipelines that compile single-page ATS-compliant vector PDFs directly, and OAuth2 batch triage sorting unread emails into 10 hierarchical labels.",
           "linkText": "View 3-Pillar Technical Matrix",
-          "link": "about.html"
+          "link": "/about.html"
         }
       ]
     }

@@ -156,7 +156,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100vw;
   width: 100%;
 }
@@ -167,7 +167,7 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   font-weight: 400;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100vw;
   width: 100%;
   min-height: 100vh;
@@ -2529,7 +2529,7 @@ picture {
 
 .git-badge.head {
   background: rgba(16, 185, 129, 0.12);
-  color: var(--emerald-500);
+  color: var(--tone-emerald);
   border: 1px solid rgba(16, 185, 129, 0.3);
 }
 

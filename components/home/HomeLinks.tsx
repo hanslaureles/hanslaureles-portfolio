@@ -2,16 +2,16 @@ import type { MenuLink } from '../../lib/cases';
 import Icon from './Icon';
 
 export const homeLinks: MenuLink[] = [
-  { href: 'index.html', label: 'Selected Work', className: 'active' },
+  { href: '/index.html', label: 'Selected Work', className: 'active' },
   {
     href: '#',
     label: '🌸 Ask Sakura (AI Copilot)',
     className: 'open-sakura-btn',
     style: { color: 'var(--tone-pink)', fontWeight: 600 },
   },
-  { href: 'about.html', label: 'About Me' },
+  { href: '/about.html', label: 'About Me' },
   {
-    href: 'case-ciel.html',
+    href: '/case-ciel.html',
     label: (
       <>
         <Icon name="sparkles" /> Manas: Ciel
@@ -19,10 +19,10 @@ export const homeLinks: MenuLink[] = [
     ),
     style: { color: 'var(--tone-amber)', fontWeight: 600 },
   },
-  { href: 'case-lsfm.html', label: 'LSFM AI HQ' },
-  { href: 'case-memory.html', label: 'Memory Core' },
+  { href: '/case-lsfm.html', label: 'LSFM AI HQ' },
+  { href: '/case-memory.html', label: 'Memory Core' },
   {
-    href: 'aura-store/index.html',
+    href: '/aura-store/index.html',
     label: (
       <>
         Aura Coffee (Live Store)
@@ -32,7 +32,7 @@ export const homeLinks: MenuLink[] = [
     rel: 'noopener noreferrer',
   },
   {
-    href: 'Hans_Laureles_Resume.pdf',
+    href: '/Hans_Laureles_Resume.pdf',
     label: (
       <>
         Resume (PDF)

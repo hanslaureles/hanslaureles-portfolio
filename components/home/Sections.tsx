@@ -17,28 +17,28 @@ export default function Sections({ contact }: { contact: ReactNode }) {
           </h2>
           <ol className="home-grid process-strip">
             <li>
-              <a href="case-lsfm.html#problem">
+              <a href="/case-lsfm.html#problem">
                 <span className="process-number">01</span>
                 <h3>Problem &amp; constraint</h3>
                 <p>Busywork spread across separate tools.</p>
               </a>
             </li>
             <li>
-              <a href="case-lsfm.html#decisions">
+              <a href="/case-lsfm.html#decisions">
                 <span className="process-number">02</span>
                 <h3>Decisions &amp; their costs</h3>
                 <p>What I chose, what I passed over, why, and what it costs.</p>
               </a>
             </li>
             <li>
-              <a href="case-lsfm.html#benchmarks">
+              <a href="/case-lsfm.html#benchmarks">
                 <span className="process-number">03</span>
                 <h3>Results you can check</h3>
                 <p>Every claim points to public code or a test.</p>
               </a>
             </li>
             <li>
-              <a href="case-lsfm.html#retrospective">
+              <a href="/case-lsfm.html#retrospective">
                 <span className="process-number">04</span>
                 <h3>What broke &amp; what I&apos;d change</h3>
                 <p>
@@ -184,7 +184,7 @@ export function ContactSection({ children }: { children: ReactNode }) {
             {children}
             <div className="project-actions contact-links">
               <a
-                href="https://linkedin.com/in/hanslaureles"
+                href="https://www.linkedin.com/in/hans-laureles-b5a732309/"
                 className="project-case-link"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -200,7 +200,7 @@ export function ContactSection({ children }: { children: ReactNode }) {
                 GitHub
               </a>
               <a
-                href="Hans_Laureles_Resume.pdf"
+                href="/Hans_Laureles_Resume.pdf"
                 className="project-case-link"
                 target="_blank"
                 rel="noopener noreferrer"

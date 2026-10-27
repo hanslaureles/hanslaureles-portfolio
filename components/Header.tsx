@@ -15,7 +15,7 @@ export default function Header({
     <header className="site-header">
       <div className="container header-inner">
         <a
-          href="index.html"
+          href="/index.html"
           className="brand-mark"
           aria-label="Hans Laureles Home"
         >
@@ -31,7 +31,7 @@ export default function Header({
           <ul className="nav-links">
             <li>
               <a
-                href="index.html"
+                href="/index.html"
                 className={`nav-link${current === 'work' ? ' active' : ''}`}
               >
                 Selected Work
@@ -39,7 +39,7 @@ export default function Header({
             </li>
             <li>
               <a
-                href="about.html"
+                href="/about.html"
                 className={`nav-link${current === 'about' ? ' active' : ''}`}
               >
                 About Me
@@ -47,7 +47,7 @@ export default function Header({
             </li>
             <li>
               <a
-                href="Hans_Laureles_Resume.pdf"
+                href="/Hans_Laureles_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="nav-link"

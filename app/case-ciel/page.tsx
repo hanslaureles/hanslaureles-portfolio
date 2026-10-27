@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <CaseLayout slug="ciel" title="Manas: Ciel — Case Study · Hans Aaron Laureles">
       <div className="case-hero">
-        <a href="index.html" className="case-back-link">
+        <a href="/index.html" className="case-back-link">
           Return to Selected Work
         </a>
         <div className="u-d-flex u-gap-8px u-mb-16px u-wrap-wrap">
@@ -195,23 +195,23 @@ export default function Page() {
           <picture>
             <source
               type="image/avif"
-              srcSet="images/ciel/ciel-mockup-480.eecfa9ee.avif 480w, images/ciel/ciel-mockup-960.980d44a3.avif 960w, images/ciel/ciel-mockup-1600.c5fa93f8.avif 1600w, images/ciel/ciel-mockup-2400.1bdc3468.avif 2400w"
+              srcSet="/images/ciel/ciel-mockup-480.eecfa9ee.avif 480w, /images/ciel/ciel-mockup-960.980d44a3.avif 960w, /images/ciel/ciel-mockup-1600.c5fa93f8.avif 1600w, /images/ciel/ciel-mockup-2400.1bdc3468.avif 2400w"
               sizes="(max-width: 1280px) calc(100vw - 32px), 1240px"
             />
             <source
               type="image/webp"
-              srcSet="images/ciel/ciel-mockup-480.259bebad.webp 480w, images/ciel/ciel-mockup-960.2f7b7f9e.webp 960w, images/ciel/ciel-mockup-1600.9b316812.webp 1600w, images/ciel/ciel-mockup-2400.cd51387e.webp 2400w"
+              srcSet="/images/ciel/ciel-mockup-480.259bebad.webp 480w, /images/ciel/ciel-mockup-960.2f7b7f9e.webp 960w, /images/ciel/ciel-mockup-1600.9b316812.webp 1600w, /images/ciel/ciel-mockup-2400.cd51387e.webp 2400w"
               sizes="(max-width: 1280px) calc(100vw - 32px), 1240px"
             />
             <img
-              src="images/ciel/ciel-mockup-960.2f7b7f9e.webp"
+              src="/images/ciel/ciel-mockup-960.2f7b7f9e.webp"
               alt="Manas: Ciel voice assistant web dashboard mockup"
               width="960"
               height="720"
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              data-full="images/ciel/ciel-mockup-2400.cd51387e.webp"
+              data-full="/images/ciel/ciel-mockup-2400.cd51387e.webp"
             />
           </picture>
         </div>
@@ -732,8 +732,9 @@ export default function Page() {
             <div className="section-tag">// 07 · READ &amp; WRITE NOTES</div>
             <h2>Ciel Reads and Writes My Obsidian Notes</h2>
             <p>
-              Most voice assistants can't see your notes. Ciel reads and writes my Obsidian vault
-              through Obsidian's Local REST API, and falls back to reading the files on disk:
+              Most voice assistants can't see your notes. Ciel reads my Obsidian vault through
+              the Local REST API, with a disk fallback. Writes go directly to disk
+              under a shared cross-process lock:
             </p>
             <details className="tech-detail u-m-20px-0">
               <summary>Show the vault tool definitions</summary>
@@ -1309,11 +1310,11 @@ tools = [
       </div>
       <div className="case-pagination-wrap u-mt-64px u-mb-32px">
         <div className="case-pagination u-d-grid u-cols-1fr-1fr u-gap-24px">
-          <a href="case-lsfm.html" className="pag-card">
+          <a href="/case-lsfm.html" className="pag-card">
             <span className="pag-label">Previous Case Study</span>{' '}
             <span className="pag-title">01 · LSFM AI HQ (Multi-Agent System)</span>
           </a>
-          <a href="case-memory.html" className="pag-card u-ta-right">
+          <a href="/case-memory.html" className="pag-card u-ta-right">
             <span className="pag-label">Next Case Study</span>{' '}
             <span className="pag-title">03 · Memory Core (Lessons-Learned Memory)</span>
           </a>

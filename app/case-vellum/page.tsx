@@ -10,7 +10,7 @@ export default function Page() {
       title="Vellum — Mindful Mobile UX/UI Case Study · Hans Aaron Laureles"
     >
       <div className="case-hero">
-        <a href="index.html" className="case-back-link">
+        <a href="/index.html" className="case-back-link">
           Return to Selected Work
         </a>
         <div className="u-d-flex u-gap-8px u-mb-16px u-wrap-wrap">
@@ -108,23 +108,23 @@ export default function Page() {
           <picture>
             <source
               type="image/avif"
-              srcSet="images/vellum-mobile-app/vellum-mockup-480.aefaa558.avif 480w, images/vellum-mobile-app/vellum-mockup-960.456cab43.avif 960w, images/vellum-mobile-app/vellum-mockup-1600.3b5c1af6.avif 1600w, images/vellum-mobile-app/vellum-mockup-2400.6d15def8.avif 2400w"
+              srcSet="/images/vellum-mobile-app/vellum-mockup-480.aefaa558.avif 480w, /images/vellum-mobile-app/vellum-mockup-960.456cab43.avif 960w, /images/vellum-mobile-app/vellum-mockup-1600.3b5c1af6.avif 1600w, /images/vellum-mobile-app/vellum-mockup-2400.6d15def8.avif 2400w"
               sizes="(max-width: 1280px) calc(100vw - 32px), 1240px"
             />
             <source
               type="image/webp"
-              srcSet="images/vellum-mobile-app/vellum-mockup-480.8cf0be0d.webp 480w, images/vellum-mobile-app/vellum-mockup-960.98fdf7b9.webp 960w, images/vellum-mobile-app/vellum-mockup-1600.e232ef54.webp 1600w, images/vellum-mobile-app/vellum-mockup-2400.92eb367c.webp 2400w"
+              srcSet="/images/vellum-mobile-app/vellum-mockup-480.8cf0be0d.webp 480w, /images/vellum-mobile-app/vellum-mockup-960.98fdf7b9.webp 960w, /images/vellum-mobile-app/vellum-mockup-1600.e232ef54.webp 1600w, /images/vellum-mobile-app/vellum-mockup-2400.92eb367c.webp 2400w"
               sizes="(max-width: 1280px) calc(100vw - 32px), 1240px"
             />
             <img
-              src="images/vellum-mobile-app/vellum-mockup-960.98fdf7b9.webp"
+              src="/images/vellum-mobile-app/vellum-mockup-960.98fdf7b9.webp"
               alt="Vellum Mobile Interface Showcase"
               width="960"
               height="720"
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              data-full="images/vellum-mobile-app/vellum-mockup-2400.92eb367c.webp"
+              data-full="/images/vellum-mobile-app/vellum-mockup-2400.92eb367c.webp"
             />
           </picture>
         </div>
@@ -250,22 +250,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/vellum-mobile-app/01-vellum-wireframe-onboarding-screen-390.e625d44e.avif 390w"
+                      srcSet="/images/vellum-mobile-app/01-vellum-wireframe-onboarding-screen-390.e625d44e.avif 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/vellum-mobile-app/01-vellum-wireframe-onboarding-screen-390.369567de.webp 390w"
+                      srcSet="/images/vellum-mobile-app/01-vellum-wireframe-onboarding-screen-390.369567de.webp 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/vellum-mobile-app/01-vellum-wireframe-onboarding-screen-390.369567de.webp"
+                      src="/images/vellum-mobile-app/01-vellum-wireframe-onboarding-screen-390.369567de.webp"
                       alt="Vellum Wireframe Onboarding"
                       width="390"
                       height="844"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/vellum-mobile-app/01-vellum-wireframe-onboarding-screen-390.369567de.webp"
+                      data-full="/images/vellum-mobile-app/01-vellum-wireframe-onboarding-screen-390.369567de.webp"
                     />
                   </picture>
                 </div>
@@ -276,22 +276,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/vellum-mobile-app/01-vellum-onboarding-390.8f99e9f7.avif 390w"
+                      srcSet="/images/vellum-mobile-app/01-vellum-onboarding-390.8f99e9f7.avif 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/vellum-mobile-app/01-vellum-onboarding-390.a8788826.webp 390w"
+                      srcSet="/images/vellum-mobile-app/01-vellum-onboarding-390.a8788826.webp 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/vellum-mobile-app/01-vellum-onboarding-390.a8788826.webp"
+                      src="/images/vellum-mobile-app/01-vellum-onboarding-390.a8788826.webp"
                       alt="Vellum High-Fidelity Onboarding"
                       width="390"
                       height="844"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/vellum-mobile-app/01-vellum-onboarding-390.a8788826.webp"
+                      data-full="/images/vellum-mobile-app/01-vellum-onboarding-390.a8788826.webp"
                     />
                   </picture>
                 </div>
@@ -304,22 +304,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/vellum-mobile-app/03-vellum-wireframe-mood-check-in-screen-390.48c44d56.avif 390w"
+                      srcSet="/images/vellum-mobile-app/03-vellum-wireframe-mood-check-in-screen-390.48c44d56.avif 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/vellum-mobile-app/03-vellum-wireframe-mood-check-in-screen-390.48a1b7c6.webp 390w"
+                      srcSet="/images/vellum-mobile-app/03-vellum-wireframe-mood-check-in-screen-390.48a1b7c6.webp 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/vellum-mobile-app/03-vellum-wireframe-mood-check-in-screen-390.48a1b7c6.webp"
+                      src="/images/vellum-mobile-app/03-vellum-wireframe-mood-check-in-screen-390.48a1b7c6.webp"
                       alt="Mood Check-in Wireframe"
                       width="390"
                       height="844"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/vellum-mobile-app/03-vellum-wireframe-mood-check-in-screen-390.48a1b7c6.webp"
+                      data-full="/images/vellum-mobile-app/03-vellum-wireframe-mood-check-in-screen-390.48a1b7c6.webp"
                     />
                   </picture>
                 </div>
@@ -330,22 +330,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/vellum-mobile-app/03-vellum-mood-check-in-390.3d30c196.avif 390w"
+                      srcSet="/images/vellum-mobile-app/03-vellum-mood-check-in-390.3d30c196.avif 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/vellum-mobile-app/03-vellum-mood-check-in-390.f15fbe16.webp 390w"
+                      srcSet="/images/vellum-mobile-app/03-vellum-mood-check-in-390.f15fbe16.webp 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/vellum-mobile-app/03-vellum-mood-check-in-390.f15fbe16.webp"
+                      src="/images/vellum-mobile-app/03-vellum-mood-check-in-390.f15fbe16.webp"
                       alt="Mood Check-in UI"
                       width="390"
                       height="844"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/vellum-mobile-app/03-vellum-mood-check-in-390.f15fbe16.webp"
+                      data-full="/images/vellum-mobile-app/03-vellum-mood-check-in-390.f15fbe16.webp"
                     />
                   </picture>
                 </div>
@@ -358,22 +358,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/vellum-mobile-app/05-vellum-wireframe-breathing-exercise-screen-390.f20adfd4.avif 390w"
+                      srcSet="/images/vellum-mobile-app/05-vellum-wireframe-breathing-exercise-screen-390.f20adfd4.avif 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/vellum-mobile-app/05-vellum-wireframe-breathing-exercise-screen-390.b6c219ba.webp 390w"
+                      srcSet="/images/vellum-mobile-app/05-vellum-wireframe-breathing-exercise-screen-390.b6c219ba.webp 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/vellum-mobile-app/05-vellum-wireframe-breathing-exercise-screen-390.b6c219ba.webp"
+                      src="/images/vellum-mobile-app/05-vellum-wireframe-breathing-exercise-screen-390.b6c219ba.webp"
                       alt="Breathing Exercise Wireframe"
                       width="390"
                       height="844"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/vellum-mobile-app/05-vellum-wireframe-breathing-exercise-screen-390.b6c219ba.webp"
+                      data-full="/images/vellum-mobile-app/05-vellum-wireframe-breathing-exercise-screen-390.b6c219ba.webp"
                     />
                   </picture>
                 </div>
@@ -384,22 +384,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/vellum-mobile-app/05-vellum-breathing-390.b38e8487.avif 390w"
+                      srcSet="/images/vellum-mobile-app/05-vellum-breathing-390.b38e8487.avif 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/vellum-mobile-app/05-vellum-breathing-390.141d3a53.webp 390w"
+                      srcSet="/images/vellum-mobile-app/05-vellum-breathing-390.141d3a53.webp 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/vellum-mobile-app/05-vellum-breathing-390.141d3a53.webp"
+                      src="/images/vellum-mobile-app/05-vellum-breathing-390.141d3a53.webp"
                       alt="Breathing Exercise UI"
                       width="390"
                       height="844"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/vellum-mobile-app/05-vellum-breathing-390.141d3a53.webp"
+                      data-full="/images/vellum-mobile-app/05-vellum-breathing-390.141d3a53.webp"
                     />
                   </picture>
                 </div>
@@ -412,22 +412,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/vellum-mobile-app/04-vellum-wireframe-recommendation-screen-390.d5914807.avif 390w"
+                      srcSet="/images/vellum-mobile-app/04-vellum-wireframe-recommendation-screen-390.d5914807.avif 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/vellum-mobile-app/04-vellum-wireframe-recommendation-screen-390.1707da51.webp 390w"
+                      srcSet="/images/vellum-mobile-app/04-vellum-wireframe-recommendation-screen-390.1707da51.webp 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/vellum-mobile-app/04-vellum-wireframe-recommendation-screen-390.1707da51.webp"
+                      src="/images/vellum-mobile-app/04-vellum-wireframe-recommendation-screen-390.1707da51.webp"
                       alt="Recommendations Wireframe"
                       width="390"
                       height="844"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/vellum-mobile-app/04-vellum-wireframe-recommendation-screen-390.1707da51.webp"
+                      data-full="/images/vellum-mobile-app/04-vellum-wireframe-recommendation-screen-390.1707da51.webp"
                     />
                   </picture>
                 </div>
@@ -438,22 +438,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/vellum-mobile-app/04-vellum-recommendations-390.7a22d081.avif 390w"
+                      srcSet="/images/vellum-mobile-app/04-vellum-recommendations-390.7a22d081.avif 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/vellum-mobile-app/04-vellum-recommendations-390.e9000c21.webp 390w"
+                      srcSet="/images/vellum-mobile-app/04-vellum-recommendations-390.e9000c21.webp 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/vellum-mobile-app/04-vellum-recommendations-390.e9000c21.webp"
+                      src="/images/vellum-mobile-app/04-vellum-recommendations-390.e9000c21.webp"
                       alt="Recommendations UI"
                       width="390"
                       height="844"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/vellum-mobile-app/04-vellum-recommendations-390.e9000c21.webp"
+                      data-full="/images/vellum-mobile-app/04-vellum-recommendations-390.e9000c21.webp"
                     />
                   </picture>
                 </div>
@@ -475,22 +475,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/vellum-mobile-app/06-vellum-journal-390.3d79d999.avif 390w"
+                      srcSet="/images/vellum-mobile-app/06-vellum-journal-390.3d79d999.avif 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/vellum-mobile-app/06-vellum-journal-390.1c851c19.webp 390w"
+                      srcSet="/images/vellum-mobile-app/06-vellum-journal-390.1c851c19.webp 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/vellum-mobile-app/06-vellum-journal-390.1c851c19.webp"
+                      src="/images/vellum-mobile-app/06-vellum-journal-390.1c851c19.webp"
                       alt="Vellum Journal Entry Screen"
                       width="390"
                       height="844"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/vellum-mobile-app/06-vellum-journal-390.1c851c19.webp"
+                      data-full="/images/vellum-mobile-app/06-vellum-journal-390.1c851c19.webp"
                     />
                   </picture>
                 </div>
@@ -501,22 +501,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/vellum-mobile-app/07-vellum-insights-390.c47f54fa.avif 390w"
+                      srcSet="/images/vellum-mobile-app/07-vellum-insights-390.c47f54fa.avif 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/vellum-mobile-app/07-vellum-insights-390.61f8bed7.webp 390w"
+                      srcSet="/images/vellum-mobile-app/07-vellum-insights-390.61f8bed7.webp 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/vellum-mobile-app/07-vellum-insights-390.61f8bed7.webp"
+                      src="/images/vellum-mobile-app/07-vellum-insights-390.61f8bed7.webp"
                       alt="Vellum Insights Screen"
                       width="390"
                       height="844"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/vellum-mobile-app/07-vellum-insights-390.61f8bed7.webp"
+                      data-full="/images/vellum-mobile-app/07-vellum-insights-390.61f8bed7.webp"
                     />
                   </picture>
                 </div>
@@ -559,11 +559,11 @@ export default function Page() {
       </div>
       <div className="case-pagination-wrap">
         <div className="case-pagination">
-          <a href="case-lumina.html" className="pag-card">
+          <a href="/case-lumina.html" className="pag-card">
             <span className="pag-label">Previous Case Study</span>{' '}
             <span className="pag-title">05 · Lumina Analytics (Study &amp; Focus Dashboard)</span>
           </a>
-          <a href="case-fintrack.html" className="pag-card u-ta-right">
+          <a href="/case-fintrack.html" className="pag-card u-ta-right">
             <span className="pag-label">Next Case Study</span>{' '}
             <span className="pag-title">07 · FinTrack App (FinTech UX)</span>
           </a>

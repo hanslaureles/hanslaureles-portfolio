@@ -1,23 +1,23 @@
 import type { MenuLink } from './cases';
 
 export const aboutLinks: MenuLink[] = [
-  { href: 'index.html', label: 'Selected Work' },
+  { href: '/index.html', label: 'Selected Work' },
   {
     href: '#',
     label: '🌸 Ask Sakura (AI Copilot)',
     className: 'open-sakura-btn',
   },
-  { href: 'about.html', label: 'About Me', className: 'active' },
-  { href: 'case-lsfm.html', label: 'LSFM AI HQ' },
-  { href: 'case-memory.html', label: 'Memory Core' },
+  { href: '/about.html', label: 'About Me', className: 'active' },
+  { href: '/case-lsfm.html', label: 'LSFM AI HQ' },
+  { href: '/case-memory.html', label: 'Memory Core' },
   {
-    href: 'aura-store/index.html',
+    href: '/aura-store/index.html',
     label: 'Aura Coffee (Live Store)',
     target: '_blank',
     rel: 'noopener noreferrer',
   },
   {
-    href: 'Hans_Laureles_Resume.pdf',
+    href: '/Hans_Laureles_Resume.pdf',
     label: 'Resume (PDF)',
     target: '_blank',
     rel: 'noopener noreferrer',
@@ -102,8 +102,8 @@ export const milestones = [
       "Animated dashboard that moves with Ciel's voice",
     ],
     links: [
-      { href: 'case-ciel.html', label: 'Explore Case Study' },
-      { href: 'case-ciel.html#simulator', label: 'Launch Simulator' },
+      { href: '/case-ciel.html', label: 'Explore Case Study' },
+      { href: '/case-ciel.html#simulator', label: 'Launch Simulator' },
     ],
   },
   {
@@ -118,9 +118,9 @@ export const milestones = [
       'One-page resume PDFs built for applicant tracking systems',
     ],
     links: [
-      { href: 'case-lsfm.html', label: 'Explore Case Study' },
+      { href: '/case-lsfm.html', label: 'Explore Case Study' },
       {
-        href: 'Hans_Laureles_Resume.pdf',
+        href: '/Hans_Laureles_Resume.pdf',
         label: 'Resume PDF',
         target: '_blank',
       },
@@ -137,19 +137,7 @@ export const milestones = [
       'Each lesson records what went wrong, why, and the rule for next time',
       'Plain Python, nothing extra to install',
     ],
-    links: [{ href: 'case-memory.html', label: 'Explore Case Study' }],
-  },
-  {
-    type: 'roc.ph',
-    period: 'JUN 2024 – AUG 2024',
-    title: 'UI/UX & Frontend Engineer Intern — ROC.ph',
-    description:
-      'Bridged design specifications and production code for client web applications in Cavite, Philippines.',
-    bullets: [
-      'Converted Figma component hierarchies into accessible HTML, Tailwind, and React',
-      'Collaborated in agile sprint workflows, code reviews, and client revision loops',
-      'Delivered responsive client websites across diverse SME businesses',
-    ],
+    links: [{ href: '/case-memory.html', label: 'Explore Case Study' }],
   },
   {
     type: 'patriot',
@@ -172,6 +160,18 @@ export const milestones = [
     bullets: [
       'Distributed Systems, Algorithms & Complexities, Human-Computer Interaction',
       'Database Management Systems (SQL/NoSQL) & Object-Oriented Software Architecture',
+    ],
+  },
+  {
+    type: 'roc.ph',
+    period: 'JUN 2024 – AUG 2024',
+    title: 'UI/UX & Frontend Engineer Intern — ROC.ph',
+    description:
+      'Bridged design specifications and production code for client web applications in Cavite, Philippines.',
+    bullets: [
+      'Converted Figma component hierarchies into accessible HTML, Tailwind, and React',
+      'Collaborated in agile sprint workflows, code reviews, and client revision loops',
+      'Delivered responsive client websites across diverse SME businesses',
     ],
   },
 ];

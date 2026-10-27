@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <CaseLayout slug="fintrack" title="FinTrack App — Case Study · Hans Aaron Laureles">
       <div className="case-hero">
-        <a href="index.html" className="case-back-link">
+        <a href="/index.html" className="case-back-link">
           Return to Selected Work
         </a>
         <div className="u-d-flex u-gap-8px u-mb-16px u-wrap-wrap">
@@ -105,23 +105,23 @@ export default function Page() {
           <picture>
             <source
               type="image/avif"
-              srcSet="images/fintrack-mobile-app/fintrack-mockup-480.d086d51f.avif 480w, images/fintrack-mobile-app/fintrack-mockup-960.215104eb.avif 960w, images/fintrack-mobile-app/fintrack-mockup-1417.cef3f6c0.avif 1417w"
+              srcSet="/images/fintrack-mobile-app/fintrack-mockup-480.d086d51f.avif 480w, /images/fintrack-mobile-app/fintrack-mockup-960.215104eb.avif 960w, /images/fintrack-mobile-app/fintrack-mockup-1417.cef3f6c0.avif 1417w"
               sizes="(max-width: 1280px) calc(100vw - 32px), 1240px"
             />
             <source
               type="image/webp"
-              srcSet="images/fintrack-mobile-app/fintrack-mockup-480.b79afc12.webp 480w, images/fintrack-mobile-app/fintrack-mockup-960.e23087e7.webp 960w, images/fintrack-mobile-app/fintrack-mockup-1417.86873f6d.webp 1417w"
+              srcSet="/images/fintrack-mobile-app/fintrack-mockup-480.b79afc12.webp 480w, /images/fintrack-mobile-app/fintrack-mockup-960.e23087e7.webp 960w, /images/fintrack-mobile-app/fintrack-mockup-1417.86873f6d.webp 1417w"
               sizes="(max-width: 1280px) calc(100vw - 32px), 1240px"
             />
             <img
-              src="images/fintrack-mobile-app/fintrack-mockup-960.e23087e7.webp"
+              src="/images/fintrack-mobile-app/fintrack-mockup-960.e23087e7.webp"
               alt="FinTrack Mobile App Showcase"
               width="960"
               height="714"
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              data-full="images/fintrack-mobile-app/fintrack-mockup-1417.86873f6d.webp"
+              data-full="/images/fintrack-mobile-app/fintrack-mockup-1417.86873f6d.webp"
             />
           </picture>
         </div>
@@ -244,22 +244,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/fintrack-mobile-app/01-fintrack-wireframe-dashboard-390.18e7ebd0.avif 390w"
+                      srcSet="/images/fintrack-mobile-app/01-fintrack-wireframe-dashboard-390.18e7ebd0.avif 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/fintrack-mobile-app/01-fintrack-wireframe-dashboard-390.14bb9855.webp 390w"
+                      srcSet="/images/fintrack-mobile-app/01-fintrack-wireframe-dashboard-390.14bb9855.webp 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/fintrack-mobile-app/01-fintrack-wireframe-dashboard-390.14bb9855.webp"
+                      src="/images/fintrack-mobile-app/01-fintrack-wireframe-dashboard-390.14bb9855.webp"
                       alt="FinTrack Dashboard Wireframe"
                       width="390"
                       height="924"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/fintrack-mobile-app/01-fintrack-wireframe-dashboard-390.14bb9855.webp"
+                      data-full="/images/fintrack-mobile-app/01-fintrack-wireframe-dashboard-390.14bb9855.webp"
                     />
                   </picture>
                 </div>
@@ -270,22 +270,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/fintrack-mobile-app/01-fintrack-dashboard-430.15604dc8.avif 430w"
+                      srcSet="/images/fintrack-mobile-app/01-fintrack-dashboard-430.15604dc8.avif 430w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/fintrack-mobile-app/01-fintrack-dashboard-430.d8f5e968.webp 430w"
+                      srcSet="/images/fintrack-mobile-app/01-fintrack-dashboard-430.d8f5e968.webp 430w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/fintrack-mobile-app/01-fintrack-dashboard-430.d8f5e968.webp"
+                      src="/images/fintrack-mobile-app/01-fintrack-dashboard-430.d8f5e968.webp"
                       alt="FinTrack Dashboard UI"
                       width="430"
                       height="1062"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/fintrack-mobile-app/01-fintrack-dashboard-430.d8f5e968.webp"
+                      data-full="/images/fintrack-mobile-app/01-fintrack-dashboard-430.d8f5e968.webp"
                     />
                   </picture>
                 </div>
@@ -298,22 +298,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/fintrack-mobile-app/02-fintrack-wireframe-add-expense-390.52386247.avif 390w"
+                      srcSet="/images/fintrack-mobile-app/02-fintrack-wireframe-add-expense-390.52386247.avif 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/fintrack-mobile-app/02-fintrack-wireframe-add-expense-390.e8c64af7.webp 390w"
+                      srcSet="/images/fintrack-mobile-app/02-fintrack-wireframe-add-expense-390.e8c64af7.webp 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/fintrack-mobile-app/02-fintrack-wireframe-add-expense-390.e8c64af7.webp"
+                      src="/images/fintrack-mobile-app/02-fintrack-wireframe-add-expense-390.e8c64af7.webp"
                       alt="FinTrack Add Expense Wireframe"
                       width="390"
                       height="884"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/fintrack-mobile-app/02-fintrack-wireframe-add-expense-390.e8c64af7.webp"
+                      data-full="/images/fintrack-mobile-app/02-fintrack-wireframe-add-expense-390.e8c64af7.webp"
                     />
                   </picture>
                 </div>
@@ -324,22 +324,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/fintrack-mobile-app/02-fintrack-add-expense-430.78c02dd4.avif 430w"
+                      srcSet="/images/fintrack-mobile-app/02-fintrack-add-expense-430.78c02dd4.avif 430w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/fintrack-mobile-app/02-fintrack-add-expense-430.7eeaa048.webp 430w"
+                      srcSet="/images/fintrack-mobile-app/02-fintrack-add-expense-430.7eeaa048.webp 430w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/fintrack-mobile-app/02-fintrack-add-expense-430.7eeaa048.webp"
+                      src="/images/fintrack-mobile-app/02-fintrack-add-expense-430.7eeaa048.webp"
                       alt="FinTrack Add Expense UI"
                       width="430"
                       height="1122"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/fintrack-mobile-app/02-fintrack-add-expense-430.7eeaa048.webp"
+                      data-full="/images/fintrack-mobile-app/02-fintrack-add-expense-430.7eeaa048.webp"
                     />
                   </picture>
                 </div>
@@ -352,22 +352,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/fintrack-mobile-app/03-fintrack-wireframe-transactions-430.178d9148.avif 430w"
+                      srcSet="/images/fintrack-mobile-app/03-fintrack-wireframe-transactions-430.178d9148.avif 430w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/fintrack-mobile-app/03-fintrack-wireframe-transactions-430.266a35ad.webp 430w"
+                      srcSet="/images/fintrack-mobile-app/03-fintrack-wireframe-transactions-430.266a35ad.webp 430w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/fintrack-mobile-app/03-fintrack-wireframe-transactions-430.266a35ad.webp"
+                      src="/images/fintrack-mobile-app/03-fintrack-wireframe-transactions-430.266a35ad.webp"
                       alt="Transactions Wireframe"
                       width="430"
                       height="924"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/fintrack-mobile-app/03-fintrack-wireframe-transactions-430.266a35ad.webp"
+                      data-full="/images/fintrack-mobile-app/03-fintrack-wireframe-transactions-430.266a35ad.webp"
                     />
                   </picture>
                 </div>
@@ -378,22 +378,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/fintrack-mobile-app/03-fintrack-transactions-466.d6b708d0.avif 466w"
+                      srcSet="/images/fintrack-mobile-app/03-fintrack-transactions-466.d6b708d0.avif 466w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/fintrack-mobile-app/03-fintrack-transactions-466.99585687.webp 466w"
+                      srcSet="/images/fintrack-mobile-app/03-fintrack-transactions-466.99585687.webp 466w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/fintrack-mobile-app/03-fintrack-transactions-466.99585687.webp"
+                      src="/images/fintrack-mobile-app/03-fintrack-transactions-466.99585687.webp"
                       alt="Transactions Feed UI"
                       width="466"
                       height="920"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/fintrack-mobile-app/03-fintrack-transactions-466.99585687.webp"
+                      data-full="/images/fintrack-mobile-app/03-fintrack-transactions-466.99585687.webp"
                     />
                   </picture>
                 </div>
@@ -406,22 +406,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/fintrack-mobile-app/04-fintrack-analytics-390.337179fb.avif 390w"
+                      srcSet="/images/fintrack-mobile-app/04-fintrack-analytics-390.337179fb.avif 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/fintrack-mobile-app/04-fintrack-analytics-390.27c9ff6c.webp 390w"
+                      srcSet="/images/fintrack-mobile-app/04-fintrack-analytics-390.27c9ff6c.webp 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/fintrack-mobile-app/04-fintrack-analytics-390.27c9ff6c.webp"
+                      src="/images/fintrack-mobile-app/04-fintrack-analytics-390.27c9ff6c.webp"
                       alt="Spending Analytics UI"
                       width="390"
                       height="1186"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/fintrack-mobile-app/04-fintrack-analytics-390.27c9ff6c.webp"
+                      data-full="/images/fintrack-mobile-app/04-fintrack-analytics-390.27c9ff6c.webp"
                     />
                   </picture>
                 </div>
@@ -432,22 +432,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/fintrack-mobile-app/05-fintrack-savings-goals-390.0b356990.avif 390w"
+                      srcSet="/images/fintrack-mobile-app/05-fintrack-savings-goals-390.0b356990.avif 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/fintrack-mobile-app/05-fintrack-savings-goals-390.1c7cb827.webp 390w"
+                      srcSet="/images/fintrack-mobile-app/05-fintrack-savings-goals-390.1c7cb827.webp 390w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/fintrack-mobile-app/05-fintrack-savings-goals-390.1c7cb827.webp"
+                      src="/images/fintrack-mobile-app/05-fintrack-savings-goals-390.1c7cb827.webp"
                       alt="Savings Goals UI"
                       width="390"
                       height="968"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/fintrack-mobile-app/05-fintrack-savings-goals-390.1c7cb827.webp"
+                      data-full="/images/fintrack-mobile-app/05-fintrack-savings-goals-390.1c7cb827.webp"
                     />
                   </picture>
                 </div>
@@ -493,11 +493,11 @@ export default function Page() {
       </div>
       <div className="case-pagination-wrap">
         <div className="case-pagination">
-          <a href="case-vellum.html" className="pag-card">
+          <a href="/case-vellum.html" className="pag-card">
             <span className="pag-label">Previous Case Study</span>{' '}
             <span className="pag-title">06 · Vellum (Mindful Mobile UX/UI Concept)</span>
           </a>
-          <a href="case-lsfm.html" className="pag-card u-ta-right">
+          <a href="/case-lsfm.html" className="pag-card u-ta-right">
             <span className="pag-label">Next Case Study</span>{' '}
             <span className="pag-title">01 · LSFM AI HQ (5-Agent Team)</span>
           </a>

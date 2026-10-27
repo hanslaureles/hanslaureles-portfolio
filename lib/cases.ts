@@ -12,11 +12,11 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
       "title": "Vellum — Mindful Mobile UX/UI Case Study · Hans Aaron Laureles",
       "description": "Case study on Vellum — a mindful mental wellness mobile app concept designed in Figma to help users reflect through journaling and gentle, low-pressure interactions.",
       "alternates": {
-        "canonical": "https://hanslaureles.vercel.app/case-vellum.html"
+        "canonical": "https://hanslaureles.vercel.app/case-vellum"
       },
       "openGraph": {
         "type": "article",
-        "url": "https://hanslaureles.vercel.app/case-vellum.html",
+        "url": "https://hanslaureles.vercel.app/case-vellum",
         "title": "Vellum — Mindful Mobile UX/UI Concept Case Study",
         "description": "Mindful mental wellness mobile app concept designed in Figma to help users reflect through ambient journaling and gentle, low-pressure interactions.",
         "images": [
@@ -34,19 +34,19 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
     },
     "mobileLinks": [
       {
-        "href": "index.html",
+        "href": "/index.html",
         "label": "Selected Work"
       },
       {
-        "href": "about.html",
+        "href": "/about.html",
         "label": "About Me"
       },
       {
-        "href": "case-lsfm.html",
+        "href": "/case-lsfm.html",
         "label": "LSFM AI HQ"
       },
       {
-        "href": "Hans_Laureles_Resume.pdf",
+        "href": "/Hans_Laureles_Resume.pdf",
         "target": "_blank",
         "rel": "noopener noreferrer",
         "label": "Resume (PDF)"
@@ -68,11 +68,11 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
       "title": "FinTrack App — Case Study · Hans Aaron Laureles",
       "description": "Case study on FinTrack — a minimalist personal finance mobile application concept designed to help young professionals understand spending patterns through clear visual hierarchy.",
       "alternates": {
-        "canonical": "https://hanslaureles.vercel.app/case-fintrack.html"
+        "canonical": "https://hanslaureles.vercel.app/case-fintrack"
       },
       "openGraph": {
         "type": "article",
-        "url": "https://hanslaureles.vercel.app/case-fintrack.html",
+        "url": "https://hanslaureles.vercel.app/case-fintrack",
         "title": "FinTrack — Personal Finance UX Flow Case Study",
         "description": "A budgeting app concept in Figma: clear visual hierarchy, a 2-tap expense flow and suggested categories.",
         "images": [
@@ -90,19 +90,19 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
     },
     "mobileLinks": [
       {
-        "href": "index.html",
+        "href": "/index.html",
         "label": "Selected Work"
       },
       {
-        "href": "about.html",
+        "href": "/about.html",
         "label": "About Me"
       },
       {
-        "href": "case-lsfm.html",
+        "href": "/case-lsfm.html",
         "label": "LSFM AI HQ"
       },
       {
-        "href": "Hans_Laureles_Resume.pdf",
+        "href": "/Hans_Laureles_Resume.pdf",
         "target": "_blank",
         "rel": "noopener noreferrer",
         "label": "Resume (PDF)"
@@ -124,11 +124,11 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
       "title": "Lumina Analytics — Case Study · Hans Aaron Laureles",
       "description": "Case study on Lumina: a study and focus dashboard for students, designed in Figma and built in React, TypeScript and Chart.js.",
       "alternates": {
-        "canonical": "https://hanslaureles.vercel.app/case-lumina.html"
+        "canonical": "https://hanslaureles.vercel.app/case-lumina"
       },
       "openGraph": {
         "type": "article",
-        "url": "https://hanslaureles.vercel.app/case-lumina.html",
+        "url": "https://hanslaureles.vercel.app/case-lumina",
         "title": "Lumina Analytics — Study & Focus Dashboard Case Study",
         "description": "A study and focus dashboard for students, designed in Figma and built in React, TypeScript and Chart.js.",
         "images": [
@@ -146,19 +146,19 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
     },
     "mobileLinks": [
       {
-        "href": "index.html",
+        "href": "/index.html",
         "label": "Selected Work"
       },
       {
-        "href": "about.html",
+        "href": "/about.html",
         "label": "About Me"
       },
       {
-        "href": "case-lsfm.html",
+        "href": "/case-lsfm.html",
         "label": "LSFM AI HQ"
       },
       {
-        "href": "Hans_Laureles_Resume.pdf",
+        "href": "/Hans_Laureles_Resume.pdf",
         "target": "_blank",
         "rel": "noopener noreferrer",
         "label": "Resume (PDF)"
@@ -180,11 +180,11 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
       "title": "Aura Coffee & Kitchen — Case Study · Hans Aaron Laureles",
       "description": "Case study on Aura Coffee & Kitchen — designing a warm artisanal coffeehouse e-commerce experience with bespoke drink customization, dynamic bag drawer, and 1-page Philippine express checkout.",
       "alternates": {
-        "canonical": "https://hanslaureles.vercel.app/case-aura.html"
+        "canonical": "https://hanslaureles.vercel.app/case-aura"
       },
       "openGraph": {
         "type": "article",
-        "url": "https://hanslaureles.vercel.app/case-aura.html",
+        "url": "https://hanslaureles.vercel.app/case-aura",
         "title": "Aura Coffee & Kitchen — Artisanal Specialty Commerce Case Study",
         "description": "A warm coffee-shop store demo: customise your drink, watch your free-delivery progress, and check out on one page.",
         "images": [
@@ -202,19 +202,19 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
     },
     "mobileLinks": [
       {
-        "href": "index.html",
+        "href": "/index.html",
         "label": "Selected Work"
       },
       {
-        "href": "about.html",
+        "href": "/about.html",
         "label": "About Me"
       },
       {
-        "href": "case-lsfm.html",
+        "href": "/case-lsfm.html",
         "label": "LSFM AI HQ"
       },
       {
-        "href": "Hans_Laureles_Resume.pdf",
+        "href": "/Hans_Laureles_Resume.pdf",
         "target": "_blank",
         "rel": "noopener noreferrer",
         "label": "Resume (PDF)"
@@ -236,11 +236,11 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
       "title": "Cognitive Memory Core — Case Study · Hans Aaron Laureles",
       "description": "Case study on Memory Core, a lessons-learned memory for AI coding assistants: it stores past mistakes as lessons, finds the right one with BM25 before each task, and compiles repeated lessons into rules. Pure Python, no dependencies.",
       "alternates": {
-        "canonical": "https://hanslaureles.vercel.app/case-memory.html"
+        "canonical": "https://hanslaureles.vercel.app/case-memory"
       },
       "openGraph": {
         "type": "article",
-        "url": "https://hanslaureles.vercel.app/case-memory.html",
+        "url": "https://hanslaureles.vercel.app/case-memory",
         "title": "Cognitive Memory Core — A Lessons-Learned Memory for AI Coding Assistants",
         "description": "A lessons-learned memory for AI coding assistants: BM25 keyword search over past mistakes, in pure Python with zero dependencies.",
         "images": [
@@ -258,24 +258,24 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
     },
     "mobileLinks": [
       {
-        "href": "index.html",
+        "href": "/index.html",
         "label": "Selected Work"
       },
       {
-        "href": "about.html",
+        "href": "/about.html",
         "label": "About Me"
       },
       {
-        "href": "case-lsfm.html",
+        "href": "/case-lsfm.html",
         "label": "LSFM AI HQ"
       },
       {
-        "href": "case-memory.html",
+        "href": "/case-memory.html",
         "className": "active",
         "label": "Memory Core"
       },
       {
-        "href": "Hans_Laureles_Resume.pdf",
+        "href": "/Hans_Laureles_Resume.pdf",
         "target": "_blank",
         "rel": "noopener noreferrer",
         "label": "Resume (PDF)"
@@ -297,11 +297,11 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
       "title": "Manas: Ciel — Case Study · Hans Aaron Laureles",
       "description": "Case study on Manas: Ciel, a bilingual voice assistant for my dev workstation: Groq Whisper speech-to-text, a custom FFmpeg voice filter, reads and writes my Obsidian notes, and hands tasks to five AI agents.",
       "alternates": {
-        "canonical": "https://hanslaureles.vercel.app/case-ciel.html"
+        "canonical": "https://hanslaureles.vercel.app/case-ciel"
       },
       "openGraph": {
         "type": "article",
-        "url": "https://hanslaureles.vercel.app/case-ciel.html",
+        "url": "https://hanslaureles.vercel.app/case-ciel",
         "title": "Manas: Ciel — Bilingual Voice Assistant Case Study",
         "description": "Bilingual voice assistant with Groq Whisper speech-to-text, a custom voice filter, live weather, web search, and read/write access to my Obsidian notes.",
         "images": [
@@ -319,7 +319,7 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
     },
     "mobileLinks": [
       {
-        "href": "index.html",
+        "href": "/index.html",
         "label": "Selected Work"
       },
       {
@@ -328,24 +328,24 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
         "label": "🌸 Ask Sakura (AI Copilot)"
       },
       {
-        "href": "about.html",
+        "href": "/about.html",
         "label": "About Me"
       },
       {
-        "href": "case-ciel.html",
+        "href": "/case-ciel.html",
         "className": "active u-c-tone-amber u-fw-600",
         "label": "✦ Manas: Ciel"
       },
       {
-        "href": "case-lsfm.html",
+        "href": "/case-lsfm.html",
         "label": "LSFM AI HQ"
       },
       {
-        "href": "case-memory.html",
+        "href": "/case-memory.html",
         "label": "Memory Core"
       },
       {
-        "href": "Hans_Laureles_Resume.pdf",
+        "href": "/Hans_Laureles_Resume.pdf",
         "target": "_blank",
         "rel": "noopener noreferrer",
         "label": "Resume (PDF)"
@@ -367,11 +367,11 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
       "title": "LSFM AI HQ — Case Study · Hans Aaron Laureles",
       "description": "Case study on LSFM AI HQ — an autonomous 5-agent operations platform orchestrating Discord Gateway streaming, multi-provider LLM routing (Groq + Gemini, with an optional local Ollama mode on an AMD RX 6600 XT), and programmatic Google Workspace APIs.",
       "alternates": {
-        "canonical": "https://hanslaureles.vercel.app/case-lsfm.html"
+        "canonical": "https://hanslaureles.vercel.app/case-lsfm"
       },
       "openGraph": {
         "type": "article",
-        "url": "https://hanslaureles.vercel.app/case-lsfm.html",
+        "url": "https://hanslaureles.vercel.app/case-lsfm",
         "title": "LSFM AI HQ — Multi-Agent System Case Study",
         "description": "Autonomous 5-agent operations platform orchestrating Discord Gateway streaming, multi-provider LLM routing (Groq + Gemini, optional local Ollama), and automated tool pipelines.",
         "images": [
@@ -389,20 +389,20 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
     },
     "mobileLinks": [
       {
-        "href": "index.html",
+        "href": "/index.html",
         "label": "Selected Work"
       },
       {
-        "href": "about.html",
+        "href": "/about.html",
         "label": "About Me"
       },
       {
-        "href": "case-lsfm.html",
+        "href": "/case-lsfm.html",
         "className": "active",
         "label": "LSFM AI HQ"
       },
       {
-        "href": "Hans_Laureles_Resume.pdf",
+        "href": "/Hans_Laureles_Resume.pdf",
         "target": "_blank",
         "rel": "noopener noreferrer",
         "label": "Resume (PDF)"

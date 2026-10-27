@@ -361,7 +361,7 @@ test("Sakura's agent overview link works from a case page and from the homepage"
     await page.locator(".sakura-floating-trigger").click();
     await page.locator("#sakuraSearchInput").fill("agent overview snapshot");
     await page.keyboard.press("Enter");
-    await page.locator('#sakuraOutput a[href="index.html#project-lsfm"]').first().click();
+    await page.locator('#sakuraOutput a[href="/index.html#project-lsfm"]').first().click();
   };
   await page.goto("case-lsfm", { waitUntil: "networkidle" });
   await ask();

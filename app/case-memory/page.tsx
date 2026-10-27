@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <CaseLayout slug="memory" title="Cognitive Memory Core — Case Study · Hans Aaron Laureles">
       <div className="case-hero">
-        <a href="index.html" className="case-back-link">
+        <a href="/index.html" className="case-back-link">
           Return to Selected Work
         </a>
         <div className="u-d-flex u-gap-8px u-mb-16px u-wrap-wrap">
@@ -97,7 +97,7 @@ export default function Page() {
         <div className="case-meta-table">
           <div className="case-meta-item">
             <div className="label">Platform</div>
-            <div className="val">Antigravity Rules · Discord Multi-Agent System · Local CLI</div>
+            <div className="val">Shared Workspace Rules · Discord Multi-Agent System · Local CLI</div>
           </div>
           <div className="case-meta-item">
             <div className="label">Discipline</div>
@@ -156,23 +156,23 @@ export default function Page() {
           <picture>
             <source
               type="image/avif"
-              srcSet="images/memory-core/memory-mockup-480.fe2cc1ea.avif 480w, images/memory-core/memory-mockup-960.2fc2c74f.avif 960w, images/memory-core/memory-mockup-1376.c97be728.avif 1376w"
+              srcSet="/images/memory-core/memory-mockup-480.fe2cc1ea.avif 480w, /images/memory-core/memory-mockup-960.2fc2c74f.avif 960w, /images/memory-core/memory-mockup-1376.c97be728.avif 1376w"
               sizes="(max-width: 1280px) calc(100vw - 32px), 1240px"
             />
             <source
               type="image/webp"
-              srcSet="images/memory-core/memory-mockup-480.4ead0a78.webp 480w, images/memory-core/memory-mockup-960.18d7e109.webp 960w, images/memory-core/memory-mockup-1376.858de97b.webp 1376w"
+              srcSet="/images/memory-core/memory-mockup-480.4ead0a78.webp 480w, /images/memory-core/memory-mockup-960.18d7e109.webp 960w, /images/memory-core/memory-mockup-1376.858de97b.webp 1376w"
               sizes="(max-width: 1280px) calc(100vw - 32px), 1240px"
             />
             <img
-              src="images/memory-core/memory-mockup-960.18d7e109.webp"
+              src="/images/memory-core/memory-mockup-960.18d7e109.webp"
               alt="Memory Core lesson search interface mockup"
               width="960"
               height="536"
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              data-full="images/memory-core/memory-mockup-1376.858de97b.webp"
+              data-full="/images/memory-core/memory-mockup-1376.858de97b.webp"
             />
           </picture>
         </div>
@@ -836,11 +836,11 @@ export default function Page() {
       </div>
       <div className="case-pagination-wrap u-mt-64px u-mb-32px">
         <div className="case-pagination u-d-grid u-cols-1fr-1fr u-gap-24px">
-          <a href="case-ciel.html" className="pag-card">
+          <a href="/case-ciel.html" className="pag-card">
             <span className="pag-label">Previous Case Study</span>{' '}
             <span className="pag-title">02 · Manas: Ciel (Voice AI Copilot &amp; HUD)</span>
           </a>
-          <a href="case-aura.html" className="pag-card u-ta-right">
+          <a href="/case-aura.html" className="pag-card u-ta-right">
             <span className="pag-label">Next Case Study</span>{' '}
             <span className="pag-title">04 · Aura Coffee &amp; Kitchen (Specialty Commerce)</span>
           </a>

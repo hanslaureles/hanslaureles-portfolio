@@ -38,7 +38,7 @@ export function ProjectIndex() {
               </p>
             )}
           </div>
-          <a href={`case-${project.slug}.html`} className="project-case-link">
+          <a href={`/case-${project.slug}.html`} className="project-case-link">
             Case study
           </a>
         </li>
@@ -59,7 +59,7 @@ export default function ProjectCards() {
               ? featuredSizes
               : smallSizes;
         const image = (hash: string, i: number, format: string) =>
-          `images/${project.folder}-mockup-${[480, 960, 1600][i]}.${hash}.${format}`;
+          `/images/${project.folder}-mockup-${[480, 960, 1600][i]}.${hash}.${format}`;
         return (
           <article
             id={`project-${project.slug}`}
@@ -165,7 +165,7 @@ export default function ProjectCards() {
               </ul>
               <div className="project-actions">
                 <a
-                  href={`case-${project.slug}.html`}
+                  href={`/case-${project.slug}.html`}
                   className="project-case-link"
                 >
                   Case study

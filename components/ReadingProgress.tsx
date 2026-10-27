@@ -29,17 +29,20 @@ export default function ReadingProgress() {
         modal.querySelector('button')?.focus();
       };
     });
+    const scrollRegions = document.querySelectorAll<HTMLElement>('.case-table-wrap, .terminal-body, .routing-table-container, [style*="overflow-x: auto"], [style*="overflow: auto"]');
     const markScrollRegions = () => {
       document.querySelectorAll<HTMLElement>('.memory-result-box, .ciel-response-box').forEach(el => { el.tabIndex = 0; });
-      document.querySelectorAll<HTMLElement>('.terminal-body, .routing-table-container, [style*="overflow-x: auto"], [style*="overflow: auto"]').forEach(el => {
+      scrollRegions.forEach(el => {
         const scrolls = el.scrollWidth > el.clientWidth + 1 || el.scrollHeight > el.clientHeight + 1;
         if (scrolls && !el.hasAttribute('tabindex')) { el.tabIndex = 0; el.dataset.scrollFocus = '1'; }
         else if (!scrolls && el.dataset.scrollFocus) { el.removeAttribute('tabindex'); delete el.dataset.scrollFocus; }
       });
     };
+    const resizeObserver = new ResizeObserver(markScrollRegions);
+    scrollRegions.forEach(el => resizeObserver.observe(el));
     markScrollRegions(); window.addEventListener('load', markScrollRegions); window.addEventListener('resize', markScrollRegions);
     return () => {
-      observer.disconnect(); window.removeEventListener('load', markScrollRegions); window.removeEventListener('resize', markScrollRegions);
+      observer.disconnect(); resizeObserver.disconnect(); window.removeEventListener('load', markScrollRegions); window.removeEventListener('resize', markScrollRegions);
       for (const trigger of triggers) trigger.replaceWith(...trigger.childNodes);
     };
   }, []);

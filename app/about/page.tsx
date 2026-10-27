@@ -15,10 +15,10 @@ export const metadata: Metadata = {
   title: 'About Me — Hans Aaron Laureles · Applied AI Engineer',
   description:
     'Biography, systems track, multi-agent engineering, and technical capabilities of Hans Aaron Laureles — Applied AI Engineer & Full-Stack Builder.',
-  alternates: { canonical: 'https://hanslaureles.vercel.app/about.html' },
+  alternates: { canonical: 'https://hanslaureles.vercel.app/about' },
   openGraph: {
     type: 'profile',
-    url: 'https://hanslaureles.vercel.app/about.html',
+    url: 'https://hanslaureles.vercel.app/about',
     title: socialTitle,
     description: socialDescription,
     images: [image],
@@ -36,7 +36,7 @@ export default async function About() {
     <>
       <main id="main-content" className="section-spacing">
         <div className="container">
-          <a href="index.html" className="case-back-link">
+          <a href="/index.html" className="case-back-link">
             Return to Selected Work
           </a>
           <div className="about-hero-grid">
@@ -45,23 +45,23 @@ export default async function About() {
                 <picture>
                   <source
                     type="image/avif"
-                    srcSet="images/profile-pic-480.43163c35.avif 480w, images/profile-pic-960.60057a6a.avif 960w, images/profile-pic-1600.cec07c1a.avif 1600w, images/profile-pic-2400.8d516c5b.avif 2400w"
+                    srcSet="/images/profile-pic-480.43163c35.avif 480w, /images/profile-pic-960.60057a6a.avif 960w, /images/profile-pic-1600.cec07c1a.avif 1600w, /images/profile-pic-2400.8d516c5b.avif 2400w"
                     sizes="(max-width: 900px) 90vw, 340px"
                   />
                   <source
                     type="image/webp"
-                    srcSet="images/profile-pic-480.6dfd3635.webp 480w, images/profile-pic-960.7db1c34c.webp 960w, images/profile-pic-1600.77f11b99.webp 1600w, images/profile-pic-2400.9d7014ed.webp 2400w"
+                    srcSet="/images/profile-pic-480.6dfd3635.webp 480w, /images/profile-pic-960.7db1c34c.webp 960w, /images/profile-pic-1600.77f11b99.webp 1600w, /images/profile-pic-2400.9d7014ed.webp 2400w"
                     sizes="(max-width: 900px) 90vw, 340px"
                   />
                   <img
-                    src="images/profile-pic-960.7db1c34c.webp"
+                    src="/images/profile-pic-960.7db1c34c.webp"
                     alt="Hans Aaron Laureles Portrait"
                     width="960"
                     height="960"
                     loading="eager"
                     fetchPriority="high"
                     decoding="async"
-                    data-full="images/profile-pic-2400.9d7014ed.webp"
+                    data-full="/images/profile-pic-2400.9d7014ed.webp"
                   />
                 </picture>
               </div>
@@ -154,7 +154,7 @@ export default async function About() {
                       $ git log --graph --oneline --decorate --stat
                     </div>
                     <div className="git-terminal-meta mono">
-                      branch: main · 6 milestones
+                      branch: main · {milestones.length} milestones · ongoing first
                     </div>
                   </div>
                   <div className="git-stream">
@@ -192,7 +192,7 @@ export default async function About() {
                           <div className="git-commit-title">
                             <strong
                               className="git-type"
-                              style={i === 0 ? { color: '#FBBF24' } : undefined}
+                              style={i === 0 ? { color: 'var(--tone-amber)' } : undefined}
                             >
                               feat({item.type}):
                             </strong>{' '}
@@ -357,7 +357,7 @@ export default async function About() {
               >
                 <ContactEmail />
                 <a
-                  href="Hans_Laureles_Resume.pdf"
+                  href="/Hans_Laureles_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-outline"

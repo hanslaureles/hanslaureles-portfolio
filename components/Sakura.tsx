@@ -302,7 +302,7 @@ export default function Sakura({ home = false }: { home?: boolean }) {
                     directly below.
                   </p>
                   <div style={{ marginTop: 16 }}>
-                    <a href="about.html" className="btn btn-outline btn-sm">
+                    <a href="/about.html" className="btn btn-outline btn-sm">
                       Read Full Profile (About Me)
                     </a>
                   </div>
@@ -414,14 +414,14 @@ export default function Sakura({ home = false }: { home?: boolean }) {
           <div className="sakura-footer">
             <div className="sakura-footer-links">
               <a
-                href="Hans_Laureles_Resume.pdf"
+                href="/Hans_Laureles_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="sakura-foot-btn"
               >
                 {icon('clipboard', '📄')} Download Resume
               </a>
-              <a href="case-lsfm.html" className="sakura-foot-btn">
+              <a href="/case-lsfm.html" className="sakura-foot-btn">
                 {icon('briefcase', '⭐')} LSFM Case Study
               </a>
               <button

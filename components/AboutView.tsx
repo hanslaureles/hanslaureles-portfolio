@@ -11,14 +11,27 @@ export default function AboutView({
 }) {
   const [view, setView] = useState('cards');
   useEffect(() => {
-    let saved = null;
-    try {
-      saved = localStorage.getItem('hans_about_view_pref');
-    } catch {}
-    if (location.hash === '#git' || saved === 'git') setView('git');
+    const sync = () => {
+      let saved = null;
+      try {
+        saved = localStorage.getItem('hans_about_view_pref');
+      } catch {}
+      const mode = location.hash === '#cards' ? 'cards'
+        : location.hash === '#git' || saved === 'git' ? 'git' : 'cards';
+      setView(mode);
+      if (!location.hash) history.replaceState(null, '', `${location.pathname}${location.search}#${mode}`);
+    };
+    sync();
+    window.addEventListener('popstate', sync);
+    window.addEventListener('hashchange', sync);
+    return () => {
+      window.removeEventListener('popstate', sync);
+      window.removeEventListener('hashchange', sync);
+    };
   }, []);
   function select(mode: string) {
     setView(mode);
+    if (location.hash !== `#${mode}`) history.pushState(null, '', `${location.pathname}${location.search}#${mode}`);
     try {
       localStorage.setItem('hans_about_view_pref', mode);
     } catch {}
@@ -37,11 +50,20 @@ export default function AboutView({
           className="view-toggle-wrap"
           role="tablist"
           aria-label="Experience View Switcher"
+          onKeyDown={event => {
+            if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+            event.preventDefault();
+            const mode = event.key === 'Home' ? 'cards' : event.key === 'End' ? 'git'
+              : view === 'cards' ? 'git' : 'cards';
+            select(mode);
+            event.currentTarget.querySelector<HTMLButtonElement>(mode === 'cards' ? '#btnViewCards' : '#btnViewGit')?.focus();
+          }}
         >
           <button
             className={`view-toggle-btn${view === 'cards' ? ' active' : ''}`}
             id="btnViewCards"
             role="tab"
+            tabIndex={view === 'cards' ? 0 : -1}
             aria-selected={view === 'cards'}
             aria-controls="experience-cards-view"
             onClick={() => select('cards')}
@@ -52,6 +74,7 @@ export default function AboutView({
             className={`view-toggle-btn${view === 'git' ? ' active' : ''}`}
             id="btnViewGit"
             role="tab"
+            tabIndex={view === 'git' ? 0 : -1}
             aria-selected={view === 'git'}
             aria-controls="experience-git-view"
             onClick={() => select('git')}
@@ -64,6 +87,8 @@ export default function AboutView({
         className="experience-timeline"
         id="experience-cards-view"
         role="tabpanel"
+        aria-labelledby="btnViewCards"
+        tabIndex={0}
         style={{ display: view === 'cards' ? 'flex' : 'none' }}
       >
         {cards}
@@ -72,6 +97,8 @@ export default function AboutView({
         className="git-timeline-container"
         id="experience-git-view"
         role="tabpanel"
+        aria-labelledby="btnViewGit"
+        tabIndex={0}
         style={{ display: view === 'git' ? 'block' : 'none' }}
       >
         {git}

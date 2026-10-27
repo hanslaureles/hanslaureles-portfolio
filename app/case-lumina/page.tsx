@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <CaseLayout slug="lumina" title="Lumina Analytics — Case Study · Hans Aaron Laureles">
       <div className="case-hero">
-        <a href="index.html" className="case-back-link">
+        <a href="/index.html" className="case-back-link">
           Return to Selected Work
         </a>
         <div className="u-d-flex u-gap-8px u-mb-16px u-wrap-wrap">
@@ -114,23 +114,23 @@ export default function Page() {
           <picture>
             <source
               type="image/avif"
-              srcSet="images/lumina-website/lumina-mockup-480.dcd86236.avif 480w, images/lumina-website/lumina-mockup-960.27d9d3b6.avif 960w, images/lumina-website/lumina-mockup-1600.20ec6b1b.avif 1600w, images/lumina-website/lumina-mockup-2400.61aeb255.avif 2400w"
+              srcSet="/images/lumina-website/lumina-mockup-480.dcd86236.avif 480w, /images/lumina-website/lumina-mockup-960.27d9d3b6.avif 960w, /images/lumina-website/lumina-mockup-1600.20ec6b1b.avif 1600w, /images/lumina-website/lumina-mockup-2400.61aeb255.avif 2400w"
               sizes="(max-width: 1280px) calc(100vw - 32px), 1240px"
             />
             <source
               type="image/webp"
-              srcSet="images/lumina-website/lumina-mockup-480.d6881fd9.webp 480w, images/lumina-website/lumina-mockup-960.adc91708.webp 960w, images/lumina-website/lumina-mockup-1600.79019dd8.webp 1600w, images/lumina-website/lumina-mockup-2400.e03110d9.webp 2400w"
+              srcSet="/images/lumina-website/lumina-mockup-480.d6881fd9.webp 480w, /images/lumina-website/lumina-mockup-960.adc91708.webp 960w, /images/lumina-website/lumina-mockup-1600.79019dd8.webp 1600w, /images/lumina-website/lumina-mockup-2400.e03110d9.webp 2400w"
               sizes="(max-width: 1280px) calc(100vw - 32px), 1240px"
             />
             <img
-              src="images/lumina-website/lumina-mockup-960.adc91708.webp"
+              src="/images/lumina-website/lumina-mockup-960.adc91708.webp"
               alt="Lumina Dashboard Showcase"
               width="960"
               height="720"
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              data-full="images/lumina-website/lumina-mockup-2400.e03110d9.webp"
+              data-full="/images/lumina-website/lumina-mockup-2400.e03110d9.webp"
             />
           </picture>
         </div>
@@ -255,22 +255,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/lumina-website/01-lumina-wireframe-dashboard-480.3d8fce35.avif 480w, images/lumina-website/01-lumina-wireframe-dashboard-960.ac979a6b.avif 960w, images/lumina-website/01-lumina-wireframe-dashboard-1440.63ee8100.avif 1440w"
+                      srcSet="/images/lumina-website/01-lumina-wireframe-dashboard-480.3d8fce35.avif 480w, /images/lumina-website/01-lumina-wireframe-dashboard-960.ac979a6b.avif 960w, /images/lumina-website/01-lumina-wireframe-dashboard-1440.63ee8100.avif 1440w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/lumina-website/01-lumina-wireframe-dashboard-480.0963dcb4.webp 480w, images/lumina-website/01-lumina-wireframe-dashboard-960.8ce9da3a.webp 960w, images/lumina-website/01-lumina-wireframe-dashboard-1440.f92499e4.webp 1440w"
+                      srcSet="/images/lumina-website/01-lumina-wireframe-dashboard-480.0963dcb4.webp 480w, /images/lumina-website/01-lumina-wireframe-dashboard-960.8ce9da3a.webp 960w, /images/lumina-website/01-lumina-wireframe-dashboard-1440.f92499e4.webp 1440w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/lumina-website/01-lumina-wireframe-dashboard-960.8ce9da3a.webp"
+                      src="/images/lumina-website/01-lumina-wireframe-dashboard-960.8ce9da3a.webp"
                       alt="Lumina Dashboard Wireframe"
                       width="960"
                       height="682"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/lumina-website/01-lumina-wireframe-dashboard-1440.f92499e4.webp"
+                      data-full="/images/lumina-website/01-lumina-wireframe-dashboard-1440.f92499e4.webp"
                     />
                   </picture>
                 </div>
@@ -281,22 +281,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/lumina-website/01-lumina-dashboard-480.20739617.avif 480w, images/lumina-website/01-lumina-dashboard-960.43443081.avif 960w, images/lumina-website/01-lumina-dashboard-1472.2693d194.avif 1472w"
+                      srcSet="/images/lumina-website/01-lumina-dashboard-480.20739617.avif 480w, /images/lumina-website/01-lumina-dashboard-960.43443081.avif 960w, /images/lumina-website/01-lumina-dashboard-1472.2693d194.avif 1472w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/lumina-website/01-lumina-dashboard-480.3336b8d3.webp 480w, images/lumina-website/01-lumina-dashboard-960.070eacf4.webp 960w, images/lumina-website/01-lumina-dashboard-1472.214f2f66.webp 1472w"
+                      srcSet="/images/lumina-website/01-lumina-dashboard-480.3336b8d3.webp 480w, /images/lumina-website/01-lumina-dashboard-960.070eacf4.webp 960w, /images/lumina-website/01-lumina-dashboard-1472.214f2f66.webp 1472w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/lumina-website/01-lumina-dashboard-960.070eacf4.webp"
+                      src="/images/lumina-website/01-lumina-dashboard-960.070eacf4.webp"
                       alt="Lumina Dashboard UI"
                       width="960"
                       height="688"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/lumina-website/01-lumina-dashboard-1472.214f2f66.webp"
+                      data-full="/images/lumina-website/01-lumina-dashboard-1472.214f2f66.webp"
                     />
                   </picture>
                 </div>
@@ -309,22 +309,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/lumina-website/02-lumina-wireframe-tasks-480.f9812aaf.avif 480w, images/lumina-website/02-lumina-wireframe-tasks-960.7d396f63.avif 960w, images/lumina-website/02-lumina-wireframe-tasks-1440.47399e02.avif 1440w"
+                      srcSet="/images/lumina-website/02-lumina-wireframe-tasks-480.f9812aaf.avif 480w, /images/lumina-website/02-lumina-wireframe-tasks-960.7d396f63.avif 960w, /images/lumina-website/02-lumina-wireframe-tasks-1440.47399e02.avif 1440w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/lumina-website/02-lumina-wireframe-tasks-480.4d4e692d.webp 480w, images/lumina-website/02-lumina-wireframe-tasks-960.2f7c561b.webp 960w, images/lumina-website/02-lumina-wireframe-tasks-1440.26c99904.webp 1440w"
+                      srcSet="/images/lumina-website/02-lumina-wireframe-tasks-480.4d4e692d.webp 480w, /images/lumina-website/02-lumina-wireframe-tasks-960.2f7c561b.webp 960w, /images/lumina-website/02-lumina-wireframe-tasks-1440.26c99904.webp 1440w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/lumina-website/02-lumina-wireframe-tasks-960.2f7c561b.webp"
+                      src="/images/lumina-website/02-lumina-wireframe-tasks-960.2f7c561b.webp"
                       alt="Lumina Tasks Wireframe"
                       width="960"
                       height="682"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/lumina-website/02-lumina-wireframe-tasks-1440.26c99904.webp"
+                      data-full="/images/lumina-website/02-lumina-wireframe-tasks-1440.26c99904.webp"
                     />
                   </picture>
                 </div>
@@ -335,22 +335,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/lumina-website/02-lumina-tasks-480.a561f196.avif 480w, images/lumina-website/02-lumina-tasks-960.656266c0.avif 960w, images/lumina-website/02-lumina-tasks-1472.1db992ca.avif 1472w"
+                      srcSet="/images/lumina-website/02-lumina-tasks-480.a561f196.avif 480w, /images/lumina-website/02-lumina-tasks-960.656266c0.avif 960w, /images/lumina-website/02-lumina-tasks-1472.1db992ca.avif 1472w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/lumina-website/02-lumina-tasks-480.112ec196.webp 480w, images/lumina-website/02-lumina-tasks-960.b05ae79b.webp 960w, images/lumina-website/02-lumina-tasks-1472.07f6d3c9.webp 1472w"
+                      srcSet="/images/lumina-website/02-lumina-tasks-480.112ec196.webp 480w, /images/lumina-website/02-lumina-tasks-960.b05ae79b.webp 960w, /images/lumina-website/02-lumina-tasks-1472.07f6d3c9.webp 1472w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/lumina-website/02-lumina-tasks-960.b05ae79b.webp"
+                      src="/images/lumina-website/02-lumina-tasks-960.b05ae79b.webp"
                       alt="Lumina Tasks UI"
                       width="960"
                       height="688"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/lumina-website/02-lumina-tasks-1472.07f6d3c9.webp"
+                      data-full="/images/lumina-website/02-lumina-tasks-1472.07f6d3c9.webp"
                     />
                   </picture>
                 </div>
@@ -363,22 +363,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/lumina-website/03-lumina-wireframe-focus-480.b6aebd64.avif 480w, images/lumina-website/03-lumina-wireframe-focus-960.991b5f9e.avif 960w, images/lumina-website/03-lumina-wireframe-focus-1440.c6b5c609.avif 1440w"
+                      srcSet="/images/lumina-website/03-lumina-wireframe-focus-480.b6aebd64.avif 480w, /images/lumina-website/03-lumina-wireframe-focus-960.991b5f9e.avif 960w, /images/lumina-website/03-lumina-wireframe-focus-1440.c6b5c609.avif 1440w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/lumina-website/03-lumina-wireframe-focus-480.1ee04a98.webp 480w, images/lumina-website/03-lumina-wireframe-focus-960.2adeaadb.webp 960w, images/lumina-website/03-lumina-wireframe-focus-1440.5bb1a73e.webp 1440w"
+                      srcSet="/images/lumina-website/03-lumina-wireframe-focus-480.1ee04a98.webp 480w, /images/lumina-website/03-lumina-wireframe-focus-960.2adeaadb.webp 960w, /images/lumina-website/03-lumina-wireframe-focus-1440.5bb1a73e.webp 1440w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/lumina-website/03-lumina-wireframe-focus-960.2adeaadb.webp"
+                      src="/images/lumina-website/03-lumina-wireframe-focus-960.2adeaadb.webp"
                       alt="Lumina Focus Wireframe"
                       width="960"
                       height="682"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/lumina-website/03-lumina-wireframe-focus-1440.5bb1a73e.webp"
+                      data-full="/images/lumina-website/03-lumina-wireframe-focus-1440.5bb1a73e.webp"
                     />
                   </picture>
                 </div>
@@ -389,22 +389,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/lumina-website/03-lumina-focus-480.ddb02577.avif 480w, images/lumina-website/03-lumina-focus-960.ffc73775.avif 960w, images/lumina-website/03-lumina-focus-1472.51bd458f.avif 1472w"
+                      srcSet="/images/lumina-website/03-lumina-focus-480.ddb02577.avif 480w, /images/lumina-website/03-lumina-focus-960.ffc73775.avif 960w, /images/lumina-website/03-lumina-focus-1472.51bd458f.avif 1472w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/lumina-website/03-lumina-focus-480.e290bb2c.webp 480w, images/lumina-website/03-lumina-focus-960.3485e0a6.webp 960w, images/lumina-website/03-lumina-focus-1472.303dfd49.webp 1472w"
+                      srcSet="/images/lumina-website/03-lumina-focus-480.e290bb2c.webp 480w, /images/lumina-website/03-lumina-focus-960.3485e0a6.webp 960w, /images/lumina-website/03-lumina-focus-1472.303dfd49.webp 1472w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/lumina-website/03-lumina-focus-960.3485e0a6.webp"
+                      src="/images/lumina-website/03-lumina-focus-960.3485e0a6.webp"
                       alt="Lumina Deep Work Focus Screen"
                       width="960"
                       height="688"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/lumina-website/03-lumina-focus-1472.303dfd49.webp"
+                      data-full="/images/lumina-website/03-lumina-focus-1472.303dfd49.webp"
                     />
                   </picture>
                 </div>
@@ -417,22 +417,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/lumina-website/04-lumina-wireframe-insights-480.4963e5c7.avif 480w, images/lumina-website/04-lumina-wireframe-insights-960.75e26062.avif 960w, images/lumina-website/04-lumina-wireframe-insights-1440.2d1eb470.avif 1440w"
+                      srcSet="/images/lumina-website/04-lumina-wireframe-insights-480.4963e5c7.avif 480w, /images/lumina-website/04-lumina-wireframe-insights-960.75e26062.avif 960w, /images/lumina-website/04-lumina-wireframe-insights-1440.2d1eb470.avif 1440w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/lumina-website/04-lumina-wireframe-insights-480.64634773.webp 480w, images/lumina-website/04-lumina-wireframe-insights-960.93f15e05.webp 960w, images/lumina-website/04-lumina-wireframe-insights-1440.3724a99a.webp 1440w"
+                      srcSet="/images/lumina-website/04-lumina-wireframe-insights-480.64634773.webp 480w, /images/lumina-website/04-lumina-wireframe-insights-960.93f15e05.webp 960w, /images/lumina-website/04-lumina-wireframe-insights-1440.3724a99a.webp 1440w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/lumina-website/04-lumina-wireframe-insights-960.93f15e05.webp"
+                      src="/images/lumina-website/04-lumina-wireframe-insights-960.93f15e05.webp"
                       alt="Lumina Insights Wireframe"
                       width="960"
                       height="682"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/lumina-website/04-lumina-wireframe-insights-1440.3724a99a.webp"
+                      data-full="/images/lumina-website/04-lumina-wireframe-insights-1440.3724a99a.webp"
                     />
                   </picture>
                 </div>
@@ -443,22 +443,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/lumina-website/04-lumina-insights-480.f3bffc17.avif 480w, images/lumina-website/04-lumina-insights-960.8ee168fa.avif 960w, images/lumina-website/04-lumina-insights-1472.bda93a07.avif 1472w"
+                      srcSet="/images/lumina-website/04-lumina-insights-480.f3bffc17.avif 480w, /images/lumina-website/04-lumina-insights-960.8ee168fa.avif 960w, /images/lumina-website/04-lumina-insights-1472.bda93a07.avif 1472w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/lumina-website/04-lumina-insights-480.69adcab7.webp 480w, images/lumina-website/04-lumina-insights-960.87b6c124.webp 960w, images/lumina-website/04-lumina-insights-1472.cf914dd8.webp 1472w"
+                      srcSet="/images/lumina-website/04-lumina-insights-480.69adcab7.webp 480w, /images/lumina-website/04-lumina-insights-960.87b6c124.webp 960w, /images/lumina-website/04-lumina-insights-1472.cf914dd8.webp 1472w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/lumina-website/04-lumina-insights-960.87b6c124.webp"
+                      src="/images/lumina-website/04-lumina-insights-960.87b6c124.webp"
                       alt="Lumina Insights Screen"
                       width="960"
                       height="688"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/lumina-website/04-lumina-insights-1472.cf914dd8.webp"
+                      data-full="/images/lumina-website/04-lumina-insights-1472.cf914dd8.webp"
                     />
                   </picture>
                 </div>
@@ -482,22 +482,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/lumina-website/05-lumina-wireframe-settings-480.94173348.avif 480w, images/lumina-website/05-lumina-wireframe-settings-960.4a10e9ec.avif 960w, images/lumina-website/05-lumina-wireframe-settings-1440.1d05164b.avif 1440w"
+                      srcSet="/images/lumina-website/05-lumina-wireframe-settings-480.94173348.avif 480w, /images/lumina-website/05-lumina-wireframe-settings-960.4a10e9ec.avif 960w, /images/lumina-website/05-lumina-wireframe-settings-1440.1d05164b.avif 1440w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/lumina-website/05-lumina-wireframe-settings-480.0be1d949.webp 480w, images/lumina-website/05-lumina-wireframe-settings-960.8866a62e.webp 960w, images/lumina-website/05-lumina-wireframe-settings-1440.936be479.webp 1440w"
+                      srcSet="/images/lumina-website/05-lumina-wireframe-settings-480.0be1d949.webp 480w, /images/lumina-website/05-lumina-wireframe-settings-960.8866a62e.webp 960w, /images/lumina-website/05-lumina-wireframe-settings-1440.936be479.webp 1440w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/lumina-website/05-lumina-wireframe-settings-960.8866a62e.webp"
+                      src="/images/lumina-website/05-lumina-wireframe-settings-960.8866a62e.webp"
                       alt="Lumina Settings Wireframe"
                       width="960"
                       height="682"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/lumina-website/05-lumina-wireframe-settings-1440.936be479.webp"
+                      data-full="/images/lumina-website/05-lumina-wireframe-settings-1440.936be479.webp"
                     />
                   </picture>
                 </div>
@@ -510,22 +510,22 @@ export default function Page() {
                   <picture>
                     <source
                       type="image/avif"
-                      srcSet="images/lumina-website/05-lumina-settings-480.db6a85b8.avif 480w, images/lumina-website/05-lumina-settings-960.af4a8b03.avif 960w, images/lumina-website/05-lumina-settings-1472.3311c8a3.avif 1472w"
+                      srcSet="/images/lumina-website/05-lumina-settings-480.db6a85b8.avif 480w, /images/lumina-website/05-lumina-settings-960.af4a8b03.avif 960w, /images/lumina-website/05-lumina-settings-1472.3311c8a3.avif 1472w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <source
                       type="image/webp"
-                      srcSet="images/lumina-website/05-lumina-settings-480.a6221871.webp 480w, images/lumina-website/05-lumina-settings-960.34dfdd48.webp 960w, images/lumina-website/05-lumina-settings-1472.3c3898db.webp 1472w"
+                      srcSet="/images/lumina-website/05-lumina-settings-480.a6221871.webp 480w, /images/lumina-website/05-lumina-settings-960.34dfdd48.webp 960w, /images/lumina-website/05-lumina-settings-1472.3c3898db.webp 1472w"
                       sizes="(max-width: 900px) calc(100vw - 32px), 480px"
                     />
                     <img
-                      src="images/lumina-website/05-lumina-settings-960.34dfdd48.webp"
+                      src="/images/lumina-website/05-lumina-settings-960.34dfdd48.webp"
                       alt="Lumina System Settings & Preferences"
                       width="960"
                       height="688"
                       loading="lazy"
                       decoding="async"
-                      data-full="images/lumina-website/05-lumina-settings-1472.3c3898db.webp"
+                      data-full="/images/lumina-website/05-lumina-settings-1472.3c3898db.webp"
                     />
                   </picture>
                 </div>
@@ -570,11 +570,11 @@ export default function Page() {
       </div>
       <div className="case-pagination-wrap">
         <div className="case-pagination">
-          <a href="case-aura.html" className="pag-card">
+          <a href="/case-aura.html" className="pag-card">
             <span className="pag-label">Previous Case Study</span>{' '}
             <span className="pag-title">04 · Aura Coffee &amp; Kitchen (Specialty Commerce)</span>
           </a>
-          <a href="case-vellum.html" className="pag-card u-ta-right">
+          <a href="/case-vellum.html" className="pag-card u-ta-right">
             <span className="pag-label">Next Case Study</span>{' '}
             <span className="pag-title">06 · Vellum (Mindful Mobile UX/UI Concept)</span>
           </a>

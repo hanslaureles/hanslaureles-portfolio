@@ -41,7 +41,7 @@ for (const route of migrated) {
       await expect(page.locator('h1')).toBeVisible();
       await expect(page.locator('main')).toContainText('Return to Selected Work');
       await expect(page.getByRole('navigation', { name: 'Main Navigation' })).toBeVisible();
-      await expect(page.locator('main a[href="index.html"]').first()).toBeVisible();
+      await expect(page.locator('main a[href="/index.html"]').first()).toBeVisible();
       const progress = () => page.evaluate(() => {
         const matrix = getComputedStyle(document.body, '::before').transform.match(/matrix\(([^,]+)/);
         return matrix ? Number(matrix[1]) : null;
