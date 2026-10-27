@@ -624,12 +624,16 @@ picture {
   font-size: 0.98rem;
 }
 
+/* A plain dot, not an arrow: these bullets lead nowhere (Hans's review, 2026-10-27). */
 .exp-bullets li::before {
-  content: '→';
+  content: '';
   position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-weight: 600;
+  left: 4px;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
 /* Skills Dual Matrix */

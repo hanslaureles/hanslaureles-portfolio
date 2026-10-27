@@ -483,7 +483,7 @@ export default function Page() {
                 </p>
               </div>
               <div className="u-bg-emerald-a05 u-bd-1px-solid-emerald-a20 u-p-18px u-rounded-8px">
-                <h3 className="u-c-tone-emerald u-mb-8px u-fs-0p95rem">→ The Fix (Shipped)</h3>
+                <h3 className="u-c-tone-emerald u-mb-8px u-fs-0p95rem">The Fix (Shipped)</h3>
                 <p className="u-fs-0p88rem u-lh-1p5 u-c-text-secondary u-m-0">
                   <strong>Fixed, and the code is public in lsfm-ai-hq:</strong> every blocking call
                   in a mission now runs in a worker thread via <code>asyncio.to_thread</code>: named
