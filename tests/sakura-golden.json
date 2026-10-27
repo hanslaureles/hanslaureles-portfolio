@@ -75,7 +75,7 @@
           "title": "Cognitive Memory Core — A Lessons-Learned Memory for AI Coding Assistants",
           "category": "Cognitive Architecture",
           "summary": "Hans designed and built Memory Core, a lessons-learned memory for AI coding assistants, written in the Python standard library with zero pip dependencies.",
-          "evidence": "Runs BM25 lesson search before each task, logs each mistake as a structured lesson (trigger, symptom, root cause, rule), and compiles lessons that keep recurring into Antigravity workspace rules.",
+          "evidence": "Runs BM25 lesson search before each task, logs each mistake as a structured lesson (trigger, symptom, root cause, rule), and compiles recurring lessons into shared workspace rules. Built in 2026.",
           "linkText": "Read Cognitive Memory Case Study",
           "link": "case-memory.html"
         },
