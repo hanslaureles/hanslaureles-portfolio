@@ -195,7 +195,6 @@ export default async function RootLayout({
           mobileLinks={
             isHome ? homeLinks : isAbout ? aboutLinks : currentCase?.mobileLinks
           }
-          showSakura={isHome || isAbout || currentCase?.slug === 'ciel'}
           home={isHome}
         />
         {children}

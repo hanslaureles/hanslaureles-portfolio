@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import Icon from './Icon';
 
 export default function Sections({ contact }: { contact: ReactNode }) {
   return (
@@ -125,10 +124,7 @@ export default function Sections({ contact }: { contact: ReactNode }) {
               >
                 <span className="proof-label">Public LSFM AI HQ tests</span>
                 <span className="proof-value">
-                  434 automated tests, all passing{' '}
-                  <span aria-hidden="true">
-                    <Icon name="arrow-up-right" />
-                  </span>
+                  434 automated tests, all passing
                 </span>
               </a>
             </li>
@@ -140,10 +136,7 @@ export default function Sections({ contact }: { contact: ReactNode }) {
               >
                 <span className="proof-label">Cognitive Memory Core tests</span>
                 <span className="proof-value">
-                  32 automated tests, all passing{' '}
-                  <span aria-hidden="true">
-                    <Icon name="arrow-up-right" />
-                  </span>
+                  32 automated tests, all passing
                 </span>
               </a>
             </li>
@@ -155,10 +148,7 @@ export default function Sections({ contact }: { contact: ReactNode }) {
               >
                 <span className="proof-label">Public GitHub activity</span>
                 <span className="proof-value">
-                  268 contributions in the past year{' '}
-                  <span aria-hidden="true">
-                    <Icon name="arrow-up-right" />
-                  </span>
+                  268 contributions in the past year
                 </span>
               </a>
             </li>
@@ -199,10 +189,7 @@ export function ContactSection({ children }: { children: ReactNode }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                LinkedIn{' '}
-                <span aria-hidden="true">
-                  <Icon name="arrow-up-right" />
-                </span>
+                LinkedIn
               </a>
               <a
                 href="https://github.com/hanslaureles"
@@ -210,10 +197,7 @@ export function ContactSection({ children }: { children: ReactNode }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                GitHub{' '}
-                <span aria-hidden="true">
-                  <Icon name="arrow-up-right" />
-                </span>
+                GitHub
               </a>
               <a
                 href="Hans_Laureles_Resume.pdf"
@@ -221,10 +205,7 @@ export function ContactSection({ children }: { children: ReactNode }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Resume (PDF){' '}
-                <span aria-hidden="true">
-                  <Icon name="arrow-up-right" />
-                </span>
+                Resume (PDF)
               </a>
             </div>
           </div>

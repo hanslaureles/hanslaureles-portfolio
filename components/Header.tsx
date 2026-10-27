@@ -1,17 +1,14 @@
 import ThemeToggle from './ThemeToggle';
 import MobileMenu from './MobileMenu';
 import type { MenuLink } from '../lib/cases';
-import Icon from './home/Icon';
 
 export default function Header({
   current,
   mobileLinks,
-  showSakura = false,
   home = false,
 }: {
   current?: 'work' | 'about';
   mobileLinks?: MenuLink[];
-  showSakura?: boolean;
   home?: boolean;
 }) {
   return (
@@ -55,7 +52,7 @@ export default function Header({
                 rel="noopener noreferrer"
                 className="nav-link"
               >
-                Resume {home ? <Icon name="arrow-up-right" /> : '↗'}
+                Resume
               </a>
             </li>
             {current && (
@@ -66,25 +63,13 @@ export default function Header({
                   rel="noopener noreferrer"
                   className="nav-link"
                 >
-                  GitHub {home ? <Icon name="arrow-up-right" /> : '↗'}
+                  GitHub
                 </a>
               </li>
             )}
           </ul>
         </nav>
         <div className="header-actions">
-          {showSakura && (
-            <button
-              className="sakura-nav-btn"
-              id="sakuraNavBtn"
-              aria-label="Ask Sakura AI Recruiter Assistant"
-              title="Ask Sakura AI Copilot (Ctrl+K)"
-              aria-keyshortcuts="Control+K Meta+K"
-            >
-              <span aria-hidden={home || undefined}>🌸</span>{' '}
-              <span>Ask Sakura</span>
-            </button>
-          )}
           <ThemeToggle home={home} />
           {mobileLinks && (
             <MobileMenu

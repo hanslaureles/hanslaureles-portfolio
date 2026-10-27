@@ -8,7 +8,7 @@ export default function Page() {
     <CaseLayout slug="lumina" title="Lumina Analytics — Case Study · Hans Aaron Laureles">
       <div className="case-hero">
         <a href="index.html" className="case-back-link">
-          ← Return to Selected Work
+          Return to Selected Work
         </a>
         <div className="u-d-flex u-gap-8px u-mb-16px u-wrap-wrap">
           <span className="badge badge-accent">Case Study 05</span>
@@ -32,7 +32,7 @@ export default function Page() {
             rel="noopener noreferrer"
             className="btn btn-primary u-bg-lumina-green u-bd-c-lumina-green u-c-white"
           >
-            🚀 Launch Live Interactive App ↗
+            🚀 Launch Live Interactive App
           </a>
           <a
             href="https://www.figma.com/community/file/1603729139129977787/laureles-lumina-website"
@@ -40,7 +40,7 @@ export default function Page() {
             rel="noopener noreferrer"
             className="btn btn-outline"
           >
-            View Figma Community File ↗
+            View Figma Community File
           </a>
           <a
             href="https://www.figma.com/proto/QvMHlmgMupSFMx7J7VVMZu/Laureles_Lumina---Website?node-id=137-3&p=f&t=OfdkTq7RI3KtUbpC-1&scaling=min-zoom&content-scaling=fixed&page-id=3%3A4&starting-point-node-id=137%3A3"
@@ -48,7 +48,7 @@ export default function Page() {
             rel="noopener noreferrer"
             className="btn btn-outline"
           >
-            View Prototype ↗
+            View Prototype
           </a>
         </div>
         <div className="case-meta-table">
@@ -562,7 +562,7 @@ export default function Page() {
                 rel="noopener noreferrer"
                 className="btn btn-primary u-bg-lumina-green u-bd-c-lumina-green u-c-white"
               >
-                🚀 Experience Live Lumina App on Netlify ↗
+                🚀 Experience Live Lumina App on Netlify
               </a>
             </div>
           </section>
@@ -571,11 +571,11 @@ export default function Page() {
       <div className="case-pagination-wrap">
         <div className="case-pagination">
           <a href="case-aura.html" className="pag-card">
-            <span className="pag-label">← Previous Case Study</span>{' '}
+            <span className="pag-label">Previous Case Study</span>{' '}
             <span className="pag-title">04 · Aura Coffee &amp; Kitchen (Specialty Commerce)</span>
           </a>
           <a href="case-vellum.html" className="pag-card u-ta-right">
-            <span className="pag-label">Next Case Study →</span>{' '}
+            <span className="pag-label">Next Case Study</span>{' '}
             <span className="pag-title">06 · Vellum (Mindful Mobile UX/UI Concept)</span>
           </a>
         </div>

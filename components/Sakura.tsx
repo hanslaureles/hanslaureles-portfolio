@@ -76,9 +76,7 @@ export default function Sakura({ home = false }: { home?: boolean }) {
       if (drawer.current) window.portfolioOverlay?.open(drawer.current);
       input.current?.focus();
     }
-    const triggers = document.querySelectorAll(
-      '.open-sakura-btn, #sakuraNavBtn',
-    );
+    const triggers = document.querySelectorAll('.open-sakura-btn');
     triggers.forEach((trigger) => trigger.addEventListener('click', show));
     function keys(event: KeyboardEvent) {
       if (event.isComposing) return;
@@ -150,15 +148,6 @@ export default function Sakura({ home = false }: { home?: boolean }) {
   }
   function icon(name: string, fallback: string) {
     return home ? <Icon name={name} /> : fallback;
-  }
-  function linkLabel(text: string) {
-    return home ? (
-      <>
-        <Icon name="arrow-up-right" /> {text}
-      </>
-    ) : (
-      `${text} →`
-    );
   }
   if (!mounted) return null;
   return createPortal(
@@ -314,7 +303,7 @@ export default function Sakura({ home = false }: { home?: boolean }) {
                   </p>
                   <div style={{ marginTop: 16 }}>
                     <a href="about.html" className="btn btn-outline btn-sm">
-                      Read Full Profile (About Me){home ? '' : ' →'}
+                      Read Full Profile (About Me)
                     </a>
                   </div>
                 </div>
@@ -353,14 +342,14 @@ export default function Sakura({ home = false }: { home?: boolean }) {
                     </div>
                     <div className="sakura-actions">
                       <a href={answers[0].link} className="sakura-action-link">
-                        {linkLabel(answers[0].linkText)}
+                        {answers[0].linkText}
                       </a>
                       {answers[0].secondaryUrl && (
                         <a
                           href={answers[0].secondaryUrl}
                           className="sakura-action-link secondary"
                         >
-                          {linkLabel(answers[0].secondaryText || '')}
+                          {answers[0].secondaryText || ''}
                         </a>
                       )}
                     </div>
@@ -411,7 +400,7 @@ export default function Sakura({ home = false }: { home?: boolean }) {
                               href={answer.link}
                               className="sakura-action-link sm"
                             >
-                              {linkLabel(answer.linkText)}
+                              {answer.linkText}
                             </a>
                           </div>
                         ))}

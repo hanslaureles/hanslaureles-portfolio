@@ -37,7 +37,7 @@ export default async function About() {
       <main id="main-content" className="section-spacing">
         <div className="container">
           <a href="index.html" className="case-back-link">
-            ← Return to Selected Work
+            Return to Selected Work
           </a>
           <div className="about-hero-grid">
             <div className="portrait-wrapper">
@@ -378,7 +378,7 @@ export default async function About() {
                     <line x1="16" y1="17" x2="8" y2="17" />
                     <polyline points="10 9 9 9 8 9" />
                   </svg>{' '}
-                  <span>Download Resume (PDF) ↗</span>
+                  <span>Download Resume (PDF)</span>
                 </a>
                 <a
                   href="https://github.com/hanslaureles"
@@ -398,7 +398,7 @@ export default async function About() {
                   >
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
                   </svg>{' '}
-                  <span>GitHub Profile ↗</span>
+                  <span>GitHub Profile</span>
                 </a>
               </div>
             </div>

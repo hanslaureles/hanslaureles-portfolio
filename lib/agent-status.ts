@@ -143,7 +143,7 @@ export const missionReplay = [
   {
     agent: 'YUNJIN',
     icon: 'palette',
-    msg: 'Curating the flagship case studies that best match the role.',
+    msg: 'Curating the case studies that best match the role.',
   },
   {
     agent: 'KAZUHA',

@@ -8,7 +8,7 @@ export default function Page() {
     <CaseLayout slug="aura" title="Aura Coffee & Kitchen — Case Study · Hans Aaron Laureles">
       <div className="case-hero">
         <a href="index.html" className="case-back-link">
-          ← Return to Selected Work
+          Return to Selected Work
         </a>
         <div className="u-d-flex u-gap-8px u-mb-16px u-wrap-wrap">
           <span className="badge badge-accent">Case Study 04</span>
@@ -34,7 +34,7 @@ export default function Page() {
             rel="noopener noreferrer"
             className="btn btn-primary u-bg-aura-caramel u-bd-c-aura-caramel u-c-white"
           >
-            ☕ Launch Live Aura Coffee Store ↗
+            ☕ Launch Live Aura Coffee Store
           </a>
           <a
             href="https://www.figma.com/community/file/1618158150524481559/laureles-aura-website"
@@ -42,7 +42,7 @@ export default function Page() {
             rel="noopener noreferrer"
             className="btn btn-outline"
           >
-            View Figma Community File ↗
+            View Figma Community File
           </a>
           <a
             href="https://www.figma.com/proto/8HGLrT9etT2rKl7MivvGK6/Laureles_Aura---Website?node-id=1-237&p=f&t=sjxbSCQqLc55XjWN-1&scaling=scale-down&content-scaling=fixed&page-id=2%3A4"
@@ -50,7 +50,7 @@ export default function Page() {
             rel="noopener noreferrer"
             className="btn btn-outline"
           >
-            Launch Interactive Prototype ↗
+            Launch Interactive Prototype
           </a>
         </div>
         <div className="case-meta-table">
@@ -561,7 +561,7 @@ export default function Page() {
                 rel="noopener noreferrer"
                 className="btn btn-primary u-bg-aura-caramel u-bd-c-aura-caramel u-c-white"
               >
-                ☕ Launch Live Aura Coffee Store &amp; 1-Page Checkout ↗
+                ☕ Launch Live Aura Coffee Store &amp; 1-Page Checkout
               </a>
             </div>
           </section>
@@ -570,11 +570,11 @@ export default function Page() {
       <div className="case-pagination-wrap">
         <div className="case-pagination">
           <a href="case-memory.html" className="pag-card">
-            <span className="pag-label">← Previous Case Study</span>{' '}
+            <span className="pag-label">Previous Case Study</span>{' '}
             <span className="pag-title">03 · Memory Core (Lessons-Learned Memory)</span>
           </a>
           <a href="case-lumina.html" className="pag-card u-ta-right">
-            <span className="pag-label">Next Case Study →</span>{' '}
+            <span className="pag-label">Next Case Study</span>{' '}
             <span className="pag-title">05 · Lumina Analytics (Study &amp; Focus Dashboard)</span>
           </a>
         </div>

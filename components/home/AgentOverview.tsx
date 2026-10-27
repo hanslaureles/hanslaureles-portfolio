@@ -472,11 +472,11 @@ Availability: Open for Full-Time & Remote AI & Software Engineering Roles (2026)
                                 window.openSakuraCopilot();
                               else
                                 document
-                                  .getElementById('sakuraNavBtn')
+                                  .getElementById('sakuraFloatingBtn')
                                   ?.click();
                             }}
                           >
-                            Chat with Sakura <Icon name="arrow-right" />
+                            Chat with Sakura
                           </button>
                         ) : agent.id === 'chaewon' ? (
                           <a
@@ -485,14 +485,14 @@ Availability: Open for Full-Time & Remote AI & Software Engineering Roles (2026)
                             rel="noopener noreferrer"
                             className="agent-inline-action-btn"
                           >
-                            View PDF <Icon name="arrow-up-right" />
+                            View PDF
                           </a>
                         ) : agent.id === 'yunjin' ? (
                           <a
                             href="case-lsfm.html"
                             className="agent-inline-action-btn"
                           >
-                            Read Case Study <Icon name="arrow-right" />
+                            Read Case Study
                           </a>
                         ) : (
                           <span className="mono text-muted">

@@ -73,18 +73,6 @@ export function IconDefinitions() {
         <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
         <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
       </symbol>
-      <symbol id="icon-arrow-right" {...stroke}>
-        <path d="M5 12h14" />
-        <path d="m12 5 7 7-7 7" />
-      </symbol>
-      <symbol id="icon-arrow-up-right" {...stroke}>
-        <path d="M7 7h10v10" />
-        <path d="M7 17 17 7" />
-      </symbol>
-      <symbol id="icon-arrow-down" {...stroke}>
-        <path d="M12 5v14" />
-        <path d="m19 12-7 7-7-7" />
-      </symbol>
       <symbol id="icon-sun" {...stroke}>
         <circle cx="12" cy="12" r="4" />
         <path d="M12 2v2" />

@@ -43,19 +43,19 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
       },
       {
         "href": "case-lsfm.html",
-        "label": "Flagship: LSFM AI HQ"
+        "label": "LSFM AI HQ"
       },
       {
         "href": "Hans_Laureles_Resume.pdf",
         "target": "_blank",
         "rel": "noopener noreferrer",
-        "label": "Resume (PDF) ↗"
+        "label": "Resume (PDF)"
       },
       {
         "href": "https://github.com/hanslaureles",
         "target": "_blank",
         "rel": "noopener noreferrer",
-        "label": "GitHub Profile ↗"
+        "label": "GitHub Profile"
       }
     ]
   },
@@ -99,19 +99,19 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
       },
       {
         "href": "case-lsfm.html",
-        "label": "Flagship: LSFM AI HQ"
+        "label": "LSFM AI HQ"
       },
       {
         "href": "Hans_Laureles_Resume.pdf",
         "target": "_blank",
         "rel": "noopener noreferrer",
-        "label": "Resume (PDF) ↗"
+        "label": "Resume (PDF)"
       },
       {
         "href": "https://github.com/hanslaureles",
         "target": "_blank",
         "rel": "noopener noreferrer",
-        "label": "GitHub Profile ↗"
+        "label": "GitHub Profile"
       }
     ]
   },
@@ -155,19 +155,19 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
       },
       {
         "href": "case-lsfm.html",
-        "label": "Flagship: LSFM AI HQ"
+        "label": "LSFM AI HQ"
       },
       {
         "href": "Hans_Laureles_Resume.pdf",
         "target": "_blank",
         "rel": "noopener noreferrer",
-        "label": "Resume (PDF) ↗"
+        "label": "Resume (PDF)"
       },
       {
         "href": "https://github.com/hanslaureles",
         "target": "_blank",
         "rel": "noopener noreferrer",
-        "label": "GitHub Profile ↗"
+        "label": "GitHub Profile"
       }
     ]
   },
@@ -211,19 +211,19 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
       },
       {
         "href": "case-lsfm.html",
-        "label": "Flagship: LSFM AI HQ"
+        "label": "LSFM AI HQ"
       },
       {
         "href": "Hans_Laureles_Resume.pdf",
         "target": "_blank",
         "rel": "noopener noreferrer",
-        "label": "Resume (PDF) ↗"
+        "label": "Resume (PDF)"
       },
       {
         "href": "https://github.com/hanslaureles",
         "target": "_blank",
         "rel": "noopener noreferrer",
-        "label": "GitHub Profile ↗"
+        "label": "GitHub Profile"
       }
     ]
   },
@@ -267,7 +267,7 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
       },
       {
         "href": "case-lsfm.html",
-        "label": "Flagship: LSFM AI HQ"
+        "label": "LSFM AI HQ"
       },
       {
         "href": "case-memory.html",
@@ -278,13 +278,13 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
         "href": "Hans_Laureles_Resume.pdf",
         "target": "_blank",
         "rel": "noopener noreferrer",
-        "label": "Resume (PDF) ↗"
+        "label": "Resume (PDF)"
       },
       {
         "href": "https://github.com/hanslaureles",
         "target": "_blank",
         "rel": "noopener noreferrer",
-        "label": "GitHub Profile ↗"
+        "label": "GitHub Profile"
       }
     ]
   },
@@ -348,13 +348,13 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
         "href": "Hans_Laureles_Resume.pdf",
         "target": "_blank",
         "rel": "noopener noreferrer",
-        "label": "Resume (PDF) ↗"
+        "label": "Resume (PDF)"
       },
       {
         "href": "https://github.com/hanslaureles",
         "target": "_blank",
         "rel": "noopener noreferrer",
-        "label": "GitHub Profile ↗"
+        "label": "GitHub Profile"
       }
     ]
   },
@@ -399,19 +399,19 @@ export const cases: { slug: string; title: string; type: string; category: 'AI' 
       {
         "href": "case-lsfm.html",
         "className": "active",
-        "label": "Flagship: LSFM AI HQ"
+        "label": "LSFM AI HQ"
       },
       {
         "href": "Hans_Laureles_Resume.pdf",
         "target": "_blank",
         "rel": "noopener noreferrer",
-        "label": "Resume (PDF) ↗"
+        "label": "Resume (PDF)"
       },
       {
         "href": "https://github.com/hanslaureles",
         "target": "_blank",
         "rel": "noopener noreferrer",
-        "label": "GitHub Profile ↗"
+        "label": "GitHub Profile"
       }
     ]
   }

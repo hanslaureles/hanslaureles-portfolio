@@ -11,7 +11,7 @@ export default function Page() {
     <CaseLayout slug="ciel" title="Manas: Ciel — Case Study · Hans Aaron Laureles">
       <div className="case-hero">
         <a href="index.html" className="case-back-link">
-          ← Return to Selected Work
+          Return to Selected Work
         </a>
         <div className="u-d-flex u-gap-8px u-mb-16px u-wrap-wrap">
           <span className="badge badge-accent">Case Study 02 · Voice AI Copilot</span>
@@ -103,10 +103,10 @@ export default function Page() {
         </dl>
         <div className="u-d-flex u-gap-12px u-wrap-wrap u-mb-36px">
           <a href="#simulator" className="btn btn-primary">
-            ⚡ Try the Voice Demo ↓
+            ⚡ Try the Voice Demo
           </a>
           <a href="#pillars" className="btn btn-outline">
-            See the 4 Parts ↓
+            See the 4 Parts
           </a>
           <a
             href="https://github.com/hanslaureles/manas-ciel"
@@ -126,7 +126,7 @@ export default function Page() {
             >
               <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
             </svg>{' '}
-            View Code on GitHub ↗
+            View Code on GitHub
           </a>
         </div>
         <div className="case-meta-table">
@@ -1310,11 +1310,11 @@ tools = [
       <div className="case-pagination-wrap u-mt-64px u-mb-32px">
         <div className="case-pagination u-d-grid u-cols-1fr-1fr u-gap-24px">
           <a href="case-lsfm.html" className="pag-card">
-            <span className="pag-label">← Previous Case Study</span>{' '}
+            <span className="pag-label">Previous Case Study</span>{' '}
             <span className="pag-title">01 · LSFM AI HQ (Multi-Agent System)</span>
           </a>
           <a href="case-memory.html" className="pag-card u-ta-right">
-            <span className="pag-label">Next Case Study →</span>{' '}
+            <span className="pag-label">Next Case Study</span>{' '}
             <span className="pag-title">03 · Memory Core (Lessons-Learned Memory)</span>
           </a>
         </div>

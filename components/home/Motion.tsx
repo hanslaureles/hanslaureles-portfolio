@@ -11,7 +11,6 @@ import {
 export default function Motion() {
   useEffect(() => {
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-    const fine = matchMedia('(hover: hover) and (pointer: fine)');
     const cleanup: (() => void)[] = [];
     const listen = (
       target: EventTarget,
@@ -53,90 +52,15 @@ export default function Motion() {
         return;
       initialized = true;
       readyObserver.disconnect();
-      document.querySelectorAll<HTMLElement>('button,a').forEach((button) => {
-        if (
-          button.tagName !== 'BUTTON' &&
-          !button.classList.contains('btn') &&
-          !button.querySelector('use[href^="#icon-arrow-"]')
-        )
-          return;
-        if (getComputedStyle(button).position === 'static')
-          button.classList.add('motion-button-static');
-        button.classList.add('motion-button');
-        button.querySelectorAll('span[aria-hidden="true"]').forEach((span) => {
-          if (/^[↗→↓]$/.test(span.textContent?.trim() || ''))
-            span.classList.add('motion-arrow');
-        });
-        button
-          .querySelectorAll(
-            'use[href="#icon-arrow-right"],use[href="#icon-arrow-up-right"],use[href="#icon-arrow-down"]',
-          )
-          .forEach((use) => use.parentElement?.classList.add('motion-arrow'));
-        const tail = button.lastChild;
-        if (
-          tail?.nodeType === Node.TEXT_NODE &&
-          /[↗→↓]\s*$/.test(tail.textContent || '')
-        ) {
-          const text = tail.textContent || '';
-          tail.textContent = text.replace(/[↗→↓]\s*$/, '');
-          const span = document.createElement('span');
-          span.className = 'motion-arrow';
-          span.ariaHidden = 'true';
-          span.textContent = text.trim().slice(-1);
-          button.append(span);
-        }
-      });
-      const track = (element: HTMLElement, kind: 'pull' | 'tilt') => {
-        let bounds: DOMRect | null = null;
-        const reset = () => {
-          bounds = null;
-          for (const axis of ['x', 'y'])
-            element.style.removeProperty(`--${kind}-${axis}`);
-        };
-        listen(element, 'pointerenter', () => {
-          if (!reduced.matches && fine.matches)
-            bounds = element.getBoundingClientRect();
-        });
-        listen(element, 'pointermove', (event) => {
-          const pointer = event as PointerEvent;
-          if (
-            !bounds ||
-            reduced.matches ||
-            !fine.matches ||
-            pointer.pointerType === 'touch'
-          )
-            return;
-          const x =
-              (pointer.clientX - bounds.x - bounds.width / 2) /
-              (bounds.width / 2),
-            y =
-              (pointer.clientY - bounds.y - bounds.height / 2) /
-              (bounds.height / 2),
-            length = Math.max(1, Math.hypot(x, y));
-          element.style.setProperty(
-            `--${kind}-x`,
-            kind === 'pull'
-              ? `${(x / length) * 6}px`
-              : `${(-y / length) * 4}deg`,
-          );
-          element.style.setProperty(
-            `--${kind}-y`,
-            kind === 'pull'
-              ? `${(y / length) * 6}px`
-              : `${(x / length) * 4}deg`,
-          );
-        });
-        listen(element, 'pointerleave', reset);
-        listen(element, 'blur', reset);
-        listen(window, 'portfoliomotionchange', reset);
-        listen(fine, 'change', reset);
-      };
+      // The fill sweep says "this takes you somewhere", so only links that navigate get it
+      // (Hans's review, 2026-10-27): action buttons keep their plain hover and focus styles.
       document
-        .querySelectorAll<HTMLElement>('.btn-primary')
-        .forEach((button) => track(button, 'pull'));
-      document
-        .querySelectorAll<HTMLElement>('.project-card')
-        .forEach((card) => track(card, 'tilt'));
+        .querySelectorAll<HTMLElement>('a.btn[href]')
+        .forEach((link) => {
+          if (getComputedStyle(link).position === 'static')
+            link.classList.add('motion-button-static');
+          link.classList.add('motion-button');
+        });
       document.querySelectorAll<HTMLElement>('.agent-chip').forEach((chip) => {
         const item = chip.parentElement!;
         const show = () => {

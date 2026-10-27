@@ -30,7 +30,7 @@ export default function Hero() {
                 <Icon name="circle-check" />
               </span>
               <span>
-                Built and tested in the open <Icon name="arrow-down" />
+                Built and tested in the open
               </span>
             </a>
           </div>
@@ -44,7 +44,7 @@ export default function Hero() {
             <div className="hero-proof-strip">
               <a href="case-lsfm.html" className="hero-proof-item">
                 <span>
-                  01 <Icon name="arrow-up-right" />
+                  01
                 </span>
                 <span>
                   <strong>LSFM AI HQ:</strong> A team of five AI helpers on
@@ -54,7 +54,7 @@ export default function Hero() {
               </a>
               <a href="case-ciel.html" className="hero-proof-item">
                 <span>
-                  02 <Icon name="arrow-up-right" />
+                  02
                 </span>
                 <span>
                   <strong>Manas: Ciel:</strong> A voice assistant for my desk
@@ -64,7 +64,7 @@ export default function Hero() {
               </a>
               <a href="case-memory.html" className="hero-proof-item">
                 <span>
-                  03 <Icon name="arrow-up-right" />
+                  03
                 </span>
                 <span>
                   <strong>Memory Core:</strong> Saves the mistakes my AI coding
@@ -75,7 +75,7 @@ export default function Hero() {
           </div>
           <div className="hero-actions">
             <a href="#selected-work" className="btn btn-primary">
-              Explore Selected Work <Icon name="arrow-down" />
+              Explore Selected Work
             </a>
             <button
               type="button"
@@ -92,7 +92,7 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="btn btn-outline"
             >
-              Resume (PDF) <Icon name="arrow-up-right" />
+              Resume (PDF)
             </a>
             <a
               href="https://github.com/hanslaureles"
@@ -101,7 +101,7 @@ export default function Hero() {
               className="btn btn-outline"
             >
               <span>
-                GitHub <Icon name="arrow-up-right" />
+                GitHub
               </span>
             </a>
           </div>

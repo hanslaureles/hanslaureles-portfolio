@@ -12,19 +12,19 @@ export const aboutLinks: MenuLink[] = [
   { href: 'case-memory.html', label: 'Memory Core' },
   {
     href: 'aura-store/index.html',
-    label: 'Aura Coffee (Live Store ↗)',
+    label: 'Aura Coffee (Live Store)',
     target: '_blank',
     rel: 'noopener noreferrer',
   },
   {
     href: 'Hans_Laureles_Resume.pdf',
-    label: 'Resume (PDF) ↗',
+    label: 'Resume (PDF)',
     target: '_blank',
     rel: 'noopener noreferrer',
   },
   {
     href: 'https://github.com/hanslaureles',
-    label: 'GitHub Profile ↗',
+    label: 'GitHub Profile',
     target: '_blank',
     rel: 'noopener noreferrer',
   },
@@ -102,8 +102,8 @@ export const milestones = [
       "Animated dashboard that moves with Ciel's voice",
     ],
     links: [
-      { href: 'case-ciel.html', label: 'Explore Case Study →' },
-      { href: 'case-ciel.html#simulator', label: 'Launch Simulator ↗' },
+      { href: 'case-ciel.html', label: 'Explore Case Study' },
+      { href: 'case-ciel.html#simulator', label: 'Launch Simulator' },
     ],
   },
   {
@@ -118,10 +118,10 @@ export const milestones = [
       'One-page resume PDFs built for applicant tracking systems',
     ],
     links: [
-      { href: 'case-lsfm.html', label: 'Explore Case Study →' },
+      { href: 'case-lsfm.html', label: 'Explore Case Study' },
       {
         href: 'Hans_Laureles_Resume.pdf',
-        label: 'Resume PDF ↗',
+        label: 'Resume PDF',
         target: '_blank',
       },
     ],
@@ -137,7 +137,7 @@ export const milestones = [
       'Each lesson records what went wrong, why, and the rule for next time',
       'Plain Python, nothing extra to install',
     ],
-    links: [{ href: 'case-memory.html', label: 'Explore Case Study →' }],
+    links: [{ href: 'case-memory.html', label: 'Explore Case Study' }],
   },
   {
     type: 'roc.ph',

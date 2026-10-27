@@ -8,7 +8,7 @@ export default function Page() {
     <CaseLayout slug="fintrack" title="FinTrack App — Case Study · Hans Aaron Laureles">
       <div className="case-hero">
         <a href="index.html" className="case-back-link">
-          ← Return to Selected Work
+          Return to Selected Work
         </a>
         <div className="u-d-flex u-gap-8px u-mb-16px u-wrap-wrap">
           <span className="badge badge-accent">Case Study 07</span>
@@ -32,7 +32,7 @@ export default function Page() {
             rel="noopener noreferrer"
             className="btn btn-primary"
           >
-            View Figma Community File ↗
+            View Figma Community File
           </a>
           <a
             href="https://www.figma.com/proto/x7Si9om6yXdVCgXrskZfTY/Laureles_FinTrack---Mobile-App?node-id=1-1000&p=f&t=zpSjUwOxJ9v9teqQ-1&scaling=scale-down&content-scaling=fixed&page-id=16%3A4&starting-point-node-id=1%3A1000"
@@ -40,7 +40,7 @@ export default function Page() {
             rel="noopener noreferrer"
             className="btn btn-outline"
           >
-            Launch Interactive Prototype ↗
+            Launch Interactive Prototype
           </a>
         </div>
         <div className="case-meta-table">
@@ -494,11 +494,11 @@ export default function Page() {
       <div className="case-pagination-wrap">
         <div className="case-pagination">
           <a href="case-vellum.html" className="pag-card">
-            <span className="pag-label">← Previous Case Study</span>{' '}
+            <span className="pag-label">Previous Case Study</span>{' '}
             <span className="pag-title">06 · Vellum (Mindful Mobile UX/UI Concept)</span>
           </a>
           <a href="case-lsfm.html" className="pag-card u-ta-right">
-            <span className="pag-label">Next Case Study →</span>{' '}
+            <span className="pag-label">Next Case Study</span>{' '}
             <span className="pag-title">01 · LSFM AI HQ (5-Agent Team)</span>
           </a>
         </div>

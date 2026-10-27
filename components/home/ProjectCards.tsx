@@ -39,10 +39,7 @@ export function ProjectIndex() {
             )}
           </div>
           <a href={`case-${project.slug}.html`} className="project-case-link">
-            Case study{' '}
-            <span aria-hidden="true">
-              <Icon name="arrow-up-right" />
-            </span>
+            Case study
           </a>
         </li>
       ))}
@@ -121,7 +118,6 @@ export default function ProjectCards() {
             <div className="project-copy">
               {project.slug === 'lsfm' ? (
                 <div className="project-card-heading">
-                  <span className="flagship-tag">Flagship</span>
                   <ul className="agent-chips" aria-label="Five-agent team">
                     {[
                       agents[0],
@@ -152,9 +148,7 @@ export default function ProjectCards() {
                     ))}
                   </ul>
                 </div>
-              ) : (
-                featured && <span className="flagship-tag">Flagship</span>
-              )}
+              ) : null}
               <h3>
                 <a href={project.href}>{project.title}</a>
               </h3>
@@ -174,17 +168,11 @@ export default function ProjectCards() {
                   href={`case-${project.slug}.html`}
                   className="project-case-link"
                 >
-                  Case study{' '}
-                  <span aria-hidden="true">
-                    <Icon name="arrow-up-right" />
-                  </span>
+                  Case study
                 </a>
                 {project.demo && (
                   <a href={project.demo}>
-                    Demo{' '}
-                    <span aria-hidden="true">
-                      <Icon name="arrow-up-right" />
-                    </span>
+                    Demo
                   </a>
                 )}
                 {project.slug === 'lsfm' && (
@@ -194,10 +182,7 @@ export default function ProjectCards() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Source{' '}
-                      <span aria-hidden="true">
-                        <Icon name="arrow-up-right" />
-                      </span>
+                      Source
                     </a>
                     <button
                       type="button"
@@ -206,10 +191,7 @@ export default function ProjectCards() {
                       title="Open the agent overview (Alt+S)"
                       aria-keyshortcuts="Alt+S"
                     >
-                      Agent overview{' '}
-                      <span aria-hidden="true">
-                        <Icon name="arrow-up-right" />
-                      </span>
+                      Agent overview
                     </button>
                   </>
                 )}

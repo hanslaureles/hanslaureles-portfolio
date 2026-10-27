@@ -25,7 +25,7 @@ export const homeLinks: MenuLink[] = [
     href: 'aura-store/index.html',
     label: (
       <>
-        Aura Coffee (Live Store <Icon name="arrow-up-right" />)
+        Aura Coffee (Live Store)
       </>
     ),
     target: '_blank',
@@ -35,7 +35,7 @@ export const homeLinks: MenuLink[] = [
     href: 'Hans_Laureles_Resume.pdf',
     label: (
       <>
-        Resume (PDF) <Icon name="arrow-up-right" />
+        Resume (PDF)
       </>
     ),
     target: '_blank',
@@ -45,7 +45,7 @@ export const homeLinks: MenuLink[] = [
     href: 'https://github.com/hanslaureles',
     label: (
       <>
-        GitHub Profile <Icon name="arrow-up-right" />
+        GitHub Profile
       </>
     ),
     target: '_blank',
